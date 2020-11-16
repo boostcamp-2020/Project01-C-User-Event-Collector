@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AD62AD7689CD423579B7C6A4 /* libPods-MiniVIBE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F736C7CF8B7E1A46282594 /* libPods-MiniVIBE.a */; };
+		B994C69C25627DBD000E563C /* MiniVIBEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994C69B25627DBD000E563C /* MiniVIBEApp.swift */; };
+		B994C69E25627DBD000E563C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994C69D25627DBD000E563C /* ContentView.swift */; };
+		B994C6A025627DBE000E563C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B994C69F25627DBE000E563C /* Assets.xcassets */; };
+		B994C6A325627DBE000E563C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B994C6A225627DBE000E563C /* Preview Assets.xcassets */; };
+		B994C6A525627DBE000E563C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994C6A425627DBE000E563C /* Persistence.swift */; };
+		B994C6A825627DBE000E563C /* MiniVIBE.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B994C6A625627DBE000E563C /* MiniVIBE.xcdatamodeld */; };
+		B9B6279925628130006B0F00 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B9B6279825628130006B0F00 /* .swiftlint.yml */; };
+		B9B627A2256281BE006B0F00 /* MiniVIBETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B627A1256281BE006B0F00 /* MiniVIBETests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B9B627A4256281BE006B0F00 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B994C69025627DBD000E563C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B994C69725627DBD000E563C;
+			remoteInfo = MiniVIBE;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		71F736C7CF8B7E1A46282594 /* libPods-MiniVIBE.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniVIBE.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B251DDD6E742687B7610BEE2 /* Pods-MiniVIBE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBE.debug.xcconfig"; path = "Target Support Files/Pods-MiniVIBE/Pods-MiniVIBE.debug.xcconfig"; sourceTree = "<group>"; };
+		B994C69825627DBD000E563C /* MiniVIBE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVIBE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B994C69B25627DBD000E563C /* MiniVIBEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVIBEApp.swift; sourceTree = "<group>"; };
+		B994C69D25627DBD000E563C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B994C69F25627DBE000E563C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B994C6A225627DBE000E563C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B994C6A425627DBE000E563C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		B994C6A725627DBE000E563C /* MiniVIBE.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MiniVIBE.xcdatamodel; sourceTree = "<group>"; };
+		B994C6A925627DBE000E563C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9B6279825628130006B0F00 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		B9B6279F256281BE006B0F00 /* MiniVIBETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVIBETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9B627A1256281BE006B0F00 /* MiniVIBETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVIBETests.swift; sourceTree = "<group>"; };
+		B9B627A3256281BE006B0F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D79633046F581A9010E0BE59 /* Pods-MiniVIBE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBE.release.xcconfig"; path = "Target Support Files/Pods-MiniVIBE/Pods-MiniVIBE.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B994C69525627DBD000E563C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AD62AD7689CD423579B7C6A4 /* libPods-MiniVIBE.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9B6279C256281BE006B0F00 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0718D3CA313ECA24B75B795F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B251DDD6E742687B7610BEE2 /* Pods-MiniVIBE.debug.xcconfig */,
+				D79633046F581A9010E0BE59 /* Pods-MiniVIBE.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B994C68F25627DBD000E563C = {
+			isa = PBXGroup;
+			children = (
+				B9B6279825628130006B0F00 /* .swiftlint.yml */,
+				B994C69A25627DBD000E563C /* MiniVIBE */,
+				B9B627A0256281BE006B0F00 /* MiniVIBETests */,
+				B994C69925627DBD000E563C /* Products */,
+				0718D3CA313ECA24B75B795F /* Pods */,
+				CA233B27D449220AF6D7CF38 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		B994C69925627DBD000E563C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B994C69825627DBD000E563C /* MiniVIBE.app */,
+				B9B6279F256281BE006B0F00 /* MiniVIBETests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B994C69A25627DBD000E563C /* MiniVIBE */ = {
+			isa = PBXGroup;
+			children = (
+				B994C69B25627DBD000E563C /* MiniVIBEApp.swift */,
+				B994C69D25627DBD000E563C /* ContentView.swift */,
+				B994C69F25627DBE000E563C /* Assets.xcassets */,
+				B994C6A425627DBE000E563C /* Persistence.swift */,
+				B994C6A925627DBE000E563C /* Info.plist */,
+				B994C6A625627DBE000E563C /* MiniVIBE.xcdatamodeld */,
+				B994C6A125627DBE000E563C /* Preview Content */,
+			);
+			path = MiniVIBE;
+			sourceTree = "<group>";
+		};
+		B994C6A125627DBE000E563C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				B994C6A225627DBE000E563C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B9B627A0256281BE006B0F00 /* MiniVIBETests */ = {
+			isa = PBXGroup;
+			children = (
+				B9B627A1256281BE006B0F00 /* MiniVIBETests.swift */,
+				B9B627A3256281BE006B0F00 /* Info.plist */,
+			);
+			path = MiniVIBETests;
+			sourceTree = "<group>";
+		};
+		CA233B27D449220AF6D7CF38 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				71F736C7CF8B7E1A46282594 /* libPods-MiniVIBE.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B994C69725627DBD000E563C /* MiniVIBE */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B994C6AC25627DBE000E563C /* Build configuration list for PBXNativeTarget "MiniVIBE" */;
+			buildPhases = (
+				A5459FF9EB284B23934C9B38 /* [CP] Check Pods Manifest.lock */,
+				B994C69425627DBD000E563C /* Sources */,
+				B994C69525627DBD000E563C /* Frameworks */,
+				B994C69625627DBD000E563C /* Resources */,
+				B9B62796256280A7006B0F00 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MiniVIBE;
+			productName = MiniVIBE;
+			productReference = B994C69825627DBD000E563C /* MiniVIBE.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B9B6279E256281BE006B0F00 /* MiniVIBETests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9B627A6256281BE006B0F00 /* Build configuration list for PBXNativeTarget "MiniVIBETests" */;
+			buildPhases = (
+				B9B6279B256281BE006B0F00 /* Sources */,
+				B9B6279C256281BE006B0F00 /* Frameworks */,
+				B9B6279D256281BE006B0F00 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B9B627A5256281BE006B0F00 /* PBXTargetDependency */,
+			);
+			name = MiniVIBETests;
+			productName = MiniVIBETests;
+			productReference = B9B6279F256281BE006B0F00 /* MiniVIBETests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B994C69025627DBD000E563C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					B994C69725627DBD000E563C = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					B9B6279E256281BE006B0F00 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = B994C69725627DBD000E563C;
+					};
+				};
+			};
+			buildConfigurationList = B994C69325627DBD000E563C /* Build configuration list for PBXProject "MiniVIBE" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B994C68F25627DBD000E563C;
+			productRefGroup = B994C69925627DBD000E563C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B994C69725627DBD000E563C /* MiniVIBE */,
+				B9B6279E256281BE006B0F00 /* MiniVIBETests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B994C69625627DBD000E563C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9B6279925628130006B0F00 /* .swiftlint.yml in Resources */,
+				B994C6A325627DBE000E563C /* Preview Assets.xcassets in Resources */,
+				B994C6A025627DBE000E563C /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9B6279D256281BE006B0F00 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A5459FF9EB284B23934C9B38 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MiniVIBE-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B9B62796256280A7006B0F00 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B994C69425627DBD000E563C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B994C6A825627DBE000E563C /* MiniVIBE.xcdatamodeld in Sources */,
+				B994C6A525627DBE000E563C /* Persistence.swift in Sources */,
+				B994C69E25627DBD000E563C /* ContentView.swift in Sources */,
+				B994C69C25627DBD000E563C /* MiniVIBEApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9B6279B256281BE006B0F00 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9B627A2256281BE006B0F00 /* MiniVIBETests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B9B627A5256281BE006B0F00 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B994C69725627DBD000E563C /* MiniVIBE */;
+			targetProxy = B9B627A4256281BE006B0F00 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		B994C6AA25627DBE000E563C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B994C6AB25627DBE000E563C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B994C6AD25627DBE000E563C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B251DDD6E742687B7610BEE2 /* Pods-MiniVIBE.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MiniVIBE/Preview Content\"";
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MiniVIBE/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.dochoi.MiniVIBE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		B994C6AE25627DBE000E563C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D79633046F581A9010E0BE59 /* Pods-MiniVIBE.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"MiniVIBE/Preview Content\"";
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = MiniVIBE/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.dochoi.MiniVIBE;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		B9B627A7256281BE006B0F00 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = MiniVIBETests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.dochoi.MiniVIBETests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiniVIBE.app/MiniVIBE";
+			};
+			name = Debug;
+		};
+		B9B627A8256281BE006B0F00 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = MiniVIBETests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.dochoi.MiniVIBETests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiniVIBE.app/MiniVIBE";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B994C69325627DBD000E563C /* Build configuration list for PBXProject "MiniVIBE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B994C6AA25627DBE000E563C /* Debug */,
+				B994C6AB25627DBE000E563C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B994C6AC25627DBE000E563C /* Build configuration list for PBXNativeTarget "MiniVIBE" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B994C6AD25627DBE000E563C /* Debug */,
+				B994C6AE25627DBE000E563C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9B627A6256281BE006B0F00 /* Build configuration list for PBXNativeTarget "MiniVIBETests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9B627A7256281BE006B0F00 /* Debug */,
+				B9B627A8256281BE006B0F00 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B994C6A625627DBE000E563C /* MiniVIBE.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B994C6A725627DBE000E563C /* MiniVIBE.xcdatamodel */,
+			);
+			currentVersion = B994C6A725627DBE000E563C /* MiniVIBE.xcdatamodel */;
+			path = MiniVIBE.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = B994C69025627DBD000E563C /* Project object */;
+}
