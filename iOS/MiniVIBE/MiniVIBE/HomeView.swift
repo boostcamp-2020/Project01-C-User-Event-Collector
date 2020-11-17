@@ -18,6 +18,7 @@ struct HomeView: View {
             Spacer()
             Hgrid()
             Spacer()
+            
         }
     }
 }
