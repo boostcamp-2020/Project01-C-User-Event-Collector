@@ -16,7 +16,7 @@
 		B9B6279925628130006B0F00 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B9B6279825628130006B0F00 /* .swiftlint.yml */; };
 		B9B627A2256281BE006B0F00 /* MiniVIBETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B627A1256281BE006B0F00 /* MiniVIBETests.swift */; };
 		DEC076DA2563AEBE004862AA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC076D92563AEBE004862AA /* HomeView.swift */; };
-		DEC076E02563BBBC004862AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEC076DF2563BBBC004862AA /* Assets.xcassets */; };
+		DEF8AEF62563C81200CE2A2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEF8AEF52563C81200CE2A2F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,7 +45,7 @@
 		B9B627A3256281BE006B0F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D79633046F581A9010E0BE59 /* Pods-MiniVIBE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBE.release.xcconfig"; path = "Target Support Files/Pods-MiniVIBE/Pods-MiniVIBE.release.xcconfig"; sourceTree = "<group>"; };
 		DEC076D92563AEBE004862AA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		DEC076DF2563BBBC004862AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../../../../../Desktop/AppIcons/Assets.xcassets; sourceTree = "<group>"; };
+		DEF8AEF52563C81200CE2A2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +103,7 @@
 				B994C69B25627DBD000E563C /* MiniVIBEApp.swift */,
 				B994C69D25627DBD000E563C /* ContentView.swift */,
 				DEC076D92563AEBE004862AA /* HomeView.swift */,
-				DEC076DF2563BBBC004862AA /* Assets.xcassets */,
+				DEF8AEF52563C81200CE2A2F /* Assets.xcassets */,
 				B994C6A425627DBE000E563C /* Persistence.swift */,
 				B994C6A925627DBE000E563C /* Info.plist */,
 				B994C6A625627DBE000E563C /* MiniVIBE.xcdatamodeld */,
@@ -220,8 +220,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9B6279925628130006B0F00 /* .swiftlint.yml in Resources */,
+				DEF8AEF62563C81200CE2A2F /* Assets.xcassets in Resources */,
 				B994C6A325627DBE000E563C /* Preview Assets.xcassets in Resources */,
-				DEC076E02563BBBC004862AA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
