@@ -9,12 +9,18 @@ import SwiftUI
 
 @main
 struct MiniVIBEApp: App {
-    let persistenceController = PersistenceController.shared
-
+    init() {
+        UITabBar.appearance().barTintColor = .black
+    }
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
+    }
+}
+
+struct MiniVIBEApp_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
     }
 }
