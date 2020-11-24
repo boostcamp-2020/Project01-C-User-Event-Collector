@@ -9,37 +9,21 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        
-        List {
-            Spacer()
-            Hgrid()
-            Spacer()
-            Hgrid()
-            Spacer()
-            Hgrid()
-            Spacer()
-            NowSectionView()
-            
+        ScrollView {
+            VStack {
+                NowSectionView(songItems: [
+                                SongItem(albumArt: Image("now-dummy1"), description: "야간작업실"),
+                                SongItem(albumArt: Image("now-dummy2"), description: "어벤걸스"),
+                               SongItem(albumArt: Image("now-dummy1"), description: "야간작업실"),
+                               SongItem(albumArt: Image("now-dummy2"), description: "어벤걸스"),
+                               SongItem(albumArt: Image("now-dummy1"), description: "야간작업실"),
+                               SongItem(albumArt: Image("now-dummy2"), description: "어벤걸스")
+                ]
+                )
+                
+                HomeFooterView()
+            }.background(Color.black)
         }
-    }
-}
-struct Hgrid: View {
-    var body: some View {
-        let rows: [GridItem] =
-            Array(repeating: .init(.fixed(20)), count: 2)
-    ScrollView(.horizontal) {
-        LazyHGrid(rows: rows, alignment: .top) {
-            ForEach((0...79), id: \.self) {
-                let codepoint = $0 + 0x1f600
-                let codepointString = String(format: "%02X", codepoint)
-                Text("\(codepointString)")
-                    .font(.footnote)
-                let emoji = String(Character(UnicodeScalar(codepoint)!))
-                Text("\(emoji)")
-                    .font(.largeTitle)
-            }
-        }
-    }
     }
 }
 
