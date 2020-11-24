@@ -31,7 +31,7 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "person.fill")
                 }
-        }.accentColor(.pink)
+        }.accentColor(.vibePink)
     }
 }
 

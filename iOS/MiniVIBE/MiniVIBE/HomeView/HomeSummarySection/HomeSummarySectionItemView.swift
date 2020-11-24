@@ -17,7 +17,7 @@ struct HomeSummarySectionItemView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text(item.category)
-                .foregroundColor(.red)
+                .foregroundColor(.vibePink)
             Image(item.albumArt)
                 .resizable()
                 .scaledToFit()
