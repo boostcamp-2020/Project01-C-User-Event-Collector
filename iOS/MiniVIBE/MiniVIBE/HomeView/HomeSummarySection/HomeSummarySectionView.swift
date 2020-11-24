@@ -27,7 +27,7 @@ private extension HomeSummarySectionView {
                     }
                 }
                 .padding(.leading)
-            }.onAppear { UIScrollView.appearance().isPagingEnabled = true }
+            }
     }
 }
 

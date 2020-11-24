@@ -13,8 +13,10 @@ struct HomeView: View {
             HomeHeaderView()
             LazyVStack(spacing: 40) {
                 HomeSummarySectionView()
-
+                HomeMagazineSectionView()
+                HomeNowSectionView()
             }
+            HomeFooterView()
         }.background(Color.black)
     }
 }
