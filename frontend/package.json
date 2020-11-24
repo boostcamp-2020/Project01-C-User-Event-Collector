@@ -1,0 +1,45 @@
+{
+  "name": "project01-user-event-collector",
+  "version": "0.0.1",
+  "description": "boostcamp project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boostcamp-2020/Project01-C-User-Event-Collector.git"
+  },
+  "keywords": [
+    "nodejs",
+    "react",
+    "express",
+    "nextjs",
+    "typescript"
+  ],
+  "author": "millet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boostcamp-2020/Project01-C-User-Event-Collector/issues"
+  },
+  "homepage": "https://github.com/boostcamp-2020/Project01-C-User-Event-Collector#readme",
+  "dependencies": {
+    "@types/next": "^9.0.0",
+    "@types/react": "^17.0.0",
+    "@types/styled-components": "^5.1.4",
+    "axios": "^0.21.0",
+    "next": "^10.0.3",
+    "next-images": "^1.6.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.8",
+    "@types/node": "^14.14.9",
+    "typescript": "^4.1.2"
+  }
+}
