@@ -13,6 +13,7 @@ struct HomeView: View {
             HomeHeaderView()
             LazyVStack(spacing: 40) {
                 HomeSummarySectionView()
+                HomeNewAlbumSectionView()
                 HomeMagazineSectionView()
                 HomeNowSectionView()
             }
