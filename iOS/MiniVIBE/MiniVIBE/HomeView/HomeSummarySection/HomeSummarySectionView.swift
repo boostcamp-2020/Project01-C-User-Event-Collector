@@ -9,10 +9,14 @@ import SwiftUI
 
 struct HomeSummarySectionView: View {
     @State private var items: [HomeSummaryItem] = []
-    @State private var mockItems: [HomeSummaryItem] = [                 HomeSummaryItem(category: "지붕뚫고 급상승 🚀", albumArt: "MainSection1", title: "급상승 차트 1위", description: "방탄소년단 : Life Goes On"),
-                                                                        HomeSummaryItem(category: "스테이션", albumArt: "MainSection2", title: "여유를 즐겨요", description: "장르별 스테이션 : 잔잔한 클래식"),
-                                                                        HomeSummaryItem(category: "스테이션", albumArt: "MainSection3", title: "여유를 즐겨요", description: nil)
-    ]
+    @State private var mockItems: [HomeSummaryItem]
+        = [HomeSummaryItem(category: "지붕뚫고 급상승 🚀",
+                           image: "HomeMainSection1",
+                           title: "급상승 차트 1위", description: "방탄소년단 : Life Goes On"),
+           HomeSummaryItem(category: "스테이션", image: "HomeMainSection2",
+                           title: "여유를 즐겨요", description: "장르별 스테이션 : 잔잔한 클래식"),
+           HomeSummaryItem(category: "새 앨범", image: "HomeMainSection3",
+                           title: "방탄소년단", description: nil)]
     var body: some View {
         HomeSummarySectionScrollView
     }
@@ -20,14 +24,14 @@ struct HomeSummarySectionView: View {
 
 private extension HomeSummarySectionView {
     var HomeSummarySectionScrollView: some View {
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 20.0) {
-                    ForEach(mockItems) { item in
-                        HomeSummarySectionItemView(item: item)
-                    }
+        ScrollView(.horizontal, showsIndicators: false) {
+            LazyHStack(spacing: 20.0) {
+                ForEach(mockItems) { item in
+                    HomeSummarySectionItemView(item: item)
                 }
-                .padding(.leading)
-            }.onAppear { UIScrollView.appearance().isPagingEnabled = true }
+            }
+            .padding(.leading)
+        }
     }
 }
 
