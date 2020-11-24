@@ -9,7 +9,6 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    
     var body: some View {
         TabView {
             HomeView()
@@ -32,7 +31,7 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "person.fill")
                 }
-        }.accentColor(.pink)
+        }.accentColor(.vibePink)
     }
 }
 
