@@ -43,8 +43,10 @@ struct HomeFooterView: View {
     }
 }
 
-var FooterDivider: some View {
-    Divider().frame(height: 10).overlay(Color.gray)
+private extension HomeFooterView {
+    var FooterDivider: some View {
+        Divider().frame(height: 10).overlay(Color.gray)
+    }
 }
 
 struct HomeFooterView_Previews: PreviewProvider {
