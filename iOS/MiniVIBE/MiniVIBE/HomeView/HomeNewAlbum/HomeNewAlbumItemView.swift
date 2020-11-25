@@ -8,23 +8,20 @@
 import SwiftUI
 
 struct HomeNewAlbumItemView: View {
+    private enum Constant {
+        static let imageWidth: CGFloat = (UIScreen.main.bounds.width - 30 - (2 * .defaultSpacing)) * 0.5
+    }
+    
     var item: HomeNewAlbumItem
-    private let imageSize = (UIScreen.main.bounds.width - 70 ) / 2
     var body: some View {
         VStack(alignment: .leading) {
             Image(item.albumArt)
                 .resizable()
-                .frame(width: imageSize, height: imageSize, alignment: .center)
+                .frame(width: Constant.imageWidth, height: Constant.imageWidth, alignment: .center)
             Text(item.title)
                 .vibeTitle3()
                 .lineLimit(1)
             Text(item.artist).vibeMainText()
-        }.frame(width: imageSize)
-    }
-}
-
-struct HomeNewAlbumItemView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeNewAlbumItemView(item: HomeNewAlbumItem(albumArt: "mag-dummy1", title: "Never Gonna Dance", artist: "태민(TAEMIN)")).background(Color.black)
+        }.frame(width: Constant.imageWidth)
     }
 }

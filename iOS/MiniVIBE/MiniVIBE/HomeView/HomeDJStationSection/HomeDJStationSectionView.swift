@@ -33,7 +33,7 @@ private extension HomeDJStationSectionView {
                     .vibeMainText()
             }.padding()
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 20) {
+                LazyHStack(spacing: .defaultSpacing) {
                     ForEach(mockItems) { item in
                         HomeDJStationSectionItemView(item: item)
                     }
@@ -41,7 +41,6 @@ private extension HomeDJStationSectionView {
                 .padding(.leading)
             }
         }
-        
     }
 }
 

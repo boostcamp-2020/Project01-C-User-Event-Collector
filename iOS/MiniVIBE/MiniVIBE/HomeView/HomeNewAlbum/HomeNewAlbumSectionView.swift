@@ -13,27 +13,24 @@ struct HomeNewAlbumSectionView: View {
         HomeNewAlbumItem(albumArt: "newAlbum-dummy2", title: "Darling", artist: "양다일"),
         HomeNewAlbumItem(albumArt: "newAlbum-dummy3", title: "A Season of Love", artist: "Idina Menzel")]
     var body: some View {
-        VStack {
-            HStack {
-                Text("좋아할 최신 앨범")
-                    .vibeTitle2()
-                Spacer()
-                Text("더보기")
-                    .vibeMainText()
-            }
-            newAlbumScrollView
-        }.padding(.horizontal, 20)
+        newAlbumScrollView
     }
 }
-
 private extension HomeNewAlbumSectionView {
+    private enum Constant {
+        static let title: String = "좋아할 최신 앨범"
+    }
+    
     var newAlbumScrollView: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 20) {
-                ForEach(newAlbums) { item in
-                    HomeNewAlbumItemView(item: item)
+        VStack {
+            MoreHeaderView(title: Constant.title).padding()
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack(spacing: .defaultSpacing) {
+                    ForEach(newAlbums) { item in
+                        HomeNewAlbumItemView(item: item)
+                    }
                 }
-            }
+            }.padding(.leading)
         }
     }
 }

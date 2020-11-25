@@ -9,8 +9,7 @@ import SwiftUI
 
 struct HomePlayListSectionItemView: View {
     private enum Constant {
-        static let imageWidth: CGFloat = (UIScreen.main.bounds.width - 70) * 0.5
-        static let imageHeight: CGFloat = (UIScreen.main.bounds.width - 70) * 0.5
+        static let imageWidth: CGFloat = (UIScreen.main.bounds.width - 30 - (2 * .defaultSpacing)) * 0.5
     }
     
     var item: HomePlayListSectionItem
@@ -18,7 +17,7 @@ struct HomePlayListSectionItemView: View {
         VStack(alignment: .leading) {
             Image(item.image)
                 .resizable()
-                .frame(width: Constant.imageWidth, height: Constant.imageHeight,
+                .frame(width: Constant.imageWidth, height: Constant.imageWidth,
                        alignment: .leading)
                 .aspectRatio(contentMode: .fill)
             Text(item.title).bold().vibeTitle3()

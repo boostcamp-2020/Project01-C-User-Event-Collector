@@ -25,7 +25,7 @@ struct HomeSummarySectionView: View {
 private extension HomeSummarySectionView {
     var HomeSummarySectionScrollView: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: 20.0) {
+            LazyHStack(spacing: .defaultSpacing) {
                 ForEach(mockItems) { item in
                     HomeSummarySectionItemView(item: item)
                 }

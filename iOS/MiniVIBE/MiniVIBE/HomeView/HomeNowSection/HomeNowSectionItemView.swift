@@ -8,14 +8,17 @@
 import SwiftUI
 
 struct HomeNowSectionItemView: View {
+    private enum Constant {
+        static let imageWidth: CGFloat = (UIScreen.main.bounds.width - 30 - (2 * .defaultSpacing)) * 0.5
+    }
+    
     var item: HomeNowReplayItem
-    private let imageWidth = (UIScreen.main.bounds.width - 40) / 2
     var body: some View {
         VStack(alignment: .leading) {
             item.albumArt
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: imageWidth, height: 250, alignment: .center)
+                .frame(width: Constant.imageWidth, height: Constant.imageWidth * 1.6, alignment: .center)
                 .clipped()
             Text(item.description).vibeTitle3()
         }

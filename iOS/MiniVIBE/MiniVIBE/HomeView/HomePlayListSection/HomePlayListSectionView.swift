@@ -24,19 +24,13 @@ struct HomePlayListSectionView: View {
 private extension HomePlayListSectionView {
     private enum Constant {
         static let title: String = "내 취향 플레이리스트"
-        static let moreButtonName: String = "더보기"
     }
     
     var HomePlayListSectionScrollView: some View {
         VStack {
-            HStack {
-                Text(Constant.title).vibeTitle2()
-                Spacer()
-                Button(Constant.moreButtonName, action: {})
-                    .vibeMainText()
-            }.padding()
+            MoreHeaderView(title: Constant.title).padding()
             ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: 20) {
+                LazyHStack(spacing: .defaultSpacing) {
                     ForEach(mockItems) { item in
                         HomePlayListSectionItemView(item: item)
                     }
@@ -44,7 +38,6 @@ private extension HomePlayListSectionView {
                 .padding(.leading)
             }
         }
-        
     }
 }
 
