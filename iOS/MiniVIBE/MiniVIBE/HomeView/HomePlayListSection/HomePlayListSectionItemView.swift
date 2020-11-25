@@ -23,6 +23,7 @@ struct HomePlayListSectionItemView: View {
                 .aspectRatio(contentMode: .fill)
             Text(item.title).bold().vibeTitle3()
             Text(item.description ?? "").vibeMainText()
+
         }.frame(width: Constant.imageWidth)
     }
 }

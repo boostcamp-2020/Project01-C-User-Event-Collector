@@ -13,14 +13,15 @@ struct HomeView: View {
             Spacer()
                 .background(Color.black)
                 .edgesIgnoringSafeArea([.top])
-            ScrollView {
+            ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false) {
                 HomeHeaderView()
                 LazyVStack(spacing: 40) {
                     HomeSummarySectionView()
                     HomeArtistSection()
                     HomePlayListSectionView()
+                    HomeDJStationSectionView()
                 }
-            }.padding(.top)
+            }.padding(.vertical)
         }
     }
 }
