@@ -30,6 +30,19 @@
 		B9B627A2256281BE006B0F00 /* MiniVIBETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B627A1256281BE006B0F00 /* MiniVIBETests.swift */; };
 		B9D18FDF256CD7B000ECEFEC /* HomeSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D18FDE256CD7B000ECEFEC /* HomeSummaryItem.swift */; };
 		B9DB8A1A256CFE6900D3F1A2 /* Color+vibePink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB8A19256CFE6900D3F1A2 /* Color+vibePink.swift */; };
+		DE09042F256CCE11002914B5 /* HomeMagazineSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE09042E256CCE11002914B5 /* HomeMagazineSectionView.swift */; };
+		DE090443256D098A002914B5 /* HomeNowSectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE090442256D098A002914B5 /* HomeNowSectionItemView.swift */; };
+		DE090447256D09CC002914B5 /* HomeNowReplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE090446256D09CC002914B5 /* HomeNowReplayItem.swift */; };
+		DE09044B256D0A5D002914B5 /* HomeMagazineItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE09044A256D0A5D002914B5 /* HomeMagazineItemView.swift */; };
+		DE09044F256D0B33002914B5 /* HomeMagazineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE09044E256D0B33002914B5 /* HomeMagazineItem.swift */; };
+		DE35E2ED256D569500F369BE /* HomeNewAlbumItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35E2EC256D569500F369BE /* HomeNewAlbumItem.swift */; };
+		DE35E2F3256D56AE00F369BE /* HomeNewAlbumItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35E2F2256D56AE00F369BE /* HomeNewAlbumItemView.swift */; };
+		DE35E2F7256D56BF00F369BE /* HomeNewAlbumSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE35E2F6256D56BF00F369BE /* HomeNewAlbumSectionView.swift */; };
+		DE3D6F8925640FE800C236EF /* HomeFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3D6F8825640FE800C236EF /* HomeFooterView.swift */; };
+		DE3D6F95256414EA00C236EF /* HomeNowSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3D6F94256414EA00C236EF /* HomeNowSectionView.swift */; };
+		DE8F52DA256D829500A7735F /* HomeVibeRecommendItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F52D9256D829500A7735F /* HomeVibeRecommendItem.swift */; };
+		DE8F52E0256D82AC00A7735F /* HomeVibeRecommendSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F52DF256D82AC00A7735F /* HomeVibeRecommendSectionView.swift */; };
+		DE8F52E4256D82C500A7735F /* HomeVibeRecommendItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F52E3256D82C500A7735F /* HomeVibeRecommendItemView.swift */; };
 		B9DB8A20256D08F500D3F1A2 /* ArtistSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB8A1F256D08F500D3F1A2 /* ArtistSection.swift */; };
 		DEC076DA2563AEBE004862AA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC076D92563AEBE004862AA /* HomeView.swift */; };
 		DEF8AEF62563C81200CE2A2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEF8AEF52563C81200CE2A2F /* Assets.xcassets */; };
@@ -76,6 +89,19 @@
 		B9DB8A19256CFE6900D3F1A2 /* Color+vibePink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+vibePink.swift"; sourceTree = "<group>"; };
 		B9DB8A1F256D08F500D3F1A2 /* ArtistSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSection.swift; sourceTree = "<group>"; };
 		D79633046F581A9010E0BE59 /* Pods-MiniVIBE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBE.release.xcconfig"; path = "Target Support Files/Pods-MiniVIBE/Pods-MiniVIBE.release.xcconfig"; sourceTree = "<group>"; };
+		DE09042E256CCE11002914B5 /* HomeMagazineSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMagazineSectionView.swift; sourceTree = "<group>"; };
+		DE090442256D098A002914B5 /* HomeNowSectionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNowSectionItemView.swift; sourceTree = "<group>"; };
+		DE090446256D09CC002914B5 /* HomeNowReplayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNowReplayItem.swift; sourceTree = "<group>"; };
+		DE09044A256D0A5D002914B5 /* HomeMagazineItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMagazineItemView.swift; sourceTree = "<group>"; };
+		DE09044E256D0B33002914B5 /* HomeMagazineItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMagazineItem.swift; sourceTree = "<group>"; };
+		DE35E2EC256D569500F369BE /* HomeNewAlbumItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewAlbumItem.swift; sourceTree = "<group>"; };
+		DE35E2F2256D56AE00F369BE /* HomeNewAlbumItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewAlbumItemView.swift; sourceTree = "<group>"; };
+		DE35E2F6256D56BF00F369BE /* HomeNewAlbumSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewAlbumSectionView.swift; sourceTree = "<group>"; };
+		DE3D6F8825640FE800C236EF /* HomeFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFooterView.swift; sourceTree = "<group>"; };
+		DE3D6F94256414EA00C236EF /* HomeNowSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNowSectionView.swift; sourceTree = "<group>"; };
+		DE8F52D9256D829500A7735F /* HomeVibeRecommendItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVibeRecommendItem.swift; sourceTree = "<group>"; };
+		DE8F52DF256D82AC00A7735F /* HomeVibeRecommendSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVibeRecommendSectionView.swift; sourceTree = "<group>"; };
+		DE8F52E3256D82C500A7735F /* HomeVibeRecommendItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVibeRecommendItemView.swift; sourceTree = "<group>"; };
 		DEC076D92563AEBE004862AA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DEF8AEF52563C81200CE2A2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,7 +220,12 @@
 			children = (
 				DEC076D92563AEBE004862AA /* HomeView.swift */,
 				B95964E0256CEF520041B135 /* HomeHeaderView.swift */,
+				DE3D6F8825640FE800C236EF /* HomeFooterView.swift */,
 				B9D18FD9256CD62400ECEFEC /* HomeSummarySection */,
+				DE8F52D8256D823B00A7735F /* HomeVibeRecommendSection */,
+				DE35E2EB256D564900F369BE /* HomeNewAlbum */,
+				DE09043F256D0827002914B5 /* HomeMagazineSection */,
+				DE09043E256D07F4002914B5 /* HomeNowSection */,
 				B9DB8A23256D08FC00D3F1A2 /* HomeArtistSection */,
 				B9310174256D73A000DD5ADA /* HomePlayListSection */,
 				B9A156F7256E2EDA00FFDA20 /* HomeDJStationSection */,
@@ -247,6 +278,46 @@
 				71F736C7CF8B7E1A46282594 /* libPods-MiniVIBE.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE09043E256D07F4002914B5 /* HomeNowSection */ = {
+			isa = PBXGroup;
+			children = (
+				DE3D6F94256414EA00C236EF /* HomeNowSectionView.swift */,
+				DE090442256D098A002914B5 /* HomeNowSectionItemView.swift */,
+				DE090446256D09CC002914B5 /* HomeNowReplayItem.swift */,
+			);
+			path = HomeNowSection;
+			sourceTree = "<group>";
+		};
+		DE09043F256D0827002914B5 /* HomeMagazineSection */ = {
+			isa = PBXGroup;
+			children = (
+				DE09042E256CCE11002914B5 /* HomeMagazineSectionView.swift */,
+				DE09044A256D0A5D002914B5 /* HomeMagazineItemView.swift */,
+				DE09044E256D0B33002914B5 /* HomeMagazineItem.swift */,
+			);
+			path = HomeMagazineSection;
+			sourceTree = "<group>";
+		};
+		DE35E2EB256D564900F369BE /* HomeNewAlbum */ = {
+			isa = PBXGroup;
+			children = (
+				DE35E2F6256D56BF00F369BE /* HomeNewAlbumSectionView.swift */,
+				DE35E2F2256D56AE00F369BE /* HomeNewAlbumItemView.swift */,
+				DE35E2EC256D569500F369BE /* HomeNewAlbumItem.swift */,
+			);
+			path = HomeNewAlbum;
+			sourceTree = "<group>";
+		};
+		DE8F52D8256D823B00A7735F /* HomeVibeRecommendSection */ = {
+			isa = PBXGroup;
+			children = (
+				DE8F52DF256D82AC00A7735F /* HomeVibeRecommendSectionView.swift */,
+				DE8F52E3256D82C500A7735F /* HomeVibeRecommendItemView.swift */,
+				DE8F52D9256D829500A7735F /* HomeVibeRecommendItem.swift */,
+			);
+			path = HomeVibeRecommendSection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,7 +464,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE35E2F7256D56BF00F369BE /* HomeNewAlbumSectionView.swift in Sources */,
+				DE09044F256D0B33002914B5 /* HomeMagazineItem.swift in Sources */,
+				DE8F52E0256D82AC00A7735F /* HomeVibeRecommendSectionView.swift in Sources */,
+				DE09042F256CCE11002914B5 /* HomeMagazineSectionView.swift in Sources */,
+				DE3D6F8925640FE800C236EF /* HomeFooterView.swift in Sources */,
 				B994C6A825627DBE000E563C /* MiniVIBE.xcdatamodeld in Sources */,
+				DE35E2ED256D569500F369BE /* HomeNewAlbumItem.swift in Sources */,
+				DE8F52DA256D829500A7735F /* HomeVibeRecommendItem.swift in Sources */,
+				B9DB8A1A256CFE6900D3F1A2 /* Color+vibePink.swift in Sources */,
+				DE09044B256D0A5D002914B5 /* HomeMagazineItemView.swift in Sources */,
+				B93ED12F256BBC7D0033C43B /* HomeSummarySectionView.swift in Sources */,
+				B95964D5256CDF9D0041B135 /* HomeSummarySectionItemView.swift in Sources */,
+				B95964E1256CEF520041B135 /* HomeHeaderView.swift in Sources */,
+				DE8F52E4256D82C500A7735F /* HomeVibeRecommendItemView.swift in Sources */,
+				DE090443256D098A002914B5 /* HomeNowSectionItemView.swift in Sources */,
 				B9DB8A20256D08F500D3F1A2 /* ArtistSection.swift in Sources */,
 				B9DB8A1A256CFE6900D3F1A2 /* Color+vibePink.swift in Sources */,
 				B9A156F9256E303A00FFDA20 /* HomeDJStationSectionView.swift in Sources */,
@@ -412,6 +497,9 @@
 				B9D18FDF256CD7B000ECEFEC /* HomeSummaryItem.swift in Sources */,
 				DEC076DA2563AEBE004862AA /* HomeView.swift in Sources */,
 				B994C69C25627DBD000E563C /* MiniVIBEApp.swift in Sources */,
+				DE35E2F3256D56AE00F369BE /* HomeNewAlbumItemView.swift in Sources */,
+				DE3D6F95256414EA00C236EF /* HomeNowSectionView.swift in Sources */,
+				DE090447256D09CC002914B5 /* HomeNowReplayItem.swift in Sources */,
 				B931019E256D800000DD5ADA /* View+vibeTitle1.swift in Sources */,
 				B9310180256D741D00DD5ADA /* HomePlayListSectionItem.swift in Sources */,
 			);

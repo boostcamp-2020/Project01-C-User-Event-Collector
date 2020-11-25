@@ -19,8 +19,12 @@ struct HomeView: View {
                     HomeSummarySectionView()
                     HomeArtistSection()
                     HomePlayListSectionView()
-                    HomeDJStationSectionView()
+                    HomeVibeRecommendSectionView()
+                    HomeNewAlbumSectionView()
+                    HomeMagazineSectionView()
+                    HomeNowSectionView()
                 }
+                HomeFooterView()
             }.padding(.vertical)
         }
     }
