@@ -10,7 +10,7 @@ import Foundation
 struct HomeSummaryItem: Identifiable {
     let id = UUID()
     var category: String
-    var albumArt: String
+    var image: String
     var title: String
     var description: String?
 }

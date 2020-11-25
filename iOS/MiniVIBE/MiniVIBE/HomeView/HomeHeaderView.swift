@@ -14,9 +14,7 @@ struct HomeHeaderView: View {
 
     var body: some View {
         HStack {
-            Text(Constant.title)
-                .font(.system(size: 30, weight: .heavy, design: .default))
-                .foregroundColor(.white)
+            Text(Constant.title).vibeTitle1()
             Spacer()
             Image(systemName: "person.fill")
                 .resizable()

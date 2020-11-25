@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		AD62AD7689CD423579B7C6A4 /* libPods-MiniVIBE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F736C7CF8B7E1A46282594 /* libPods-MiniVIBE.a */; };
+		B9310176256D73D200DD5ADA /* HomePlayListSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9310175256D73D200DD5ADA /* HomePlayListSectionView.swift */; };
+		B931017C256D741200DD5ADA /* HomePlayListSectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931017B256D741200DD5ADA /* HomePlayListSectionItemView.swift */; };
+		B9310180256D741D00DD5ADA /* HomePlayListSectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931017F256D741D00DD5ADA /* HomePlayListSectionItem.swift */; };
+		B931018E256D7CC900DD5ADA /* View+vibeTitle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931018D256D7CC900DD5ADA /* View+vibeTitle2.swift */; };
+		B931019E256D800000DD5ADA /* View+vibeTitle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931019D256D800000DD5ADA /* View+vibeTitle1.swift */; };
+		B93101A8256D823700DD5ADA /* View+vibeMainText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93101A7256D823700DD5ADA /* View+vibeMainText.swift */; };
+		B93101B2256D848500DD5ADA /* View+vibeTitle3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93101B1256D848500DD5ADA /* View+vibeTitle3.swift */; };
 		B93ED12F256BBC7D0033C43B /* HomeSummarySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93ED12E256BBC7D0033C43B /* HomeSummarySectionView.swift */; };
 		B95964D5256CDF9D0041B135 /* HomeSummarySectionItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95964D4256CDF9D0041B135 /* HomeSummarySectionItemView.swift */; };
 		B95964E1256CEF520041B135 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95964E0256CEF520041B135 /* HomeHeaderView.swift */; };
@@ -20,6 +27,7 @@
 		B9B627A2256281BE006B0F00 /* MiniVIBETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B627A1256281BE006B0F00 /* MiniVIBETests.swift */; };
 		B9D18FDF256CD7B000ECEFEC /* HomeSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D18FDE256CD7B000ECEFEC /* HomeSummaryItem.swift */; };
 		B9DB8A1A256CFE6900D3F1A2 /* Color+vibePink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB8A19256CFE6900D3F1A2 /* Color+vibePink.swift */; };
+		B9DB8A20256D08F500D3F1A2 /* ArtistSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB8A1F256D08F500D3F1A2 /* ArtistSection.swift */; };
 		DEC076DA2563AEBE004862AA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC076D92563AEBE004862AA /* HomeView.swift */; };
 		DEF8AEF62563C81200CE2A2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEF8AEF52563C81200CE2A2F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -37,6 +45,13 @@
 /* Begin PBXFileReference section */
 		71F736C7CF8B7E1A46282594 /* libPods-MiniVIBE.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniVIBE.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B251DDD6E742687B7610BEE2 /* Pods-MiniVIBE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBE.debug.xcconfig"; path = "Target Support Files/Pods-MiniVIBE/Pods-MiniVIBE.debug.xcconfig"; sourceTree = "<group>"; };
+		B9310175256D73D200DD5ADA /* HomePlayListSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayListSectionView.swift; sourceTree = "<group>"; };
+		B931017B256D741200DD5ADA /* HomePlayListSectionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayListSectionItemView.swift; sourceTree = "<group>"; };
+		B931017F256D741D00DD5ADA /* HomePlayListSectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayListSectionItem.swift; sourceTree = "<group>"; };
+		B931018D256D7CC900DD5ADA /* View+vibeTitle2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+vibeTitle2.swift"; sourceTree = "<group>"; };
+		B931019D256D800000DD5ADA /* View+vibeTitle1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+vibeTitle1.swift"; sourceTree = "<group>"; };
+		B93101A7256D823700DD5ADA /* View+vibeMainText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+vibeMainText.swift"; sourceTree = "<group>"; };
+		B93101B1256D848500DD5ADA /* View+vibeTitle3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+vibeTitle3.swift"; sourceTree = "<group>"; };
 		B93ED12E256BBC7D0033C43B /* HomeSummarySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSummarySectionView.swift; sourceTree = "<group>"; };
 		B95964D4256CDF9D0041B135 /* HomeSummarySectionItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSummarySectionItemView.swift; sourceTree = "<group>"; };
 		B95964E0256CEF520041B135 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
@@ -53,6 +68,7 @@
 		B9B627A3256281BE006B0F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9D18FDE256CD7B000ECEFEC /* HomeSummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSummaryItem.swift; sourceTree = "<group>"; };
 		B9DB8A19256CFE6900D3F1A2 /* Color+vibePink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+vibePink.swift"; sourceTree = "<group>"; };
+		B9DB8A1F256D08F500D3F1A2 /* ArtistSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSection.swift; sourceTree = "<group>"; };
 		D79633046F581A9010E0BE59 /* Pods-MiniVIBE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBE.release.xcconfig"; path = "Target Support Files/Pods-MiniVIBE/Pods-MiniVIBE.release.xcconfig"; sourceTree = "<group>"; };
 		DEC076D92563AEBE004862AA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DEF8AEF52563C81200CE2A2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -86,6 +102,16 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B9310174256D73A000DD5ADA /* HomePlayListSection */ = {
+			isa = PBXGroup;
+			children = (
+				B9310175256D73D200DD5ADA /* HomePlayListSectionView.swift */,
+				B931017B256D741200DD5ADA /* HomePlayListSectionItemView.swift */,
+				B931017F256D741D00DD5ADA /* HomePlayListSectionItem.swift */,
+			);
+			path = HomePlayListSection;
+			sourceTree = "<group>";
+		};
 		B994C68F25627DBD000E563C = {
 			isa = PBXGroup;
 			children = (
@@ -112,6 +138,7 @@
 			children = (
 				B9DB8A17256CFE0200D3F1A2 /* Common */,
 				B9D18FD8256CD61600ECEFEC /* HomeView */,
+				B9310174256D73A000DD5ADA /* HomePlayListSection */,
 				B994C69B25627DBD000E563C /* MiniVIBEApp.swift */,
 				B994C69D25627DBD000E563C /* ContentView.swift */,
 				DEF8AEF52563C81200CE2A2F /* Assets.xcassets */,
@@ -146,6 +173,7 @@
 				DEC076D92563AEBE004862AA /* HomeView.swift */,
 				B95964E0256CEF520041B135 /* HomeHeaderView.swift */,
 				B9D18FD9256CD62400ECEFEC /* HomeSummarySection */,
+				B9DB8A23256D08FC00D3F1A2 /* HomeArtistSection */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -171,9 +199,21 @@
 		B9DB8A18256CFE1C00D3F1A2 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				B931019D256D800000DD5ADA /* View+vibeTitle1.swift */,
+				B931018D256D7CC900DD5ADA /* View+vibeTitle2.swift */,
+				B93101B1256D848500DD5ADA /* View+vibeTitle3.swift */,
+				B93101A7256D823700DD5ADA /* View+vibeMainText.swift */,
 				B9DB8A19256CFE6900D3F1A2 /* Color+vibePink.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		B9DB8A23256D08FC00D3F1A2 /* HomeArtistSection */ = {
+			isa = PBXGroup;
+			children = (
+				B9DB8A1F256D08F500D3F1A2 /* ArtistSection.swift */,
+			);
+			path = HomeArtistSection;
 			sourceTree = "<group>";
 		};
 		CA233B27D449220AF6D7CF38 /* Frameworks */ = {
@@ -329,15 +369,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				B994C6A825627DBE000E563C /* MiniVIBE.xcdatamodeld in Sources */,
+				B9DB8A20256D08F500D3F1A2 /* ArtistSection.swift in Sources */,
 				B9DB8A1A256CFE6900D3F1A2 /* Color+vibePink.swift in Sources */,
+				B931018E256D7CC900DD5ADA /* View+vibeTitle2.swift in Sources */,
 				B93ED12F256BBC7D0033C43B /* HomeSummarySectionView.swift in Sources */,
 				B95964D5256CDF9D0041B135 /* HomeSummarySectionItemView.swift in Sources */,
 				B95964E1256CEF520041B135 /* HomeHeaderView.swift in Sources */,
+				B93101B2256D848500DD5ADA /* View+vibeTitle3.swift in Sources */,
+				B93101A8256D823700DD5ADA /* View+vibeMainText.swift in Sources */,
 				B994C6A525627DBE000E563C /* Persistence.swift in Sources */,
+				B931017C256D741200DD5ADA /* HomePlayListSectionItemView.swift in Sources */,
+				B9310176256D73D200DD5ADA /* HomePlayListSectionView.swift in Sources */,
 				B994C69E25627DBD000E563C /* ContentView.swift in Sources */,
 				B9D18FDF256CD7B000ECEFEC /* HomeSummaryItem.swift in Sources */,
 				DEC076DA2563AEBE004862AA /* HomeView.swift in Sources */,
 				B994C69C25627DBD000E563C /* MiniVIBEApp.swift in Sources */,
+				B931019E256D800000DD5ADA /* View+vibeTitle1.swift in Sources */,
+				B9310180256D741D00DD5ADA /* HomePlayListSectionItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
