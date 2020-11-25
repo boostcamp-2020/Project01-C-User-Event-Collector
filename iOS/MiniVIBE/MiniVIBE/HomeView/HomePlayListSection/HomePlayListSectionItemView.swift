@@ -7,12 +7,12 @@
 
 import SwiftUI
 
-struct HomePlayListSectionItemView: View {
+struct HomePlayListItemView: View {
     private enum Constant {
         static let imageWidth: CGFloat = (UIScreen.main.bounds.width - 30 - (2 * .defaultSpacing)) * 0.5
     }
     
-    var item: HomePlayListSectionItem
+    var item: HomePlayListItem
     var body: some View {
         VStack(alignment: .leading) {
             Image(item.image)

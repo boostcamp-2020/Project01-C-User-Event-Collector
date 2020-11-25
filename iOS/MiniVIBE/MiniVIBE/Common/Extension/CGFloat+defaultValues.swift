@@ -9,4 +9,5 @@ import SwiftUI
 
 extension CGFloat {
     static let defaultSpacing: CGFloat = 10
+    static let defaultPadding: CGFloat = 15
 }

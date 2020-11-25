@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeNowReplayItem: Identifiable {
-    var id = UUID()
+    let id = UUID()
     var albumArt: Image
     var description: String
 }

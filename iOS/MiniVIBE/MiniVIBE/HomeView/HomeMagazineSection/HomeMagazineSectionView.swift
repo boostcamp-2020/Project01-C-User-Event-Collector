@@ -15,7 +15,7 @@ struct HomeMagazineSectionView: View {
         
     ]
     var body: some View {
-        magazineScrollView
+        homeMagazineSectionScrollView
     }
 }
 
@@ -24,16 +24,13 @@ private extension HomeMagazineSectionView {
         static let title: String = "매거진"
     }
     
-    var magazineScrollView: some View {
+    var homeMagazineSectionScrollView: some View {
         VStack {
             MoreHeaderView(title: Constant.title).padding()
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: .defaultSpacing) {
-                    ForEach(magazineItems) { item in
-                        HomeMagazineItemView(item: item)
-                    }
+            SectionScrollView {
+                ForEach(magazineItems) { item in
+                    HomeMagazineItemView(item: item)
                 }
-                .padding(.leading)
             }
         }
     }

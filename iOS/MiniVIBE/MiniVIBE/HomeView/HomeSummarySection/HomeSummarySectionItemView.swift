@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeSummarySectionItemView: View {
+struct HomeSummaryItemView: View {
     private enum Constant {
         static let imageWidth: CGFloat = UIScreen.main.bounds.width - 30 - .defaultSpacing
         static let imageHeight: CGFloat = (UIScreen.main.bounds.width - 30 - .defaultSpacing) * 0.5

@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct HomePlayListSectionView: View {
-    @State private var items: [HomePlayListSectionItem] = []
-    @State private var mockItems: [HomePlayListSectionItem]
-        = [HomePlayListSectionItem(title: "로맨틱 팝",
-                                   image: "HomePlayListSection1", description: "VIBE Pop"),
-           HomePlayListSectionItem(title: "편견을 깨는 힙합 아이돌",
-                                   image: "HomePlayListSection2", description: "VIBE 국내 힙합"),
-           HomePlayListSectionItem(title: "팝 트렌드",
-                                   image: "HomePlayListSection3", description: "VIBE Pop")]
+    @State private var items: [HomePlayListItem] = []
+    @State private var mockItems: [HomePlayListItem]
+        = [HomePlayListItem(image: "HomePlayListSection1", title: "로맨틱 팝",
+                                   description: "VIBE Pop"),
+           HomePlayListItem(image: "HomePlayListSection2", title: "편견을 깨는 힙합 아이돌",
+                                   description: "VIBE 국내 힙합"),
+           HomePlayListItem(image: "HomePlayListSection3", title: "팝 트렌드",
+                                   description: "VIBE Pop")]
     var body: some View {
-        HomePlayListSectionScrollView
+        homePlayListSectionScrollView
     }
 }
 
@@ -26,16 +26,13 @@ private extension HomePlayListSectionView {
         static let title: String = "내 취향 플레이리스트"
     }
     
-    var HomePlayListSectionScrollView: some View {
+    var homePlayListSectionScrollView: some View {
         VStack {
             MoreHeaderView(title: Constant.title).padding()
-            ScrollView(.horizontal, showsIndicators: false) {
-                LazyHStack(spacing: .defaultSpacing) {
-                    ForEach(mockItems) { item in
-                        HomePlayListSectionItemView(item: item)
-                    }
+            SectionScrollView {
+                ForEach(mockItems) { item in
+                    HomePlayListItemView(item: item)
                 }
-                .padding(.leading)
             }
         }
     }

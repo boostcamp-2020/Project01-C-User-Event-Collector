@@ -16,7 +16,7 @@ struct HomeVibeRecommendSectionView: View {
         HomeVibeRecommendItem(image: "vibe-dummy3",
                               title: "꿀 떨어지는 R&B", description: "꿀 떨어지는 보컬과 함께하는 꿈만 같은 하루.")]
     var body: some View {
-        homeVibeReccomendScrollView
+        homeVibeReccomendSectionScrollView
     }
 }
 
@@ -25,16 +25,14 @@ private extension HomeVibeRecommendSectionView {
         static let title: String = "VIBE 추천 플레이리스트"
     }
     
-    var homeVibeReccomendScrollView: some View {
+    var homeVibeReccomendSectionScrollView: some View {
         VStack {
             MoreHeaderView(title: Constant.title).padding()
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(alignment: .top, spacing: .defaultSpacing) {
-                    ForEach(vibeRecommendItems) { item in
-                        HomeVibeRecommendItemView(item: item)
-                    }
+            SectionScrollView {
+                ForEach(vibeRecommendItems) { item in
+                    HomeVibeRecommendItemView(item: item)
                 }
-            }.padding(.leading)
+            }
         }
     }
 }
