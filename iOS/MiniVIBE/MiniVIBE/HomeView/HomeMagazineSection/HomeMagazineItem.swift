@@ -9,6 +9,6 @@ import Foundation
 
 struct HomeMagazineItem: Identifiable {
     let id = UUID()
-    var imageURL: String
+    var image: String
     var description: String
 }

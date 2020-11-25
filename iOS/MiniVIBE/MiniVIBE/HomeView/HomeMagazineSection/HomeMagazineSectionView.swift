@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct HomeMagazineSectionView: View {
-    var magazineItems: [HomeMagazineItem] = [
-        HomeMagazineItem(imageURL: "mag-dummy1", description: "New Release #16: \n이적, 빌리 아일리시"),
-        HomeMagazineItem(imageURL: "mag-dummy2", description: "이주의 디깅 #84, \n여자친구")
+    private var magazineItems: [HomeMagazineItem] = [
+        HomeMagazineItem(image: "mag-dummy1", description: "New Release #16: 이적, 빌리 아일리시"),
+        HomeMagazineItem(image: "mag-dummy2", description: "이주의 디깅 #85, aespa"),
+        HomeMagazineItem(image: "mag-dummy3", description: "CHROMEO 핼러윈 파티 현장 스케치")
+        
     ]
-    
     var body: some View {
         VStack {
             HStack {
                 Text("매거진")
-                    .foregroundColor(Color.white)
-                    .font(.title2)
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .vibeTitle2()
                 Spacer()
                 Text("더보기")
                     .foregroundColor(.gray)

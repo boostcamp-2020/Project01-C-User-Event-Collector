@@ -9,8 +9,7 @@ import SwiftUI
 
 struct HomeNowSectionItemView: View {
     var item: HomeNowReplayItem
-    let imageWidth = (UIScreen.main.bounds.width - 40) / 2
-
+    private let imageWidth = (UIScreen.main.bounds.width - 40) / 2
     var body: some View {
         VStack(alignment: .leading) {
             item.albumArt
@@ -18,7 +17,7 @@ struct HomeNowSectionItemView: View {
                 .aspectRatio(contentMode: .fill)
                 .frame(width: imageWidth, height: 250, alignment: .center)
                 .clipped()
-            Text(item.description).foregroundColor(.white)
+            Text(item.description).vibeTitle3()
         }
     }
 }

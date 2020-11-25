@@ -8,25 +8,21 @@
 import SwiftUI
 
 struct HomeNowSectionView: View {
-    @State var nowReplayItems: [HomeNowReplayItem] = [
+    private var nowReplayItems: [HomeNowReplayItem] = [
         HomeNowReplayItem(albumArt: Image("now-dummy1"), description: "야간작업실"),
         HomeNowReplayItem(albumArt: Image("now-dummy2"), description: "어벤걸스"),
-        HomeNowReplayItem(albumArt: Image("now-dummy1"), description: "야간작업실"),
-        HomeNowReplayItem(albumArt: Image("now-dummy2"), description: "어벤걸스"),
-        HomeNowReplayItem(albumArt: Image("now-dummy1"), description: "야간작업실"),
-        HomeNowReplayItem(albumArt: Image("now-dummy2"), description: "어벤걸스")
+        HomeNowReplayItem(albumArt: Image("now-dummy3"), description: "6시 5분전")
     ]
-    
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
                 Image("home-now")
-                    .renderingMode(/*@START_MENU_TOKEN@*/.template/*@END_MENU_TOKEN@*/)
+                    .renderingMode(.template)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100, height: 30, alignment: .leading)
                     .foregroundColor(.white)
-                Text("다시듣기").font(.system(size: 30)).foregroundColor(.white)
+                Text("다시듣기").vibeTitle1()
             }.padding(.leading)
             nowSectionScrollView
         }

@@ -9,16 +9,17 @@ import SwiftUI
 
 struct HomeNewAlbumItemView: View {
     var item: HomeNewAlbumItem
-    var imageSize = (UIScreen.main.bounds.width - 60 ) / 2
-    
+    private let imageSize = (UIScreen.main.bounds.width - 60 ) / 2
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             Image(item.albumArt)
                 .resizable()
-                .frame(width: imageSize, height: imageSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-            Text(item.title).foregroundColor(.white)
-            Text(item.artist).foregroundColor(.gray)
-        }
+                .frame(width: imageSize, height: imageSize, alignment: .center)
+            Text(item.title)
+                .vibeTitle2()
+                .lineLimit(1)
+            Text(item.artist).vibeMainText()
+        }.frame(width: imageSize)
     }
 }
 

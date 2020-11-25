@@ -9,20 +9,19 @@ import SwiftUI
 
 struct HomeVibeRecommendItemView: View {
     var item: HomeVibeRecommendItem
-    var imageSize = (UIScreen.main.bounds.width) - 40
-    
+    private let imageSize = (UIScreen.main.bounds.width) - 40
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             Image(item.playListImage)
                 .resizable()
-                .frame(width: imageSize, height: imageSize, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: imageSize, height: imageSize, alignment: .center)
             Text(item.title)
-                .foregroundColor(.white)
+                .vibeTitle3()
             Text("VIBE")
-                .foregroundColor(.gray)
+                .vibeMainText()
             Text(item.description)
-                .foregroundColor(.gray)
-                .lineLimit(/*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                .vibeMainText()
+                .lineLimit(2)
         }.frame(width: imageSize)
     }
 }
