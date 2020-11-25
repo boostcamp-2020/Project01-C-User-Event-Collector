@@ -52,5 +52,6 @@ struct HomePlayListSectionViewPreviews: PreviewProvider {
     static var previews: some View {
         HomePlayListSectionView()
             .previewLayout(.sizeThatFits)
+            .background(Color.black)
     }
 }

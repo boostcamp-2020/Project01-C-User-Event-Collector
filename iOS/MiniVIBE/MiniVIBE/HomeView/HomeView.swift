@@ -13,19 +13,20 @@ struct HomeView: View {
             Spacer()
                 .background(Color.black)
                 .edgesIgnoringSafeArea([.top])
-            ScrollView {
+            ScrollView(.vertical, showsIndicators: false) {
                 HomeHeaderView()
                 LazyVStack(spacing: 40) {
                     HomeSummarySectionView()
                     HomeArtistSection()
                     HomePlayListSectionView()
+                    HomeDJStationSectionView()
                     HomeVibeRecommendSectionView()
                     HomeNewAlbumSectionView()
                     HomeMagazineSectionView()
                     HomeNowSectionView()
                 }
                 HomeFooterView()
-            }.padding(.top)
+            }.padding(.vertical)
         }
     }
 }
