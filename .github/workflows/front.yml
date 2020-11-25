@@ -1,0 +1,30 @@
+# This is a basic workflow to help you get started with Actions
+name: Web Front CI
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  push:
+    branches: [frontend]
+  pull_request:
+    branches: [frontend]
+jobs:
+  build:
+    name: Front Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using private key 
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.PRIVATEKEY }}
+          script: |
+          script: | 
+            cd Project01-C-User-Event-Collector
+            git checkout frontend
+            git pull origin frontend
+            npm install
+            cd frontend
+            npm install
+            npm run start
