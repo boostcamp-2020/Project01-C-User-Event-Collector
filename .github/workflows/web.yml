@@ -4,7 +4,7 @@ name: web-deploy
 # events but only for the main branch
 on:
   push:
-    branches: [web]    <- 마스터 브랜치에 push가 발생할 경우 아래 jobs 실행
+    branches: [web]
   pull_request:
     branches: [web]
 jobs:
