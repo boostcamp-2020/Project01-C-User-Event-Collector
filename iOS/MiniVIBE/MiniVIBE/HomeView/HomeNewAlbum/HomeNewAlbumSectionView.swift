@@ -11,8 +11,7 @@ struct HomeNewAlbumSectionView: View {
     private var newAlbums: [HomeNewAlbumItem] = [
         HomeNewAlbumItem(albumArt: "newAlbum-dummy1", title: "ARTIST. New Bi", artist: "Anonymous Artists"),
         HomeNewAlbumItem(albumArt: "newAlbum-dummy2", title: "Darling", artist: "양다일"),
-        HomeNewAlbumItem(albumArt: "newAlbum-dummy3", title: "A Season of Love", artist: "Idina Menzel")
-    ]
+        HomeNewAlbumItem(albumArt: "newAlbum-dummy3", title: "A Season of Love", artist: "Idina Menzel")]
     var body: some View {
         VStack {
             HStack {

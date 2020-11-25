@@ -13,12 +13,13 @@ struct HomeView: View {
             Spacer()
                 .background(Color.black)
                 .edgesIgnoringSafeArea([.top])
-            ScrollView(/*@START_MENU_TOKEN@*/.vertical/*@END_MENU_TOKEN@*/, showsIndicators: false) {
+            ScrollView(.vertical, showsIndicators: false) {
                 HomeHeaderView()
                 LazyVStack(spacing: 40) {
                     HomeSummarySectionView()
                     HomeArtistSection()
                     HomePlayListSectionView()
+                    HomeDJStationSectionView()
                     HomeVibeRecommendSectionView()
                     HomeNewAlbumSectionView()
                     HomeMagazineSectionView()
