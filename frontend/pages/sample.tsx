@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 interface allPostsData {
   date: string;
-  title: string;
+  title : string;
   id: string;
 }
 

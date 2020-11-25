@@ -6,7 +6,7 @@ module.exports = {
   },
   parserOptions: { ecmaVersion: 8 }, // to enable features such as async/await
   ignorePatterns: ['node_modules/*', '.next/*', '.out/*', '!.prettierrc.js'], // We don't want to lint generated files nor node_modules, but we want to lint .prettierrc.js (ignored by default by eslint)
-  extends: ['eslint:recommended'],
+  extends: ['airbnb', 'prettier', 'eslint:recommended'],
   overrides: [
     // This configuration will apply only to TypeScript files
     {
@@ -28,10 +28,16 @@ module.exports = {
         'plugin:prettier/recommended', // Prettier recommended rules 
       ],
       rules: {
+        "arrow-parens": ["warn", "as-needed"], // 화살표 함수의 파라미터가 하나일때 괄호 생략
+        "no-unused-vars": ["off"],// 사용하지 않는 변수가 있을때 빌드에러가 나던 규칙 해제
+        "no-console": ["off"], // 콘솔을 쓰면 에러가 나던 규칙 해제
+        "react/jsx-props-no-spreading": ["warn"], // props spreading을 허용하지 않는 규칙 해제
+        'no-underscore-dangle': ['off'], // camelCase를 따르는게 좋긴 하지만 `_`를 어쩔수 없이 써야하는 상황을 위해(ex 백엔드가 mongoDB)
+        'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx', '.ts', '.tsx'] }],
         'react/prop-types': 'off', // We will use TypeScript's types for component props instead
         'react/react-in-jsx-scope': 'off', // No need to import React when using Next.js
         'jsx-a11y/anchor-is-valid': 'off', // This rule is not compatible with Next.js's <Link /> components
-        '@typescript-eslint/no-unused-vars': ['error'], // Why would you want unused vars?
+        '@typescript-eslint/no-unused-vars': ['off'], // 사용하지 않는 변수가 있을때 빌드에러가 나던 규칙 해제
         '@typescript-eslint/explicit-function-return-type': [ // I suggest this setting for requiring return types on functions only where usefull
           'warn',
           {
@@ -41,7 +47,6 @@ module.exports = {
         ],
         'prettier/prettier': ['error', {}, { usePrettierrc: true }], // Includes .prettierrc.js rules
       },
-      
     },
   ],
-}
+};
