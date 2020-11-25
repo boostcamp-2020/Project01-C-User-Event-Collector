@@ -1,34 +1,88 @@
 {
-    "compilerOptions": {
-        "allowJs": true,
-        "allowSyntheticDefaultImports": true,
-        "jsx": "preserve",
-        "lib": [
-            "dom",
-            "es2017"
-        ],
-        "module": "esnext",
-        "moduleResolution": "node",
-        "noEmit": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
-        "preserveConstEnums": true,
-        "removeComments": false,
-        "skipLibCheck": true,
-        "sourceMap": true,
-        "strict": true,
-        "target": "esnext",
-        "forceConsistentCasingInFileNames": true,
-        "esModuleInterop": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true
-    },
-    "include": [
-        "next-env.d.ts",
-        "**/*.ts",
-        "**/*.tsx"
+  "compilerOptions": {
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "preserve",
+    "lib": [
+      "dom",
+      "es2017",
+      "esnext"
     ],
-    "exclude": [
-        "node_modules"
-    ]
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveConstEnums": true,
+    "removeComments": false,
+    "skipLibCheck": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "es6",
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "./src/components/*"
+      ],
+      "@api/*": [
+        "./src/api/*"
+      ],
+      "@models/*": [
+        "./src/models/*"
+      ],
+      "@screens/*": [
+        "./src/screens/*"
+      ],
+      "@hooks/*": [
+        "./src/hooks/*"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
+      "@constants": [
+        "./src/constants.ts"
+      ],
+      "@context/*": [
+        "./src/context/*"
+      ],
+      "@queries/*": [
+        "./src/queries/*"
+      ],
+      "@data/*": [
+        "./src/data/*"
+      ],
+      "@typeDefs/*": [
+        "./src/types/*"
+      ],
+      "@generated/*": [
+        "./src/generated/*"
+      ],
+      "@public/*": [
+        "./public/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ],
+      "@app/*": [
+        "./src/app/*"
+      ],
+      "@assets/*": [
+        "./src/assets/*"
+      ]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
