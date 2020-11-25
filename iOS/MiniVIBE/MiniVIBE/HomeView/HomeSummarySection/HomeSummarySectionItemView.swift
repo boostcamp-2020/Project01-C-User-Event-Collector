@@ -9,8 +9,8 @@ import SwiftUI
 
 struct HomeSummarySectionItemView: View {
     private enum Constant {
-        static let imageWidth: CGFloat = UIScreen.main.bounds.width - 20
-        static let imageHeight: CGFloat = (UIScreen.main.bounds.width - 20) / 2
+        static let imageWidth: CGFloat = UIScreen.main.bounds.width - 50
+        static let imageHeight: CGFloat = (UIScreen.main.bounds.width - 50) * 0.5
     }
     
     var item: HomeSummaryItem
@@ -18,14 +18,13 @@ struct HomeSummarySectionItemView: View {
         VStack(alignment: .leading) {
             Text(item.category)
                 .foregroundColor(.vibePink)
-            Image(item.albumArt)
+            Image(item.image)
                 .resizable()
                 .scaledToFit()
                 .frame(width: Constant.imageWidth, height: Constant.imageHeight,
                        alignment: .leading).aspectRatio(contentMode: .fill)
-            Text(item.title).bold().font(.system(size: 18))
-                .foregroundColor(.white)
-            Text(item.description ?? "").foregroundColor(.gray)
+            Text(item.title).vibeTitle2()
+            Text(item.description ?? "").vibeMainText()
         }
     }
 }

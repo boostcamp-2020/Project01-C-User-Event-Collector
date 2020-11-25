@@ -9,22 +9,30 @@ import SwiftUI
 
 struct HomeView: View {
     var body: some View {
-        ScrollView {
-            HomeHeaderView()
-            LazyVStack(spacing: 40) {
-                HomeSummarySectionView()
-                HomeVibeRecommendSectionView()
-                HomeNewAlbumSectionView()
-                HomeMagazineSectionView()
-                HomeNowSectionView()
-            }
-            HomeFooterView()
-        }.background(Color.black)
+        ZStack {
+            Spacer()
+                .background(Color.black)
+                .edgesIgnoringSafeArea([.top])
+            ScrollView {
+                HomeHeaderView()
+                LazyVStack(spacing: 40) {
+                    HomeSummarySectionView()
+                    HomeArtistSection()
+                    HomePlayListSectionView()
+                    HomeVibeRecommendSectionView()
+                    HomeNewAlbumSectionView()
+                    HomeMagazineSectionView()
+                    HomeNowSectionView()
+                }
+                HomeFooterView()
+            }.padding(.top)
+        }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .preferredColorScheme(.light)
     }
 }
