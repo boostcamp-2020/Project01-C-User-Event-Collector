@@ -12,7 +12,7 @@
     "moduleResolution": "node",
     "noEmit": true,
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedParameters": false,
     "preserveConstEnums": true,
     "removeComments": false,
     "skipLibCheck": true,
@@ -24,6 +24,13 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "baseUrl": ".",
+    "rootDir": ".",
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "importHelpers": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
     "paths": {
       "@components/*": [
         "./src/components/*"
