@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeSummaryItemView: View {
     var item: HomeSummaryItem
     var body: some View {
-        SquareItemView(image: Image(item.image), type: .one) {
+        ImageItemView(image: Image(item.image), type: .one, ratio: 0.5) {
             Text(item.title).vibeTitle2()
             Text(item.description ?? "").vibeMainText()
         }

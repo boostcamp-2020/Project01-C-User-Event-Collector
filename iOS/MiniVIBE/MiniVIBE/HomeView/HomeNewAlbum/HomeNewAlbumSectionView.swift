@@ -24,7 +24,7 @@ private extension HomeNewAlbumSectionView {
     
     var homeNewAlbumSectionScrollView: some View {
         VStack {
-            MoreHeaderView(title: Constant.title).padding()
+            MoreHeaderView(title: Constant.title)
             SectionScrollView {
                 ForEach(newAlbums) { item in
                     HomeNewAlbumItemView(item: item)

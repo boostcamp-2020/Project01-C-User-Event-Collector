@@ -14,7 +14,7 @@ struct HomeVibeRecommendItemView: View {
     
     var item: HomeVibeRecommendItem
     var body: some View {
-        SquareItemView(image: Image(item.image), type: .one) {
+        ImageItemView(image: Image(item.image), type: .one) {
             Text(item.title)
                 .vibeTitle3()
             Text(item.subtitle ?? Constant.defaultSubtitle)

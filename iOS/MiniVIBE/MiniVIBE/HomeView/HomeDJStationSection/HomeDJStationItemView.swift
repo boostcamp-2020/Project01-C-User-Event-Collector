@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeDJStationItemView: View {
     var item: HomeDJStationItem
     var body: some View {
-        SquareItemView(image: Image(item.image), type: .two) {}
+        ImageItemView(image: Image(item.image), type: .two) {}
             .overlay(
                 Image(systemName: "play.circle.fill")
                     .foregroundColor(.white)
