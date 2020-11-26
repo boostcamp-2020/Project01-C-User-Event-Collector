@@ -25,7 +25,7 @@ private extension HomeDJStationSectionView {
     
     var homeDJStationSectionScrollView: some View {
         VStack {
-            MoreHeaderView(title: Constant.title).padding()
+            MoreHeaderView(title: Constant.title)
             SectionScrollView {
                 ForEach(mockItems) { item in
                     HomeDJStationItemView(item: item)

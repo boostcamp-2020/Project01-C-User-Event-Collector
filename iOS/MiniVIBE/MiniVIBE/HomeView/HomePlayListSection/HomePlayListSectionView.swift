@@ -28,7 +28,7 @@ private extension HomePlayListSectionView {
     
     var homePlayListSectionScrollView: some View {
         VStack {
-            MoreHeaderView(title: Constant.title).padding()
+            MoreHeaderView(title: Constant.title)
             SectionScrollView {
                 ForEach(mockItems) { item in
                     HomePlayListItemView(item: item)
