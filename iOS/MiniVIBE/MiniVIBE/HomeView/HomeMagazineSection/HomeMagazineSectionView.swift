@@ -26,7 +26,7 @@ private extension HomeMagazineSectionView {
     
     var homeMagazineSectionScrollView: some View {
         VStack {
-            MoreHeaderView(title: Constant.title).padding()
+            MoreHeaderView(title: Constant.title)
             SectionScrollView {
                 ForEach(magazineItems) { item in
                     HomeMagazineItemView(item: item)

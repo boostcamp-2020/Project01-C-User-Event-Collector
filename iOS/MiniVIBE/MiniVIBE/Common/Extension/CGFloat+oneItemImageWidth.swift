@@ -9,5 +9,5 @@ import SwiftUI
 
 extension CGFloat {
     static let oneItemImageWidth: CGFloat =
-        UIScreen.main.bounds.width - (2 * .defaultPadding) - .defaultSpacing
+        UIScreen.main.bounds.width - (2 * .defaultPadding)
 }

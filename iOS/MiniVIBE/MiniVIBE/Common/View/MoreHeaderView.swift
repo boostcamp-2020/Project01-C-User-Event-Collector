@@ -15,7 +15,7 @@ struct MoreHeaderView: View {
             Spacer()
             Text("더보기")
                 .vibeMainText()
-        }
+        }.padding(EdgeInsets(top: 5, leading: .defaultPadding, bottom: 5, trailing: .defaultPadding))
     }
 }
 

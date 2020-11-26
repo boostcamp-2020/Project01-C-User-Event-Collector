@@ -19,7 +19,7 @@ struct SectionScrollView<Content: View>: View {
             LazyHStack(spacing: .defaultSpacing) {
                 content
             }
-            .padding(.leading)
+            .padding(.leading, .defaultPadding)
         }
     }
 }
