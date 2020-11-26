@@ -24,8 +24,8 @@ struct HomeView: View {
                     HomeNewAlbumSectionView()
                     HomeMagazineSectionView()
                     HomeNowSectionView()
+                    HomeFooterView()
                 }
-                HomeFooterView()
             }.padding(.vertical)
         }
     }
