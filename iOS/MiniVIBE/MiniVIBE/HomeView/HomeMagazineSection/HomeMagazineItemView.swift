@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeMagazineItemView: View {
     var item: HomeMagazineItem
     var body: some View {
-        SquareItemView(image: Image(item.image), type: .one) {}
+        ImageItemView(image: Image(item.image), type: .one) {}
             .overlay(
                 Text(item.description ?? "")
                     .font(.title)

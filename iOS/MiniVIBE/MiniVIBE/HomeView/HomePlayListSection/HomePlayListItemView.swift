@@ -10,7 +10,7 @@ import SwiftUI
 struct HomePlayListItemView: View {
     var item: HomePlayListItem
     var body: some View {
-        SquareItemView(image: Image(item.image), type: .two) {
+        ImageItemView(image: Image(item.image), type: .two) {
             Text(item.title).bold().vibeTitle3()
             Text(item.description ?? "").vibeMainText()
         }
