@@ -1,5 +1,5 @@
 //
-//  SummarySectionView.swift
+//  HomeSummarySectionView.swift
 //  MiniVIBE
 //
 //  Created by 최동규 on 2020/11/23.
@@ -18,19 +18,16 @@ struct HomeSummarySectionView: View {
            HomeSummaryItem(category: "새 앨범", image: "HomeMainSection3",
                            title: "방탄소년단", description: nil)]
     var body: some View {
-        HomeSummarySectionScrollView
+        homeSummarySectionScrollView
     }
 }
 
 private extension HomeSummarySectionView {
-    var HomeSummarySectionScrollView: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: 20.0) {
-                ForEach(mockItems) { item in
-                    HomeSummarySectionItemView(item: item)
-                }
+    var homeSummarySectionScrollView: some View {
+        SectionScrollView {
+            ForEach(mockItems) { item in
+                HomeSummaryItemView(item: item)
             }
-            .padding(.leading)
         }
     }
 }

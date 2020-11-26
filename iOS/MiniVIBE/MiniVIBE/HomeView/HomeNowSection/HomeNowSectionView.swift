@@ -14,30 +14,32 @@ struct HomeNowSectionView: View {
         HomeNowReplayItem(albumArt: Image("now-dummy3"), description: "6시 5분전")
     ]
     var body: some View {
+        homeNowSectionScrollView
+    }
+}
+
+private extension HomeNowSectionView {
+    private enum Constant {
+        static let image: String = "home-now"
+        static let title: String = "다시듣기"
+    }
+    
+    var homeNowSectionScrollView: some View {
         VStack(alignment: .leading) {
             HStack {
-                Image("home-now")
+                Image(Constant.image)
                     .renderingMode(.template)
                     .resizable()
                     .scaledToFit()
                     .frame(width: 100, height: 30, alignment: .leading)
                     .foregroundColor(.white)
-                Text("다시듣기").vibeTitle1()
-            }.padding(.leading)
-            nowSectionScrollView
-        }
-    }
-}
-
-private extension HomeNowSectionView {
-    var nowSectionScrollView: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 20.0) {
+                Text(Constant.title).vibeTitle1()
+            }.padding()
+            SectionScrollView {
                 ForEach(nowReplayItems) { item in
-                    HomeNowSectionItemView(item: item)
+                    HomeNowItemView(item: item)
                 }
             }
-            .padding(.horizontal, 10)
         }
     }
 }

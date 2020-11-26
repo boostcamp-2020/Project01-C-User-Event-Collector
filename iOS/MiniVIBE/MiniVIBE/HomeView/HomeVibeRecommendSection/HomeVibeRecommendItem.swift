@@ -9,7 +9,8 @@ import Foundation
 
 struct HomeVibeRecommendItem: Identifiable {
     let id = UUID()
-    var playListImage: String
+    var image: String
     var title: String
-    var description: String
+    var subtitle: String?
+    var description: String?
 }

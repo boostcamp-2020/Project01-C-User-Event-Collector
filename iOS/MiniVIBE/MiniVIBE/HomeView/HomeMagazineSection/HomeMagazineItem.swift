@@ -10,5 +10,5 @@ import Foundation
 struct HomeMagazineItem: Identifiable {
     let id = UUID()
     var image: String
-    var description: String
+    var description: String?
 }

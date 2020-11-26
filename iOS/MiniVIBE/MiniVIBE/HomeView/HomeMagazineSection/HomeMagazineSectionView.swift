@@ -15,23 +15,19 @@ struct HomeMagazineSectionView: View {
         
     ]
     var body: some View {
-        VStack {
-            HStack {
-                Text("매거진")
-                    .vibeTitle2()
-                Spacer()
-                Text("더보기")
-                    .foregroundColor(.gray)
-            }
-            magazineScrollView
-        }.padding(.horizontal, 20)
+        homeMagazineSectionScrollView
     }
 }
 
 private extension HomeMagazineSectionView {
-    var magazineScrollView: some View {
-        ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: 20) {
+    private enum Constant {
+        static let title: String = "매거진"
+    }
+    
+    var homeMagazineSectionScrollView: some View {
+        VStack {
+            MoreHeaderView(title: Constant.title).padding()
+            SectionScrollView {
                 ForEach(magazineItems) { item in
                     HomeMagazineItemView(item: item)
                 }
