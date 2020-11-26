@@ -10,7 +10,7 @@ import SwiftUI
 struct HomeNewAlbumItemView: View {
     var item: HomeNewAlbumItem
     var body: some View {
-        SquareItemView(image: Image(item.image), type: .two) {
+        ImageItemView(image: Image(item.image), type: .two) {
             Text(item.title)
                 .vibeTitle3()
                 .lineLimit(1)

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SquareItemView<Content: View>: View {
+struct ImageItemView<Content: View>: View {
     enum ContentType: CGFloat {
         case one
         case two
@@ -25,18 +25,20 @@ struct SquareItemView<Content: View>: View {
     private let content: Content
     private let image: Image
     private let type: ContentType
+    private let ratio: CGFloat
     
-    init(image: Image, type: ContentType, @ViewBuilder content: () -> Content) {
+    init(image: Image, type: ContentType, ratio: CGFloat = 1, @ViewBuilder content: () -> Content) {
         self.content = content()
         self.image = image
         self.type = type
+        self.ratio = ratio
     }
     
     var body: some View {
         VStack(alignment: .leading, spacing: 5) {
             image
                 .resizable()
-                .frame(width: type.rawValue, height: type.rawValue,
+                .frame(width: type.rawValue, height: type.rawValue * ratio,
                        alignment: .center)
                 .aspectRatio(contentMode: .fill)
             content
