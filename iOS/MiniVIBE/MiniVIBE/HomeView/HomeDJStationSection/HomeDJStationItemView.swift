@@ -14,7 +14,7 @@ struct HomeDJStationItemView: View {
             .overlay(
                 Image(systemName: "play.circle.fill")
                     .foregroundColor(.white)
-                    .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
+                    .opacity(0.8)
                     .padding(5), alignment: .bottomTrailing)
     }
 }

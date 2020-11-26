@@ -34,7 +34,7 @@ private extension HomeNowSectionView {
                     .frame(width: 100, height: 30, alignment: .leading)
                     .foregroundColor(.white)
                 Text(Constant.title).vibeTitle1()
-            }
+            }.padding()
             SectionScrollView {
                 ForEach(nowReplayItems) { item in
                     HomeNowItemView(item: item)

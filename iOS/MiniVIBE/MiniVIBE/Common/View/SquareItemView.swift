@@ -16,7 +16,7 @@ struct SquareItemView<Content: View>: View {
             switch self {
             case .one:
                 return .oneItemImageWidth
-            case . two:
+            case .two:
                 return .twoItemImageWidth
             }
         }
