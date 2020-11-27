@@ -4,7 +4,7 @@
   "description": "boostcamp project",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && node dist/app.js",
+    "start": "tsc && pm2 kill && pm2 start dist/app.js",
     "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -38,6 +38,7 @@
     "express": "^4.17.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
+    "reflect-metadata": "^0.1.13",
     "typeorm": "^0.2.29"
   }
 }
