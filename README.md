@@ -10,7 +10,7 @@
 </p>
 
 ### 🍎 WEB 배포 URL
-http://http://115.85.181.152:3000
+http://115.85.181.152:3000
 
 ### ✍ 저희 팀이 더 궁금하시다면 Wiki 보러가기
 https://github.com/boostcamp-2020/Project01-C-User-Event-Collector/wiki
