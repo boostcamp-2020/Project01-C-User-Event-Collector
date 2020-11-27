@@ -43,14 +43,14 @@ https://github.com/boostcamp-2020/Project01-C-User-Event-Collector/wiki
   </div>
 </details>
 
-### frontend 실행
+### Web frontend 실행
 ```
 cd frontend
 npm i
 npm run dev
 ```
    
-### backend 실행
+### Web backend 실행
 ```
 cd backend
 npm i
