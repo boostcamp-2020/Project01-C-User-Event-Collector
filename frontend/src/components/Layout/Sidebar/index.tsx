@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { withProps } from '@public/styles/themed-components';
+import styled from '@public/styles/themed-components';
 
 function Sidebar() {
   return <Container>Mini VIBE</Container>;
