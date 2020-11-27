@@ -4,6 +4,8 @@ import theme from '@public/styles/themes';
 import GlobalStyles from '@public/styles/global-styles';
 import { ThemeProvider } from '@public/styles/themed-components';
 
+import Layout from '@components/Layout';
+
 class ReactApp extends App<any> {
   public render() {
     const { Component, pageProps } = this.props;
@@ -11,7 +13,9 @@ class ReactApp extends App<any> {
       <Container>
         <GlobalStyles />
         <ThemeProvider theme={theme}>
-          <Component {...pageProps} />
+          <Layout {...pageProps}>
+            <Component {...pageProps} />
+          </Layout>
         </ThemeProvider>
       </Container>
     );
