@@ -12,9 +12,6 @@
 ### 🍎 WEB 배포 URL
 http://115.85.181.152:3000
 
-### ✍ 저희 팀이 더 궁금하시다면 Wiki 보러가기
-https://github.com/boostcamp-2020/Project01-C-User-Event-Collector/wiki
-
 
 ## 🗂 Directory
 
@@ -65,7 +62,12 @@ npm run dev
 | [![Avatar](https://avatars2.githubusercontent.com/u/48378720?s=460&v=4)J028_김도균](https://github.com/thesulks) | [![Avatar](https://avatars2.githubusercontent.com/u/41413618?s=460&u=950052ab15ba4d44ccbb311cd1f3f0a722e01605&v=4)J089_박지홍](https://github.com/hongzzi) | [![Avatar](https://avatars2.githubusercontent.com/u/60839959?s=460&u=0243101f3a9e15bec62a3dda5c956196110dba7f&v=4)J139_이상경](https://github.com/sang-gyeong) | [![Avatar](https://avatars1.githubusercontent.com/u/53948757?s=460&u=743a706b4f4f7a047e56f4f4eaec9602c1d23440&v=4)S059_최광현](https://github.com/nrurnru) | [![Avatar](https://avatars1.githubusercontent.com/u/54564170?s=460&u=f6e6840979bf6896f3831da24b21a2741d2a64c8&v=4)S060_최동규](https://github.com/ChoiDongKyu96) |
 |                                                              |                                                              |                                                              |                                                              |                                                              |
 <br>
- 
+
+### ✍ 저희 팀이 더 궁금하시다면 Wiki 보러가기
+https://github.com/boostcamp-2020/Project01-C-User-Event-Collector/wiki
+
+<br>
+
 ## Show your support
 
 Give a 🌟 if this project helped you
