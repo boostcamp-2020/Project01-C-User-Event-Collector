@@ -1,5 +1,4 @@
 # Project01-C-User-Event-Collector
-아자아자! 사이수 화이팅 !! (｀∇´ゞ 
 
 <p align="center"><img width="500" alt="logoImage" src="https://postfiles.pstatic.net/MjAyMDExMjdfMTc1/MDAxNjA2NDQ5OTExNjYw.NBw6OQE4LBvWhcHvCqvCkl7kbU836xElYC6KWgYAynwg.K4DD9rX73o26FQO-Va6UfMrfkKCEUDUTNBQ2p03jr-0g.PNG.sknglee22/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2020-11-27_%EC%98%A4%ED%9B%84_1.04.45.png?type=w773"></p>
 
