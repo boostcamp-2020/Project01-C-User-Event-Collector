@@ -27,6 +27,8 @@ const color = {
   pink: '#c43683',
   black: '#000000',
   white: '#ffffff',
+  darkgrey: '#222',
+  grey: '#555',
   mainBGColor: '#fbfbfb',
   headerNavColor: '#cccccc',
 };
