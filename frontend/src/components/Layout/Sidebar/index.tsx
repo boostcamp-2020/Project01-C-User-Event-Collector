@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from '@public/styles/themed-components';
 import NavBar from './NavBar';
+import Header from './Header';
 
 function Sidebar() {
   return (
     <Container>
+      <Header />
       <NavBar />
     </Container>
   );

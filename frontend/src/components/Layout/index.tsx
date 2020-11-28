@@ -1,14 +1,14 @@
 import React from 'react';
 import styled from '@public/styles/themed-components';
-import Sidebar from './Sidebar';
-import Playbar from './Playbar';
+import SideBar from '@components/Layout/SideBar';
+import PlayBar from '@components/Layout/PlayBar';
 
 function Layout({ children }) {
   return (
     <Wrapper>
-      <Sidebar />
+      <SideBar />
       <Container>{children}</Container>
-      <Playbar />
+      <PlayBar />
     </Wrapper>
   );
 }

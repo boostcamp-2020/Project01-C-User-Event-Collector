@@ -25,7 +25,7 @@ Object.keys(sizes).reduce((acc, label: string) => {
 const color = {
   blue: '#2054ae',
   pink: '#c43683',
-  black: '#0e0e0e',
+  black: '#000000',
   mainBGColor: '#fbfbfb',
   headerNavColor: 'white',
 };

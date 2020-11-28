@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Playbar() {
+function PlayBar() {
   return <Player>playbar</Player>;
 }
 
@@ -15,4 +15,4 @@ const Player = styled.div`
   background-color: rgba(25, 25, 25, 0.97);
 `;
 
-export default Playbar;
+export default PlayBar;
