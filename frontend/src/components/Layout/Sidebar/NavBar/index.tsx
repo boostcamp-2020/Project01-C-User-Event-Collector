@@ -2,18 +2,34 @@ import React from 'react';
 import styled from '@public/styles/themed-components';
 import Dropdown from '@components/Common/Dropdown';
 
+const profileImgUrl ='https://phinf.pstatic.net/contact/20200707_134/1594090738223DUwwm_JPEG/20160913_143317.jpg?type=s33';
+
 function NavBar() {
   return (
     <Container>
-      <Dropdown />
+      <AuthWrapper>
+        <ProfileImg src={profileImgUrl} />
+        <Dropdown type="auth" />
+      </AuthWrapper>
     </Container>
   );
 }
+const ProfileImg = styled.img`
+  width: 30px;
+  border-radius: 50%;
+  margin: 10px;
+`;
+
+const AuthWrapper = styled.div`
+  display: flex;
+  margin: 10px 0;
+  align-items: center;
+  border-top: 0.5px solid #222;
+  border-bottom: 0.5px solid #222;
+`;
 
 const Container = styled.header`
-  background: pink;
-  width: 100px;
-  height: 600px;
+  height: 900px;
 `;
 
 export default NavBar;

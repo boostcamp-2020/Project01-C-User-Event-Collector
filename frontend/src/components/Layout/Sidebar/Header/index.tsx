@@ -20,7 +20,6 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid blue;
 `;
 
 const ImageWrapper = styled.div`
@@ -33,7 +32,7 @@ const IconWrapper = styled.div`
   height: 30px;
   align-items: flex-start;
   &:hover {
-    color: white;
+    color: ${props => props.theme.color.white};
   }
 `;
 
