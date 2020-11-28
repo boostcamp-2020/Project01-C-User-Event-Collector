@@ -28,6 +28,7 @@ const color = {
   black: '#000000',
   white: '#ffffff',
   darkgrey: '#222',
+  lightgrey: '#F2F2F2',
   grey: '#555',
   mainBGColor: '#fbfbfb',
   headerNavColor: '#cccccc',

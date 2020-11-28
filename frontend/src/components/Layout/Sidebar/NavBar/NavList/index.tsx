@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import styled from '@public/styles/themed-components';
 import { FaBookOpen, FaMusic, FaTrophy, FaRecordVinyl, FaRegCalendar } from 'react-icons/fa';
 
@@ -6,26 +7,36 @@ function NavList() {
   return (
     <Container>
       <NavItemWrapper>
-        <NavItem>
-          <FaMusic />
-          <ItemText>투데이</ItemText>
-        </NavItem>
-        <NavItem>
-          <FaTrophy />
-          <ItemText>차트</ItemText>
-        </NavItem>
-        <NavItem>
-          <FaRecordVinyl />
-          <ItemText>DJ 스테이션</ItemText>
-        </NavItem>
-        <NavItem>
-          <FaBookOpen />
-          <ItemText>VIBE MAG</ItemText>
-        </NavItem>
-        <NavItem>
-          <FaRegCalendar />
-          <ItemText>이달의 노래</ItemText>
-        </NavItem>
+        <Link href="/">
+          <NavItem>
+            <FaMusic />
+            <ItemText>투데이</ItemText>
+          </NavItem>
+        </Link>
+        <Link href="/chart">
+          <NavItem>
+            <FaTrophy />
+            <ItemText>차트</ItemText>
+          </NavItem>
+        </Link>
+        <Link href="/dj-station">
+          <NavItem>
+            <FaRecordVinyl />
+            <ItemText>DJ 스테이션</ItemText>
+          </NavItem>
+        </Link>
+        <Link href="/magazines">
+          <NavItem>
+            <FaBookOpen />
+            <ItemText>VIBE MAG</ItemText>
+          </NavItem>
+        </Link>
+        <Link href="/playlist">
+          <NavItem>
+            <FaRegCalendar />
+            <ItemText>이달의 노래</ItemText>
+          </NavItem>
+        </Link>
       </NavItemWrapper>
       <NavItemWrapper>
         <LibraryTag>보관함</LibraryTag>
