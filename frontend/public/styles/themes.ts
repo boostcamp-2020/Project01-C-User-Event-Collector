@@ -31,6 +31,7 @@ const color = {
   grey: '#555',
   mainBGColor: '#fbfbfb',
   headerNavColor: '#cccccc',
+  highlight: '#ff1350',
 };
 
 const theme = {
