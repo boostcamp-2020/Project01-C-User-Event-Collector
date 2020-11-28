@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+name: web-deploy
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the main branch
+on:
+  push:
+    branches: [web]
+  pull_request:
+    branches: [web]
+jobs:
+  build:
+    name: API Server Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using private key
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          port: ${{ secrets.PORT }}
+          key: ${{ secrets.PRIVATEKEY }}
+          script: | 
+            cd Project01-C-User-Event-Collector
+            git checkout web
+            git pull origin web
+            npm install
+            cd backend
+            npm install
+            npm run start
+            cd ../frontend
+            npm install
+            npm run build
+            npm run start
