@@ -9,30 +9,31 @@ import SwiftUI
 
 struct HomeView<PlayingBar: View>: View {
     var playingBar: PlayingBar
-    
     var body: some View {
-        ZStack {
-            Color.black
-                .edgesIgnoringSafeArea([.top])
-            ScrollView(.vertical, showsIndicators: false) {
-                HomeHeaderView()
-                LazyVStack(spacing: 40) {
-                    HomeSummarySectionView()
-                    HomeArtistSection()
-                    HomePlayListSectionView()
-                    HomeDJStationSectionView()
-                    HomeVibeRecommendSectionView()
-                    HomeNewAlbumSectionView()
-                    HomeMagazineSectionView()
-                    HomeNowSectionView()
-                    HomeFooterView()
+        NavigationView {
+            ZStack {
+                Color.black
+                    .edgesIgnoringSafeArea([.top])
+                ScrollView(.vertical, showsIndicators: false) {
+                    HomeHeaderView()
+                    LazyVStack(spacing: 40) {
+                        HomeSummarySectionView()
+                        HomeArtistSection()
+                        HomePlayListSectionView()
+                        HomeDJStationSectionView()
+                        HomeVibeRecommendSectionView()
+                        HomeNewAlbumSectionView()
+                        HomeMagazineSectionView()
+                        HomeNowSectionView()
+                        HomeFooterView()
+                    }
                 }
-            }
-            VStack {
-                Spacer()
-                playingBar
-            }
-            .padding(.top)
+                VStack {
+                    Spacer()
+                    playingBar
+                }
+                .padding(.top)
+            }.navigationBarHidden(true)
         }
     }
 }
