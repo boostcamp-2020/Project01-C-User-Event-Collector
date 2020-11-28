@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct HomeView<PlayingBar: View>: View {
+    var playingBar: PlayingBar
+    
     var body: some View {
         ZStack {
-            Spacer()
-                .background(Color.black)
+            Color.black
                 .edgesIgnoringSafeArea([.top])
             ScrollView(.vertical, showsIndicators: false) {
                 HomeHeaderView()
@@ -26,14 +27,20 @@ struct HomeView: View {
                     HomeNowSectionView()
                     HomeFooterView()
                 }
-            }.padding(.vertical)
+            }
+            VStack {
+                Spacer()
+                playingBar
+            }
+            .padding(.top)
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(playingBar: NowPlayingBar())
             .preferredColorScheme(.light)
+            .environmentObject(MusicPlayer())
     }
 }

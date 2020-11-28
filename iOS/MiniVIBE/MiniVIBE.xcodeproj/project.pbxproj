@@ -51,6 +51,9 @@
 		DE8F52E0256D82AC00A7735F /* HomeVibeRecommendSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F52DF256D82AC00A7735F /* HomeVibeRecommendSectionView.swift */; };
 		DE8F52E4256D82C500A7735F /* HomeVibeRecommendItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F52E3256D82C500A7735F /* HomeVibeRecommendItemView.swift */; };
 		DEC076DA2563AEBE004862AA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC076D92563AEBE004862AA /* HomeView.swift */; };
+		DEF5EFE925723A01006666DC /* NowPlayingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFE825723A01006666DC /* NowPlayingBar.swift */; };
+		DEF5EFEE25727E47006666DC /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFED25727E47006666DC /* Song.swift */; };
+		DEF5EFF225727E58006666DC /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFF125727E58006666DC /* MusicPlayer.swift */; };
 		DEF8AEF62563C81200CE2A2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEF8AEF52563C81200CE2A2F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +118,9 @@
 		DE8F52DF256D82AC00A7735F /* HomeVibeRecommendSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVibeRecommendSectionView.swift; sourceTree = "<group>"; };
 		DE8F52E3256D82C500A7735F /* HomeVibeRecommendItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVibeRecommendItemView.swift; sourceTree = "<group>"; };
 		DEC076D92563AEBE004862AA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		DEF5EFE825723A01006666DC /* NowPlayingBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBar.swift; sourceTree = "<group>"; };
+		DEF5EFED25727E47006666DC /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		DEF5EFF125727E58006666DC /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
 		DEF8AEF52563C81200CE2A2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -180,6 +186,7 @@
 		B994C69A25627DBD000E563C /* MiniVIBE */ = {
 			isa = PBXGroup;
 			children = (
+				DEF5EFEC25727DF8006666DC /* Models */,
 				B9DB8A17256CFE0200D3F1A2 /* Common */,
 				B9D18FD8256CD61600ECEFEC /* HomeView */,
 				B994C69D25627DBD000E563C /* ContentView.swift */,
@@ -224,6 +231,7 @@
 				B9B4D1EA256E5BB600EC2FE2 /* MoreHeaderView.swift */,
 				B9F0BDAB256ED2B7004A2852 /* SectionScrollView.swift */,
 				B9F0BDD3256EE031004A2852 /* ImageItemView.swift */,
+				DEF5EFE825723A01006666DC /* NowPlayingBar.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -344,6 +352,15 @@
 				DE8F52D9256D829500A7735F /* HomeVibeRecommendItem.swift */,
 			);
 			path = HomeVibeRecommendSection;
+			sourceTree = "<group>";
+		};
+		DEF5EFEC25727DF8006666DC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DEF5EFED25727E47006666DC /* Song.swift */,
+				DEF5EFF125727E58006666DC /* MusicPlayer.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -490,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEF5EFEE25727E47006666DC /* Song.swift in Sources */,
 				B9B4D1FF256E5CC300EC2FE2 /* HomeSummaryItemView.swift in Sources */,
 				B9B4D1F9256E5C8A00EC2FE2 /* Color+vibePink.swift in Sources */,
 				B9B4D1FA256E5C8A00EC2FE2 /* HomeSummarySectionView.swift in Sources */,
@@ -511,6 +529,7 @@
 				DE090443256D098A002914B5 /* HomeNowItemView.swift in Sources */,
 				B9DB8A20256D08F500D3F1A2 /* ArtistSection.swift in Sources */,
 				B9A156F9256E303A00FFDA20 /* HomeDJStationSectionView.swift in Sources */,
+				DEF5EFE925723A01006666DC /* NowPlayingBar.swift in Sources */,
 				B931018E256D7CC900DD5ADA /* View+vibeTitle2.swift in Sources */,
 				B9A156FF256E307900FFDA20 /* HomeDJStationItemView.swift in Sources */,
 				B93101B2256D848500DD5ADA /* View+vibeTitle3.swift in Sources */,
@@ -521,6 +540,7 @@
 				B9F0BDAC256ED2B7004A2852 /* SectionScrollView.swift in Sources */,
 				B994C69E25627DBD000E563C /* ContentView.swift in Sources */,
 				B9A15703256E308900FFDA20 /* HomeDJStationItem.swift in Sources */,
+				DEF5EFF225727E58006666DC /* MusicPlayer.swift in Sources */,
 				B9D18FDF256CD7B000ECEFEC /* HomeSummaryItem.swift in Sources */,
 				DEC076DA2563AEBE004862AA /* HomeView.swift in Sources */,
 				B994C69C25627DBD000E563C /* MiniVIBEApp.swift in Sources */,

@@ -9,9 +9,11 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    var playingBar = NowPlayingBar()
+    var musicPlayer = MusicPlayer()
     var body: some View {
         TabView {
-            HomeView()
+            HomeView(playingBar: playingBar)
                 .tabItem {
                     Image(systemName: "house")
                 }
@@ -32,6 +34,7 @@ struct ContentView: View {
                     Image(systemName: "person.fill")
                 }
         }.accentColor(.vibePink)
+        .environmentObject(musicPlayer)
     }
 }
 
