@@ -7,7 +7,7 @@ function Sidebar() {
   return (
     <Container>
       <Header />
-      <NavBar />
+      {/* <NavBar /> */}
     </Container>
   );
 }

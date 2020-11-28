@@ -26,8 +26,9 @@ const color = {
   blue: '#2054ae',
   pink: '#c43683',
   black: '#000000',
+  white: '#ffffff',
   mainBGColor: '#fbfbfb',
-  headerNavColor: 'white',
+  headerNavColor: '#cccccc',
 };
 
 const theme = {
