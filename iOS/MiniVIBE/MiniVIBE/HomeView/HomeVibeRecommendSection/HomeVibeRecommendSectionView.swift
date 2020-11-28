@@ -27,7 +27,9 @@ private extension HomeVibeRecommendSectionView {
     
     var homeVibeReccomendSectionScrollView: some View {
         VStack {
-            MoreHeaderView(title: Constant.title)
+            NavigationLink(destination: HomeVibeRecommendDetailView()) {
+                    MoreHeaderView(title: Constant.title)
+            }
             SectionScrollView {
                 ForEach(vibeRecommendItems) { item in
                     HomeVibeRecommendItemView(item: item)

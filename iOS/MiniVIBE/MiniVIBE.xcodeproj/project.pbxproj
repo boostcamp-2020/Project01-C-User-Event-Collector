@@ -50,10 +50,12 @@
 		DE8F52DA256D829500A7735F /* HomeVibeRecommendItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F52D9256D829500A7735F /* HomeVibeRecommendItem.swift */; };
 		DE8F52E0256D82AC00A7735F /* HomeVibeRecommendSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F52DF256D82AC00A7735F /* HomeVibeRecommendSectionView.swift */; };
 		DE8F52E4256D82C500A7735F /* HomeVibeRecommendItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F52E3256D82C500A7735F /* HomeVibeRecommendItemView.swift */; };
+		DEB6A6ED2572C89F00C97A0C /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB6A6EC2572C89E00C97A0C /* DetailHeaderView.swift */; };
 		DEC076DA2563AEBE004862AA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC076D92563AEBE004862AA /* HomeView.swift */; };
 		DEF5EFE925723A01006666DC /* NowPlayingBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFE825723A01006666DC /* NowPlayingBar.swift */; };
 		DEF5EFEE25727E47006666DC /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFED25727E47006666DC /* Song.swift */; };
 		DEF5EFF225727E58006666DC /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFF125727E58006666DC /* MusicPlayer.swift */; };
+		DEF5EFFB25728C00006666DC /* HomeVibeRecommendDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFFA25728C00006666DC /* HomeVibeRecommendDetailView.swift */; };
 		DEF8AEF62563C81200CE2A2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEF8AEF52563C81200CE2A2F /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -117,10 +119,12 @@
 		DE8F52D9256D829500A7735F /* HomeVibeRecommendItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVibeRecommendItem.swift; sourceTree = "<group>"; };
 		DE8F52DF256D82AC00A7735F /* HomeVibeRecommendSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVibeRecommendSectionView.swift; sourceTree = "<group>"; };
 		DE8F52E3256D82C500A7735F /* HomeVibeRecommendItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVibeRecommendItemView.swift; sourceTree = "<group>"; };
+		DEB6A6EC2572C89E00C97A0C /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		DEC076D92563AEBE004862AA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		DEF5EFE825723A01006666DC /* NowPlayingBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBar.swift; sourceTree = "<group>"; };
 		DEF5EFED25727E47006666DC /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		DEF5EFF125727E58006666DC /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
+		DEF5EFFA25728C00006666DC /* HomeVibeRecommendDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVibeRecommendDetailView.swift; sourceTree = "<group>"; };
 		DEF8AEF52563C81200CE2A2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -232,6 +236,7 @@
 				B9F0BDAB256ED2B7004A2852 /* SectionScrollView.swift */,
 				B9F0BDD3256EE031004A2852 /* ImageItemView.swift */,
 				DEF5EFE825723A01006666DC /* NowPlayingBar.swift */,
+				DEB6A6EC2572C89E00C97A0C /* DetailHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 				DE8F52DF256D82AC00A7735F /* HomeVibeRecommendSectionView.swift */,
 				DE8F52E3256D82C500A7735F /* HomeVibeRecommendItemView.swift */,
 				DE8F52D9256D829500A7735F /* HomeVibeRecommendItem.swift */,
+				DEF5EFF925728BB7006666DC /* HomeVibeRecommendDetail */,
 			);
 			path = HomeVibeRecommendSection;
 			sourceTree = "<group>";
@@ -361,6 +367,14 @@
 				DEF5EFF125727E58006666DC /* MusicPlayer.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DEF5EFF925728BB7006666DC /* HomeVibeRecommendDetail */ = {
+			isa = PBXGroup;
+			children = (
+				DEF5EFFA25728C00006666DC /* HomeVibeRecommendDetailView.swift */,
+			);
+			path = HomeVibeRecommendDetail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -548,8 +562,10 @@
 				DE3D6F95256414EA00C236EF /* HomeNowSectionView.swift in Sources */,
 				DE090447256D09CC002914B5 /* HomeNowReplayItem.swift in Sources */,
 				B931019E256D800000DD5ADA /* View+vibeTitle1.swift in Sources */,
+				DEF5EFFB25728C00006666DC /* HomeVibeRecommendDetailView.swift in Sources */,
 				B9F0BDCA256EDDB3004A2852 /* CGFloat+twoItemImageWidth.swift in Sources */,
 				B9310180256D741D00DD5ADA /* HomePlayListItem.swift in Sources */,
+				DEB6A6ED2572C89F00C97A0C /* DetailHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,8 +12,7 @@ struct HomeView<PlayingBar: View>: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.black
-                    .edgesIgnoringSafeArea([.top])
+                Color.black.edgesIgnoringSafeArea(.top)
                 ScrollView(.vertical, showsIndicators: false) {
                     HomeHeaderView()
                     LazyVStack(spacing: 40) {
