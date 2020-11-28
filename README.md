@@ -7,8 +7,15 @@
   <img src="https://img.shields.io/badge/typescript-v4.1.2-pink?logo=typescript" />
   <img src="https://img.shields.io/badge/javascript-ES6+-yellow?logo=javascript" />
   <img src="https://img.shields.io/badge/mysql-v5.7.32-blue?logo=mysql" />
+
 </p>
 
+<p align="center">
+    <img src="https://img.shields.io/badge/Swift-v5.31-red?logo=swift" />
+    <img src="https://img.shields.io/badge/Xcode-v12.2-blue?logo=Xcode" />
+    <img src="https://img.shields.io/badge/iOS-14.0-black?logo=apple" />  
+</p>
+    
 ### 🍎 WEB 배포 URL
 http://115.85.181.152:3000
 
