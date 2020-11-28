@@ -1,11 +1,11 @@
 import React from 'react';
 import styled from '@public/styles/themed-components';
-import NavBar from './NavBar';
+import Dropdown from '@components/Common/Dropdown';
 
-function Sidebar() {
+function NavBar() {
   return (
     <Container>
-      <NavBar />
+      <Dropdown />
     </Container>
   );
 }
