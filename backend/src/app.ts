@@ -6,10 +6,17 @@ import * as cors from 'cors';
 import * as morgan from 'morgan';
 import { createConnection } from 'typeorm';
 import * as dotenv from 'dotenv';
+import * as path from 'path';
 
 import apiRoute from './route';
 
-dotenv.config();
+if (process.env.NODE_ENV === 'production') {
+  dotenv.config({ path: path.join(__dirname, '../.env.production') });
+} else if (process.env.NODE_ENV === 'development') {
+  dotenv.config({ path: path.join(__dirname, '../.env.development') });
+} else {
+  throw new Error('process.env.NODE_ENV Not Found');
+}
 
 const app = express();
 app.set('port', process.env.PORT || 3108);
