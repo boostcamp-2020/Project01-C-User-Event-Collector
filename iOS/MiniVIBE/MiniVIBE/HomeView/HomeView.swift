@@ -7,33 +7,40 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct HomeView<PlayingBar: View>: View {
+    var playingBar: PlayingBar
     var body: some View {
-        ZStack {
-            Spacer()
-                .background(Color.black)
-                .edgesIgnoringSafeArea([.top])
-            ScrollView(.vertical, showsIndicators: false) {
-                HomeHeaderView()
-                LazyVStack(spacing: 40) {
-                    HomeSummarySectionView()
-                    HomeArtistSection()
-                    HomePlayListSectionView()
-                    HomeDJStationSectionView()
-                    HomeVibeRecommendSectionView()
-                    HomeNewAlbumSectionView()
-                    HomeMagazineSectionView()
-                    HomeNowSectionView()
-                    HomeFooterView()
+        NavigationView {
+            ZStack {
+                Color.black.edgesIgnoringSafeArea(.top)
+                ScrollView(.vertical, showsIndicators: false) {
+                    HomeHeaderView()
+                    LazyVStack(spacing: 40) {
+                        HomeSummarySectionView()
+                        HomeArtistSection()
+                        HomePlayListSectionView()
+                        HomeDJStationSectionView()
+                        HomeVibeRecommendSectionView()
+                        HomeNewAlbumSectionView()
+                        HomeMagazineSectionView()
+                        HomeNowSectionView()
+                        HomeFooterView()
+                    }
                 }
-            }.padding(.vertical)
+                VStack {
+                    Spacer()
+                    playingBar
+                }
+                .padding(.top)
+            }.navigationBarHidden(true)
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView()
+        HomeView(playingBar: NowPlayingBar())
             .preferredColorScheme(.light)
+            .environmentObject(MusicPlayer())
     }
 }

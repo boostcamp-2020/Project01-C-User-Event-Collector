@@ -31,9 +31,9 @@ private extension HomeNowSectionView {
                     .renderingMode(.template)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 30, alignment: .leading)
+                    .frame(height: 20, alignment: .leading)
                     .foregroundColor(.white)
-                Text(Constant.title).vibeTitle1()
+                Text(Constant.title).vibeTitle2()
             }.padding()
             SectionScrollView {
                 ForEach(nowReplayItems) { item in
