@@ -12,17 +12,17 @@ function BoxPlayButton() {
 const Triangle = styled.div`
   position: relative;
   left: 2px;
-  border-top: 8px solid transparent;
-  border-left: 14px solid ${props => props.theme.color.highlight};
-  border-bottom: 8px solid transparent;
+  border-top: 10px solid transparent;
+  border-left: 16px solid ${props => props.theme.color.highlight};
+  border-bottom: 10px solid transparent;
 `;
 
-const ButtonWrapper = styled.div`
-  width: 40px;
-  height: 40px;
+const ButtonWrapper = styled.button`
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   background: white;
-  opacity: 80%;
+  opacity: 75%;
   transition: 0.3s all;
   display: flex;
   justify-content: center;
