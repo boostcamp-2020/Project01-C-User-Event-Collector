@@ -7,7 +7,8 @@
 
 import Foundation
 
-class Song {
+class Song: Identifiable {
+    let id = UUID()
     let imageURLString: String
     let title: String
     let artist: String

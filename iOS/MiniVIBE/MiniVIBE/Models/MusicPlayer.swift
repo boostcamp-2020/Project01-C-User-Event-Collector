@@ -13,7 +13,7 @@ class MusicPlayer: ObservableObject {
     var nowPlayingSong: Song {
         return playingList[playingIndex]
     }
-    var playingList: [Song] = [
+    @Published var playingList: [Song] = [
         Song(image: "newAlbum-dummy1", title: "앨범1", artist: "가수1"),
         Song(image: "newAlbum-dummy2", title: "앨범2", artist: "가수2"),
         Song(image: "newAlbum-dummy3", title: "앨범3", artist: "가수3")
@@ -23,8 +23,18 @@ class MusicPlayer: ObservableObject {
         self.playingIndex = playingIndex
     }
     
+    func play(index: Int) {
+        guard (0...playingList.count-1).contains(index) else { return }
+        playingIndex = index
+        isPlaying = true
+    }
+    
     func nextSong() {
         guard playingIndex < playingList.count - 1 else { return }
         playingIndex += 1
+    }
+    
+    func move(from source: IndexSet, to destination: Int) {
+        playingList.move(fromOffsets: source, toOffset: destination)
     }
 }
