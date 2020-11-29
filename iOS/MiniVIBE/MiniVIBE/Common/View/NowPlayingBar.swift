@@ -42,7 +42,7 @@ struct NowPlayingBar: View {
         }.onTapGesture {
             self.isPresent = true
         }.sheet(isPresented: $isPresent, content: {
-            MusicPlayerView()
+            MusicPlayerView(isPresented: $isPresent)
         })
         .padding(.all)
         .background(Color.black.opacity(0.9))
