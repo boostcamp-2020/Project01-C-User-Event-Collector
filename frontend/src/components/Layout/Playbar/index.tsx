@@ -1,8 +1,14 @@
+import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
 import React from 'react';
 import styled from 'styled-components';
 
 function PlayBar() {
-  return <Player>playbar</Player>;
+  return (
+    <Player>
+      playbar
+      <BoxPlayButton />
+    </Player>
+  );
 }
 
 const Player = styled.div`

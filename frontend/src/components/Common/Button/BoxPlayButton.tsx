@@ -4,38 +4,34 @@ import styled from 'styled-components';
 function BoxPlayButton() {
   return (
     <ButtonWrapper>
-      <Circle className="circle" />
       <Triangle />
     </ButtonWrapper>
   );
 }
 
-const Circle = styled.div`
-  width: 50px;
-  height: 50px;
-  background: white;
-  opacity: 80%;
-  border-radius: 50%;
-  position: absolute;
-  top: 0;
-  left: 0;
-`;
-
 const Triangle = styled.div`
-  border-top: 12px solid transparent;
-  border-left: 20px solid ${props => props.theme.color.highlight};
-  border-bottom: 12px solid transparent;
-  position: absolute;
-  top: 25%;
-  right: 25%;
+  position: relative;
+  left: 2px;
+  border-top: 8px solid transparent;
+  border-left: 14px solid ${props => props.theme.color.highlight};
+  border-bottom: 8px solid transparent;
 `;
 
 const ButtonWrapper = styled.div`
-  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  opacity: 80%;
+  transition: 0.3s all;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: none;
   &:hover {
-    .circle {
-      opacity: 100%;
-    }
+    opacity: 100%;
+    transform: scale(1.1);
   }
 `;
 
