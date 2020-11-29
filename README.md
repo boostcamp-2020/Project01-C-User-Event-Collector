@@ -5,9 +5,8 @@
 <p align="center">
   <img src="https://img.shields.io/badge/react-17.0.1-9cf?logo=react" />
   <img src="https://img.shields.io/badge/typescript-v4.1.2-pink?logo=typescript" />
-  <img src="https://img.shields.io/badge/javascript-ES6+-yellow?logo=javascript" />
-  <img src="https://img.shields.io/badge/mysql-v5.7.32-blue?logo=mysql" />
-
+  <img src="https://img.shields.io/badge/mysql2-v2.2.5-blue?logo=mysql" />
+  <img src="https://img.shields.io/badge/next.js-v10.0.3-orange?logo=next.js" />
 </p>
 
 <p align="center">
