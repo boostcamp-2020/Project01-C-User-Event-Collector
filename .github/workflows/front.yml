@@ -19,7 +19,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.PRIVATEKEY }}
-          script: |
           script: | 
             cd Project01-C-User-Event-Collector
             git checkout frontend
@@ -27,4 +26,5 @@ jobs:
             npm install
             cd frontend
             npm install
+            npm run build
             npm run start
