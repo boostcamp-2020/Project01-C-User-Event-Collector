@@ -8,8 +8,8 @@ function DJStation() {
     <Wrapper>
       <TopWrapper>
         <MagTopItem />
-        <BoxItem />
       </TopWrapper>
+      <BoxItem />
     </Wrapper>
   );
 }
@@ -20,7 +20,7 @@ const TopWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  background: gold;
+  padding-bottom: 200px;
 `;
 
 export default DJStation;

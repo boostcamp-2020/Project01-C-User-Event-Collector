@@ -1,9 +1,13 @@
 import React from 'react';
 import { Dropdown } from 'semantic-ui-react';
 
+interface DropdownProps {
+  type: string;
+}
+
 const nickname = '아로리';
 
-const DropdownComponent = ({ type }: { type: string }) => {
+const DropdownComponent = ({ type }: DropdownProps) => {
   switch (type) {
     case 'auth':
       return (
