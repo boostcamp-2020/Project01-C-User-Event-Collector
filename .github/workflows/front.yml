@@ -26,5 +26,5 @@ jobs:
             npm install
             cd frontend
             npm install
-            npm run build
-            npm run start
+            npm run build --if-present
+            pm2 reload next-js
