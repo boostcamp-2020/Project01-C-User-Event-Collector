@@ -39,7 +39,7 @@ struct HomeView<PlayingBar: View>: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(playingBar: NowPlayingBar())
+        HomeView(playingBar: NowPlayingBarView())
             .preferredColorScheme(.light)
             .environmentObject(MusicPlayer())
     }

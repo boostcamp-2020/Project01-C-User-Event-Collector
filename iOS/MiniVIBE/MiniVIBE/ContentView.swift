@@ -9,7 +9,7 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    var playingBar = NowPlayingBar()
+    var playingBar = NowPlayingBarView()
     var musicPlayer = MusicPlayer()
     var body: some View {
         TabView {

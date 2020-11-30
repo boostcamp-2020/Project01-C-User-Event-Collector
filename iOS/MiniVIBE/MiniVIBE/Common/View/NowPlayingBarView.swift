@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NowPlayingBar: View {
+struct NowPlayingBarView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @State private var isPresent = false
     var body: some View {
@@ -22,7 +22,6 @@ struct NowPlayingBar: View {
                 Text(musicPlayer.nowPlayingSong.artist)
                     .vibeMainText()
                     .lineLimit(1)
-                    
             }.padding(.leading)
             Spacer()
             Button(action: {

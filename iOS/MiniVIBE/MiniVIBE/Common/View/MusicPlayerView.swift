@@ -13,56 +13,18 @@ struct MusicPlayerView: View {
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.bottom)
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack {
                     VStack(spacing: .defaultSpacing) {
-                        HStack {
-                            Button(action: {}, label: {
-                                Image(systemName: "slider.horizontal.3")
-                                    .vibeTitle1()
-                            })
-                            Spacer()
-                            Text(musicPlayer.nowPlayingSong.title).vibeTitle2()
-                            Spacer()
-                            Button(action: {
-                                self.isPresented = false
-                            }, label: {
-                                Image(systemName: "chevron.down")
-                                    .padding(.trailing)
-                                    .vibeTitle1()
-                            })
-                        }
+                        topBarView
                         Spacer()
                         Image(musicPlayer.nowPlayingSong.imageURLString)
                             .resizable()
                             .padding()
                             .frame(width: 300, height: 300)
                         Spacer()
-                        HStack(alignment: .bottom) {
-                            VStack(alignment: .leading, spacing: .defaultSpacing) {
-                                Text(musicPlayer.nowPlayingSong.title).vibeTitle2()
-                                Text(musicPlayer.nowPlayingSong.artist).vibeMainText()
-                            }
-                            Spacer()
-                            Button(action: {}, label: {Image(systemName: "ellipsis").vibeTitle2()})
-                        }
-                        
-                        HStack {
-                            Group {
-                                Image(systemName: "repeat")
-                                Spacer()
-                                Image(systemName: "paperplane")
-                                Spacer()
-                                Button(action: {
-                                    musicPlayer.isPlaying.toggle()
-                                }, label: { Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill")})
-                                Spacer()
-                                Image(systemName: "heart.fill")
-                                Spacer()
-                                Image(systemName: "shuffle")
-                            }.vibeTitle1()
-                            .padding(.vertical)
-                        }
+                        musicInfoView
+                        controllerView
                         HStack {
                             Image(systemName: "airplayaudio").vibeTitle2()
                             Spacer()
@@ -71,7 +33,7 @@ struct MusicPlayerView: View {
                     }.padding(.defaultPadding)
                     //FIXME: 모달 높이 고정값 수정 필요
                     .frame(height: UIScreen.main.bounds.height - 65)
-                    Divider().accentColor(.white) // 나뉘는거 확인용
+                    Divider().accentColor(.white)
                     VStack {
                         HStack {
                             Image(systemName: "magnifyingglass").vibeTitle1()
@@ -88,26 +50,79 @@ struct MusicPlayerView: View {
                         }.padding(.horizontal, .defaultPadding)
                         MusicPlayerListView()
                     }.frame(height: UIScreen.main.bounds.height - 100)
-                    .background(Color.black)
                 }
-            }.statusBar(hidden: true)
+            }
         }
     }
 }
 
-struct MusicPlayerListView: View {
+private extension MusicPlayerView {
+    var topBarView: some View {
+        HStack {
+            Button(action: {}, label: {
+                Image(systemName: "slider.horizontal.3")
+                    .vibeTitle1()
+            })
+            Spacer()
+            Text(musicPlayer.nowPlayingSong.title).vibeTitle2()
+            Spacer()
+            Button(action: {
+                self.isPresented = false
+            }, label: {
+                Image(systemName: "chevron.down")
+                    .padding(.trailing)
+                    .vibeTitle1()
+            })
+        }
+    }
+}
+
+private extension MusicPlayerView {
+    var musicInfoView: some View {
+        HStack(alignment: .bottom) {
+            VStack(alignment: .leading, spacing: .defaultSpacing) {
+                Text(musicPlayer.nowPlayingSong.title).vibeTitle2()
+                Text(musicPlayer.nowPlayingSong.artist).vibeMainText()
+            }
+            Spacer()
+            Button(action: {}, label: {Image(systemName: "ellipsis").vibeTitle2()})
+        }
+    }
+}
+
+private extension MusicPlayerView {
+    var controllerView: some View {
+        HStack {
+            Group {
+                Image(systemName: "repeat")
+                Spacer()
+                Image(systemName: "paperplane")
+                Spacer()
+                Button(action: {
+                    musicPlayer.isPlaying.toggle()
+                }, label: { Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill")})
+                Spacer()
+                Image(systemName: "heart.fill")
+                Spacer()
+                Image(systemName: "shuffle")
+            }.vibeTitle1()
+            .padding(.vertical)
+        }
+    }
+}
+
+private struct MusicPlayerListView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     
     init() {
-        UIScrollView.appearance().bounces = false
-        UITableView.appearance().backgroundColor = UIColor.black
+        UITableView.appearance().backgroundColor = UIColor.clear
     }
     
     var body: some View {
         List {
             ForEach(musicPlayer.playingList.indices) { index in
                 PlayListItemView(item: musicPlayer.playingList[index])
-                    .background(Color.black.edgesIgnoringSafeArea(.all))
+                    .background(Color.black)
                     .onTapGesture {
                         musicPlayer.play(index: index)
                     }
