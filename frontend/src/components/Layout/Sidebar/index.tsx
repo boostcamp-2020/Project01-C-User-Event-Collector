@@ -1,8 +1,15 @@
 import React from 'react';
 import styled from '@public/styles/themed-components';
+import NavBar from './NavBar';
+import Header from './Header';
 
 function Sidebar() {
-  return <Container>Mini VIBE</Container>;
+  return (
+    <Container>
+      <Header />
+      <NavBar />
+    </Container>
+  );
 }
 
 const Container = styled.header`
@@ -31,9 +38,6 @@ const Container = styled.header`
   color: ${props => props.theme.color.headerNavColor};
   font-size: 2.5rem;
   font-weight: 400;
-
-  // common
-  padding: 1rem;
 `;
 
 export default Sidebar;

@@ -1,8 +1,14 @@
+import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
 import React from 'react';
 import styled from 'styled-components';
 
-function Playbar() {
-  return <Player>playbar</Player>;
+function PlayBar() {
+  return (
+    <Player>
+      playbar
+      <BoxPlayButton />
+    </Player>
+  );
 }
 
 const Player = styled.div`
@@ -15,4 +21,4 @@ const Player = styled.div`
   background-color: rgba(25, 25, 25, 0.97);
 `;
 
-export default Playbar;
+export default PlayBar;

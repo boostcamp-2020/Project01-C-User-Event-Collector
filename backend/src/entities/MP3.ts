@@ -1,6 +1,6 @@
-import { Entity, Column, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import User from "./User";
-import Track from "./Track";
+import { Entity, Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import User from './User';
+import Track from './Track';
 
 @Entity()
 export default class MP3 {

@@ -3,6 +3,7 @@ import React from 'react';
 import theme from '@public/styles/themes';
 import GlobalStyles from '@public/styles/global-styles';
 import { ThemeProvider } from '@public/styles/themed-components';
+import 'semantic-ui-css/semantic.min.css';
 
 import Layout from '@components/Layout';
 

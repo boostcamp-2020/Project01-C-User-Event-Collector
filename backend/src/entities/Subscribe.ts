@@ -1,6 +1,6 @@
-import { Entity, Column, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
-import User from "./User";
-import Membership from "./Membership";
+import { Entity, Column, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import User from './User';
+import Membership from './Membership';
 
 @Entity()
 export default class Subscribe {

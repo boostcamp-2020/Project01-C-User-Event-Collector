@@ -16,13 +16,15 @@ interface Props {
 }
 
 const Test = ({ text }: Props) => (
-  <StyledP>
-    <SampleWithProps visible>
-      {text}
-      🦄🐔
-    </SampleWithProps>
-    <SampleWithProps visible={false}>{text}</SampleWithProps>
-  </StyledP>
+  <>
+    <StyledP>
+      <SampleWithProps visible>
+        {text}
+        🦄🐔
+      </SampleWithProps>
+      <SampleWithProps visible={false}>{text}</SampleWithProps>
+    </StyledP>
+  </>
 );
 
 const StyledP = styled.p`
