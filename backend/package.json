@@ -4,8 +4,8 @@
   "description": "boostcamp project",
   "main": "index.js",
   "scripts": {
-    "start": "tsc && pm2 kill && pm2 start dist/app.js",
-    "dev": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts",
+    "start": "tsc &&pm2 kill && NODE_ENV=production pm2 start dist/app.js",
+    "dev": "NODE_ENV=development nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/app.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
