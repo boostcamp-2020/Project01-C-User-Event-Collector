@@ -10,7 +10,6 @@ import SwiftUI
 struct NowPlayingBar: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @State private var isPresent = false
-    
     var body: some View {
         HStack {
             Image(musicPlayer.nowPlayingSong.imageURLString)
@@ -46,6 +45,5 @@ struct NowPlayingBar: View {
         })
         .padding(.all)
         .background(Color.black.opacity(0.9))
-        
     }
 }

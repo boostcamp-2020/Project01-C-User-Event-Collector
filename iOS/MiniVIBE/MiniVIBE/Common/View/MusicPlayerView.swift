@@ -10,13 +10,12 @@ import SwiftUI
 struct MusicPlayerView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @Binding var isPresented: Bool
-    
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.bottom)
             ScrollView {
                 VStack {
-                    VStack(alignment: .leading, spacing: .defaultSpacing) {
+                    VStack(spacing: .defaultSpacing) {
                         HStack {
                             Button(action: {}, label: {
                                 Image(systemName: "slider.horizontal.3")
