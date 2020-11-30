@@ -32,8 +32,8 @@ const StyledP = styled.p`
     color: black;
     font-size: 5rem;
   `}
-  color: ${props => props.theme.color.pink};
-  font-size: 2rem;
+  color: ${props => props.theme.color.blue};
+  font-size: 10rem;
 `;
 
 export default Test;

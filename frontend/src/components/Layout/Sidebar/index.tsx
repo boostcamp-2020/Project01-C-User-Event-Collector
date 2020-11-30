@@ -36,8 +36,8 @@ const Container = styled.header`
   z-index: 10100;
   background: ${props => props.theme.color.black};
   color: ${props => props.theme.color.headerNavColor};
-  // common
-  padding: 1rem;
+  font-size: 2.5rem;
+  font-weight: 400;
 `;
 
 export default Sidebar;
