@@ -14,7 +14,7 @@ import Album from './Album';
 import Playlist from './Playlist';
 import Subscribe from './Subscribe';
 
-export type UserGenderType = 'F' | 'M' | 'U';
+// export type UserGenderType = 'F' | 'M' | 'U';
 
 @Entity()
 export default class User extends BaseEntity {
@@ -33,15 +33,15 @@ export default class User extends BaseEntity {
   @Column()
   profileURL!: string;
 
-  @Column({
-    type: 'enum',
-    enum: ['F', 'M', 'U'],
-    default: 'U',
-  })
-  gender!: UserGenderType;
+  // @Column({
+  //   type: 'enum',
+  //   enum: ['F', 'M', 'U'],
+  //   default: 'U',
+  // })
+  // gender!: UserGenderType;
 
-  @Column()
-  birth!: Date;
+  // @Column()
+  // birth!: Date;
 
   @CreateDateColumn()
   createDate!: Date;
