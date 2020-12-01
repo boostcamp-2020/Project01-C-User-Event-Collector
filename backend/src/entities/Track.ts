@@ -27,9 +27,6 @@ export default class Track extends BaseEntity {
   composer!: string;
 
   @Column()
-  lyric!: string;
-
-  @Column()
   isLocal!: boolean;
 
   @OneToMany(() => MP3, mp3 => mp3.user, { onDelete: 'CASCADE' })
