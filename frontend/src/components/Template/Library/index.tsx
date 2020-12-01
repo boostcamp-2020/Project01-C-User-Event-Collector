@@ -7,7 +7,6 @@ import { IoShuffleOutline } from 'react-icons/io5';
 
 import LargeButton from '@components/Common/Button/LargeButton';
 
-
 // title이라고 하면 _document랑 충돌남
 function Layout({ mainTitle, type = null, children }) {
   return (
@@ -18,13 +17,13 @@ function Layout({ mainTitle, type = null, children }) {
           <MainTitle>{mainTitle}</MainTitle>
         </Title>
         {type && (
-          <IconContext.Provider value={{ size: "1.3rem" }}>
+          <IconContext.Provider value={{ size: '1.3rem' }}>
             <PlayButtonWrapper>
-              <LargeButton customType={'play'}>
+              <LargeButton customType="play">
                 <IoMdPlay />
                 <CostomSpan>전체재생</CostomSpan>
               </LargeButton>
-              <LargeButton customType={'suffle'}>
+              <LargeButton customType="suffle">
                 <IoShuffleOutline />
                 <CostomSpan>랜덤재생</CostomSpan>
               </LargeButton>
@@ -33,7 +32,7 @@ function Layout({ mainTitle, type = null, children }) {
         )}
       </Header>
       {children}
-    </Wrapper >
+    </Wrapper>
   );
 }
 
@@ -41,7 +40,7 @@ const Wrapper = styled.div`
   position: relative;
   width: 964;
   padding-top: 41px;
-  padding-bottom: 23px; 
+  padding-bottom: 23px;
   margin: auto;
 `;
 
@@ -79,7 +78,7 @@ const MainTitle = styled.span`
 const PlayButtonWrapper = styled.div`
   position: absolute;
   width: 284px;
-  
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
