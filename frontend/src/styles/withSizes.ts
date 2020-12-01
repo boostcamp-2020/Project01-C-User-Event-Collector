@@ -1,5 +1,5 @@
 import reactSizes from 'react-sizes';
-import { DeviceSize } from '@public/styles/themed-components';
+import { DeviceSize } from '@styles/themed-components';
 
 const withSizes = (component: { width: number }): { device: DeviceSize } => {
   const { width } = component;

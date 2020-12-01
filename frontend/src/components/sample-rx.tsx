@@ -1,7 +1,7 @@
 /**
  * 반응형 sample 컴포넌트
  */
-import styled, { withProps } from '@public/styles/themed-components';
+import styled, { withProps } from '@styles/themed-components';
 
 interface Sample {
   visible: string;

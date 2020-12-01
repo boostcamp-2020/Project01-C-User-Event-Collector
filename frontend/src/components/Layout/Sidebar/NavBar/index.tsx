@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@public/styles/themed-components';
+import styled from '@styles/themed-components';
 import Dropdown from '@components/Common/Dropdown';
 import NavList from './NavList';
 
@@ -30,7 +30,7 @@ const AuthWrapper = styled.div`
   border-bottom: 0.5px solid ${props => props.theme.color.darkgrey};
 `;
 
-const Container = styled.header`
+const Container = styled.nav`
   height: 900px;
 `;
 

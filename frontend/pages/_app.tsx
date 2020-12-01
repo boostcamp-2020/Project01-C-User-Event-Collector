@@ -1,8 +1,8 @@
 import App, { Container } from 'next/app';
 import React from 'react';
-import theme from '@public/styles/themes';
-import GlobalStyles from '@public/styles/global-styles';
-import { ThemeProvider } from '@public/styles/themed-components';
+import theme from '@styles/themes';
+import GlobalStyles from '@styles/global-styles';
+import { ThemeProvider } from '@styles/themed-components';
 import 'semantic-ui-css/semantic.min.css';
 
 import Layout from '@components/Layout';

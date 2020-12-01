@@ -1,7 +1,7 @@
 /**
  * non-반응형 sample 컴포넌트
  */
-import styled from '@public/styles/themed-components';
+import styled from '@styles/themed-components';
 
 interface Props {
   text: string;

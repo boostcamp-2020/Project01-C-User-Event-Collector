@@ -1,6 +1,6 @@
 import React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
-import { ServerStyleSheet } from '@public/styles/themed-components';
+import Document, { Html, Head, Main, NextScript } from 'next/document';
+import { ServerStyleSheet } from '@styles/themed-components';
 
 export default class MyDocument extends Document {
   static async getInitialProps(context: any) {
@@ -30,7 +30,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html lang="ko">
+      <Html lang="ko">
         <Head>
           <title>Mini VIBE</title>
         </Head>
@@ -38,7 +38,7 @@ export default class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }

@@ -1,13 +1,15 @@
 import React from 'react';
-import styled from '@public/styles/themed-components';
+import styled from '@styles/themed-components';
 import NavBar from './NavBar';
 import Header from './Header';
 
 function Sidebar() {
   return (
     <Container>
-      <Header />
-      <NavBar />
+      <Wrapper>
+        <Header />
+        <NavBar />
+      </Wrapper>
     </Container>
   );
 }
@@ -25,7 +27,6 @@ const Container = styled.header`
     transition: background-color .4s ease-in-out;
 
     color: white;
-    font-size: 2rem;
   `}
   // desktop
   width: 225px;
@@ -36,8 +37,10 @@ const Container = styled.header`
   z-index: 10100;
   background: ${props => props.theme.color.black};
   color: ${props => props.theme.color.headerNavColor};
-  font-size: 2.5rem;
-  font-weight: 400;
 `;
+
+const Wrapper = styled.div`
+  padding: 1rem;
+`
 
 export default Sidebar;
