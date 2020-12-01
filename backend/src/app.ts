@@ -20,7 +20,6 @@ if (process.env.NODE_ENV === 'production') {
   throw new Error('process.env.NODE_ENV Not Found');
 }
 
-// TODO: 사용자 정의 에러 핸들링 미들웨어
 createConnection()
   .then(() => {
     console.log('Database Connected :)');
@@ -38,6 +37,8 @@ createConnection()
     passportConfig();
 
     app.use('/api', apiRoute);
+
+    // TODO: 사용자 정의 에러 핸들링 미들웨어
 
     app.listen(app.get('port'), () => {
       console.log(`API Server App Listening on PORT ${app.get('port')}`);
