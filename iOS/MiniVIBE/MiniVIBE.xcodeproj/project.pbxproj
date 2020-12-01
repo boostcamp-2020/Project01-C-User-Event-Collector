@@ -15,7 +15,10 @@
 		B931019E256D800000DD5ADA /* View+vibeTitle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931019D256D800000DD5ADA /* View+vibeTitle1.swift */; };
 		B93101A8256D823700DD5ADA /* View+vibeMainText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93101A7256D823700DD5ADA /* View+vibeMainText.swift */; };
 		B93101B2256D848500DD5ADA /* View+vibeTitle3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93101B1256D848500DD5ADA /* View+vibeTitle3.swift */; };
+		B96F49F725768B7200C5AF5F /* MockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96F49F625768B7200C5AF5F /* MockRequest.swift */; };
+		B96F49FB25768CB800C5AF5F /* NetworkError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96F49FA25768CB800C5AF5F /* NetworkError+Equatable.swift */; };
 		B97A5067256E7343003F7DF5 /* CGFloat+defaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A5066256E7343003F7DF5 /* CGFloat+defaultValues.swift */; };
+		B988596C257684510037D19B /* MiniVIBETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B988596B257684510037D19B /* MiniVIBETests.swift */; };
 		B994C69C25627DBD000E563C /* MiniVIBEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994C69B25627DBD000E563C /* MiniVIBEApp.swift */; };
 		B994C69E25627DBD000E563C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994C69D25627DBD000E563C /* ContentView.swift */; };
 		B994C6A325627DBE000E563C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B994C6A225627DBE000E563C /* Preview Assets.xcassets */; };
@@ -24,19 +27,21 @@
 		B9A156F9256E303A00FFDA20 /* HomeDJStationSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A156F8256E303A00FFDA20 /* HomeDJStationSectionView.swift */; };
 		B9A156FF256E307900FFDA20 /* HomeDJStationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A156FE256E307900FFDA20 /* HomeDJStationItemView.swift */; };
 		B9A15703256E308900FFDA20 /* HomeDJStationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A15702256E308900FFDA20 /* HomeDJStationItem.swift */; };
+		B9A9FA78257613CF00687EA1 /* WebRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A9FA77257613CF00687EA1 /* WebRepository.swift */; };
 		B9B4D1EB256E5BB600EC2FE2 /* MoreHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B4D1EA256E5BB600EC2FE2 /* MoreHeaderView.swift */; };
 		B9B4D1F6256E5C7D00EC2FE2 /* HomeHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95964E0256CEF520041B135 /* HomeHeaderView.swift */; };
 		B9B4D1F9256E5C8A00EC2FE2 /* Color+vibePink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB8A19256CFE6900D3F1A2 /* Color+vibePink.swift */; };
 		B9B4D1FA256E5C8A00EC2FE2 /* HomeSummarySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93ED12E256BBC7D0033C43B /* HomeSummarySectionView.swift */; };
 		B9B4D1FF256E5CC300EC2FE2 /* HomeSummaryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95964D4256CDF9D0041B135 /* HomeSummaryItemView.swift */; };
 		B9B6279925628130006B0F00 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B9B6279825628130006B0F00 /* .swiftlint.yml */; };
-		B9B627A2256281BE006B0F00 /* MiniVIBETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B627A1256281BE006B0F00 /* MiniVIBETests.swift */; };
 		B9D18FDF256CD7B000ECEFEC /* HomeSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D18FDE256CD7B000ECEFEC /* HomeSummaryItem.swift */; };
 		B9DB8A20256D08F500D3F1A2 /* ArtistSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB8A1F256D08F500D3F1A2 /* ArtistSection.swift */; };
 		B9F0BDAC256ED2B7004A2852 /* SectionScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F0BDAB256ED2B7004A2852 /* SectionScrollView.swift */; };
 		B9F0BDCA256EDDB3004A2852 /* CGFloat+twoItemImageWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F0BDC9256EDDB3004A2852 /* CGFloat+twoItemImageWidth.swift */; };
 		B9F0BDD0256EDE41004A2852 /* CGFloat+oneItemImageWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F0BDCF256EDE41004A2852 /* CGFloat+oneItemImageWidth.swift */; };
 		B9F0BDD4256EE031004A2852 /* ImageItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F0BDD3256EE031004A2852 /* ImageItemView.swift */; };
+		B9FEA4E6257668E10089CCD6 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FEA4E5257668E10089CCD6 /* Networking.swift */; };
+		B9FEA4EE25767BA20089CCD6 /* RequestProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FEA4ED25767BA20089CCD6 /* RequestProviding.swift */; };
 		DE09042F256CCE11002914B5 /* HomeMagazineSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE09042E256CCE11002914B5 /* HomeMagazineSectionView.swift */; };
 		DE090443256D098A002914B5 /* HomeNowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE090442256D098A002914B5 /* HomeNowItemView.swift */; };
 		DE090447256D09CC002914B5 /* HomeNowReplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE090446256D09CC002914B5 /* HomeNowReplayItem.swift */; };
@@ -61,7 +66,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B9B627A4256281BE006B0F00 /* PBXContainerItemProxy */ = {
+		B988596E257684510037D19B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B994C69025627DBD000E563C /* Project object */;
 			proxyType = 1;
@@ -83,7 +88,12 @@
 		B93ED12E256BBC7D0033C43B /* HomeSummarySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSummarySectionView.swift; sourceTree = "<group>"; };
 		B95964D4256CDF9D0041B135 /* HomeSummaryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSummaryItemView.swift; sourceTree = "<group>"; };
 		B95964E0256CEF520041B135 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
+		B96F49F625768B7200C5AF5F /* MockRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRequest.swift; sourceTree = "<group>"; };
+		B96F49FA25768CB800C5AF5F /* NetworkError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkError+Equatable.swift"; sourceTree = "<group>"; };
 		B97A5066256E7343003F7DF5 /* CGFloat+defaultValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+defaultValues.swift"; sourceTree = "<group>"; };
+		B9885969257684510037D19B /* MiniVIBETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVIBETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B988596B257684510037D19B /* MiniVIBETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVIBETests.swift; sourceTree = "<group>"; };
+		B988596D257684510037D19B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B994C69825627DBD000E563C /* MiniVIBE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVIBE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B994C69B25627DBD000E563C /* MiniVIBEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVIBEApp.swift; sourceTree = "<group>"; };
 		B994C69D25627DBD000E563C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,11 +104,9 @@
 		B9A156F8256E303A00FFDA20 /* HomeDJStationSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDJStationSectionView.swift; sourceTree = "<group>"; };
 		B9A156FE256E307900FFDA20 /* HomeDJStationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDJStationItemView.swift; sourceTree = "<group>"; };
 		B9A15702256E308900FFDA20 /* HomeDJStationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDJStationItem.swift; sourceTree = "<group>"; };
+		B9A9FA77257613CF00687EA1 /* WebRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebRepository.swift; sourceTree = "<group>"; };
 		B9B4D1EA256E5BB600EC2FE2 /* MoreHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreHeaderView.swift; sourceTree = "<group>"; };
 		B9B6279825628130006B0F00 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		B9B6279F256281BE006B0F00 /* MiniVIBETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVIBETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B9B627A1256281BE006B0F00 /* MiniVIBETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVIBETests.swift; sourceTree = "<group>"; };
-		B9B627A3256281BE006B0F00 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9D18FDE256CD7B000ECEFEC /* HomeSummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSummaryItem.swift; sourceTree = "<group>"; };
 		B9DB8A19256CFE6900D3F1A2 /* Color+vibePink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+vibePink.swift"; sourceTree = "<group>"; };
 		B9DB8A1F256D08F500D3F1A2 /* ArtistSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSection.swift; sourceTree = "<group>"; };
@@ -106,6 +114,8 @@
 		B9F0BDC9256EDDB3004A2852 /* CGFloat+twoItemImageWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+twoItemImageWidth.swift"; sourceTree = "<group>"; };
 		B9F0BDCF256EDE41004A2852 /* CGFloat+oneItemImageWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+oneItemImageWidth.swift"; sourceTree = "<group>"; };
 		B9F0BDD3256EE031004A2852 /* ImageItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageItemView.swift; sourceTree = "<group>"; };
+		B9FEA4E5257668E10089CCD6 /* Networking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		B9FEA4ED25767BA20089CCD6 /* RequestProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestProviding.swift; sourceTree = "<group>"; };
 		D79633046F581A9010E0BE59 /* Pods-MiniVIBE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBE.release.xcconfig"; path = "Target Support Files/Pods-MiniVIBE/Pods-MiniVIBE.release.xcconfig"; sourceTree = "<group>"; };
 		DE09042E256CCE11002914B5 /* HomeMagazineSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMagazineSectionView.swift; sourceTree = "<group>"; };
 		DE090442256D098A002914B5 /* HomeNowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNowItemView.swift; sourceTree = "<group>"; };
@@ -131,18 +141,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		B9885966257684510037D19B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B994C69525627DBD000E563C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				AD62AD7689CD423579B7C6A4 /* libPods-MiniVIBE.a in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B9B6279C256281BE006B0F00 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,12 +178,23 @@
 			path = HomePlayListSection;
 			sourceTree = "<group>";
 		};
+		B988596A257684510037D19B /* MiniVIBETests */ = {
+			isa = PBXGroup;
+			children = (
+				B988596B257684510037D19B /* MiniVIBETests.swift */,
+				B988596D257684510037D19B /* Info.plist */,
+				B96F49F625768B7200C5AF5F /* MockRequest.swift */,
+				B96F49FA25768CB800C5AF5F /* NetworkError+Equatable.swift */,
+			);
+			path = MiniVIBETests;
+			sourceTree = "<group>";
+		};
 		B994C68F25627DBD000E563C = {
 			isa = PBXGroup;
 			children = (
 				B9B6279825628130006B0F00 /* .swiftlint.yml */,
 				B994C69A25627DBD000E563C /* MiniVIBE */,
-				B9B627A0256281BE006B0F00 /* MiniVIBETests */,
+				B988596A257684510037D19B /* MiniVIBETests */,
 				B994C69925627DBD000E563C /* Products */,
 				0718D3CA313ECA24B75B795F /* Pods */,
 				CA233B27D449220AF6D7CF38 /* Frameworks */,
@@ -184,7 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				B994C69825627DBD000E563C /* MiniVIBE.app */,
-				B9B6279F256281BE006B0F00 /* MiniVIBETests.xctest */,
+				B9885969257684510037D19B /* MiniVIBETests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -192,6 +213,7 @@
 		B994C69A25627DBD000E563C /* MiniVIBE */ = {
 			isa = PBXGroup;
 			children = (
+				B9FEA4EC25767AE60089CCD6 /* Utilities */,
 				DEF5EFEC25727DF8006666DC /* Models */,
 				B9DB8A17256CFE0200D3F1A2 /* Common */,
 				B9D18FD8256CD61600ECEFEC /* HomeView */,
@@ -231,6 +253,13 @@
 			path = HomeDJStationSection;
 			sourceTree = "<group>";
 		};
+		B9A9FA76257613B700687EA1 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
 		B9B4D1E9256E5BAC00EC2FE2 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -242,15 +271,6 @@
 				DE3EF6D1257361EC00A25B71 /* MusicPlayerView.swift */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		B9B627A0256281BE006B0F00 /* MiniVIBETests */ = {
-			isa = PBXGroup;
-			children = (
-				B9B627A1256281BE006B0F00 /* MiniVIBETests.swift */,
-				B9B627A3256281BE006B0F00 /* Info.plist */,
-			);
-			path = MiniVIBETests;
 			sourceTree = "<group>";
 		};
 		B9D18FD8256CD61600ECEFEC /* HomeView */ = {
@@ -285,6 +305,7 @@
 		B9DB8A17256CFE0200D3F1A2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				B9A9FA76257613B700687EA1 /* Repositories */,
 				B9B4D1E9256E5BAC00EC2FE2 /* View */,
 				B9DB8A18256CFE1C00D3F1A2 /* Extension */,
 			);
@@ -312,6 +333,16 @@
 				B9DB8A1F256D08F500D3F1A2 /* ArtistSection.swift */,
 			);
 			path = HomeArtistSection;
+			sourceTree = "<group>";
+		};
+		B9FEA4EC25767AE60089CCD6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B9A9FA77257613CF00687EA1 /* WebRepository.swift */,
+				B9FEA4E5257668E10089CCD6 /* Networking.swift */,
+				B9FEA4ED25767BA20089CCD6 /* RequestProviding.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		CA233B27D449220AF6D7CF38 /* Frameworks */ = {
@@ -383,6 +414,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		B9885968257684510037D19B /* MiniVIBETests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9885970257684510037D19B /* Build configuration list for PBXNativeTarget "MiniVIBETests" */;
+			buildPhases = (
+				B9885965257684510037D19B /* Sources */,
+				B9885966257684510037D19B /* Frameworks */,
+				B9885967257684510037D19B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B988596F257684510037D19B /* PBXTargetDependency */,
+			);
+			name = MiniVIBETests;
+			productName = MiniVIBETests;
+			productReference = B9885969257684510037D19B /* MiniVIBETests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		B994C69725627DBD000E563C /* MiniVIBE */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B994C6AC25627DBE000E563C /* Build configuration list for PBXNativeTarget "MiniVIBE" */;
@@ -402,24 +451,6 @@
 			productReference = B994C69825627DBD000E563C /* MiniVIBE.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B9B6279E256281BE006B0F00 /* MiniVIBETests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B9B627A6256281BE006B0F00 /* Build configuration list for PBXNativeTarget "MiniVIBETests" */;
-			buildPhases = (
-				B9B6279B256281BE006B0F00 /* Sources */,
-				B9B6279C256281BE006B0F00 /* Frameworks */,
-				B9B6279D256281BE006B0F00 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B9B627A5256281BE006B0F00 /* PBXTargetDependency */,
-			);
-			name = MiniVIBETests;
-			productName = MiniVIBETests;
-			productReference = B9B6279F256281BE006B0F00 /* MiniVIBETests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -429,12 +460,12 @@
 				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1220;
 				TargetAttributes = {
-					B994C69725627DBD000E563C = {
-						CreatedOnToolsVersion = 12.2;
-					};
-					B9B6279E256281BE006B0F00 = {
+					B9885968257684510037D19B = {
 						CreatedOnToolsVersion = 12.2;
 						TestTargetID = B994C69725627DBD000E563C;
+					};
+					B994C69725627DBD000E563C = {
+						CreatedOnToolsVersion = 12.2;
 					};
 				};
 			};
@@ -452,12 +483,19 @@
 			projectRoot = "";
 			targets = (
 				B994C69725627DBD000E563C /* MiniVIBE */,
-				B9B6279E256281BE006B0F00 /* MiniVIBETests */,
+				B9885968257684510037D19B /* MiniVIBETests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		B9885967257684510037D19B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B994C69625627DBD000E563C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -465,13 +503,6 @@
 				B9B6279925628130006B0F00 /* .swiftlint.yml in Resources */,
 				DEF8AEF62563C81200CE2A2F /* Assets.xcassets in Resources */,
 				B994C6A325627DBE000E563C /* Preview Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B9B6279D256281BE006B0F00 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -520,6 +551,16 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		B9885965257684510037D19B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B988596C257684510037D19B /* MiniVIBETests.swift in Sources */,
+				B96F49F725768B7200C5AF5F /* MockRequest.swift in Sources */,
+				B96F49FB25768CB800C5AF5F /* NetworkError+Equatable.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B994C69425627DBD000E563C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -534,6 +575,7 @@
 				DE09044F256D0B33002914B5 /* HomeMagazineItem.swift in Sources */,
 				DE8F52E0256D82AC00A7735F /* HomeVibeRecommendSectionView.swift in Sources */,
 				DE09042F256CCE11002914B5 /* HomeMagazineSectionView.swift in Sources */,
+				B9FEA4EE25767BA20089CCD6 /* RequestProviding.swift in Sources */,
 				B97A5067256E7343003F7DF5 /* CGFloat+defaultValues.swift in Sources */,
 				B9F0BDD0256EDE41004A2852 /* CGFloat+oneItemImageWidth.swift in Sources */,
 				DE3D6F8925640FE800C236EF /* HomeFooterView.swift in Sources */,
@@ -541,6 +583,7 @@
 				DE35E2ED256D569500F369BE /* HomeNewAlbumItem.swift in Sources */,
 				B9B4D1EB256E5BB600EC2FE2 /* MoreHeaderView.swift in Sources */,
 				DE8F52DA256D829500A7735F /* HomeVibeRecommendItem.swift in Sources */,
+				B9A9FA78257613CF00687EA1 /* WebRepository.swift in Sources */,
 				DE09044B256D0A5D002914B5 /* HomeMagazineItemView.swift in Sources */,
 				DE8F52E4256D82C500A7735F /* HomeVibeRecommendItemView.swift in Sources */,
 				DE090443256D098A002914B5 /* HomeNowItemView.swift in Sources */,
@@ -564,6 +607,7 @@
 				B994C69C25627DBD000E563C /* MiniVIBEApp.swift in Sources */,
 				DE35E2F3256D56AE00F369BE /* HomeNewAlbumItemView.swift in Sources */,
 				DE3D6F95256414EA00C236EF /* HomeNowSectionView.swift in Sources */,
+				B9FEA4E6257668E10089CCD6 /* Networking.swift in Sources */,
 				DE090447256D09CC002914B5 /* HomeNowReplayItem.swift in Sources */,
 				B931019E256D800000DD5ADA /* View+vibeTitle1.swift in Sources */,
 				DEF5EFFB25728C00006666DC /* HomeVibeRecommendDetailView.swift in Sources */,
@@ -573,25 +617,59 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B9B6279B256281BE006B0F00 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B9B627A2256281BE006B0F00 /* MiniVIBETests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B9B627A5256281BE006B0F00 /* PBXTargetDependency */ = {
+		B988596F257684510037D19B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B994C69725627DBD000E563C /* MiniVIBE */;
-			targetProxy = B9B627A4256281BE006B0F00 /* PBXContainerItemProxy */;
+			targetProxy = B988596E257684510037D19B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		B9885971257684510037D19B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = MiniVIBETests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.dochoi.MiniVIBETests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiniVIBE.app/MiniVIBE";
+			};
+			name = Debug;
+		};
+		B9885972257684510037D19B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B3PWYBKFUK;
+				INFOPLIST_FILE = MiniVIBETests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = kr.dochoi.MiniVIBETests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiniVIBE.app/MiniVIBE";
+			};
+			name = Release;
+		};
 		B994C6AA25627DBE000E563C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -756,51 +834,18 @@
 			};
 			name = Release;
 		};
-		B9B627A7256281BE006B0F00 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
-				INFOPLIST_FILE = MiniVIBETests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = kr.dochoi.MiniVIBETests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiniVIBE.app/MiniVIBE";
-			};
-			name = Debug;
-		};
-		B9B627A8256281BE006B0F00 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B3PWYBKFUK;
-				INFOPLIST_FILE = MiniVIBETests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = kr.dochoi.MiniVIBETests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MiniVIBE.app/MiniVIBE";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		B9885970257684510037D19B /* Build configuration list for PBXNativeTarget "MiniVIBETests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9885971257684510037D19B /* Debug */,
+				B9885972257684510037D19B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		B994C69325627DBD000E563C /* Build configuration list for PBXProject "MiniVIBE" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -815,15 +860,6 @@
 			buildConfigurations = (
 				B994C6AD25627DBE000E563C /* Debug */,
 				B994C6AE25627DBE000E563C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B9B627A6256281BE006B0F00 /* Build configuration list for PBXNativeTarget "MiniVIBETests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B9B627A7256281BE006B0F00 /* Debug */,
-				B9B627A8256281BE006B0F00 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
