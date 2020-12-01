@@ -1,8 +1,8 @@
 import { model, Schema, Model, Document } from 'mongoose';
 
 interface ILog extends Document {
-  eventType: string;
-  userAge: number;
+  eventType?: string;
+  userAge?: number;
 }
 
 const LogSchema: Schema = new Schema({
