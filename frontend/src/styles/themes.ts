@@ -28,14 +28,14 @@ const color = {
   black: '#000000',
   white: '#ffffff',
   darkgrey: '#222',
-  lightgrey: '#F2F2F2',
+  lightgrey: '#f2f2f2',
   grey: '#555',
   mainBGColor: '#fbfbfb',
   headerNavColor: '#cccccc',
   highlight: '#ff1350',
-
   playBTNColor: '#ff1150',
   textColor: '#232323',
+  greyFontColor: '#999999',
 };
 
 const theme = {

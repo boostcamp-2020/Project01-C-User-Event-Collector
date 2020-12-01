@@ -7,7 +7,7 @@ function NavList() {
   return (
     <Container>
       <NavItemWrapper>
-        <Link href="/">
+        <Link href="/today">
           <NavItem>
             <FaMusic />
             <ItemText>투데이</ItemText>
