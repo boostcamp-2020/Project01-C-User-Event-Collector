@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@styles/themed-components';
-import SideBar from '@components/Layout/Sidebar';
-import PlayBar from '@components/Layout/Playbar';
+import SideBar from '@components/Layout/SideBar';
+import PlayBar from '@components/Layout/PlayBar';
 import Footer from '@components/Layout/Footer';
 
 function Layout({ children }) {
