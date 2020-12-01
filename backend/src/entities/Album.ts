@@ -12,6 +12,9 @@ export default class Album extends BaseEntity {
   name!: string;
 
   @Column()
+  imgUrl!: string;
+
+  @Column()
   date!: Date;
 
   @ManyToMany(() => User, user => user.albums)
