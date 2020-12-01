@@ -1,4 +1,4 @@
-import DJStationComponent from '@components/DJStation';
+import DJStationComponent from 'src/pages/DJStation';
 
 const DJStation = () => (
   <div>

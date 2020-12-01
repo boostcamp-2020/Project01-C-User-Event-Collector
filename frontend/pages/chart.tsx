@@ -1,9 +1,19 @@
 import Sample from '@components/sample-rx';
 
-const Chart = () => (
-  <div>
-    <Sample text="Hello This is Chart Page" />
-  </div>
-);
+export default function Chart({ data }) {
+  console.log(data.data);
+  return (
+    <div>
+      <Sample text={data.data[5].artist} />
+    </div>
+  );
+}
 
-export default Chart;
+export async function getStaticProps(context) {
+  const res = await fetch('http://localhost:5000/v1/naver/music/chart/100');
+  const data = await res.json();
+
+  return {
+    props: { data },
+  };
+}

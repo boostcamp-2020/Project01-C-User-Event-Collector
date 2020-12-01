@@ -3,7 +3,8 @@ import styled from '@public/styles/themed-components';
 import Dropdown from '@components/Common/Dropdown';
 import NavList from './NavList';
 
-const profileImgUrl ='https://phinf.pstatic.net/contact/20200707_134/1594090738223DUwwm_JPEG/20160913_143317.jpg?type=s33';
+const profileImgUrl =
+  'https://phinf.pstatic.net/contact/20200707_134/1594090738223DUwwm_JPEG/20160913_143317.jpg?type=s33';
 
 function NavBar() {
   return (
