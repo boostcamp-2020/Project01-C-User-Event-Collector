@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@public/styles/themed-components';
+import styled from '@styles/themed-components';
 import NavBar from './NavBar';
 import Header from './Header';
 
@@ -25,7 +25,6 @@ const Container = styled.header`
     transition: background-color .4s ease-in-out;
 
     color: white;
-    font-size: 2rem;
   `}
   // desktop
   width: 225px;
@@ -38,5 +37,6 @@ const Container = styled.header`
   color: ${props => props.theme.color.headerNavColor};
   padding: 1rem;
 `;
+
 
 export default Sidebar;

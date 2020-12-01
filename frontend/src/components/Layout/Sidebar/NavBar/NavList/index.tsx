@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styled from '@public/styles/themed-components';
+import styled from '@styles/themed-components';
 import { FaBookOpen, FaMusic, FaTrophy, FaRecordVinyl, FaRegCalendar } from 'react-icons/fa';
 
 function NavList() {
@@ -40,13 +40,21 @@ function NavList() {
       </NavItemWrapper>
       <NavItemWrapper>
         <LibraryTag>보관함</LibraryTag>
-        <NavItem>믹스테잎</NavItem>
-        <Link href="/library/mytrack">
+        <Link href="/library/mixtapes">
+          <NavItem>믹스테잎</NavItem>
+        </Link>
+        <Link href="/library/tracks">
           <NavItem>노래</NavItem>
         </Link>
-        <NavItem>아티스트</NavItem>
-        <NavItem>앨범</NavItem>
-        <NavItem>플레이리스트</NavItem>
+        <Link href="/library/artists">
+          <NavItem>아티스트</NavItem>
+        </Link>
+        <Link href="/library/albums">
+          <NavItem>앨범</NavItem>
+        </Link>
+        <Link href="/library/playlists">
+          <NavItem>플레이리스트</NavItem>
+        </Link>
         <NavItem>받은노래</NavItem>
         <NavItem>구매한 MP3</NavItem>
       </NavItemWrapper>
