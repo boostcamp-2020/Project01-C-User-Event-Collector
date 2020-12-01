@@ -13,18 +13,6 @@ import * as passport from 'passport';
 import passportConfig from './passport';
 import apiRoute from './route';
 
-mongoose
-  .connect(
-    'mongodb+srv://gyeong:sktkdrud2@vibe.ixh4i.mongodb.net/<dbname>?retryWrites=true&w=majority',
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-    },
-  )
-  .then(() => console.log('MongoDB Connected!'))
-  .catch(err => console.log(err));
-
 if (process.env.NODE_ENV === 'production') {
   dotenv.config({ path: path.join(__dirname, '../.env.production') });
 } else if (process.env.NODE_ENV === 'development') {
@@ -32,6 +20,15 @@ if (process.env.NODE_ENV === 'production') {
 } else {
   throw new Error('process.env.NODE_ENV Not Found');
 }
+
+mongoose
+  .connect(process.env.MONGO_URI as string, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+  })
+  .then(() => console.log('MongoDB Connected!'))
+  .catch(err => console.log(err));
 
 createConnection()
   .then(() => {
