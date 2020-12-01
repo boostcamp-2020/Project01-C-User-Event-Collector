@@ -20,9 +20,12 @@ enum NetworkError: Error {
 extension NetworkError: LocalizedError {
     var errorDescription: String? {
         switch self {
-        case .nilURL: return "URL is Nil"
-        case let .httpCode(code): return "Unexpected HTTP code: \(code)"
-        case .unexpectedResponse: return "Unexpected response from the server"
+        case .nilURL:
+            return "URL is Nil"
+        case let .httpCode(code):
+            return "Unexpected HTTP code: \(code)"
+        case .unexpectedResponse:
+            return "Unexpected response from the server"
         case let .networkError(reason):
             return reason
         }
