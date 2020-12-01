@@ -85,7 +85,6 @@ const PlayButtonWrapper = styled.div`
   justify-content: space-between;
 
   margin-left: 0;
-  bottom: 60px;
   right: 0;
 `;
 
