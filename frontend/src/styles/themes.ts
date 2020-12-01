@@ -33,6 +33,8 @@ const color = {
   mainBGColor: '#fbfbfb',
   headerNavColor: '#cccccc',
   highlight: '#ff1350',
+  playBTNColor: '#ff1150',
+  textColor: '#232323',
   greyFontColor: '#999999',
 };
 

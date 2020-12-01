@@ -71,6 +71,12 @@
       "@public/*": [
         "./public/*"
       ],
+      "@styles/*": [
+        "./src/styles/*"
+      ],
+      "@pages/*": [
+        "./src/pages/*"
+      ],
       "@utils/*": [
         "./src/utils/*"
       ],

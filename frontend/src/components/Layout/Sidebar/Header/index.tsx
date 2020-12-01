@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@public/styles/themed-components';
+import styled from '@styles/themed-components';
 import { CgSearch } from 'react-icons/cg';
 import Image from 'next/image';
 

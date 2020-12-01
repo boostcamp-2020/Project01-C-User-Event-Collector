@@ -1,7 +1,7 @@
 import React from 'react';
 import * as styledComponents from 'styled-components';
-import { Theme } from '@public/styles/themes';
-import withSizes from '@public/styles/withSizes';
+import { Theme } from '@styles/themes';
+import withSizes from '@styles/withSizes';
 
 export type DeviceSize = 'phone' | 'tablet' | 'desktop' | 'ssr';
 
