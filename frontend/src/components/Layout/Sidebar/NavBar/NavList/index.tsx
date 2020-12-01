@@ -7,7 +7,7 @@ function NavList() {
   return (
     <Container>
       <NavItemWrapper>
-        <Link href="/">
+        <Link href="/today">
           <NavItem>
             <FaMusic />
             <ItemText>투데이</ItemText>
@@ -41,7 +41,9 @@ function NavList() {
       <NavItemWrapper>
         <LibraryTag>보관함</LibraryTag>
         <NavItem>믹스테잎</NavItem>
-        <NavItem>노래</NavItem>
+        <Link href="/library/mytrack">
+          <NavItem>노래</NavItem>
+        </Link>
         <NavItem>아티스트</NavItem>
         <NavItem>앨범</NavItem>
         <NavItem>플레이리스트</NavItem>

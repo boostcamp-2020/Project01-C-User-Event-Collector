@@ -13,7 +13,7 @@ function MyTrack() {
         type="checkBox"
         title="Fly Away"
         artists={artists}
-        album="Flay Away"
+        album="Fly Away"
         imgUrl={imgUrl}
       />
     </Wrapper>

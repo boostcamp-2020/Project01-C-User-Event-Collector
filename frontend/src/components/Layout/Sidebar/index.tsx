@@ -36,6 +36,7 @@ const Container = styled.header`
   z-index: 10100;
   background: ${props => props.theme.color.black};
   color: ${props => props.theme.color.headerNavColor};
+  padding: 1rem;
 `;
 
 export default Sidebar;
