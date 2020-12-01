@@ -7,7 +7,20 @@ import * as morgan from 'morgan';
 import { createConnection } from 'typeorm';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
+import * as mongoose from 'mongoose';
 import apiRoute from './route';
+
+mongoose
+  .connect(
+    'mongodb+srv://gyeong:sktkdrud2@vibe.ixh4i.mongodb.net/<dbname>?retryWrites=true&w=majority',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+    },
+  )
+  .then(() => console.log('MongoDB Connected!'))
+  .catch(err => console.log(err));
 
 if (process.env.NODE_ENV === 'production') {
   dotenv.config({ path: path.join(__dirname, '../.env.production') });

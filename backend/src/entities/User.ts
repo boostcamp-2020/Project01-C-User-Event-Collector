@@ -33,15 +33,15 @@ export default class User extends BaseEntity {
   @Column()
   profileURL!: string;
 
-  @Column({
-    type: 'enum',
-    enum: ['F', 'M', 'U'],
-    default: 'U',
-  })
-  gender!: UserGenderType;
+  // @Column({
+  //   type: 'enum',
+  //   enum: ['F', 'M', 'U'],
+  //   default: 'U',
+  // })
+  // gender!: UserGenderType;
 
-  @Column()
-  birth!: Date;
+  // @Column()
+  // birth!: Date;
 
   @CreateDateColumn()
   createDate!: Date;
