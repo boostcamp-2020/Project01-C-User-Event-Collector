@@ -1,8 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+
+const eventHandler = () => {
+  axios
+    .post('http://localhost:8000/api/log', { eventType: 'clickPlaybar', userAge: 24 })
+    .then(res => {
+      console.log(res.data);
+    });
+};
 
 function Playbar() {
-  return <Player>playbar</Player>;
+  return <Player onClick={eventHandler}>playbar</Player>;
 }
 
 const Player = styled.div`
