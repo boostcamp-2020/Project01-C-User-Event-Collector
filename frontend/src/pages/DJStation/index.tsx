@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '@public/styles/themed-components';
+import styled from '@styles/themed-components';
 import MagTopItem from '@components/Common/MagTopItem';
 import BoxItem from '@components/Common/BoxItem';
 
