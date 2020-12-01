@@ -17,6 +17,9 @@ export default class Artist extends BaseEntity {
   @Column()
   debut!: Date;
 
+  @Column()
+  imgUrl!: string;
+
   @ManyToMany(() => User, user => user.artists, { onDelete: 'CASCADE' })
   users!: User[];
 
