@@ -8,6 +8,9 @@ import { createConnection } from 'typeorm';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 import * as mongoose from 'mongoose';
+import * as passport from 'passport';
+
+import passportConfig from './passport';
 import apiRoute from './route';
 
 mongoose
@@ -30,7 +33,6 @@ if (process.env.NODE_ENV === 'production') {
   throw new Error('process.env.NODE_ENV Not Found');
 }
 
-// TODO: 사용자 정의 에러 핸들링 미들웨어
 createConnection()
   .then(() => {
     console.log('Database Connected :)');
@@ -44,8 +46,12 @@ createConnection()
     app.use(morgan('dev'));
     // TODO: 허용할 주소 정확히 명시하기
     app.use(cors());
+    app.use(passport.initialize());
+    passportConfig();
 
     app.use('/api', apiRoute);
+
+    // TODO: 사용자 정의 에러 핸들링 미들웨어
 
     app.listen(app.get('port'), () => {
       console.log(`API Server App Listening on PORT ${app.get('port')}`);

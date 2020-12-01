@@ -15,7 +15,7 @@ import Track from './Track';
 import Playlist from './Playlist';
 import Subscribe from './Subscribe';
 
-export type UserGenderType = 'F' | 'M' | 'U';
+// export type UserGenderType = 'F' | 'M' | 'U';
 
 @Entity()
 export default class User extends BaseEntity {
