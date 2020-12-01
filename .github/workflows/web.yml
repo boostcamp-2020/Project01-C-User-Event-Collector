@@ -29,5 +29,4 @@ jobs:
             npm run start
             cd ../frontend
             npm install
-            npm run build
-            npm run start
+            npm run build --if-present
