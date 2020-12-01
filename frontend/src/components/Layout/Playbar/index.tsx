@@ -1,14 +1,17 @@
-import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
 import React from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
+
+const eventHandler = () => {
+  axios
+    .post('http://localhost:8000/api/log', { eventType: 'clickPlaybar', userAge: 24 })
+    .then(res => {
+      console.log(res.data);
+    });
+};
 
 function PlayBar() {
-  return (
-    <Player>
-      playbar
-      <BoxPlayButton />
-    </Player>
-  );
+  return <Player onClick={eventHandler}>playbar</Player>;
 }
 
 const Player = styled.div`

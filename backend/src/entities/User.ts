@@ -11,10 +11,11 @@ import {
 import MP3 from './MP3';
 import Artist from './Artist';
 import Album from './Album';
+import Track from './Track';
 import Playlist from './Playlist';
 import Subscribe from './Subscribe';
 
-export type UserGenderType = 'F' | 'M' | 'U';
+// export type UserGenderType = 'F' | 'M' | 'U';
 
 @Entity()
 export default class User extends BaseEntity {
@@ -33,15 +34,15 @@ export default class User extends BaseEntity {
   @Column()
   profileURL!: string;
 
-  @Column({
-    type: 'enum',
-    enum: ['F', 'M', 'U'],
-    default: 'U',
-  })
-  gender!: UserGenderType;
+  // @Column({
+  //   type: 'enum',
+  //   enum: ['F', 'M', 'U'],
+  //   default: 'U',
+  // })
+  // gender!: UserGenderType;
 
-  @Column()
-  birth!: Date;
+  // @Column()
+  // birth!: Date;
 
   @CreateDateColumn()
   createDate!: Date;
@@ -68,4 +69,8 @@ export default class User extends BaseEntity {
   @ManyToMany(() => Playlist, playlist => playlist.users, { onDelete: 'CASCADE' })
   @JoinTable({ name: 'UserPlaylist' })
   playlists!: Playlist[];
+
+  @ManyToMany(() => Track, track => track.users, { onDelete: 'CASCADE' })
+  @JoinTable({ name: 'UserTrack' })
+  tracks!: Track[];
 }

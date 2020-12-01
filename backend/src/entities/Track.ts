@@ -8,6 +8,7 @@ import {
   JoinTable,
 } from 'typeorm';
 import MP3 from './MP3';
+import User from './User';
 import Artist from './Artist';
 import Playlist from './Playlist';
 
@@ -26,9 +27,6 @@ export default class Track extends BaseEntity {
   composer!: string;
 
   @Column()
-  lyric!: string;
-
-  @Column()
   isLocal!: boolean;
 
   @OneToMany(() => MP3, mp3 => mp3.user, { onDelete: 'CASCADE' })
@@ -36,6 +34,9 @@ export default class Track extends BaseEntity {
 
   @ManyToMany(() => Artist, artist => artist.tracks, { onDelete: 'CASCADE' })
   artists!: Artist[];
+
+  @ManyToMany(() => User, user => user.tracks)
+  users!: User[];
 
   @ManyToMany(() => Playlist, playlist => playlist.tracks, { onDelete: 'CASCADE' })
   @JoinTable({ name: 'TrackPlaylist' })
