@@ -21,7 +21,7 @@ const ArtistCard = ({ artistMetaData }: ArtistMetaProps) => {
     <Container>
       <CardContainer>
         <ImageContainer>
-          <CircleImage imageSrc={artistMetaData.imgUrl} />
+          <CircleImage imageSrc={artistMetaData?.imgUrl} />
           <LikeButton>
             <IconContext.Provider value={{ color: 'red', size: '1.4rem' }}>
               <IoHeart />
@@ -29,7 +29,7 @@ const ArtistCard = ({ artistMetaData }: ArtistMetaProps) => {
           </LikeButton>
         </ImageContainer>
       </CardContainer>
-      <ArtistTitle>{artistMetaData.name}</ArtistTitle>
+      <ArtistTitle>{artistMetaData?.name}</ArtistTitle>
     </Container>
   );
 };
