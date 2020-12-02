@@ -9,37 +9,57 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: ViewModel
     var playingBar = NowPlayingBarView()
     var musicPlayer = MusicPlayer()
     var body: some View {
-        TabView {
+        TabView(selection: $viewModel.selectedTab) {
             HomeView(playingBar: playingBar)
                 .tabItem {
                     Image(systemName: "house")
-                }
-            Text("Another Tab")
-                .tabItem {
-                    Image(systemName: "chart.bar.doc.horizontal")
-                }
-            Text("The Last Tab")
-                .tabItem {
-                    Image(systemName: "play.rectangle.fill")
-                }
+                }.tag(0)
+            Button(action: {
+                viewModel.dbRepository.fetchEvent()
+            }, label: {
+                Text("fetch")
+            })
+            .tabItem {
+                Image(systemName: "chart.bar.doc.horizontal")
+            }.tag(1)
+            Button(action: {
+                viewModel.dbRepository.deleteAllEvent()
+            }, label: {
+                Text("delete")
+            })
+            .tabItem {
+                Image(systemName: "play.rectangle.fill")
+            }.tag(2)
             Text("Another Tab")
                 .tabItem {
                     Image(systemName: "magnifyingglass")
-                }
+                }.tag(3)
             Text("The Last Tab")
                 .tabItem {
                     Image(systemName: "person.fill")
-                }
+                }.tag(4)
         }.accentColor(.vibePink)
         .environmentObject(musicPlayer)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
+extension ContentView {
+    class ViewModel: ObservableObject {
+        let dbRepository: DBRepository
+        @Published var selectedTab = 0 {
+            didSet {
+                let event = dbRepository.newEvent()
+                event.tab = Int32(selectedTab)
+                dbRepository.saveContext()
+            }
+        }
+        
+        init(dbRepository: DBRepository) {
+            self.dbRepository = dbRepository
+        }
     }
 }

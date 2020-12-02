@@ -12,15 +12,10 @@ struct MiniVIBEApp: App {
     init() {
         UITabBar.appearance().barTintColor = .black
     }
+    let dbRepository = DBRepository()
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(ContentView.ViewModel(dbRepository: dbRepository))
         }
-    }
-}
-
-struct MiniVIBEApp_Previews: PreviewProvider {
-    static var previews: some View {
-        Text("Hello, World!")
     }
 }
