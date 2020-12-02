@@ -20,19 +20,7 @@ class PersistenceController {
     var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
-//
-//    func addEvent(event: Event) -> Bool {
-//        guard let entity = NSEntityDescription.entity(forEntityName: "Event", in: self.context) else { return false }
-//        let managedObject = NSManagedObject(entity: entity, insertInto: self.context)
-//        managedObject.setValue(event.tab, forKey: "tab")
-//        do {
-//            try self.context.save()
-//            return true
-//        } catch { print(error.localizedDescription)
-//            return false
-//        }
-//    }
-
+    
     func fetch() -> [Event] {
         do {
             let request: NSFetchRequest<Event> = Event.fetchRequest()
@@ -43,7 +31,7 @@ class PersistenceController {
             return []
         }
     }
-
+    
     func deleteAll() -> Bool {
         let request: NSFetchRequest<NSFetchRequestResult> = Event.fetchRequest()
         let delete = NSBatchDeleteRequest(fetchRequest: request)

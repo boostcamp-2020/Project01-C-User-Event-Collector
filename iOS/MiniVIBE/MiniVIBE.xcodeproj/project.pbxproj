@@ -247,13 +247,6 @@
 			path = HomeDJStationSection;
 			sourceTree = "<group>";
 		};
-		B9A9FA76257613B700687EA1 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
 		B9B4D1E9256E5BAC00EC2FE2 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -298,7 +291,6 @@
 		B9DB8A17256CFE0200D3F1A2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				B9A9FA76257613B700687EA1 /* Repositories */,
 				B9B4D1E9256E5BAC00EC2FE2 /* View */,
 				B9DB8A18256CFE1C00D3F1A2 /* Extension */,
 			);

@@ -12,11 +12,6 @@ struct DBRepository: EnvironmentKey {
     
     let persistenceStore = PersistenceController()
     
-    //컴바인 적용해서 퍼블리셔로 바꿔야 할 수도 있음
-//    func addEvent(event: Event) {
-//        persistenceStore.addEvent(event: event)
-//    }
-//
     func fetchEvent() {
         let event = persistenceStore.fetch()
         event.forEach {
