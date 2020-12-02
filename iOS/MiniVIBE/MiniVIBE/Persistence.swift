@@ -37,10 +37,10 @@ class PersistenceController {
         let delete = NSBatchDeleteRequest(fetchRequest: request)
         do {
             try self.context.execute(delete)
-            return true
         } catch {
             return false
         }
+        return true
     }
     
     func saveContext() -> Bool {
