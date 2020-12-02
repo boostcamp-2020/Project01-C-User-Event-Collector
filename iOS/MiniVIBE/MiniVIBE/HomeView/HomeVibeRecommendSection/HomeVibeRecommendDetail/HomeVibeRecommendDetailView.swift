@@ -24,7 +24,7 @@ struct HomeVibeRecommendDetailView: View {
             Color.black.edgesIgnoringSafeArea(.vertical)
             VStack {
                 DetailHeaderView(title: Constant.headerTitle)
-                ScrollView {
+                ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack {
                         ForEach(vibeRecommendItems) { item in
                             ListItemView(item: item)

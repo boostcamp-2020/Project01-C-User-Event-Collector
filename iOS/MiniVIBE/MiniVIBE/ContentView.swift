@@ -17,11 +17,11 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "house")
                 }
-            Text("Another Tab")
+            ChartView(playingBar: playingBar)
                 .tabItem {
                     Image(systemName: "chart.bar.doc.horizontal")
                 }
-            Text("The Last Tab")
+            VideoView(playingBar: playingBar)
                 .tabItem {
                     Image(systemName: "play.rectangle.fill")
                 }
@@ -33,7 +33,8 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "person.fill")
                 }
-        }.accentColor(.vibePink)
+        }
+        .accentColor(.vibePink)
         .environmentObject(musicPlayer)
     }
 }

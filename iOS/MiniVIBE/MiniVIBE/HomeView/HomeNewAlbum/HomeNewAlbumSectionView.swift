@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct HomeNewAlbumSectionView: View {
-    private var newAlbums: [HomeNewAlbumItem] = [
-        HomeNewAlbumItem(image: "newAlbum-dummy1", title: "ARTIST. New Bi", artist: "Anonymous Artists"),
-        HomeNewAlbumItem(image: "newAlbum-dummy2", title: "Darling", artist: "양다일"),
-        HomeNewAlbumItem(image: "newAlbum-dummy3", title: "A Season of Love", artist: "Idina Menzel")]
+    private var newAlbums: [Album] = [
+        Album(imageURLString: "newAlbum-dummy1", title: "ARTIST. New Bi", artist: "Anonymous Artists", songs: []),
+        Album(imageURLString: "newAlbum-dummy2", title: "Darling", artist: "양다일", songs: []),
+        Album(imageURLString: "newAlbum-dummy3", title: "A Season of Love", artist: "Idina Menzel", songs: [])]
     var body: some View {
         homeNewAlbumSectionScrollView
     }

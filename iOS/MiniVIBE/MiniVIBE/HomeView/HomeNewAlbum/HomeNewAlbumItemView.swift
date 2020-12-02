@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct HomeNewAlbumItemView: View {
-    var item: HomeNewAlbumItem
+    var item: Album
     var body: some View {
-        ImageItemView(image: Image(item.image), type: .two) {
+        ImageItemView(image: Image(item.imageURLString), type: .two) {
             Text(item.title)
                 .vibeTitle3()
                 .lineLimit(1)

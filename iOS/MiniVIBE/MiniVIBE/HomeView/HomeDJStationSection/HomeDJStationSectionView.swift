@@ -25,7 +25,9 @@ private extension HomeDJStationSectionView {
     
     var homeDJStationSectionScrollView: some View {
         VStack {
-            MoreHeaderView(title: Constant.title)
+            NavigationLink(destination: HomeDJStationDetailView()) {
+                    MoreHeaderView(title: Constant.title)
+            }
             SectionScrollView {
                 ForEach(mockItems) { item in
                     HomeDJStationItemView(item: item)

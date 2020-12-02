@@ -9,13 +9,22 @@ import SwiftUI
 
 struct MoreHeaderView: View {
     let title: String
+    let subtitle: String?
     var body: some View {
-        HStack {
-            Text(title).vibeTitle2()
-            Spacer()
-            Text("더보기")
-                .vibeMainText()
+        VStack(alignment: .leading, spacing: 5) {
+            HStack {
+                Text(title).vibeTitle2()
+                Spacer()
+                Text("더보기")
+                    .vibeMainText()
+            }
+            subtitle.map({ Text($0).vibeMainText() })
         }.padding(EdgeInsets(top: 5, leading: .defaultPadding, bottom: 5, trailing: .defaultPadding))
+    }
+    
+    init(title: String, subtitle: String? = nil) {
+        self.title = title
+        self.subtitle = subtitle
     }
 }
 
