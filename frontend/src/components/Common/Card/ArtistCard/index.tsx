@@ -10,29 +10,28 @@ interface ArtistMetaProps {
 }
 
 type ArtistMeta = {
-  id: number;
-  name: string;
-  src: string;
-}
+  id?: number;
+  name?: string;
+  debut?: string;
+  imgUrl?: string;
+};
 
 const ArtistCard = ({ artistMetaData }: ArtistMetaProps) => {
-  const name = 'BLACKPINK';
-  const src = 'https://musicmeta-phinf.pstatic.net/artist/000/500/500555.jpg?type=ff300_300&v=20201002130007'
   return (
     <Container>
       <CardContainer>
         <ImageContainer>
-          <CircleImage imageSrc={src} />
+          <CircleImage imageSrc={artistMetaData.imgUrl} />
           <LikeButton>
-            <IconContext.Provider value={{ color: "red", size: "1.4rem" }}>
+            <IconContext.Provider value={{ color: 'red', size: '1.4rem' }}>
               <IoHeart />
             </IconContext.Provider>
           </LikeButton>
         </ImageContainer>
       </CardContainer>
-      <ArtistTitle>{name}</ArtistTitle>
+      <ArtistTitle>{artistMetaData.name}</ArtistTitle>
     </Container>
-  )
+  );
 };
 
 const Container = styled.ul`
@@ -40,8 +39,7 @@ const Container = styled.ul`
   height: auto;
 `;
 
-const CardContainer = styled.div`
-`;
+const CardContainer = styled.div``;
 
 const ImageContainer = styled.a`
   position: relative;
