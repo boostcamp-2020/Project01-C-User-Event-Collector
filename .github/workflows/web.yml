@@ -30,5 +30,4 @@ jobs:
             cd ../frontend
             npm install
             npm run build --if-present
-            npm run start
             pm2 start npm --name "next" -- start

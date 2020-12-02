@@ -3,6 +3,6 @@ import { getAlbumByAlbumId } from './controller';
 
 const route = express.Router();
 
-route.get('/:id', getAlbumByAlbumId);
+route.get('/:albumId', getAlbumByAlbumId);
 
 export default route;

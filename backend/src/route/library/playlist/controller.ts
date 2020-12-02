@@ -23,6 +23,8 @@ const addPlaylist = async (req: Request, res: Response, next: NextFunction): Pro
   try {
     // const { id: userId } = req.user as User;
     const { playlistId } = req.body;
+    if (!playlistId) return res.status(400).json({ message: 'Parameter Error: playlistId' });
+
     const user = (await User.findOne(1, { relations: ['playlists'] })) as User;
     const playlist = (await Playlist.findOne(playlistId)) as Playlist;
     if (!playlist) return res.status(404).json({ message: 'Playlist Not Found' });
@@ -40,6 +42,8 @@ const deletePlaylist = async (req: Request, res: Response, next: NextFunction): 
   try {
     // const { id: userId } = req.user as User;
     const { playlistId } = req.params;
+    if (!playlistId) return res.status(400).json({ message: 'Parameter Error: playlistId' });
+
     const user = (await User.findOne(1, { relations: ['playlists'] })) as User;
     const playlistToRemove = (await Playlist.findOne(playlistId)) as Playlist;
     if (!playlistToRemove) return res.status(404).json({ message: 'Playlist Not Found' });
