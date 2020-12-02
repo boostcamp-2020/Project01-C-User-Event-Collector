@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-struct DBRepository: EnvironmentKey {
-    static var defaultValue = DBRepository()
-    
+struct DBRepository {
     let persistenceStore = PersistenceController()
     
     func fetchEvent() {
@@ -33,11 +31,4 @@ struct DBRepository: EnvironmentKey {
         persistenceStore.saveContext()
     }
     
-}
-
-extension EnvironmentValues {
-    var dbRepository: DBRepository {
-        get { self[DBRepository.self] }
-        set { self[DBRepository.self] = newValue}
-    }
 }
