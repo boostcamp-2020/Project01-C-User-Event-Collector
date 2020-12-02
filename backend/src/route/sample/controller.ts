@@ -1,12 +1,12 @@
-import * as express from 'express';
+import { Request, Response } from 'express';
 
-const sampleGet = (req: express.Request, res: express.Response): void => {
+const sampleGet = (req: Request, res: Response): void => {
   const { query, cookies } = req;
   console.log(query, cookies);
   res.json({ query, cookies });
 };
 
-const samplePost = (req: express.Request, res: express.Response): void => {
+const samplePost = (req: Request, res: Response): void => {
   const { body, cookies } = req;
   console.log(body, cookies);
   res.json({ body, cookies });

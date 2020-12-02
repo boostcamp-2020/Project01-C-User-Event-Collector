@@ -4,6 +4,7 @@ import userRoute from './users';
 import logRoute from './log';
 import authRoute from './auth';
 import libraryRoute from './library';
+import trackRoute from './track';
 
 const route = express.Router();
 
@@ -12,5 +13,6 @@ route.use('/user', userRoute);
 route.use('/log', logRoute);
 route.use('/auth', authRoute);
 route.use('/library', libraryRoute);
+route.use('/track', trackRoute);
 
 export default route;

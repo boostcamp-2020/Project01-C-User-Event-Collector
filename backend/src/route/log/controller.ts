@@ -1,7 +1,7 @@
-import * as express from 'express';
+import { Request, Response } from 'express';
 import Log from '../../models/Log';
 
-const createLog = async (req: express.Request, res: express.Response): Promise<void> => {
+const createLog = async (req: Request, res: Response): Promise<void> => {
   const log = new Log(req.body);
   await log.save((err, logInfo) => {
     if (err) return res.json({ success: false, err });
