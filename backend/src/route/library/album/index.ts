@@ -1,8 +1,10 @@
 import * as express from 'express';
-import getAlbums from './controller';
+import { getAlbumsByUserId, addAlbum, deleteAlbum } from './controller';
 
 const route = express.Router();
 
-route.get('/', getAlbums);
+route.get('/', getAlbumsByUserId);
+route.post('/', addAlbum);
+route.delete('/:albumId', deleteAlbum);
 
 export default route;

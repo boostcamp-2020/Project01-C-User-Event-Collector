@@ -4,6 +4,6 @@ import { getTrackByTrackId } from './controller';
 
 const route = express.Router();
 
-route.get('/:id', getTrackByTrackId);
+route.get('/:trackId', getTrackByTrackId);
 
 export default route;

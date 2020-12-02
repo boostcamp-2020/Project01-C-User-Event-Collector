@@ -34,4 +34,11 @@ export default class Artist extends BaseEntity {
   @ManyToMany(() => Genre, genre => genre.artists, { onDelete: 'CASCADE' })
   @JoinTable({ name: 'ArtistGenre' })
   genres!: Genre[];
+
+  static findByUserId(id: number) {
+    return this.createQueryBuilder('artist')
+      .innerJoin('artist.users', 'user')
+      .where('user.id = :id', { id })
+      .getMany();
+  }
 }

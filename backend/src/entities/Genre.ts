@@ -1,4 +1,4 @@
-import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToMany } from 'typeorm';
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
 import Artist from './Artist';
 import Album from './Album';
 
@@ -14,5 +14,6 @@ export default class Genre extends BaseEntity {
   artists!: Artist[];
 
   @ManyToMany(() => Album, album => album.genres)
+  @JoinTable({ name: 'AlbumGenre' })
   albums!: Artist[];
 }

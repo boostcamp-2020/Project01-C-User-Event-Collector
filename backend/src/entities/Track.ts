@@ -46,4 +46,13 @@ export default class Track extends BaseEntity {
   @ManyToMany(() => Playlist, playlist => playlist.tracks, { onDelete: 'CASCADE' })
   @JoinTable({ name: 'TrackPlaylist' })
   playlists!: Playlist[];
+
+  static findByUserId(id: number) {
+    return this.createQueryBuilder('track')
+      .innerJoin('track.users', 'user')
+      .innerJoinAndSelect('track.album', 'album')
+      .innerJoinAndSelect('track.artists', 'artist')
+      .where('user.id = :id', { id })
+      .getMany();
+  }
 }

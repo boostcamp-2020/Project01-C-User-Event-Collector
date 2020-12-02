@@ -7,9 +7,9 @@ const getTrackByTrackId = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const { id: trackId } = req.params;
+    const { trackId } = req.params;
     const track = await Track.findOne(trackId, { relations: ['album', 'artists'] });
-    res.json({ data: track, message: 'success' });
+    res.status(200).json({ success: true, data: track });
   } catch (err) {
     console.log(err);
     next(err);
