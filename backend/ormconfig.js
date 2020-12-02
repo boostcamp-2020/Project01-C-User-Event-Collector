@@ -6,7 +6,7 @@ const devConfig = {
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DBNAME,
   synchronize: true,
-  logging: true,
+  logging: false,
   entities: ['src/entities/**/*.ts'],
   migrations: ['src/migration/**/*.ts'],
   subscribers: ['src/subscriber/**/*.ts'],

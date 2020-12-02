@@ -4,6 +4,7 @@ import {
   PrimaryGeneratedColumn,
   Column,
   OneToMany,
+  ManyToOne,
   ManyToMany,
   JoinTable,
 } from 'typeorm';
@@ -11,6 +12,7 @@ import MP3 from './MP3';
 import User from './User';
 import Artist from './Artist';
 import Playlist from './Playlist';
+import Album from './Album';
 
 @Entity()
 export default class Track extends BaseEntity {
@@ -29,6 +31,9 @@ export default class Track extends BaseEntity {
   @Column()
   isLocal!: boolean;
 
+  @ManyToOne(() => Album, album => album.tracks)
+  album!: Album;
+
   @OneToMany(() => MP3, mp3 => mp3.user, { onDelete: 'CASCADE' })
   mp3!: MP3[];
 
@@ -41,4 +46,13 @@ export default class Track extends BaseEntity {
   @ManyToMany(() => Playlist, playlist => playlist.tracks, { onDelete: 'CASCADE' })
   @JoinTable({ name: 'TrackPlaylist' })
   playlists!: Playlist[];
+
+  static findByUserId(id: number) {
+    return this.createQueryBuilder('track')
+      .innerJoin('track.users', 'user')
+      .innerJoinAndSelect('track.album', 'album')
+      .innerJoinAndSelect('track.artists', 'artist')
+      .where('user.id = :id', { id })
+      .getMany();
+  }
 }

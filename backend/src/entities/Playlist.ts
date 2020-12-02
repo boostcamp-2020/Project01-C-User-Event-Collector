@@ -18,4 +18,12 @@ export default class Playlist extends BaseEntity {
 
   @ManyToMany(() => Track, track => track.playlists)
   tracks!: Track[];
+
+  static findByUserId(id: number) {
+    return this.createQueryBuilder('playlist')
+      .innerJoin('playlist.users', 'user')
+      .innerJoinAndSelect('playlist.tracks', 'track')
+      .where('user.id = :id', { id })
+      .getMany();
+  }
 }
