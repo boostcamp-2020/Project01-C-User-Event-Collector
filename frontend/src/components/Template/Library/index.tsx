@@ -7,8 +7,14 @@ import { IoShuffleOutline } from 'react-icons/io5';
 
 import LargeButton from '@components/Common/Button/LargeButton';
 
+interface ILayout {
+  mainTitle: string;
+  type?: null | string;
+  children: any;
+}
+
 // title이라고 하면 _document랑 충돌남
-function Layout({ mainTitle, type = null, children }) {
+function Layout({ mainTitle, type, children }: ILayout) {
   return (
     <Wrapper>
       <Header>

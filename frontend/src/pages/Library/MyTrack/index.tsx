@@ -1,5 +1,5 @@
 import styled from '@styles/themed-components';
-import Library from '@components/Template/Library/index.tsx';
+import Library from '@components/Template/Library';
 
 import TrackItem from '@components/Common/TrackItem';
 
@@ -8,7 +8,7 @@ const imgUrl =
 const artists = ['Tones And I'];
 
 const MyTrack = () => (
-  <Library mainTitle={'노래'} type={'track'}>
+  <Library mainTitle="노래" type="track">
     <Wrapper>
       <TrackItem
         type="checkBox"
@@ -20,9 +20,6 @@ const MyTrack = () => (
     </Wrapper>
   </Library>
 );
-
-const Container = styled.div`
-`;
 
 const Wrapper = styled.div`
   padding-bottom: 200px;
