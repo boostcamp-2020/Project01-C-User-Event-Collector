@@ -11,7 +11,7 @@ import Foundation
 extension NetworkError: Equatable {
     public static func == (lhs: Self, rhs: Self) -> Bool {
           switch (lhs, rhs) {
-          case (.nilURL, .nilURL):
+          case (.requestProvider, .requestProvider):
             return true
           case (.httpCode, .httpCode):
             return true

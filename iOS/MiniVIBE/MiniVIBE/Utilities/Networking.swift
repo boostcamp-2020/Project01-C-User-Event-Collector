@@ -11,7 +11,7 @@ import Combine
 typealias HTTPCode = Int
 
 enum NetworkError: Error {
-    case nilURL
+    case requestProvider(reason: String)
     case httpCode(HTTPCode)
     case unexpectedResponse
     case networkError(reason: String)
@@ -20,8 +20,8 @@ enum NetworkError: Error {
 extension NetworkError: LocalizedError {
     var errorDescription: String? {
         switch self {
-        case .nilURL:
-            return "URL is Nil"
+        case let .requestProvider(reason):
+            return reason
         case let .httpCode(code):
             return "Unexpected HTTP code: \(code)"
         case .unexpectedResponse:
@@ -44,8 +44,11 @@ final class Network: Networking {
     }
     
     func execute(_ requestProvider: RequestProviding) -> AnyPublisher<Data, NetworkError> {
-        guard let request = try? requestProvider.urlRequest() else {
-            return Fail(error: NetworkError.nilURL)
+        let request: URLRequest
+        do {
+            request = try requestProvider.urlRequest()
+        } catch {
+            return Fail(error: NetworkError.requestProvider(reason: error.localizedDescription))
                 .eraseToAnyPublisher()
         }
         return session.dataTaskPublisher(for: request)

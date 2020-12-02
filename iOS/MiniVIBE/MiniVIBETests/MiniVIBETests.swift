@@ -42,7 +42,7 @@ class MiniVIBETests: XCTestCase {
                 case .finished:
                     XCTFail("nil인 URL임에도 성공")
                 case let .failure(error):
-                    if error == NetworkError.nilURL {
+                    if error == NetworkError.requestProvider(reason: "") {
                         expectation.fulfill()
                     } else {
                         XCTFail("\(error)")

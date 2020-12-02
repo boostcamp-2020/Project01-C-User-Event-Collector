@@ -7,6 +7,19 @@
 
 import Foundation
 
+enum RequestError: Error {
+    case nilURL
+}
+
+extension RequestError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .nilURL:
+            return "URL is nill"
+        }
+    }
+}
+
 enum RequestMethod: String {
     case get = "GET"
     case post = "POST"
@@ -19,13 +32,13 @@ protocol RequestProviding {
     var method: RequestMethod { get }
     var headers: [String: String]? { get }
     func body() throws -> Data?
-    func urlRequest() throws-> URLRequest
+    func urlRequest() throws -> URLRequest
 }
 
 extension RequestProviding {
     func urlRequest() throws -> URLRequest {
         guard let url = url else {
-            throw NetworkError.nilURL
+            throw RequestError.nilURL
         }
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
