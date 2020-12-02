@@ -7,36 +7,48 @@
 
 import CoreData
 
-struct PersistenceController {
-    static let shared = PersistenceController()
-
-    static var preview: PersistenceController = {
-        let result = PersistenceController(inMemory: true)
-        let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-        }
-        do {
-            try viewContext.save()
-        } catch {
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-        return result
-    }()
-
-    let container: NSPersistentContainer
-
-    init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "MiniVIBE")
-        if inMemory {
-            container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
-        }
-        container.loadPersistentStores(completionHandler: { (_, error) in
+class PersistenceController {
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "MiniVIBE")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
+                fatalError("Unresolved error \(error), \(error.userInfo)") }
         })
+        return container
+    }()
+    
+    var context: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
+    
+    func fetch() -> [Event] {
+        do {
+            let request: NSFetchRequest<Event> = Event.fetchRequest()
+            let fetchResult = try self.context.fetch(request)
+            return fetchResult
+        } catch {
+            print(error.localizedDescription)
+            return []
+        }
+    }
+    
+    func deleteAll() -> Bool {
+        let request: NSFetchRequest<NSFetchRequestResult> = Event.fetchRequest()
+        let delete = NSBatchDeleteRequest(fetchRequest: request)
+        do {
+            try self.context.execute(delete)
+        } catch {
+            return false
+        }
+        return true
+    }
+    
+    func saveContext() -> Bool {
+        do {
+            try self.context.save()
+            return true
+        } catch { print(error.localizedDescription)
+            return false
+        }
     }
 }
