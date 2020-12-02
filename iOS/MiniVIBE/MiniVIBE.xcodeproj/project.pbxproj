@@ -13,7 +13,6 @@
 		B912A15F257815CD00223C0B /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B912A15E257815CD00223C0B /* VideoView.swift */; };
 		B912A1652578161500223C0B /* VideoHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B912A1642578161500223C0B /* VideoHeaderView.swift */; };
 		B923A7EC2577A80400E5C48D /* HomeDJStationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923A7EB2577A80400E5C48D /* HomeDJStationDetailView.swift */; };
-		B923A7F32577DAFD00E5C48D /* HomeRecentlyPlayedSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923A7F22577DAFD00E5C48D /* HomeRecentlyPlayedSectionView.swift */; };
 		B9310176256D73D200DD5ADA /* HomePlayListSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9310175256D73D200DD5ADA /* HomePlayListSectionView.swift */; };
 		B931017C256D741200DD5ADA /* HomePlayListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931017B256D741200DD5ADA /* HomePlayListItemView.swift */; };
 		B9310180256D741D00DD5ADA /* HomePlayListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931017F256D741D00DD5ADA /* HomePlayListItem.swift */; };
@@ -22,6 +21,7 @@
 		B93101A8256D823700DD5ADA /* View+vibeMainText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93101A7256D823700DD5ADA /* View+vibeMainText.swift */; };
 		B93101B2256D848500DD5ADA /* View+vibeTitle3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93101B1256D848500DD5ADA /* View+vibeTitle3.swift */; };
 		B962B09D2578169B00111978 /* Viedo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962B09C2578169B00111978 /* Viedo.swift */; };
+		B962B0AA257821CE00111978 /* HomeRecentlyPlayedSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962B0A9257821CE00111978 /* HomeRecentlyPlayedSectionView.swift */; };
 		B96F49F725768B7200C5AF5F /* MockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96F49F625768B7200C5AF5F /* MockRequest.swift */; };
 		B96F49FB25768CB800C5AF5F /* NetworkError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96F49FA25768CB800C5AF5F /* NetworkError+Equatable.swift */; };
 		B97A5067256E7343003F7DF5 /* CGFloat+defaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A5066256E7343003F7DF5 /* CGFloat+defaultValues.swift */; };
@@ -103,7 +103,6 @@
 		B912A15E257815CD00223C0B /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		B912A1642578161500223C0B /* VideoHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoHeaderView.swift; sourceTree = "<group>"; };
 		B923A7EB2577A80400E5C48D /* HomeDJStationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDJStationDetailView.swift; sourceTree = "<group>"; };
-		B923A7F22577DAFD00E5C48D /* HomeRecentlyPlayedSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRecentlyPlayedSectionView.swift; sourceTree = "<group>"; };
 		B9310175256D73D200DD5ADA /* HomePlayListSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayListSectionView.swift; sourceTree = "<group>"; };
 		B931017B256D741200DD5ADA /* HomePlayListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayListItemView.swift; sourceTree = "<group>"; };
 		B931017F256D741D00DD5ADA /* HomePlayListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePlayListItem.swift; sourceTree = "<group>"; };
@@ -115,6 +114,7 @@
 		B95964D4256CDF9D0041B135 /* HomeSummaryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSummaryItemView.swift; sourceTree = "<group>"; };
 		B95964E0256CEF520041B135 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		B962B09C2578169B00111978 /* Viedo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viedo.swift; sourceTree = "<group>"; };
+		B962B0A9257821CE00111978 /* HomeRecentlyPlayedSectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeRecentlyPlayedSectionView.swift; sourceTree = "<group>"; };
 		B96F49F625768B7200C5AF5F /* MockRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRequest.swift; sourceTree = "<group>"; };
 		B96F49FA25768CB800C5AF5F /* NetworkError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkError+Equatable.swift"; sourceTree = "<group>"; };
 		B97A5066256E7343003F7DF5 /* CGFloat+defaultValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+defaultValues.swift"; sourceTree = "<group>"; };
@@ -235,6 +235,15 @@
 			path = HomePlayListSection;
 			sourceTree = "<group>";
 		};
+		B962B0A8257821CE00111978 /* HomeRecentlyPlayedSongs */ = {
+			isa = PBXGroup;
+			children = (
+				B962B0A9257821CE00111978 /* HomeRecentlyPlayedSectionView.swift */,
+			);
+			name = HomeRecentlyPlayedSongs;
+			path = MiniVIBE/HomeView/HomeRecentlyPlayedSongs;
+			sourceTree = SOURCE_ROOT;
+		};
 		B988596A257684510037D19B /* MiniVIBETests */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,6 +264,7 @@
 				B994C69925627DBD000E563C /* Products */,
 				0718D3CA313ECA24B75B795F /* Pods */,
 				CA233B27D449220AF6D7CF38 /* Frameworks */,
+				B962B0A52578219400111978 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -296,14 +306,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		B9A0B377256E48AB00303F2F /* HomeRecentlyPlayedSongs */ = {
-			isa = PBXGroup;
-			children = (
-				B923A7F22577DAFD00E5C48D /* HomeRecentlyPlayedSectionView.swift */,
-			);
-			path = HomeRecentlyPlayedSongs;
-			sourceTree = "<group>";
-		};
 		B9A156F7256E2EDA00FFDA20 /* HomeDJStationSection */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +337,7 @@
 				DEC076D92563AEBE004862AA /* HomeView.swift */,
 				B95964E0256CEF520041B135 /* HomeHeaderView.swift */,
 				DE3D6F8825640FE800C236EF /* HomeFooterView.swift */,
+				B962B0A8257821CE00111978 /* HomeRecentlyPlayedSongs */,
 				B9D18FD9256CD62400ECEFEC /* HomeSummarySection */,
 				DE8F52D8256D823B00A7735F /* HomeVibeRecommendSection */,
 				DE35E2EB256D564900F369BE /* HomeNewAlbum */,
@@ -685,7 +688,6 @@
 				DEF5EFE925723A01006666DC /* NowPlayingBarView.swift in Sources */,
 				DE3EF6D2257361EC00A25B71 /* MusicPlayerView.swift in Sources */,
 				B9D793B12577E9C500B40D0E /* ChartView.swift in Sources */,
-				B923A7F32577DAFD00E5C48D /* HomeRecentlyPlayedSectionView.swift in Sources */,
 				B9D793D9257805EF00B40D0E /* OverseasRiseSectionView.swift in Sources */,
 				B931018E256D7CC900DD5ADA /* View+vibeTitle2.swift in Sources */,
 				B9A156FF256E307900FFDA20 /* HomeDJStationItemView.swift in Sources */,
@@ -704,6 +706,7 @@
 				B9D18FDF256CD7B000ECEFEC /* HomeSummaryItem.swift in Sources */,
 				B9D793F725780D8400B40D0E /* NewAlbumSectionView.swift in Sources */,
 				DEC076DA2563AEBE004862AA /* HomeView.swift in Sources */,
+				B962B0AA257821CE00111978 /* HomeRecentlyPlayedSectionView.swift in Sources */,
 				B9D793DD2578068000B40D0E /* BillBoardHot100SectionView.swift in Sources */,
 				B994C69C25627DBD000E563C /* MiniVIBEApp.swift in Sources */,
 				DE35E2F3256D56AE00F369BE /* HomeNewAlbumItemView.swift in Sources */,

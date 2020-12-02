@@ -26,12 +26,13 @@ private extension HomeRecentlyPlayedSectionView {
     var homeRecentlyPlayedSectionScrollView: some View {
         VStack {
             // FIXME: 네비게이션 링크
-           // NavigationLink(destination: _) {
-                    MoreHeaderView(title: Constant.title)
-         //   }
+            // NavigationLink(destination: _) {
+            MoreHeaderView(title: Constant.title)
+            //   }
             SectionScrollView {
                 FiveRowSongGirdView(songs: mockItems)
             }
         }
     }
 }
+
