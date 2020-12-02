@@ -39,7 +39,8 @@
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1",
     "styled-components": "^5.2.1",
-    "styled-reset": "^4.3.1"
+    "styled-reset": "^4.3.1",
+    "swr": "^0.3.9"
   },
   "devDependencies": {
     "@babel/core": "^7.12.8",

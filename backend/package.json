@@ -44,8 +44,6 @@
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.0",
-    "nodemon": "^2.0.6",
-    "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
     "mysql2": "^2.2.5",
     "nodemon": "^2.0.6",
@@ -53,6 +51,7 @@
     "passport-jwt": "^4.0.0",
     "passport-naver": "^1.0.6",
     "reflect-metadata": "^0.1.13",
+    "swr": "^0.3.9",
     "typeorm": "^0.2.29"
   }
 }

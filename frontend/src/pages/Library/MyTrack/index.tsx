@@ -8,12 +8,13 @@ const MyTrack = ({ trackList }) => (
     <Wrapper>
       {trackList.map(track => (
         <TrackItem
+          id={track.id}
           key={track.id}
-          type="checkBox"
+          type="checkbox"
           title={track.title}
-          artists={track.artists.map(artist => artist.name)}
+          artists={track.artists}
           album={track.album.name}
-          imgUrl=""
+          imgUrl={track.album.imgUrl}
         />
       ))}
     </Wrapper>
