@@ -52,6 +52,7 @@
 		DE3D6F8925640FE800C236EF /* HomeFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3D6F8825640FE800C236EF /* HomeFooterView.swift */; };
 		DE3D6F95256414EA00C236EF /* HomeNowSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3D6F94256414EA00C236EF /* HomeNowSectionView.swift */; };
 		DE3EF6D2257361EC00A25B71 /* MusicPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3EF6D1257361EC00A25B71 /* MusicPlayerView.swift */; };
+		DE7516A025776F990054AFC6 /* DBRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE75169F25776F990054AFC6 /* DBRepository.swift */; };
 		DE8F52DA256D829500A7735F /* HomeVibeRecommendItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F52D9256D829500A7735F /* HomeVibeRecommendItem.swift */; };
 		DE8F52E0256D82AC00A7735F /* HomeVibeRecommendSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F52DF256D82AC00A7735F /* HomeVibeRecommendSectionView.swift */; };
 		DE8F52E4256D82C500A7735F /* HomeVibeRecommendItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8F52E3256D82C500A7735F /* HomeVibeRecommendItemView.swift */; };
@@ -126,6 +127,7 @@
 		DE3D6F8825640FE800C236EF /* HomeFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFooterView.swift; sourceTree = "<group>"; };
 		DE3D6F94256414EA00C236EF /* HomeNowSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNowSectionView.swift; sourceTree = "<group>"; };
 		DE3EF6D1257361EC00A25B71 /* MusicPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayerView.swift; sourceTree = "<group>"; };
+		DE75169F25776F990054AFC6 /* DBRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBRepository.swift; sourceTree = "<group>"; };
 		DE8F52D9256D829500A7735F /* HomeVibeRecommendItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVibeRecommendItem.swift; sourceTree = "<group>"; };
 		DE8F52DF256D82AC00A7735F /* HomeVibeRecommendSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVibeRecommendSectionView.swift; sourceTree = "<group>"; };
 		DE8F52E3256D82C500A7735F /* HomeVibeRecommendItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVibeRecommendItemView.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		B994C69A25627DBD000E563C /* MiniVIBE */ = {
 			isa = PBXGroup;
 			children = (
+				DE75169E25776F8A0054AFC6 /* Repository */,
 				B9FEA4EC25767AE60089CCD6 /* Utilities */,
 				DEF5EFEC25727DF8006666DC /* Models */,
 				B9DB8A17256CFE0200D3F1A2 /* Common */,
@@ -234,13 +237,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		B9A0B377256E48AB00303F2F /* HomeRecentlyPlayedSongs */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = HomeRecentlyPlayedSongs;
-			sourceTree = "<group>";
-		};
 		B9A156F7256E2EDA00FFDA20 /* HomeDJStationSection */ = {
 			isa = PBXGroup;
 			children = (
@@ -249,13 +245,6 @@
 				B9A15702256E308900FFDA20 /* HomeDJStationItem.swift */,
 			);
 			path = HomeDJStationSection;
-			sourceTree = "<group>";
-		};
-		B9A9FA76257613B700687EA1 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repositories;
 			sourceTree = "<group>";
 		};
 		B9B4D1E9256E5BAC00EC2FE2 /* View */ = {
@@ -285,7 +274,6 @@
 				B9DB8A23256D08FC00D3F1A2 /* HomeArtistSection */,
 				B9310174256D73A000DD5ADA /* HomePlayListSection */,
 				B9A156F7256E2EDA00FFDA20 /* HomeDJStationSection */,
-				B9A0B377256E48AB00303F2F /* HomeRecentlyPlayedSongs */,
 			);
 			path = HomeView;
 			sourceTree = "<group>";
@@ -303,7 +291,6 @@
 		B9DB8A17256CFE0200D3F1A2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				B9A9FA76257613B700687EA1 /* Repositories */,
 				B9B4D1E9256E5BAC00EC2FE2 /* View */,
 				B9DB8A18256CFE1C00D3F1A2 /* Extension */,
 			);
@@ -378,6 +365,14 @@
 				DE35E2EC256D569500F369BE /* HomeNewAlbumItem.swift */,
 			);
 			path = HomeNewAlbum;
+			sourceTree = "<group>";
+		};
+		DE75169E25776F8A0054AFC6 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				DE75169F25776F990054AFC6 /* DBRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		DE8F52D8256D823B00A7735F /* HomeVibeRecommendSection */ = {
@@ -566,6 +561,7 @@
 				B9B4D1FF256E5CC300EC2FE2 /* HomeSummaryItemView.swift in Sources */,
 				B9B4D1F9256E5C8A00EC2FE2 /* Color+vibePink.swift in Sources */,
 				B9B4D1FA256E5C8A00EC2FE2 /* HomeSummarySectionView.swift in Sources */,
+				DE7516A025776F990054AFC6 /* DBRepository.swift in Sources */,
 				B9F0BDD4256EE031004A2852 /* ImageItemView.swift in Sources */,
 				B9B4D1F6256E5C7D00EC2FE2 /* HomeHeaderView.swift in Sources */,
 				DE35E2F7256D56BF00F369BE /* HomeNewAlbumSectionView.swift in Sources */,
