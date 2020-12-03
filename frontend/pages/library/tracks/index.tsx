@@ -3,9 +3,11 @@ import axios from 'axios';
 import useSWR from 'swr';
 
 function Index() {
+  console.log('client start!');
   const fetcher = url => axios.get(url).then(res => res.data);
   const apiUrl = 'http://localhost:8000/api/library/tracks';
-  const { data, error } = useSWR(apiUrl, fetcher);
+  const { data, error, mutate } = useSWR(apiUrl, fetcher, { refreshInterval: 500 });
+  mutate();
   const trackList = data?.data;
 
   if (error) {
@@ -24,6 +26,7 @@ function Index() {
 }
 
 export async function getServerSideProps(context) {
+  console.log('getServerside start!');
   const res = await fetch('http://localhost:8000/api/library/tracks');
   const data = await res.json();
   const trackList = data.data;
