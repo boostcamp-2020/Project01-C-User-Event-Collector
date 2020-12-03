@@ -12,7 +12,7 @@ struct MiniVIBEApp: App {
     init() {
         UITabBar.appearance().barTintColor = .black
     }
-    let dbRepository = DBRepository()
+    let dbRepository = RealLocalRepository()
     var body: some Scene {
         WindowGroup {
             ContentView().environmentObject(ContentView.ViewModel(dbRepository: dbRepository))

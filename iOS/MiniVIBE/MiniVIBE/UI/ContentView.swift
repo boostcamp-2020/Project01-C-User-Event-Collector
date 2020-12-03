@@ -49,16 +49,17 @@ struct ContentView: View {
 
 extension ContentView {
     class ViewModel: ObservableObject {
-        let dbRepository: DBRepository
+        let dbRepository: RealLocalRepository
         @Published var selectedTab = 0 {
             didSet {
                 let event = dbRepository.newEvent()
                 event.tab = Int32(selectedTab)
+                event.date = Date()
                 dbRepository.saveContext()
             }
         }
         
-        init(dbRepository: DBRepository) {
+        init(dbRepository: RealLocalRepository) {
             self.dbRepository = dbRepository
         }
     }

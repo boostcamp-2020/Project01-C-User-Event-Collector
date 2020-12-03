@@ -1,5 +1,5 @@
 //
-//  DBRepository.swift
+//  LocalDBRepository.swift
 //  MiniVIBE
 //
 //  Created by GH Choi on 2020/12/02.
@@ -7,13 +7,20 @@
 
 import SwiftUI
 
-struct DBRepository {
+protocol LocalRepository {
+    func fetchEvent()
+    func deleteAllEvent()
+    func newEvent() -> Event
+    func saveContext()
+}
+
+struct RealLocalRepository: LocalRepository {
     let persistenceStore = PersistenceController()
     
     func fetchEvent() {
         let event = persistenceStore.fetch()
         event.forEach {
-            print($0.tab)
+            print("\($0.date?.description ?? "") \($0.tab) Tab was pressed")
         }
     }
     
@@ -28,7 +35,6 @@ struct DBRepository {
     }
     
     func saveContext() {
-        persistenceStore.saveContext()
+        _ = persistenceStore.saveContext()
     }
-    
 }
