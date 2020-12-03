@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct HomeView<PlayingBar: View>: View {
-    var playingBar: PlayingBar
+struct HomeView: View {
+    let playingBar: NowPlayingBarView
     var body: some View {
         NavigationView {
             ZStack {
@@ -20,12 +20,14 @@ struct HomeView<PlayingBar: View>: View {
                         HomeArtistSection()
                         HomePlayListSectionView()
                         HomeDJStationSectionView()
+                        HomeRecentlyPlayedSectionView()
                         HomeVibeRecommendSectionView()
                         HomeNewAlbumSectionView()
                         HomeMagazineSectionView()
                         HomeNowSectionView()
                         HomeFooterView()
                     }
+                    .padding(.bottom, 100) // musicPlayer만큼 여백 추가
                 }
                 VStack {
                     Spacer()

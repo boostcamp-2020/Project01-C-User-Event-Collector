@@ -18,30 +18,30 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "house")
                 }.tag(0)
+            ChartView(playingBar: playingBar)
+                .tabItem {
+                    Image(systemName: "chart.bar.doc.horizontal")
+                }.tag(1)
+            VideoView(playingBar: playingBar)
+                .tabItem {
+                    Image(systemName: "play.rectangle.fill")
+                }.tag(2)
             Button(action: {
                 viewModel.dbRepository.fetchEvent()
             }, label: {
                 Text("fetch")
             })
             .tabItem {
-                Image(systemName: "chart.bar.doc.horizontal")
-            }.tag(1)
+                Image(systemName: "magnifyingglass")
+            }.tag(3)
             Button(action: {
                 viewModel.dbRepository.deleteAllEvent()
             }, label: {
                 Text("delete")
             })
             .tabItem {
-                Image(systemName: "play.rectangle.fill")
-            }.tag(2)
-            Text("Another Tab")
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
-                }.tag(3)
-            Text("The Last Tab")
-                .tabItem {
-                    Image(systemName: "person.fill")
-                }.tag(4)
+                Image(systemName: "person.fill")
+            }.tag(4)
         }.accentColor(.vibePink)
         .environmentObject(musicPlayer)
     }

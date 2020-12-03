@@ -1,15 +1,16 @@
 //
-//  Song.swift
+//  Album.swift
 //  MiniVIBE
 //
-//  Created by 최광현 on 2020/11/28.
+//  Created by GH Choi on 2020/11/24.
 //
 
 import Foundation
 
-struct Song: Identifiable {
+struct Album: Identifiable {
     let id = UUID()
     let imageURLString: String
     let title: String
     let artist: String
+    let songs: [Song]
 }

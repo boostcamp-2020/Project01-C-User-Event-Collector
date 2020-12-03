@@ -1,13 +1,13 @@
 //
-//  Song.swift
+//  Video.swift
 //  MiniVIBE
 //
-//  Created by 최광현 on 2020/11/28.
+//  Created by 최동규 on 2020/12/03.
 //
 
 import Foundation
 
-struct Song: Identifiable {
+struct Video: Identifiable {
     let id = UUID()
     let imageURLString: String
     let title: String
