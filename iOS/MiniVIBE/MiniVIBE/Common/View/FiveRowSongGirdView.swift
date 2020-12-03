@@ -43,7 +43,6 @@ struct FiveRowSongGirdView: View {
                     }
                     Spacer()
                 }.frame(width: .oneItemImageWidth)
-
             }
         }
     }

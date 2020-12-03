@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct HomeView<PlayingBar: View>: View {
-    var playingBar: PlayingBar
+struct HomeView: View {
+    let playingBar: NowPlayingBarView
     var body: some View {
         NavigationView {
             ZStack {

@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct VideoView<PlayingBar: View>: View {
-    @State private var items: [Viedo] = [Viedo(imageURLString: "HomeMainSection3",
+    @State private var items: [Video] = [Video(imageURLString: "HomeMainSection3",
                                                title: "Life Goes On : Like an arrow", artist: "방탄소년단"),
-                                         Viedo(imageURLString: "HomeMainSection3",
+                                         Video(imageURLString: "HomeMainSection3",
                                                title: "Life Goes On : Like an arrow", artist: "방탄소년단"),
-                                         Viedo(imageURLString: "HomeMainSection3",
+                                         Video(imageURLString: "HomeMainSection3",
                                                title: "Life Goes On : Like an arrow", artist: "방탄소년단")]
     var playingBar: PlayingBar
     var body: some View {

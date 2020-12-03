@@ -7,14 +7,18 @@
 
 import SwiftUI
 
-struct ChartView<PlayingBar: View>: View {
-    var playingBar: PlayingBar
+struct ChartView: View {
+    private enum Constant {
+        static let title: String = "차트"
+    }
+    
+    let playingBar: NowPlayingBarView
     var body: some View {
         NavigationView {
             ZStack {
                 Color.black.edgesIgnoringSafeArea(.top)
                 ScrollView(.vertical, showsIndicators: false) {
-                    ChartHeaderView()
+                    chartHeaderView
                     LazyVStack(spacing: 40) {
                         Group {
                             TodayTop100SectionView()
@@ -38,5 +42,14 @@ struct ChartView<PlayingBar: View>: View {
                 .padding(.top)
             }.navigationBarHidden(true)
         }
+    }
+}
+
+private extension ChartView {
+    var chartHeaderView: some View {
+        HStack {
+            Text(Constant.title).vibeTitle1()
+            Spacer()
+        }.padding()
     }
 }
