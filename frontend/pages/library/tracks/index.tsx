@@ -1,18 +1,15 @@
+import { useState } from 'react';
 import MyTrack from '@pages/Library/MyTrack';
 import axios from 'axios';
 import useSWR from 'swr';
 
+import useFetch from '@hooks/useFetch';
+
 function Index() {
-  const fetcher = url => axios.get(url).then(res => res.data);
-  const apiUrl = 'http://localhost:8000/api/library/tracks';
-  const { data, error } = useSWR(apiUrl, fetcher);
-  const trackList = data?.data;
+  const [trackList, setTrackList] = useState(null);
+  useFetch(setTrackList, 'http://localhost:8000/api/library/tracks');
 
-  if (error) {
-    return <div>ERROR...</div>;
-  }
-
-  if (!data) {
+  if (!trackList) {
     return <div>isLoading...</div>;
   }
 
