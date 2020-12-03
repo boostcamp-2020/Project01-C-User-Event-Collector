@@ -6,9 +6,17 @@ import NavList from './NavList';
 const profileImgUrl =
   'https://phinf.pstatic.net/contact/20200707_134/1594090738223DUwwm_JPEG/20160913_143317.jpg?type=s33';
 
+const loginEvent = () => {
+  window.location.href = 'http://localhost:8000/api/auth/login';
+};
+
 function NavBar() {
   return (
     <Container>
+      <AuthWrapper onClick={loginEvent}>
+        <ProfileImg src={profileImgUrl} />
+        로그인
+      </AuthWrapper>
       <AuthWrapper>
         <ProfileImg src={profileImgUrl} />
         <Dropdown type="auth" />

@@ -38,17 +38,11 @@
       "@api/*": [
         "./src/api/*"
       ],
-      "@models/*": [
-        "./src/models/*"
-      ],
-      "@screens/*": [
-        "./src/screens/*"
-      ],
       "@hooks/*": [
         "./src/hooks/*"
       ],
-      "@services/*": [
-        "./src/services/*"
+      "@lib/*": [
+        "./src/lib/*"
       ],
       "@constants": [
         "./src/constants.ts"
@@ -56,17 +50,8 @@
       "@context/*": [
         "./src/context/*"
       ],
-      "@queries/*": [
-        "./src/queries/*"
-      ],
-      "@data/*": [
-        "./src/data/*"
-      ],
       "@typeDefs/*": [
         "./src/types/*"
-      ],
-      "@generated/*": [
-        "./src/generated/*"
       ],
       "@public/*": [
         "./public/*"
