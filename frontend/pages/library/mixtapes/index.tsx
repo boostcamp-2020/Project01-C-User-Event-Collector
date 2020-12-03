@@ -2,7 +2,7 @@ import MyMixtape from '@pages/Library/MyMixtape';
 
 const Index = () => (
   <div>
-    <MyMixtape/>
+    <MyMixtape />
   </div>
 );
 

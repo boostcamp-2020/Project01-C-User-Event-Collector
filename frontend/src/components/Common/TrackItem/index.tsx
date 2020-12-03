@@ -1,26 +1,44 @@
 import React from 'react';
 import styled from 'styled-components';
+import Link from 'next/link';
 import { HiHeart } from 'react-icons/hi';
 import { BsMusicPlayer } from 'react-icons/bs';
 import { RiPlayListLine } from 'react-icons/ri';
+import axios from 'axios';
 
 interface TrackItemProps {
-  type: string;
-  title: string;
-  artists: string[];
-  album: string;
-  imgUrl: string;
+  id?: number;
+  type?: string;
+  title?: string;
+  artists?: any[];
+  album?: string;
+  imgUrl?: string;
 }
 
-function TrackItem({ type, title, artists, album, imgUrl }: TrackItemProps) {
+const deleteTrackEvent = id => {
+  console.log(id);
+  axios.delete(`http://localhost:8000/api/library/tracks/${id}`).then(res => {
+    console.log(res);
+  });
+};
+
+function TrackItem({ id, type, title, artists, album, imgUrl }: TrackItemProps) {
   return (
     <Wrapper>
       <TrackWrapper style={{ width: '300px', justifyContent: 'flex-start', color: 'black' }}>
+        {type === 'checkbox' ? <input type="checkbox" /> : null}
         <TrackImg src={imgUrl} alt="track-image" />
-        <Text>{title}</Text>
+        <Text onClick={() => deleteTrackEvent(id)}>{title}</Text>
       </TrackWrapper>
       <TrackWrapper>
-        <Text>{artists.join(',')}</Text>
+        {artists &&
+          artists.map(artist => (
+            <>
+              <Link href="/artist/[id]" as={`/artist/${artist.id}`}>
+                <Text>{artist.name}</Text>
+              </Link>
+            </>
+          ))}
       </TrackWrapper>
       <TrackWrapper>
         <Text>{album}</Text>
