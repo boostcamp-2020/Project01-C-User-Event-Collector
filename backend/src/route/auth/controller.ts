@@ -8,7 +8,8 @@ const getToken = (req: Request, res: Response): void => {
     expiresIn: '1h',
     noTimestamp: true,
   });
-  res.json({ token });
+  res.cookie('token', token);
+  res.redirect(process.env.SERVICE_URL as string);
 };
 
 export { getToken };
