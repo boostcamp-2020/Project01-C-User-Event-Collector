@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import MyTrack from '@pages/Library/MyTrack';
-import axios from 'axios';
-import useSWR from 'swr';
 
 import useFetch from '@hooks/useFetch';
 
@@ -21,6 +19,7 @@ function Index() {
 }
 
 export async function getServerSideProps(context) {
+  console.log('getServerside start!');
   const res = await fetch('http://localhost:8000/api/library/tracks');
   const data = await res.json();
   const trackList = data.data;
