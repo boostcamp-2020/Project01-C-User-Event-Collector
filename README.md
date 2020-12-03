@@ -5,9 +5,8 @@
 <p align="center">
   <img src="https://img.shields.io/badge/react-17.0.1-9cf?logo=react" />
   <img src="https://img.shields.io/badge/typescript-v4.1.2-pink?logo=typescript" />
-  <img src="https://img.shields.io/badge/javascript-ES6+-yellow?logo=javascript" />
-  <img src="https://img.shields.io/badge/mysql-v5.7.32-blue?logo=mysql" />
-
+  <img src="https://img.shields.io/badge/mysql2-v2.2.5-blue?logo=mysql" />
+  <img src="https://img.shields.io/badge/next.js-v10.0.3-orange?logo=next.js" />
 </p>
 
 <p align="center">
@@ -15,7 +14,10 @@
     <img src="https://img.shields.io/badge/Xcode-v12.2-blue?logo=Xcode" />
     <img src="https://img.shields.io/badge/iOS-14.0-black?logo=apple" />  
 </p>
-    
+
+### 👋 MINIV(미니바이브) 서비스 소개
+네이버 바이브의 사용자 이벤트를 수집함으로써, 설계와 검증을 선행적으로 할 수 있게 한 미니 바이브 서비스입니다😉    
+   
 ### 🍎 WEB 배포 URL
 http://115.85.181.152:3000
 
