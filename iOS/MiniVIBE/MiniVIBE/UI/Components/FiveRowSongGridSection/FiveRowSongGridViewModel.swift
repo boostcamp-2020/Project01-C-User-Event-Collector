@@ -23,13 +23,15 @@ extension FiveRowSongGridView {
             return Song(imageURLString: "HomeDJStationSection1",
                         title: "Test Music\(idx)", artist: "dochoi", rankChange: rankChange)
         }
+        let id: Int
         let title: String
         let subtitle: String?
         let showsRanking: Bool
 //        let container: DIContainer
         
-        init(/*container: DIContainer,*/ title: String, subtitle: String? = nil, showsRanking: Bool = true) {
+        init(/*container: DIContainer,*/id: Int, title: String, subtitle: String? = nil, showsRanking: Bool = true) {
 //            self.container = container
+            self.id = id
             self.title = title
             self.subtitle = subtitle
             self.showsRanking = showsRanking

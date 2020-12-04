@@ -16,11 +16,13 @@ extension PlayListSectionView {
                         subtitle: "VIBE 국내 힙합", songs: []),
                PlayList(imageURLString: "HomePlayListSection3", title: "팝 트렌드",
                         subtitle: "VIBE Pop", songs: [])]
+        let id: Int
         let title: String
         let subtitle: String?
         let type: ImageSizeType
         
-        init(title: String, type: ImageSizeType, subtitle: String? = nil) {
+        init(id: Int, title: String, type: ImageSizeType, subtitle: String? = nil) {
+            self.id = id
             self.title = title
             self.subtitle = subtitle
             self.type = type

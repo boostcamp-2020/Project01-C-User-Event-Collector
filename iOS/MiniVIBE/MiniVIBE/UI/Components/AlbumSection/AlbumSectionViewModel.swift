@@ -14,11 +14,13 @@ extension AlbumSectionView {
             Album(imageURLString: "newAlbum-dummy1", title: "ARTIST. New Bi", artist: "Anonymous Artists", songs: [], rankChange: "up"),
             Album(imageURLString: "newAlbum-dummy2", title: "Darling", artist: "양다일", songs: []),
             Album(imageURLString: "newAlbum-dummy3", title: "A Season of Love", artist: "Idina Menzel", songs: [])]
+        let id: Int
         let title: String
         let subtitle: String?
         let showsRanking: Bool
          
-        init(title: String, subtitle: String? = nil, showsRanking: Bool = true) {
+        init(id: Int, title: String, subtitle: String? = nil, showsRanking: Bool = true) {
+            self.id = id
             self.title = title
             self.subtitle = subtitle
             self.showsRanking = showsRanking

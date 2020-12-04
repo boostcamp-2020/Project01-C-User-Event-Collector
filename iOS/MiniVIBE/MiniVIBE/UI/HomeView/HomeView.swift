@@ -18,12 +18,12 @@ struct HomeView: View {
                         LazyVStack(spacing: 40) {
                             HomeSummarySectionView()
                             HomeArtistSection()
-                            PlayListSectionView(viewModel: PlayListSectionView.ViewModel(title: "내 취향 플레이리스트", type: .two))
+                            PlayListSectionView(viewModel: PlayListSectionView.ViewModel(id: 0, title: "내 취향 플레이리스트", type: .two))
                             HomeDJStationSectionView()
                             FiveRowSongGridView(
-                                viewModel: FiveRowSongGridView.ViewModel(title: "최근 들은 노래", showsRanking: false))
-                            PlayListSectionView(viewModel: PlayListSectionView.ViewModel(title: "VIBE 추천 플레이리스트", type: .one))
-                            AlbumSectionView(viewModel: AlbumSectionView.ViewModel(title: "좋아할 최신앨범", showsRanking: false))
+                                viewModel: FiveRowSongGridView.ViewModel(id: 0, title: "최근 들은 노래", showsRanking: false))
+                            PlayListSectionView(viewModel: PlayListSectionView.ViewModel(id: 1, title: "VIBE 추천 플레이리스트", type: .one))
+                            AlbumSectionView(viewModel: AlbumSectionView.ViewModel(id: 1, title: "좋아할 최신앨범", showsRanking: false))
                             HomeMagazineSectionView()
                             HomeNowSectionView()
                             HomeFooterView()
