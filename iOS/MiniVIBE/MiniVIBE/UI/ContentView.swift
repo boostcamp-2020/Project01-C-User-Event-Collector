@@ -9,58 +9,74 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-    @EnvironmentObject var viewModel: ViewModel
+    @ObservedObject private(set) var  viewModel: ViewModel
+    @State var playerFrame = CGRect.zero
     var playingBar = NowPlayingBarView()
-    var musicPlayer = MusicPlayer()
     var body: some View {
-        TabView(selection: $viewModel.selectedTab) {
-            HomeView(playingBar: playingBar)
+        
+            TabView(selection: $viewModel.selectedTab) {
+                HomeView()
+                    .tabItem {
+                        Image(systemName: "house")
+                    }.tag(0)
+                ChartView()
+                    .tabItem {
+                        Image(systemName: "chart.bar.doc.horizontal")
+                    }.tag(1)
+                VideoView()
+                    .tabItem {
+                        Image(systemName: "play.rectangle.fill")
+                    }.tag(2)
+                Button(action: {
+                    viewModel.localRepository.fetchEvent()
+                }, label: {
+                    Text("fetch")
+                })
                 .tabItem {
-                    Image(systemName: "house")
-                }.tag(0)
-            ChartView(playingBar: playingBar)
+                    Image(systemName: "magnifyingglass")
+                }.tag(3)
+                Button(action: {
+                    viewModel.localRepository.deleteAllEvent()
+                }, label: {
+                    Text("delete")
+                })
                 .tabItem {
-                    Image(systemName: "chart.bar.doc.horizontal")
-                }.tag(1)
-            VideoView(playingBar: playingBar)
-                .tabItem {
-                    Image(systemName: "play.rectangle.fill")
-                }.tag(2)
-            Button(action: {
-                viewModel.dbRepository.fetchEvent()
-            }, label: {
-                Text("fetch")
+                    Image(systemName: "person.fill")
+                }.tag(4)
+            }.accentColor(.vibePink)
+            .environmentObject(viewModel.container.musicPlayer)
+            .onPreferenceChange(Size.self, perform: { value in
+                playerFrame = value.last ?? .zero
             })
-            .tabItem {
-                Image(systemName: "magnifyingglass")
-            }.tag(3)
-            Button(action: {
-                viewModel.dbRepository.deleteAllEvent()
-            }, label: {
-                Text("delete")
-            })
-            .tabItem {
-                Image(systemName: "person.fill")
-            }.tag(4)
-        }.accentColor(.vibePink)
-        .environmentObject(musicPlayer)
+            .overlay(
+                playingBar.position(x: playerFrame.midX, y: playerFrame.height - (NowPlayingBarView.height / 2)))
     }
 }
 
 extension ContentView {
     class ViewModel: ObservableObject {
-        let dbRepository: RealLocalRepository
+        let localRepository: LocalRepository
+        let container: DIContainer
         @Published var selectedTab = 0 {
             didSet {
-                let event = dbRepository.newEvent()
+                let event = localRepository.newEvent()
                 event.tab = Int32(selectedTab)
                 event.date = Date()
-                dbRepository.saveContext()
+                localRepository.saveContext()
             }
         }
         
-        init(dbRepository: RealLocalRepository) {
-            self.dbRepository = dbRepository
+        init(container: DIContainer) {
+            self.container = container
+            self.localRepository = container.localRepository
         }
+    }
+}
+
+struct Size: PreferenceKey {
+    typealias Value = [CGRect]
+    static var defaultValue: [CGRect] = []
+    static func reduce(value: inout [CGRect], nextValue: () -> [CGRect]) {
+        value.append(contentsOf: nextValue())
     }
 }

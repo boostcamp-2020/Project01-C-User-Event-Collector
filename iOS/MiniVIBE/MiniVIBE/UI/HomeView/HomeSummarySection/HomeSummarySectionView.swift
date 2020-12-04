@@ -31,10 +31,3 @@ private extension HomeSummarySectionView {
         }
     }
 }
-
-struct HomeSummarySectionView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeSummarySectionView()
-            .previewLayout(.sizeThatFits)
-    }
-}

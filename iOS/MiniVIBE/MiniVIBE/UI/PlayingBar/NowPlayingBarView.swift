@@ -10,12 +10,13 @@ import SwiftUI
 struct NowPlayingBarView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @State private var isPresent = false
+    static let height: CGFloat = 75
     var body: some View {
         HStack {
             Image(musicPlayer.nowPlayingSong.imageURLString)
                 .resizable()
                 .frame(width: 40, height: 40)
-            VStack {
+            VStack(alignment: .leading) {
                 Text(musicPlayer.nowPlayingSong.title)
                     .vibeTitle3()
                     .lineLimit(1)
@@ -43,6 +44,7 @@ struct NowPlayingBarView: View {
             MusicPlayerView(isPresented: $isPresent)
         })
         .padding(.all)
+        .frame(height: Self.height)
         .background(Color.black.opacity(0.9))
     }
 }

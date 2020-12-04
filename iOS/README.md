@@ -24,3 +24,8 @@
 
 ![image](https://user-images.githubusercontent.com/54564170/100993533-df255900-3598-11eb-934c-94f904b7da3a.png)
 
+1000개 2000개가 쌓였을때 어떡할것인가
+
+
+
+이미지 레파지토리 이유

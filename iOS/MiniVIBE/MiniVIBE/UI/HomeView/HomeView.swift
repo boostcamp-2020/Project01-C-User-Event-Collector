@@ -8,41 +8,32 @@
 import SwiftUI
 
 struct HomeView: View {
-    let playingBar: NowPlayingBarView
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.black.edgesIgnoringSafeArea(.top)
-                ScrollView(.vertical, showsIndicators: false) {
-                    HomeHeaderView()
-                    LazyVStack(spacing: 40) {
-                        HomeSummarySectionView()
-                        HomeArtistSection()
-                        HomePlayListSectionView()
-                        HomeDJStationSectionView()
-                        HomeRecentlyPlayedSectionView()
-                        HomeVibeRecommendSectionView()
-                        HomeNewAlbumSectionView()
-                        HomeMagazineSectionView()
-                        HomeNowSectionView()
-                        HomeFooterView()
-                    }
-                    .padding(.bottom, 100) // musicPlayer만큼 여백 추가
+        GeometryReader { proxy in
+            NavigationView {
+                ZStack {
+                    Color.black.edgesIgnoringSafeArea(.top)
+                    ScrollView(.vertical, showsIndicators: false) {
+                        HomeHeaderView()
+                        LazyVStack(spacing: 40) {
+                            HomeSummarySectionView()
+                            HomeArtistSection()
+                            PlayListSectionView(viewModel: PlayListSectionView.ViewModel(title: "내 취향 플레이리스트", type: .two))
+                            HomeDJStationSectionView()
+                            FiveRowSongGridView(
+                                viewModel: FiveRowSongGridView.ViewModel(title: "최근 들은 노래", showsRanking: false))
+                            PlayListSectionView(viewModel: PlayListSectionView.ViewModel(title: "VIBE 추천 플레이리스트", type: .one))
+                            AlbumSectionView(viewModel: AlbumSectionView.ViewModel(title: "좋아할 최신앨범", showsRanking: false))
+                            HomeMagazineSectionView()
+                            HomeNowSectionView()
+                            HomeFooterView()
+                        }
+                        .padding(.bottom, NowPlayingBarView.height)
+                    }.preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
+                    .padding(.top)
+                    .navigationBarHidden(true)
                 }
-                VStack {
-                    Spacer()
-                    playingBar
-                }
-                .padding(.top)
-            }.navigationBarHidden(true)
+            }
         }
-    }
-}
-
-struct HomeView_Previews: PreviewProvider {
-    static var previews: some View {
-        HomeView(playingBar: NowPlayingBarView())
-            .preferredColorScheme(.light)
-            .environmentObject(MusicPlayer())
     }
 }
