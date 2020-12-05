@@ -36,7 +36,7 @@ struct MusicPlayerView: View {
                     //FIXME: 모달 높이 고정값 수정 필요
                     .frame(height: UIScreen.main.bounds.height - 65)
                     Divider().accentColor(.gray)
-                    MusicPlayerListView(isPresented: $isPresented)
+                    MusicPlayerlistView(isPresented: $isPresented)
                 }
             }
         }
@@ -92,7 +92,8 @@ private extension MusicPlayerView {
                 Spacer()
                 Button(action: {
                     musicPlayer.isPlaying.toggle()
-                }, label: { Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill").frame(width: 30, height: 30)})
+                }, label: {
+                    Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill").frame(width: 30, height: 30)})
                 Spacer()
                 Image(systemName: "heart.fill")
                     .font(.system(size: 25))
@@ -107,7 +108,7 @@ private extension MusicPlayerView {
     }
 }
 
-private struct MusicPlayerListView: View {
+private struct MusicPlayerlistView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @Binding var isPresented: Bool
     
@@ -130,15 +131,15 @@ private struct MusicPlayerListView: View {
                         }.padding(.defaultPadding)
                         .background(Color.black)
             ) {
-                ForEach(musicPlayer.playingList.indices) { index in
-                    PlayListItemView(item: musicPlayer.playingList[index])
+                ForEach(musicPlayer.playinglist.indices) { index in
+                    PlayListItemView(item: musicPlayer.playinglist[index])
                         .background(Color.black)
                         .onTapGesture {
                             musicPlayer.play(index: index)
                         }
                 }.onMove(perform: musicPlayer.move)
             }
-                  }
+        }
     }
 }
 

@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct HomeDJStationSectionView: View {
-    @State private var items: [HomeDJStationItem] = []
-    @State private var mockItems: [HomeDJStationItem]
-        = [HomeDJStationItem(image: "HomeDJStationSection1"),
-           HomeDJStationItem(image: "HomeDJStationSection2"),
-           HomeDJStationItem(image: "HomeDJStationSection3")]
+    @State private var items: [HomeDJStationItem] = MockItemFactory.homeDJStationkItems
     var body: some View {
         homeDJStationSectionScrollView
     }
@@ -29,7 +25,7 @@ private extension HomeDJStationSectionView {
                     MoreHeaderView(title: Constant.title)
             }
             SectionScrollView {
-                ForEach(mockItems) { item in
+                ForEach(items) { item in
                     HomeDJStationItemView(item: item)
                 }
             }

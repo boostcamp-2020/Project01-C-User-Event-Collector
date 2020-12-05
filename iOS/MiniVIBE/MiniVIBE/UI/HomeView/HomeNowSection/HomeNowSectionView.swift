@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct HomeNowSectionView: View {
-    private var nowReplayItems: [HomeNowReplayItem] = [
-        HomeNowReplayItem(albumArt: Image("now-dummy1"), description: "야간작업실"),
-        HomeNowReplayItem(albumArt: Image("now-dummy2"), description: "어벤걸스"),
-        HomeNowReplayItem(albumArt: Image("now-dummy3"), description: "6시 5분전")
-    ]
+    private var nowReplayItems: [HomeNowReplayItem] = MockItemFactory.nowReplayItems
     var body: some View {
         homeNowSectionScrollView
     }

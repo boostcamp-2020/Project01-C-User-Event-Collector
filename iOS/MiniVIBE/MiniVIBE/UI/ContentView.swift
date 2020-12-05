@@ -27,11 +27,12 @@ struct ContentView: View {
                     .tabItem {
                         Image(systemName: "play.rectangle.fill")
                     }.tag(2)
-                Button(action: {
-                    viewModel.localRepository.fetchEvent()
-                }, label: {
-                    Text("fetch")
-                })
+                SearchView()
+//                Button(action: {
+//                    viewModel.localRepository.fetchEvent()
+//                }, label: {
+//                    Text("fetch")
+//                })
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }.tag(3)
@@ -44,7 +45,6 @@ struct ContentView: View {
                     Image(systemName: "person.fill")
                 }.tag(4)
             }.accentColor(.vibePink)
-            .environmentObject(viewModel.container.musicPlayer)
             .onPreferenceChange(Size.self, perform: { value in
                 playerFrame = value.last ?? .zero
             })

@@ -1,5 +1,5 @@
 //
-//  PlayListSectionView.swift
+//  PlaylistSectionView.swift
 //  MiniVIBE
 //
 //  Created by 최동규 on 2020/12/05.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PlayListSectionView: View {
+struct PlaylistSectionView: View {
     let viewModel: Self.ViewModel
     
     init(viewModel: Self.ViewModel) {
@@ -19,22 +19,24 @@ struct PlayListSectionView: View {
     }
 }
 
-private extension PlayListSectionView {
+private extension PlaylistSectionView {
     var playListSectionScrollView: some View {
         VStack {
-            NavigationLink(destination: PlayListMoreView(viewModel: viewModel)) {
+            NavigationLink(destination: PlaylistMoreView(viewModel: viewModel)) {
                 MoreHeaderView(title: viewModel.title)
             }
             SectionScrollView {
-                ForEach(viewModel.playLists) { playList in
-                    ImageItemView(image: Image(playList.imageURLString), type: viewModel.type) {
-                        Text(playList.title)
+                ForEach(viewModel.playlists) { playlist in
+                    NavigationLink(destination: PlaylistDetailView(playlist: playlist)) {
+                    ImageItemView(image: Image(playlist.imageURLString), type: viewModel.type) {
+                        Text(playlist.title)
                             .vibeTitle3()
-                        Text(playList.subtitle)
+                        Text(playlist.subtitle)
                             .vibeMainText()
-                        Text(playList.description ?? "")
+                        Text(playlist.description ?? "")
                             .vibeMainText()
                             .lineLimit(2)
+                    }
                     }
                 }
             }
