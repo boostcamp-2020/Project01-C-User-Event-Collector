@@ -11,4 +11,5 @@ struct DIContainer {
     let serverRepository: ServerRepository
     let localRepository: LocalRepository
     let eventService: EventService
+    let musicPlayer: MusicPlayer
 }

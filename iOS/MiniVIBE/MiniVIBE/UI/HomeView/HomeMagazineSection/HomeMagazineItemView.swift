@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct HomeMagazineItemView: View {
-    var item: HomeMagazineItem
+    var item: Magazine
     var body: some View {
         ImageItemView(image: Image(item.image), type: .one) {}
             .overlay(
-                Text(item.description ?? "")
+                Text(item.description)
                     .font(.title)
                     .foregroundColor(.white)
                     .fontWeight(.bold)

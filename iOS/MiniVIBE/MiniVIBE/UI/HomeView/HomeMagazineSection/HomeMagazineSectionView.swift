@@ -8,10 +8,10 @@
 import SwiftUI
 
 struct HomeMagazineSectionView: View {
-    private var magazineItems: [HomeMagazineItem] = [
-        HomeMagazineItem(image: "mag-dummy1", description: "New Release #16: 이적, 빌리 아일리시"),
-        HomeMagazineItem(image: "mag-dummy2", description: "이주의 디깅 #85, aespa"),
-        HomeMagazineItem(image: "mag-dummy3", description: "CHROMEO 핼러윈 파티 현장 스케치")
+    private var magazineItems: [Magazine] = [
+        Magazine(image: "mag-dummy1", description: "New Release #16: 이적, 빌리 아일리시"),
+        Magazine(image: "mag-dummy2", description: "이주의 디깅 #85, aespa"),
+        Magazine(image: "mag-dummy3", description: "CHROMEO 핼러윈 파티 현장 스케치")
         
     ]
     var body: some View {
