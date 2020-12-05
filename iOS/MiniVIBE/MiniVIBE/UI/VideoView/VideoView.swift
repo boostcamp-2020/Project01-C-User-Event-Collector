@@ -7,14 +7,13 @@
 
 import SwiftUI
 
-struct VideoView<PlayingBar: View>: View {
+struct VideoView: View {
     @State private var items: [Video] = [Video(imageURLString: "HomeMainSection3",
                                                title: "Life Goes On : Like an arrow", artist: "방탄소년단"),
                                          Video(imageURLString: "HomeMainSection3",
                                                title: "Life Goes On : Like an arrow", artist: "방탄소년단"),
                                          Video(imageURLString: "HomeMainSection3",
                                                title: "Life Goes On : Like an arrow", artist: "방탄소년단")]
-    var playingBar: PlayingBar
     var body: some View {
         NavigationView {
             ZStack {
@@ -25,8 +24,8 @@ struct VideoView<PlayingBar: View>: View {
                         ForEach(items) { item in
                             ImageItemView(image: Image(item.imageURLString), type: .one, ratio: 0.5) {
                                 HStack {
-                                Text(item.title).vibeTitle3()
-                                Text(item.artist).vibeMainText()
+                                    Text(item.title).vibeTitle3()
+                                    Text(item.artist).vibeMainText()
                                     Spacer()
                                     Button(action: {}) {
                                         Image(systemName: "ellipsis")
@@ -35,11 +34,7 @@ struct VideoView<PlayingBar: View>: View {
                                 }
                             }
                         }
-                    }.padding(.bottom, 100) // musicPlayer만큼 여백 추가
-                }
-                VStack {
-                    Spacer()
-                    playingBar
+                    }.padding(.bottom, NowPlayingBarView.height)
                 }
                 .padding(.top)
             }.navigationBarHidden(true)

@@ -13,11 +13,20 @@ class MusicPlayer: ObservableObject {
     var nowPlayingSong: Song {
         return playingList[playingIndex]
     }
-    @Published var playingList: [Song] = [
-        Song(imageURLString: "newAlbum-dummy1", title: "앨범1", artist: "가수1"),
-        Song(imageURLString: "newAlbum-dummy2", title: "앨범2", artist: "가수2"),
-        Song(imageURLString: "newAlbum-dummy3", title: "앨범3", artist: "가수3")
-    ]
+    @Published var playingList: [Song] = (0...30).map { idx -> Song in
+        var rankChange: String?
+        if idx % 4 == 0 {
+            rankChange = "up"
+        } else if idx % 4 == 1 {
+            rankChange = "new"
+        } else if idx % 4 == 2 {
+            rankChange = "down"
+        } else {
+            rankChange = nil
+        }
+        return Song(imageURLString: "HomeDJStationSection1",
+                    title: "Test Music\(idx)", artist: "dochoi", rankChange: rankChange)
+    }
     
     init(playingIndex: Int = 0) {
         self.playingIndex = playingIndex

@@ -7,27 +7,28 @@
 
 import SwiftUI
 
-struct ImageItemView<Content: View>: View {
-    enum ContentType: CGFloat {
-        case one
-        case two
-        
-        var rawValue: CGFloat {
-            switch self {
-            case .one:
-                return .oneItemImageWidth
-            case .two:
-                return .twoItemImageWidth
-            }
+enum ImageSizeType: CGFloat {
+    case one
+    case two
+    
+    var rawValue: CGFloat {
+        switch self {
+        case .one:
+            return .oneItemImageWidth
+        case .two:
+            return .twoItemImageWidth
         }
     }
-    
+}
+
+struct ImageItemView<Content: View>: View {
+
     private let content: Content
     private let image: Image
-    private let type: ContentType
+    private let type: ImageSizeType
     private let ratio: CGFloat
     
-    init(image: Image, type: ContentType, ratio: CGFloat = 1, @ViewBuilder content: () -> Content) {
+    init(image: Image, type: ImageSizeType, ratio: CGFloat = 1, @ViewBuilder content: () -> Content) {
         self.content = content()
         self.image = image
         self.type = type
