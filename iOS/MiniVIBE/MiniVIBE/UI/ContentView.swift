@@ -19,6 +19,7 @@ struct ContentView: View {
                     .tabItem {
                         Image(systemName: "house")
                     }.tag(0)
+                    .emitEvent(eventService: viewModel.container.eventService, eventName: "tab_Changed", parameter: [:])
                 ChartView()
                     .tabItem {
                         Image(systemName: "chart.bar.doc.horizontal")
@@ -57,14 +58,7 @@ extension ContentView {
     class ViewModel: ObservableObject {
         let localRepository: LocalRepository
         let container: DIContainer
-        @Published var selectedTab = 0 {
-            didSet {
-                let event = localRepository.newEvent()
-                event.tab = Int32(selectedTab)
-                event.date = Date()
-                localRepository.saveContext()
-            }
-        }
+        @Published var selectedTab = 0
         
         init(container: DIContainer) {
             self.container = container

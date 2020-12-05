@@ -10,7 +10,7 @@ import SwiftUI
 protocol LocalRepository {
     func fetchEvent()
     func deleteAllEvent()
-    func newEvent() -> Event
+    func newEvent() -> CDEvent
     func saveContext()
 }
 
@@ -29,8 +29,8 @@ struct RealLocalRepository: LocalRepository {
         print(result ? "성공" : "실패")
     }
     
-    func newEvent() -> Event {
-        let event = Event(context: persistenceStore.context)
+    func newEvent() -> CDEvent {
+        let event = CDEvent(context: persistenceStore.context)
         return event
     }
     

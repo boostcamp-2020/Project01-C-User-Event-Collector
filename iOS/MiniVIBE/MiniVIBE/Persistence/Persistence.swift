@@ -21,9 +21,9 @@ class PersistenceController {
         return persistentContainer.viewContext
     }
     
-    func fetch() -> [Event] {
+    func fetch() -> [CDEvent] {
         do {
-            let request: NSFetchRequest<Event> = Event.fetchRequest()
+            let request: NSFetchRequest<CDEvent> = CDEvent.fetchRequest()
             let fetchResult = try self.context.fetch(request)
             return fetchResult
         } catch {
@@ -33,7 +33,7 @@ class PersistenceController {
     }
     
     func deleteAll() -> Bool {
-        let request: NSFetchRequest<NSFetchRequestResult> = Event.fetchRequest()
+        let request: NSFetchRequest<NSFetchRequestResult> = CDEvent.fetchRequest()
         let delete = NSBatchDeleteRequest(fetchRequest: request)
         do {
             try self.context.execute(delete)
