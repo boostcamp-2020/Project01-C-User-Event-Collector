@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 
-import ArtistCard from '@components/Common/Card/ArtistCard';
+import AlbumCard from '@components/Common/Card/PlaylistCard';
 
-const ArtistList = ({ artistList }) => {
+const PlaylistList = ({ playlistList }) => {
   return (
     <ListContainer>
-      {artistList.map(artist => (
-        <ArtistCard key={artist.id} artistMetaData={artist} />
+      {playlistList.map(playlist => (
+        <AlbumCard key={playlist.id} playlistMetaData={playlist} />
       ))}
     </ListContainer>
   );
@@ -19,4 +19,4 @@ const ListContainer = styled.div`
   justify-content: flex-start;
 `;
 
-export default ArtistList;
+export default PlaylistList;

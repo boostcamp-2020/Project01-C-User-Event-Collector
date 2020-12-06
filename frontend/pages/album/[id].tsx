@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router';
-import ArtistDetail from '../../src/pages/Detail/Artist';
+import AlbumDetail from '../../src/pages/Detail/Album';
 
-export function Index({ artistInfo }) {
+export function Index({ albumInfo }) {
   const router = useRouter();
-  console.log('artistInfo : ', artistInfo);
+  console.log('albumInfo : ', albumInfo);
   return (
     <>
-      <ArtistDetail artistInfo={artistInfo} />
+      <AlbumDetail albumInfo={albumInfo} />
       <p>{router.query.id}</p>
     </>
   );
@@ -14,14 +14,13 @@ export function Index({ artistInfo }) {
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
-  console.log(id);
-  const apiUrl = `http://localhost:8000/api/artist/${id}`;
+  const apiUrl = `http://localhost:8000/api/album/${id}`;
   const res = await fetch(apiUrl);
   const data = await res.json();
-  const artistInfo = data.data;
+  const albumInfo = data.data;
 
   return {
-    props: { artistInfo },
+    props: { albumInfo },
   };
 }
 

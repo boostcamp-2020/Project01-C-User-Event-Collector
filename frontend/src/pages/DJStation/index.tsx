@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import MagTopItem from '@components/Common/MagTopItem';
-import BoxItem from '@components/Common/BoxItem';
 
 function DJStation() {
   return (
@@ -9,7 +8,6 @@ function DJStation() {
       <TopWrapper>
         <MagTopItem />
       </TopWrapper>
-      <BoxItem />
     </Wrapper>
   );
 }

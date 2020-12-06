@@ -33,14 +33,36 @@ const color = {
   mainBGColor: '#fbfbfb',
   headerNavColor: '#cccccc',
   highlight: '#ff1350',
-  playBTNColor: '#ff1150',
   textColor: '#232323',
-  greyFontColor: '#999999',
+  greyFontColor: '#999',
+  drakFontColor: '#232323',
+};
+
+const size = {
+  sidebarWidth: '225px',
+};
+
+const font = {
+  plain: `
+  font-size: 14px;
+  color: ${color.drakFontColor};
+  `,
+  sub: `
+  font-size: 13px;
+  color: ${color.greyFontColor};
+  `,
+  boldTitle: `
+  font-size: 30px;
+  font-weight: 700;
+  color: ${color.drakFontColor};
+  `,
 };
 
 const theme = {
   color,
   media,
+  size,
+  font,
 };
 
 export type Theme = typeof theme;

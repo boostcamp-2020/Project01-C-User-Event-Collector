@@ -5,9 +5,9 @@ function Footer() {
 }
 const Container = styled.footer`
   width: 100%;
-  padding-left: 225px;
-  padding-bottom: 280px;
-  background-color: #f2f2f2;
+  padding-left: ${props => props.theme.size.sidebarWidth};
+  padding-bottom: 200px;
+  background-color: ${props => props.theme.color.lightgrey};
 `;
 
 export default Footer;

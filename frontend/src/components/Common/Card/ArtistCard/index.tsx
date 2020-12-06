@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 
-import { IconContext } from 'react-icons';
 import { IoHeart } from 'react-icons/io5';
 import CircleImage from '@components/Common/CircleImage';
 
-interface ArtistMetaProps {
+interface IArtistMetaProps {
   artistMetaData?: ArtistMeta;
 }
 
@@ -16,16 +15,14 @@ type ArtistMeta = {
   imgUrl?: string;
 };
 
-const ArtistCard = ({ artistMetaData }: ArtistMetaProps) => {
+const ArtistCard = ({ artistMetaData }: IArtistMetaProps) => {
   return (
     <Container>
       <CardContainer>
         <ImageContainer>
           <CircleImage imageSrc={artistMetaData?.imgUrl} />
           <LikeButton>
-            <IconContext.Provider value={{ color: 'red', size: '1.4rem' }}>
-              <IoHeart />
-            </IconContext.Provider>
+            <IoHeart size={24} />
           </LikeButton>
         </ImageContainer>
       </CardContainer>
@@ -35,8 +32,11 @@ const ArtistCard = ({ artistMetaData }: ArtistMetaProps) => {
 };
 
 const Container = styled.ul`
-  width: auto;
-  height: auto;
+  text-align: center;
+  margin: 0 18px 18px 0;
+  &:nth-child(5n) {
+    margin-right: 0;
+  }
 `;
 
 const CardContainer = styled.div``;
@@ -45,7 +45,7 @@ const ImageContainer = styled.a`
   position: relative;
 `;
 
-const LikeButton = styled.a`
+const LikeButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -56,13 +56,14 @@ const LikeButton = styled.a`
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background-color: #fbfbfb;
+  background-color: ${props => props.theme.color.mainBGColor};
+  color: ${props => props.theme.color.highlight};
 `;
 
-const ArtistTitle = styled.div`
-  text-align: center;
-  font-size: 15px;
-  padding-top: 0.5rem;
+const ArtistTitle = styled.a`
+  ${props => props.theme.font.plain}
+  display: inline-blocK;
+  margin-top: 10px;
 `;
 
 export default ArtistCard;
