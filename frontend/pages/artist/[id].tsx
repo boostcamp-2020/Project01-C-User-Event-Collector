@@ -1,19 +1,14 @@
-import Sample from '@components/sample-rx';
 import { useRouter } from 'next/router';
+import ArtistDetail from '../../src/pages/Detail/Artist';
 
-export function Index({ trackInfo }) {
+export function Index({ artistInfo }) {
   const router = useRouter();
-  console.log('trackInfo : ', trackInfo);
+  console.log('artistInfo : ', artistInfo);
   return (
-    <div>
-      <Sample text="Hello! this is Artist detail page" />
+    <>
+      <ArtistDetail artistInfo={artistInfo} />
       <p>{router.query.id}</p>
-      <div>
-        <p>{trackInfo.name}</p>
-        <p>{trackInfo.imgUrl}</p>
-        <p>{trackInfo.id}</p>
-      </div>
-    </div>
+    </>
   );
 }
 
@@ -23,10 +18,10 @@ export async function getServerSideProps(context) {
   const apiUrl = `http://localhost:8000/api/artist/${id}`;
   const res = await fetch(apiUrl);
   const data = await res.json();
-  const trackInfo = data.data;
+  const artistInfo = data.data;
 
   return {
-    props: { trackInfo },
+    props: { artistInfo },
   };
 }
 
