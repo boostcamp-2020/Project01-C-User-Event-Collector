@@ -7,7 +7,7 @@
 
 import CoreData
 
-class PersistenceController {
+final class PersistenceController {
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "MiniVIBE")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in

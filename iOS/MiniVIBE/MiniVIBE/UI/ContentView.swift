@@ -11,7 +11,7 @@ import CoreData
 struct ContentView: View {
     @ObservedObject private(set) var  viewModel: ViewModel
     @State var playerFrame = CGRect.zero
-    var playingBar = NowPlayingBarView()
+    let playingBar = NowPlayingBarView()
     var body: some View {
         
             TabView(selection: $viewModel.selectedTab) {
@@ -23,16 +23,12 @@ struct ContentView: View {
                     .tabItem {
                         Image(systemName: "chart.bar.doc.horizontal")
                     }.tag(1)
-                VideoView()
+                VideoView(viewModel: VideoView.ViewModel(container: viewModel.container))
                     .tabItem {
                         Image(systemName: "play.rectangle.fill")
                     }.tag(2)
                 SearchView()
-//                Button(action: {
-//                    viewModel.localRepository.fetchEvent()
-//                }, label: {
-//                    Text("fetch")
-//                })
+
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }.tag(3)
@@ -50,11 +46,12 @@ struct ContentView: View {
             })
             .overlay(
                 playingBar.position(x: playerFrame.midX, y: playerFrame.height - (NowPlayingBarView.height / 2)))
+            .preferredColorScheme(.dark)
     }
 }
 
 extension ContentView {
-    class ViewModel: ObservableObject {
+    final class ViewModel: ObservableObject {
         let localRepository: LocalRepository
         let container: DIContainer
         @Published var selectedTab = 0 {

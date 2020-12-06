@@ -8,7 +8,7 @@
 import SwiftUI
 
 protocol LocalRepository {
-    func fetchEvent()
+    func fetchEvents() -> [LocalEvent]
     func deleteAllEvent()
     func newEvent() -> Event
     func saveContext()
@@ -17,16 +17,16 @@ protocol LocalRepository {
 struct RealLocalRepository: LocalRepository {
     let persistenceStore = PersistenceController()
     
-    func fetchEvent() {
-        let event = persistenceStore.fetch()
-        event.forEach {
-            print("\($0.date?.description ?? "") \($0.tab) Tab was pressed")
+    func fetchEvents() -> [LocalEvent] {
+        let events = persistenceStore.fetch()
+        return events.map { event -> LocalEvent in
+            LocalEvent(log: "\(event.date?.description ?? "") \(event.tab) Tab was pressed")
         }
     }
     
     func deleteAllEvent() {
         let result = persistenceStore.deleteAll()
-        print(result ? "성공" : "실패")
+        print(result ? "로컬 데이터 삭제 성공" : "로컬 데이터 삭제 실패")
     }
     
     func newEvent() -> Event {

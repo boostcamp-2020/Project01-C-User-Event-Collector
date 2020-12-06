@@ -55,7 +55,6 @@ private extension SearchView {
     var searchView: some View {
         HStack {
             TextField("검색어를 입력해주세요", text: $text)
-                .preferredColorScheme(.dark)
                 .accentColor(Color.white)
                 .padding(7)
                 .padding(.horizontal, 25)

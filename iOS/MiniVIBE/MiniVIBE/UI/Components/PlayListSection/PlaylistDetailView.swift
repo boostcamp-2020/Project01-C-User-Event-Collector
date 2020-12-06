@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlaylistDetailView: View {
     @State private(set) var playlist: Playlist
-    let mock = MockItemFactory.rankSongs
+    let mock = MockItemFactory.imageURLSongs
     var body: some View {
         VStack {
             DetailHeaderView(title: playlist.title, subtitle: playlist.subtitle)
@@ -65,9 +65,7 @@ private extension PlaylistDetailView {
                 ForEach(mock) { song in
                     HStack(spacing: .defaultSpacing) {
                         Image(systemName: "circle").foregroundColor(.gray)
-                        Image(song.imageURLString)
-                            .resizable()
-                            // FIXME: 고정값
+                        AsyncImageView(url: song.imageURLString)
                             .frame(width: 40, height: 40, alignment: .center)
                         VStack(alignment: .leading, spacing: .defaultSpacing) {
                             Text(song.title).vibeTitle3()

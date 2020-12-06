@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension FiveRowSongGridView {
-    class ViewModel: ObservableObject {
+    final class ViewModel: ObservableObject {
         @State private(set) var songs: [Song] = MockItemFactory.rankSongs
         let id: Int
         let title: String

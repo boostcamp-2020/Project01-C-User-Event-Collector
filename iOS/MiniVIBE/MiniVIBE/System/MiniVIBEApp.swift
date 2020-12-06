@@ -13,9 +13,11 @@ struct MiniVIBEApp: App {
     
     init() {
         UITabBar.appearance().barTintColor = .black
+        // FIXME: 서버 완성되면 수정
+        let fakeServerRepository = FakeServerRepository(network: Network())
         let localRepository = RealLocalRepository()
-        let serverRepository = RealServerRepository()
-        let eventService = RealEventService(serverRepository: serverRepository, localRepository: localRepository)
+        let serverRepository = RealServerRepository(network: Network())
+        let eventService = RealEventService(serverRepository: fakeServerRepository, localRepository: localRepository)
         let musicPlayer = MusicPlayer()
         container = DIContainer(serverRepository: serverRepository,
                                 localRepository: localRepository,

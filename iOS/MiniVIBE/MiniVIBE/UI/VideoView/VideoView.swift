@@ -9,12 +9,13 @@ import SwiftUI
 
 struct VideoView: View {
     @State private var items: [Video] = MockItemFactory.videoItems
+    let viewModel: VideoView.ViewModel
     var body: some View {
         NavigationView {
             ZStack {
                 Color.black.edgesIgnoringSafeArea(.top)
                 ScrollView(.vertical, showsIndicators: false) {
-                    VideoHeaderView()
+                    VideoHeaderView(viewModel: VideoHeaderView.ViewModel(container: viewModel.container))
                     LazyVStack(spacing: 40) {
                         ForEach(items) { item in
                             ImageItemView(image: Image(item.imageURLString), type: .one, ratio: 0.5) {
@@ -33,6 +34,16 @@ struct VideoView: View {
                 }
                 .padding(.top)
             }.navigationBarHidden(true)
+        }
+    }
+}
+
+extension VideoView {
+    final class ViewModel: ObservableObject {
+        let container: DIContainer
+        
+        init(container: DIContainer) {
+            self.container = container
         }
     }
 }

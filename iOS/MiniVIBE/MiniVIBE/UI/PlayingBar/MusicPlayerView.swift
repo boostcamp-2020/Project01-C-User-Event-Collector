@@ -150,7 +150,6 @@ private struct PlayListItemView: View {
             Image(systemName: "circle").foregroundColor(.gray)
             Image(item.imageURLString)
                 .resizable()
-                // FIXME: 고정값
                 .frame(width: 40, height: 40, alignment: .center)
             VStack(alignment: .leading, spacing: .defaultSpacing) {
                 Text(item.title).vibeTitle3()

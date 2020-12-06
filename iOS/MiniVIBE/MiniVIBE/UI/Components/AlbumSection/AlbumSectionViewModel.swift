@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension AlbumSectionView {
-    class ViewModel: ObservableObject {
+    final class ViewModel: ObservableObject {
         @State private(set) var albums: [Album] = MockItemFactory.albums
         let id: Int
         let title: String

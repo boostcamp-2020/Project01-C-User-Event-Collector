@@ -9,15 +9,15 @@ import Foundation
 import Combine
 
 protocol ServerRepository {
-    
-    func fetch() -> AnyPublisher<Int, Error>
+    func send(events: [LocalEvent]) -> AnyPublisher<Void, NetworkError>
 }
 
 struct RealServerRepository: ServerRepository {
-    
-    func fetch() -> AnyPublisher<Int, Error> {
-        return Just(2)
-            .setFailureType(to: Error.self)
+    // FIXME: 서버 완성되면 수정
+    let network: Networking
+    func send(events: [LocalEvent])  -> AnyPublisher<Void, NetworkError> {
+        return Just(())
+            .setFailureType(to: NetworkError.self)
             .eraseToAnyPublisher()
     }
 }
