@@ -18,12 +18,11 @@ extension CDEvent {
     @NSManaged public var date: Date?
     @NSManaged public var tab: Int32
     @NSManaged public var eventName: String?
-    @NSManaged public var parameter: NSObject?
     
     func set(from event: Event) {
         date = event.date
         tab = Int32(event.tab ?? 0)
         eventName = event.name
-//        parameter = eventName.parameter
+//        parameter = event.parameter
     }
 }

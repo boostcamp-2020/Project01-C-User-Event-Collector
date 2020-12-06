@@ -19,7 +19,6 @@ struct ContentView: View {
                     .tabItem {
                         Image(systemName: "house")
                     }.tag(0)
-                    .emitEvent(eventService: viewModel.container.eventService, eventName: "tab_Changed", parameter: [:])
                 ChartView()
                     .tabItem {
                         Image(systemName: "chart.bar.doc.horizontal")
@@ -28,13 +27,13 @@ struct ContentView: View {
                     .tabItem {
                         Image(systemName: "play.rectangle.fill")
                     }.tag(2)
-                Button(action: {
-                    viewModel.localRepository.fetchEvent()
-                }, label: {
-                    Text("fetch")
-                })
-                .tabItem {
-                    Image(systemName: "magnifyingglass")
+                VStack {
+                    Text(viewModel.container.eventService.reachability.isConnected ? "o" : "x").onChange(of: viewModel.container.eventService.reachability.isConnected, perform: { value in
+                        print(value)
+                    })
+                    }
+                    .tabItem {
+                        Image(systemName: "magnifyingglass")
                 }.tag(3)
                 Button(action: {
                     viewModel.localRepository.deleteAllEvent()
@@ -57,8 +56,12 @@ struct ContentView: View {
 extension ContentView {
     class ViewModel: ObservableObject {
         let localRepository: LocalRepository
-        let container: DIContainer
-        @Published var selectedTab = 0
+        var container: DIContainer
+        @Published var selectedTab = 0 {
+            didSet {
+                container.eventService.send(event: Event(name: "tabChanged", parameter: [:], tab: selectedTab))
+            }
+        }
         
         init(container: DIContainer) {
             self.container = container

@@ -8,7 +8,7 @@
 import CoreData
 
 class PersistenceController {
-    lazy var persistentContainer: NSPersistentContainer = {
+    var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "MiniVIBE")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -21,9 +21,8 @@ class PersistenceController {
         return persistentContainer.viewContext
     }
     
-    func fetch() -> [CDEvent] {
+    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
         do {
-            let request: NSFetchRequest<CDEvent> = CDEvent.fetchRequest()
             let fetchResult = try self.context.fetch(request)
             return fetchResult
         } catch {
@@ -32,8 +31,8 @@ class PersistenceController {
         }
     }
     
-    func deleteAll() -> Bool {
-        let request: NSFetchRequest<NSFetchRequestResult> = CDEvent.fetchRequest()
+    func deleteAll<T: NSManagedObject>(request: NSFetchRequest<T>) -> Bool {
+        let request = T.fetchRequest()
         let delete = NSBatchDeleteRequest(fetchRequest: request)
         do {
             try self.context.execute(delete)
@@ -50,5 +49,13 @@ class PersistenceController {
         } catch { print(error.localizedDescription)
             return false
         }
+    }
+    
+    func newEntity(entityName: String) -> NSManagedObject? {
+        let entity = NSEntityDescription.entity(forEntityName: entityName, in: context)
+        if let entity = entity {
+            return NSManagedObject(entity: entity, insertInto: context)
+        }
+        return nil
     }
 }

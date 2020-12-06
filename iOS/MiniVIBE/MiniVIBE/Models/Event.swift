@@ -8,14 +8,21 @@
 import Foundation
 
 class Event: Codable {
-    var name: String
-    var parameter: [String: String]
-    var date = Date()
+    var name: String?
+    var parameter: [String: String]?
+    var date: Date?
     var tab: Int?
     
     init(name: String, parameter: [String: String], tab: Int? = nil) {
         self.name = name
-        self.parameter = parameter
+        self.date = Date()
+//        self.parameter = parameter
         self.tab = tab
+    }
+    
+    init(cdEvent: CDEvent) {
+        self.date = cdEvent.date
+        self.name = cdEvent.eventName
+        self.tab = Int(cdEvent.tab)
     }
 }

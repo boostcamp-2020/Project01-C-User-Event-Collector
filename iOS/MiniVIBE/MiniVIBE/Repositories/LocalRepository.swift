@@ -8,33 +8,27 @@
 import SwiftUI
 
 protocol LocalRepository {
-    func fetchEvent()
+    func fetchEvent() -> [Event]
     func deleteAllEvent()
-    func newEvent() -> CDEvent
-    func saveContext()
+    func saveEvent(event: Event)
 }
 
 struct RealLocalRepository: LocalRepository {
     let persistenceStore = PersistenceController()
     
-    func fetchEvent() {
-        let event = persistenceStore.fetch()
-        event.forEach {
-            print("\($0.date?.description ?? "") \($0.tab) Tab was pressed")
-        }
+    func fetchEvent() -> [Event] {
+        let cdEvents = persistenceStore.fetch(request: CDEvent.fetchRequest())
+        return cdEvents.map { Event(cdEvent: $0) }
     }
     
     func deleteAllEvent() {
-        let result = persistenceStore.deleteAll()
+        let result = persistenceStore.deleteAll(request: CDEvent.fetchRequest())
         print(result ? "성공" : "실패")
     }
     
-    func newEvent() -> CDEvent {
-        let event = CDEvent(context: persistenceStore.context)
-        return event
-    }
-    
-    func saveContext() {
-        _ = persistenceStore.saveContext()
+    func saveEvent(event: Event) {
+        var cdEvent = persistenceStore.newEntity(entityName: "CDEvent") as? CDEvent
+        cdEvent?.set(from: event)
+        persistenceStore.saveContext()
     }
 }
