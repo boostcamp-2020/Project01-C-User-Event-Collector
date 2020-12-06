@@ -3,7 +3,6 @@ import Library from '@components/Template/Library';
 
 import TrackItem from '@components/Common/TrackItem';
 import LargeButton from '@components/Common/Button/LargeButton';
-import { RiOrderPlayFill, RiPlayListAddLine } from 'react-icons/ri';
 
 const MyTrack = ({ trackList }) => {
   return (

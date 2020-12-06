@@ -7,7 +7,6 @@ import { BsMusicPlayer } from 'react-icons/bs';
 import { RiPlayListLine } from 'react-icons/ri';
 
 import trimContentLength from '@utils/trimContentLength';
-import axios from 'axios';
 
 interface ITrackMetaProps {
   type: string;
@@ -22,12 +21,6 @@ type TrackMeta = {
   imgUrl: string;
 };
 
-const deleteTrackEvent = id => {
-  // axios.delete(`http://localhost:8000/api/library/tracks/${id}`).then(res => {
-  //   console.log(res);
-  // });
-};
-
 function TrackItem({ type, trackMetaData: track }: ITrackMetaProps) {
   return (
     <Wrapper>
@@ -37,7 +30,7 @@ function TrackItem({ type, trackMetaData: track }: ITrackMetaProps) {
           <TrackHoverImg src="/images/track-hover-img.png" className="track-hover-img" />
           <TrackImg src={track.album.imgUrl} alt="track-image" />
         </TrackImgWrapper>
-        <Text onClick={() => deleteTrackEvent(track.id)}>{trimContentLength(track.title, 35)}</Text>
+        <Text>{trimContentLength(track.title, 35)}</Text>
       </TrackWrapper>
       <TrackWrapper>
         {track.artists?.map(artist => (

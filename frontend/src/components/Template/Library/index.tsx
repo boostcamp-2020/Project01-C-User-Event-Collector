@@ -1,8 +1,5 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import styled from '@styles/themed-components';
-
-import { IoMdPlay } from 'react-icons/io';
-import { IoShuffleOutline } from 'react-icons/io5';
 
 import LargeButton from '@components/Common/Button/LargeButton';
 
@@ -13,7 +10,7 @@ interface ILayout {
 }
 
 // title이라고 하면 _document랑 충돌남
-function Layout({ mainTitle, type, children }: ILayout): ReactE {
+function Layout({ mainTitle, type, children }: ILayout): ReactElement {
   return (
     <Wrapper>
       <Header>
