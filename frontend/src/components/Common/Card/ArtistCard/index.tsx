@@ -35,8 +35,10 @@ const ArtistCard = ({ artistMetaData }: ArtistMetaProps) => {
 };
 
 const Container = styled.ul`
-  width: auto;
-  height: auto;
+  margin: 0 18px 18px 0;
+  &:nth-child(5n) {
+    margin-right: 0;
+  }
 `;
 
 const CardContainer = styled.div``;
