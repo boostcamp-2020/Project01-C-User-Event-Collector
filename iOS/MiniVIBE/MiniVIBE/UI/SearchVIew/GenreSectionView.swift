@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GenreItemView: View {
+struct GenreSectionView: View {
     var body: some View {
         LazyVGrid(
             columns: [.init(.fixed(.twoItemImageWidth )), .init(.fixed(.twoItemImageWidth ))],
@@ -25,7 +25,6 @@ struct GenreItemView: View {
                 .frame(width: .twoItemImageWidth, height: 30)
                 .background(Color(UIColor.darkGray))
                 .cornerRadius(5)
-
             }
         }
     }

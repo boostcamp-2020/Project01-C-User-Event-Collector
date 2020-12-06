@@ -100,7 +100,7 @@ private extension SearchView {
                     Text("장르").vibeTitle2()
                     Spacer()
                 }
-                GenreItemView()
+                GenreSectionView()
             }.padding(.horizontal, .defaultPadding)
         }
     }
