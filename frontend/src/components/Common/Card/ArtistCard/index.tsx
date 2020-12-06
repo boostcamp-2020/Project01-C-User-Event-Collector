@@ -61,10 +61,10 @@ const LikeButton = styled.a`
   background-color: #fbfbfb;
 `;
 
-const ArtistTitle = styled.div`
+const ArtistTitle = styled.p`
+  ${props => props.theme.font.plain}
   text-align: center;
-  font-size: 15px;
-  padding-top: 0.5rem;
+  margin-top: 0.5rem;
 `;
 
 export default ArtistCard;

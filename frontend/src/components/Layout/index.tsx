@@ -24,16 +24,8 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  ${props => props.theme.media.tablet`
-    padding-bottom: 498px;
-    padding-left: 0;
-    padding-top: 0;
-    min-height: 540px;
-    padding: 67 0 0;
-  `}
-  // desktop
   background: ${props => props.theme.color.mainBGColor};
-  padding-left: 225px;
+  padding-left: ${props => props.theme.size.sidebarWidth};
   min-height: 600px;
   height: auto;
   margin: 0;

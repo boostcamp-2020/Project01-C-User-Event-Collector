@@ -37,14 +37,14 @@ function Layout({ mainTitle, type, children }: ILayout) {
           </IconContext.Provider>
         )}
       </Header>
-      {children}
+      <LibraryContent>{children}</LibraryContent>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
   position: relative;
-  width: 964;
+  width: 100%;
   padding-top: 41px;
   padding-bottom: 23px;
   margin: auto;
@@ -65,20 +65,13 @@ const Title = styled.div`
 `;
 
 const SubTitle = styled.span`
-  display: block;
-  font-size: 13px;
-  line-height: 17px;
-  color: #999;
-  font-weight: 400;
+  ${props => props.theme.font.sub}
 `;
 
 const MainTitle = styled.span`
   display: block;
-  padding-top: 3px;
-  font-size: 30px;
-  line-height: 36px;
-  color: #232323;
-  font-weight: 700;
+  padding-top: 8px;
+  ${props => props.theme.font.boldTitle}
 `;
 
 const PlayButtonWrapper = styled.div`
@@ -95,6 +88,10 @@ const PlayButtonWrapper = styled.div`
 
 const CostomSpan = styled.div`
   padding: 0 0.2rem;
+`;
+
+const LibraryContent = styled.div`
+  padding-top: 32px;
 `;
 
 export default Layout;
