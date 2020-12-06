@@ -3,22 +3,22 @@ import styled from '@styles/themed-components';
 import BoxItem from '@components/Common/BoxItem';
 
 interface IAlbumMetaProps {
-  albumMetaData?: AlbumMeta;
+  albumMetaData: AlbumMeta;
 }
 
 type AlbumMeta = {
-  id?: number;
-  name?: string;
-  date?: string;
-  imgUrl?: string;
-  artists?: artistMeta[];
+  id: number;
+  name: string;
+  date: string;
+  imgUrl: string;
+  artists: artistMeta[];
 };
 
 type artistMeta = {
-  id?: number;
-  name?: string;
-  debut?: string;
-  imgUrl?: string;
+  id: number;
+  name: string;
+  debut: string;
+  imgUrl: string;
 };
 
 const AlbumCard = ({ albumMetaData }: IAlbumMetaProps) => {
@@ -26,14 +26,14 @@ const AlbumCard = ({ albumMetaData }: IAlbumMetaProps) => {
     <Container>
       <CardContainer>
         <ImageContainer>
-          <BoxItem imgUrl={albumMetaData?.imgUrl} />
+          <BoxItem imgUrl={albumMetaData.imgUrl} />
         </ImageContainer>
       </CardContainer>
       <AlbumTitle>{albumMetaData?.name}</AlbumTitle>
-      {albumMetaData?.artists?.length > 3 ? (
+      {albumMetaData && albumMetaData.artists.length > 3 ? (
         <AlbumArtistName>Various Artists</AlbumArtistName>
       ) : (
-        albumMetaData?.artists?.map(artist => (
+        albumMetaData.artists.map(artist => (
           <AlbumArtistName key={artist.id}>{artist.name}</AlbumArtistName>
         ))
       )}

@@ -3,21 +3,21 @@ import styled from '@styles/themed-components';
 import BoxItem from '@components/Common/BoxItem';
 
 interface IPlaylistMetaProps {
-  playlistMetaData?: PlaylistMeta;
+  playlistMetaData: PlaylistMeta;
 }
 
 type PlaylistMeta = {
-  id?: number;
-  name?: string;
-  date?: string;
-  tracks?: trackMeta;
+  id: number;
+  name: string;
+  date: string;
+  tracks: trackMeta[];
 };
 
 type trackMeta = {
-  id?: number;
-  name?: string;
-  date?: string;
-  imgUrl?: string;
+  id: number;
+  name: string;
+  date: string;
+  imgUrl: string;
 };
 
 const AlbumCard = ({ playlistMetaData: playlist }: IPlaylistMetaProps) => {
@@ -28,8 +28,8 @@ const AlbumCard = ({ playlistMetaData: playlist }: IPlaylistMetaProps) => {
           <BoxItem imgUrl={`https://picsum.photos/${180}`} />
         </ImageContainer>
       </CardContainer>
-      <AlbumTitle>{playlist?.name}</AlbumTitle>
-      <TotalAlbumTrack>{`${playlist?.tracks?.length}곡`}</TotalAlbumTrack>
+      <AlbumTitle>{playlist.name}</AlbumTitle>
+      <TotalAlbumTrack>{`${playlist.tracks.length}곡`}</TotalAlbumTrack>
     </Container>
   );
 };

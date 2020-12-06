@@ -17,7 +17,7 @@ const customMetaData = (type, metaData) => {
     artist: null,
     composer: null,
     songwriter: null,
-    imgUrl: null,
+    imgUrl: '@public/images/empty-music-img.png',
   };
   switch (type) {
     case 'artist':
@@ -49,16 +49,13 @@ const customMetaData = (type, metaData) => {
   }
 };
 
-const testImgUrl =
-  'https://musicmeta-phinf.pstatic.net/album/004/535/4535859.jpg?type=r480Fll&v=20200429115934';
-
 // title이라고 하면 _document랑 충돌남
 function Layout({ type, metaData, children }: ILayout): ReactElement {
   const data = customMetaData(type, metaData);
   return (
     <Wrapper>
       <Header>
-        <HeaderImg src={data.imgUrl} />
+        <HeaderImg src={data.imgUrl} alt="detail-header-img" />
         <HeaderContent>
           <MainTitle>{data.title}</MainTitle>
           {type === 'artist' && <SubTitle>{`${data.date} 데뷔 · ${data.genre}`}</SubTitle>}
