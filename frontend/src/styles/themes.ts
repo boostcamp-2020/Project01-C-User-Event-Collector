@@ -44,11 +44,11 @@ const size = {
 
 const font = {
   plain: `
-  font-size: 15px;
+  font-size: 14.5px;
   color: ${color.drakFontColor};
   `,
   sub: `
-  font-size: 14px;
+  font-size: 13px;
   color: ${color.greyFontColor};
   `,
   boldTitle: `

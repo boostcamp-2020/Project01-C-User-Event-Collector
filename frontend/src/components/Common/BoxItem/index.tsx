@@ -3,12 +3,10 @@ import styled from 'styled-components';
 import { BsThreeDots } from 'react-icons/bs';
 import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
 
-const imgUrl = 'https://music-phinf.pstatic.net/20200901_92/1598948113558KQlwD_PNG/1.png?type=w720';
-
-function BoxItem() {
+function BoxItem({ imgUrl }) {
   return (
     <Wrapper>
-      <BoxImage src={imgUrl} alt="" />
+      <BoxImage src={imgUrl} alt="box-item-image" />
       <ButtonsWrapper className="buttons-wrapper">
         <BoxPlayButton />
         <BsThreeDots size={24} />
@@ -36,8 +34,8 @@ const ButtonsWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 300px;
-  height: 300px;
+  width: 180px;
+  height: 180px;
   position: relative;
   cursor: pointer;
   color: ${props => props.theme.color.mainBGColor};

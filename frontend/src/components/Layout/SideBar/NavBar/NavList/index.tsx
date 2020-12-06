@@ -55,10 +55,6 @@ function NavList() {
         <Link href="/library/playlists">
           <NavItem>플레이리스트</NavItem>
         </Link>
-        <NavItem>받은노래</NavItem>
-        <Link href="/library/mp3">
-          <NavItem>구매한 MP3</NavItem>
-        </Link>
       </NavItemWrapper>
     </Container>
   );

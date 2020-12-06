@@ -91,7 +91,7 @@ const CostomSpan = styled.div`
 `;
 
 const LibraryContent = styled.div`
-  padding-top: 32px;
+  padding-top: 34px;
 `;
 
 export default Layout;
