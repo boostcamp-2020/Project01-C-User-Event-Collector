@@ -10,14 +10,8 @@ const MyTrack = ({ trackList }) => {
     <Library mainTitle="노래" type="track">
       <Wrapper>
         <ButtonsWrapper>
-          <LargeButton customType="addPlaylist">
-            <RiOrderPlayFill style={iconStyle} />
-            <span>바로 다음에 추가</span>
-          </LargeButton>
-          <LargeButton customType="addPlaylist">
-            <RiPlayListAddLine style={iconStyle} />
-            <span>맨 아래에 추가</span>
-          </LargeButton>
+          <LargeButton customType="addToFirst" />
+          <LargeButton customType="addToLast" />
         </ButtonsWrapper>
         {trackList?.map(track => (
           <TrackItem key={track.id} type="checkbox" trackMetaData={track} />
@@ -25,12 +19,6 @@ const MyTrack = ({ trackList }) => {
       </Wrapper>
     </Library>
   );
-};
-
-const iconStyle = {
-  marginRight: '4px',
-  position: 'relative',
-  bottom: '2px',
 };
 
 const Wrapper = styled.div`

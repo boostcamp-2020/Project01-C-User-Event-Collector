@@ -23,14 +23,8 @@ function Layout({ mainTitle, type, children }: ILayout): ReactE {
         </Title>
         {type && (
           <PlayButtonWrapper>
-            <LargeButton customType="play">
-              <IoMdPlay size={20} />
-              <CustomSpan>전체재생</CustomSpan>
-            </LargeButton>
-            <LargeButton customType="suffle">
-              <IoShuffleOutline size={20} />
-              <CustomSpan>랜덤재생</CustomSpan>
-            </LargeButton>
+            <LargeButton customType="play" />
+            <LargeButton customType="shuffle" />
           </PlayButtonWrapper>
         )}
       </Header>
