@@ -8,15 +8,7 @@ const MyTrack = ({ trackList }) => {
     <Library mainTitle="노래" type="track">
       <Wrapper>
         {trackList?.map(track => (
-          <TrackItem
-            id={track.id}
-            key={track.id}
-            type="checkbox"
-            title={track.title}
-            artists={track.artists}
-            album={track.album.name}
-            imgUrl={track.album.imgUrl}
-          />
+          <TrackItem key={track.id} type="checkbox" trackMetaData={track} />
         ))}
       </Wrapper>
     </Library>

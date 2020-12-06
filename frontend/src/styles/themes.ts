@@ -44,7 +44,7 @@ const size = {
 
 const font = {
   plain: `
-  font-size: 14.5px;
+  font-size: 14px;
   color: ${color.drakFontColor};
   `,
   sub: `

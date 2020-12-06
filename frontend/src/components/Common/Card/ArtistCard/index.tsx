@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 
-import { IconContext } from 'react-icons';
 import { IoHeart } from 'react-icons/io5';
 import CircleImage from '@components/Common/CircleImage';
 
-interface ArtistMetaProps {
+interface IArtistMetaProps {
   artistMetaData?: ArtistMeta;
 }
 
@@ -16,7 +15,7 @@ type ArtistMeta = {
   imgUrl?: string;
 };
 
-const ArtistCard = ({ artistMetaData }: ArtistMetaProps) => {
+const ArtistCard = ({ artistMetaData }: IArtistMetaProps) => {
   return (
     <Container>
       <CardContainer>

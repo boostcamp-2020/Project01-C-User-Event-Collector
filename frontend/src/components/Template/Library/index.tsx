@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 
-import { IconContext } from 'react-icons';
 import { IoMdPlay } from 'react-icons/io';
 import { IoShuffleOutline } from 'react-icons/io5';
 
@@ -14,7 +13,7 @@ interface ILayout {
 }
 
 // title이라고 하면 _document랑 충돌남
-function Layout({ mainTitle, type, children }: ILayout) {
+function Layout({ mainTitle, type, children }: ILayout): ReactE {
   return (
     <Wrapper>
       <Header>
@@ -23,18 +22,16 @@ function Layout({ mainTitle, type, children }: ILayout) {
           <MainTitle>{mainTitle}</MainTitle>
         </Title>
         {type && (
-          <IconContext.Provider value={{ size: '1.3rem' }}>
-            <PlayButtonWrapper>
-              <LargeButton customType="play">
-                <IoMdPlay />
-                <CostomSpan>전체재생</CostomSpan>
-              </LargeButton>
-              <LargeButton customType="suffle">
-                <IoShuffleOutline />
-                <CostomSpan>랜덤재생</CostomSpan>
-              </LargeButton>
-            </PlayButtonWrapper>
-          </IconContext.Provider>
+          <PlayButtonWrapper>
+            <LargeButton customType="play">
+              <IoMdPlay size={20} />
+              <CustomSpan>전체재생</CustomSpan>
+            </LargeButton>
+            <LargeButton customType="suffle">
+              <IoShuffleOutline size={20} />
+              <CustomSpan>랜덤재생</CustomSpan>
+            </LargeButton>
+          </PlayButtonWrapper>
         )}
       </Header>
       <LibraryContent>{children}</LibraryContent>
@@ -43,7 +40,6 @@ function Layout({ mainTitle, type, children }: ILayout) {
 }
 
 const Wrapper = styled.div`
-  position: relative;
   width: 100%;
   padding-top: 41px;
   padding-bottom: 23px;
@@ -51,11 +47,8 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.header`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-
-  padding-bottom: 25px;
+  position: relative;
+  padding-bottom: 30px;
   border-bottom: 1px solid #e4e4e4;
 `;
 
@@ -75,18 +68,15 @@ const MainTitle = styled.span`
 `;
 
 const PlayButtonWrapper = styled.div`
-  position: absolute;
   width: 284px;
-
+  position: absolute;
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-
-  margin-left: 0;
-  right: 0;
+  bottom: 18px;
+  right: 0px;
 `;
 
-const CostomSpan = styled.div`
+const CustomSpan = styled.div`
   padding: 0 0.2rem;
 `;
 
