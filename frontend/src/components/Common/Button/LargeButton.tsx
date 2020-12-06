@@ -16,14 +16,14 @@ const LargeButton = ({ onClick, children, customType }: ILargeButtonProps) => {
     case 'play':
       return (
         <PlayButton>
-          <IoMdPlay size={20} />
+          <IoMdPlay size={20} style={iconStyle} />
           <span>전체재생</span>
         </PlayButton>
       );
     case 'shuffle':
       return (
         <ShuffleButton>
-          <IoShuffleOutline size={20} />
+          <IoShuffleOutline size={20} style={iconStyle} />
           <span>랜덤재생</span>
         </ShuffleButton>
       );
@@ -41,6 +41,12 @@ const LargeButton = ({ onClick, children, customType }: ILargeButtonProps) => {
           <span>맨 아래에 추가</span>
         </AddPlaylistButton>
       );
+    case 'mp3':
+      return (
+        <ShuffleButton style={{ width: '100px' }}>
+          <span>MP3 구매</span>
+        </ShuffleButton>
+      );
     default:
       return <CustomButton>{children}</CustomButton>;
   }
@@ -49,7 +55,7 @@ const LargeButton = ({ onClick, children, customType }: ILargeButtonProps) => {
 const iconStyle = {
   marginRight: '4px',
   position: 'relative',
-  bottom: '2px',
+  bottom: '1px',
 };
 
 const CustomButton = styled.button<ILargeButtonProps>`

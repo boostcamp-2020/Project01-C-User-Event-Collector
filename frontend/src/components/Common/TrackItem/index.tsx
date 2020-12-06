@@ -30,7 +30,9 @@ function TrackItem({ type, trackMetaData: track }: ITrackMetaProps) {
           <TrackHoverImg src="/images/track-hover-img.png" className="track-hover-img" />
           <TrackImg src={track.album.imgUrl} alt="track-image" />
         </TrackImgWrapper>
-        <Text>{trimContentLength(track.title, 35)}</Text>
+        <Link href="/track/[id]" as={`/track/${track.id}`}>
+          <Text>{trimContentLength(track.title, 35)}</Text>
+        </Link>
       </TrackWrapper>
       <TrackWrapper>
         {track.artists?.map(artist => (
@@ -42,7 +44,9 @@ function TrackItem({ type, trackMetaData: track }: ITrackMetaProps) {
         ))}
       </TrackWrapper>
       <TrackWrapper>
-        <AlbumTitle>{track.album.name}</AlbumTitle>
+        <Link href="/album/[id]" as={`/album/${track.album.id}`}>
+          <AlbumTitle>{track.album.name}</AlbumTitle>
+        </Link>
       </TrackWrapper>
       <TrackWrapper style={lastWrapperStyle}>
         <BsMusicPlayer size={20} />

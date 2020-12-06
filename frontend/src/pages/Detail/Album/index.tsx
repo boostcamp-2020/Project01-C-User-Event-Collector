@@ -2,21 +2,21 @@ import React from 'react';
 import styled from '@styles/themed-components';
 import DetailTemplate from '@components/Template/Detail';
 
-interface IArtistInfoProps {
-  artistInfo?: MetaArtist;
+interface IAlbumInfoProps {
+  albumInfo?: MetaAlbum;
 }
 
-type MetaArtist = {
+type MetaAlbum = {
   id: number;
   imgUrl: string;
   name: string;
-  debut: string;
-  genres: any[];
+  date: string;
+  genres?: any[];
 };
 
-function ArtistDetail({ artistInfo: artist }: IArtistInfoProps) {
+function AlbumDetail({ albumInfo: album }: IAlbumInfoProps) {
   return (
-    <DetailTemplate type="artist" metaData={artist}>
+    <DetailTemplate type="album" metaData={album}>
       <Wrapper />
     </DetailTemplate>
   );
@@ -26,4 +26,4 @@ const Wrapper = styled.div`
   padding-bottom: 200px;
 `;
 
-export default ArtistDetail;
+export default AlbumDetail;

@@ -67,10 +67,6 @@ const PlayButtonWrapper = styled.div`
   right: 0px;
 `;
 
-const CustomSpan = styled.div`
-  padding: 0 0.2rem;
-`;
-
 const LibraryContent = styled.div`
   padding-top: 34px;
 `;
