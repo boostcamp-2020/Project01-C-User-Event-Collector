@@ -55,6 +55,7 @@ private struct MockServerDataView: View {
     let viewModel: MockServerView.ViewModel
     var body: some View {
         VStack {
+            Text("Server Repository Data").font(.title2)
             Button(action: {
                 self.presentation.wrappedValue.dismiss()
             }, label: {
@@ -74,6 +75,7 @@ private struct LocalDataView: View {
     let viewModel: MockServerView.ViewModel
     var body: some View {
         VStack {
+            Text("Local Repository Data").font(.title2)
             Button(action: {
                 self.presentation.wrappedValue.dismiss()
             }, label: {

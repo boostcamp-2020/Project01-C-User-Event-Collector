@@ -223,6 +223,7 @@
 			children = (
 				B912A15E257815CD00223C0B /* VideoView.swift */,
 				B912A1642578161500223C0B /* VideoHeaderView.swift */,
+				B9EC74E0257D0FF6003DF392 /* MockServerView */,
 			);
 			path = VideoView;
 			sourceTree = "<group>";
@@ -340,7 +341,6 @@
 			isa = PBXGroup;
 			children = (
 				B962EB292578DAB600421115 /* UI */,
-				B9EC74E0257D0FF6003DF392 /* MockServerView */,
 				DEF5EFEC25727DF8006666DC /* Models */,
 				B9FEA4EC25767AE60089CCD6 /* Utilities */,
 				B979681D2578DCA500D57161 /* Services */,
