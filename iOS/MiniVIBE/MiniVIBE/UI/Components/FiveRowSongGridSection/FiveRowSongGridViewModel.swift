@@ -9,20 +9,7 @@ import SwiftUI
 
 extension FiveRowSongGridView {
     class ViewModel: ObservableObject {
-        @State private(set) var songs: [Song] = (0...30).map { idx -> Song in
-            var rankChange: String?
-            if idx % 4 == 0 {
-                rankChange = "up"
-            } else if idx % 4 == 1 {
-                rankChange = "new"
-            } else if idx % 4 == 2 {
-                rankChange = "down"
-            } else {
-                rankChange = nil
-            }
-            return Song(imageURLString: "HomeDJStationSection1",
-                        title: "Test Music\(idx)", artist: "dochoi", rankChange: rankChange)
-        }
+        @State private(set) var songs: [Song] = MockItemFactory.rankSongs
         let id: Int
         let title: String
         let subtitle: String?

@@ -8,12 +8,7 @@
 import SwiftUI
 
 struct VideoView: View {
-    @State private var items: [Video] = [Video(imageURLString: "HomeMainSection3",
-                                               title: "Life Goes On : Like an arrow", artist: "방탄소년단"),
-                                         Video(imageURLString: "HomeMainSection3",
-                                               title: "Life Goes On : Like an arrow", artist: "방탄소년단"),
-                                         Video(imageURLString: "HomeMainSection3",
-                                               title: "Life Goes On : Like an arrow", artist: "방탄소년단")]
+    @State private var items: [Video] = MockItemFactory.videoItems
     var body: some View {
         NavigationView {
             ZStack {
@@ -27,10 +22,10 @@ struct VideoView: View {
                                     Text(item.title).vibeTitle3()
                                     Text(item.artist).vibeMainText()
                                     Spacer()
-                                    Button(action: {}) {
+                                    Button(action: {}, label: {
                                         Image(systemName: "ellipsis")
                                             .foregroundColor(.white)
-                                    }
+                                    })
                                 }
                             }
                         }

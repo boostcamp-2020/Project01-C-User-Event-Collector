@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailHeaderView: View {
     @Environment(\.presentationMode) var presentation
     let title: String
+    let subtitle: String?
     var body: some View {
         HStack {
             Button(action: {
@@ -20,6 +21,15 @@ struct DetailHeaderView: View {
             })
             Spacer()
         }.padding(.defaultPadding)
-        .overlay(Text(title).vibeTitle2())
+        .overlay(
+            VStack {
+            Text(title).vibeTitle2()
+                subtitle.map({ Text($0).vibeTitle3() })
+            })
+    }
+    
+    init(title: String, subtitle: String? = nil) {
+        self.title = title
+        self.subtitle = subtitle
     }
 }

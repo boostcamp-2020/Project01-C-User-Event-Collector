@@ -11,9 +11,9 @@ class MusicPlayer: ObservableObject {
     @Published var isPlaying = false
     @Published var playingIndex: Int = 0
     var nowPlayingSong: Song {
-        return playingList[playingIndex]
+        return playinglist[playingIndex]
     }
-    @Published var playingList: [Song] = (0...30).map { idx -> Song in
+    @Published var playinglist: [Song] = (0...30).map { idx -> Song in
         var rankChange: String?
         if idx % 4 == 0 {
             rankChange = "up"
@@ -33,17 +33,17 @@ class MusicPlayer: ObservableObject {
     }
     
     func play(index: Int) {
-        guard (0...playingList.count-1).contains(index) else { return }
+        guard (0...playinglist.count-1).contains(index) else { return }
         playingIndex = index
         isPlaying = true
     }
     
     func nextSong() {
-        guard playingIndex < playingList.count - 1 else { return }
+        guard playingIndex < playinglist.count - 1 else { return }
         playingIndex += 1
     }
     
     func move(from source: IndexSet, to destination: Int) {
-        playingList.move(fromOffsets: source, toOffset: destination)
+        playinglist.move(fromOffsets: source, toOffset: destination)
     }
 }
