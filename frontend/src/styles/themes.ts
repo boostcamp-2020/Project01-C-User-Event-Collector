@@ -40,6 +40,8 @@ const color = {
 
 const size = {
   sidebarWidth: '225px',
+  bigCarouselContentWidth: '310px',
+  smallCarouselContentWidth: '180px',
 };
 
 const font = {

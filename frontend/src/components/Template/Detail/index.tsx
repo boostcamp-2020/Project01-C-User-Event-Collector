@@ -4,50 +4,9 @@ import styled from '@styles/themed-components';
 import LargeButton from '@components/Common/Button/LargeButton';
 
 interface ILayout {
-  type?: string;
-  metaData?: any;
+  data?: any;
   children: any;
 }
-
-const customMetaData = (type, metaData) => {
-  const result = {
-    title: null,
-    date: null,
-    genre: null,
-    artist: null,
-    composer: null,
-    songwriter: null,
-    imgUrl: '@public/images/empty-music-img.png',
-  };
-  switch (type) {
-    case 'artist':
-      result.title = metaData.name;
-      result.date = metaData.debut.split('T')[0];
-      result.genre = metaData.genres[0].name;
-      result.imgUrl = metaData.imgUrl;
-      return result;
-    case 'track':
-      result.title = metaData.title;
-      result.date = metaData.album?.date;
-      result.artist = metaData.artists[0]?.name;
-      result.songwriter = metaData.songwriter;
-      result.composer = metaData.composer;
-      result.imgUrl = metaData.album.imgUrl;
-      return result;
-    case 'album':
-      result.title = metaData.name;
-      result.artist = metaData.artists.join(', ');
-      result.date = metaData.date;
-      result.genre = metaData.genres[0].name;
-      result.imgUrl = metaData.imgUrl;
-      return result;
-    case 'playlist':
-      result.title = metaData.name;
-      return result;
-    default:
-      return result;
-  }
-};
 
 // title이라고 하면 _document랑 충돌남
 function Layout({ data, children }: ILayout): ReactElement {
