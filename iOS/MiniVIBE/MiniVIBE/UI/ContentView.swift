@@ -13,7 +13,6 @@ struct ContentView: View {
     @State var playerFrame = CGRect.zero
     var playingBar = NowPlayingBarView()
     var body: some View {
-        
             TabView(selection: $viewModel.selectedTab) {
                 HomeView()
                     .tabItem {
@@ -31,11 +30,7 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }.tag(3)
-                Button(action: {
-                    viewModel.localRepository.deleteAllEvent()
-                }, label: {
-                    Text("delete")
-                })
+                LibraryView()
                 .tabItem {
                     Image(systemName: "person.fill")
                 }.tag(4)

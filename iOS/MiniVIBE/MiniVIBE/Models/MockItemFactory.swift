@@ -93,6 +93,18 @@ final class MockItemFactory {
                                          Video(imageURLString: "HomeMainSection3",
                                                title: "Life Goes On : Like an arrow", artist: "방탄소년단")]
     
+    static let songItems: [Song] = [Song(imageURLString: "newAlbum-dummy1", title: "노래1", artist: "아이유"),
+                                    Song(imageURLString: "newAlbum-dummy2", title: "노래2", artist: "태연"),
+                                    Song(imageURLString: "newAlbum-dummy3", title: "노래3", artist: "Imagine Dragons"),
+                                    Song(imageURLString: "newAlbum-dummy2", title: "노래4", artist: "Maroon 5"),
+                                    Song(imageURLString: "newAlbum-dummy1", title: "노래5", artist: "Artist")]
+    
+    static let artists: [Artist] = [Artist(imageURLString: "newAlbum-dummy1", name: "maroon 1"),
+                                    Artist(imageURLString: "newAlbum-dummy2", name: "maroon 2"),
+                                    Artist(imageURLString: "newAlbum-dummy3", name: "maroon 3"),
+                                    Artist(imageURLString: "newAlbum-dummy1", name: "maroon 4"),
+                                    Artist(imageURLString: "newAlbum-dummy2", name: "maroon 5"),]
+    
     static var randomColor: UIColor {
         return UIColor(red: CGFloat(drand48()), green: CGFloat(drand48()), blue: CGFloat(drand48()), alpha: 1.0)
     }
