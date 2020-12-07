@@ -50,19 +50,18 @@ const customMetaData = (type, metaData) => {
 };
 
 // title이라고 하면 _document랑 충돌남
-function Layout({ type, metaData, children }: ILayout): ReactElement {
-  const data = customMetaData(type, metaData);
+function Layout({ data, children }: ILayout): ReactElement {
   return (
     <Wrapper>
       <Header>
         <HeaderImg src={data.imgUrl} alt="detail-header-img" />
         <HeaderContent>
           <MainTitle>{data.title}</MainTitle>
-          {type === 'artist' && <SubTitle>{`${data.date} 데뷔 · ${data.genre}`}</SubTitle>}
-          {(type === 'track' || type === 'album') && <SubTitle>{data.artist}</SubTitle>}
-          {type === 'album' && <SubContent>{`${data.date} · ${data.genre}`}</SubContent>}
-          {type === 'track' && <SubContent>{`작사 ${data.songwriter}`}</SubContent>}
-          {type === 'track' && <SubContent>{`작곡 ${data.composer}`}</SubContent>}
+          {data.debut && data.genre && <SubTitle>{`${data.debut} 데뷔 · ${data.genre}`}</SubTitle>}
+          {data.artist && <SubTitle>{data.artist}</SubTitle>}
+          {data.date && data.genre && <SubContent>{`${data.date} · ${data.genre}`}</SubContent>}
+          {data.songwriter && <SubContent>{`작사 ${data.songwriter}`}</SubContent>}
+          {data.composer && <SubContent>{`작곡 ${data.composer}`}</SubContent>}
           <ButtonsWrapper>
             <LargeButton customType="play" />
             <LargeButton customType="shuffle" />

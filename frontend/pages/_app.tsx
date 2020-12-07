@@ -4,6 +4,7 @@ import theme from '@styles/themes';
 import GlobalStyles from '@styles/global-styles';
 import { ThemeProvider } from '@styles/themed-components';
 import 'semantic-ui-css/semantic.min.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 import Layout from '@components/Layout';
 

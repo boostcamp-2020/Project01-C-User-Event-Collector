@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import MagTopItem from '@components/Common/MagTopItem';
+import Carousel from '@components/Common/Carousel';
 
 function DJStation() {
   return (
     <Wrapper>
       <TopWrapper>
         <MagTopItem />
+        <Carousel />
       </TopWrapper>
     </Wrapper>
   );
