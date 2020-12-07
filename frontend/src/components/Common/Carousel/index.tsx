@@ -1,22 +1,15 @@
 import Carousel from 'react-bootstrap/Carousel';
 import styled from '@styles/themed-components';
 
-const MyCarousel = () => {
+const MyCarousel = ({ children, itemCount }) => {
+  // const tmp = Math.floor(children.length / itemCount);
+  // const wrapperCount = children.length % itemCount === 0 ? tmp : tmp + 1;
+
   return (
     <Wrapper>
       <Carousel interval={null} keyboard={false}>
         <Carousel.Item>
-          <ContentWrapper>
-            <div style={{ background: 'pink', height: '180px', width: '180px' }} />
-            <div style={{ background: 'yellow', height: '180px', width: '180px' }} />
-            <div style={{ background: 'black', height: '180px', width: '180px' }} />
-            <div style={{ background: 'yellow', height: '180px', width: '180px' }} />
-            <div style={{ background: 'black', height: '180px', width: '180px' }} />
-          </ContentWrapper>
-        </Carousel.Item>
-
-        <Carousel.Item>
-          <div style={{ width: '100%', height: '180px', background: 'blue' }} />
+          <ContentWrapper>{children}</ContentWrapper>
         </Carousel.Item>
       </Carousel>
     </Wrapper>

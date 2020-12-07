@@ -13,7 +13,7 @@ export default class Mag extends BaseEntity {
   imgUrl!: string;
 
   @Column()
-  date!: Date;
+  date!: string;
 
   @Column()
   tag!: string;

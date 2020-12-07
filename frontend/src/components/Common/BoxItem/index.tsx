@@ -34,8 +34,8 @@ const ButtonsWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 180px;
-  height: 180px;
+  width: 100%;
+  height: 100%;
   position: relative;
   cursor: pointer;
   color: ${props => props.theme.color.mainBGColor};

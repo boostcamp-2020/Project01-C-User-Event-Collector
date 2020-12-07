@@ -36,6 +36,7 @@ const color = {
   textColor: '#232323',
   greyFontColor: '#999',
   drakFontColor: '#232323',
+  borderColor: '#e2e2e2',
 };
 
 const size = {
@@ -56,6 +57,15 @@ const font = {
   boldTitle: `
   font-size: 30px;
   font-weight: 700;
+  color: ${color.drakFontColor};
+  `,
+  secTitle: `
+  font-size: 17px;
+  font-weight: 700;
+  color: ${color.drakFontColor};
+  `,
+  magTitle: `
+  font-size: 16px;
   color: ${color.drakFontColor};
   `,
 };

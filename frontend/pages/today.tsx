@@ -1,10 +1,23 @@
-import Sample from '@components/sample-rx';
+import useFetch from '@hooks/useFetch';
+import Today from '../src/pages/Today';
 
-const Today = () => (
-  <div>
-    {console.log('today 스타트')}
-    <Sample text="Hello This is Today Page" />
-  </div>
-);
+function Index() {
+  const { data: mag, isLoading, isError } = useFetch(`/mag`);
+  if (isLoading) return <div>...Loading</div>;
+  if (isError) {
+    console.log(isError);
+    return <div>...Error</div>;
+  }
 
-export default Today;
+  console.log('useFetch-today hook 시작!');
+  console.log('data : ', mag);
+  console.log('data.data : ', mag.data);
+
+  return (
+    <div>
+      <Today magList={mag.data} />
+    </div>
+  );
+}
+
+export default Index;
