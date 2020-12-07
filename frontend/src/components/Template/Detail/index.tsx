@@ -28,8 +28,8 @@ const customMetaData = (type, metaData) => {
       return result;
     case 'track':
       result.title = metaData.title;
-      result.date = metaData.album.date;
-      result.artist = metaData.artists[0].name;
+      result.date = metaData.album?.date;
+      result.artist = metaData.artists[0]?.name;
       result.songwriter = metaData.songwriter;
       result.composer = metaData.composer;
       result.imgUrl = metaData.album.imgUrl;

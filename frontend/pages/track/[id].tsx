@@ -1,27 +1,27 @@
 import { useRouter } from 'next/router';
+import useTrack from '@hooks/useTrack';
 import TrackDetail from '../../src/pages/Detail/Track';
 
-export function Index({ trackInfo }) {
+export function Index() {
   const router = useRouter();
-  console.log('trackInfo : ', trackInfo);
+  const { id } = router.query;
+  const { data, isLoading, isError } = useTrack(id);
+
+  if (isLoading) return <div>...Loading</div>;
+  if (isError) {
+    console.log(isError);
+    return <div>...Error</div>;
+  }
+
+  console.log('useTrack hook 시작!');
+  console.log('data : ', data);
+  console.log('data.data : ', data.data);
   return (
     <>
-      <TrackDetail trackInfo={trackInfo} />
+      <TrackDetail trackInfo={data.data} />
       <p>{router.query.id}</p>
     </>
   );
-}
-
-export async function getServerSideProps(context) {
-  const { id } = context.params;
-  const apiUrl = `http://localhost:8000/api/track/${id}`;
-  const res = await fetch(apiUrl);
-  const data = await res.json();
-  const trackInfo = data.data;
-
-  return {
-    props: { trackInfo },
-  };
 }
 
 export default Index;
