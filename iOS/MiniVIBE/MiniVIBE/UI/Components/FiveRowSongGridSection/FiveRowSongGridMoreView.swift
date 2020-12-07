@@ -52,10 +52,10 @@ private extension FiveRowSongGridMoreView {
                     Text("\(viewModel.songs[index].title)").vibeMainText()
                 }
                 Spacer()
-                Button(action: {}) {
+                Button(action: {}, label: {
                     Image(systemName: "ellipsis")
                         .foregroundColor(.white)
-                }
+                })
             }.frame(width: .oneItemImageWidth)
         }
     }

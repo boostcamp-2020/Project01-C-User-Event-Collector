@@ -22,7 +22,7 @@ enum ImageSizeType: CGFloat {
 }
 
 struct ImageItemView<Content: View>: View {
-
+    
     private let content: Content
     private let image: Image
     private let type: ImageSizeType
@@ -39,9 +39,10 @@ struct ImageItemView<Content: View>: View {
         VStack(alignment: .leading, spacing: 5) {
             image
                 .resizable()
+                .aspectRatio(contentMode: .fill)
                 .frame(width: type.rawValue, height: type.rawValue * ratio,
                        alignment: .center)
-                .aspectRatio(contentMode: .fill)
+                .clipped()
             content
         }.frame(width: type.rawValue)
     }

@@ -1,5 +1,5 @@
 //
-//  PlayListMoreView.swift
+//  PlaylistMoreView.swift
 //  MiniVIBE
 //
 //  Created by 최광현 on 2020/11/28.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct PlayListMoreView: View {
-    let viewModel: PlayListSectionView.ViewModel
+struct PlaylistMoreView: View {
+    let viewModel: PlaylistSectionView.ViewModel
     var body: some View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.vertical)
@@ -16,7 +16,7 @@ struct PlayListMoreView: View {
                 DetailHeaderView(title: viewModel.title)
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVStack(alignment: .leading) {
-                        ForEach(viewModel.playLists) { playlist in
+                        ForEach(viewModel.playlists) { playlist in
                             HStack {
                                 Image(playlist.imageURLString)
                                     .resizable()
@@ -25,7 +25,7 @@ struct PlayListMoreView: View {
                                 VStack(alignment: .leading, spacing: .defaultSpacing) {
                                     Text(playlist.title).vibeTitle3()
                                     playlist.description.map({Text($0).vibeMainText().lineLimit(1)})
-                                    Text("VIBE").vibeMainText()
+                                    Text(playlist.subtitle).vibeMainText()
                                 }
                             }.padding(.horizontal, .defaultPadding)
                         }

@@ -27,13 +27,9 @@ struct ContentView: View {
                     .tabItem {
                         Image(systemName: "play.rectangle.fill")
                     }.tag(2)
-                VStack {
-                    Text(viewModel.container.eventService.reachability.isConnected ? "o" : "x").onChange(of: viewModel.container.eventService.reachability.isConnected, perform: { value in
-                        print(value)
-                    })
-                    }
-                    .tabItem {
-                        Image(systemName: "magnifyingglass")
+                SearchView()
+                .tabItem {
+                    Image(systemName: "magnifyingglass")
                 }.tag(3)
                 Button(action: {
                     viewModel.localRepository.deleteAllEvent()
@@ -44,7 +40,6 @@ struct ContentView: View {
                     Image(systemName: "person.fill")
                 }.tag(4)
             }.accentColor(.vibePink)
-            .environmentObject(viewModel.container.musicPlayer)
             .onPreferenceChange(Size.self, perform: { value in
                 playerFrame = value.last ?? .zero
             })
