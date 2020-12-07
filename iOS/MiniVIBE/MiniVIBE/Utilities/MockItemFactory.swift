@@ -25,6 +25,21 @@ final class MockItemFactory {
                     title: "Test Music\(idx)", artist: "dochoi", rankChange: rankChange)
     }
     
+    static let imageURLSongs: [Song] = (0...30).map { idx -> Song in
+        var rankChange: String?
+        if idx % 4 == 0 {
+            rankChange = "up"
+        } else if idx % 4 == 1 {
+            rankChange = "new"
+        } else if idx % 4 == 2 {
+            rankChange = "down"
+        } else {
+            rankChange = nil
+        }
+        return Song(imageURLString: "https://musicmeta-phinf.pstatic.net/album/005/055/5055713.jpg?type=r100Fll&v=20201029181608",
+                    title: "Test Music\(idx)", artist: "dochoi", rankChange: rankChange)
+    }
+    
     static let albums: [Album] = [
     Album(imageURLString: "newAlbum-dummy1",
           title: "ARTIST. New Bi", artist: "Anonymous Artists", songs: [], rankChange: "up"),

@@ -35,4 +35,3 @@ struct NewsItemView: View {
             )
     }
 }
-
