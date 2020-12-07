@@ -7,7 +7,8 @@
 
 import Foundation
 
-class Event: Codable {
+class Event: Codable, Identifiable {
+    var id = UUID()
     var name: String?
     var parameter: [String: String]?
     var date: Date?

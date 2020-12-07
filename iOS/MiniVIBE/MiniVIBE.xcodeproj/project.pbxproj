@@ -17,13 +17,15 @@
 		B931019E256D800000DD5ADA /* View+vibeTitle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931019D256D800000DD5ADA /* View+vibeTitle1.swift */; };
 		B93101A8256D823700DD5ADA /* View+vibeMainText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93101A7256D823700DD5ADA /* View+vibeMainText.swift */; };
 		B93101B2256D848500DD5ADA /* View+vibeTitle3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93101B1256D848500DD5ADA /* View+vibeTitle3.swift */; };
+		B94DA9CA257D36EB0002A066 /* FakeServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94DA9C9257D36EB0002A066 /* FakeServerRepository.swift */; };
+		B94DA9D4257D56A40002A066 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94DA9D3257D56A40002A066 /* AsyncImageView.swift */; };
+		B94DA9DD257D66040002A066 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94DA9DC257D66040002A066 /* DependencyInjector.swift */; };
 		B962B09D2578169B00111978 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962B09C2578169B00111978 /* Video.swift */; };
 		B96F49F725768B7200C5AF5F /* MockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96F49F625768B7200C5AF5F /* MockRequest.swift */; };
 		B96F49FB25768CB800C5AF5F /* NetworkError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96F49FA25768CB800C5AF5F /* NetworkError+Equatable.swift */; };
 		B971C46D257AAAF700C57CE9 /* FiveRowSongGridMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B971C46C257AAAF700C57CE9 /* FiveRowSongGridMoreView.swift */; };
 		B971C475257ABDE300C57CE9 /* PlayShuffleHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B971C474257ABDE300C57CE9 /* PlayShuffleHeaderButton.swift */; };
 		B97968232578DD8900D57161 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97968222578DD8900D57161 /* Network.swift */; };
-		B97968282578DDDF00D57161 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97968272578DDDF00D57161 /* DependencyInjector.swift */; };
 		B97A5067256E7343003F7DF5 /* CGFloat+defaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A5066256E7343003F7DF5 /* CGFloat+defaultValues.swift */; };
 		B988596C257684510037D19B /* MiniVIBETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B988596B257684510037D19B /* MiniVIBETests.swift */; };
 		B994C69C25627DBD000E563C /* MiniVIBEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994C69B25627DBD000E563C /* MiniVIBEApp.swift */; };
@@ -46,11 +48,16 @@
 		B9C628EC257C1C35000BCE80 /* NewsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C628EB257C1C35000BCE80 /* NewsItemView.swift */; };
 		B9C628FC257C2B4D000BCE80 /* GenreSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C628FB257C2B4D000BCE80 /* GenreSectionView.swift */; };
 		B9C911622578E02400057E6F /* ServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C911612578E02400057E6F /* ServerRepository.swift */; };
+		B9D04D61257D8178001D01D7 /* AsyncImageNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D04D60257D8178001D01D7 /* AsyncImageNetwork.swift */; };
+		B9D04D65257D8193001D01D7 /* AsyncImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D04D64257D8193001D01D7 /* AsyncImageCache.swift */; };
 		B9D18FDF256CD7B000ECEFEC /* HomeSummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D18FDE256CD7B000ECEFEC /* HomeSummaryItem.swift */; };
+		B9D357B8257D171A009202F9 /* LocalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D357B7257D171A009202F9 /* LocalEvent.swift */; };
+		B9D357BC257D17C5009202F9 /* EventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D357BB257D17C5009202F9 /* EventRequest.swift */; };
 		B9D793B12577E9C500B40D0E /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D793B02577E9C500B40D0E /* ChartView.swift */; };
 		B9D793BB2577FDBC00B40D0E /* FiveRowSongGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D793BA2577FDBC00B40D0E /* FiveRowSongGridView.swift */; };
 		B9D793FB25780E3300B40D0E /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D793FA25780E3300B40D0E /* Album.swift */; };
 		B9DB8A20256D08F500D3F1A2 /* ArtistSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB8A1F256D08F500D3F1A2 /* ArtistSection.swift */; };
+		B9EC74DB257D0EDC003DF392 /* MockServerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EC74DA257D0EDC003DF392 /* MockServerView.swift */; };
 		B9F0BDAC256ED2B7004A2852 /* SectionScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F0BDAB256ED2B7004A2852 /* SectionScrollView.swift */; };
 		B9F0BDCA256EDDB3004A2852 /* CGFloat+twoItemImageWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F0BDC9256EDDB3004A2852 /* CGFloat+twoItemImageWidth.swift */; };
 		B9F0BDD0256EDE41004A2852 /* CGFloat+oneItemImageWidth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F0BDCF256EDE41004A2852 /* CGFloat+oneItemImageWidth.swift */; };
@@ -112,6 +119,9 @@
 		B93101A7256D823700DD5ADA /* View+vibeMainText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+vibeMainText.swift"; sourceTree = "<group>"; };
 		B93101B1256D848500DD5ADA /* View+vibeTitle3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+vibeTitle3.swift"; sourceTree = "<group>"; };
 		B93ED12E256BBC7D0033C43B /* HomeSummarySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSummarySectionView.swift; sourceTree = "<group>"; };
+		B94DA9C9257D36EB0002A066 /* FakeServerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeServerRepository.swift; sourceTree = "<group>"; };
+		B94DA9D3257D56A40002A066 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
+		B94DA9DC257D66040002A066 /* DependencyInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		B95964D4256CDF9D0041B135 /* HomeSummaryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSummaryItemView.swift; sourceTree = "<group>"; };
 		B95964E0256CEF520041B135 /* HomeHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderView.swift; sourceTree = "<group>"; };
 		B962B09C2578169B00111978 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
@@ -120,7 +130,6 @@
 		B971C46C257AAAF700C57CE9 /* FiveRowSongGridMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveRowSongGridMoreView.swift; sourceTree = "<group>"; };
 		B971C474257ABDE300C57CE9 /* PlayShuffleHeaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayShuffleHeaderButton.swift; sourceTree = "<group>"; };
 		B97968222578DD8900D57161 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
-		B97968272578DDDF00D57161 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		B97A5066256E7343003F7DF5 /* CGFloat+defaultValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+defaultValues.swift"; sourceTree = "<group>"; };
 		B9885969257684510037D19B /* MiniVIBETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVIBETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B988596B257684510037D19B /* MiniVIBETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVIBETests.swift; sourceTree = "<group>"; };
@@ -143,12 +152,17 @@
 		B9C628EB257C1C35000BCE80 /* NewsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemView.swift; sourceTree = "<group>"; };
 		B9C628FB257C2B4D000BCE80 /* GenreSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreSectionView.swift; sourceTree = "<group>"; };
 		B9C911612578E02400057E6F /* ServerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerRepository.swift; sourceTree = "<group>"; };
+		B9D04D60257D8178001D01D7 /* AsyncImageNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageNetwork.swift; sourceTree = "<group>"; };
+		B9D04D64257D8193001D01D7 /* AsyncImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageCache.swift; sourceTree = "<group>"; };
 		B9D18FDE256CD7B000ECEFEC /* HomeSummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSummaryItem.swift; sourceTree = "<group>"; };
+		B9D357B7257D171A009202F9 /* LocalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEvent.swift; sourceTree = "<group>"; };
+		B9D357BB257D17C5009202F9 /* EventRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRequest.swift; sourceTree = "<group>"; };
 		B9D793B02577E9C500B40D0E /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		B9D793BA2577FDBC00B40D0E /* FiveRowSongGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveRowSongGridView.swift; sourceTree = "<group>"; };
 		B9D793FA25780E3300B40D0E /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		B9DB8A19256CFE6900D3F1A2 /* Color+vibePink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+vibePink.swift"; sourceTree = "<group>"; };
 		B9DB8A1F256D08F500D3F1A2 /* ArtistSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSection.swift; sourceTree = "<group>"; };
+		B9EC74DA257D0EDC003DF392 /* MockServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServerView.swift; sourceTree = "<group>"; };
 		B9F0BDAB256ED2B7004A2852 /* SectionScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionScrollView.swift; sourceTree = "<group>"; };
 		B9F0BDC9256EDDB3004A2852 /* CGFloat+twoItemImageWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+twoItemImageWidth.swift"; sourceTree = "<group>"; };
 		B9F0BDCF256EDE41004A2852 /* CGFloat+oneItemImageWidth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+oneItemImageWidth.swift"; sourceTree = "<group>"; };
@@ -221,6 +235,7 @@
 			children = (
 				B912A15E257815CD00223C0B /* VideoView.swift */,
 				B912A1642578161500223C0B /* VideoHeaderView.swift */,
+				B9EC74E0257D0FF6003DF392 /* MockServerView */,
 			);
 			path = VideoView;
 			sourceTree = "<group>";
@@ -231,6 +246,14 @@
 				B923A7EB2577A80400E5C48D /* HomeDJStationDetailView.swift */,
 			);
 			path = HomeDJStaionDetail;
+			sourceTree = "<group>";
+		};
+		B94DA9DB257D65ED0002A066 /* Injected */ = {
+			isa = PBXGroup;
+			children = (
+				B94DA9DC257D66040002A066 /* DependencyInjector.swift */,
+			);
+			path = Injected;
 			sourceTree = "<group>";
 		};
 		B962EB292578DAB600421115 /* UI */ = {
@@ -269,18 +292,11 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		B979681C2578DC9000D57161 /* Injected */ = {
-			isa = PBXGroup;
-			children = (
-				B97968272578DDDF00D57161 /* DependencyInjector.swift */,
-			);
-			path = Injected;
-			sourceTree = "<group>";
-		};
 		B979681D2578DCA500D57161 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				B9258E162578E49200D4487C /* EventService.swift */,
+				B9D357BB257D17C5009202F9 /* EventRequest.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -342,7 +358,7 @@
 				B9FEA4EC25767AE60089CCD6 /* Utilities */,
 				B979681D2578DCA500D57161 /* Services */,
 				DE75169E25776F8A0054AFC6 /* Repositories */,
-				B979681C2578DC9000D57161 /* Injected */,
+				B94DA9DB257D65ED0002A066 /* Injected */,
 				B962EB2A2578DAE000421115 /* Persistence */,
 				B979681F2578DCE800D57161 /* System */,
 				B979681E2578DCC500D57161 /* Resources */,
@@ -378,6 +394,15 @@
 				B9C628FB257C2B4D000BCE80 /* GenreSectionView.swift */,
 			);
 			path = SearchVIew;
+			sourceTree = "<group>";
+		};
+		B9D04D5B257D8156001D01D7 /* AsyncImageHelper */ = {
+			isa = PBXGroup;
+			children = (
+				B9D04D60257D8178001D01D7 /* AsyncImageNetwork.swift */,
+				B9D04D64257D8193001D01D7 /* AsyncImageCache.swift */,
+			);
+			path = AsyncImageHelper;
 			sourceTree = "<group>";
 		};
 		B9D18FD8256CD61600ECEFEC /* HomeView */ = {
@@ -438,9 +463,20 @@
 			path = HomeArtistSection;
 			sourceTree = "<group>";
 		};
+		B9EC74E0257D0FF6003DF392 /* MockServerView */ = {
+			isa = PBXGroup;
+			children = (
+				B9EC74DA257D0EDC003DF392 /* MockServerView.swift */,
+			);
+			path = MockServerView;
+			sourceTree = "<group>";
+		};
 		B9FEA4EC25767AE60089CCD6 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B9D04D5B257D8156001D01D7 /* AsyncImageHelper */,
+				B9C628E0257C06F9000BCE80 /* MockItemFactory.swift */,
+				B97968222578DD8900D57161 /* Network.swift */,
 				B9FEA4E5257668E10089CCD6 /* Networking.swift */,
 				B9FEA4ED25767BA20089CCD6 /* RequestProviding.swift */,
 				DE18EEA0257BFA13009E4E11 /* Reachability.swift */,
@@ -487,6 +523,7 @@
 				B9F0BDAB256ED2B7004A2852 /* SectionScrollView.swift */,
 				B9B4D1EA256E5BB600EC2FE2 /* MoreHeaderView.swift */,
 				B971C474257ABDE300C57CE9 /* PlayShuffleHeaderButton.swift */,
+				B94DA9D3257D56A40002A066 /* AsyncImageView.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -540,6 +577,7 @@
 			children = (
 				DE75169F25776F990054AFC6 /* LocalRepository.swift */,
 				B9C911612578E02400057E6F /* ServerRepository.swift */,
+				B94DA9C9257D36EB0002A066 /* FakeServerRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -554,11 +592,11 @@
 				DEF5EFF125727E58006666DC /* MusicPlayer.swift */,
 				B962B09C2578169B00111978 /* Video.swift */,
 				B9FF8A6D257A951100B774CD /* Playlist.swift */,
-				B97968222578DD8900D57161 /* Network.swift */,
 				B9FF8A75257A992400B774CD /* Magazine.swift */,
 				DE18EE96257BF59A009E4E11 /* Event.swift */,
 				B9C628E0257C06F9000BCE80 /* MockItemFactory.swift */,
 				DE5F4C73257EA7DC0058ABE6 /* Artist.swift */,
+				B9D357B7257D171A009202F9 /* LocalEvent.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -717,6 +755,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9D357B8257D171A009202F9 /* LocalEvent.swift in Sources */,
+				B94DA9CA257D36EB0002A066 /* FakeServerRepository.swift in Sources */,
 				DEF5EFEE25727E47006666DC /* Song.swift in Sources */,
 				B9B4D1FF256E5CC300EC2FE2 /* HomeSummaryItemView.swift in Sources */,
 				B9B4D1F9256E5C8A00EC2FE2 /* Color+vibePink.swift in Sources */,
@@ -729,12 +769,14 @@
 				B962B09D2578169B00111978 /* Video.swift in Sources */,
 				B9D793FB25780E3300B40D0E /* Album.swift in Sources */,
 				B9B4D1F6256E5C7D00EC2FE2 /* HomeHeaderView.swift in Sources */,
+				B9D04D65257D8193001D01D7 /* AsyncImageCache.swift in Sources */,
 				B9FF8A76257A992400B774CD /* Magazine.swift in Sources */,
 				DE5F4C70257EA7400058ABE6 /* LibraryView.swift in Sources */,
 				B9FF8A62257A846100B774CD /* RankChangeView.swift in Sources */,
 				B9D793BB2577FDBC00B40D0E /* FiveRowSongGridView.swift in Sources */,
 				DE09042F256CCE11002914B5 /* HomeMagazineSectionView.swift in Sources */,
 				DE18EE8B257B9D34009E4E11 /* View+emitEvent.swift in Sources */,
+				B9D357BC257D17C5009202F9 /* EventRequest.swift in Sources */,
 				B9FEA4EE25767BA20089CCD6 /* RequestProviding.swift in Sources */,
 				B97A5067256E7343003F7DF5 /* CGFloat+defaultValues.swift in Sources */,
 				B9F0BDD0256EDE41004A2852 /* CGFloat+oneItemImageWidth.swift in Sources */,
@@ -745,6 +787,7 @@
 				B9129283257812C9002F516F /* MusicVideoTop50SectionView.swift in Sources */,
 				B994C6A825627DBE000E563C /* MiniVIBE.xcdatamodeld in Sources */,
 				B9FF8A48257A78BB00B774CD /* FiveRowSongGridViewModel.swift in Sources */,
+				B94DA9D4257D56A40002A066 /* AsyncImageView.swift in Sources */,
 				B912A1652578161500223C0B /* VideoHeaderView.swift in Sources */,
 				B9258E172578E49200D4487C /* EventService.swift in Sources */,
 				B9FF8A5A257A830E00B774CD /* AlbumSectionView.swift in Sources */,
@@ -760,7 +803,6 @@
 				B971C475257ABDE300C57CE9 /* PlayShuffleHeaderButton.swift in Sources */,
 				DEF5EFE925723A01006666DC /* NowPlayingBarView.swift in Sources */,
 				DE3EF6D2257361EC00A25B71 /* MusicPlayerView.swift in Sources */,
-				B97968282578DDDF00D57161 /* DependencyInjector.swift in Sources */,
 				B9C911622578E02400057E6F /* ServerRepository.swift in Sources */,
 				B9D793B12577E9C500B40D0E /* ChartView.swift in Sources */,
 				B971C46D257AAAF700C57CE9 /* FiveRowSongGridMoreView.swift in Sources */,
@@ -783,11 +825,14 @@
 				DE3D6F95256414EA00C236EF /* HomeNowSectionView.swift in Sources */,
 				B9FF8A6E257A951100B774CD /* Playlist.swift in Sources */,
 				B9FEA4E6257668E10089CCD6 /* Networking.swift in Sources */,
+				B94DA9DD257D66040002A066 /* DependencyInjector.swift in Sources */,
 				B9C628E1257C06F9000BCE80 /* MockItemFactory.swift in Sources */,
 				DE090447256D09CC002914B5 /* HomeNowReplayItem.swift in Sources */,
 				B931019E256D800000DD5ADA /* View+vibeTitle1.swift in Sources */,
+				B9D04D61257D8178001D01D7 /* AsyncImageNetwork.swift in Sources */,
 				B9F0BDCA256EDDB3004A2852 /* CGFloat+twoItemImageWidth.swift in Sources */,
 				DE18EEA1257BFA13009E4E11 /* Reachability.swift in Sources */,
+				B9EC74DB257D0EDC003DF392 /* MockServerView.swift in Sources */,
 				DEB6A6ED2572C89F00C97A0C /* DetailHeaderView.swift in Sources */,
 				DE18EE9C257BF5FB009E4E11 /* CDEvent+CoreDataProperties.swift in Sources */,
 				B97968232578DD8900D57161 /* Network.swift in Sources */,

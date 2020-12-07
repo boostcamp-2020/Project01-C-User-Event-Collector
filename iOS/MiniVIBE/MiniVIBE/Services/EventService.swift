@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SwiftUI
 import Combine
 
 protocol EventService {
@@ -14,13 +13,16 @@ protocol EventService {
     var serverRepository: ServerRepository { get }
     var localRepository: LocalRepository { get }
     func send(event: Event)
+    func sendAllEvents()
     var reachability: Reachability { get }
 }
-class RealEventService: EventService {
-    var isServerReachable: Bool = true
+
+final class RealEventService: EventService {
+    var isServerReachable: Bool = false
     let serverRepository: ServerRepository
     let localRepository: LocalRepository
     let reachability = Reachability()
+    private var subscriptions = Set<AnyCancellable>()
     
     init(serverRepository: ServerRepository, localRepository: LocalRepository) {
         self.serverRepository = serverRepository
@@ -45,10 +47,24 @@ class RealEventService: EventService {
             localRepository.saveEvent(event: event)
         }
     }
-    
+
     func sendOldData() {
         let events = localRepository.fetchEvent()
         events.forEach { serverRepository.eventSend(event: $0) }
         localRepository.deleteAllEvent()
+    }
+    
+    func sendAllEvents() { // 이벤트 전송
+        serverRepository.send(events: localRepository.fetchEvents())
+            .sink { result in
+                switch result {
+                case let .failure(error):
+                    print(error.localizedDescription)
+                    self.isServerReachable = false
+                case .finished:
+                    self.localRepository.deleteAllEvent()
+                }
+            } receiveValue: { _ in
+        }.store(in: &subscriptions)
     }
 }

@@ -5,10 +5,6 @@
 //  Created by 최동규 on 2020/12/06.
 //
 
-/*
- refernce: https://www.appcoda.com/swiftui-search-bar/
- */
-
 import SwiftUI
 
 struct SearchView: View {
@@ -55,7 +51,6 @@ private extension SearchView {
     var searchView: some View {
         HStack {
             TextField("검색어를 입력해주세요", text: $text)
-                .preferredColorScheme(.dark)
                 .accentColor(Color.white)
                 .padding(7)
                 .padding(.horizontal, 25)

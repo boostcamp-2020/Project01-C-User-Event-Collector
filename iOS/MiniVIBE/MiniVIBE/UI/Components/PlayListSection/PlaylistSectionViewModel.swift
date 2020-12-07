@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension PlaylistSectionView {
-    class ViewModel: ObservableObject {
+    final class ViewModel: ObservableObject {
         @State private(set) var playlists: [Playlist]
             = MockItemFactory.playlists
         let id: Int

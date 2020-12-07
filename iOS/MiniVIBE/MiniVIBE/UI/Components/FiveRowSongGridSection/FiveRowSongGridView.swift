@@ -39,7 +39,6 @@ private extension FiveRowSongGridView {
             HStack(spacing: .defaultSpacing) {
                 Image(viewModel.songs[index].imageURLString)
                     .resizable()
-                    // FIXME: 고정값, ranking
                     .frame(width: 40, height: 40,
                            alignment: .center)
                     .aspectRatio(contentMode: .fill)

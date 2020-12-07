@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MusicPlayer: ObservableObject {
+final class MusicPlayer: ObservableObject {
     @Published var isPlaying = false
     @Published var playingIndex: Int = 0
     var nowPlayingSong: Song {
