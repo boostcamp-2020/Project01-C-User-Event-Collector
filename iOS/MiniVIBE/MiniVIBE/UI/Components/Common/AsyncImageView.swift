@@ -62,7 +62,7 @@ private extension AsyncImageView {
             }
             cancellable = AsyncImageNetwork.shared.network.execute(AsyncImageRequest(url: URL(string: url)))
                 .delay(for: 4.5, scheduler: RunLoop.main)
-                .map { UIImage(data: $0)}
+                .map { UIImage(data: $0) }
                 .replaceError(with: nil)
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] image in

@@ -5,10 +5,6 @@
 //  Created by 최동규 on 2020/12/06.
 //
 
-/*
- refernce: https://www.appcoda.com/swiftui-search-bar/
- */
-
 import SwiftUI
 
 struct SearchView: View {
