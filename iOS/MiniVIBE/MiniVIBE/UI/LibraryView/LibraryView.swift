@@ -18,13 +18,11 @@ struct LibraryView: View {
         NavigationView {
             ZStack {
                 Color.black.edgesIgnoringSafeArea(.top)
-                ScrollView(.vertical, showsIndicators: false) {
+                VStack {
                     libraryHeaderView
-                    ScrollView {
-                        upperTab
-                        lowerTab
-                    }.padding(.bottom, NowPlayingBarView.height)
-                }.padding(.defaultPadding)
+                    upperTab
+                    lowerTab.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                }.padding(.bottom, NowPlayingBarView.height)
             }.navigationBarHidden(true)
         }
     }
@@ -38,8 +36,7 @@ private extension LibraryView {
             LibraryAlbumView().tag(2)
             LibraryPlaylistView().tag(3)
         }
-        .animation(.default)
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 350)
+        .animation(.easeInOut)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
     }
 }
@@ -98,27 +95,30 @@ extension LibraryView {
 struct LibrarySongView: View {
     var body: some View {
         ScrollView {
-            PlayShuffleHeaderButton(playHandler: {}, shuffleHandler: {})
-            LazyVStack {
-                ForEach(MockItemFactory.songItems) { song in
-                    HStack {
-                        Image(song.imageURLString)
-                            .resizable()
-                            .frame(width: 100, height: 100, alignment: .center)
-                        VStack(alignment: .leading, spacing: .defaultSpacing) {
-                            Text(song.title).vibeTitle3()
-                            Text(song.artist).vibeMainText()
-                        }
-                        Spacer()
-                        Button(action: {
-                            
-                        }, label: {
-                            Image(systemName: "heart.fill")
-                        })
-                    }.padding(.horizontal, .defaultPadding)
+            LazyVGrid(
+                columns: [.init(.fixed(.oneItemImageWidth))],
+                pinnedViews: [.sectionHeaders]
+            ) {
+                Section(header: PlayShuffleHeaderButton(playHandler: {}, shuffleHandler: {})) {
+                    ForEach(MockItemFactory.imageURLSongs) { song in
+                        HStack {
+                            AsyncImageView(url: song.imageURLString)
+                                .frame(width: 40, height: 40, alignment: .center)
+                            VStack(alignment: .leading, spacing: .defaultSpacing) {
+                                Text(song.title).vibeTitle3()
+                                Text(song.artist).vibeMainText()
+                            }
+                            Spacer()
+                            Button(action: {
+                                
+                            }, label: {
+                                Image(systemName: "heart.fill")
+                            })
+                        }.padding(.horizontal, .defaultPadding)
+                    }
                 }
             }
-        }
+        }.animation(.none)
     }
 }
 
@@ -149,39 +149,36 @@ struct LibraryPlaylistView: View {
 struct LibraryArtistView: View {
     var body: some View {
         ScrollView {
-            PlayShuffleHeaderButton(playHandler: {}, shuffleHandler: {})
-            LazyVStack {
-                ForEach(MockItemFactory.artists) { artist in
-                    HStack {
-                        Image(artist.imageURLString)
-                            .resizable()
-                            .frame(width: 50, height: 50, alignment: .center)
-                            .clipShape(Circle())
-                        Text(artist.name).vibeTitle3()
-                        Spacer()
-                    }.padding(.horizontal, .defaultPadding)
+            LazyVGrid(
+                columns: [.init(.fixed(.oneItemImageWidth))],
+                pinnedViews: [.sectionHeaders]) {
+                Section(header: PlayShuffleHeaderButton(playHandler: {}, shuffleHandler: {})) {
+                    ForEach(MockItemFactory.artists) { artist in
+                        HStack {
+                            Image(artist.imageURLString)
+                                .resizable()
+                                .frame(width: 50, height: 50, alignment: .center)
+                                .clipShape(Circle())
+                            Text(artist.name).vibeTitle3()
+                            Spacer()
+                        }.padding(.horizontal, .defaultPadding)
+                    }
                 }
             }
-        }
+        }.animation(.none)
     }
 }
 
 struct LibraryAlbumView: View {
     var body: some View {
-        ScrollView {
-            LazyVStack(alignment: .leading) {
-                ForEach(MockItemFactory.albums.indices.filter {$0 % 2 == 0}, id: \.self) { index in
-                    HStack {
-                        ImageItemView(image: Image(MockItemFactory.albums[index].imageURLString), type: .two) {
-                            Text(MockItemFactory.albums[index].title).vibeTitle3()
-                            Text(MockItemFactory.albums[index].artist).vibeMainText()
-                        }
-                        if index + 1 < MockItemFactory.albums.count {
-                            ImageItemView(image: Image(MockItemFactory.albums[index+1].imageURLString), type: .two) {
-                                Text(MockItemFactory.albums[index+1].title).vibeTitle3()
-                                Text(MockItemFactory.albums[index+1].artist).vibeMainText()
-                            }
-                        }
+        LazyVGrid(columns: [.init(.fixed(.twoItemImageWidth)),
+                             .init(.fixed(.twoItemImageWidth))
+                            ]) {
+            ForEach(MockItemFactory.albums) { album in
+                HStack {
+                    ImageItemView(image: Image(album.imageURLString), type: .two) {
+                        Text(album.title).vibeTitle3()
+                        Text(album.artist).vibeMainText()
                     }
                 }
             }

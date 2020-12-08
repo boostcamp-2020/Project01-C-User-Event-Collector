@@ -18,7 +18,22 @@ class FakeServerRepository: ServerRepository {
         self.network = network
     }
     
-    func send(events: [Event]) -> AnyPublisher<Void, NetworkError> {
+    func send(event: Event) -> AnyPublisher<Void, NetworkError> {
+        let request: RequestProviding
+        
+        if FakeServerRepository.isEnabled {
+            request = MockEventRequest()
+        } else {
+            request = MockEventRequest(url: URL(string: "https://www.asdfasdferwqtgjeas125"))
+        }
+      return network.execute(request)
+        .map({ _ -> Void in
+            FakeServerRepository.events.append(event)
+        })
+        .eraseToAnyPublisher()
+    }
+    
+    func sendAll(events: [Event]) -> AnyPublisher<Void, NetworkError> {
         let request: RequestProviding
         
         if FakeServerRepository.isEnabled {

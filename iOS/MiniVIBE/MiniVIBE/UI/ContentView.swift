@@ -50,7 +50,7 @@ extension ContentView {
         var container: DIContainer
         @Published var selectedTab = 0 {
             didSet {
-                container.eventService.send(event: Event(name: "tabChanged", parameter: [:], tab: selectedTab))
+                container.eventService.sendOneEvent(event: Event(name: "tabChanged", parameter: [:], tab: selectedTab))
             }
         }
         

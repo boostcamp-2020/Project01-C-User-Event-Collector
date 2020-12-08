@@ -13,7 +13,7 @@ extension View {
         return self.simultaneousGesture(
             TapGesture()
                 .onEnded { _ in
-                    eventService.send(event: Event(name: eventName, parameter: parameter))
+                    eventService.sendOneEvent(event: Event(name: eventName, parameter: parameter))
                 })
     }
 }
