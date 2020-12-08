@@ -19,6 +19,6 @@ route.use('/library', libraryRoute);
 route.use('/track', trackRoute);
 route.use('/album', albumRoute);
 route.use('/artist', artistRoute);
-route.use('/mag', magRoute);
+route.use('/magazines', magRoute);
 
 export default route;

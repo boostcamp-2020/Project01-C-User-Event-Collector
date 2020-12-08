@@ -17,30 +17,23 @@ type ArtistMeta = {
 const ArtistCard = ({ artistMetaData }: IArtistMetaProps) => {
   return (
     <Container>
-      <CardContainer>
-        <ImageContainer>
-          <CircleImage imageSrc={artistMetaData?.imgUrl} />
-          <ButtonWrapper>
-            <CircleHeartButton />
-          </ButtonWrapper>
-        </ImageContainer>
-      </CardContainer>
+      <ImageContainer>
+        <CircleImage imageSrc={artistMetaData?.imgUrl} />
+        <ButtonWrapper>
+          <CircleHeartButton />
+        </ButtonWrapper>
+      </ImageContainer>
       <ArtistTitle>{artistMetaData?.name}</ArtistTitle>
     </Container>
   );
 };
 
 const Container = styled.ul`
-  text-align: center;
-  border: 1px solid red;
+  width: ${props => props.theme.size.smallCarouselContentWidth};
+  height: ${props => props.theme.size.smallCarouselContentWidth};
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const CardContainer = styled.div`
-  width: ${props => props.theme.size.smallCarouselContentWidth};
-  height: ${props => props.theme.size.smallCarouselContentWidth};
 `;
 
 const ImageContainer = styled.a`

@@ -1,9 +1,9 @@
 import * as express from 'express';
-import { getMags, getMagById } from './controller';
+import { getMagazines, getMagazineById } from './controller';
 
 const route = express.Router();
 
-route.get('/', getMags);
-route.get('/:magId', getMagById);
+route.get('/', getMagazines);
+route.get('/:magId', getMagazineById);
 
 export default route;

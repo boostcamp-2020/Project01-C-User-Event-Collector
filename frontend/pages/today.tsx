@@ -2,7 +2,7 @@ import useFetch from '@hooks/useFetch';
 import Today from '../src/pages/Today';
 
 function Index() {
-  const { data: mag, isLoading, isError } = useFetch(`/mag`);
+  const { data: mag, isLoading, isError } = useFetch(`/magazines`);
   if (isLoading) return <div>...Loading</div>;
   if (isError) {
     console.log(isError);

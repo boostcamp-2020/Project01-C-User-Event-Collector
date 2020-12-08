@@ -23,21 +23,19 @@ const enterTitle = title => {
 const MagCard = ({ magMetaData: mag }: IMagMetaProps) => {
   return (
     <Container>
-      <CardContainer>
-        <BoxItem imgUrl={mag.imgUrl} />
-      </CardContainer>
+      <BoxItem imgUrl={mag.imgUrl} />
       <MagTitle>{enterTitle(mag?.title)}</MagTitle>
       <MagDate>{mag?.date}</MagDate>
     </Container>
   );
 };
 
-const Container = styled.ul``;
-
-const CardContainer = styled.div`
-  width: ${props => props.theme.size.bigCarouselContentWidth};
-  height: ${props => props.theme.size.bigCarouselContentWidth};
-  position: relative;
+const Container = styled.ul`
+  width: ${props => props.theme.size.smallCarouselContentWidth};
+  height: ${props => props.theme.size.smallCarouselContentWidth};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const MagTitle = styled.a`
