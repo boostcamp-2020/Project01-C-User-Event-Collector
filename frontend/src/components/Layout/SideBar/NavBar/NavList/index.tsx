@@ -76,6 +76,7 @@ const LibraryTag = styled.span`
 const ItemText = styled.span`
   margin-left: 9px;
   position: relative;
+  top: 2px;
 `;
 
 const NavItemWrapper = styled.ul`
@@ -87,8 +88,6 @@ const NavItem = styled.li<NavItemProps>`
     props.isSelected ? `${props.theme.color.highlight}` : `${props.theme.color.headerNavColor}`};
   margin: 20px 0;
   cursor: pointer;
-  display: flex;
-  align-items: flex-start;
   font-weight: 500;
   &:hover {
     filter: ${props => (props.isSelected ? 'brightness(80%)' : 'brightness(120%)')};

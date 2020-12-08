@@ -37,12 +37,14 @@ const color = {
   greyFontColor: '#999',
   drakFontColor: '#232323',
   borderColor: '#e2e2e2',
+  playbarFontColor: '#787878',
 };
 
 const size = {
   sidebarWidth: '225px',
   bigCarouselContentWidth: '310px',
   smallCarouselContentWidth: '180px',
+  playbarheight: '81px',
 };
 
 const font = {
