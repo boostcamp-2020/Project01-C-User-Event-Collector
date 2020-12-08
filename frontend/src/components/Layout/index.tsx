@@ -32,11 +32,6 @@ const Container = styled.div`
 `;
 
 // todaypage 빼고 다 max-width 964임.
-const Content = styled.div`
-  position: relative;
-  max-width: 1060px;
-  padding: 0 43px;
-  margin: auto;
-`;
+const Content = styled.div``;
 
 export default Layout;

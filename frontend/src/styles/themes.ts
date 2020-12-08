@@ -45,6 +45,9 @@ const size = {
   bigCarouselContentWidth: '310px',
   smallCarouselContentWidth: '180px',
   playbarheight: '81px',
+  mainContentWidth: '964px',
+  todayContentWidth: '1060px',
+  magTopItemHeight: '320px',
 };
 
 const font = {
