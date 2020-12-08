@@ -15,8 +15,4 @@ const TopWrapper = styled.div`
   background-color: ${props => props.theme.color.lightgrey};
 `;
 
-const Wrapper = styled.div`
-  padding-bottom: 200px;
-`;
-
 export default DJStation;

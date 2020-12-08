@@ -5,8 +5,7 @@ import Section from '@components/Common/Section';
 import MagCard from '@components/Common/Card/MagCard';
 import MagTopItem from '@components/Common/MagTopItem';
 import PlaylistCard from '@components/Common/Card/PlaylistCard';
-import { GrNext } from 'react-icons/gr';
-import useFetch from '../../hooks/useFetch';
+// import { GrNext } from 'react-icons/gr';
 
 function Today({ magList, playlistList }) {
   console.log('###', playlistList);

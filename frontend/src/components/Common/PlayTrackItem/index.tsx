@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { IoHeart, IoHeartOutline } from 'react-icons/io5';
+import { IoHeartOutline } from 'react-icons/io5';
 import { RiPlayListLine } from 'react-icons/ri';
 import { BsThreeDots } from 'react-icons/bs';
 

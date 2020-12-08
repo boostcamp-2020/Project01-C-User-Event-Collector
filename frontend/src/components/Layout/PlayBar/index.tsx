@@ -7,7 +7,7 @@ import {
   IoShuffleOutline,
   IoRepeat,
 } from 'react-icons/io5';
-import { BsFillVolumeUpFill, BsFillVolumeMuteFill, BsMusicNoteList } from 'react-icons/bs';
+import { BsFillVolumeUpFill, BsMusicNoteList } from 'react-icons/bs';
 import PlayTrackItem from '@components/Common/PlayTrackItem';
 
 function PlayBar() {
