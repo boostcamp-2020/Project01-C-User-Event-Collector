@@ -13,7 +13,6 @@ struct ContentView: View {
     @State var playerFrame = CGRect.zero
     let playingBar = NowPlayingBarView()
     var body: some View {
-        
             TabView(selection: $viewModel.selectedTab) {
                 HomeView()
                     .tabItem {
@@ -28,15 +27,10 @@ struct ContentView: View {
                         Image(systemName: "play.rectangle.fill")
                     }.tag(2)
                 SearchView()
-
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }.tag(3)
-                Button(action: {
-                    viewModel.localRepository.deleteAllEvent()
-                }, label: {
-                    Text("delete")
-                })
+                LibraryView()
                 .tabItem {
                     Image(systemName: "person.fill")
                 }.tag(4)
@@ -53,13 +47,10 @@ struct ContentView: View {
 extension ContentView {
     final class ViewModel: ObservableObject {
         let localRepository: LocalRepository
-        let container: DIContainer
+        var container: DIContainer
         @Published var selectedTab = 0 {
             didSet {
-                let event = localRepository.newEvent()
-                event.tab = Int32(selectedTab)
-                event.date = Date()
-                localRepository.saveContext()
+                container.eventService.sendOneEvent(event: Event(name: "tabChanged", parameter: [:], tab: selectedTab))
             }
         }
         

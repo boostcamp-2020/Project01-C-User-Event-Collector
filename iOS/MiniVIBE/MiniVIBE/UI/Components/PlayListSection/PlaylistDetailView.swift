@@ -22,7 +22,7 @@ struct PlaylistDetailView: View {
                 }
             }
         }
-        .background(Color.black.opacity(0.6) .edgesIgnoringSafeArea(.all))
+        .background(Color.black.opacity(0.6).ignoresSafeArea())
         .background(Image(playlist.imageURLString)
                         .resizable()
                         .scaledToFill()

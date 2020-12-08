@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct MockServerView: View {
-    let viewModel: MockServerView.ViewModel
+    @ObservedObject var viewModel: MockServerView.ViewModel
+    @ObservedObject var reachability = Reachability()
     @State private var showServer = false
     @State private var showLocal = false
     @State private var isServerEnabled = true
+    
     var body: some View {
         VStack {
             Text("TestServer View").vibeTitle1()
+            Text("Reachability: " + ( reachability.isConnected ? "O" : "X"))
             Toggle(isOn: $isServerEnabled) {
                 Text("isServerEnabled")
             }.padding()
@@ -39,13 +42,14 @@ struct MockServerView: View {
         .sheet(isPresented: self.$showLocal) {
             LocalDataView(viewModel: viewModel)
         }
-            Button(action: {
-                viewModel.container.eventService.sendAllEvents()
-            }, label: {
-                Text("Send All event to Server")
-            })
+        Button(action: {
+            viewModel.container.eventService.sendAllEvents()
+        }, label: {
+            Text("Send All event to Server")
+        })
         }.onChange(
-            of: isServerEnabled, perform: { isServerEnabled in    FakeServerRepository.isEnabled = isServerEnabled
+            of: isServerEnabled, perform: { isServerEnabled in
+                FakeServerRepository.isEnabled = isServerEnabled
         })
     }
 }
@@ -63,7 +67,7 @@ private struct MockServerDataView: View {
             })
             List {
                 ForEach(FakeServerRepository.events) { event in
-                    Text(event.log)
+                    Text("\(event.date) " + (event.name ?? "") + ("\(event.tab)") + String(describing: 3))
                 }
             }
         }
@@ -83,10 +87,9 @@ private struct LocalDataView: View {
             })
             List {
                 ForEach(viewModel.container.localRepository.fetchEvents()) { event in
-                    Text(event.log)
+                    Text("\(event.date) " + (event.name ?? "") + ("\(event.tab)"))
                 }
             }
-  
         }
     }
 }
@@ -94,8 +97,10 @@ private struct LocalDataView: View {
 extension MockServerView {
     final class ViewModel: ObservableObject {
         let container: DIContainer
+        let eventService: EventService
         init(container: DIContainer) {
             self.container = container
+            self.eventService = container.eventService
         }
     }
 }

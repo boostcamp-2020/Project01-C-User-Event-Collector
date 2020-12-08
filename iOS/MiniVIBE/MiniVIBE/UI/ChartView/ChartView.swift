@@ -15,7 +15,7 @@ struct ChartView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.black.edgesIgnoringSafeArea(.top)
+                Color.black.ignoresSafeArea(edges: .top)
                 ScrollView(.vertical, showsIndicators: false) {
                     chartHeaderView
                     LazyVStack(spacing: 40) {
