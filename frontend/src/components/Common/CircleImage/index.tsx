@@ -6,7 +6,8 @@ const CircleImage = ({ imageSrc }) => {
 };
 
 const Container = styled.img`
-  width: 180px;
+  width: 100%;
+  height: 100%;
   border-radius: 50%;
 `;
 

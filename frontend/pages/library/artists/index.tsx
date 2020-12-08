@@ -1,21 +1,23 @@
 import MyArtist from '@pages/Library/MyArtist';
+import useFetch from '@hooks/useFetch';
 
-const Index = ({ artistList }) => (
-  <div>
-    {console.log('artist 스타트')}
-    <MyArtist artistList={artistList} />
-  </div>
-);
+function Index() {
+  const { data, isLoading, isError } = useFetch(`/library/artists`);
+  if (isLoading) return <div>...Loading</div>;
+  if (isError) {
+    console.log(isError);
+    return <div>...Error</div>;
+  }
 
-export async function getServerSideProps(context) {
-  console.log('artist getServerSideProps 시작');
-  const res = await fetch('http://localhost:8000/api/library/artists');
-  const data = await res.json();
-  const artistList = data.data;
+  console.log('useFetch-artists hook 시작!');
+  console.log('data : ', data);
+  console.log('data.data : ', data.data);
 
-  return {
-    props: { artistList },
-  };
+  return (
+    <div>
+      <MyArtist artistList={data.data} />
+    </div>
+  );
 }
 
 export default Index;

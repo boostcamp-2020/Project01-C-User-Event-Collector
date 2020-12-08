@@ -13,6 +13,7 @@ import User from './User';
 import Artist from './Artist';
 import Playlist from './Playlist';
 import Album from './Album';
+import Mag from './Mag';
 
 @Entity()
 export default class Track extends BaseEntity {
@@ -33,6 +34,9 @@ export default class Track extends BaseEntity {
 
   @ManyToOne(() => Album, album => album.tracks)
   album!: Album;
+
+  @ManyToOne(() => Mag, mag => mag.tracks)
+  mag!: Mag;
 
   @OneToMany(() => MP3, mp3 => mp3.user, { onDelete: 'CASCADE' })
   mp3!: MP3[];

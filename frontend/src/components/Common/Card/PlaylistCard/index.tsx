@@ -24,9 +24,7 @@ const AlbumCard = ({ playlistMetaData: playlist }: IPlaylistMetaProps) => {
   return (
     <Container>
       <CardContainer>
-        <ImageContainer>
-          <BoxItem imgUrl={`https://picsum.photos/${180}`} />
-        </ImageContainer>
+        <BoxItem imgUrl={`https://picsum.photos/${180}`} />
       </CardContainer>
       <AlbumTitle>{playlist.name}</AlbumTitle>
       <TotalAlbumTrack>{`${playlist.tracks.length}곡`}</TotalAlbumTrack>
@@ -41,9 +39,9 @@ const Container = styled.ul`
   }
 `;
 
-const CardContainer = styled.div``;
-
-const ImageContainer = styled.a`
+const CardContainer = styled.div`
+  width: ${props => props.theme.size.smallCarouselContentWidth}
+  height: ${props => props.theme.size.smallCarouselContentWidth}
   position: relative;
 `;
 

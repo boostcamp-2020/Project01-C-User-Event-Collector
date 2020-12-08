@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import DetailTemplate from '@components/Template/Detail';
+import unifyMetaData from '@utils/unifyMetaData';
 
 interface IArtistInfoProps {
   artistInfo?: MetaArtist;
@@ -16,7 +17,7 @@ type MetaArtist = {
 
 function ArtistDetail({ artistInfo: artist }: IArtistInfoProps) {
   return (
-    <DetailTemplate type="artist" metaData={artist}>
+    <DetailTemplate data={unifyMetaData('artist', artist)}>
       <Wrapper />
     </DetailTemplate>
   );

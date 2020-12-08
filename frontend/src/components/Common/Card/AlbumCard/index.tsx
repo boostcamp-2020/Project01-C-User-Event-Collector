@@ -25,9 +25,7 @@ const AlbumCard = ({ albumMetaData }: IAlbumMetaProps) => {
   return (
     <Container>
       <CardContainer>
-        <ImageContainer>
-          <BoxItem imgUrl={albumMetaData.imgUrl} />
-        </ImageContainer>
+        <BoxItem imgUrl={albumMetaData.imgUrl} />
       </CardContainer>
       <AlbumTitle>{albumMetaData?.name}</AlbumTitle>
       {albumMetaData && albumMetaData.artists.length > 3 ? (
@@ -48,9 +46,9 @@ const Container = styled.ul`
   }
 `;
 
-const CardContainer = styled.div``;
-
-const ImageContainer = styled.a`
+const CardContainer = styled.div`
+  width: ${props => props.theme.size.smallCarouselContentWidth};
+  height: ${props => props.theme.size.smallCarouselContentWidth};
   position: relative;
 `;
 

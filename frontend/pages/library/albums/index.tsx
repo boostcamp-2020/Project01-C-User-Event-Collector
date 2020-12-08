@@ -1,19 +1,23 @@
 import MyAlbum from '@pages/Library/MyAlbum';
+import useFetch from '@hooks/useFetch';
 
-const Index = ({ albumList }) => (
-  <div>
-    <MyAlbum albumList={albumList} />
-  </div>
-);
+function Index() {
+  const { data, isLoading, isError } = useFetch(`/library/albums`);
+  if (isLoading) return <div>...Loading</div>;
+  if (isError) {
+    console.log(isError);
+    return <div>...Error</div>;
+  }
 
-export async function getServerSideProps(context) {
-  const res = await fetch('http://localhost:8000/api/library/albums');
-  const data = await res.json();
-  const albumList = data.data;
+  console.log('useFetch-albums hook 시작!');
+  console.log('data : ', data);
+  console.log('data.data : ', data.data);
 
-  return {
-    props: { albumList },
-  };
+  return (
+    <div>
+      <MyAlbum albumList={data.data} />
+    </div>
+  );
 }
 
 export default Index;

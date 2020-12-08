@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import DetailTemplate from '@components/Template/Detail';
+import unifyMetaData from '@utils/unifyMetaData';
 
 interface IAlbumInfoProps {
   albumInfo?: MetaAlbum;
@@ -16,7 +17,7 @@ type MetaAlbum = {
 
 function AlbumDetail({ albumInfo: album }: IAlbumInfoProps) {
   return (
-    <DetailTemplate type="album" metaData={album}>
+    <DetailTemplate data={unifyMetaData('album', album)}>
       <Wrapper />
     </DetailTemplate>
   );

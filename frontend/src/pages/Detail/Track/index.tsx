@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import DetailTemplate from '@components/Template/Detail';
+import unifyMetaData from '@utils/unifyMetaData';
 
 interface ITrackInfoProps {
   trackInfo?: MetaTrack;
@@ -19,7 +20,7 @@ type MetaTrack = {
 
 function TrackDetail({ trackInfo: track }: ITrackInfoProps) {
   return (
-    <DetailTemplate type="track" metaData={track}>
+    <DetailTemplate data={unifyMetaData('track', track)}>
       <Wrapper />
     </DetailTemplate>
   );

@@ -39,7 +39,10 @@ const Container = styled.ul`
   }
 `;
 
-const CardContainer = styled.div``;
+const CardContainer = styled.div`
+  width: ${props => props.theme.size.smallCarouselContentWidth};
+  height: ${props => props.theme.size.smallCarouselContentWidth};
+`;
 
 const ImageContainer = styled.a`
   position: relative;
