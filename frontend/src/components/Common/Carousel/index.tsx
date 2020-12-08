@@ -41,7 +41,7 @@ const Wrapper = styled.div`
     width: 40px;
     height: 40px;
     position: absolute;
-    top: 30%;
+    top: 35%;
     border-radius: 50%;
     opacity: 100%;
   }
