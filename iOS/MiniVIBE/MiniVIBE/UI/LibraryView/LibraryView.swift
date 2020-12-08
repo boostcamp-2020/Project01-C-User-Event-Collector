@@ -17,7 +17,7 @@ struct LibraryView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.black.edgesIgnoringSafeArea(.top)
+                Color.black.ignoresSafeArea(edges: .top)
                 VStack {
                     libraryHeaderView
                     upperTab

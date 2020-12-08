@@ -45,17 +45,16 @@ final class PersistenceController {
     func saveContext() -> Bool {
         do {
             try self.context.save()
-            return true
         } catch { print(error.localizedDescription)
             return false
         }
+        return true
     }
     
     func newEntity(entityName: String) -> NSManagedObject? {
-        let entity = NSEntityDescription.entity(forEntityName: entityName, in: context)
-        if let entity = entity {
-            return NSManagedObject(entity: entity, insertInto: context)
+        guard let entity = NSEntityDescription.entity(forEntityName: entityName, in: context) else {
+            return nil
         }
-        return nil
+        return NSManagedObject(entity: entity, insertInto: context)
     }
 }

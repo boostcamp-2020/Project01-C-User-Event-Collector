@@ -11,7 +11,7 @@ struct FiveRowSongGridMoreView: View {
     let viewModel: FiveRowSongGridView.ViewModel
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.vertical)
+            Color.black.ignoresSafeArea(edges: .vertical)
             VStack {
                 DetailHeaderView(title: viewModel.title)
                 ScrollView(.vertical, showsIndicators: false) {

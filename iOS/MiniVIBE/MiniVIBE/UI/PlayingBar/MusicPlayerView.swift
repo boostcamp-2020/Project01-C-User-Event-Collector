@@ -12,7 +12,7 @@ struct MusicPlayerView: View {
     @Binding var isPresented: Bool
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.bottom)
+            Color.black.ignoresSafeArea(edges: .bottom)
             ScrollView(showsIndicators: false) {
                 VStack {
                     VStack(spacing: .defaultSpacing) {

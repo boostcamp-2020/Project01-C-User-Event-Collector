@@ -12,7 +12,7 @@ struct HomeView: View {
         GeometryReader { proxy in
             NavigationView {
                 ZStack {
-                    Color.black.edgesIgnoringSafeArea(.top)
+                    Color.black.ignoresSafeArea(edges: .top)
                     ScrollView(.vertical, showsIndicators: false) {
                         HomeHeaderView()
                         LazyVStack(spacing: 40) {
