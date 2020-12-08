@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { getArtistByArtistId } from './controller';
+import getArtistByArtistId from './controller';
 
 const route = express.Router();
 

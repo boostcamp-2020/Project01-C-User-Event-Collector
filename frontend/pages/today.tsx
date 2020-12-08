@@ -2,10 +2,13 @@ import useFetch from '@hooks/useFetch';
 import Today from '../src/pages/Today';
 
 function Index() {
-  const { data: mag, isLoading, isError } = useFetch(`/magazines`);
-  if (isLoading) return <div>...Loading</div>;
-  if (isError) {
-    console.log(isError);
+  const { data: mag, isLoading: magLoading, isError: magError } = useFetch(`/magazine`);
+  const { data: playlist, isLoading: playLoading, isError: playError } = useFetch(`/playlist`);
+
+  if (magLoading || playLoading) return <div>...Loading</div>;
+  if (magError || playError) {
+    console.log(magError);
+    console.log(playError);
     return <div>...Error</div>;
   }
 
@@ -15,7 +18,7 @@ function Index() {
 
   return (
     <div>
-      <Today magList={mag.data} />
+      <Today magList={mag.data} playlistList={playlist.data} />
     </div>
   );
 }

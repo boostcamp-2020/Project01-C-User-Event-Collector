@@ -73,6 +73,11 @@ const font = {
   font-size: 16px;
   color: ${color.drakFontColor};
   `,
+  bigBoldTitle: `
+  font-size: 32px;
+  font-weight : 700;
+  color: ${color.drakFontColor};
+  `,
 };
 
 const theme = {

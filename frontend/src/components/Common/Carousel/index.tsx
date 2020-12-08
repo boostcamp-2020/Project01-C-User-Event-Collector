@@ -1,6 +1,10 @@
 import Carousel from 'react-bootstrap/Carousel';
 import styled from '@styles/themed-components';
 
+interface CarouselWrapperProps {
+  groupSize?: number;
+}
+
 const MyCarousel = ({ children, groupSize }) => {
   const rows = children
     .map(card => <>{card}</>)
@@ -11,7 +15,9 @@ const MyCarousel = ({ children, groupSize }) => {
     }, [])
     .map(rowContent => (
       <Carousel.Item key={rowContent.id}>
-        <ContentWrapper>{rowContent}</ContentWrapper>
+        <ContentWrapper className="carousel-content-wrapper" groupSize={groupSize}>
+          {rowContent}
+        </ContentWrapper>
       </Carousel.Item>
     ));
   return (
@@ -23,11 +29,15 @@ const MyCarousel = ({ children, groupSize }) => {
   );
 };
 
-const ContentWrapper = styled.div`
+const ContentWrapper = styled.div<CarouselWrapperProps>`
   width: 100%;
   display: flex;
   padding: 20px 0;
-  justify-content: space-between;
+  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: ${props =>
+    props.groupSize === 3 ? 'repeat(3, 300px)' : 'repeat(5, 180px)'};
+  grid-column-gap: 30px;
 `;
 
 const Wrapper = styled.div`

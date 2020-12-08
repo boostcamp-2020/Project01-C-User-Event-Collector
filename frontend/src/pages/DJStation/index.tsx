@@ -1,14 +1,11 @@
 import React from 'react';
 import styled from '@styles/themed-components';
-import MagTopItem from '@components/Common/MagTopItem';
 import Content from '@components/Template/Content';
 
 function DJStation() {
   return (
     <Content>
-      <TopWrapper>
-        <MagTopItem />
-      </TopWrapper>
+      <TopWrapper />
     </Content>
   );
 }

@@ -1,31 +1,54 @@
 import React from 'react';
 import styled from 'styled-components';
+import trimContentLength from '@utils/trimContentLength';
+import MagTag from '@components/Common/MagTag';
+import BoxItem from '@components/Common/BoxItem';
 
-const testUrl =
-  'https://music-phinf.pstatic.net/20201204_48/1607059391554q6R0k_JPEG/1204_mushvenom_magazine_cover.jpg?type=w720';
-
-function MagTopItem() {
+function MagTopItem({ magData: mag }) {
   return (
     <Wrapper>
-      <MagImg src={testUrl} alt="mag-top-img" />
-      <MagContent>
-        <h1>안녕하세요ㅠㅠㅎㄴ란ㅇㄹ</h1>
-        <h3>안녕하세요ㅠㅠㅎㄴ란ㅇㄹ</h3>
-        <p>안녕하세요ㅠㅠㅎㄴ란ㅇㄹ</p>
-      </MagContent>
+      <ImgWrapper>
+        <BoxItem imgUrl={mag.imgUrl} />
+      </ImgWrapper>
+      <MagContentWrapper>
+        <TagWrapper>
+          <MagTag type={mag.tag} />
+        </TagWrapper>
+        <MagTitle>{mag.title}</MagTitle>
+        <MagContent>{trimContentLength(mag.content, 110)}</MagContent>
+        <MagContent>{`VIBE MAG · ${mag.date}`}</MagContent>
+      </MagContentWrapper>
     </Wrapper>
   );
 }
 
-const MagImg = styled.img`
+const ImgWrapper = styled.div`
+  width: ${props => props.theme.size.magTopItemHeight};
   height: ${props => props.theme.size.magTopItemHeight};
-  display: flex;
 `;
 
-const MagContent = styled.div`
-  background: gold;
-  width: 100%;
-  padding: 40px;
+const TagWrapper = styled.div`
+  margin-bottom: 24px;
+`;
+
+const MagTitle = styled.a`
+  ${props => props.theme.font.bigBoldTitle}
+`;
+
+const MagContentWrapper = styled.div`
+  background: white;
+  width: 640px;
+  padding: 55px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const MagContent = styled.p`
+  ${props => props.theme.font.sub}
+  font-size: 14px;
+  margin-top: 10px;
+  line-height: 130%;
 `;
 
 const Wrapper = styled.div`
