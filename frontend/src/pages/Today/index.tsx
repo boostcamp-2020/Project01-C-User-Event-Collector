@@ -31,13 +31,6 @@ function Today({ magList }) {
   );
 }
 
-const CarouselItemWrapper = styled.div`
-  width: 100%;
-  display: flex;
-  padding: 20px 0;
-  justify-content: space-between;
-`;
-
 const Wrapper = styled.div`
   padding-bottom: 200px;
 `;
