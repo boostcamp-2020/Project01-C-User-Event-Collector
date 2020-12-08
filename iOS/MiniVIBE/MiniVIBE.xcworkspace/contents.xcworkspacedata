@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/cgh/Dev/iOS/MiniVIBE/MiniVIBE/Models/CDEvent+CoreDataClass.swift">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/cgh/Dev/iOS/MiniVIBE/MiniVIBE/Models/CDEvent+CoreDataProperties.swift">
-   </FileRef>
-   <FileRef
       location = "group:MiniVIBE.xcodeproj">
    </FileRef>
    <FileRef
