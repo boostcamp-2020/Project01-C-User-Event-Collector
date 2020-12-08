@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import Mag from '../../entities/Mag';
 
-const getMags = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+const getMagazines = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
     const mag = await Mag.find();
     if (!mag) return res.status(404).json({ message: 'Mag Not Found' });
@@ -12,7 +12,7 @@ const getMags = async (req: Request, res: Response, next: NextFunction): Promise
   }
 };
 
-const getMagById = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
+const getMagazineById = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
     const { magId } = req.params;
     const mag = await Mag.findOne(magId, { relations: ['tracks'] });
@@ -24,4 +24,4 @@ const getMagById = async (req: Request, res: Response, next: NextFunction): Prom
   }
 };
 
-export { getMags, getMagById };
+export { getMagazines, getMagazineById };

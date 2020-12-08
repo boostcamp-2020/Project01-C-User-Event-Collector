@@ -24,9 +24,7 @@ type artistMeta = {
 const AlbumCard = ({ albumMetaData }: IAlbumMetaProps) => {
   return (
     <Container>
-      <CardContainer>
-        <BoxItem imgUrl={albumMetaData.imgUrl} />
-      </CardContainer>
+      <BoxItem imgUrl={albumMetaData.imgUrl} />
       <AlbumTitle>{albumMetaData?.name}</AlbumTitle>
       {albumMetaData && albumMetaData.artists.length > 3 ? (
         <AlbumArtistName>Various Artists</AlbumArtistName>
@@ -40,16 +38,11 @@ const AlbumCard = ({ albumMetaData }: IAlbumMetaProps) => {
 };
 
 const Container = styled.ul`
-  margin: 0 16px 16px 0;
-  &:nth-child(5n) {
-    margin-right: 0;
-  }
-`;
-
-const CardContainer = styled.div`
   width: ${props => props.theme.size.smallCarouselContentWidth};
   height: ${props => props.theme.size.smallCarouselContentWidth};
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const AlbumTitle = styled.a`
