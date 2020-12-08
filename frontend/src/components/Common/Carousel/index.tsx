@@ -1,16 +1,23 @@
 import Carousel from 'react-bootstrap/Carousel';
 import styled from '@styles/themed-components';
 
-const MyCarousel = ({ children, itemCount }) => {
-  // const tmp = Math.floor(children.length / itemCount);
-  // const wrapperCount = children.length % itemCount === 0 ? tmp : tmp + 1;
-
+const MyCarousel = ({ children, groupSize }) => {
+  const rows = children
+    .map(card => <>{card}</>)
+    .reduce((r, element, index) => {
+      index % groupSize === 0 && r.push([]);
+      r[r.length - 1].push(element);
+      return r;
+    }, [])
+    .map(rowContent => (
+      <Carousel.Item key={rowContent.id}>
+        <ContentWrapper>{rowContent}</ContentWrapper>
+      </Carousel.Item>
+    ));
   return (
     <Wrapper>
       <Carousel interval={null} keyboard={false}>
-        <Carousel.Item>
-          <ContentWrapper>{children}</ContentWrapper>
-        </Carousel.Item>
+        {rows}
       </Carousel>
     </Wrapper>
   );

@@ -7,7 +7,7 @@ interface ILog extends Document {
 
 const LogSchema: Schema = new Schema({
   eventType: String,
-  userAge: Number,
+  userId: Number,
 });
 
 const Log: Model<ILog> = model('Log', LogSchema);

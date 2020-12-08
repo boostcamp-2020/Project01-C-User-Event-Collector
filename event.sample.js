@@ -54,7 +54,7 @@ const searchEvent = {
   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X x.y; rv:42.0) Gecko/20100101 Firefox/42.0"
 }
 
-const trackLikeEvent = {
+const trackLikeEvent = { 
     "eventDate": new Date(),
     "page": '/chart/total',
     "action": 'like',

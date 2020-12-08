@@ -9,34 +9,34 @@ function Today({ magList }) {
     <Wrapper>
       <Section>
         <a className="section-title">매거진</a>
-        <Carousel itemCount={3}>
+        <Carousel groupSize={3}>
           {magList && magList.map(mag => <MagCard key={mag.id} magMetaData={mag} />)}
         </Carousel>
       </Section>
 
       <Section>
         <a className="section-title">매거진</a>
-        <Carousel itemCount={3}>
+        <Carousel groupSize={3}>
           {magList && magList.map(mag => <MagCard key={mag.id} magMetaData={mag} />)}
         </Carousel>
       </Section>
 
       <Section>
         <a className="section-title">매거진</a>
-        <Carousel itemCount={3}>
-          {magList && magList.map(mag => <MagCard key={mag.id} magMetaData={mag} />)}
-        </Carousel>
-      </Section>
-
-      <Section>
-        <a className="section-title">매거진</a>
-        <Carousel itemCount={3}>
+        <Carousel groupSize={3}>
           {magList && magList.map(mag => <MagCard key={mag.id} magMetaData={mag} />)}
         </Carousel>
       </Section>
     </Wrapper>
   );
 }
+
+const CarouselItemWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  padding: 20px 0;
+  justify-content: space-between;
+`;
 
 const Wrapper = styled.div`
   padding-bottom: 200px;
