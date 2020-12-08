@@ -79,8 +79,6 @@
 		DE09044B256D0A5D002914B5 /* HomeMagazineItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE09044A256D0A5D002914B5 /* HomeMagazineItemView.swift */; };
 		DE18EE8B257B9D34009E4E11 /* View+emitEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE18EE8A257B9D34009E4E11 /* View+emitEvent.swift */; };
 		DE18EE97257BF59A009E4E11 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE18EE96257BF59A009E4E11 /* Event.swift */; };
-		DE18EE9C257BF5FB009E4E11 /* CDEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE18EE9A257BF5FB009E4E11 /* CDEvent+CoreDataProperties.swift */; };
-		DE18EE9D257BF5FB009E4E11 /* CDEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE18EE9B257BF5FB009E4E11 /* CDEvent+CoreDataClass.swift */; };
 		DE18EEA1257BFA13009E4E11 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE18EEA0257BFA13009E4E11 /* Reachability.swift */; };
 		DE3D6F8925640FE800C236EF /* HomeFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3D6F8825640FE800C236EF /* HomeFooterView.swift */; };
 		DE3D6F95256414EA00C236EF /* HomeNowSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3D6F94256414EA00C236EF /* HomeNowSectionView.swift */; };
@@ -90,6 +88,8 @@
 		DE7516A025776F990054AFC6 /* LocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE75169F25776F990054AFC6 /* LocalRepository.swift */; };
 		DEB6A6ED2572C89F00C97A0C /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB6A6EC2572C89E00C97A0C /* DetailHeaderView.swift */; };
 		DEC076DA2563AEBE004862AA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC076D92563AEBE004862AA /* HomeView.swift */; };
+		DECD6F60257F70E800CBC92B /* CDEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE18EE9B257BF5FB009E4E11 /* CDEvent+CoreDataClass.swift */; };
+		DECD6F61257F70E800CBC92B /* CDEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE18EE9A257BF5FB009E4E11 /* CDEvent+CoreDataProperties.swift */; };
 		DEF5EFE925723A01006666DC /* NowPlayingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFE825723A01006666DC /* NowPlayingBarView.swift */; };
 		DEF5EFEE25727E47006666DC /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFED25727E47006666DC /* Song.swift */; };
 		DEF5EFF225727E58006666DC /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFF125727E58006666DC /* MusicPlayer.swift */; };
@@ -594,7 +594,6 @@
 				B9FF8A6D257A951100B774CD /* Playlist.swift */,
 				B9FF8A75257A992400B774CD /* Magazine.swift */,
 				DE18EE96257BF59A009E4E11 /* Event.swift */,
-				B9C628E0257C06F9000BCE80 /* MockItemFactory.swift */,
 				DE5F4C73257EA7DC0058ABE6 /* Artist.swift */,
 				B9D357B7257D171A009202F9 /* LocalEvent.swift */,
 			);
@@ -755,6 +754,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DECD6F60257F70E800CBC92B /* CDEvent+CoreDataClass.swift in Sources */,
+				DECD6F61257F70E800CBC92B /* CDEvent+CoreDataProperties.swift in Sources */,
 				B9D357B8257D171A009202F9 /* LocalEvent.swift in Sources */,
 				B94DA9CA257D36EB0002A066 /* FakeServerRepository.swift in Sources */,
 				DEF5EFEE25727E47006666DC /* Song.swift in Sources */,
@@ -763,7 +764,6 @@
 				B9C628FC257C2B4D000BCE80 /* GenreSectionView.swift in Sources */,
 				B9FF8A84257A9E1200B774CD /* PlaylistSectionViewModel.swift in Sources */,
 				B9B4D1FA256E5C8A00EC2FE2 /* HomeSummarySectionView.swift in Sources */,
-				DE18EE9D257BF5FB009E4E11 /* CDEvent+CoreDataClass.swift in Sources */,
 				DE7516A025776F990054AFC6 /* LocalRepository.swift in Sources */,
 				B9F0BDD4256EE031004A2852 /* ImageItemView.swift in Sources */,
 				B962B09D2578169B00111978 /* Video.swift in Sources */,
@@ -815,8 +815,8 @@
 				B9F0BDAC256ED2B7004A2852 /* SectionScrollView.swift in Sources */,
 				B994C69E25627DBD000E563C /* ContentView.swift in Sources */,
 				B9FF8A80257A9DDF00B774CD /* PlaylistSectionView.swift in Sources */,
-				B9A15703256E308900FFDA20 /* HomeDJStationItem.swift in Sources */,
 				B9C628EC257C1C35000BCE80 /* NewsItemView.swift in Sources */,
+				B9A15703256E308900FFDA20 /* HomeDJStationItem.swift in Sources */,
 				DEF5EFF225727E58006666DC /* MusicPlayer.swift in Sources */,
 				B9D18FDF256CD7B000ECEFEC /* HomeSummaryItem.swift in Sources */,
 				DEC076DA2563AEBE004862AA /* HomeView.swift in Sources */,
@@ -834,7 +834,6 @@
 				DE18EEA1257BFA13009E4E11 /* Reachability.swift in Sources */,
 				B9EC74DB257D0EDC003DF392 /* MockServerView.swift in Sources */,
 				DEB6A6ED2572C89F00C97A0C /* DetailHeaderView.swift in Sources */,
-				DE18EE9C257BF5FB009E4E11 /* CDEvent+CoreDataProperties.swift in Sources */,
 				B97968232578DD8900D57161 /* Network.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
