@@ -7,8 +7,17 @@
 
 import Foundation
 
-struct Magazine: Identifiable {
-    let id = UUID()
-    var image: String
-    var description: String
+struct Magazine: Identifiable, Decodable {
+    let id: Int
+    let title: String
+    let imageURLString: String
+    let date: String? = nil
+    let tag: String? = nil
+    let content: String? = nil
+    
+    enum CodingKeys: String, CodingKey {
+        case id, title
+        case imageURLString = "imgUrl"
+        case date, tag, content
+    }
 }

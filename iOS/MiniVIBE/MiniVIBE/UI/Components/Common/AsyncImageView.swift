@@ -50,7 +50,7 @@ private extension AsyncImageView {
 
 private extension AsyncImageView {
     private class Loader: ObservableObject {
-        var image: UIImage?
+        @Published var image: UIImage?
         var state = LoadState.loading
         private var cancellable: AnyCancellable?
         
@@ -61,12 +61,11 @@ private extension AsyncImageView {
                 return
             }
             cancellable = AsyncImageNetwork.shared.network.execute(AsyncImageRequest(url: URL(string: url)))
-                .delay(for: 4.5, scheduler: RunLoop.main)
+                .delay(for: 0.5, scheduler: RunLoop.main)
                 .map { UIImage(data: $0) }
                 .replaceError(with: nil)
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] image in
-                    self?.objectWillChange.send()
                     guard let image = image else {
                         self?.state = .failure
                         return

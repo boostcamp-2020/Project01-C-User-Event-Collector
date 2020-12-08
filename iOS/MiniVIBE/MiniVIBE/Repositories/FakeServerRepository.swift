@@ -32,6 +32,15 @@ class FakeServerRepository: ServerRepository {
         })
         .eraseToAnyPublisher()
     }
+    
+    func loadMagazine(request: RequestProviding) -> AnyPublisher<MagazineResponse, NetworkError>
+ {  return network.execute(request)
+            .decode(type: MagazineResponse.self, decoder: JSONDecoder())
+            .mapError({ error -> NetworkError in
+                NetworkError.networkError(reason: error.localizedDescription)
+            })
+            .eraseToAnyPublisher()
+    }
 }
 
 struct MockEventRequest: RequestProviding {

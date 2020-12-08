@@ -19,7 +19,7 @@ struct MiniVIBEApp: App {
         let serverRepository = RealServerRepository(network: Network())
         let eventService = RealEventService(serverRepository: fakeServerRepository, localRepository: localRepository)
         let musicPlayer = MusicPlayer()
-        container = DIContainer(serverRepository: serverRepository,
+        container = DIContainer(serverRepository: fakeServerRepository,
                                 localRepository: localRepository,
                                 eventService: eventService,
                                 musicPlayer: musicPlayer)

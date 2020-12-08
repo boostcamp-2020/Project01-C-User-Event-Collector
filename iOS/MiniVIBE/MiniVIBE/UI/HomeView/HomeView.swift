@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
+    let container: DIContainer
     var body: some View {
         GeometryReader { proxy in
             NavigationView {
@@ -27,7 +28,7 @@ struct HomeView: View {
                                                     id: 1, title: "VIBE 추천 플레이리스트", type: .one))
                             AlbumSectionView(viewModel: AlbumSectionView.ViewModel(
                                                 id: 1, title: "좋아할 최신앨범", showsRanking: false))
-                            HomeMagazineSectionView()
+                            HomeMagazineSectionView(viewModel: HomeMagazineSectionView.ViewModel(container: container))
                             HomeNowSectionView()
                             HomeFooterView()
                         }

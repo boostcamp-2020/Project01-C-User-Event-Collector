@@ -79,15 +79,15 @@ final class MockItemFactory {
                            title: "방탄소년단", description: nil)]
     
     static let magazineItems: [Magazine] = [
-        Magazine(image: "mag-dummy1", description: "New Release #16: 이적, 빌리 아일리시"),
-        Magazine(image: "mag-dummy2", description: "이주의 디깅 #85, aespa"),
-        Magazine(image: "mag-dummy3", description: "CHROMEO 핼러윈 파티 현장 스케치")
+        Magazine(id: 123, title: "New Release #16: 이적, 빌리 아일리시", imageURLString: "mag-dummy1"),
+        Magazine(id: 124, title: "이주의 디깅 #85, aespa", imageURLString: "mag-dummy2"),
+        Magazine(id: 125, title: "CHROMEO 핼러윈 파티 현장 스케치", imageURLString: "mag-dummy3")
     ]
     
     static let newsItems: [Magazine] = [
-        Magazine(image: "HomeMainSection3", description: "방탄소년단이  네번째 미니앨범을 발표합니다."),
-        Magazine(image: "mag-dummy2", description: "방탄소년단이  네번째 미니앨범을 발표합니다. 2줄 테스트"),
-        Magazine(image: "mag-dummy3", description: "CHROMEO 핼러윈 파티 현장 스케치")
+        Magazine(id: 223,title: "방탄소년단이  네번째 미니앨범을 발표합니id: 123,다.", imageURLString: "HomeMainSection3"),
+        Magazine(id: 224,title: "방탄소년단이  네번째 미니앨범을 발표합니다. 2줄 테스트", imageURLString: "mag-dummy2"),
+        Magazine(id: 225,title: "CHROMEO 핼러윈 파티 현장 스케치", imageURLString: "mag-dummy3")
     ]
     
     static let nowReplayItems: [HomeNowReplayItem] = [
