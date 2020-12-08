@@ -32,12 +32,7 @@ const MagCard = ({ magMetaData: mag }: IMagMetaProps) => {
   );
 };
 
-const Container = styled.ul`
-  margin: 0 16px 16px 0;
-  &:nth-child(5n) {
-    margin-right: 0;
-  }
-`;
+const Container = styled.ul``;
 
 const CardContainer = styled.div`
   width: ${props => props.theme.size.bigCarouselContentWidth};

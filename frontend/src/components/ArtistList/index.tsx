@@ -14,9 +14,14 @@ const ArtistList = ({ artistList }) => {
 };
 
 const ListContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
+  // display: flex;
+  // flex-wrap: wrap;
+  // justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(${props => props.theme.size.smallCarouselContentWidth}, 1fr)
+  );
 `;
 
 export default ArtistList;

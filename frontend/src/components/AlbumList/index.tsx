@@ -16,7 +16,7 @@ const AlbumList = ({ albumList }) => {
 const ListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: space-between;
 `;
 
 export default AlbumList;
