@@ -1,13 +1,18 @@
 import { model, Schema, Model, Document } from 'mongoose';
 
 interface ILog extends Document {
-  eventType?: string;
-  userAge?: number;
+  eventName?: string;
+  parameters?: any;
 }
 
+const MovePageParams = new Schema({
+  prev: String,
+  next: String,
+});
+
 const LogSchema: Schema = new Schema({
-  eventType: String,
-  userId: Number,
+  eventName: String,
+  parameters: MovePageParams,
 });
 
 const Log: Model<ILog> = model('Log', LogSchema);
