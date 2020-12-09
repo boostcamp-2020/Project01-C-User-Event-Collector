@@ -32,7 +32,6 @@ const AlbumCard = ({ playlistMetaData: playlist }: IPlaylistMetaProps) => {
 
 const Container = styled.ul`
   width: ${props => props.theme.size.smallCarouselContentWidth};
-  height: ${props => props.theme.size.smallCarouselContentWidth};
   display: flex;
   flex-direction: column;
   align-items: center;

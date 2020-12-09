@@ -17,4 +17,4 @@ const getArtistByArtistId = async (
   }
 };
 
-export { getArtistByArtistId };
+export default getArtistByArtistId;

@@ -31,11 +31,9 @@ const MagCard = ({ magMetaData: mag }: IMagMetaProps) => {
 };
 
 const Container = styled.ul`
-  width: ${props => props.theme.size.smallCarouselContentWidth};
-  height: ${props => props.theme.size.smallCarouselContentWidth};
+  width: ${props => props.theme.size.bigCarouselContentWidth};
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 const MagTitle = styled.a`

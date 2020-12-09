@@ -39,9 +39,11 @@ const HeaderImg = styled.img`
 `;
 
 const Wrapper = styled.div`
-  width: 100%;
   padding-top: 41px;
   padding-bottom: 23px;
+  margin: auto;
+  position: relative;
+  max-width: ${props => props.theme.size.mainContentWidth};
   margin: auto;
 `;
 
