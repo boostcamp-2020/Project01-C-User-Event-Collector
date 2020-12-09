@@ -2,10 +2,40 @@ import React from 'react';
 import styled from 'styled-components';
 import { BsThreeDots } from 'react-icons/bs';
 import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import fetchData from '../../../api';
+
+interface EventTargetProps {
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const token =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywibmlja25hbWUiOiLslYTroZzrpqwiLCJlbWFpbCI6InNrbmdsZWUyMkBuYXZlci5jb20iLCJwcm9maWxlVVJMIjoiaHR0cHM6Ly9waGluZi5wc3RhdGljLm5ldC9jb250YWN0LzIwMjAwNzA3XzEzNC8xNTk0MDkwNzM4MjIzRFV3d21fSlBFRy8yMDE2MDkxM18xNDMzMTcuanBnIiwiZXhwIjoxNjA3NTEzMjczfQ.b5G4gNeN_qll_dBin0jzQYCD8lOXwf3xbJqHvdVaa88';
+
+const eventLogHandler = pathname => {
+  const logData = {
+    eventTime: new Date(),
+    eventName: 'move_page',
+    parameters: { prev: pathname, next: '/magazines/100523' },
+  };
+  // fetchData(logData);
+  axios({
+    method: 'post',
+    url: 'http://localhost:8000/api/log',
+    data: logData,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      Authorization: `Bearer ${token}`,
+      withCredentials: true,
+    },
+  });
+};
 
 function BoxItem({ imgUrl }) {
+  const router = useRouter();
   return (
-    <Wrapper>
+    <Wrapper onClick={e => eventLogHandler(router.pathname)}>
       <BoxImage src={imgUrl} alt="box-item-image" />
       <ButtonsWrapper className="buttons-wrapper">
         <BoxPlayButton />
@@ -34,7 +64,7 @@ const ButtonsWrapper = styled.div`
   background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<EventTargetProps>`
   width: 100%;
   height: 100%;
   position: relative;

@@ -15,6 +15,7 @@ function Today({ magList, playlistList }) {
         <MagTopItem magData={magList[0]} />
       </MagTopWrapper>
       <Content>
+        <a href="minivibe://asdf">미니바이브</a>
         <Section>
           <a className="section-title">매거진</a>
 

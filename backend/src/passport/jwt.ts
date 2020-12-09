@@ -19,8 +19,10 @@ const passportJwtConfig = (): void => {
     try {
       const user = await User.findOne({ id: jwtPayload.id });
       if (user) return done(null, user);
+      console.log(user);
       return done(null, false);
     } catch (err) {
+      console.log(err);
       return done(err);
     }
   };

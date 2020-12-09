@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import BoxItem from '@components/Common/BoxItem';
-import axios from 'axios';
 
 interface IMagMetaProps {
   magMetaData: MagMeta;
@@ -16,17 +15,6 @@ type MagMeta = {
   tag: string;
 };
 
-const eventLogHandler = () => {
-  axios
-    .post('http://localhost:8000/api/log', {
-      eventName: 'move_page',
-      parameters: { prev: '', next: '' },
-    })
-    .then(res => {
-      console.log(res.data);
-    });
-};
-
 const enterTitle = title => {
   const pop = title.split(':');
   return pop.map((pa, i) => <p key={i}>{pa}</p>);
@@ -35,7 +23,7 @@ const enterTitle = title => {
 const MagCard = ({ magMetaData: mag }: IMagMetaProps) => {
   return (
     <Container>
-      <BoxItem imgUrl={mag.imgUrl} onClick={eventLogHandler} />
+      <BoxItem imgUrl={mag.imgUrl} />
       <MagTitle>{enterTitle(mag?.title)}</MagTitle>
       <MagDate>{mag?.date}</MagDate>
     </Container>
