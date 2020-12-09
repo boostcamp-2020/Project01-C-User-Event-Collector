@@ -2,10 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 import { BsThreeDots } from 'react-icons/bs';
 import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+
+interface EventTargetProps {
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const eventLogHandler = () => {
+  axios
+    .post('http://localhost:8000/api/log', {
+      eventName: 'move_page',
+      parameters: { prev: '/today/magTopItem' },
+    })
+    .then(res => {
+      console.log('로그 보냇다!!');
+      console.log(res.data);
+    });
+};
 
 function BoxItem({ imgUrl }) {
+  const router = useRouter();
   return (
-    <Wrapper>
+    <Wrapper onClick={eventLogHandler}>
       <BoxImage src={imgUrl} alt="box-item-image" />
       <ButtonsWrapper className="buttons-wrapper">
         <BoxPlayButton />
@@ -34,7 +53,7 @@ const ButtonsWrapper = styled.div`
   background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
 `;
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<EventTargetProps>`
   width: 100%;
   height: 100%;
   position: relative;

@@ -1,6 +1,7 @@
 import { model, Schema, Model, Document } from 'mongoose';
 
 interface ILog extends Document {
+  eventTime?: Date;
   eventName?: string;
   parameters?: any;
 }
@@ -11,6 +12,7 @@ const MovePageParams = new Schema({
 });
 
 const LogSchema: Schema = new Schema({
+  eventTime: { type: Date, default: Date.now },
   eventName: String,
   parameters: MovePageParams,
 });
