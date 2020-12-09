@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import BoxItem from '@components/Common/BoxItem';
-import axios from 'axios';
 
 interface IMagMetaProps {
   magMetaData: MagMeta;

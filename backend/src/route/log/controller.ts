@@ -3,9 +3,12 @@ import Log from '../../models/Log';
 
 const createLog = async (req: Request, res: Response): Promise<void> => {
   const log = new Log(req.body);
-  console.log('res : ', res);
+  console.log('@@@@ log :', log);
   await log.save((err, logInfo) => {
-    if (err) return res.json({ success: false, err });
+    if (err) {
+      console.log(err);
+      return res.json({ success: false, err });
+    }
     return res.status(200).json({
       success: true,
     });

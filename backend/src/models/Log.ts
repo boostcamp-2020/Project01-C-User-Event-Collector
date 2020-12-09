@@ -12,7 +12,7 @@ const MovePageParams = new Schema({
 });
 
 const LogSchema: Schema = new Schema({
-  eventTime: { type: Date, default: Date.now },
+  eventTime: Date,
   eventName: String,
   parameters: MovePageParams,
 });
