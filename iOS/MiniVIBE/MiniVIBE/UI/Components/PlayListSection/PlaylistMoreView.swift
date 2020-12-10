@@ -36,6 +36,5 @@ struct PlaylistMoreView: View {
                 }
             }
         }.navigationBarHidden(true)
-        .emitMovePageEventNavigationStack(prev: "\(viewModel.path)", next: "\(PlaylistMoreView.name)/\(viewModel.id)")
     }
 }

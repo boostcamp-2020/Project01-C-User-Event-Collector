@@ -31,7 +31,6 @@ struct PlaylistDetailView: View {
                         .scaledToFill()
                         .blur(radius: 20))
         .navigationBarHidden(true)
-        .emitMovePageEventNavigationStack(prev: viewModel.path, next: "\(PlaylistMoreView.name)/\(viewModel.playlist.id)")
     }
 }
 

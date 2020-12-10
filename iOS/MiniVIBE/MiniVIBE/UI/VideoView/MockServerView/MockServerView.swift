@@ -67,7 +67,7 @@ private struct MockServerDataView: View {
             })
             List {
                 ForEach(FakeServerRepository.events) { event in
-                    Text("\(event.date)\n\(event.name)\n" + (event.parameter?.description ?? "") )
+                    Text("\(event.date)\n\(event.name)\n" + (event.parameters?.description ?? "") )
                 }
             }
         }

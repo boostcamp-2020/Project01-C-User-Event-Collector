@@ -55,7 +55,7 @@ extension ContentView {
         
         @Published var selectedTab = "Today" {
             didSet(oldTab) {
-                emitEvent(eventName: .movePage, parameter: [.preView: oldTab, .nextView: selectedTab])
+                emitEvent(event: MoveEvent(prev: oldTab, next: selectedTab))
             }
         }
         

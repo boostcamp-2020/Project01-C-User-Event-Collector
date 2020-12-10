@@ -9,21 +9,27 @@ import SwiftUI
 import Combine
 
 extension View {
-    func emitEventIfTapped(eventName: EventName, parameter: [String: String]) -> some View {
+    func emitEventIfTapped(event: Event) -> some View {
         return self.simultaneousGesture(
             TapGesture()
                 .onEnded { _ in
-                    EventSendManager.shared.eventHandler(Event(name: eventName.rawValue, parameter: parameter))
+                    EventSendManager.shared.eventHandler(event)
                 })
     }
 }
 
-public func emitEvent(eventName: EventName, parameter: [String: String]) {
-    EventSendManager.shared.eventHandler(Event(name: eventName.rawValue, parameter: parameter))
+public func emitEvent(event: Event) {
+    EventSendManager.shared.eventHandler(event)
 }
 
-public enum EventName: String {
-    case movePage = "move_page"
+public enum EventName: CustomStringConvertible {
+    case movePage
+    public var description: String {
+        switch self {
+        case .movePage:
+        return "move_page"
+        }
+    }
 }
 
 final class EventSendManager {
@@ -37,31 +43,32 @@ final class EventSendManager {
     }
 }
 
-extension Dictionary where Key == String {
-    static func connected(prev: String, next: String) -> [String: String] {
-        return [.preView: prev, .nextView: "\(prev)/\(next)"]
+public class Event: Codable, Identifiable {
+    public let id: UUID = UUID()
+    let name: String
+    let parameters: [String: String]?
+    let date: Date
+    
+    init(name: EventName, parameters: [String: String]) {
+        self.name = name.description
+        self.date = Date()
+        self.parameters = parameters
     }
     
-    static func `default`(prev: String, next: String) -> [String: String] {
-        return [.preView: prev, .nextView: next]
+    init(cdEvent: CDEvent) {
+        self.date = cdEvent.date
+        self.name = cdEvent.name
+        self.parameters = [:]
     }
 }
 
-struct EmitMovePageEventIfisNavigationStack: ViewModifier {
-    let prev: String
-    let next: String
-    
-    func body(content: Content) -> some View {
-        content
-            .onAppear {
-                emitEvent(eventName: .movePage, parameter: .connected(prev: prev, next: next))}
-            .onDisappear {
-                emitEvent(eventName: .movePage, parameter: .default(prev: next, next: prev))}
-    }
-}
+class MoveEvent: Event {
 
-extension View {
-    func emitMovePageEventNavigationStack(prev: String, next: String) -> some View {
-        modifier(EmitMovePageEventIfisNavigationStack(prev: prev, next: next))
+    init(prev: String, next: String) {
+        super.init(name: .movePage, parameters: [.preView: prev, .nextView: next])
+    }
+    
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
     }
 }

@@ -15,12 +15,11 @@ struct FiveRowSongGridView: View {
                         GridItem(.fixed(40), spacing: 15)]
     @ObservedObject private(set) var viewModel: Self.ViewModel
     
-
     var body: some View {
         VStack {
             NavigationLink(destination: FiveRowSongGridMoreView(viewModel: viewModel)) {
             MoreHeaderView(title: viewModel.title, subtitle: viewModel.subtitle)
-            }                .emitEventIfTapped(eventName: .movePage, parameter: [:])
+            }
             SectionScrollView {
                 LazyHGrid(rows: rows, spacing: .defaultSpacing) {
                     fiveRowSongGridItemViews

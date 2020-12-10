@@ -16,11 +16,11 @@ extension CDEvent {
     }
 
     @NSManaged public var date: Date
-    @NSManaged public var eventName: String
+    @NSManaged public var name: String
     
     func set(from event: Event) {
         date = event.date
-        eventName = event.name
+        name = event.name
 //        parameter = event.parameter
     }
 }
