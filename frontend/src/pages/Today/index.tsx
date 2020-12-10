@@ -6,7 +6,6 @@ import MagCard from '@components/Common/Card/MagCard';
 import MagTopItem from '@components/Common/MagTopItem';
 import PlaylistCard from '@components/Common/Card/PlaylistCard';
 // import { GrNext } from 'react-icons/gr';
-import { useUsersDispatch, useUsersState } from '@context/auth';
 
 function Today({ magList, playlistList }) {
   return (

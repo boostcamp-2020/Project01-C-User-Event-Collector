@@ -59,11 +59,13 @@ const UsersStateContext = createContext(initialState);
 const UsersDispatchContext = createContext(null);
 
 export function UsersProvider({ children }) {
-  const [state, dispatch] = useReducer(usersReducer, initialState);
+  // const [state, dispatch] = useReducer(usersReducer, initialState);
+  const [state] = useReducer(usersReducer, initialState);
   return (
-    <UsersStateContext.Provider value={state}>
-      <UsersDispatchContext.Provider value={dispatch}>{children}</UsersDispatchContext.Provider>
-    </UsersStateContext.Provider>
+    // <UsersStateContext.Provider value={state}>
+    //   <UsersDispatchContext.Provider value={dispatch}>{children}</UsersDispatchContext.Provider>
+    // </UsersStateContext.Provider>
+    <UsersStateContext.Provider value={state}>{children}</UsersStateContext.Provider>
   );
 }
 

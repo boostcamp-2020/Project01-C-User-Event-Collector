@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Link from 'next/link';
 
 import { HiHeart } from 'react-icons/hi';
 import { BsMusicPlayer } from 'react-icons/bs';
