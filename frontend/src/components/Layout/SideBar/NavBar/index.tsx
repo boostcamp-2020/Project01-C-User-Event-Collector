@@ -7,7 +7,7 @@ const profileImgUrl =
   'https://phinf.pstatic.net/contact/20200707_134/1594090738223DUwwm_JPEG/20160913_143317.jpg?type=s33';
 
 const loginEvent = () => {
-  window.location.href = 'http://localhost:8000/api/auth/login';
+  window.location.href = 'http://115.85.181.152:8000/api/auth/login';
 };
 
 function NavBar() {

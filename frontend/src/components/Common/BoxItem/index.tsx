@@ -3,31 +3,43 @@ import styled from 'styled-components';
 import { BsThreeDots } from 'react-icons/bs';
 import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
 import { useRouter } from 'next/router';
-import fetchData from '../../../api';
+import useEventHandler from '@hooks/useEventHandler';
+import Link from 'next/link';
+import api from '../../../api';
 
 interface EventTargetProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const eventLogHandler = pathname => {
-  const logData = {
-    eventTime: new Date(),
-    eventName: 'move_page',
-    parameters: { prev: pathname, next: '/magazines/100523' },
-  };
-  fetchData(logData);
-};
+// const eventLogHandler = pathname => {
+//   const logData = {
+//     eventTime: new Date(),
+//     eventName: 'move_page',
+//     parameters: { prev: pathname, next: '/magazines/100523' },
+//   };
+//   api.post('/log', logData);
+// };
 
-function BoxItem({ imgUrl }) {
+function BoxItem({ imgUrl, next }) {
   const router = useRouter();
   return (
-    <Wrapper onClick={e => eventLogHandler(router.pathname)}>
-      <BoxImage src={imgUrl} alt="box-item-image" />
-      <ButtonsWrapper className="buttons-wrapper">
-        <BoxPlayButton />
-        <BsThreeDots size={24} />
-      </ButtonsWrapper>
-    </Wrapper>
+    <>
+      <Link href={`/${next}`}>
+        <Wrapper
+          onClick={useEventHandler(null, {
+            eventTime: new Date(),
+            eventName: 'move_page',
+            parameters: { prev: router.pathname, next },
+          })}
+        >
+          <BoxImage src={imgUrl} alt="box-item-image" />
+          <ButtonsWrapper className="buttons-wrapper">
+            <BoxPlayButton />
+            <BsThreeDots size={24} />
+          </ButtonsWrapper>
+        </Wrapper>
+      </Link>
+    </>
   );
 }
 

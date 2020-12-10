@@ -12,6 +12,7 @@ type AlbumMeta = {
   date: string;
   imgUrl: string;
   artists: artistMeta[];
+  tracks: any[];
 };
 
 type artistMeta = {
@@ -21,15 +22,15 @@ type artistMeta = {
   imgUrl: string;
 };
 
-const AlbumCard = ({ albumMetaData }: IAlbumMetaProps) => {
+const AlbumCard = ({ albumMetaData: album }: IAlbumMetaProps) => {
   return (
     <Container>
-      <BoxItem imgUrl={albumMetaData.imgUrl} />
-      <AlbumTitle>{albumMetaData?.name}</AlbumTitle>
-      {albumMetaData && albumMetaData.artists.length > 3 ? (
+      <BoxItem imgUrl={album.imgUrl} next={`/album/${album.id}`} />
+      <AlbumTitle>{album?.name}</AlbumTitle>
+      {album && album.artists.length > 3 ? (
         <AlbumArtistName>Various Artists</AlbumArtistName>
       ) : (
-        albumMetaData.artists.map(artist => (
+        album.artists.map(artist => (
           <AlbumArtistName key={artist.id}>{artist.name}</AlbumArtistName>
         ))
       )}

@@ -23,7 +23,7 @@ const enterTitle = title => {
 const MagCard = ({ magMetaData: mag }: IMagMetaProps) => {
   return (
     <Container>
-      <BoxItem imgUrl={mag.imgUrl} />
+      <BoxItem imgUrl={mag.imgUrl} next={`/magazines/${mag.id}`} />
       <MagTitle>{enterTitle(mag?.title)}</MagTitle>
       <MagDate>{mag?.date}</MagDate>
     </Container>

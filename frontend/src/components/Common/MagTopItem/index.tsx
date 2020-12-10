@@ -8,7 +8,7 @@ function MagTopItem({ magData: mag }) {
   return (
     <Wrapper>
       <ImgWrapper>
-        <BoxItem imgUrl={mag.imgUrl} />
+        <BoxItem imgUrl={mag.imgUrl} next={`/magazines/${mag.id}`} />
       </ImgWrapper>
       <MagContentWrapper>
         <TagWrapper>
