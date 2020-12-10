@@ -11,15 +11,15 @@ interface JwtPayload {
 
 const passportJwtConfig = (): void => {
   const jwtOptions = {
-    secretOrKey: process.env.JWT_SECRET,
     jwtFromRequest: ExtractJwt.fromHeader('authorization'),
+    secretOrKey: process.env.JWT_SECRET,
   };
 
   const jwtVerify = async (jwtPayload: JwtPayload, done: any): Promise<void> => {
     try {
       const user = await User.findOne({ id: jwtPayload.id });
-      if (user) return done(null, user);
       console.log(user);
+      if (user) return done(null, user);
       return done(null, false);
     } catch (err) {
       console.log(err);

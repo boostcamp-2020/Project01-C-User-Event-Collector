@@ -3,14 +3,11 @@ import styled from 'styled-components';
 import { BsThreeDots } from 'react-icons/bs';
 import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
 import { useRouter } from 'next/router';
-import axios from 'axios';
+import fetchData from '../../../api';
 
 interface EventTargetProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
-
-const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Mywibmlja25hbWUiOiLslYTroZzrpqwiLCJlbWFpbCI6InNrbmdsZWUyMkBuYXZlci5jb20iLCJwcm9maWxlVVJMIjoiaHR0cHM6Ly9waGluZi5wc3RhdGljLm5ldC9jb250YWN0LzIwMjAwNzA3XzEzNC8xNTk0MDkwNzM4MjIzRFV3d21fSlBFRy8yMDE2MDkxM18xNDMzMTcuanBnIiwiZXhwIjoxNjA3NTEzMjczfQ.b5G4gNeN_qll_dBin0jzQYCD8lOXwf3xbJqHvdVaa88';
 
 const eventLogHandler = pathname => {
   const logData = {
@@ -18,17 +15,7 @@ const eventLogHandler = pathname => {
     eventName: 'move_page',
     parameters: { prev: pathname, next: '/magazines/100523' },
   };
-  // fetchData(logData);
-  axios({
-    method: 'post',
-    url: 'http://115.85.181.152:8000/api/log',
-    data: logData,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      Authorization: `Bearer ${token}`,
-      withCredentials: true,
-    },
-  });
+  fetchData(logData);
 };
 
 function BoxItem({ imgUrl }) {
