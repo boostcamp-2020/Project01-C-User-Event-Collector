@@ -29,16 +29,16 @@ private extension PlaylistSectionView {
             }
             SectionScrollView {
                 ForEach(viewModel.playlists) { playlist in
-                    NavigationLink(destination: PlaylistDetailView(viewModel: PlaylistDetailView.ViewModel(container: viewModel.container, path: "\(viewModel.path)/\(Self.name)/\(viewModel.id)", playlist: playlist))) {
-                    ImageItemView(image: Image(playlist.imageURLString), type: viewModel.type) {
-                        Text(playlist.title)
-                            .vibeTitle3()
-                        Text(playlist.subtitle)
-                            .vibeMainText()
-                        Text(playlist.description ?? "")
-                            .vibeMainText()
-                            .lineLimit(2)
-                    }
+                    NavigationLink(destination: PlaylistDetailView(viewModel: PlaylistDetailView.ViewModel(container: viewModel.container, playlist: playlist))) {
+                        ImageItemView(image: Image(playlist.imageURLString), type: viewModel.type) {
+                            Text(playlist.title)
+                                .vibeTitle3()
+                            Text(playlist.subtitle)
+                                .vibeMainText()
+                            Text(playlist.description ?? "")
+                                .vibeMainText()
+                                .lineLimit(2)
+                        }
                     }
                 }
             }

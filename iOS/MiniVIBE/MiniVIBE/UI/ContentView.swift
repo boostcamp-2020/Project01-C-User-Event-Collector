@@ -15,11 +15,11 @@ struct ContentView: View {
     let playingBar = NowPlayingBarView()
     var body: some View {
             TabView(selection: $viewModel.selectedTab) {
-                TodayView(viewModel: TodayView.ViewModel(container: viewModel.container, path: viewModel.path))
+                TodayView(viewModel: TodayView.ViewModel(container: viewModel.container))
                     .tabItem {
                         Image(systemName: "house")
                     }.tag("Today")
-                ChartView(viewModel: ChartView.ViewModel(container: viewModel.container, path: viewModel.path))
+                ChartView(viewModel: ChartView.ViewModel(container: viewModel.container))
                     .tabItem {
                         Image(systemName: "chart.bar.doc.horizontal")
                     }.tag("Chart")
@@ -48,9 +48,6 @@ struct ContentView: View {
 extension ContentView {
     final class ViewModel: ObservableObject {
         let localRepository: LocalRepository
-        var path: String {
-            return selectedTab
-        }
         var container: DIContainer
         
         @Published var selectedTab = "Today" {

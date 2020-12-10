@@ -89,11 +89,9 @@ extension PlaylistDetailView {
     final class ViewModel: ObservableObject {
         @Published private(set) var playlist: Playlist
         let container: DIContainer
-        let path: String
-        
-        init(container: DIContainer, path: String, playlist: Playlist) {
+
+        init(container: DIContainer, playlist: Playlist) {
             self.container = container
-            self.path = path
             self.playlist = playlist
         }
     }

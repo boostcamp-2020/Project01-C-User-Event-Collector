@@ -22,12 +22,12 @@ struct TodayView: View {
                             SummarySectionView()
                             ArtistSection()
                             PlaylistSectionView(viewModel: PlaylistSectionView.ViewModel(
-                                                    container: viewModel.container, id: 0, title: "내 취향 플레이리스트", type: .two, path: viewModel.path))
+                                                    container: viewModel.container, id: 0, title: "내 취향 플레이리스트", type: .two))
                             HomeDJStationSectionView()
                             FiveRowSongGridView(
-                                viewModel: FiveRowSongGridView.ViewModel(container: viewModel.container, path: viewModel.path, id: 0, title: "최근 들은 노래", showsRanking: false))
+                                viewModel: FiveRowSongGridView.ViewModel(container: viewModel.container, id: 0, title: "최근 들은 노래", showsRanking: false))
                             PlaylistSectionView(viewModel: PlaylistSectionView.ViewModel(
-                                                    container: viewModel.container,                  id: 1, title: "VIBE 추천 플레이리스트", type: .one, path: viewModel.path))
+                                                    container: viewModel.container,                  id: 1, title: "VIBE 추천 플레이리스트", type: .one))
                             AlbumSectionView(viewModel: AlbumSectionView.ViewModel(
                                                 id: 1, title: "좋아할 최신앨범", showsRanking: false))
                             MagazineSectionView(viewModel: MagazineSectionView.ViewModel(container: viewModel.container))
@@ -47,11 +47,9 @@ struct TodayView: View {
 extension TodayView {
     final class ViewModel {
         let container: DIContainer
-        let path: String
         
-        init(container: DIContainer, path: String) {
+        init(container: DIContainer) {
             self.container = container
-            self.path = path
         }
     }
 }

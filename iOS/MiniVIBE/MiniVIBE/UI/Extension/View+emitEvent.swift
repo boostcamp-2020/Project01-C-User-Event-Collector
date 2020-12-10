@@ -44,7 +44,7 @@ final class EventSendManager {
 }
 
 public class Event: Codable, Identifiable {
-    public let id: UUID = UUID()
+    public let id: UUID
     let name: String
     let parameters: [String: String]?
     let date: Date
@@ -52,12 +52,14 @@ public class Event: Codable, Identifiable {
     init(name: EventName, parameters: [String: String]) {
         self.name = name.description
         self.date = Date()
+        self.id = UUID()
         self.parameters = parameters
     }
     
     init(cdEvent: CDEvent) {
         self.date = cdEvent.date
         self.name = cdEvent.name
+        self.id = UUID()
         self.parameters = [:]
     }
 }
