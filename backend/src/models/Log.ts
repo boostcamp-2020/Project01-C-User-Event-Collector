@@ -4,6 +4,7 @@ interface ILog extends Document {
   eventTime?: Date;
   eventName?: string;
   parameters?: any;
+  userInfo?: any;
 }
 
 const MovePageParams = new Schema({
@@ -11,10 +12,17 @@ const MovePageParams = new Schema({
   next: String,
 });
 
+const UserInfoParams = new Schema({
+  isLoggedIn: Boolean,
+  user: Object,
+});
+
 const LogSchema: Schema = new Schema({
   eventTime: Date,
   eventName: String,
   parameters: MovePageParams,
+  userInfo: UserInfoParams,
+  userAgent: String,
 });
 
 const Log: Model<ILog> = model('Log', LogSchema);
