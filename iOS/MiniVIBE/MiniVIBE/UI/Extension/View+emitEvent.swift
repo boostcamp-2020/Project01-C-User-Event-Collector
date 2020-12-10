@@ -57,10 +57,20 @@ public class Event: Codable, Identifiable {
     }
     
     init(cdEvent: CDEvent) {
-        self.date = cdEvent.date
-        self.name = cdEvent.name
         self.id = UUID()
-        self.parameters = [:]
+        self.name = cdEvent.name ?? ""
+        self.date = cdEvent.date ?? Date()
+        
+        let cdParameter = cdEvent.parameter ?? NSSet()
+        self.parameters = cdParameter.compactMap { setItem -> CDParameter? in
+            guard let item = setItem as? CDParameter else { return nil }
+            return item
+        }.reduce([:], { (dict, pair) -> [String: String]? in
+            guard let key = pair.key, let value = pair.value else { return nil }
+            guard var parameter = dict else { return nil }
+            parameter[key] = value
+            return parameter
+        })
     }
 }
 

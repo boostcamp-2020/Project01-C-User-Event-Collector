@@ -35,6 +35,6 @@ struct RealLocalRepository: LocalRepository {
     }
 
     func saveEvent(event: Event) {
-        persistenceStore.newEvent(event: event)
+        persistenceStore.saveEvent(event: event)
     }
 }
