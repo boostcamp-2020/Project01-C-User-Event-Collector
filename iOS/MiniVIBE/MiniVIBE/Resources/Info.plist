@@ -19,12 +19,18 @@
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleIdentifier</key>
+			<string></string>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>minivibe</string>
-			</array>
+			<array/>
+		</dict>
+		<dict>
+			<key></key>
+			<string></string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>

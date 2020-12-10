@@ -1,5 +1,5 @@
 //
-//  HomeNowSectionItemView.swift
+//  NowItemView.swift
 //  MiniVIBE
 //
 //  Created by GH Choi on 2020/11/24.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct HomeNowItemView: View {
-    var item: HomeNowReplayItem
+struct NowItemView: View {
+    var item: NowReplayItem
     var body: some View {
         VStack(alignment: .leading) {
             item.albumArt

@@ -14,6 +14,7 @@ protocol EventService {
     var localRepository: LocalRepository { get }
     var reachability: Reachability { get }
     func sendAllEvents()
+    
     func sendOneEvent(event: Event)
 }
 

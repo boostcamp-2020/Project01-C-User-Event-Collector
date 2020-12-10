@@ -7,33 +7,34 @@
 
 import SwiftUI
 import CoreData
+import OSLog
 
 struct ContentView: View {
-    @ObservedObject private(set) var  viewModel: ViewModel
+    @ObservedObject private(set) var viewModel: ViewModel
     @State var playerFrame = CGRect.zero
     let playingBar = NowPlayingBarView()
     var body: some View {
             TabView(selection: $viewModel.selectedTab) {
-                HomeView()
+                TodayView(viewModel: TodayView.ViewModel(container: viewModel.container))
                     .tabItem {
                         Image(systemName: "house")
-                    }.tag(0)
-                ChartView()
+                    }.tag("Today")
+                ChartView(viewModel: ChartView.ViewModel(container: viewModel.container))
                     .tabItem {
                         Image(systemName: "chart.bar.doc.horizontal")
-                    }.tag(1)
+                    }.tag("Chart")
                 VideoView(viewModel: VideoView.ViewModel(container: viewModel.container))
                     .tabItem {
                         Image(systemName: "play.rectangle.fill")
-                    }.tag(2)
+                    }.tag("Video")
                 SearchView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
-                }.tag(3)
-                LibraryView()
+                }.tag("Search")
+                LibraryView(viewModel: LibraryView.ViewModel(container: viewModel.container))
                 .tabItem {
                     Image(systemName: "person.fill")
-                }.tag(4)
+                }.tag("Library")
             }.accentColor(.vibePink)
             .onPreferenceChange(Size.self, perform: { value in
                 playerFrame = value.last ?? .zero
@@ -48,9 +49,10 @@ extension ContentView {
     final class ViewModel: ObservableObject {
         let localRepository: LocalRepository
         var container: DIContainer
-        @Published var selectedTab = 0 {
-            didSet {
-                container.eventService.sendOneEvent(event: Event(name: "tabChanged", parameter: [:], tab: selectedTab))
+        
+        @Published var selectedTab = "Today" {
+            didSet(oldTab) {
+                emitEvent(event: MoveEvent(prev: oldTab, next: selectedTab))
             }
         }
         

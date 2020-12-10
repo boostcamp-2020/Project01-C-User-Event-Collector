@@ -15,15 +15,11 @@ struct FiveRowSongGridView: View {
                         GridItem(.fixed(40), spacing: 15)]
     @ObservedObject private(set) var viewModel: Self.ViewModel
     
-    init(viewModel: Self.ViewModel) {
-        self.viewModel = viewModel
-    }
-    
     var body: some View {
         VStack {
             NavigationLink(destination: FiveRowSongGridMoreView(viewModel: viewModel)) {
             MoreHeaderView(title: viewModel.title, subtitle: viewModel.subtitle)
-               }
+            }
             SectionScrollView {
                 LazyHGrid(rows: rows, spacing: .defaultSpacing) {
                     fiveRowSongGridItemViews

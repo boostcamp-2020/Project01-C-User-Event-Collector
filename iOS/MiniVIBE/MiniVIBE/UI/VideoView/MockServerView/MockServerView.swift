@@ -67,7 +67,7 @@ private struct MockServerDataView: View {
             })
             List {
                 ForEach(FakeServerRepository.events) { event in
-                    Text("\(event.date) " + (event.name ?? "") + String(describing: 3))
+                    Text("\(event.date)\n\(event.name)\n" + (event.parameters?.description ?? "") )
                 }
             }
         }
@@ -87,7 +87,7 @@ private struct LocalDataView: View {
             })
             List {
                 ForEach(viewModel.container.localRepository.fetchEvents()) { event in
-                    Text("\(event.date) " + (event.name ?? ""))
+                    Text("\(event.date) " + (event.name))
                 }
             }
         }

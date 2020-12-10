@@ -8,14 +8,15 @@
 import Foundation
 
 struct Playlist: Identifiable {
-    let id = UUID()
+    let id: Int
     let imageURLString: String
     let title: String
     let subtitle: String
     let description: String?
     let songs: [Song]
     
-    init(imageURLString: String, title: String, subtitle: String, songs: [Song], description: String? = nil) {
+    init(id: Int, imageURLString: String, title: String, subtitle: String, songs: [Song], description: String? = nil) {
+        self.id = id
         self.imageURLString = imageURLString
         self.title = title
         self.subtitle = subtitle

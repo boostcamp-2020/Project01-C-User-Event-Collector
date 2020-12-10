@@ -1,5 +1,5 @@
 //
-//  HomeFooterView.swift
+//  TodayFooterView.swift
 //  MiniVIBE
 //
 //  Created by 최광현 on 2020/11/17.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeFooterView: View {
+struct TodayFooterView: View {
     var body: some View {
         VStack {
             Button(action: {}, label: {
@@ -43,7 +43,7 @@ struct HomeFooterView: View {
     }
 }
 
-private extension HomeFooterView {
+private extension TodayFooterView {
     var FooterDivider: some View {
         Divider().frame(height: 10).overlay(Color.gray)
     }
@@ -51,6 +51,6 @@ private extension HomeFooterView {
 
 struct HomeFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeFooterView().background(Color.black)
+        TodayFooterView().background(Color.black)
     }
 }

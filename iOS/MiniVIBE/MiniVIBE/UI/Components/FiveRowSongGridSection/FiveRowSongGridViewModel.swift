@@ -14,10 +14,10 @@ extension FiveRowSongGridView {
         let title: String
         let subtitle: String?
         let showsRanking: Bool
-//        let container: DIContainer
+        let container: DIContainer
         
-        init(/*container: DIContainer,*/id: Int, title: String, subtitle: String? = nil, showsRanking: Bool = true) {
-//            self.container = container
+        init(container: DIContainer,id: Int, title: String, subtitle: String? = nil, showsRanking: Bool = true) {
+            self.container = container
             self.id = id
             self.title = title
             self.subtitle = subtitle

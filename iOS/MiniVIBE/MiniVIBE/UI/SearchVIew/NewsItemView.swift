@@ -10,14 +10,14 @@ import SwiftUI
 struct NewsItemView: View {
     var item: Magazine
     var body: some View {
-        ImageItemView(image: Image(item.image), type: .one, ratio: 0.5) {}
+        ImageItemView(image: Image(item.imageURLString), type: .one, ratio: 0.5) {}
             .overlay(
                 VStack {
                     Spacer()
                     Color(.white).frame(height: .oneItemImageWidth * 0.25)
                         .overlay(
                             VStack(alignment: .leading) {
-                                Text(item.description)
+                                Text(item.title)
                                     .font(.system(size: 15))
                                     .foregroundColor(.black)
                                     .lineLimit(2)

@@ -6,10 +6,10 @@
 //
 
 import SwiftUI
+import Combine
 
 struct LibraryView: View {
-    @ObservedObject var viewModel: ViewModel = ViewModel()
-    
+    @ObservedObject var viewModel: ViewModel
     private enum Constant {
         static let title: String = "보관함"
     }
@@ -32,8 +32,8 @@ private extension LibraryView {
     var lowerTab: some View {
         TabView(selection: $viewModel.selectedTab) {
             LibrarySongView().tag(0)
-            LibraryArtistView().tag(1)
-            LibraryAlbumView().tag(2)
+            LibraryArtistView(viewModel: LibraryArtistView.ViewModel(container: viewModel.container )).tag(1)
+            LibraryAlbumView(viewModel: LibraryAlbumView.ViewModel(container: viewModel.container)).tag(2)
             LibraryPlaylistView().tag(3)
         }
         .animation(.easeInOut)
@@ -73,7 +73,11 @@ extension LibraryView {
     class ViewModel: ObservableObject {
         @Published var selectedTab: Int = 0
         var tabNameList = ["노래", "아티스트", "앨범", "플레이리스트"]
+        let container: DIContainer
         
+        init(container: DIContainer) {
+            self.container = container
+        }
         func moveTab(to target: Int) {
             selectedTab = target
         }
@@ -127,7 +131,7 @@ struct LibraryPlaylistView: View {
         ScrollView {
             LazyVStack {
                 ForEach(MockItemFactory.playlists) { playlist in
-                    NavigationLink(destination: PlaylistDetailView(playlist: playlist)) {
+//                    NavigationLink(destination: PlaylistDetailView(playlist: playlist)) {
                         HStack {
                             Image(playlist.imageURLString)
                                 .resizable()
@@ -140,47 +144,7 @@ struct LibraryPlaylistView: View {
                             Spacer()
                         }
                     }
-                }
-            }
-        }
-    }
-}
-
-struct LibraryArtistView: View {
-    var body: some View {
-        ScrollView {
-            LazyVGrid(
-                columns: [.init(.fixed(.oneItemImageWidth))],
-                pinnedViews: [.sectionHeaders]) {
-                Section(header: PlayShuffleHeaderButton(playHandler: {}, shuffleHandler: {})) {
-                    ForEach(MockItemFactory.artists) { artist in
-                        HStack {
-                            Image(artist.imageURLString)
-                                .resizable()
-                                .frame(width: 50, height: 50, alignment: .center)
-                                .clipShape(Circle())
-                            Text(artist.name).vibeTitle3()
-                            Spacer()
-                        }.padding(.horizontal, .defaultPadding)
-                    }
-                }
-            }
-        }.animation(.none)
-    }
-}
-
-struct LibraryAlbumView: View {
-    var body: some View {
-        LazyVGrid(columns: [.init(.fixed(.twoItemImageWidth)),
-                             .init(.fixed(.twoItemImageWidth))
-                            ]) {
-            ForEach(MockItemFactory.albums) { album in
-                HStack {
-                    ImageItemView(image: Image(album.imageURLString), type: .two) {
-                        Text(album.title).vibeTitle3()
-                        Text(album.artist).vibeMainText()
-                    }
-                }
+//                }
             }
         }
     }

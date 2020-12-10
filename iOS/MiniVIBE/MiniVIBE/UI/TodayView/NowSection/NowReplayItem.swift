@@ -1,5 +1,5 @@
 //
-//  HomeNowReplayItem.swift
+//  NowReplayItem.swift
 //  MiniVIBE
 //
 //  Created by GH Choi on 2020/11/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeNowReplayItem: Identifiable {
+struct NowReplayItem: Identifiable {
     let id = UUID()
     var albumArt: Image
     var description: String
