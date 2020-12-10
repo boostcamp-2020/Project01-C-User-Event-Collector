@@ -17,20 +17,21 @@ type ArtistMeta = {
   imgUrl: string;
 };
 
-const deleteArtist = async id => {
-  await api.delete(`library/artists/${id}`);
+const deleteArtist = async (e, id) => {
+  // await api.delete(`library/artists/${id}`);
   console.log('아티스트 삭제');
-  trigger('http://115.85.181.152:8000/api/libary/artists');
+  e.target.closest('.artist-card').style.opacity = '0';
+  e.target.closest('.artist-card').style.transform = 'translate(0px, -35px)';
 };
 
 const ArtistCard = ({ artistMetaData: artist }: IArtistMetaProps) => {
   return (
-    <Container>
+    <Container className="artist-card">
       <ImageContainer>
         <A next="artist" id={artist.id}>
           <CircleImage imageSrc={artist.imgUrl} />
         </A>
-        <ButtonWrapper onClick={() => deleteArtist(artist.id)}>
+        <ButtonWrapper onClick={e => deleteArtist(e, artist.id)}>
           <CircleHeartButton />
         </ButtonWrapper>
       </ImageContainer>
@@ -47,6 +48,8 @@ const Container = styled.ul`
   flex-direction: column;
   align-items: center;
   text-align: center;
+  transition: all 1s;
+  position: relative;
 `;
 
 const ImageContainer = styled.a`
