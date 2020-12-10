@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import BoxItem from '@components/Common/BoxItem';
+import A from '@components/Common/A';
 
 interface IAlbumMetaProps {
   albumMetaData: AlbumMeta;
@@ -25,8 +26,10 @@ type artistMeta = {
 const AlbumCard = ({ albumMetaData: album }: IAlbumMetaProps) => {
   return (
     <Container>
-      <BoxItem imgUrl={album.imgUrl} next={`/album/${album.id}`} />
-      <AlbumTitle>{album?.name}</AlbumTitle>
+      <BoxItem imgUrl={album.imgUrl} next="album" id={album.id} />
+      <A next="album" id={album.id}>
+        <AlbumTitle>{album?.name}</AlbumTitle>
+      </A>
       {album && album.artists.length > 3 ? (
         <AlbumArtistName>Various Artists</AlbumArtistName>
       ) : (

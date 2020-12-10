@@ -20,16 +20,16 @@ interface EventTargetProps {
 //   api.post('/log', logData);
 // };
 
-function BoxItem({ imgUrl, next }) {
+function BoxItem({ imgUrl, next, id }) {
   const router = useRouter();
   return (
     <>
-      <Link href={`/${next}`}>
+      <Link href={`/${next}/[id]`} as={`/${next}/${id}`}>
         <Wrapper
           onClick={useEventHandler(null, {
             eventTime: new Date(),
             eventName: 'move_page',
-            parameters: { prev: router.pathname, next },
+            parameters: { prev: router.pathname, next: `/${`${next}/${id}`}` },
           })}
         >
           <BoxImage src={imgUrl} alt="box-item-image" />

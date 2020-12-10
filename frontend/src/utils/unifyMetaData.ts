@@ -23,7 +23,7 @@ const unifyMetaData = (type, metaData) => {
     case 'artist':
       result.title = metaData?.name;
       result.date = metaData?.debut;
-      result.genre = metaData?.genres[0].name;
+      result.genre = metaData?.genres[0]?.name;
       result.imgUrl = metaData?.imgUrl;
       return result;
     case 'track':
@@ -38,7 +38,7 @@ const unifyMetaData = (type, metaData) => {
       result.title = metaData?.name;
       result.artist = metaData?.artists?.join(', ');
       result.date = metaData?.date;
-      result.genre = metaData?.genres[0].name;
+      result.genre = metaData?.genres[0]?.name;
       result.imgUrl = metaData?.imgUrl;
       return result;
     case 'playlist':

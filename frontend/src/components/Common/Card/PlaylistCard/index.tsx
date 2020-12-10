@@ -23,7 +23,7 @@ type trackMeta = {
 const PlaylistCard = ({ playlistMetaData: playlist }: IPlaylistMetaProps) => {
   return (
     <Container>
-      <BoxItem imgUrl={`https://picsum.photos/${180}`} next={`/playlist/${playlist.id}`} />
+      <BoxItem imgUrl={`https://picsum.photos/${180}`} next="playlist" id={playlist.id} />
       <PlaylistTitle>{playlist.name}</PlaylistTitle>
       <TotalTrack>{`${playlist.tracks.length}곡`}</TotalTrack>
     </Container>
