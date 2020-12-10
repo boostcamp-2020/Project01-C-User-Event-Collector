@@ -62,6 +62,7 @@ function NavList() {
         <Link href="/library/playlists">
           <NavItem isSelected={router.pathname === '/library/playlists'}>플레이리스트</NavItem>
         </Link>
+        <a href="minivibe://asdf">미니바이브 테스트</a>
       </NavItemWrapper>
     </Container>
   );

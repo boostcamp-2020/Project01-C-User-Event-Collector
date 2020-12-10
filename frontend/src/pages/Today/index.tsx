@@ -15,10 +15,8 @@ function Today({ magList, playlistList }) {
         <MagTopItem magData={magList[0]} />
       </MagTopWrapper>
       <Content>
-        <a href="minivibe://asdf">미니바이브</a>
         <Section>
           <a className="section-title">매거진</a>
-
           <Carousel groupSize={3}>
             {magList &&
               magList.slice(1).map((mag, i) => <MagCard key={mag.id} magMetaData={mag} />)}

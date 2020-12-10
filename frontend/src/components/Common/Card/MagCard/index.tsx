@@ -34,7 +34,6 @@ const Container = styled.ul`
   width: ${props => props.theme.size.bigCarouselContentWidth};
   display: flex;
   flex-direction: column;
-  border: 10px solid red;
 `;
 
 const MagTitle = styled.a`
