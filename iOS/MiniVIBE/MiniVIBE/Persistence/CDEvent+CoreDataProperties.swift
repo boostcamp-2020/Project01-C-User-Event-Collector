@@ -15,14 +15,12 @@ extension CDEvent {
         return NSFetchRequest<CDEvent>(entityName: "CDEvent")
     }
 
-    @NSManaged public var date: Date?
-    @NSManaged public var tab: Int32
-    @NSManaged public var eventName: String?
+    @NSManaged public var date: Date
+    @NSManaged public var name: String
     
     func set(from event: Event) {
         date = event.date
-        tab = Int32(event.tab ?? 0)
-        eventName = event.name
+        name = event.name
 //        parameter = event.parameter
     }
 }

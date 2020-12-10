@@ -1,5 +1,5 @@
 //
-//  HomeSummaryItemView.swift
+//  SummaryItemView.swift
 //  MiniVIBE
 //
 //  Created by 최동규 on 2020/11/24.
@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct HomeSummaryItemView: View {
-    var item: HomeSummaryItem
+struct SummaryItemView: View {
+    var item: SummaryItem
     var body: some View {
         VStack(alignment: .leading) {
             Text(item.category)

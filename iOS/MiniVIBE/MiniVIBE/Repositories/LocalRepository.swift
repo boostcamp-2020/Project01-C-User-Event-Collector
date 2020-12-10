@@ -34,10 +34,9 @@ struct RealLocalRepository: LocalRepository {
         }
     }
 
-    
     func saveEvent(event: Event) {
-        var cdEvent = persistenceStore.newEntity(entityName: "CDEvent") as? CDEvent
+        let cdEvent = persistenceStore.newEntity(entityName: "CDEvent") as? CDEvent
         cdEvent?.set(from: event)
-        persistenceStore.saveContext()
+        _ = persistenceStore.saveContext()
     }
 }

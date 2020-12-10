@@ -15,8 +15,10 @@ extension PlaylistSectionView {
         let title: String
         let subtitle: String?
         let type: ImageSizeType
+        let container: DIContainer
         
-        init(id: Int, title: String, type: ImageSizeType, subtitle: String? = nil) {
+        init(container: DIContainer, id: Int, title: String, type: ImageSizeType, subtitle: String? = nil) {
+            self.container = container
             self.id = id
             self.title = title
             self.subtitle = subtitle

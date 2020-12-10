@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct PlaylistSectionView: View {
+    static var name: String {
+        return String(describing: Self.self)
+    }
     let viewModel: Self.ViewModel
-    
     init(viewModel: Self.ViewModel) {
         self.viewModel = viewModel
     }
@@ -27,16 +29,16 @@ private extension PlaylistSectionView {
             }
             SectionScrollView {
                 ForEach(viewModel.playlists) { playlist in
-                    NavigationLink(destination: PlaylistDetailView(playlist: playlist)) {
-                    ImageItemView(image: Image(playlist.imageURLString), type: viewModel.type) {
-                        Text(playlist.title)
-                            .vibeTitle3()
-                        Text(playlist.subtitle)
-                            .vibeMainText()
-                        Text(playlist.description ?? "")
-                            .vibeMainText()
-                            .lineLimit(2)
-                    }
+                    NavigationLink(destination: PlaylistDetailView(viewModel: PlaylistDetailView.ViewModel(container: viewModel.container, playlist: playlist))) {
+                        ImageItemView(image: Image(playlist.imageURLString), type: viewModel.type) {
+                            Text(playlist.title)
+                                .vibeTitle3()
+                            Text(playlist.subtitle)
+                                .vibeMainText()
+                            Text(playlist.description ?? "")
+                                .vibeMainText()
+                                .lineLimit(2)
+                        }
                     }
                 }
             }
