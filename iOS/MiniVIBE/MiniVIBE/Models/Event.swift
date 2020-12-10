@@ -6,24 +6,34 @@
 //
 
 import Foundation
+import CoreData
 
 class Event: Codable, Identifiable {
     var id = UUID()
     var name: String?
     var parameter: [String: String]?
     var date: Date?
-    var tab: Int?
     
-    init(name: String, parameter: [String: String], tab: Int? = nil) {
+    init(name: String, parameter: [String: String]? = nil) {
         self.name = name
         self.date = Date()
-//        self.parameter = parameter
-        self.tab = tab
+        self.parameter = parameter
     }
     
     init(cdEvent: CDEvent) {
+        self.name = cdEvent.name
         self.date = cdEvent.date
-        self.name = cdEvent.eventName
-        self.tab = Int(cdEvent.tab)
+        
+        let cdParameter = cdEvent.parameter ?? NSSet()
+        let parameter: [String: String]? = cdParameter.compactMap { setItem -> CDParameter? in
+            guard let item = setItem as? CDParameter else { return nil }
+            return item
+        }.reduce([:], { (dict, pair) -> [String: String]? in
+            guard let key = pair.key, let value = pair.value else { return nil }
+            guard var parameter = dict else { return nil }
+            parameter[key] = value
+            return parameter
+        })
+        self.parameter = parameter
     }
 }

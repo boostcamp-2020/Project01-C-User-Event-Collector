@@ -88,8 +88,6 @@
 		DE7516A025776F990054AFC6 /* LocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE75169F25776F990054AFC6 /* LocalRepository.swift */; };
 		DEB6A6ED2572C89F00C97A0C /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB6A6EC2572C89E00C97A0C /* DetailHeaderView.swift */; };
 		DEC076DA2563AEBE004862AA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC076D92563AEBE004862AA /* HomeView.swift */; };
-		DECD6F68257F73C700CBC92B /* CDEvent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECD6F66257F73C700CBC92B /* CDEvent+CoreDataProperties.swift */; };
-		DECD6F69257F73C700CBC92B /* CDEvent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECD6F67257F73C700CBC92B /* CDEvent+CoreDataClass.swift */; };
 		DEF5EFE925723A01006666DC /* NowPlayingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFE825723A01006666DC /* NowPlayingBarView.swift */; };
 		DEF5EFEE25727E47006666DC /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFED25727E47006666DC /* Song.swift */; };
 		DEF5EFF225727E58006666DC /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFF125727E58006666DC /* MusicPlayer.swift */; };
@@ -194,8 +192,6 @@
 		DE75169F25776F990054AFC6 /* LocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRepository.swift; sourceTree = "<group>"; };
 		DEB6A6EC2572C89E00C97A0C /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		DEC076D92563AEBE004862AA /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
-		DECD6F66257F73C700CBC92B /* CDEvent+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDEvent+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		DECD6F67257F73C700CBC92B /* CDEvent+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CDEvent+CoreDataClass.swift"; sourceTree = "<group>"; };
 		DEF5EFE825723A01006666DC /* NowPlayingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBarView.swift; sourceTree = "<group>"; };
 		DEF5EFED25727E47006666DC /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		DEF5EFF125727E58006666DC /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
@@ -585,8 +581,6 @@
 		DEF5EFEC25727DF8006666DC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DECD6F67257F73C700CBC92B /* CDEvent+CoreDataClass.swift */,
-				DECD6F66257F73C700CBC92B /* CDEvent+CoreDataProperties.swift */,
 				DEF5EFED25727E47006666DC /* Song.swift */,
 				B9D793FA25780E3300B40D0E /* Album.swift */,
 				DEF5EFF125727E58006666DC /* MusicPlayer.swift */,
@@ -779,13 +773,11 @@
 				B97A5067256E7343003F7DF5 /* CGFloat+defaultValues.swift in Sources */,
 				B9F0BDD0256EDE41004A2852 /* CGFloat+oneItemImageWidth.swift in Sources */,
 				DE3D6F8925640FE800C236EF /* HomeFooterView.swift in Sources */,
-				DECD6F69257F73C700CBC92B /* CDEvent+CoreDataClass.swift in Sources */,
 				DE18EE97257BF59A009E4E11 /* Event.swift in Sources */,
 				B9FF8A90257AA3FC00B774CD /* PlaylistMoreView.swift in Sources */,
 				B9FF8A90257AA3FC00B774CD /* PlaylistMoreView.swift in Sources */,
 				B9129283257812C9002F516F /* MusicVideoTop50SectionView.swift in Sources */,
 				B994C6A825627DBE000E563C /* MiniVIBE.xcdatamodeld in Sources */,
-				DECD6F68257F73C700CBC92B /* CDEvent+CoreDataProperties.swift in Sources */,
 				B9FF8A48257A78BB00B774CD /* FiveRowSongGridViewModel.swift in Sources */,
 				B94DA9D4257D56A40002A066 /* AsyncImageView.swift in Sources */,
 				B912A1652578161500223C0B /* VideoHeaderView.swift in Sources */,
