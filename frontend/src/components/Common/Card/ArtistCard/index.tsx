@@ -3,8 +3,6 @@ import styled from '@styles/themed-components';
 import CircleImage from '@components/Common/CircleImage';
 import CircleHeartButton from '@components/Common/Button/CircleHeartButton';
 import A from '@components/Common/A';
-import { trigger } from 'swr';
-import api from '../../../../api';
 
 interface IArtistMetaProps {
   artistMetaData: ArtistMeta;
