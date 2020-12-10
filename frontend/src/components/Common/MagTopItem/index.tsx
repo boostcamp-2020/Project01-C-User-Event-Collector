@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+
 import trimContentLength from '@utils/trimContentLength';
+import A from '@components/Common/A';
 import MagTag from '@components/Common/MagTag';
 import BoxItem from '@components/Common/BoxItem';
 
@@ -8,22 +10,24 @@ function MagTopItem({ magData: mag }) {
   return (
     <Wrapper>
       <ImgWrapper>
-        <BoxItem imgUrl={mag.imgUrl} next={`/magazines/${mag.id}`} />
+        <BoxItem imgUrl={mag.imgUrl} next="magazines" id={mag.id} />
       </ImgWrapper>
-      <MagContentWrapper>
-        <TagWrapper>
-          <MagTag type={mag.tag} />
-        </TagWrapper>
-        <MagTitle>{mag.title}</MagTitle>
-        <MagContent>{trimContentLength(mag.content, 110)}</MagContent>
-        <MagContent>{`VIBE MAG · ${mag.date}`}</MagContent>
-      </MagContentWrapper>
+      <A next="magazines" id={mag.id}>
+        <MagContentWrapper>
+          <TagWrapper>
+            <MagTag type={mag.tag} />
+          </TagWrapper>
+          <MagTitle>{mag.title}</MagTitle>
+          <MagContent>{trimContentLength(mag.content, 110)}</MagContent>
+          <MagContent>{`VIBE MAG · ${mag.date}`}</MagContent>
+        </MagContentWrapper>
+      </A>
     </Wrapper>
   );
 }
 
 const ImgWrapper = styled.div`
-  width: ${props => props.theme.size.magTopItemHeight};
+  width: 480px;
   height: ${props => props.theme.size.magTopItemHeight};
 `;
 
@@ -38,6 +42,7 @@ const MagTitle = styled.a`
 const MagContentWrapper = styled.div`
   background: white;
   width: 640px;
+  height: 100%;
   padding: 55px;
   display: flex;
   flex-direction: column;
@@ -55,7 +60,7 @@ const Wrapper = styled.div`
   width: ${props => props.theme.size.mainContentWidth};
   margin: 0 auto;
   height: ${props => props.theme.size.magTopItemHeight};
-  background-color: white;
+  background: white;
   display: flex;
 `;
 

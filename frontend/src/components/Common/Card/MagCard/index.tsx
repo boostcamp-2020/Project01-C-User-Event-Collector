@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import BoxItem from '@components/Common/BoxItem';
+import A from '@components/Common/A';
 
 interface IMagMetaProps {
   magMetaData: MagMeta;
@@ -24,7 +25,9 @@ const MagCard = ({ magMetaData: mag }: IMagMetaProps) => {
   return (
     <Container>
       <BoxItem imgUrl={mag.imgUrl} next="magazines" id={mag.id} />
-      <MagTitle>{enterTitle(mag?.title)}</MagTitle>
+      <A next="magazines" id={mag.id}>
+        <MagTitle>{enterTitle(mag?.title)}</MagTitle>
+      </A>
       <MagDate>{mag?.date}</MagDate>
     </Container>
   );

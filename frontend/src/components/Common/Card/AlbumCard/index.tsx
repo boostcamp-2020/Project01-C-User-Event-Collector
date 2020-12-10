@@ -34,7 +34,9 @@ const AlbumCard = ({ albumMetaData: album }: IAlbumMetaProps) => {
         <AlbumArtistName>Various Artists</AlbumArtistName>
       ) : (
         album.artists.map(artist => (
-          <AlbumArtistName key={artist.id}>{artist.name}</AlbumArtistName>
+          <A next="artist" id={artist.id} key={artist.id}>
+            <AlbumArtistName>{artist.name}</AlbumArtistName>
+          </A>
         ))
       )}
     </Container>

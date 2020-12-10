@@ -2,8 +2,6 @@ import useSWR from 'swr';
 
 const options = {
   method: 'GET',
-  // Todo
-  // 헤더에 토큰 추가하기, cors 이슈 해결
   headers: {
     Accept: 'application/json',
     'Content-Type': 'application/json;charset=UTF-8',

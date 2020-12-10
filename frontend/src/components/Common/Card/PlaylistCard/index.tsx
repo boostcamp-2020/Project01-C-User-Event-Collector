@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import BoxItem from '@components/Common/BoxItem';
+import A from '@components/Common/A';
 
 interface IPlaylistMetaProps {
   playlistMetaData: PlaylistMeta;
@@ -24,7 +25,9 @@ const PlaylistCard = ({ playlistMetaData: playlist }: IPlaylistMetaProps) => {
   return (
     <Container>
       <BoxItem imgUrl={`https://picsum.photos/${180}`} next="playlist" id={playlist.id} />
-      <PlaylistTitle>{playlist.name}</PlaylistTitle>
+      <A next="playlist" id={playlist.id}>
+        <PlaylistTitle>{playlist.name}</PlaylistTitle>
+      </A>
       <TotalTrack>{`${playlist.tracks.length}곡`}</TotalTrack>
     </Container>
   );

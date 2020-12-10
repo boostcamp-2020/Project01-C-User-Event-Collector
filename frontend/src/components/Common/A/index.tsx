@@ -12,7 +12,7 @@ function A({ next, id, children }) {
   const router = useRouter();
   return (
     <>
-      <Link href="/album/[id]" as={`/album/${id}`}>
+      <Link href={`/${next}/[id]}`} as={`/${next}/${id}`}>
         <Wrapper
           onClick={useEventHandler(null, {
             eventTime: new Date(),
@@ -32,6 +32,7 @@ function A({ next, id, children }) {
 
 const Wrapper = styled.div<EventTargetProps>`
   width: 100%;
+  cursor: pointer;
 `;
 
 export default A;

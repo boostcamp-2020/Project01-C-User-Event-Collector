@@ -24,7 +24,7 @@ function Today({ magList, playlistList }) {
         </Section>
 
         <Section>
-          <a className="section-title">내 취향 플레이리스트</a>
+          <p className="section-title">내 취향 플레이리스트</p>
           <Carousel groupSize={5}>
             {playlistList &&
               playlistList?.map(playlist => (
