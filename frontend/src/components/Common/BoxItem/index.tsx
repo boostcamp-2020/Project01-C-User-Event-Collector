@@ -21,7 +21,7 @@ const eventLogHandler = pathname => {
   // fetchData(logData);
   axios({
     method: 'post',
-    url: 'http://localhost:8000/api/log',
+    url: 'http://115.85.181.152:8000/api/log',
     data: logData,
     headers: {
       'Access-Control-Allow-Origin': '*',
