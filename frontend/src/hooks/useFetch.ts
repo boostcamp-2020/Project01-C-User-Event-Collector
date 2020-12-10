@@ -11,7 +11,7 @@ const options = {
   credentails: 'true',
 };
 
-const baseUrl = 'http://localhost:8000/api';
+const baseUrl = 'http://115.85.181.152:8000/api';
 const fetcher = url => fetch(baseUrl + url, options).then(res => res.json());
 
 const useFetch = url => {

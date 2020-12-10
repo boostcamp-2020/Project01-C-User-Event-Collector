@@ -13,7 +13,7 @@ const token =
 const fetchData = async data => {
   console.log('fetchData 시작!');
   console.log(data);
-  await fetch('http://localhost:8000/api/log', {
+  await fetch('http://115.85.181.152:8000/api/log', {
     method: 'POST',
     mode: 'no-cors',
     headers: {
