@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import BoxItem from '@components/Common/BoxItem';
+import A from '@components/Common/A';
 
 interface IPlaylistMetaProps {
   playlistMetaData: PlaylistMeta;
@@ -20,12 +21,14 @@ type trackMeta = {
   imgUrl: string;
 };
 
-const AlbumCard = ({ playlistMetaData: playlist }: IPlaylistMetaProps) => {
+const PlaylistCard = ({ playlistMetaData: playlist }: IPlaylistMetaProps) => {
   return (
     <Container>
-      <BoxItem imgUrl={`https://picsum.photos/${180}`} />
-      <AlbumTitle>{playlist.name}</AlbumTitle>
-      <TotalAlbumTrack>{`${playlist.tracks.length}곡`}</TotalAlbumTrack>
+      <BoxItem imgUrl={`https://picsum.photos/${180}`} next="playlist" id={playlist.id} />
+      <A next="playlist" id={playlist.id}>
+        <PlaylistTitle>{playlist.name}</PlaylistTitle>
+      </A>
+      <TotalTrack>{`${playlist.tracks.length}곡`}</TotalTrack>
     </Container>
   );
 };
@@ -37,17 +40,17 @@ const Container = styled.ul`
   align-items: center;
 `;
 
-const AlbumTitle = styled.a`
+const PlaylistTitle = styled.a`
   ${props => props.theme.font.plain}
   display: block;
   font-size: 13px;
   padding-top: 14px;
 `;
 
-const TotalAlbumTrack = styled.a`
+const TotalTrack = styled.a`
   ${props => props.theme.font.sub}
   display: inline-block;
   padding-top: 10px;
 `;
 
-export default AlbumCard;
+export default PlaylistCard;

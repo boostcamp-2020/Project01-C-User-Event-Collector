@@ -31,9 +31,7 @@ const MyCarousel = ({ children, groupSize }) => {
 
 const ContentWrapper = styled.div<CarouselWrapperProps>`
   width: 100%;
-  display: flex;
   padding: 20px 0;
-  justify-content: flex-start;
   display: grid;
   grid-template-columns: ${props =>
     props.groupSize === 3 ? 'repeat(3, 300px)' : 'repeat(5, 180px)'};

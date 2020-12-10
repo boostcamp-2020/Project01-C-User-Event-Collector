@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import Link from 'next/link';
 
 import { HiHeart } from 'react-icons/hi';
 import { BsMusicPlayer } from 'react-icons/bs';
 import { RiPlayListLine } from 'react-icons/ri';
 
 import trimContentLength from '@utils/trimContentLength';
+import A from '@components/Common/A';
 
 interface ITrackMetaProps {
   type: string;
@@ -30,23 +30,21 @@ function TrackItem({ type, trackMetaData: track }: ITrackMetaProps) {
           <TrackHoverImg src="/images/track-hover-img.png" className="track-hover-img" />
           <TrackImg src={track.album.imgUrl} alt="track-image" />
         </TrackImgWrapper>
-        <Link href="/track/[id]" as={`/track/${track.id}`}>
+        <A next="track" id={track.id}>
           <Text>{trimContentLength(track.title, 35)}</Text>
-        </Link>
+        </A>
       </TrackWrapper>
       <TrackWrapper>
         {track.artists?.map(artist => (
-          <>
-            <Link href="/artist/[id]" as={`/artist/${artist.id}`}>
-              <ArtistName>{artist.name}</ArtistName>
-            </Link>
-          </>
+          <A next="artist" id={artist.id} key={artist.id}>
+            <ArtistName>{artist.name}</ArtistName>
+          </A>
         ))}
       </TrackWrapper>
       <TrackWrapper>
-        <Link href="/album/[id]" as={`/album/${track.album.id}`}>
+        <A next="album" id={track.album.id}>
           <AlbumTitle>{track.album.name}</AlbumTitle>
-        </Link>
+        </A>
       </TrackWrapper>
       <TrackWrapper style={lastWrapperStyle}>
         <BsMusicPlayer size={20} />
@@ -91,6 +89,7 @@ const TrackWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+  text-align: left;
 `;
 
 const TrackImgWrapper = styled.div`

@@ -2,28 +2,41 @@ import React from 'react';
 import styled from '@styles/themed-components';
 import CircleImage from '@components/Common/CircleImage';
 import CircleHeartButton from '@components/Common/Button/CircleHeartButton';
+import A from '@components/Common/A';
+import { trigger } from 'swr';
+import api from '../../../../api';
 
 interface IArtistMetaProps {
-  artistMetaData?: ArtistMeta;
+  artistMetaData: ArtistMeta;
 }
 
 type ArtistMeta = {
-  id?: number;
-  name?: string;
-  debut?: string;
-  imgUrl?: string;
+  id: number;
+  name: string;
+  debut: string;
+  imgUrl: string;
 };
 
-const ArtistCard = ({ artistMetaData }: IArtistMetaProps) => {
+const deleteArtist = async id => {
+  await api.delete(`library/artists/${id}`);
+  console.log('아티스트 삭제');
+  trigger('http://115.85.181.152:8000/api/libary/artists');
+};
+
+const ArtistCard = ({ artistMetaData: artist }: IArtistMetaProps) => {
   return (
     <Container>
       <ImageContainer>
-        <CircleImage imageSrc={artistMetaData?.imgUrl} />
-        <ButtonWrapper>
+        <A next="artist" id={artist.id}>
+          <CircleImage imageSrc={artist.imgUrl} />
+        </A>
+        <ButtonWrapper onClick={() => deleteArtist(artist.id)}>
           <CircleHeartButton />
         </ButtonWrapper>
       </ImageContainer>
-      <ArtistTitle>{artistMetaData?.name}</ArtistTitle>
+      <A next="artist" id={artist.id}>
+        <ArtistTitle>{artist.name}</ArtistTitle>
+      </A>
     </Container>
   );
 };
@@ -33,6 +46,7 @@ const Container = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 `;
 
 const ImageContainer = styled.a`
@@ -43,6 +57,7 @@ const ButtonWrapper = styled.div`
   position: absolute;
   right: 6px;
   bottom: 0;
+  border-radius: 50%;
 `;
 
 const ArtistTitle = styled.a`

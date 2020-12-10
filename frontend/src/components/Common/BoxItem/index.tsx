@@ -3,31 +3,46 @@ import styled from 'styled-components';
 import { BsThreeDots } from 'react-icons/bs';
 import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
 import { useRouter } from 'next/router';
-import fetchData from '../../../api';
+import useEventHandler from '@hooks/useEventHandler';
+import Link from 'next/link';
+import Dropdown from '@components/Common/Dropdown';
 
-interface EventTargetProps {
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}
+// interface EventTargetProps {
+//   onClick?: React.MouseEventHandler<HTMLButtonElement>;
+// }
 
-const eventLogHandler = pathname => {
-  const logData = {
-    eventTime: new Date(),
-    eventName: 'move_page',
-    parameters: { prev: pathname, next: '/magazines/100523' },
-  };
-  fetchData(logData);
-};
+// const eventLogHandler = pathname => {
+//   const logData = {
+//     eventTime: new Date(),
+//     eventName: 'move_page',
+//     parameters: { prev: pathname, next: '/magazines/100523' },
+//   };
+//   api.post('/log', logData);
+// };
 
-function BoxItem({ imgUrl }) {
+function BoxItem({ imgUrl, next, id }) {
   const router = useRouter();
   return (
-    <Wrapper onClick={e => eventLogHandler(router.pathname)}>
-      <BoxImage src={imgUrl} alt="box-item-image" />
-      <ButtonsWrapper className="buttons-wrapper">
-        <BoxPlayButton />
-        <BsThreeDots size={24} />
-      </ButtonsWrapper>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <Link href={`/${next}/[id]`} as={`/${next}/${id}`}>
+          <BoxImage
+            src={imgUrl}
+            alt="box-item-image"
+            onClick={useEventHandler(null, {
+              eventTime: new Date(),
+              eventName: 'move_page',
+              parameters: { prev: router.pathname, next: `/${`${next}/${id}`}` },
+            })}
+          />
+        </Link>
+        <ButtonsWrapper className="buttons-wrapper">
+          <BoxPlayButton />
+          <BsThreeDots size={24} />
+        </ButtonsWrapper>
+        <Dropdown type="playlist" />
+      </Wrapper>
+    </>
   );
 }
 
@@ -50,7 +65,7 @@ const ButtonsWrapper = styled.div`
   background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
 `;
 
-const Wrapper = styled.div<EventTargetProps>`
+const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   position: relative;

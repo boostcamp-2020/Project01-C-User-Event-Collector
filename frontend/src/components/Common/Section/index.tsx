@@ -14,6 +14,7 @@ const Wrapper = styled.div`
     position : relative;
     top: 8px;
   }
+  overflow: visible;
 `;
 
 export default Section;

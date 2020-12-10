@@ -8,7 +8,6 @@ import PlaylistCard from '@components/Common/Card/PlaylistCard';
 // import { GrNext } from 'react-icons/gr';
 
 function Today({ magList, playlistList }) {
-  console.log('###', playlistList);
   return (
     <Wrapper>
       <MagTopWrapper>
@@ -24,7 +23,7 @@ function Today({ magList, playlistList }) {
         </Section>
 
         <Section>
-          <a className="section-title">내 취향 플레이리스트</a>
+          <p className="section-title">내 취향 플레이리스트</p>
           <Carousel groupSize={5}>
             {playlistList &&
               playlistList?.map(playlist => (
