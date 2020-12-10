@@ -1,5 +1,5 @@
 //
-//  HomeArtistSection.swift
+//  ArtistSection.swift
 //  MiniVIBE
 //
 //  Created by 최동규 on 2020/11/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeArtistSection: View {
+struct ArtistSection: View {
     private enum Constant {
         static let title: String = "좋아하는 아티스트를 선택해주세요."
         static let imageName: String = "Artists"
@@ -40,9 +40,9 @@ struct HomeArtistSection: View {
     }
 }
 
-struct HomeArtistSection_Previews: PreviewProvider {
+struct ArtistSection_Previews: PreviewProvider {
     static var previews: some View {
-        HomeArtistSection()
+        ArtistSection()
             .previewLayout(.fixed(width: 400, height: 300))
             .background(Color.black)
     }

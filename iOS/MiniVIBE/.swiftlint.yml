@@ -1,6 +1,7 @@
 disabled_rules:
 - trailing_whitespace
 - identifier_name
+- line_length
 included:
 excluded:
 - Pods

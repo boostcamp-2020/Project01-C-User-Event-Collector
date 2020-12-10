@@ -8,9 +8,8 @@
 import SwiftUI
 import Combine
 
-struct HomeMagazineSectionView: View {
+struct MagazineSectionView: View {
     @ObservedObject var viewModel: Self.ViewModel
-
     var body: some View {
         homeMagazineSectionScrollView.onAppear {
             viewModel.load()
@@ -18,7 +17,7 @@ struct HomeMagazineSectionView: View {
     }
 }
 
-private extension HomeMagazineSectionView {
+private extension MagazineSectionView {
     private enum Constant {
         static let title: String = "매거진"
     }
@@ -28,14 +27,14 @@ private extension HomeMagazineSectionView {
             MoreHeaderView(title: Constant.title)
             SectionScrollView {
                 ForEach(viewModel.magazineItems) { item in
-                    HomeMagazineItemView(item: item)
+                    MagazineItemView(item: item)
                 }
             }
         }
     }
 }
 
-extension HomeMagazineSectionView {
+extension MagazineSectionView {
     final class ViewModel: ObservableObject {
         let container: DIContainer
         @Published private(set) var magazineItems: [Magazine] = []
@@ -46,31 +45,18 @@ extension HomeMagazineSectionView {
         }
         
         func load() {
-            container.serverRepository.loadMagazine(request: MagazineRequest(url: URL(string: "http://115.85.181.152:8000/api/magazines")))
+            container.serverRepository.load(type: ItemResponse<[Magazine]>.self, request: ItemRequest(url: URL(string: "http://115.85.181.152:8000/api/magazine")))
                 .receive(on: DispatchQueue.main)
-                .sink { result in
+                .sink { [weak self] result in
                     switch result {
                     case let .failure(error):
-                        print(error)
+                        self?.magazineItems = [Magazine(id: UUID().hashValue, title: "\(error.localizedDescription)", imageURLString: "error")]
                     case .finished:
-                        print("??")
+                        break
                     }
                 } receiveValue: { [weak self] response in
                     self?.magazineItems = response.data
                 }.store(in: &subscriptions)
         }
     }
-}
-
-private struct MagazineRequest: RequestProviding {
-    var url: URL?
-    var method: RequestMethod = .get
-    var headers: [String: String]?
-    func body() throws -> Data? {
-        return nil
-    }
-}
-
-struct MagazineResponse: Decodable {
-    let data: [Magazine]
 }

@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct HomeNowSectionView: View {
-    private var nowReplayItems: [HomeNowReplayItem] = MockItemFactory.nowReplayItems
+struct NowSectionView: View {
+    private var nowReplayItems: [NowReplayItem] = MockItemFactory.nowReplayItems
     var body: some View {
         homeNowSectionScrollView
     }
 }
 
-private extension HomeNowSectionView {
+private extension NowSectionView {
     private enum Constant {
         static let image: String = "home-now"
         static let title: String = "다시듣기"
@@ -33,7 +33,7 @@ private extension HomeNowSectionView {
             }.padding()
             SectionScrollView {
                 ForEach(nowReplayItems) { item in
-                    HomeNowItemView(item: item)
+                    NowItemView(item: item)
                 }
             }
         }
@@ -42,6 +42,6 @@ private extension HomeNowSectionView {
 
 struct NowSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeNowSectionView().background(Color.black)
+        NowSectionView().background(Color.black)
     }
 }

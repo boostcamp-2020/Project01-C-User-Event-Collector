@@ -11,9 +11,9 @@ struct Magazine: Identifiable, Decodable {
     let id: Int
     let title: String
     let imageURLString: String
-    let date: String? = nil
-    let tag: String? = nil
-    let content: String? = nil
+    var date: String?
+    var tag: String?
+    var content: String?
     
     enum CodingKeys: String, CodingKey {
         case id, title

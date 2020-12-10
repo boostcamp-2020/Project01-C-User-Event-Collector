@@ -9,22 +9,8 @@ import Foundation
 import Combine
 
 protocol ServerRepository {
-    func send(events: [LocalEvent]) -> AnyPublisher<Void, NetworkError>
-    func loadMagazine(request: RequestProviding) -> AnyPublisher<MagazineResponse, NetworkError>
-}
 
-struct RealServerRepository: ServerRepository {
-    func loadMagazine(request: RequestProviding) -> AnyPublisher<MagazineResponse, NetworkError> {
-        return Just(MagazineResponse(data: []))
-            .setFailureType(to: NetworkError.self)
-            .eraseToAnyPublisher()
-    }
-    
-    // FIXME: 서버 완성되면 수정
-    let network: Networking
-    func send(events: [LocalEvent])  -> AnyPublisher<Void, NetworkError> {
-        return Just(())
-            .setFailureType(to: NetworkError.self)
-            .eraseToAnyPublisher()
-    }
+    func send(event: Event) -> AnyPublisher<Void, NetworkError>
+    func sendAll(events: [Event]) -> AnyPublisher<Void, NetworkError>
+    func load<T>(type: T.Type, request: RequestProviding) -> AnyPublisher<T, NetworkError> where T: Decodable
 }

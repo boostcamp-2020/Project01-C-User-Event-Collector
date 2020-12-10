@@ -7,39 +7,34 @@
 
 import SwiftUI
 import CoreData
+import OSLog
 
 struct ContentView: View {
-    @ObservedObject private(set) var  viewModel: ViewModel
+    @ObservedObject private(set) var viewModel: ViewModel
     @State var playerFrame = CGRect.zero
     let playingBar = NowPlayingBarView()
     var body: some View {
-        
             TabView(selection: $viewModel.selectedTab) {
-                HomeView(container: viewModel.container)
+                TodayView(viewModel: TodayView.ViewModel(container: viewModel.container, path: viewModel.path))
                     .tabItem {
                         Image(systemName: "house")
-                    }.tag(0)
-                ChartView()
+                    }.tag("Today")
+                ChartView(viewModel: ChartView.ViewModel(container: viewModel.container, path: viewModel.path))
                     .tabItem {
                         Image(systemName: "chart.bar.doc.horizontal")
-                    }.tag(1)
+                    }.tag("Chart")
                 VideoView(viewModel: VideoView.ViewModel(container: viewModel.container))
                     .tabItem {
                         Image(systemName: "play.rectangle.fill")
-                    }.tag(2)
+                    }.tag("Video")
                 SearchView()
-
                 .tabItem {
                     Image(systemName: "magnifyingglass")
-                }.tag(3)
-                Button(action: {
-                    viewModel.localRepository.deleteAllEvent()
-                }, label: {
-                    Text("delete")
-                })
+                }.tag("Search")
+                LibraryView(viewModel: LibraryView.ViewModel(container: viewModel.container))
                 .tabItem {
                     Image(systemName: "person.fill")
-                }.tag(4)
+                }.tag("Library")
             }.accentColor(.vibePink)
             .onPreferenceChange(Size.self, perform: { value in
                 playerFrame = value.last ?? .zero
@@ -53,13 +48,14 @@ struct ContentView: View {
 extension ContentView {
     final class ViewModel: ObservableObject {
         let localRepository: LocalRepository
-        let container: DIContainer
-        @Published var selectedTab = 0 {
-            didSet {
-                let event = localRepository.newEvent()
-                event.tab = Int32(selectedTab)
-                event.date = Date()
-                localRepository.saveContext()
+        var path: String {
+            return selectedTab
+        }
+        var container: DIContainer
+        
+        @Published var selectedTab = "Today" {
+            didSet(oldTab) {
+                emitEvent(eventName: .movePage, parameter: [.preView: oldTab, .nextView: selectedTab])
             }
         }
         

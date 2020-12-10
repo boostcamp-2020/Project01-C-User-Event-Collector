@@ -1,5 +1,5 @@
 //
-//  HomeMagazineItemView.swift
+//  MagazineItemView.swift
 //  MiniVIBE
 //
 //  Created by GH Choi on 2020/11/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HomeMagazineItemView: View {
+struct MagazineItemView: View {
     var item: Magazine
     var body: some View {
         ImageItemView(url: item.imageURLString, type: .one) {}

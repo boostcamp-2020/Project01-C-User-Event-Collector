@@ -8,7 +8,7 @@
 import CoreData
 
 final class PersistenceController {
-    lazy var persistentContainer: NSPersistentContainer = {
+    var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "MiniVIBE")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -21,9 +21,8 @@ final class PersistenceController {
         return persistentContainer.viewContext
     }
     
-    func fetch() -> [Event] {
+    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
         do {
-            let request: NSFetchRequest<Event> = Event.fetchRequest()
             let fetchResult = try self.context.fetch(request)
             return fetchResult
         } catch {
@@ -32,8 +31,8 @@ final class PersistenceController {
         }
     }
     
-    func deleteAll() -> Bool {
-        let request: NSFetchRequest<NSFetchRequestResult> = Event.fetchRequest()
+    func deleteAll<T: NSManagedObject>(request: NSFetchRequest<T>) -> Bool {
+        let request = T.fetchRequest()
         let delete = NSBatchDeleteRequest(fetchRequest: request)
         do {
             try self.context.execute(delete)
@@ -46,9 +45,16 @@ final class PersistenceController {
     func saveContext() -> Bool {
         do {
             try self.context.save()
-            return true
         } catch { print(error.localizedDescription)
             return false
         }
+        return true
+    }
+    
+    func newEntity(entityName: String) -> NSManagedObject? {
+        guard let entity = NSEntityDescription.entity(forEntityName: entityName, in: context) else {
+            return nil
+        }
+        return NSManagedObject(entity: entity, insertInto: context)
     }
 }

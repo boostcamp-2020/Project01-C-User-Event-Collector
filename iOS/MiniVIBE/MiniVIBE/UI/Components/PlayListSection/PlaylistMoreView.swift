@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct PlaylistMoreView: View {
+    static var name: String {
+        return String(describing: Self.self)
+    }
     let viewModel: PlaylistSectionView.ViewModel
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.vertical)
+            Color.black.ignoresSafeArea(edges: .vertical)
             VStack {
                 DetailHeaderView(title: viewModel.title)
                 ScrollView(.vertical, showsIndicators: false) {
@@ -33,5 +36,6 @@ struct PlaylistMoreView: View {
                 }
             }
         }.navigationBarHidden(true)
+        .emitMovePageEventNavigationStack(prev: "\(viewModel.path)", next: "\(PlaylistMoreView.name)/\(viewModel.id)")
     }
 }
