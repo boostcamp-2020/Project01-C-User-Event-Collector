@@ -16,7 +16,7 @@ struct AlbumSectionView: View {
     
     var body: some View {
         VStack {
-            MoreHeaderView(title: viewModel.title)
+            MoreHeaderView(title: viewModel.title).emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.more))
             SectionScrollView {
                 ForEach(viewModel.albums.indices) { index in
                     NavigationLink(destination: AlbumDetailView(album: viewModel.albums[index])) {
@@ -32,7 +32,7 @@ struct AlbumSectionView: View {
                                 .lineLimit(1)
                             Text(viewModel.albums[index].artist).vibeMainText()
                         }
-                    }
+                    }.emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.album))
                 }
             }
         }

@@ -18,7 +18,7 @@ struct DJStationSectionView: View {
             NavigationLink(destination: DJStationDetailView()
             ) {
                     MoreHeaderView(title: Constant.title)
-            }
+            }.emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.more))
             SectionScrollView {
                 ForEach(items) { item in
                     DJStationItemView(item: item)

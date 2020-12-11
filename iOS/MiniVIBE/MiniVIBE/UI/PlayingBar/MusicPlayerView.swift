@@ -86,30 +86,39 @@ private extension MusicPlayerView {
 private extension MusicPlayerView {
     var controllerView: some View {
         HStack {
+            Button(action: {}, label: {
                 Image(systemName: "repeat")
                     .font(.system(size: 20))
                     .foregroundColor(.gray)
-                Spacer()
+            }).emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.repeat))
+            Spacer()
+            Button(action: {}, label: {
                 Image(systemName: "paperplane")
                     .font(.system(size: 25))
                     .foregroundColor(.gray)
-                Spacer()
-                Button(action: {
-                    musicPlayer.isPlaying.toggle()
-                }, label: {
-                    Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill") .font(.system(size: 40))
-                        .foregroundColor(.white)
-                        .frame(width: 40, height: 40)
-                })
-                Spacer()
+            }).emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.share))
+            Spacer()
+            Button(action: {
+                musicPlayer.isPlaying.toggle()
+            }, label: {
+                Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill") .font(.system(size: 40))
+                    .foregroundColor(.white)
+                    .frame(width: 40, height: 40)
+            }).emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.playPause))
+            Spacer()
+            Button(action: {}, label: {
                 Image(systemName: "heart.fill")
                     .font(.system(size: 25))
                     .foregroundColor(.gray)
-                Spacer()
+            }).emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.like))
+            Spacer()
+            Button(action: {}, label: {
                 Image(systemName: "shuffle")
                     .font(.system(size: 20))
                     .foregroundColor(.gray)
-        }            .padding(.vertical)
+                    .padding(.vertical)
+            }).emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.shuffle))
+        }
     }
 }
 
@@ -144,7 +153,7 @@ private struct MusicPlayerlistView: View {
                         }
                 }.onMove(perform: musicPlayer.move)
             }
-        }
+                  }
     }
 }
 

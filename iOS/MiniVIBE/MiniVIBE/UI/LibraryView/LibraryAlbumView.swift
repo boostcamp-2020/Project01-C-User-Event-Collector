@@ -25,6 +25,7 @@ struct LibraryAlbumView: View {
                 }
             }
         }
+        
     }
 }
 
