@@ -90,13 +90,13 @@ private extension MusicPlayerView {
                 Image(systemName: "repeat")
                     .font(.system(size: 20))
                     .foregroundColor(.gray)
-            }).emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.repeat))
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.repeat))
             Spacer()
             Button(action: {}, label: {
                 Image(systemName: "paperplane")
                     .font(.system(size: 25))
                     .foregroundColor(.gray)
-            }).emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.share))
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.share))
             Spacer()
             Button(action: {
                 musicPlayer.isPlaying.toggle()
@@ -104,20 +104,20 @@ private extension MusicPlayerView {
                 Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill") .font(.system(size: 40))
                     .foregroundColor(.white)
                     .frame(width: 40, height: 40)
-            }).emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.playPause))
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause))
             Spacer()
             Button(action: {}, label: {
                 Image(systemName: "heart.fill")
                     .font(.system(size: 25))
                     .foregroundColor(.gray)
-            }).emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.like))
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.like))
             Spacer()
             Button(action: {}, label: {
                 Image(systemName: "shuffle")
                     .font(.system(size: 20))
                     .foregroundColor(.gray)
                     .padding(.vertical)
-            }).emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.shuffle))
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.shuffle))
         }
     }
 }

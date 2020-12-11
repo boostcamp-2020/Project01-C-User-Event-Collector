@@ -20,7 +20,7 @@ struct FiveRowSongGridView: View {
             NavigationLink(destination: FiveRowSongGridMoreView(viewModel: viewModel)
             ) {
             MoreHeaderView(title: viewModel.title, subtitle: viewModel.subtitle)
-            }.emitEventIfTapped(event: TapEvent(view: name, target: Target.more))
+            }.emitEventIfTapped(event: TapEvent(component: name, target: Target.more))
             SectionScrollView {
                 LazyHGrid(rows: rows, spacing: .defaultSpacing) {
                     fiveRowSongGridItemViews
@@ -57,7 +57,7 @@ private extension FiveRowSongGridView {
                 }
                 Spacer()
             }.frame(width: .oneItemImageWidth)
-            .emitEventIfTapped(event: TapEvent(view: name, target: Target.song))
+            .emitEventIfTapped(event: TapEvent(component: name, target: Target.song))
         }
     }
 }

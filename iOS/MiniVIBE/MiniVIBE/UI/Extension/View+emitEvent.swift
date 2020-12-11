@@ -102,8 +102,8 @@ class MoveEvent: Event {
 }
 
 class TapEvent: Event {
-    init(view: String, target: Target) {
-        super.init(name: .tabButton, parameters: [.view: view, .target: target.description])
+    init(component: String, target: Target) {
+        super.init(name: .tabButton, parameters: [.component: component, .target: target.description])
     }
     
     required init(from decoder: Decoder) throws {

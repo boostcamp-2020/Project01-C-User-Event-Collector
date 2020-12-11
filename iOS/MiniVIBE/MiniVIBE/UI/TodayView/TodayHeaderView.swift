@@ -28,7 +28,7 @@ struct TodayHeaderView: View {
                 .padding(10)
                 .background(Color(.systemGray4))
                 .clipShape(Circle())
-                .foregroundColor(Color(.systemGray2))}).emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.login))
+                .foregroundColor(Color(.systemGray2))}).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.login))
         }.padding()
     }
 }

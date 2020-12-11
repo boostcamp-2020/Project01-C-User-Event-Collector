@@ -32,13 +32,13 @@ struct NowPlayingBarView: View {
                     .vibeTitle2()
                     .buttonStyle(PlainButtonStyle())
                     .padding(.horizontal)
-            }).emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.playPause))
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause))
             Button(action: {
                 musicPlayer.nextSong()
             }, label: {
                 Image(systemName: "forward.fill").vibeTitle2()
             }).padding(.trailing)
-            .emitEventIfTapped(event: TapEvent(view: Self.name, target: Target.playPause))
+            .emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause))
         }.onTapGesture {
             self.isPresent = true
         }.sheet(isPresented: $isPresent, content: {

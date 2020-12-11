@@ -29,7 +29,7 @@ private extension PlaylistSectionView {
         VStack {
             NavigationLink(destination: PlaylistMoreView(viewModel: viewModel)) {
                 MoreHeaderView(title: viewModel.title)
-            }.emitEventIfTapped(event: TapEvent(view: name, target: Target.more))
+            }.emitEventIfTapped(event: TapEvent(component: name, target: Target.more))
             SectionScrollView {
                 ForEach(viewModel.playlists) { playlist in
                     NavigationLink(destination: PlaylistDetailView(viewModel: PlaylistDetailView.ViewModel(container: viewModel.container, playlist: playlist))) {
@@ -42,7 +42,7 @@ private extension PlaylistSectionView {
                                 .vibeMainText()
                                 .lineLimit(2)
                         }
-                    }.emitEventIfTapped(event: TapEvent(view: name, target: Target.playlist))
+                    }.emitEventIfTapped(event: TapEvent(component: name, target: Target.playlist))
                 }
             }
         }
