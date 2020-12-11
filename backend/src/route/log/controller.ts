@@ -13,14 +13,14 @@ const createLog = async (req: Request, res: Response): Promise<void> => {
     logInfo.userInfo = { isLoggedIn: false };
   }
   logInfo.userAgent = req.headers['user-agent'];
-  const log = new Log(logInfo);
-  console.log('@@@log : ', log);
-  await log.save(err => {
-    if (err) return res.json({ success: false, err });
-    return res.status(200).json({
-      success: true,
-    });
-  });
+  try {
+    const log = new Log(logInfo);
+    console.log('@@@log : ', log);
+    await log.save();
+    res.json({ success: true });
+  } catch (err) {
+    res.status(500).json({ success: false });
+  }
 };
 
 export default createLog;
