@@ -8,7 +8,11 @@ const getToken = (req: Request, res: Response): void => {
     expiresIn: '1h',
     noTimestamp: true,
   });
-  res.json({ token });
+  if (req.headers['user-agent']?.includes('iPhone')) {
+    return res.redirect(`minivibe://${token}`); // 모바일
+  }
+  res.cookie('token', token, { maxAge: 1000 * 60 * 60 * 24 * 1, httpOnly: false });
+  return res.redirect(process.env.SERVICE_URL as string); // 웹
 };
 
 export { getToken };

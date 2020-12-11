@@ -7,7 +7,9 @@ function Header() {
   return (
     <Container>
       <ImageWrapper>
-        <Image alt="header-logo" src="/images/header-logo.png" width={125} height={45} />
+        <a href="/today">
+          <Image alt="header-logo" src="/images/header-logo.png" width={125} height={45} />
+        </a>
       </ImageWrapper>
       <IconWrapper>
         <CgSearch size="26" className="search-icon" />

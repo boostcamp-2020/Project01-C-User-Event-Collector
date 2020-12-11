@@ -7,6 +7,8 @@ import libraryRoute from './library';
 import trackRoute from './track';
 import albumRoute from './album';
 import artistRoute from './artist';
+import magRoute from './mag';
+import playlistRoute from './playlist';
 
 const route = express.Router();
 
@@ -18,5 +20,7 @@ route.use('/library', libraryRoute);
 route.use('/track', trackRoute);
 route.use('/album', albumRoute);
 route.use('/artist', artistRoute);
+route.use('/magazine', magRoute);
+route.use('/playlist', playlistRoute);
 
 export default route;

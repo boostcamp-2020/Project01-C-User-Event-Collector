@@ -10,12 +10,18 @@ const GlobalStyle = createGlobalStyle`
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   }
   a {
-    color: inherit;
     text-decoration: none;
+  }
+  a:hover{
+    cursor: pointer;
+    text-decoration: underline;
   }
   input, button {
     background-color: transparent;
     border: none;
+    outline: none;
+  }
+  button:focus {
     outline: none;
   }
   button {

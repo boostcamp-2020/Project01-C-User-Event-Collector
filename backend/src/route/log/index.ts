@@ -5,5 +5,6 @@ const route = express.Router();
 
 // test API: /POST
 route.post('/', createLog);
+// route.post('/', createLog);
 
 export default route;

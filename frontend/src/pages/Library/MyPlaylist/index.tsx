@@ -1,12 +1,16 @@
 import styled from '@styles/themed-components';
-import Library from '@components/Template/Library';
 
-const MyArtist = () => (
+import Library from '@components/Template/Library';
+import PlaylistList from '@components/PlaylistList';
+
+const MyPlaylist = ({ playlistList }) => (
   <Library mainTitle="플레이리스트">
-    <Container>플레이리스트</Container>
+    <Container>
+      <PlaylistList playlistList={playlistList} />
+    </Container>
   </Library>
 );
 
 const Container = styled.div``;
 
-export default MyArtist;
+export default MyPlaylist;

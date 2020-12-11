@@ -1,16 +1,14 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 
-
-const CircleImage = ({imageSrc}) => {
-  return (
-  <Container src={imageSrc} />
-  )
+const CircleImage = ({ imageSrc }) => {
+  return <Container src={imageSrc} />;
 };
 
 const Container = styled.img`
-  width: 180px;
-  border-radius: 100px;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 `;
 
 export default CircleImage;

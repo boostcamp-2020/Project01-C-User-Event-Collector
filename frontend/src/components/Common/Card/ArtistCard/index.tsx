@@ -1,68 +1,70 @@
 import React from 'react';
 import styled from '@styles/themed-components';
-
-import { IconContext } from 'react-icons';
-import { IoHeart } from 'react-icons/io5';
 import CircleImage from '@components/Common/CircleImage';
+import CircleHeartButton from '@components/Common/Button/CircleHeartButton';
+import A from '@components/Common/A';
 
-interface ArtistMetaProps {
-  artistMetaData?: ArtistMeta;
+interface IArtistMetaProps {
+  artistMetaData: ArtistMeta;
 }
 
 type ArtistMeta = {
-  id?: number;
-  name?: string;
-  debut?: string;
-  imgUrl?: string;
+  id: number;
+  name: string;
+  debut: string;
+  imgUrl: string;
 };
 
-const ArtistCard = ({ artistMetaData }: ArtistMetaProps) => {
+const deleteArtist = async (e, id) => {
+  // await api.delete(`library/artists/${id}`);
+  console.log('아티스트 삭제');
+  e.target.closest('.artist-card').style.opacity = '0';
+  e.target.closest('.artist-card').style.transform = 'translate(0px, -35px)';
+};
+
+const ArtistCard = ({ artistMetaData: artist }: IArtistMetaProps) => {
   return (
-    <Container>
-      <CardContainer>
-        <ImageContainer>
-          <CircleImage imageSrc={artistMetaData?.imgUrl} />
-          <LikeButton>
-            <IconContext.Provider value={{ color: 'red', size: '1.4rem' }}>
-              <IoHeart />
-            </IconContext.Provider>
-          </LikeButton>
-        </ImageContainer>
-      </CardContainer>
-      <ArtistTitle>{artistMetaData?.name}</ArtistTitle>
+    <Container className="artist-card">
+      <ImageContainer>
+        <A next="artist" id={artist.id}>
+          <CircleImage imageSrc={artist.imgUrl} />
+        </A>
+        <ButtonWrapper onClick={e => deleteArtist(e, artist.id)}>
+          <CircleHeartButton />
+        </ButtonWrapper>
+      </ImageContainer>
+      <A next="artist" id={artist.id}>
+        <ArtistTitle>{artist.name}</ArtistTitle>
+      </A>
     </Container>
   );
 };
 
 const Container = styled.ul`
-  width: auto;
-  height: auto;
+  width: ${props => props.theme.size.smallCarouselContentWidth};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 1s;
+  position: relative;
 `;
-
-const CardContainer = styled.div``;
 
 const ImageContainer = styled.a`
   position: relative;
 `;
 
-const LikeButton = styled.a`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
+const ButtonWrapper = styled.div`
   position: absolute;
   right: 6px;
   bottom: 0;
-  width: 42px;
-  height: 42px;
   border-radius: 50%;
-  background-color: #fbfbfb;
 `;
 
-const ArtistTitle = styled.div`
-  text-align: center;
-  font-size: 15px;
-  padding-top: 0.5rem;
+const ArtistTitle = styled.a`
+  ${props => props.theme.font.plain}
+  display: inline-blocK;
+  margin-top: 10px;
 `;
 
 export default ArtistCard;

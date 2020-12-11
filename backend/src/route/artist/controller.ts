@@ -5,15 +5,16 @@ const getArtistByArtistId = async (
   req: Request,
   res: Response,
   next: NextFunction,
-): Promise<void> => {
+): Promise<any> => {
   try {
     const { artistId } = req.params;
     const artist = await Artist.findOne(artistId, { relations: ['genres'] });
-    res.status(200).json({ success: true, data: artist });
+    if (!artist) return res.status(404).json({ message: 'Artist Not Found' });
+    return res.status(200).json({ success: true, data: artist });
   } catch (err) {
     console.log(err);
-    next(err);
+    return next(err);
   }
 };
 
-export { getArtistByArtistId };
+export default getArtistByArtistId;
