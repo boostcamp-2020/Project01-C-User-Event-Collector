@@ -24,10 +24,13 @@ public func emitEvent(event: Event) {
 
 public enum EventName: CustomStringConvertible {
     case movePage
+    case tabButton
     public var description: String {
         switch self {
         case .movePage:
-        return "move_page"
+            return "move_page"
+        case .tabButton:
+            return "tab_Button"
         }
     }
 }
@@ -91,6 +94,16 @@ class MoveEvent: Event {
         if setPrePath {
             Self.prePath = prev
         }
+    }
+    
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
+}
+
+class TapEvent: Event {
+    init(component: String, target: Target) {
+        super.init(name: .tabButton, parameters: [.component: component, .target: target.description])
     }
     
     required init(from decoder: Decoder) throws {
