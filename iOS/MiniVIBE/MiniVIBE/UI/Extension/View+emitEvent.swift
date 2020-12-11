@@ -25,12 +25,15 @@ public func emitEvent(event: Event) {
 public enum EventName: CustomStringConvertible {
     case movePage
     case tabButton
+    case error
     public var description: String {
         switch self {
         case .movePage:
             return "move_page"
         case .tabButton:
-            return "tab_Button"
+            return "tap_button"
+        case .error:
+            return "error"
         }
     }
 }
@@ -97,6 +100,8 @@ class MoveEvent: Event {
     }
     
     required init(from decoder: Decoder) throws {
+        emitEvent(event: ErrorEvent(from: "MoveEvent required init", reason: "init(from:) has not been implemented"))
+        try super.init(from: decoder)
         fatalError("init(from:) has not been implemented")
     }
 }
@@ -107,6 +112,63 @@ class TapEvent: Event {
     }
     
     required init(from decoder: Decoder) throws {
+        emitEvent(event: ErrorEvent(from: "TapEvent required init", reason: "init(from:) has not been implemented"))
         fatalError("init(from:) has not been implemented")
+
+    }
+}
+
+class ErrorEvent: Event {
+    init(from: String, reason: String) {
+        super.init(name: .error, parameters: [.from: from, .reason: reason])
+    }
+    
+    required init(from decoder: Decoder) throws {
+        emitEvent(event: ErrorEvent(from: "ErrorEvent required init", reason: "init(from:) has not been implemented"))
+        fatalError("init(from:) has not been implemented")
+    }
+}
+
+enum Target: CustomStringConvertible {
+    case login
+    case song
+    case playlist
+    case album
+    case more
+    case like
+    case playPause
+    case next
+    case share
+    case `repeat`
+    case shuffle
+    case custom(String)
+    
+    var description: String {
+        switch self {
+        case .login:
+            return "login"
+        case .song:
+            return "song"
+        case .playlist:
+            return "playlist"
+        case .album:
+            return "album"
+        case .more:
+            return "more"
+        case .like:
+            return "like"
+        case .playPause:
+            return "playpause"
+        case .next:
+            return  "next"
+        case .repeat:
+            return "repeat"
+        case .share:
+            return "share"
+        case .shuffle:
+            return "shuffle"
+        case let .custom(reason):
+            return reason
+        }
     }
 }

@@ -43,6 +43,7 @@ struct NowPlayingBarView: View {
             self.isPresent = true
         }.sheet(isPresented: $isPresent, content: {
             MusicPlayerView(isPresented: $isPresent)
+                .environmentObject(musicPlayer)
         })
         .padding(.all)
         .frame(height: Self.height)

@@ -29,7 +29,7 @@ struct PlaylistDetailView: View {
                         .blur(radius: 20))
         .navigationBarHidden(true)
         .onAppear {
-            emitEvent(event: MoveEvent(next: "\(Self.name)/\(self.viewModel.playlist.id)"))
+            emitEvent(event: MoveEvent(next: "\(Self.name)/\(self.viewModel.playlist.id)", setPrePath: true))
         }
     }
 }
