@@ -30,8 +30,8 @@ const Container = styled.footer`
   width: 100%;
   right: 0;
   bottom: 81px;
-  height: auto;
   padding-left: ${props => props.theme.size.sidebarWidth};
+  padding-bottom: 3rem;
   background-color: ${props => props.theme.color.lightgrey};
 `;
 

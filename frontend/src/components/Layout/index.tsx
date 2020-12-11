@@ -18,20 +18,24 @@ function Layout({ children }) {
 }
 
 const Wrapper = styled.div`
+  position: relative;
   margin: auto;
-  min-height: 100%;
+  min-height: 100vh;
   overflow-x: hidden;
 `;
 
 const Container = styled.div`
   background: ${props => props.theme.color.mainBGColor};
   padding-left: ${props => props.theme.size.sidebarWidth};
+  padding-bottom: 350px;
   min-height: 600px;
-  height: auto;
   margin: 0;
 `;
 
 // todaypage 빼고 다 max-width 964임.
-const Content = styled.div``;
+const Content = styled.div`
+  width: auto;
+  margin: 0 43px;
+`;
 
 export default Layout;
