@@ -38,7 +38,7 @@ struct MusicPlayerView: View {
                     Divider().accentColor(.gray)
                     MusicPlayerlistView(isPresented: $isPresented)
                 }
-            }
+            }.frame(idealWidth: .infinity)
         }.onAppear {
             emitEvent(event: MoveEvent(next: Self.name, setPrePath: true))
         }

@@ -11,15 +11,17 @@ import Combine
 struct LibraryAlbumView: View {
     @StateObject var viewModel: Self.ViewModel
     var body: some View {
-        LazyVGrid(columns: [.init(.fixed(.twoItemImageWidth)),
-                            .init(.fixed(.twoItemImageWidth))
-        ]) {
-            ForEach(MockItemFactory.albums) { album in
-                NavigationLink(destination: AlbumDetailView(album: album)) {
-                    HStack {
-                        ImageItemView(image: Image(album.imageURLString), type: .two) {
-                            Text(album.title).vibeTitle3()
-                            Text(album.artist).vibeMainText()
+        ScrollView {
+            LazyVGrid(columns: [.init(.fixed(.twoItemImageWidth)),
+                                .init(.fixed(.twoItemImageWidth))
+            ]) {
+                ForEach(MockItemFactory.albums) { album in
+                    NavigationLink(destination: AlbumDetailView(album: album)) {
+                        HStack {
+                            ImageItemView(image: Image(album.imageURLString), type: .two) {
+                                Text(album.title).vibeTitle3()
+                                Text(album.artist).vibeMainText()
+                            }
                         }
                     }
                 }

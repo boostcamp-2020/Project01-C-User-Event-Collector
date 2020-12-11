@@ -38,7 +38,6 @@ private extension LibraryView {
             LibraryAlbumView(viewModel: LibraryAlbumView.ViewModel(container: viewModel.container)).tag(2)
             LibraryPlaylistView().tag(3)
         }
-//        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         .animation(.easeInOut)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
     }
@@ -175,7 +174,7 @@ struct LibraryPlaylistView: View {
                         }
                     }
 //                }
-            }
+            }.padding(.horizontal, .defaultPadding)
         }
     }
 }
