@@ -34,7 +34,7 @@ struct PlaylistMoreView: View {
             }
         }.navigationBarHidden(true)
         .onAppear {
-            emitEvent(event: MoveEvent(next: "\(Self.name)/\(self.viewModel.id)"))
+            emitEvent(event: MoveEvent(next: "\(Self.name)/\(self.viewModel.id)", setPrePath: true))
         }
     }
 }

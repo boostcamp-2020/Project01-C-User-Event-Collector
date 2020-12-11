@@ -74,10 +74,8 @@ extension ContentView {
         let localRepository: LocalRepository
         var container: DIContainer
         @Published var selectedTab = TabType.today {
-            didSet(oldTab) {
-               // emitEvent(event: MoveEvent(prev: MoveEvent.path, next: selectedTab.description))
-            
-                //Tab이벤트
+            didSet {
+                emitEvent(event: TapEvent(component: "ContentView", target: .custom("\(selectedTab.description) tab")))
             }
         }
         
