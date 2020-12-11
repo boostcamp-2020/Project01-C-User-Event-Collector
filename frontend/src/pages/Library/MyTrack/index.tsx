@@ -1,10 +1,11 @@
 import styled from '@styles/themed-components';
 import Library from '@components/Template/Library';
 
-import TrackItem from '@components/Common/TrackItem';
+import TrackList from '@components/TrackList';
 import LargeButton from '@components/Common/Button/LargeButton';
 
-const MyTrack = ({ trackList }) => {
+const MyTrack = ({ trackList }) => {        
+
   return (
     <Library mainTitle="노래" type="track">
       <Wrapper>
@@ -12,9 +13,7 @@ const MyTrack = ({ trackList }) => {
           <LargeButton customType="addToFirst" />
           <LargeButton customType="addToLast" />
         </ButtonsWrapper>
-        {trackList?.map(track => (
-          <TrackItem key={track.id} type="checkbox" trackMetaData={track} />
-        ))}
+        <TrackList trackList={trackList}/>
       </Wrapper>
     </Library>
   );
