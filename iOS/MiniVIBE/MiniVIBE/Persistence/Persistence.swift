@@ -42,19 +42,29 @@ final class PersistenceController {
         return true
     }
     
-    func saveContext() -> Bool {
+    func saveEvent(event: Event) -> Bool {
+        guard let eventEntity = NSEntityDescription.entity(forEntityName: "CDEvent", in: context) else { return false }
+        let cdEvent = NSManagedObject(entity: eventEntity, insertInto: context)
+        cdEvent.setValue(event.name, forKey: "name")
+        cdEvent.setValue(event.date, forKey: "date")
+        
+        guard let parameters = event.parameters else { return false }
+            let params = parameters.compactMap { (key, value) -> CDParameter? in
+                guard let parameterEntity = NSEntityDescription.entity(forEntityName: "CDParameter", in: context) else  { return nil }
+                guard let cdParameter = NSManagedObject(entity: parameterEntity, insertInto: context) as? CDParameter else { return nil }
+            cdParameter.setValue(key, forKey: "key")
+            cdParameter.setValue(value, forKey: "value")
+            return cdParameter
+            }
+        let parameterSet = NSSet(array: params)
+            cdEvent.setValue(parameterSet, forKey: "parameter")
+        
         do {
-            try self.context.save()
-        } catch { print(error.localizedDescription)
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
             return false
         }
         return true
-    }
-    
-    func newEntity(entityName: String) -> NSManagedObject? {
-        guard let entity = NSEntityDescription.entity(forEntityName: entityName, in: context) else {
-            return nil
-        }
-        return NSManagedObject(entity: entity, insertInto: context)
     }
 }

@@ -24,10 +24,13 @@ public func emitEvent(event: Event) {
 
 public enum EventName: CustomStringConvertible {
     case movePage
+    case tabButton
     public var description: String {
         switch self {
         case .movePage:
-        return "move_page"
+            return "move_page"
+        case .tabButton:
+            return "tab_Button"
         }
     }
 }
@@ -57,10 +60,20 @@ public class Event: Codable, Identifiable {
     }
     
     init(cdEvent: CDEvent) {
-        self.date = cdEvent.date
-        self.name = cdEvent.name
         self.id = UUID()
-        self.parameters = [:]
+        self.name = cdEvent.name ?? ""
+        self.date = cdEvent.date ?? Date()
+        
+        let cdParameter = cdEvent.parameter ?? NSSet()
+        self.parameters = cdParameter.compactMap { setItem -> CDParameter? in
+            guard let item = setItem as? CDParameter else { return nil }
+            return item
+        }.reduce([:], { (dict, pair) -> [String: String]? in
+            guard let key = pair.key, let value = pair.value else { return nil }
+            guard var parameter = dict else { return nil }
+            parameter[key] = value
+            return parameter
+        })
     }
 }
 
@@ -81,6 +94,16 @@ class MoveEvent: Event {
         if setPrePath {
             Self.prePath = prev
         }
+    }
+    
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
+    }
+}
+
+class TapEvent: Event {
+    init(component: String, target: Target) {
+        super.init(name: .tabButton, parameters: [.component: component, .target: target.description])
     }
     
     required init(from decoder: Decoder) throws {
