@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct LibraryAlbumView: View {
-    @ObservedObject var viewModel: Self.ViewModel
+    @StateObject var viewModel: Self.ViewModel
     var body: some View {
         LazyVGrid(columns: [.init(.fixed(.twoItemImageWidth)),
                             .init(.fixed(.twoItemImageWidth))

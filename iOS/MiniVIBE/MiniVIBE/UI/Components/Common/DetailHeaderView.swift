@@ -15,6 +15,7 @@ struct DetailHeaderView: View {
         HStack {
             Button(action: {
                 self.presentation.wrappedValue.dismiss()
+                emitEvent(event: MoveEvent(prev: MoveEvent.path, next: MoveEvent.prePath))
             }, label: {
                 Image(systemName: "chevron.left")
                     .vibeTitle2()

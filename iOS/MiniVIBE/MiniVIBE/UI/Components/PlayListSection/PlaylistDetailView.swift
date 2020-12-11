@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct PlaylistDetailView: View {
-    static var name: String {
-        return String(describing: Self.self)
-    }
-    @ObservedObject private(set) var viewModel: Self.ViewModel
+    @StateObject var viewModel: Self.ViewModel
     let mock = MockItemFactory.imageURLSongs
     var body: some View {
         VStack {
@@ -31,6 +28,9 @@ struct PlaylistDetailView: View {
                         .scaledToFill()
                         .blur(radius: 20))
         .navigationBarHidden(true)
+        .onAppear {
+            emitEvent(event: MoveEvent(next: "\(Self.name)/\(self.viewModel.playlist.id)"))
+        }
     }
 }
 

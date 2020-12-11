@@ -99,10 +99,10 @@ final class MockItemFactory {
         NowReplayItem(albumArt: Image("now-dummy3"), description: "6시 5분전")
     ]
     
-    static let homeDJStationkItems: [HomeDJStationItem]
-        = [HomeDJStationItem(image: "HomeDJStationSection1"),
-           HomeDJStationItem(image: "HomeDJStationSection2"),
-           HomeDJStationItem(image: "HomeDJStationSection3")]
+    static let homeDJStationkItems: [DJStationItem]
+        = [DJStationItem(image: "HomeDJStationSection1"),
+           DJStationItem(image: "HomeDJStationSection2"),
+           DJStationItem(image: "HomeDJStationSection3")]
     
     static let videoItems: [Video] = [Video(imageURLString: "HomeMainSection3",
                                                title: "Life Goes On : Like an arrow", artist: "방탄소년단"),

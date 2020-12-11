@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct PlaylistSectionView: View {
-    static var name: String {
-        return String(describing: Self.self)
-    }
     let viewModel: Self.ViewModel
     init(viewModel: Self.ViewModel) {
         self.viewModel = viewModel
@@ -18,6 +15,12 @@ struct PlaylistSectionView: View {
     
     var body: some View {
         playListSectionScrollView
+    }
+}
+
+extension PlaylistSectionView {
+    var name: String {
+        String("\(Self.self)/\(viewModel.id)")
     }
 }
 

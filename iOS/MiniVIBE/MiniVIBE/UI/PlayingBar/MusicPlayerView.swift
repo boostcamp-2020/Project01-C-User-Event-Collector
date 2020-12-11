@@ -39,6 +39,11 @@ struct MusicPlayerView: View {
                     MusicPlayerlistView(isPresented: $isPresented)
                 }
             }
+        }.onAppear {
+            emitEvent(event: MoveEvent(next: Self.name, setPrePath: true))
+        }
+        .onDisappear {
+            emitEvent(event: MoveEvent(prev: MoveEvent.path, next: MoveEvent.prePath))
         }
     }
 }
@@ -81,7 +86,6 @@ private extension MusicPlayerView {
 private extension MusicPlayerView {
     var controllerView: some View {
         HStack {
-            Group {
                 Image(systemName: "repeat")
                     .font(.system(size: 20))
                     .foregroundColor(.gray)
@@ -93,7 +97,10 @@ private extension MusicPlayerView {
                 Button(action: {
                     musicPlayer.isPlaying.toggle()
                 }, label: {
-                    Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill").frame(width: 30, height: 30)})
+                    Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill") .font(.system(size: 40))
+                        .foregroundColor(.white)
+                        .frame(width: 40, height: 40)
+                })
                 Spacer()
                 Image(systemName: "heart.fill")
                     .font(.system(size: 25))
@@ -102,9 +109,7 @@ private extension MusicPlayerView {
                 Image(systemName: "shuffle")
                     .font(.system(size: 20))
                     .foregroundColor(.gray)
-            }.vibeTitle1()
-            .padding(.vertical)
-        }
+        }            .padding(.vertical)
     }
 }
 

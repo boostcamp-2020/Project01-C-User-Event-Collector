@@ -23,11 +23,11 @@ struct TodayView: View {
                             ArtistSection()
                             PlaylistSectionView(viewModel: PlaylistSectionView.ViewModel(
                                                     container: viewModel.container, id: 0, title: "내 취향 플레이리스트", type: .two))
-                            HomeDJStationSectionView()
+                            DJStationSectionView()
                             FiveRowSongGridView(
                                 viewModel: FiveRowSongGridView.ViewModel(container: viewModel.container, id: 0, title: "최근 들은 노래", showsRanking: false))
                             PlaylistSectionView(viewModel: PlaylistSectionView.ViewModel(
-                                                    container: viewModel.container,                  id: 1, title: "VIBE 추천 플레이리스트", type: .one))
+                                                    container: viewModel.container,                id: 1, title: "VIBE 추천 플레이리스트", type: .one))
                             AlbumSectionView(viewModel: AlbumSectionView.ViewModel(
                                                 id: 1, title: "좋아할 최신앨범", showsRanking: false))
                             MagazineSectionView(viewModel: MagazineSectionView.ViewModel(container: viewModel.container))
@@ -38,8 +38,11 @@ struct TodayView: View {
                     }.preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
                     .padding(.top)
                     .navigationBarHidden(true)
+             
                 }
             }
+        } .onAppear {
+            emitEvent(event: MoveEvent(next: TabType.today.description))
         }
     }
 }

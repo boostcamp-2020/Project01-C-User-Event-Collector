@@ -13,11 +13,12 @@ struct FiveRowSongGridView: View {
                         GridItem(.fixed(40), spacing: 15),
                         GridItem(.fixed(40), spacing: 15),
                         GridItem(.fixed(40), spacing: 15)]
-    @ObservedObject private(set) var viewModel: Self.ViewModel
-    
+    @StateObject var viewModel: Self.ViewModel
+
     var body: some View {
         VStack {
-            NavigationLink(destination: FiveRowSongGridMoreView(viewModel: viewModel)) {
+            NavigationLink(destination: FiveRowSongGridMoreView(viewModel: viewModel)
+            ) {
             MoreHeaderView(title: viewModel.title, subtitle: viewModel.subtitle)
             }
             SectionScrollView {
@@ -26,6 +27,12 @@ struct FiveRowSongGridView: View {
                 }
             }
         }
+    }
+}
+
+extension FiveRowSongGridView {
+    var name: String {
+        String("\(Self.self)/\(viewModel.id)")
     }
 }
 

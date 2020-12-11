@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct LibraryArtistView: View {
-    @ObservedObject var viewModel: Self.ViewModel
+    @StateObject var viewModel: Self.ViewModel
     var body: some View {
         ScrollView {
             LazyVGrid(
