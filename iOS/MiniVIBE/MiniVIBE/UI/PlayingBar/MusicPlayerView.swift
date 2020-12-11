@@ -10,6 +10,7 @@ import SwiftUI
 struct MusicPlayerView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @Binding var isPresented: Bool
+
     var body: some View {
         ZStack {
             Color.black.ignoresSafeArea(edges: .bottom)
@@ -24,6 +25,7 @@ struct MusicPlayerView: View {
                             .frame(width: 300, height: 300)
                         Spacer()
                         musicInfoView
+                        MusicProgressView()
                         controllerView
                         HStack {
                             Image(systemName: "airplayaudio")
@@ -104,7 +106,7 @@ private extension MusicPlayerView {
                 Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill") .font(.system(size: 40))
                     .foregroundColor(.white)
                     .frame(width: 40, height: 40)
-            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause))
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause(state: musicPlayer.isPlaying ? "pause" : "play")))
             Spacer()
             Button(action: {}, label: {
                 Image(systemName: "heart.fill")
@@ -172,5 +174,36 @@ private struct PlayListItemView: View {
             Spacer()
             Image(systemName: "line.horizontal.3").foregroundColor(.gray)
         }
+    }
+}
+
+struct MusicProgressView: View {
+    @EnvironmentObject var musicPlayer: MusicPlayer
+    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    var body: some View {
+        VStack {
+            ProgressView(value: musicPlayer.currentProgress, total: 50)
+                .onReceive(timer) { _ in
+                    if musicPlayer.isPlaying {
+                        if musicPlayer.currentProgress < 50 {
+                            musicPlayer.currentProgress += 1
+                        } else {
+                            musicPlayer.currentProgress = 0
+                            musicPlayer.isPlaying = false
+                            withAnimation {
+                            musicPlayer.showMembership = true
+                            }
+                        }
+                    }
+                }
+        }  .progressViewStyle(DarkBlueShadowProgressViewStyle())
+    }
+}
+
+struct DarkBlueShadowProgressViewStyle: ProgressViewStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        ProgressView(configuration)
+            .colorScheme(.dark)
+            .accentColor(.vibePink)
     }
 }

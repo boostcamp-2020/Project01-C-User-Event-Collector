@@ -12,6 +12,7 @@ struct NowPlayingBarView: View {
     @State private var isPresent = false
     static let height: CGFloat = 75
     var body: some View {
+        VStack {MusicProgressView()
         HStack {
             Image(musicPlayer.nowPlayingSong.imageURLString)
                 .resizable()
@@ -32,13 +33,12 @@ struct NowPlayingBarView: View {
                     .vibeTitle2()
                     .buttonStyle(PlainButtonStyle())
                     .padding(.horizontal)
-            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause))
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause(state: musicPlayer.isPlaying ? "pause" : "play")))
             Button(action: {
-                musicPlayer.nextSong()
+               _ = musicPlayer.nextSong()
             }, label: {
                 Image(systemName: "forward.fill").vibeTitle2()
             }).padding(.trailing)
-            .emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause))
         }.onTapGesture {
             self.isPresent = true
         }.sheet(isPresented: $isPresent, content: {
@@ -46,6 +46,7 @@ struct NowPlayingBarView: View {
                 .environmentObject(musicPlayer)
         })
         .padding(.all)
+        }
         .frame(height: Self.height)
         .background(Blur())
         .background(Color.black.opacity(0.4))
