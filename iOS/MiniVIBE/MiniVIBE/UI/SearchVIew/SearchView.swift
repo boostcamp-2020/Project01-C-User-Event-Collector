@@ -35,6 +35,9 @@ struct SearchView: View {
                 }.padding(.top)
             }.navigationBarHidden(true)
         }
+        .onAppear {
+            emitEvent(event: MoveEvent(next: TabType.search.description))
+        }
     }
 }
 

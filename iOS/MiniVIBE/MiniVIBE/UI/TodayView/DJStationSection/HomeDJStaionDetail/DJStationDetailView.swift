@@ -1,5 +1,5 @@
 //
-//  HomeDJStationDetailView.swift
+//  DJStationDetailView.swift
 //  MiniVIBE
 //
 //  Created by 최동규 on 2020/12/02.
@@ -7,27 +7,27 @@
 
 import SwiftUI
 
-struct HomeDJStationDetailView: View {
+struct DJStationDetailView: View {
     private let rows = [GridItem(.fixed(.twoItemImageWidth)), GridItem(.fixed(.twoItemImageWidth))
     ]
-    @State private var items: [HomeDJStationItem] = []
-    @State private var mockItems: [HomeDJStationItem]
-        = [HomeDJStationItem(image: "HomeDJStationSection1"),
-           HomeDJStationItem(image: "HomeDJStationSection2"),
-           HomeDJStationItem(image: "HomeDJStationSection3"),
-           HomeDJStationItem(image: "HomeDJStationSection1"),
-           HomeDJStationItem(image: "HomeDJStationSection2"),
-           HomeDJStationItem(image: "HomeDJStationSection3"),
-           HomeDJStationItem(image: "HomeDJStationSection1"),
-           HomeDJStationItem(image: "HomeDJStationSection2"),
-           HomeDJStationItem(image: "HomeDJStationSection3")]
+    @State private var items: [DJStationItem] = []
+    @State private var mockItems: [DJStationItem]
+        = [DJStationItem(image: "HomeDJStationSection1"),
+           DJStationItem(image: "HomeDJStationSection2"),
+           DJStationItem(image: "HomeDJStationSection3"),
+           DJStationItem(image: "HomeDJStationSection1"),
+           DJStationItem(image: "HomeDJStationSection2"),
+           DJStationItem(image: "HomeDJStationSection3"),
+           DJStationItem(image: "HomeDJStationSection1"),
+           DJStationItem(image: "HomeDJStationSection2"),
+           DJStationItem(image: "HomeDJStationSection3")]
     var body: some View {
         HomeDJStationDetailScrollView
             .navigationBarHidden(true)
     }
 }
 
-private extension HomeDJStationDetailView {
+private extension DJStationDetailView {
     private enum Constant {
         static let navigationBarTitle: String = "DJ 스테이션"
         static let recentlyPlayedTitle: String = "최근 들은 스테이션"
@@ -44,26 +44,28 @@ private extension HomeDJStationDetailView {
                     SectionHeaderView(Constant.recentlyPlayedTitle) {
                         SectionScrollView {
                             ForEach(mockItems) { item in
-                                HomeDJStationItemView(item: item)
+                                DJStationItemView(item: item)
                             }
                         }
                     }
                     SectionHeaderView(Constant.byFeelingTitle) {
                         LazyVGrid(columns: rows, spacing: .defaultSpacing) {
                             ForEach(mockItems) { item in
-                                HomeDJStationItemView(item: item)
+                                DJStationItemView(item: item)
                             }
                         }
                     }
                     SectionHeaderView(Constant.byGenreTitle) {
                         LazyVGrid(columns: rows, spacing: .defaultSpacing) {
                             ForEach(mockItems) { item in
-                                HomeDJStationItemView(item: item)
+                                DJStationItemView(item: item)
                             }
                         }
                     }
                 }
             }
+        }.onAppear {
+            emitEvent(event: MoveEvent(next: Self.name, setPrePath: true))
         }
     }
 

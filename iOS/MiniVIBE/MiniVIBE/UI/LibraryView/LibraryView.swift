@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct LibraryView: View {
-    @ObservedObject var viewModel: ViewModel
+    @StateObject var viewModel: ViewModel
     private enum Constant {
         static let title: String = "보관함"
     }
@@ -24,6 +24,8 @@ struct LibraryView: View {
                     lowerTab.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                 }.padding(.bottom, NowPlayingBarView.height)
             }.navigationBarHidden(true)
+        }    .onAppear {
+            emitEvent(event: MoveEvent(next: TabType.libarary.description))
         }
     }
 }
@@ -36,6 +38,7 @@ private extension LibraryView {
             LibraryAlbumView(viewModel: LibraryAlbumView.ViewModel(container: viewModel.container)).tag(2)
             LibraryPlaylistView().tag(3)
         }
+//        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
         .animation(.easeInOut)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
     }
@@ -69,9 +72,35 @@ private extension LibraryView {
     }
 }
 
+enum LibraryType: Int {
+    case song = 0
+    case artist = 1
+    case album = 2
+    case playlist = 3
+    
+    var description: String {
+        let base: String = "LibraryView"
+        switch self {
+        case .song:
+           return "\(base)/Song"
+        case .artist:
+            return "\(base)/Artist"
+        case .album:
+            return "\(base)/Album"
+        case .playlist:
+            return "\(base)/Playlist"
+
+        }
+    }
+}
+
 extension LibraryView {
     class ViewModel: ObservableObject {
-        @Published var selectedTab: Int = 0
+        @Published var selectedTab: Int = 0 {
+            didSet(oldValue) {
+                emitEvent(event: MoveEvent(next: LibraryType(rawValue: selectedTab)?.description ?? "error"))
+            }
+        }
         var tabNameList = ["노래", "아티스트", "앨범", "플레이리스트"]
         let container: DIContainer
         
@@ -131,6 +160,7 @@ struct LibraryPlaylistView: View {
         ScrollView {
             LazyVStack {
                 ForEach(MockItemFactory.playlists) { playlist in
+                    // FIXME
 //                    NavigationLink(destination: PlaylistDetailView(playlist: playlist)) {
                         HStack {
                             Image(playlist.imageURLString)

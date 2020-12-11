@@ -25,10 +25,10 @@ struct AsyncImageView: View {
         }
     }
     
-    init(url: String, loading: Image = Image(systemName: "photo"),
+    init(url: String,
          failure: Image = Image(systemName: "multiply.circle")) {
-        loader = Loader(url: url)
         self.failure = failure
+        loader = Loader(url: url)
     }
 }
 
@@ -51,7 +51,7 @@ private extension AsyncImageView {
 private extension AsyncImageView {
     private class Loader: ObservableObject {
         @Published var image: UIImage?
-        @Published var state = LoadState.loading
+        @Published  var state = LoadState.loading
         private var cancellable: AnyCancellable?
         
         init(url: String) {
@@ -67,7 +67,8 @@ private extension AsyncImageView {
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] image in
                     guard let image = image else {
-                        self?.state = .failure
+                            self?.state = .failure
+                        self?.objectWillChange.send()
                         return
                     }
                     self?.image = image

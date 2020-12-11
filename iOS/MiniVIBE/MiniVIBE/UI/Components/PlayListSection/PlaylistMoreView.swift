@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct PlaylistMoreView: View {
-    static var name: String {
-        return String(describing: Self.self)
-    }
     let viewModel: PlaylistSectionView.ViewModel
     var body: some View {
         ZStack {
@@ -36,5 +33,8 @@ struct PlaylistMoreView: View {
                 }
             }
         }.navigationBarHidden(true)
+        .onAppear {
+            emitEvent(event: MoveEvent(next: "\(Self.name)/\(self.viewModel.id)"))
+        }
     }
 }

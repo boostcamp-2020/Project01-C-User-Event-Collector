@@ -9,14 +9,14 @@ import SwiftUI
 
 extension FiveRowSongGridView {
     final class ViewModel: ObservableObject {
-        @State private(set) var songs: [Song] = MockItemFactory.rankSongs
+        @Published private(set) var songs: [Song] = MockItemFactory.rankSongs
         let id: Int
         let title: String
         let subtitle: String?
         let showsRanking: Bool
         let container: DIContainer
         
-        init(container: DIContainer,id: Int, title: String, subtitle: String? = nil, showsRanking: Bool = true) {
+        init(container: DIContainer, id: Int, title: String, subtitle: String? = nil, showsRanking: Bool = true) {
             self.container = container
             self.id = id
             self.title = title

@@ -34,7 +34,7 @@ struct ChartView: View {
                                 viewModel: FiveRowSongGridView.ViewModel(container: viewModel.container, id: 3, title: "해외 급상승 🔥",
                                                                          subtitle: "12월 3일 오전 1시 업데이트"))
                             FiveRowSongGridView(
-                                viewModel: FiveRowSongGridView.ViewModel(container: viewModel.container,  id: 4, title: "billboard HOT 100",
+                                viewModel: FiveRowSongGridView.ViewModel(container: viewModel.container, id: 4, title: "billboard HOT 100",
                                                                          subtitle: "12월 3일 오전 1시 업데이트"))
                             FiveRowSongGridView(
                                 viewModel: FiveRowSongGridView.ViewModel(container: viewModel.container, id: 5, title: "VIBE 노래방 Top 100 🎤",
@@ -53,6 +53,8 @@ struct ChartView: View {
                 }
                 .padding(.top)
             }.navigationBarHidden(true)
+        }.onAppear {
+            emitEvent(event: MoveEvent(next: TabType.chart.description))
         }
     }
 }
@@ -69,7 +71,7 @@ private extension ChartView {
 extension ChartView {
     final class ViewModel {
         let container: DIContainer
-
+        
         init(container: DIContainer) {
             self.container = container
         }

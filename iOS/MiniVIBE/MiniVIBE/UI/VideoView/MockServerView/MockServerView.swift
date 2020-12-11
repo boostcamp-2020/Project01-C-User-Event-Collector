@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct MockServerView: View {
-    @ObservedObject var viewModel: MockServerView.ViewModel
-    @ObservedObject var reachability = Reachability()
+    @StateObject var viewModel: MockServerView.ViewModel
+    @StateObject var reachability = Reachability()
     @State private var showServer = false
     @State private var showLocal = false
     @State private var isServerEnabled = true

@@ -48,7 +48,7 @@ public class Event: Codable, Identifiable {
     let name: String
     let parameters: [String: String]?
     let date: Date
-    
+
     init(name: EventName, parameters: [String: String]) {
         self.name = name.description
         self.date = Date()
@@ -64,10 +64,23 @@ public class Event: Codable, Identifiable {
     }
 }
 
-class MoveEvent: Event {
+extension View {
+    static var name: String {
+        String(describing: Self.self)
+    }
+}
 
-    init(prev: String, next: String) {
+class MoveEvent: Event {
+    static private(set) var path = "Start"
+    static private(set) var prePath = "Start"
+    init(prev: String = MoveEvent.path, next: String, setPath: Bool = true, setPrePath: Bool = false) {
         super.init(name: .movePage, parameters: [.preView: prev, .nextView: next])
+        if setPath {
+            Self.path = next
+        }
+        if setPrePath {
+            Self.prePath = prev
+        }
     }
     
     required init(from decoder: Decoder) throws {

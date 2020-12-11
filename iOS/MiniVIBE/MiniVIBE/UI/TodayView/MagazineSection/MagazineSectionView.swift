@@ -9,7 +9,7 @@ import SwiftUI
 import Combine
 
 struct MagazineSectionView: View {
-    @ObservedObject var viewModel: Self.ViewModel
+    @StateObject var viewModel: Self.ViewModel
     var body: some View {
         homeMagazineSectionScrollView.onAppear {
             viewModel.load()

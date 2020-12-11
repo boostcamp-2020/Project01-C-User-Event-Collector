@@ -34,6 +34,8 @@ struct VideoView: View {
                 }
                 .padding(.top)
             }.navigationBarHidden(true)
+        }.onAppear {
+            emitEvent(event: MoveEvent(next: TabType.video.description))
         }
     }
 }
