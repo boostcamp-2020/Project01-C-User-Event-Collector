@@ -1,4 +1,4 @@
-import React, { Props } from 'react';
+import React from 'react';
 import styled from '@styles/themed-components';
 
 import LargeButton from '@components/Common/Button/LargeButton';
