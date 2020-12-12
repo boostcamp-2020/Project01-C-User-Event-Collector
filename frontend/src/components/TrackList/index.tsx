@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import styled from '@styles/themed-components';
 
 import TrackItem from '@components/Common/TrackItem';
