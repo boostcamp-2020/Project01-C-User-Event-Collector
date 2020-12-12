@@ -2,7 +2,7 @@ import * as passport from 'passport';
 import { Strategy as JwtStrategy, ExtractJwt } from 'passport-jwt';
 import User from '../entities/User';
 
-interface JwtPayload {
+export interface IJwtPayload {
   id: number;
   nickname: string;
   email: string;
@@ -15,7 +15,7 @@ const passportJwtConfig = (): void => {
     secretOrKey: process.env.JWT_SECRET,
   };
 
-  const jwtVerify = async (jwtPayload: JwtPayload, done: any): Promise<void> => {
+  const jwtVerify = async (jwtPayload: IJwtPayload, done: any): Promise<void> => {
     try {
       const user = await User.findOne({ id: jwtPayload.id });
       console.log(user);
