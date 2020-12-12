@@ -10,6 +10,7 @@ import SwiftUI
 struct NowPlayingBarView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @State private var isPresent = false
+    @Binding var colorMode: Bool
     static let height: CGFloat = 75
     var body: some View {
         VStack {
@@ -46,6 +47,7 @@ struct NowPlayingBarView: View {
             }.sheet(isPresented: $isPresent, content: {
                 MusicPlayerView(isPresented: $isPresent)
                     .environmentObject(musicPlayer)
+            .preferredColorScheme(colorMode == true ? .dark : .light)
             })
             .padding(.all)
         }
