@@ -10,10 +10,13 @@ import CoreData
 
 struct ContentView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
+    @State var colorMode: Bool = true
     @StateObject var viewModel: ViewModel
     @State var playerFrame = CGRect.zero
+    @Environment(\.colorScheme) var colorScheme
     let playingBar = NowPlayingBarView()
     var body: some View {
+        Group {
         TabView(selection: $viewModel.selectedTab) {
             TodayView(viewModel: TodayView.ViewModel(container: viewModel.container))
                 
@@ -33,7 +36,7 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }.tag(TabType.search)
-            LibraryView(viewModel: LibraryView.ViewModel(container: viewModel.container))
+            LibraryView(viewModel: LibraryView.ViewModel(container: viewModel.container), colorMode: $colorMode)
                 .tabItem {
                     Image(systemName: "person.fill")
                 }.tag(TabType.libarary)
@@ -44,7 +47,7 @@ struct ContentView: View {
         .overlay(
             ZStack {
                 playingBar.position(x: playerFrame.midX, y: playerFrame.height - (NowPlayingBarView.height / 2)
-                ).frame(width: .largeItemImageWidth)
+                ).frame(width: .musicPlayingBarWidth)
                 if musicPlayer.showMembership {
                     membershipView .onTapGesture {
                         emitEvent(event: TapEvent(component: "membershipView", target: .custom("멤버십 구매")))
@@ -53,6 +56,7 @@ struct ContentView: View {
                 }
             }
         )
+        }.preferredColorScheme(colorMode == true ? .dark : .light)
     }
 }
 
