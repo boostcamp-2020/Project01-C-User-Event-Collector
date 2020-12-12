@@ -68,7 +68,7 @@ private extension ContentView {
             }
             Spacer()
             Button(action: { withAnimation { musicPlayer.showMembership = false
-                emitEvent(event: TapEvent(component: "membershipView", target: .custom(" 닫기 ")))
+                emitEvent(event: TapEvent(component: "membershipView", target: .custom("close")))
             } }, label: {Image(systemName: "xmark")})
         }
         .foregroundColor(.white)

@@ -196,11 +196,11 @@ struct MusicProgressView: View {
                         }
                     }
                 }
-        }  .progressViewStyle(DarkBlueShadowProgressViewStyle())
+        }  .progressViewStyle(VibeProgressViewStyle())
     }
 }
 
-struct DarkBlueShadowProgressViewStyle: ProgressViewStyle {
+struct VibeProgressViewStyle: ProgressViewStyle {
     func makeBody(configuration: Configuration) -> some View {
         ProgressView(configuration)
             .colorScheme(.dark)
