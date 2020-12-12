@@ -17,7 +17,7 @@ type MetaMagazine = {
   tracks: any[];
 };
 
-function TrackDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
+function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
 
   return (
     <Wrapper>
@@ -234,4 +234,4 @@ const SubItem = styled.span<{ Before?: boolean }>`
     }` : ''};
 `;
 
-export default TrackDetail;
+export default MagazineDetail;
