@@ -16,13 +16,13 @@ struct PlaylistDetailView: View {
             ScrollView(.vertical, showsIndicators: false) {
                 imageSection
                 ZStack(alignment: .top) {
-                    Color.black.frame(height: UIScreen.main.bounds.height)
+                    Color.vibeBackground.frame(height: UIScreen.main.bounds.height)
                     songsSection
-                        .background(Color.black)
+                        .background(Color.vibeBackground)
                 }
             }
         }
-        .background(Color.black.opacity(0.6).ignoresSafeArea())
+        .background(Color.vibeBackground.opacity(0.6).ignoresSafeArea())
         .background(Image(viewModel.playlist.imageURLString)
                         .resizable()
                         .scaledToFill()

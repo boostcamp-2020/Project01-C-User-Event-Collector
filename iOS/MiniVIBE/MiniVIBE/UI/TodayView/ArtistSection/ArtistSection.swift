@@ -44,6 +44,6 @@ struct ArtistSection_Previews: PreviewProvider {
     static var previews: some View {
         ArtistSection()
             .previewLayout(.fixed(width: 400, height: 300))
-            .background(Color.black)
+            .background(Color.vibeBackground)
     }
 }

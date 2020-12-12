@@ -41,8 +41,7 @@ struct ContentView: View {
                 playerFrame = value.last ?? .zero
             })
             .overlay(
-                playingBar.position(x: playerFrame.midX, y: playerFrame.height - (NowPlayingBarView.height / 2))
-            .preferredColorScheme(.dark))
+                playingBar.position(x: playerFrame.midX, y: playerFrame.height - (NowPlayingBarView.height / 2)))
     }
 }
 

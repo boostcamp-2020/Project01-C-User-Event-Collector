@@ -13,7 +13,7 @@ struct VideoView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.black.ignoresSafeArea(edges: .top)
+                Color.vibeBackground.ignoresSafeArea(edges: .top)
                 ScrollView(.vertical, showsIndicators: false) {
                     VideoHeaderView(viewModel: VideoHeaderView.ViewModel(container: viewModel.container))
                     LazyVStack(spacing: 40) {

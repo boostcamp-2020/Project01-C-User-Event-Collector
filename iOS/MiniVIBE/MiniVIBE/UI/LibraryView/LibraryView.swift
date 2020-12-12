@@ -17,7 +17,7 @@ struct LibraryView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.black.ignoresSafeArea(edges: .top)
+                Color.vibeBackground.ignoresSafeArea(edges: .top)
                 VStack {
                     libraryHeaderView
                     upperTab
@@ -52,8 +52,8 @@ private extension LibraryView {
                         Text(viewModel.tabNameList[index])
                             .id(index)
                             .font(.title)
-                            .background(Color.black)
-                            .foregroundColor(viewModel.selectedTab == index ? .white : .gray)
+                            .background(Color.vibeBackground)
+                            .foregroundColor(viewModel.selectedTab == index ? .vibeTitle : .gray)
                             .padding(.bottom, 3).background(viewModel.selectedTab == index ? Color.vibePink : nil)
                             .onTapGesture {
                                 viewModel.selectedTab = index
@@ -66,7 +66,7 @@ private extension LibraryView {
                     }
                 }
             }
-        }.background(Color.black)
+        }.background(Color.vibeBackground)
         .padding(.horizontal, .defaultPadding)
     }
 }
