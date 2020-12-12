@@ -20,6 +20,7 @@ function PlayBar() {
 
   // const [userAuth, setUserAuth] = useState(false);
   const [adShow, setAdShow] = useState(false);
+  const [listShow, setListShow] = useState(false);
 
   const setPlayStart = () => {
     setAdShow(true);
@@ -28,55 +29,102 @@ function PlayBar() {
   const setPlayPause = () => dispatch({ type: "PLAY_PAUSE" });
 
   const adCloseHandle = () => {
-    console.log('hey');
     setAdShow(false);
+  }
+  const listUpHandle = () => {
+    setListShow(!listShow);
   }
 
 
   return (
     <Fragment>
       {adShow && (
-        <Advertisement>
-          <AdContent>
-            <TextContent>1분 미리듣기 중입니다. <br /> 로그인 후 6개월간 100% 페이백 혜택을 받아보세요.</TextContent>
-            <LoginLink>로그인</LoginLink>
-          </AdContent>
-          <CloseButton>
-            <IoCloseOutline size={26} onClick={adCloseHandle} color={'fff'}/>
-          </CloseButton>
-        </Advertisement>
+        <AdvertisementWrapper>
+          <Advertisement>
+            <AdContent>
+              <TextContent>1분 미리듣기 중입니다. <br /> 로그인 후 6개월간 100% 페이백 혜택을 받아보세요.</TextContent>
+              <LoginLink>로그인</LoginLink>
+            </AdContent>
+            <CloseButton>
+              <IoCloseOutline size={26} onClick={adCloseHandle} color={'fff'} />
+            </CloseButton>
+          </Advertisement>
+        </AdvertisementWrapper>
       )}
-      <Player>
-        <PlayTrackItem />
-        <ButtonWrapper>
-          <IoShuffleOutline className="side button" size={26} />
-          <IoPlaySkipBackSharp className="skip button" size={22} />
-          {state.isPlaying ?
-            (<IoPause className="play button" size={35} onClick={setPlayPause} />) :
-            (<IoPlaySharp className="play button" size={35} onClick={setPlayStart} />)
-          }
-          <IoPlaySkipForwardSharp className="skip button" size={22} />
-          <IoRepeat className="side button" size={26} />
-        </ButtonWrapper>
-        <ListWrapper>
-          <TrackPlayTime>00:24 / 03:21</TrackPlayTime>
-          <VolumeBar>
-            <BsFillVolumeUpFill size={20} />
-            <VolumeStatusBar />
-          </VolumeBar>
-          <ListUpButton>
-            <BsMusicNoteList size={28} />
-          </ListUpButton>
-        </ListWrapper>
-      </Player>
+      <Fragment>
+        <Player>
+          <PlayTrackItem />
+          <ButtonWrapper>
+            <IoShuffleOutline className="side button" size={26} />
+            <IoPlaySkipBackSharp className="skip button" size={22} />
+            {state.isPlaying ?
+              (<IoPause className="play button" size={35} onClick={setPlayPause} />) :
+              (<IoPlaySharp className="play button" size={35} onClick={setPlayStart} />)
+            }
+            <IoPlaySkipForwardSharp className="skip button" size={22} />
+            <IoRepeat className="side button" size={26} />
+          </ButtonWrapper>
+          <ListWrapper>
+            <TrackPlayTime>00:24 / 03:21</TrackPlayTime>
+            <VolumeBar>
+              <BsFillVolumeUpFill size={20} />
+              <VolumeStatusBar />
+            </VolumeBar>
+            <ListUpButton up={listShow} onClick={listUpHandle}>
+              <BsMusicNoteList size={28} color={listShow ? 'fff' : ''} />
+            </ListUpButton>
+          </ListWrapper>
+        </Player>
+        <MyPlaylistContainer visiable={listShow}>
+          <Dimmed />
+          <AlbumImage></AlbumImage>
+          <Playlist></Playlist>
+        </MyPlaylistContainer>
+      </Fragment>
     </Fragment>
   );
 }
 
-const Advertisement = styled.div`
+const MyPlaylistContainer = styled.div<{ visiable: boolean }>`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 81px;
+  left: 0;
+  z-index: 10200;
+  visibility: ${props => props.visiable ? 'visiable' : 'hidden'};
+`;
+
+const Dimmed = styled.div`
+  width: 100%;
+  height: 100%;
+  background-color: rgba(20,20,20,.97);
+`;
+
+const AlbumImage = styled.div`
+  position: absolute;
+  top: 0;
+  right: 350px;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+`;
+
+const Playlist = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 350px;
+  background-color: #141414;
+`;
+
+const AdvertisementWrapper = styled.div`
   position: relative;
   z-index: 10300;
+`;
 
+const Advertisement = styled.div`
   position: fixed;
   right: 0;
   bottom: 81px;
@@ -90,6 +138,7 @@ const Advertisement = styled.div`
 const AdContent = styled.div`
   display: flex;
   flex-direction: row;
+  justify-content: center;
   align-items: flex-end;
 
   font-size: 15px;
@@ -97,7 +146,7 @@ const AdContent = styled.div`
 `;
 
 const TextContent = styled.em`
-  text-align: left;
+  text-align: center;
   line-height: 1.3rem;
   color: white;
 `;
@@ -138,7 +187,7 @@ const VolumeStatusBar = styled.div`
   margin-left: 4px;
   background: ${props => props.theme.color.grey};
 `;
-const ListUpButton = styled.button`
+const ListUpButton = styled.button<{ up: boolean }>`
   height: 100%;
   width: ${props => props.theme.size.playbarheight};
   border-left: 1px solid ${props => props.theme.color.grey};
@@ -146,6 +195,7 @@ const ListUpButton = styled.button`
   align-items: center;
   justify-content: center;
   color: ${props => props.theme.color.playbarFontColor};
+  background: ${props => props.up ? '#ff1350' : ''};
 `;
 
 const ButtonWrapper = styled.div`
