@@ -31,6 +31,6 @@ struct MoreHeaderView: View {
 struct MoreHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         MoreHeaderView(title: "test")
-            .background(Color.black)
+            .background(Color.vibeBackground)
     }
 }

@@ -14,7 +14,7 @@ struct VibeTitle2: ViewModifier {
     func body(content: Content) -> some View {
         content
         .font(font)
-        .foregroundColor(.white)
+            .foregroundColor(.vibeTitle)
     }
 }
 

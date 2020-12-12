@@ -19,7 +19,7 @@ struct SearchView: View {
         GeometryReader { proxy in
             NavigationView {
                 ZStack {
-                    Color.black.ignoresSafeArea(edges: .top)
+                    Color.vibeBackground.ignoresSafeArea(edges: .top)
                     ScrollView(.vertical, showsIndicators: false) {
                         chartHeaderView
                         LazyVGrid(
@@ -67,7 +67,7 @@ private extension SearchView {
                     withAnimation(Animation.easeOut(duration: 0.5)) {
                         self.isEditing = true
                     }
-                }.background(Color.black)
+                }.background(Color.vibeBackground)
             if isEditing {
                 Button(action: {
                     withAnimation(Animation.easeOut(duration: 0.5)) {

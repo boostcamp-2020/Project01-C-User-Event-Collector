@@ -13,7 +13,7 @@ struct MusicPlayerView: View {
 
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea(edges: .bottom)
+            Color.vibeBackground.ignoresSafeArea(edges: .bottom)
             ScrollView(showsIndicators: false) {
                 VStack {
                     VStack(spacing: .defaultSpacing) {
@@ -103,7 +103,7 @@ private extension MusicPlayerView {
                 musicPlayer.isPlaying.toggle()
             }, label: {
                 Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill") .font(.system(size: 40))
-                    .foregroundColor(.white)
+                    .foregroundColor(.vibeTitle)
                     .frame(width: 40, height: 40)
             }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause(state: musicPlayer.isPlaying ? "pause" : "play")))
             Spacer()
@@ -145,11 +145,11 @@ private struct MusicPlayerlistView: View {
                                     .vibeMainText()
                             })
                         }.padding(.defaultPadding)
-                        .background(Color.black)
+                        .background(Color.vibeBackground)
             ) {
                 ForEach(musicPlayer.playinglist.indices) { index in
                     PlayListItemView(item: musicPlayer.playinglist[index])
-                        .background(Color.black)
+                        .background(Color.vibeBackground)
                         .onTapGesture {
                             musicPlayer.play(index: index)
                         }

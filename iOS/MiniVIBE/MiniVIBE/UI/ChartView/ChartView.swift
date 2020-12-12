@@ -17,7 +17,7 @@ struct ChartView: View {
         GeometryReader { proxy in
         NavigationView {
             ZStack {
-                Color.black.ignoresSafeArea(edges: .top)
+                Color.vibeBackground.ignoresSafeArea(edges: .top)
                 ScrollView(.vertical, showsIndicators: false) {
                     chartHeaderView
                     LazyVStack(spacing: 40) {

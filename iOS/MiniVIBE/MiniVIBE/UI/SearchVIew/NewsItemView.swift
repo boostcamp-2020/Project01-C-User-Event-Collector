@@ -14,12 +14,12 @@ struct NewsItemView: View {
             .overlay(
                 VStack {
                     Spacer()
-                    Color(.white).frame(height: .largeItemImageWidth * 0.25)
+                    Color.vibeTitle.frame(height: .largeItemImageWidth * 0.25)
                         .overlay(
                             VStack(alignment: .leading) {
                                 Text(item.title)
                                     .font(.system(size: 15))
-                                    .foregroundColor(.black)
+                                    .foregroundColor(.vibeBackground)
                                     .lineLimit(2)
                                 Spacer()
                                 HStack {

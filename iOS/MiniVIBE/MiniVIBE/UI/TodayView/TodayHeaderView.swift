@@ -46,10 +46,13 @@ extension TodayHeaderView {
                     } else if let url = url {
                         url.absoluteString.replacingOccurrences(of: "http://", with: "")
                         let oauthToken = NSURLComponents(string: (url.absoluteString))?.queryItems?.filter({$0.name == "token"}).first
-                                // Do what you now that you've got the token, or use the callBack URL
-                                print(oauthToken ?? "No OAuth Token")
+                        guard let token = oauthToken?.description else { return }
+                        if KeyChain.shared.readTokens() != nil {
+                            KeyChain.shared.updateTokens(token)
+                        } else {
+                            KeyChain.shared.createTokens(token)
+                        }
                         completion(.success(url))
-                        print(url)
                     }
                 }
                 session.presentationContextProvider = self?.test

@@ -51,6 +51,6 @@ private extension TodayFooterView {
 
 struct HomeFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        TodayFooterView().background(Color.black)
+        TodayFooterView().background(Color.vibeBackground)
     }
 }

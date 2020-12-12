@@ -52,7 +52,7 @@ struct ContentView: View {
                     }
                 }
             }
-            .preferredColorScheme(.dark))
+        )
     }
 }
 
