@@ -29,7 +29,6 @@
 		B96A445B2580CB670006F647 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96A445A2580CB670006F647 /* WebView.swift */; };
 		B96AEF902581554E0072B242 /* PlaylistMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9FF8A8F257AA3FC00B774CD /* PlaylistMoreView.swift */; };
 		B96AEF9425815A950072B242 /* String+EventParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AEF9325815A950072B242 /* String+EventParameters.swift */; };
-		B96AEF9825815DC80072B242 /* CurrentPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96AEF9725815DC80072B242 /* CurrentPath.swift */; };
 		B96F49F725768B7200C5AF5F /* MockRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96F49F625768B7200C5AF5F /* MockRequest.swift */; };
 		B96F49FB25768CB800C5AF5F /* NetworkError+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96F49FA25768CB800C5AF5F /* NetworkError+Equatable.swift */; };
 		B971C46D257AAAF700C57CE9 /* FiveRowSongGridMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B971C46C257AAAF700C57CE9 /* FiveRowSongGridMoreView.swift */; };
@@ -137,7 +136,6 @@
 		B962B09C2578169B00111978 /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		B96A445A2580CB670006F647 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		B96AEF9325815A950072B242 /* String+EventParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+EventParameters.swift"; sourceTree = "<group>"; };
-		B96AEF9725815DC80072B242 /* CurrentPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentPath.swift; sourceTree = "<group>"; };
 		B96F49F625768B7200C5AF5F /* MockRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRequest.swift; sourceTree = "<group>"; };
 		B96F49FA25768CB800C5AF5F /* NetworkError+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkError+Equatable.swift"; sourceTree = "<group>"; };
 		B971C46C257AAAF700C57CE9 /* FiveRowSongGridMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveRowSongGridMoreView.swift; sourceTree = "<group>"; };
@@ -296,8 +294,8 @@
 			isa = PBXGroup;
 			children = (
 				B9FF8A8C257AA3A600B774CD /* Common */,
-				B9FF8A8B257AA38000B774CD /* FiveRowSongGridSection */,
 				B9FF8A8A257AA37200B774CD /* AlbumSection */,
+				B9FF8A8B257AA38000B774CD /* FiveRowSongGridSection */,
 				B9FF8A89257AA36500B774CD /* PlayListSection */,
 			);
 			path = Components;
@@ -494,7 +492,6 @@
 				DE18EEA0257BFA13009E4E11 /* Reachability.swift */,
 				B91B27DA258001A100BC9CE8 /* ItemRequest.swift */,
 				B91B27E02580044500BC9CE8 /* ItemResponse.swift */,
-				B96AEF9725815DC80072B242 /* CurrentPath.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -794,9 +791,7 @@
 				B9FEA4EE25767BA20089CCD6 /* RequestProviding.swift in Sources */,
 				B97A5067256E7343003F7DF5 /* CGFloat+defaultValues.swift in Sources */,
 				B9F0BDD0256EDE41004A2852 /* CGFloat+oneItemImageWidth.swift in Sources */,
-				DE18EE97257BF59A009E4E11 /* Event.swift in Sources */,
 				DE3D6F8925640FE800C236EF /* TodayFooterView.swift in Sources */,
-				B96AEF9825815DC80072B242 /* CurrentPath.swift in Sources */,
 				B91B27D5257FFD1100BC9CE8 /* AlbumDetailView.swift in Sources */,
 				B9129283257812C9002F516F /* MusicVideoTop50SectionView.swift in Sources */,
 				B994C6A825627DBE000E563C /* MiniVIBE.xcdatamodeld in Sources */,

@@ -136,7 +136,7 @@ enum Target: CustomStringConvertible {
     case album
     case more
     case like
-    case playPause
+    case playPause(state: String)
     case next
     case share
     case `repeat`
@@ -157,8 +157,8 @@ enum Target: CustomStringConvertible {
             return "more"
         case .like:
             return "like"
-        case .playPause:
-            return "playpause"
+        case let .playPause(state):
+            return state
         case .next:
             return  "next"
         case .repeat:
