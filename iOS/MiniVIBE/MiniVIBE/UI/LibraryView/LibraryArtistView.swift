@@ -13,7 +13,7 @@ struct LibraryArtistView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(
-                columns: [.init(.fixed(.oneItemImageWidth))],
+                columns: [.init(.flexible())],
                 pinnedViews: [.sectionHeaders]) {
                 Section(header: PlayShuffleHeaderButton(playHandler: {}, shuffleHandler: {})) {
                     ForEach(viewModel.artists) { artist in
@@ -27,6 +27,7 @@ struct LibraryArtistView: View {
                     }
                 }
             }
+            .padding(.horizontal, .defaultPadding)
         }.animation(.none)
         .onAppear {
             viewModel.load()

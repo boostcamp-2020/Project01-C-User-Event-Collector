@@ -16,28 +16,31 @@ struct SearchView: View {
     @State private var isEditing = false
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.black.ignoresSafeArea(edges: .top)
-                ScrollView(.vertical, showsIndicators: false) {
-                    chartHeaderView
-                    LazyVGrid(
-                        columns: [.init(.fixed(UIScreen.main.bounds.width))],
-                        pinnedViews: [.sectionHeaders]
-                    ) {
-                        Section(header: searchView) {
-                            if isEditing {
-                            } else {
-                                genreSection
+        GeometryReader { proxy in
+            NavigationView {
+                ZStack {
+                    Color.vibeBackground.ignoresSafeArea(edges: .top)
+                    ScrollView(.vertical, showsIndicators: false) {
+                        chartHeaderView
+                        LazyVGrid(
+                            columns: [.init(.fixed(UIScreen.main.bounds.width))],
+                            pinnedViews: [.sectionHeaders]
+                        ) {
+                            Section(header: searchView) {
+                                if isEditing {
+                                } else {
+                                    genreSection
+                                }
                             }
-                        }
-                    }.padding(.bottom, NowPlayingBarView.height)
-                }.padding(.top)
-            }.navigationBarHidden(true)
+                        }.padding(.bottom, NowPlayingBarView.height)
+                    }.padding(.top)
+                }.navigationBarHidden(true)
+            }
+            .onAppear {
+                emitEvent(event: MoveEvent(next: TabType.search.description))
+            }.preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
         }
-        .onAppear {
-            emitEvent(event: MoveEvent(next: TabType.search.description))
-        }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -64,7 +67,7 @@ private extension SearchView {
                     withAnimation(Animation.easeOut(duration: 0.5)) {
                         self.isEditing = true
                     }
-                }.background(Color.black)
+                }.background(Color.vibeBackground)
             if isEditing {
                 Button(action: {
                     withAnimation(Animation.easeOut(duration: 0.5)) {

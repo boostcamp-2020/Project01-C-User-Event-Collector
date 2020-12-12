@@ -10,7 +10,7 @@ import SwiftUI
 struct GenreSectionView: View {
     var body: some View {
         LazyVGrid(
-            columns: [.init(.fixed(.twoItemImageWidth )), .init(.fixed(.twoItemImageWidth ))],
+            columns: [.init(.adaptive(minimum: .itemImageMinWidth, maximum: .itemImageMaxWidth))],
             alignment: .leading,
             spacing: .defaultSpacing
         ) {

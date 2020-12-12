@@ -14,9 +14,10 @@ struct ChartView: View {
     
     let viewModel: ViewModel
     var body: some View {
+        GeometryReader { proxy in
         NavigationView {
             ZStack {
-                Color.black.ignoresSafeArea(edges: .top)
+                Color.vibeBackground.ignoresSafeArea(edges: .top)
                 ScrollView(.vertical, showsIndicators: false) {
                     chartHeaderView
                     LazyVStack(spacing: 40) {
@@ -55,7 +56,9 @@ struct ChartView: View {
             }.navigationBarHidden(true)
         }.onAppear {
             emitEvent(event: MoveEvent(next: TabType.chart.description))
+        }.preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

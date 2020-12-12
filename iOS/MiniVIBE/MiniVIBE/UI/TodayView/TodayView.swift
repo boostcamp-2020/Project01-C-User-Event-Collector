@@ -15,7 +15,7 @@ struct TodayView: View {
         GeometryReader { proxy in
             NavigationView {
                 ZStack {
-                    Color.black.ignoresSafeArea(edges: .top)
+                    Color.vibeBackground.ignoresSafeArea(edges: .top)
                     ScrollView(.vertical, showsIndicators: false) {
                         TodayHeaderView()
                         LazyVStack(spacing: 40) {
@@ -44,6 +44,7 @@ struct TodayView: View {
         } .onAppear {
             emitEvent(event: MoveEvent(next: TabType.today.description))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

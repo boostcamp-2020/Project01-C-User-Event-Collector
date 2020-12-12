@@ -28,7 +28,7 @@ private extension NowSectionView {
                     .resizable()
                     .scaledToFit()
                     .frame(height: 20, alignment: .leading)
-                    .foregroundColor(.white)
+                    .foregroundColor(.vibeTitle)
                 Text(Constant.title).vibeTitle2()
             }.padding()
             SectionScrollView {
@@ -42,6 +42,6 @@ private extension NowSectionView {
 
 struct NowSectionView_Previews: PreviewProvider {
     static var previews: some View {
-        NowSectionView().background(Color.black)
+        NowSectionView().background(Color.vibeBackground)
     }
 }
