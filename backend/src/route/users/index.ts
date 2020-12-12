@@ -1,11 +1,11 @@
 import * as express from 'express';
-import * as passport from 'passport';
+import { authenticateWithJwt } from '../../middlewares/auth';
 import { getUser, createUser, updateUser, deleteUser } from './controller';
 
 const route = express.Router();
 
 // test API: /GET
-route.get('/', passport.authenticate('jwt', { session: false }), getUser);
+route.get('/', authenticateWithJwt, getUser);
 
 // test API: /POST
 route.post('/', createUser);
