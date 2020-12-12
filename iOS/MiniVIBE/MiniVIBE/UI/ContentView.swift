@@ -44,7 +44,7 @@ struct ContentView: View {
         .overlay(
             ZStack {
                 playingBar.position(x: playerFrame.midX, y: playerFrame.height - (NowPlayingBarView.height / 2)
-                )
+                ).frame(width: .largeItemImageWidth)
                 if musicPlayer.showMembership {
                     membershipView .onTapGesture {
                         emitEvent(event: TapEvent(component: "membershipView", target: .custom("멤버십 구매")))
