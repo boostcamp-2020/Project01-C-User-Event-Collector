@@ -12,39 +12,42 @@ struct NowPlayingBarView: View {
     @State private var isPresent = false
     static let height: CGFloat = 75
     var body: some View {
-        HStack {
-            Image(musicPlayer.nowPlayingSong.imageURLString)
-                .resizable()
-                .frame(width: 40, height: 40)
-            VStack(alignment: .leading) {
-                Text(musicPlayer.nowPlayingSong.title)
-                    .vibeTitle3()
-                    .lineLimit(1)
-                Text(musicPlayer.nowPlayingSong.artist)
-                    .vibeMainText()
-                    .lineLimit(1)
-            }.padding(.leading)
-            Spacer()
-            Button(action: {
-                musicPlayer.isPlaying.toggle()
-            }, label: {
-                Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill")
-                    .vibeTitle2()
-                    .buttonStyle(PlainButtonStyle())
-                    .padding(.horizontal)
-            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause))
-            Button(action: {
-                musicPlayer.nextSong()
-            }, label: {
-                Image(systemName: "forward.fill").vibeTitle2()
-            }).padding(.trailing)
-            .emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause))
-        }.onTapGesture {
-            self.isPresent = true
-        }.sheet(isPresented: $isPresent, content: {
-            MusicPlayerView(isPresented: $isPresent)
-        })
-        .padding(.all)
+        VStack {
+            MusicProgressView()
+            HStack {
+                Image(musicPlayer.nowPlayingSong.imageURLString)
+                    .resizable()
+                    .frame(width: 40, height: 40)
+                VStack(alignment: .leading) {
+                    Text(musicPlayer.nowPlayingSong.title)
+                        .vibeTitle3()
+                        .lineLimit(1)
+                    Text(musicPlayer.nowPlayingSong.artist)
+                        .vibeMainText()
+                        .lineLimit(1)
+                }.padding(.leading)
+                Spacer()
+                Button(action: {
+                    musicPlayer.isPlaying.toggle()
+                }, label: {
+                    Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill")
+                        .vibeTitle2()
+                        .buttonStyle(PlainButtonStyle())
+                        .padding(.horizontal)
+                }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause(state: musicPlayer.isPlaying ? "pause" : "play")))
+                Button(action: {
+                    _ = musicPlayer.nextSong()
+                }, label: {
+                    Image(systemName: "forward.fill").vibeTitle2()
+                }).padding(.trailing)
+            }.onTapGesture {
+                self.isPresent = true
+            }.sheet(isPresented: $isPresent, content: {
+                MusicPlayerView(isPresented: $isPresent)
+                    .environmentObject(musicPlayer)
+            })
+            .padding(.all)
+        }
         .frame(height: Self.height)
         .background(Blur())
         .background(Color.black.opacity(0.4))

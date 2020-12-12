@@ -10,6 +10,8 @@ import Foundation
 final class MusicPlayer: ObservableObject {
     @Published var isPlaying = false
     @Published var playingIndex: Int = 0
+    @Published var currentProgress: Float = 0
+    @Published var showMembership: Bool = false
     var nowPlayingSong: Song {
         return playinglist[playingIndex]
     }
@@ -38,9 +40,10 @@ final class MusicPlayer: ObservableObject {
         isPlaying = true
     }
     
-    func nextSong() {
-        guard playingIndex < playinglist.count - 1 else { return }
+    func nextSong() -> Bool {
+        guard playingIndex < playinglist.count - 1 else { return false }
         playingIndex += 1
+        return true
     }
     
     func move(from source: IndexSet, to destination: Int) {

@@ -22,7 +22,7 @@ struct MiniVIBEApp: App {
         EventSendManager.shared.setEventHandler(eventHandler: eventService.sendOneEvent)
         container = DIContainer(serverRepository: fakeServerRepository,
                                 localRepository: localRepository,
-                                eventService: eventService)
+                                eventService: eventService, musicPlayer: musicPlayer)
     }
     
     var body: some Scene {

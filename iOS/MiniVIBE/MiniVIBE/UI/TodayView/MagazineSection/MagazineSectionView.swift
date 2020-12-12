@@ -51,6 +51,7 @@ extension MagazineSectionView {
                     switch result {
                     case let .failure(error):
                         self?.magazineItems = [Magazine(id: UUID().hashValue, title: "\(error.localizedDescription)", imageURLString: "error")]
+                        emitEvent(event: ErrorEvent(from: "loadMagazineItems", reason: error.localizedDescription))
                     case .finished:
                         break
                     }
