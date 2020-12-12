@@ -11,6 +11,8 @@ import A from '@components/Common/A';
 interface ITrackMetaProps {
   type: string;
   trackMetaData: TrackMeta;
+  selected: any;
+  onSelectHandler: any;
 }
 
 type TrackMeta = {
@@ -21,11 +23,11 @@ type TrackMeta = {
   imgUrl: string;
 };
 
-function TrackItem({ type, trackMetaData: track }: ITrackMetaProps) {
+const TrackItem = ({ type, trackMetaData: track, selected, onSelectHandler }: ITrackMetaProps) => {
   return (
     <Wrapper>
       <TrackWrapper style={firstWrapperStyle}>
-        {type === 'checkbox' && <Checkbox type="checkbox" />}
+        {type === 'checkbox' && <Checkbox type="checkbox" value={track.id} checked={selected.includes(+track.id) ? true : false} onChange={onSelectHandler}/>}
         <TrackImgWrapper>
           <TrackHoverImg src="/images/track-hover-img.png" className="track-hover-img" />
           <TrackImg src={track.album.imgUrl} alt="track-image" />
