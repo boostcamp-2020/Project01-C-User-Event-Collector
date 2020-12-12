@@ -8,7 +8,9 @@ const getTracksByUserId = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const trackList = await Track.findByUserId(1);
+    const { id: userId } = req.user as User;
+    console.log(userId);
+    const trackList = await Track.findByUserId(userId);
     console.log('@@@ trackList : ', trackList);
     res.status(200).json({
       success: true,

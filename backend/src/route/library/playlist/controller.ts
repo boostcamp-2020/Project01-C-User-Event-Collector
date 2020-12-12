@@ -8,7 +8,8 @@ const getPlaylistsByUserId = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const playlistLists = await Playlist.findByUserId(1);
+    const { id: userId } = req.user as User;
+    const playlistLists = await Playlist.findByUserId(userId);
     res.status(200).json({
       success: true,
       data: playlistLists,

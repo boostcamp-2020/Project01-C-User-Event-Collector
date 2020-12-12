@@ -18,7 +18,6 @@ const passportJwtConfig = (): void => {
   const jwtVerify = async (jwtPayload: IJwtPayload, done: any): Promise<void> => {
     try {
       const user = await User.findOne({ id: jwtPayload.id });
-      console.log(user);
       if (user) return done(null, user);
       return done(null, false);
     } catch (err) {

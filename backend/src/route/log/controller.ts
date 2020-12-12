@@ -7,6 +7,7 @@ const createLog = async (req: Request, res: Response): Promise<void> => {
   const logInfo = req.body;
   try {
     const token = req.headers.authorization;
+    console.log('token : ', token);
     const user = jwt.verify(token as string, process.env.JWT_SECRET as string) as IJwtPayload;
     logInfo.userInfo = { isLoggedIn: true, user: user.id };
   } catch (err) {

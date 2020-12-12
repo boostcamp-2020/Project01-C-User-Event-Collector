@@ -40,7 +40,7 @@ function BoxItem({ imgUrl, next, id }) {
           <BoxPlayButton />
           <BsThreeDots size={24} />
         </ButtonsWrapper>
-        <Dropdown type="playlist" />
+        <Dropdown type="listItem" />
       </Wrapper>
     </>
   );

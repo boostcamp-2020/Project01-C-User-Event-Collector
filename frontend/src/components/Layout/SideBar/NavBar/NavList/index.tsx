@@ -82,7 +82,7 @@ const ItemText = styled.span`
 `;
 
 const NavItemWrapper = styled.ul`
-  padding-top: 16px;
+  padding-top: 10px;
 `;
 
 const NavItem = styled.li<NavItemProps>`

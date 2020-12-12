@@ -13,7 +13,7 @@ export function Index() {
     return <div>...Error</div>;
   }
 
-  console.log('useFetch artist/id hook 시작!');
+  console.log('useFetch artist/id hook 시작! : ', new Date());
   console.log('data : ', data);
   console.log('data.data : ', data.data);
   return (

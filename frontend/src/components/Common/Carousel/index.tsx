@@ -34,13 +34,16 @@ const ContentWrapper = styled.div<CarouselWrapperProps>`
   padding: 20px 0;
   display: grid;
   grid-template-columns: ${props =>
-    props.groupSize === 3 ? 'repeat(3, 300px)' : 'repeat(5, 180px)'};
+    props.groupSize === 3 ? 'repeat(3, 295px)' : 'repeat(5, 180px)'};
   grid-column-gap: 30px;
 `;
 
 const Wrapper = styled.div`
   .carousel {
-    position: relative;
+    // position: relative;
+  }
+  .carousel-inner {
+    overflow: visible;
   }
   .carousel-control-prev,
   .carousel-control-next {
