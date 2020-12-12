@@ -6,34 +6,65 @@
 //
 
 import Foundation
+import Combine
 
 protocol EventService {
     var isServerReachable: Bool { get }
-    var isNetworkReachable: Bool { get }
     var serverRepository: ServerRepository { get }
     var localRepository: LocalRepository { get }
-    func send(event: Event)
+    var reachability: Reachability { get }
+    func sendAllEvents()
+    
+    func sendOneEvent(event: Event)
 }
-class RealEventService: EventService {
-    let isServerReachable: Bool = false
-    let isNetworkReachable: Bool = false
+
+final class RealEventService: EventService, ObservableObject {
+    var isServerReachable: Bool = false
     let serverRepository: ServerRepository
     let localRepository: LocalRepository
+    @Published var reachability = Reachability()
+    private var subscriptions = Set<AnyCancellable>()
     
     init(serverRepository: ServerRepository, localRepository: LocalRepository) {
         self.serverRepository = serverRepository
         self.localRepository = localRepository
+        bindReachability()
     }
     
-    func send(event: Event) { // 이벤트 전송
-        // 리쳐블리티 && 서버가 켜져있는지 검사
-//        guard isServerReachable && isNetworkReachable else { return }
-//        if serverRepository.eventSend(event: event){
-//            dbRepository.removeAll() // 성공
-//            serverEnabled = true
-//        } else { //실패
-//            dbRepository.store(event: event)
-//            serverEnabled = false
-        }
+    func bindReachability() {
+        reachability.$isConnected.sink { result in
+            if result {
+                self.sendAllEvents()
+            }
+        }.store(in: &subscriptions)
+    }
+    
+    func sendOneEvent(event: Event) { // 이벤트 전송 시점
+        serverRepository.send(event: event)
+            .sink { result in
+                switch result {
+                case let .failure(error):
+                    print(error.localizedDescription)
+                    self.isServerReachable = false
+                    self.localRepository.saveEvent(event: event)
+                case .finished:
+                    self.localRepository.deleteAllEvent()
+                }
+            } receiveValue: { _ in
+        }.store(in: &subscriptions)
+    }
 
+    func sendAllEvents() { // 이벤트 전송
+        serverRepository.sendAll(events: localRepository.fetchEvents())
+            .sink { result in
+                switch result {
+                case let .failure(error):
+                    print(error.localizedDescription)
+                    self.isServerReachable = false
+                case .finished:
+                    self.localRepository.deleteAllEvent()
+                }
+            } receiveValue: { _ in
+        }.store(in: &subscriptions)
+    }
 }

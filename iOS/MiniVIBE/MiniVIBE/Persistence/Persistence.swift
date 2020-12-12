@@ -7,8 +7,8 @@
 
 import CoreData
 
-class PersistenceController {
-    lazy var persistentContainer: NSPersistentContainer = {
+final class PersistenceController {
+    var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "MiniVIBE")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
@@ -21,9 +21,8 @@ class PersistenceController {
         return persistentContainer.viewContext
     }
     
-    func fetch() -> [Event] {
+    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T] {
         do {
-            let request: NSFetchRequest<Event> = Event.fetchRequest()
             let fetchResult = try self.context.fetch(request)
             return fetchResult
         } catch {
@@ -32,8 +31,8 @@ class PersistenceController {
         }
     }
     
-    func deleteAll() -> Bool {
-        let request: NSFetchRequest<NSFetchRequestResult> = Event.fetchRequest()
+    func deleteAll<T: NSManagedObject>(request: NSFetchRequest<T>) -> Bool {
+        let request = T.fetchRequest()
         let delete = NSBatchDeleteRequest(fetchRequest: request)
         do {
             try self.context.execute(delete)
@@ -43,12 +42,29 @@ class PersistenceController {
         return true
     }
     
-    func saveContext() -> Bool {
+    func saveEvent(event: Event) -> Bool {
+        guard let eventEntity = NSEntityDescription.entity(forEntityName: "CDEvent", in: context) else { return false }
+        let cdEvent = NSManagedObject(entity: eventEntity, insertInto: context)
+        cdEvent.setValue(event.name, forKey: "name")
+        cdEvent.setValue(event.date, forKey: "date")
+        
+        guard let parameters = event.parameters else { return false }
+            let params = parameters.compactMap { (key, value) -> CDParameter? in
+                guard let parameterEntity = NSEntityDescription.entity(forEntityName: "CDParameter", in: context) else  { return nil }
+                guard let cdParameter = NSManagedObject(entity: parameterEntity, insertInto: context) as? CDParameter else { return nil }
+            cdParameter.setValue(key, forKey: "key")
+            cdParameter.setValue(value, forKey: "value")
+            return cdParameter
+            }
+        let parameterSet = NSSet(array: params)
+            cdEvent.setValue(parameterSet, forKey: "parameter")
+        
         do {
-            try self.context.save()
-            return true
-        } catch { print(error.localizedDescription)
+            try context.save()
+        } catch {
+            print(error.localizedDescription)
             return false
         }
+        return true
     }
 }

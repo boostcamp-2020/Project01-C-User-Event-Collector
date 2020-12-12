@@ -10,9 +10,10 @@ import SwiftUI
 struct MusicPlayerView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @Binding var isPresented: Bool
+
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.bottom)
+            Color.black.ignoresSafeArea(edges: .bottom)
             ScrollView(showsIndicators: false) {
                 VStack {
                     VStack(spacing: .defaultSpacing) {
@@ -24,6 +25,7 @@ struct MusicPlayerView: View {
                             .frame(width: 300, height: 300)
                         Spacer()
                         musicInfoView
+                        MusicProgressView()
                         controllerView
                         HStack {
                             Image(systemName: "airplayaudio")
@@ -36,9 +38,14 @@ struct MusicPlayerView: View {
                     //FIXME: 모달 높이 고정값 수정 필요
                     .frame(height: UIScreen.main.bounds.height - 65)
                     Divider().accentColor(.gray)
-                    MusicPlayerListView(isPresented: $isPresented)
+                    MusicPlayerlistView(isPresented: $isPresented)
                 }
-            }
+            }.frame(idealWidth: .infinity)
+        }.onAppear {
+            emitEvent(event: MoveEvent(next: Self.name, setPrePath: true))
+        }
+        .onDisappear {
+            emitEvent(event: MoveEvent(prev: MoveEvent.path, next: MoveEvent.prePath))
         }
     }
 }
@@ -81,33 +88,43 @@ private extension MusicPlayerView {
 private extension MusicPlayerView {
     var controllerView: some View {
         HStack {
-            Group {
+            Button(action: {}, label: {
                 Image(systemName: "repeat")
                     .font(.system(size: 20))
                     .foregroundColor(.gray)
-                Spacer()
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.repeat))
+            Spacer()
+            Button(action: {}, label: {
                 Image(systemName: "paperplane")
                     .font(.system(size: 25))
                     .foregroundColor(.gray)
-                Spacer()
-                Button(action: {
-                    musicPlayer.isPlaying.toggle()
-                }, label: { Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill").frame(width: 30, height: 30)})
-                Spacer()
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.share))
+            Spacer()
+            Button(action: {
+                musicPlayer.isPlaying.toggle()
+            }, label: {
+                Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill") .font(.system(size: 40))
+                    .foregroundColor(.white)
+                    .frame(width: 40, height: 40)
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause(state: musicPlayer.isPlaying ? "pause" : "play")))
+            Spacer()
+            Button(action: {}, label: {
                 Image(systemName: "heart.fill")
                     .font(.system(size: 25))
                     .foregroundColor(.gray)
-                Spacer()
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.like))
+            Spacer()
+            Button(action: {}, label: {
                 Image(systemName: "shuffle")
                     .font(.system(size: 20))
                     .foregroundColor(.gray)
-            }.vibeTitle1()
-            .padding(.vertical)
+                    .padding(.vertical)
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.shuffle))
         }
     }
 }
 
-private struct MusicPlayerListView: View {
+private struct MusicPlayerlistView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @Binding var isPresented: Bool
     
@@ -130,8 +147,8 @@ private struct MusicPlayerListView: View {
                         }.padding(.defaultPadding)
                         .background(Color.black)
             ) {
-                ForEach(musicPlayer.playingList.indices) { index in
-                    PlayListItemView(item: musicPlayer.playingList[index])
+                ForEach(musicPlayer.playinglist.indices) { index in
+                    PlayListItemView(item: musicPlayer.playinglist[index])
                         .background(Color.black)
                         .onTapGesture {
                             musicPlayer.play(index: index)
@@ -149,7 +166,6 @@ private struct PlayListItemView: View {
             Image(systemName: "circle").foregroundColor(.gray)
             Image(item.imageURLString)
                 .resizable()
-                // FIXME: 고정값
                 .frame(width: 40, height: 40, alignment: .center)
             VStack(alignment: .leading, spacing: .defaultSpacing) {
                 Text(item.title).vibeTitle3()
@@ -158,5 +174,36 @@ private struct PlayListItemView: View {
             Spacer()
             Image(systemName: "line.horizontal.3").foregroundColor(.gray)
         }
+    }
+}
+
+struct MusicProgressView: View {
+    @EnvironmentObject var musicPlayer: MusicPlayer
+    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    var body: some View {
+        VStack {
+            ProgressView(value: musicPlayer.currentProgress, total: 50)
+                .onReceive(timer) { _ in
+                    if musicPlayer.isPlaying {
+                        if musicPlayer.currentProgress < 50 {
+                            musicPlayer.currentProgress += 1
+                        } else {
+                            musicPlayer.currentProgress = 0
+                            musicPlayer.isPlaying = false
+                            withAnimation {
+                            musicPlayer.showMembership = true
+                            }
+                        }
+                    }
+                }
+        }  .progressViewStyle(VibeProgressViewStyle())
+    }
+}
+
+struct VibeProgressViewStyle: ProgressViewStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        ProgressView(configuration)
+            .colorScheme(.dark)
+            .accentColor(.vibePink)
     }
 }

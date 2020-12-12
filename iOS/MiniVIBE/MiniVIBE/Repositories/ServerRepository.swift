@@ -9,15 +9,8 @@ import Foundation
 import Combine
 
 protocol ServerRepository {
-    
-    func fetch() -> AnyPublisher<Int, Error>
-}
 
-struct RealServerRepository: ServerRepository {
-    
-    func fetch() -> AnyPublisher<Int, Error> {
-        return Just(2)
-            .setFailureType(to: Error.self)
-            .eraseToAnyPublisher()
-    }
+    func send(event: Event) -> AnyPublisher<Void, NetworkError>
+    func sendAll(events: [Event]) -> AnyPublisher<Void, NetworkError>
+    func load<T>(type: T.Type, request: RequestProviding) -> AnyPublisher<T, NetworkError> where T: Decodable
 }

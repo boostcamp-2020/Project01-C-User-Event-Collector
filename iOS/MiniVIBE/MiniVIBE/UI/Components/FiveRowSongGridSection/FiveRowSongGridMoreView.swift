@@ -11,7 +11,7 @@ struct FiveRowSongGridMoreView: View {
     let viewModel: FiveRowSongGridView.ViewModel
     var body: some View {
         ZStack {
-            Color.black.edgesIgnoringSafeArea(.vertical)
+            Color.black.ignoresSafeArea(edges: .vertical)
             VStack {
                 DetailHeaderView(title: viewModel.title)
                 ScrollView(.vertical, showsIndicators: false) {
@@ -27,6 +27,9 @@ struct FiveRowSongGridMoreView: View {
                 }
             }
         }.navigationBarHidden(true)
+        .onAppear {
+            emitEvent(event: MoveEvent(next: "\(Self.name)/\(self.viewModel.id)", setPrePath: true))
+        }
     }
     
 }
@@ -37,7 +40,6 @@ private extension FiveRowSongGridMoreView {
             HStack(spacing: .defaultSpacing) {
                 Image(viewModel.songs[index].imageURLString)
                     .resizable()
-                    // FIXME: 고정값, ranking
                     .frame(width: 40, height: 40,
                            alignment: .center)
                     .aspectRatio(contentMode: .fill)
@@ -52,10 +54,10 @@ private extension FiveRowSongGridMoreView {
                     Text("\(viewModel.songs[index].title)").vibeMainText()
                 }
                 Spacer()
-                Button(action: {}) {
+                Button(action: {}, label: {
                     Image(systemName: "ellipsis")
                         .foregroundColor(.white)
-                }
+                })
             }.frame(width: .oneItemImageWidth)
         }
     }

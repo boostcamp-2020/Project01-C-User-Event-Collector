@@ -10,19 +10,24 @@ import SwiftUI
 @main
 struct MiniVIBEApp: App {
     let container: DIContainer
+    let musicPlayer = MusicPlayer()
     
     init() {
         UITabBar.appearance().barTintColor = .black
+        // FIXME: 서버 완성되면 수정
+        let fakeServerRepository = FakeServerRepository(network: Network())
         let localRepository = RealLocalRepository()
-        let serverRepository = RealServerRepository()
-        let eventService = RealEventService(serverRepository: serverRepository, localRepository: localRepository)
-        let musicPlayer = MusicPlayer()
-        container = DIContainer(serverRepository: serverRepository, localRepository: localRepository, eventService: eventService, musicPlayer: musicPlayer)
+        //        let serverRepository = RealServerRepository(network: Network())
+        let eventService = RealEventService(serverRepository: fakeServerRepository, localRepository: localRepository)
+        EventSendManager.shared.setEventHandler(eventHandler: eventService.sendOneEvent)
+        container = DIContainer(serverRepository: fakeServerRepository,
+                                localRepository: localRepository,
+                                eventService: eventService, musicPlayer: musicPlayer)
     }
     
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: ContentView.ViewModel(container: container)).environmentObject(container.musicPlayer)
+            ContentView(viewModel: ContentView.ViewModel(container: container)).environmentObject(musicPlayer)
         }
     }
     

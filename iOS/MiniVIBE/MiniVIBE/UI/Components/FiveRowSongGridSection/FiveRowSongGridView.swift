@@ -13,17 +13,14 @@ struct FiveRowSongGridView: View {
                         GridItem(.fixed(40), spacing: 15),
                         GridItem(.fixed(40), spacing: 15),
                         GridItem(.fixed(40), spacing: 15)]
-    @ObservedObject private(set) var viewModel: Self.ViewModel
-    
-    init(viewModel: Self.ViewModel) {
-        self.viewModel = viewModel
-    }
-    
+    @StateObject var viewModel: Self.ViewModel
+
     var body: some View {
         VStack {
-            NavigationLink(destination: FiveRowSongGridMoreView(viewModel: viewModel)) {
+            NavigationLink(destination: FiveRowSongGridMoreView(viewModel: viewModel)
+            ) {
             MoreHeaderView(title: viewModel.title, subtitle: viewModel.subtitle)
-               }
+            }.emitEventIfTapped(event: TapEvent(component: name, target: Target.more))
             SectionScrollView {
                 LazyHGrid(rows: rows, spacing: .defaultSpacing) {
                     fiveRowSongGridItemViews
@@ -33,13 +30,18 @@ struct FiveRowSongGridView: View {
     }
 }
 
+extension FiveRowSongGridView {
+    var name: String {
+        String("\(Self.self)/\(viewModel.id)")
+    }
+}
+
 private extension FiveRowSongGridView {
     var fiveRowSongGridItemViews: some View {
         ForEach(viewModel.songs.indices) { index in
             HStack(spacing: .defaultSpacing) {
                 Image(viewModel.songs[index].imageURLString)
                     .resizable()
-                    // FIXME: 고정값, ranking
                     .frame(width: 40, height: 40,
                            alignment: .center)
                     .aspectRatio(contentMode: .fill)
@@ -55,6 +57,7 @@ private extension FiveRowSongGridView {
                 }
                 Spacer()
             }.frame(width: .oneItemImageWidth)
+            .emitEventIfTapped(event: TapEvent(component: name, target: Target.song))
         }
     }
 }
