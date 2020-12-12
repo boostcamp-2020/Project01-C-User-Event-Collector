@@ -38,3 +38,9 @@ struct AlbumSectionView: View {
         }
     }
 }
+
+extension AlbumSectionView {
+    var name: String {
+        String("\(Self.self)/\(viewModel.id)")
+    }
+}

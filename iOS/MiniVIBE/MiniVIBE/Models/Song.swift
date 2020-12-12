@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+import SwiftUI
 struct Song: Identifiable {
     let id = UUID()
     let imageURLString: String

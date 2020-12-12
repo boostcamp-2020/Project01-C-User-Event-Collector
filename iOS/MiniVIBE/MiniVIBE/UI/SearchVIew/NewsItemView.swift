@@ -14,7 +14,7 @@ struct NewsItemView: View {
             .overlay(
                 VStack {
                     Spacer()
-                    Color.vibeTitle.frame(height: .oneItemImageWidth * 0.25)
+                    Color.vibeTitle.frame(height: .largeItemImageWidth * 0.25)
                         .overlay(
                             VStack(alignment: .leading) {
                                 Text(item.title)

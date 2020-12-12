@@ -44,6 +44,7 @@ extension TodayHeaderView {
                     if let error = error {
                         completion(.failure(error))
                     } else if let url = url {
+                        url.absoluteString.replacingOccurrences(of: "http://", with: "")
                         let oauthToken = NSURLComponents(string: (url.absoluteString))?.queryItems?.filter({$0.name == "token"}).first
                         guard let token = oauthToken?.description else { return }
                         if KeyChain.shared.readTokens() != nil {

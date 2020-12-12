@@ -44,7 +44,7 @@ struct ContentView: View {
         .overlay(
             ZStack {
                 playingBar.position(x: playerFrame.midX, y: playerFrame.height - (NowPlayingBarView.height / 2)
-                )
+                ).frame(width: .largeItemImageWidth)
                 if musicPlayer.showMembership {
                     membershipView .onTapGesture {
                         emitEvent(event: TapEvent(component: "membershipView", target: .custom("멤버십 구매")))
@@ -73,7 +73,7 @@ private extension ContentView {
         }
         .foregroundColor(.white)
         .padding(10)
-        .frame(width: .oneItemImageWidth, height: 60)
+        .frame(width: .largeItemImageWidth, height: 60)
         .background(LinearGradient(gradient: Gradient(colors: [.red, .vibePink, .purple]), startPoint: .leading, endPoint: .trailing))
         .cornerRadius(5)
         .position(x: playerFrame.midX, y: playerFrame.height - (NowPlayingBarView.height + 35))
