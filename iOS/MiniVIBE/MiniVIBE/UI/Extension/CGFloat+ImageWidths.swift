@@ -14,7 +14,12 @@ extension CGFloat {
     static let largeItemImageMaxWidth: CGFloat = 400
     static var itemImageMinWidth: CGFloat = 150
     static var itemImageMaxWidth: CGFloat = 200
-
+    static var musicPlayingBarWidth: CGFloat {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+            return .largeItemImageWidth
+        }
+        return UIScreen.main.bounds.width
+    }
     static func flexibleWidth(minimum: CGFloat, maximum: CGFloat) -> CGFloat {
         var width: CGFloat = -1
         for count in (1..<15) {

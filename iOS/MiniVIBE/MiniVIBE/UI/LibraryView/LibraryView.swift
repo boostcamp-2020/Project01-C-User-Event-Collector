@@ -10,6 +10,7 @@ import Combine
 
 struct LibraryView: View {
     @StateObject var viewModel: ViewModel
+    @Binding var colorMode: Bool
     private enum Constant {
         static let title: String = "보관함"
     }
@@ -121,7 +122,9 @@ extension LibraryView {
         HStack {
             Text(Constant.title).vibeTitle1()
             Spacer()
-            Button(action: {}, label: {
+            Button(action: {
+                    colorMode.toggle()
+                }, label: {
                 Image(systemName: "gear").vibeTitle2()
             })
         }.padding()
