@@ -42,12 +42,10 @@ createConnection()
     app.use(bodyParser.urlencoded({ extended: false }));
     app.use(morgan('dev'));
     // TODO: 허용할 주소 정확히 명시하기
-
     app.use(cors());
 
     app.use(passport.initialize());
     passportConfig();
-    app.use(passport.session());
 
     app.use('/api', apiRoute);
 
