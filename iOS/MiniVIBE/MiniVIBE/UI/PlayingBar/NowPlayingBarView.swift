@@ -50,7 +50,7 @@ struct NowPlayingBarView: View {
         }
         .frame(height: Self.height)
         .background(Blur())
-        .background(Color.black.opacity(0.4))
+        .background(Color.vibeBackground.opacity(0.4))
         
     }
 }

@@ -16,7 +16,7 @@ struct PlayShuffleHeaderButton: View {
             Button(action: playHandler) {
                 HStack {
                     Image(systemName: "play.fill")
-                        .foregroundColor(.white)
+                        .foregroundColor(.vibeTitle)
                     Text("PLAY").vibeTitle3()
                 }
                 .padding(10)
@@ -26,7 +26,7 @@ struct PlayShuffleHeaderButton: View {
             Button(action: shuffleHandler) {
                 HStack {
                     Image(systemName: "shuffle")
-                        .foregroundColor(.white)
+                        .foregroundColor(.vibeTitle)
                     Text("SHUFFLE").vibeTitle3()
                 }
                 .padding(10)
@@ -35,7 +35,7 @@ struct PlayShuffleHeaderButton: View {
                 .cornerRadius(5)
             }
         }.padding(.defaultPadding)
-        .background(Color.black)
+        .background(Color.vibeBackground)
     }
     init(playHandler: @escaping () -> Void, shuffleHandler: @escaping () -> Void) {
         self.playHandler = playHandler

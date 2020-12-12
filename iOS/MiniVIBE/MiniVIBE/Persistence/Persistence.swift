@@ -50,7 +50,7 @@ final class PersistenceController {
         
         guard let parameters = event.parameters else { return false }
             let params = parameters.compactMap { (key, value) -> CDParameter? in
-                guard let parameterEntity = NSEntityDescription.entity(forEntityName: "CDParameter", in: context) else  { return nil }
+                guard let parameterEntity = NSEntityDescription.entity(forEntityName: "CDParameter", in: context) else { return nil }
                 guard let cdParameter = NSManagedObject(entity: parameterEntity, insertInto: context) as? CDParameter else { return nil }
             cdParameter.setValue(key, forKey: "key")
             cdParameter.setValue(value, forKey: "value")

@@ -37,7 +37,7 @@ private extension DJStationDetailView {
     
     var HomeDJStationDetailScrollView: some View {
         ZStack {
-            Color.black.ignoresSafeArea(edges: .vertical)
+            Color.vibeBackground.ignoresSafeArea(edges: .vertical)
             VStack {
                 DetailHeaderView(title: Constant.navigationBarTitle)
                 ScrollView(.vertical, showsIndicators: false) {

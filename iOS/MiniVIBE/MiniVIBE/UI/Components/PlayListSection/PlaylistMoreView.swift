@@ -11,7 +11,7 @@ struct PlaylistMoreView: View {
     let viewModel: PlaylistSectionView.ViewModel
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea(edges: .vertical)
+            Color.vibeBackground.ignoresSafeArea(edges: .vertical)
             VStack {
                 DetailHeaderView(title: viewModel.title)
                 ScrollView(.vertical, showsIndicators: false) {

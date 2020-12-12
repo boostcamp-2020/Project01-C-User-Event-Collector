@@ -11,7 +11,7 @@ struct FiveRowSongGridMoreView: View {
     let viewModel: FiveRowSongGridView.ViewModel
     var body: some View {
         ZStack {
-            Color.black.ignoresSafeArea(edges: .vertical)
+            Color.vibeBackground.ignoresSafeArea(edges: .vertical)
             VStack {
                 DetailHeaderView(title: viewModel.title)
                 ScrollView(.vertical, showsIndicators: false) {
@@ -56,7 +56,7 @@ private extension FiveRowSongGridMoreView {
                 Spacer()
                 Button(action: {}, label: {
                     Image(systemName: "ellipsis")
-                        .foregroundColor(.white)
+                        .foregroundColor(.vibeTitle)
                 })
             }.frame(width: .oneItemImageWidth)
         }
