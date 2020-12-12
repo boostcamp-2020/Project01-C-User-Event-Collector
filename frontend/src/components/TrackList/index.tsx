@@ -20,30 +20,24 @@ const TrackList = ({ trackList }) => {
 
   const onChangeHandle = (e) => {
     if (e.target.checked) {
-      setSelected([...selected, e.target.value]);
+      setSelected([...selected, +e.target.value]);
       setVisible(true);
     } else {
-      const result = selected.filter((o) => o !== e.target.value);
+      const result = selected.filter((o) => o != e.target.value);
       if(!result.length) setVisible(false);
       setSelected(result);
     }
   }
 
-  useEffect(() => {
-    console.log('useEffect', selected);
-  }, [selected])
-
-  console.log('rerender');
-
   return (
     <TrackListSection>
-      {trackList?.map(track => (
+      {trackList.map(track => (
         <TrackItem key={track.id} type="checkbox" trackMetaData={track} selected={selected} onSelectHandler={onChangeHandle} />
       ))}
       <SelectedHeader displayVisiable={visible}>
         <SelectedBarInner>
           <SelectedInfoArea>
-            <input type={'checkbox'} onChange={onChangeAll}/>
+            <input type={'checkbox'} onChange={onChangeAll} checked={selected.length === trackList.length ? true : false}/>
             <SelectLabel>전체선택</SelectLabel>
             <SelectedCountSpan>{selected.length}곡 선택</SelectedCountSpan>
           </SelectedInfoArea>
