@@ -44,6 +44,7 @@ struct TodayView: View {
         } .onAppear {
             emitEvent(event: MoveEvent(next: TabType.today.description))
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

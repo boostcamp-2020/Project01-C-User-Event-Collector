@@ -62,7 +62,7 @@ private extension PlaylistDetailView {
 private extension PlaylistDetailView {
     var songsSection: some View {
         LazyVGrid(
-            columns: [.init(.fixed(.oneItemImageWidth))],
+            columns: [.init(.flexible())],
             pinnedViews: [.sectionHeaders]
         ) {
             Section(header:
@@ -82,6 +82,7 @@ private extension PlaylistDetailView {
                 }
             }
         }.padding(.bottom, NowPlayingBarView.height)
+        .padding(.horizontal, .defaultPadding)
     }
 }
 

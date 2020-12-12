@@ -12,31 +12,38 @@ final class MockItemFactory {
 
     static let rankSongs: [Song] = (0...30).map { idx -> Song in
         var rankChange: String?
+        var url: String = "https://musicmeta-phinf.pstatic.net/album/005/053/5053394.jpg?type=r480Fll&v=20201027175909"
         if idx % 4 == 0 {
             rankChange = "up"
+            url = "https://musicmeta-phinf.pstatic.net/album/005/100/5100133.jpg?type=r480Fll&v=20201120161148"
         } else if idx % 4 == 1 {
             rankChange = "new"
+            url = "https://musicmeta-phinf.pstatic.net/album/004/686/4686872.jpg?type=r480Fll&v=20200720175905"
         } else if idx % 4 == 2 {
             rankChange = "down"
+            url = "https://musicmeta-phinf.pstatic.net/album/004/820/4820425.jpg?type=r480Fll&v=20200918130108"
         } else {
             rankChange = nil
         }
-        return Song(imageURLString: "HomeDJStationSection1",
+        return Song(imageURLString: url,
                     title: "Test Music\(idx)", artist: "dochoi", rankChange: rankChange)
     }
     
     static let imageURLSongs: [Song] = (0...30).map { idx -> Song in
         var rankChange: String?
+        var url: String = "https://musicmeta-phinf.pstatic.net/album/005/055/5055713.jpg?type=r100Fll&v=20201029181608"
         if idx % 4 == 0 {
             rankChange = "up"
+            url = "https://musicmeta-phinf.pstatic.net/album/003/072/3072061.jpg?type=r480Fll&v=20201101094531"
         } else if idx % 4 == 1 {
             rankChange = "new"
         } else if idx % 4 == 2 {
             rankChange = "down"
+            url = "https://musicmeta-phinf.pstatic.net/album/005/051/5051742.jpg?type=r480Fll&v=20201023235903"
         } else {
             rankChange = nil
         }
-        return Song(imageURLString: "https://musicmeta-phinf.pstatic.net/album/005/055/5055713.jpg?type=r100Fll&v=20201029181608",
+        return Song(imageURLString: url,
                     title: "Test Music\(idx)", artist: "dochoi", rankChange: rankChange)
     }
     
@@ -85,7 +92,7 @@ final class MockItemFactory {
     ]
     
     static let newsItems: [Magazine] = [
-        Magazine(id: 223, title: "방탄소년단이  네번째 미니앨범을 발표합니id: 123,다.",
+        Magazine(id: 223, title: "방탄소년단이  네번째 미니앨범을 발표합니다.",
                  imageURLString: "HomeMainSection3"),
         Magazine(id: 224, title: "방탄소년단이  네번째 미니앨범을 발표합니다. 2줄 테스트",
                  imageURLString: "mag-dummy2"),

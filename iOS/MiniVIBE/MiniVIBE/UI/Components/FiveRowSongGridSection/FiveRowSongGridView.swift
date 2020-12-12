@@ -14,7 +14,7 @@ struct FiveRowSongGridView: View {
                         GridItem(.fixed(40), spacing: 15),
                         GridItem(.fixed(40), spacing: 15)]
     @StateObject var viewModel: Self.ViewModel
-
+    @EnvironmentObject var musicPlayer: MusicPlayer
     var body: some View {
         VStack {
             NavigationLink(destination: FiveRowSongGridMoreView(viewModel: viewModel)
@@ -40,8 +40,7 @@ private extension FiveRowSongGridView {
     var fiveRowSongGridItemViews: some View {
         ForEach(viewModel.songs.indices) { index in
             HStack(spacing: .defaultSpacing) {
-                Image(viewModel.songs[index].imageURLString)
-                    .resizable()
+                AsyncImageView(url: viewModel.songs[index].imageURLString)
                     .frame(width: 40, height: 40,
                            alignment: .center)
                     .aspectRatio(contentMode: .fill)
@@ -56,7 +55,11 @@ private extension FiveRowSongGridView {
                     Text("\(viewModel.songs[index].title)").vibeMainText()
                 }
                 Spacer()
-            }.frame(width: .oneItemImageWidth)
+            }.frame(width: .largeItemImageWidth)
+            .onTapGesture {
+                musicPlayer.playinglist.append(viewModel.songs[index])
+                musicPlayer.play(index: musicPlayer.playinglist.count - 1)
+            }
             .emitEventIfTapped(event: TapEvent(component: name, target: Target.song))
         }
     }

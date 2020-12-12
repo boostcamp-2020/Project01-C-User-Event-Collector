@@ -19,8 +19,7 @@ struct MusicPlayerView: View {
                     VStack(spacing: .defaultSpacing) {
                         topBarView
                         Spacer()
-                        Image(musicPlayer.nowPlayingSong.imageURLString)
-                            .resizable()
+                        AsyncImageView(url: musicPlayer.nowPlayingSong.imageURLString)
                             .padding()
                             .frame(width: 300, height: 300)
                         Spacer()
@@ -129,7 +128,8 @@ private struct MusicPlayerlistView: View {
     @Binding var isPresented: Bool
     
     var body: some View {
-        LazyVGrid(columns: [.init(.fixed(.oneItemImageWidth))],
+        LazyVGrid(columns: [.init(.flexible(
+        ))],
                   pinnedViews: [.sectionHeaders]) {
             Section(header:
                         HStack {
@@ -155,7 +155,7 @@ private struct MusicPlayerlistView: View {
                         }
                 }.onMove(perform: musicPlayer.move)
             }
-                  }
+                  }.padding(.horizontal,.defaultPadding)
     }
 }
 
@@ -164,8 +164,7 @@ private struct PlayListItemView: View {
     var body: some View {
         HStack(spacing: .defaultSpacing) {
             Image(systemName: "circle").foregroundColor(.gray)
-            Image(item.imageURLString)
-                .resizable()
+            AsyncImageView(url: item.imageURLString)
                 .frame(width: 40, height: 40, alignment: .center)
             VStack(alignment: .leading, spacing: .defaultSpacing) {
                 Text(item.title).vibeTitle3()
@@ -179,16 +178,18 @@ private struct PlayListItemView: View {
 
 struct MusicProgressView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
+    @State var currentProgress: Float = 0
     let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     var body: some View {
         VStack {
-            ProgressView(value: musicPlayer.currentProgress, total: 50)
+            ProgressView(value: currentProgress, total: 50)
                 .onReceive(timer) { _ in
                     if musicPlayer.isPlaying {
-                        if musicPlayer.currentProgress < 50 {
-                            musicPlayer.currentProgress += 1
+                        if currentProgress < 50 {
+                            currentProgress += 1
+                            
                         } else {
-                            musicPlayer.currentProgress = 0
+                            currentProgress = 0
                             musicPlayer.isPlaying = false
                             withAnimation {
                             musicPlayer.showMembership = true

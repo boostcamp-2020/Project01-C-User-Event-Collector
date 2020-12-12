@@ -44,6 +44,7 @@ extension TodayHeaderView {
                     if let error = error {
                         completion(.failure(error))
                     } else if let url = url {
+                        url.absoluteString.replacingOccurrences(of: "http://", with: "")
                         let oauthToken = NSURLComponents(string: (url.absoluteString))?.queryItems?.filter({$0.name == "token"}).first
                                 // Do what you now that you've got the token, or use the callBack URL
                                 print(oauthToken ?? "No OAuth Token")

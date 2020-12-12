@@ -16,7 +16,7 @@ struct FiveRowSongGridMoreView: View {
                 DetailHeaderView(title: viewModel.title)
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVGrid(
-                        columns: [.init(.fixed(.oneItemImageWidth))],
+                        columns: [.init(.flexible())],
                         pinnedViews: [.sectionHeaders]
                     ) {
                         Section(header:
@@ -24,7 +24,7 @@ struct FiveRowSongGridMoreView: View {
                             fiveRowSongGridDetailItemViews
                         }
                     }
-                }
+                }     .padding(.horizontal, .defaultPadding)
             }
         }.navigationBarHidden(true)
         .onAppear {
@@ -38,8 +38,7 @@ private extension FiveRowSongGridMoreView {
     var fiveRowSongGridDetailItemViews: some View {
         ForEach(viewModel.songs.indices) { index in
             HStack(spacing: .defaultSpacing) {
-                Image(viewModel.songs[index].imageURLString)
-                    .resizable()
+                AsyncImageView(url: viewModel.songs[index].imageURLString)
                     .frame(width: 40, height: 40,
                            alignment: .center)
                     .aspectRatio(contentMode: .fill)
@@ -58,7 +57,7 @@ private extension FiveRowSongGridMoreView {
                     Image(systemName: "ellipsis")
                         .foregroundColor(.white)
                 })
-            }.frame(width: .oneItemImageWidth)
+            }
         }
     }
 }

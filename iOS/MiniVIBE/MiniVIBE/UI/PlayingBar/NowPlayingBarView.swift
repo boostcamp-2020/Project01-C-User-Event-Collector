@@ -15,8 +15,7 @@ struct NowPlayingBarView: View {
         VStack {
             MusicProgressView()
             HStack {
-                Image(musicPlayer.nowPlayingSong.imageURLString)
-                    .resizable()
+                AsyncImageView(url: musicPlayer.nowPlayingSong.imageURLString)
                     .frame(width: 40, height: 40)
                 VStack(alignment: .leading) {
                     Text(musicPlayer.nowPlayingSong.title)
@@ -32,6 +31,7 @@ struct NowPlayingBarView: View {
                 }, label: {
                     Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill")
                         .vibeTitle2()
+                        .frame(width: 30, height: 30)
                         .buttonStyle(PlainButtonStyle())
                         .padding(.horizontal)
                 }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause(state: musicPlayer.isPlaying ? "pause" : "play")))
@@ -39,6 +39,7 @@ struct NowPlayingBarView: View {
                     _ = musicPlayer.nextSong()
                 }, label: {
                     Image(systemName: "forward.fill").vibeTitle2()
+                        .frame(width: 30, height: 30)
                 }).padding(.trailing)
             }.onTapGesture {
                 self.isPresent = true
@@ -48,7 +49,7 @@ struct NowPlayingBarView: View {
             })
             .padding(.all)
         }
-        .frame(height: Self.height)
+        .frame( height: Self.height)
         .background(Blur())
         .background(Color.black.opacity(0.4))
         

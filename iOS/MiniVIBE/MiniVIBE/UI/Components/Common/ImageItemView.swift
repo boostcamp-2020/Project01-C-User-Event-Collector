@@ -14,7 +14,7 @@ enum ImageSizeType: CGFloat {
     var rawValue: CGFloat {
         switch self {
         case .one:
-            return .oneItemImageWidth
+            return .largeItemImageWidth
         case .two:
             return .twoItemImageWidth
         }

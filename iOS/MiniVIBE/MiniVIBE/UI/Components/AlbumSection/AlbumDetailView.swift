@@ -9,6 +9,7 @@ import SwiftUI
 
 struct AlbumDetailView: View {
     @State private(set) var album: Album
+    @EnvironmentObject var musicPlayer: MusicPlayer
     let mock = MockItemFactory.imageURLSongs
     var body: some View {
         VStack {
@@ -60,7 +61,7 @@ private extension AlbumDetailView {
 private extension AlbumDetailView {
     var songsSection: some View {
         LazyVGrid(
-            columns: [.init(.fixed(.oneItemImageWidth))],
+            columns: [.init(.flexible())],
             pinnedViews: [.sectionHeaders]
         ) {
             Section(header:
@@ -76,9 +77,14 @@ private extension AlbumDetailView {
                         }
                         Spacer()
                         Image(systemName: "line.horizontal.3").foregroundColor(.gray)
+                    }.onTapGesture {
+                        musicPlayer.playinglist.append(song)
+                        musicPlayer.play(index: musicPlayer.playinglist.count - 1)
                     }
+                    .emitEventIfTapped(event: TapEvent(component: AlbumDetailView.name, target: Target.song))
                 }
             }
         }.padding(.bottom, NowPlayingBarView.height)
+        .padding(.horizontal, .defaultPadding)
     }
 }

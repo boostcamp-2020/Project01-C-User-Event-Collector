@@ -15,18 +15,22 @@ struct LibraryView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.black.ignoresSafeArea(edges: .top)
-                VStack {
-                    libraryHeaderView
-                    upperTab
-                    lowerTab.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                }.padding(.bottom, NowPlayingBarView.height)
-            }.navigationBarHidden(true)
-        }    .onAppear {
-            emitEvent(event: MoveEvent(next: TabType.libarary.description))
+        GeometryReader { proxy in
+            NavigationView {
+                ZStack {
+                    Color.black.ignoresSafeArea(edges: .top)
+                    VStack {
+                        libraryHeaderView
+                        upperTab
+                        lowerTab.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    }.padding(.bottom, NowPlayingBarView.height)
+                }.navigationBarHidden(true)
+            }    .onAppear {
+                emitEvent(event: MoveEvent(next: TabType.libarary.description))
+                
+            }.preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -81,14 +85,14 @@ enum LibraryType: Int {
         let base: String = "LibraryView"
         switch self {
         case .song:
-           return "\(base)/Song"
+            return "\(base)/Song"
         case .artist:
             return "\(base)/Artist"
         case .album:
             return "\(base)/Album"
         case .playlist:
             return "\(base)/Playlist"
-
+            
         }
     }
 }
@@ -128,7 +132,7 @@ struct LibrarySongView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(
-                columns: [.init(.fixed(.oneItemImageWidth))],
+                columns: [.init(.flexible())],
                 pinnedViews: [.sectionHeaders]
             ) {
                 Section(header: PlayShuffleHeaderButton(playHandler: {}, shuffleHandler: {})) {
@@ -150,6 +154,7 @@ struct LibrarySongView: View {
                     }
                 }
             }
+            .padding(.horizontal, .defaultPadding)
         }.animation(.none)
     }
 }
@@ -160,20 +165,20 @@ struct LibraryPlaylistView: View {
             LazyVStack {
                 ForEach(MockItemFactory.playlists) { playlist in
                     // FIXME
-//                    NavigationLink(destination: PlaylistDetailView(playlist: playlist)) {
-                        HStack {
-                            Image(playlist.imageURLString)
-                                .resizable()
-                                .frame(width: 100, height: 100, alignment: .center)
-                            VStack(alignment: .leading, spacing: .defaultSpacing) {
-                                Text(playlist.title).vibeTitle3()
-                                playlist.description.map({Text($0).vibeMainText().lineLimit(1)})
-                                Text(playlist.subtitle).vibeMainText()
-                            }
-                            Spacer()
+                    //                    NavigationLink(destination: PlaylistDetailView(playlist: playlist)) {
+                    HStack {
+                        Image(playlist.imageURLString)
+                            .resizable()
+                            .frame(width: 100, height: 100, alignment: .center)
+                        VStack(alignment: .leading, spacing: .defaultSpacing) {
+                            Text(playlist.title).vibeTitle3()
+                            playlist.description.map({Text($0).vibeMainText().lineLimit(1)})
+                            Text(playlist.subtitle).vibeMainText()
                         }
+                        Spacer()
                     }
-//                }
+                }
+                //                }
             }.padding(.horizontal, .defaultPadding)
         }
     }

@@ -12,8 +12,7 @@ struct LibraryAlbumView: View {
     @StateObject var viewModel: Self.ViewModel
     var body: some View {
         ScrollView {
-            LazyVGrid(columns: [.init(.fixed(.twoItemImageWidth)),
-                                .init(.fixed(.twoItemImageWidth))
+            LazyVGrid(columns: [.init(.adaptive(minimum: .itemImageMinWidth, maximum: .itemImageMaxWidth))
             ]) {
                 ForEach(MockItemFactory.albums) { album in
                     NavigationLink(destination: AlbumDetailView(album: album)) {
@@ -26,8 +25,7 @@ struct LibraryAlbumView: View {
                     }
                 }
             }
-        }
-        
+        }.padding(.horizontal, .defaultPadding)
     }
 }
 

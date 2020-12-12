@@ -11,32 +11,35 @@ struct VideoView: View {
     @State private var items: [Video] = MockItemFactory.videoItems
     let viewModel: VideoView.ViewModel
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color.black.ignoresSafeArea(edges: .top)
-                ScrollView(.vertical, showsIndicators: false) {
-                    VideoHeaderView(viewModel: VideoHeaderView.ViewModel(container: viewModel.container))
-                    LazyVStack(spacing: 40) {
-                        ForEach(items) { item in
-                            ImageItemView(image: Image(item.imageURLString), type: .one, ratio: 0.5) {
-                                HStack {
-                                    Text(item.title).vibeTitle3()
-                                    Text(item.artist).vibeMainText()
-                                    Spacer()
-                                    Button(action: {}, label: {
-                                        Image(systemName: "ellipsis")
-                                            .foregroundColor(.white)
-                                    })
+        GeometryReader { proxy in
+            NavigationView {
+                ZStack {
+                    Color.black.ignoresSafeArea(edges: .top)
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VideoHeaderView(viewModel: VideoHeaderView.ViewModel(container: viewModel.container))
+                        LazyVGrid(columns: [.init(.adaptive(minimum: .largeItemImageMinWidth, maximum: .largeItemImageMaxWidth))]) {
+                            ForEach(items) { item in
+                                ImageItemView(image: Image(item.imageURLString), type: .one, ratio: 0.5) {
+                                    HStack {
+                                        Text(item.title).vibeTitle3()
+                                        Text(item.artist).vibeMainText()
+                                        Spacer()
+                                        Button(action: {}, label: {
+                                            Image(systemName: "ellipsis")
+                                                .foregroundColor(.white)
+                                        })
+                                    }
                                 }
                             }
-                        }
-                    }.padding(.bottom, NowPlayingBarView.height)
-                }
-                .padding(.top)
-            }.navigationBarHidden(true)
-        }.onAppear {
-            emitEvent(event: MoveEvent(next: TabType.video.description))
+                        }.padding(.bottom, NowPlayingBarView.height)
+                    }
+                    .padding(.top)
+                }.navigationBarHidden(true)
+            }.onAppear {
+                emitEvent(event: MoveEvent(next: TabType.video.description))
+            }.preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
