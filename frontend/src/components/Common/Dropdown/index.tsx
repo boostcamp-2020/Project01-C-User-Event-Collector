@@ -2,11 +2,11 @@ import React from 'react';
 import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
 
-interface DropdownProps {
+interface IDropdownProps {
   type: string;
 }
 
-const DropdownComponent = ({ type }: DropdownProps) => {
+const DropdownComponent = ({ type }: IDropdownProps) => {
   switch (type) {
     case 'auth':
       return (
