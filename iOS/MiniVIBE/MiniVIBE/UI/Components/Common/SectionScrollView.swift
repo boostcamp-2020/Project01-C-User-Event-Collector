@@ -16,7 +16,7 @@ struct SectionScrollView<Content: View>: View {
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: .defaultSpacing) {
+            HStack(spacing: .defaultSpacing) {
                 content
             }
             .padding(.leading, .defaultPadding)
