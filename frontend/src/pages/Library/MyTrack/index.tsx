@@ -4,8 +4,7 @@ import Library from '@components/Template/Library';
 import TrackList from '@components/TrackList';
 import LargeButton from '@components/Common/Button/LargeButton';
 
-const MyTrack = ({ trackList }) => {        
-
+const MyTrack = ({ trackList }) => {
   return (
     <Library mainTitle="노래" type="track">
       <Wrapper>
@@ -13,7 +12,7 @@ const MyTrack = ({ trackList }) => {
           <LargeButton customType="addToFirst" />
           <LargeButton customType="addToLast" />
         </ButtonsWrapper>
-        <TrackList trackList={trackList}/>
+        <TrackList trackList={trackList} />
       </Wrapper>
     </Library>
   );

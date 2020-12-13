@@ -43,7 +43,8 @@
     "styled-components": "^5.2.1",
     "styled-reset": "^4.3.1",
     "swr": "^0.3.9",
-    "unfetch": "^4.2.0"
+    "unfetch": "^4.2.0",
+    "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.12.8",

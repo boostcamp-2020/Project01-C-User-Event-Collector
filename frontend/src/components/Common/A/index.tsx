@@ -12,11 +12,11 @@ function A({ next, id, children }) {
   const router = useRouter();
   return (
     <>
-      <Link href={`/${next}/[id]}`} as={`/${next}/${id}`}>
+      <Link href={`/${next}/[id]`} as={`/${next}/${id}`}>
         <Wrapper
           onClick={useEventHandler(null, {
             eventTime: new Date(),
-            eventName: 'move_page',
+            eventName: 'CLICK',
             parameters: {
               prev: router.pathname,
               next: `/${`${next}/${id}`}`,

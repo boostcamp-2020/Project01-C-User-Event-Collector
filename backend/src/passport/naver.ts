@@ -13,7 +13,6 @@ const passportNaverConfig = (): void => {
   const naverVerify = async (_: string, __: string, profile: any, done: any): Promise<void> => {
     try {
       const { email, nickname, profile_image: profileURL, age } = profile._json;
-      console.log(profile);
       let user = await User.findOne({ email });
       if (!user) {
         user = new User();

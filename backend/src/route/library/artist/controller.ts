@@ -8,8 +8,8 @@ const getArtistsByUserId = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    // const { id: userId } = req.user as User;
-    const artistList = await Artist.findByUserId(1);
+    const { id: userId } = req.user as User;
+    const artistList = await Artist.findByUserId(userId);
     res.status(200).json({
       success: true,
       data: artistList,

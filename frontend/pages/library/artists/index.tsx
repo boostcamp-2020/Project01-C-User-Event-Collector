@@ -6,7 +6,7 @@ function Index() {
   if (isLoading) return <div>...Loading</div>;
   if (isError) {
     console.log(isError);
-    return <div>...Error</div>;
+    return <div>...isError</div>;
   }
 
   console.log('useFetch-artists hook 시작!');
