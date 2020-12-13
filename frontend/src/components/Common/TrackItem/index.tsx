@@ -24,27 +24,35 @@ type TrackMeta = {
 };
 
 const TrackItem = ({ type, trackMetaData: track, selected, onSelectHandler }: ITrackMetaProps) => {
+  const target = 'TrackItem';
   return (
     <Wrapper>
       <TrackWrapper style={firstWrapperStyle}>
-        {type === 'checkbox' && <Checkbox type="checkbox" value={track.id} checked={selected.includes(+track.id) ? true : false} onChange={onSelectHandler}/>}
+        {type === 'checkbox' && (
+          <Checkbox
+            type="checkbox"
+            value={track.id}
+            checked={!!selected.includes(+track.id)}
+            onChange={onSelectHandler}
+          />
+        )}
         <TrackImgWrapper>
           <TrackHoverImg src="/images/track-hover-img.png" className="track-hover-img" />
           <TrackImg src={track.album.imgUrl} alt="track-image" />
         </TrackImgWrapper>
-        <A next="track" id={track.id}>
+        <A next="track" id={track.id} target={target}>
           <Text>{trimContentLength(track.title, 35)}</Text>
         </A>
       </TrackWrapper>
       <TrackWrapper>
         {track.artists?.map(artist => (
-          <A next="artist" id={artist.id} key={artist.id}>
+          <A next="artist" id={artist.id} key={artist.id} target={target}>
             <ArtistName>{artist.name}</ArtistName>
           </A>
         ))}
       </TrackWrapper>
       <TrackWrapper>
-        <A next="album" id={track.album.id}>
+        <A next="album" id={track.album.id} target={target}>
           <AlbumTitle>{track.album.name}</AlbumTitle>
         </A>
       </TrackWrapper>
@@ -55,7 +63,7 @@ const TrackItem = ({ type, trackMetaData: track, selected, onSelectHandler }: IT
       </TrackWrapper>
     </Wrapper>
   );
-}
+};
 
 const firstWrapperStyle = {
   width: '350px',

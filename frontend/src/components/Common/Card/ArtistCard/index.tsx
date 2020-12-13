@@ -23,17 +23,18 @@ const deleteArtist = async (e, id) => {
 };
 
 const ArtistCard = ({ artistMetaData: artist }: IArtistMetaProps) => {
+  const target = 'ArtistCard';
   return (
     <Container className="artist-card">
       <ImageContainer>
-        <A next="artist" id={artist.id}>
+        <A next="artist" target={target} id={artist.id}>
           <CircleImage imageSrc={artist.imgUrl} />
         </A>
         <ButtonWrapper onClick={e => deleteArtist(e, artist.id)}>
           <CircleHeartButton />
         </ButtonWrapper>
       </ImageContainer>
-      <A next="artist" id={artist.id}>
+      <A next="artist" target={target} id={artist.id}>
         <ArtistTitle>{artist.name}</ArtistTitle>
       </A>
     </Container>

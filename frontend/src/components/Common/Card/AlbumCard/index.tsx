@@ -24,17 +24,18 @@ type artistMeta = {
 };
 
 const AlbumCard = ({ albumMetaData: album }: IAlbumMetaProps) => {
+  const target = 'AlbumCard';
   return (
     <Container>
       <BoxItem imgUrl={album.imgUrl} next="album" id={album.id} />
-      <A next="album" id={album.id}>
+      <A next="album" target={target} id={album.id}>
         <AlbumTitle>{album?.name}</AlbumTitle>
       </A>
       {album && album.artists.length > 3 ? (
         <AlbumArtistName>Various Artists</AlbumArtistName>
       ) : (
         album.artists.map(artist => (
-          <A next="artist" id={artist.id} key={artist.id}>
+          <A next="artist" target={target} id={artist.id} key={artist.id}>
             <AlbumArtistName>{artist.name}</AlbumArtistName>
           </A>
         ))

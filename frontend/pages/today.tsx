@@ -1,7 +1,10 @@
+import { useRouter } from 'next/router';
 import useFetch from '@hooks/useFetch';
+import api from '@api/index';
 import Today from '../src/pages/Today';
 
-function Index({ token }) {
+function Index({ token, referer }) {
+  const router = useRouter();
   const { data: mag, isLoading: magLoading, isError: magError } = useFetch(`/magazine`);
   const { data: playlist, isLoading: playLoading, isError: playError } = useFetch(`/playlist`);
 
@@ -14,6 +17,13 @@ function Index({ token }) {
 
   // 쿠키를 로컬 스토리지에 담는 코드
   localStorage.setItem('token', token);
+
+  const logData = {
+    eventTime: new Date(),
+    eventName: 'MoveEvent',
+    parameters: { prev: referer || 'external', next: router.asPath },
+  };
+  api.post('/log', logData);
 
   return (
     <div>

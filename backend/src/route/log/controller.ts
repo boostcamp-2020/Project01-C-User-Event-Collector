@@ -14,7 +14,7 @@ const createLog = async (req: Request, res: Response): Promise<void> => {
     logInfo.userAgent = req.headers['user-agent'];
 
     const log = new Log(logInfo);
-    console.log('@@@log : ', log);
+    console.log('-------------------- log : ', log);
     await log.save();
     res.json({ success: true });
   } catch (err) {

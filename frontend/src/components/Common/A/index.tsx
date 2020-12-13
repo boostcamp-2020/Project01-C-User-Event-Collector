@@ -8,7 +8,7 @@ interface EventTargetProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-function A({ next, id, children }) {
+function A({ next, target, id, children }) {
   const router = useRouter();
   return (
     <>
@@ -16,10 +16,10 @@ function A({ next, id, children }) {
         <Wrapper
           onClick={useEventHandler(null, {
             eventTime: new Date(),
-            eventName: 'CLICK',
+            eventName: 'ClickEvent',
             parameters: {
-              prev: router.pathname,
-              next: `/${`${next}/${id}`}`,
+              page: router.pathname,
+              target: `/${`${target}/${id}`}`,
             },
           })}
         >

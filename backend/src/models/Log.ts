@@ -10,6 +10,13 @@ interface ILog extends Document {
 const MovePageParams = new Schema({
   prev: String,
   next: String,
+  component: String,
+  button: String,
+  type: String,
+  id: Number,
+  log: String,
+  page: String,
+  target: String,
 });
 
 const UserInfoParams = new Schema({
