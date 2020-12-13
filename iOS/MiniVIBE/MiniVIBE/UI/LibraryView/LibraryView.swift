@@ -16,17 +16,25 @@ struct LibraryView: View {
     }
     
     var body: some View {
-        GeometryReader { proxy in
-            ZStack {
-                Color.vibeBackground.ignoresSafeArea(edges: .top)
-                VStack {
-                    libraryHeaderView
-                    upperTab
-                    lowerTab.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                }.padding(.bottom, NowPlayingBarView.height)
-            }.navigationBarHidden(true)
-            .preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
-        }    .onAppear {
+        ZStack {
+            NavigationView {
+                ZStack {
+                    Color.vibeBackground.ignoresSafeArea(edges: .top)
+                    VStack {
+                        libraryHeaderView
+                        upperTab
+                        lowerTab.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    }.padding(.bottom, NowPlayingBarView.height)
+                }.navigationBarHidden(true)
+            }
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    NowPlayingBarView()
+                }
+            }
+        }.onAppear {
             emitEvent(event: MoveEvent(next: TabType.libarary.description))
         }
     }
@@ -38,7 +46,7 @@ private extension LibraryView {
             LibrarySongView().tag(0)
             LibraryArtistView(viewModel: LibraryArtistView.ViewModel(container: viewModel.container )).tag(1)
             LibraryAlbumView(viewModel: LibraryAlbumView.ViewModel(container: viewModel.container)).tag(2)
-            LibraryPlaylistView().tag(3)
+            LibraryPlaylistView(viewModel: PlaylistSectionView.ViewModel(container: viewModel.container, id: 123, title: "보관함", type: .two) ).tag(3)
         }
         .animation(.easeInOut)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -115,6 +123,7 @@ extension LibraryView {
 }
 
 extension LibraryView {
+    
     var libraryHeaderView: some View {
         HStack {
             Text(Constant.title).vibeTitle1()
@@ -160,25 +169,26 @@ struct LibrarySongView: View {
 }
 
 struct LibraryPlaylistView: View {
+    @StateObject var viewModel: PlaylistSectionView.ViewModel
     var body: some View {
         ScrollView {
             LazyVStack {
                 ForEach(MockItemFactory.playlists) { playlist in
                     // FIXME
-                    //                    NavigationLink(destination: PlaylistDetailView(playlist: playlist)) {
-                    HStack {
-                        Image(playlist.imageURLString)
-                            .resizable()
-                            .frame(width: 100, height: 100, alignment: .center)
-                        VStack(alignment: .leading, spacing: .defaultSpacing) {
-                            Text(playlist.title).vibeTitle3()
-                            playlist.description.map({Text($0).vibeMainText().lineLimit(1)})
-                            Text(playlist.subtitle).vibeMainText()
+                    NavigationLink(destination: PlaylistDetailView(viewModel: PlaylistDetailView.ViewModel(container: viewModel.container, playlist: playlist))) {
+                        HStack {
+                            Image(playlist.imageURLString)
+                                .resizable()
+                                .frame(width: 100, height: 100, alignment: .center)
+                            VStack(alignment: .leading, spacing: .defaultSpacing) {
+                                Text(playlist.title).vibeTitle3()
+                                playlist.description.map({Text($0).vibeMainText().lineLimit(1)})
+                                Text(playlist.subtitle).vibeMainText()
+                            }
+                            Spacer()
                         }
-                        Spacer()
                     }
                 }
-                //                }
             }.padding(.horizontal, .defaultPadding)
         }
     }

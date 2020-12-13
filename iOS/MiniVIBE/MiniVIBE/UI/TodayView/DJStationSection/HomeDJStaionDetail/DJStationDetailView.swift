@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DJStationDetailView: View {
-    private let rows = [GridItem(.adaptive(minimum: .itemImageMinWidth, maximum: .itemImageMaxWidth))
+    private let columns = [GridItem(.adaptive(minimum: .itemImageMinWidth, maximum: .itemImageMaxWidth))
     ]
     @State private var items: [DJStationItem] = []
     @State private var mockItems: [DJStationItem]
@@ -49,14 +49,14 @@ private extension DJStationDetailView {
                         }
                     }
                     SectionHeaderView(Constant.byFeelingTitle) {
-                        LazyVGrid(columns: rows, spacing: .defaultSpacing) {
+                        LazyVGrid(columns: columns, spacing: .defaultSpacing) {
                             ForEach(mockItems) { item in
                                 DJStationItemView(item: item)
                             }
                         }.padding(.horizontal, .defaultPadding)
                     }
                     SectionHeaderView(Constant.byGenreTitle) {
-                        LazyVGrid(columns: rows, spacing: .defaultSpacing) {
+                        LazyVGrid(columns: columns, spacing: .defaultSpacing) {
                             ForEach(mockItems) { item in
                                 DJStationItemView(item: item)
                             }

@@ -15,7 +15,7 @@ struct SearchView: View {
     @State var text: String = ""
     @State private var isEditing = false
     var body: some View {
-        GeometryReader { proxy in
+        ZStack {
             ZStack {
                 Color.vibeBackground.ignoresSafeArea(edges: .top)
                 ScrollView(.vertical, showsIndicators: false) {
@@ -32,8 +32,15 @@ struct SearchView: View {
                         }
                     }.padding(.bottom, NowPlayingBarView.height)
                 }.padding(.top)
-            }.navigationBarHidden(true)
-            .preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
+                .navigationBarHidden(true)
+            }
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    NowPlayingBarView()
+                }
+            }
         }.onAppear {
             emitEvent(event: MoveEvent(next: TabType.search.description))
         }
