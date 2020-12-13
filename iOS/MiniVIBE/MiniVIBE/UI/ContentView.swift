@@ -14,7 +14,6 @@ struct ContentView: View {
     @StateObject var viewModel: ViewModel
     @State var playerFrame = CGRect.zero
     @Environment(\.colorScheme) var colorScheme
-    let playingBar = NowPlayingBarView()
     var body: some View {
         Group {
         TabView(selection: $viewModel.selectedTab) {
@@ -46,7 +45,7 @@ struct ContentView: View {
         })
         .overlay(
             ZStack {
-                playingBar.position(x: playerFrame.midX, y: playerFrame.height - (NowPlayingBarView.height / 2)
+                NowPlayingBarView(colorMode: $colorMode).position(x: playerFrame.midX, y: playerFrame.height - (NowPlayingBarView.height / 2)
                 ).frame(width: .musicPlayingBarWidth)
                 if musicPlayer.showMembership {
                     membershipView .onTapGesture {
