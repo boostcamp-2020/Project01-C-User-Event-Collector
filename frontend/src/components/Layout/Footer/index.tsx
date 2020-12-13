@@ -5,7 +5,7 @@ function Footer() {
     <Container>
       <FooterContent>
         <NoticeWrapper>
-          <SpanTitle>공지사항</SpanTitle> <SpanContent><a href='https://www.notion.so/01-C-2eff1e17f05a48cab0eeb5bea98a055e'>User-Event-Collect C-team Notion 바로가기</a></SpanContent>
+          <SpanTitle>공지사항</SpanTitle> <SpanContent><a href='https://www.notion.so/01-C-2eff1e17f05a48cab0eeb5bea98a055e'>User-Event-Collector C-team Notion 바로가기</a></SpanContent>
         </NoticeWrapper>
         <InfoWrapper>
         <Info>
