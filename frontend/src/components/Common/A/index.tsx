@@ -4,11 +4,18 @@ import { useRouter } from 'next/router';
 import useEventHandler from '@hooks/useEventHandler';
 import Link from 'next/link';
 
-interface EventTargetProps {
+interface IAProps {
+  next: string;
+  target: string;
+  id?: number;
+  children: any;
+}
+
+interface IEventTargetProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-function A({ next, target, id, children }) {
+function A({ next, target, id, children }: IAProps) {
   const router = useRouter();
   return (
     <>
@@ -30,7 +37,7 @@ function A({ next, target, id, children }) {
   );
 }
 
-const Wrapper = styled.div<EventTargetProps>`
+const Wrapper = styled.div<IEventTargetProps>`
   width: 100%;
   cursor: pointer;
 `;

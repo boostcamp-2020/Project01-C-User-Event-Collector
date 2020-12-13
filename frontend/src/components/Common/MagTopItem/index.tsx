@@ -7,12 +7,13 @@ import MagTag from '@components/Common/MagTag';
 import BoxItem from '@components/Common/BoxItem';
 
 function MagTopItem({ magData: mag }) {
+  const target = 'MagTopItem';
   return (
     <Wrapper>
       <ImgWrapper>
         <BoxItem imgUrl={mag.imgUrl} next="magazines" id={mag.id} />
       </ImgWrapper>
-      <A next="magazines" id={mag.id}>
+      <A next="magazines" target={target} id={mag.id}>
         <MagContentWrapper>
           <TagWrapper>
             <MagTag type={mag.tag} />

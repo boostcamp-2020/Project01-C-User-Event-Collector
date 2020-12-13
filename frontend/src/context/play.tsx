@@ -9,15 +9,15 @@ type State = {
   playIndex: number;
   timeProgress: number;
   playList: Array<any>;
-}
+};
 
 type Action =
   | { type: 'PLAY_START' }
   | { type: 'PLAY_PAUSE' }
   | { type: 'PLAY_NEXT' }
   | { type: 'PLAY_PREV' }
-  | { type: 'ADD_TRACK', track: any }
-  | { type: 'REMOVE_TRACK', trackId: number }
+  | { type: 'ADD_TRACK'; track: any }
+  | { type: 'REMOVE_TRACK'; trackId: number };
 
 type PlayDispatch = Dispatch<Action>;
 
@@ -43,7 +43,7 @@ function reducer(state: State, action: Action): State {
         playIndex: nextIndex,
       };
     case 'PLAY_PREV':
-      const prevIndex = (state.playIndex - 1);
+      const prevIndex = state.playIndex - 1;
       return {
         ...state,
         playIndex: prevIndex < 0 ? prevIndex + Playlist.length : prevIndex,
@@ -76,11 +76,9 @@ export function PlayProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <PlayStateContext.Provider value={state}>
-      <PlayDispatchContext.Provider value={dispatch}>
-        {children}
-      </PlayDispatchContext.Provider>
+      <PlayDispatchContext.Provider value={dispatch}>{children}</PlayDispatchContext.Provider>
     </PlayStateContext.Provider>
-  )
+  );
 }
 
 export function usePlayState() {
