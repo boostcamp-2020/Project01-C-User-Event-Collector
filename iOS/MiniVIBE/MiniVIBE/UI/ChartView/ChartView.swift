@@ -14,8 +14,8 @@ struct ChartView: View {
     
     let viewModel: ViewModel
     var body: some View {
-        GeometryReader { proxy in
         NavigationView {
+        GeometryReader { proxy in
             ZStack {
                 Color.vibeBackground.ignoresSafeArea(edges: .top)
                 ScrollView(.vertical, showsIndicators: false) {
@@ -51,14 +51,13 @@ struct ChartView: View {
                         AlbumSectionView(viewModel: AlbumSectionView.ViewModel(id: 9,
                                                                                title: "최신앨범", showsRanking: false))
                     }.padding(.bottom, NowPlayingBarView.height)
-                }
-                .padding(.top)
             }.navigationBarHidden(true)
-        }.onAppear {
-            emitEvent(event: MoveEvent(next: TabType.chart.description))
+                .padding(.top)
         }.preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
         }
-        .navigationViewStyle(StackNavigationViewStyle())
+        }.onAppear {
+            emitEvent(event: MoveEvent(next: TabType.chart.description))
+        }
     }
 }
 

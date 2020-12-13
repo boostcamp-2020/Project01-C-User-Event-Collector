@@ -27,6 +27,7 @@ struct MiniVIBEApp: App {
     
     var body: some Scene {
         WindowGroup {
+            
             ContentView(viewModel: ContentView.ViewModel(container: container)).environmentObject(musicPlayer)
         }
     }

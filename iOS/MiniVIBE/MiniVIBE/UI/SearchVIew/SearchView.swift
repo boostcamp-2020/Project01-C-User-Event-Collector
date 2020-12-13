@@ -14,33 +14,29 @@ struct SearchView: View {
     
     @State var text: String = ""
     @State private var isEditing = false
-    
     var body: some View {
         GeometryReader { proxy in
-            NavigationView {
-                ZStack {
-                    Color.vibeBackground.ignoresSafeArea(edges: .top)
-                    ScrollView(.vertical, showsIndicators: false) {
-                        chartHeaderView
-                        LazyVGrid(
-                            columns: [.init(.fixed(UIScreen.main.bounds.width))],
-                            pinnedViews: [.sectionHeaders]
-                        ) {
-                            Section(header: searchView) {
-                                if isEditing {
-                                } else {
-                                    genreSection
-                                }
+            ZStack {
+                Color.vibeBackground.ignoresSafeArea(edges: .top)
+                ScrollView(.vertical, showsIndicators: false) {
+                    chartHeaderView
+                    LazyVGrid(
+                        columns: [.init(.fixed(UIScreen.main.bounds.width))],
+                        pinnedViews: [.sectionHeaders]
+                    ) {
+                        Section(header: searchView) {
+                            if isEditing {
+                            } else {
+                                genreSection
                             }
-                        }.padding(.bottom, NowPlayingBarView.height)
-                    }.padding(.top)
-                }.navigationBarHidden(true)
-            }
-            .onAppear {
-                emitEvent(event: MoveEvent(next: TabType.search.description))
-            }.preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
+                        }
+                    }.padding(.bottom, NowPlayingBarView.height)
+                }.padding(.top)
+            }.navigationBarHidden(true)
+            .preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
+        }.onAppear {
+            emitEvent(event: MoveEvent(next: TabType.search.description))
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
