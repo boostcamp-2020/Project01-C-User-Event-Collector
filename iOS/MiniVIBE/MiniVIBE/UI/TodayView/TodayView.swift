@@ -18,7 +18,7 @@ struct TodayView: View {
                     Color.vibeBackground.ignoresSafeArea(edges: .top)
                     ScrollView(.vertical, showsIndicators: false) {
                         TodayHeaderView()
-                        VStack(spacing: 40) {
+                        LazyVStack(spacing: 40) {
                             SummarySectionView()
                             ArtistSection()
                             PlaylistSectionView(viewModel: PlaylistSectionView.ViewModel(
