@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PlaylistDetailView: View {
     @StateObject var viewModel: Self.ViewModel
+    @EnvironmentObject var musicPlayer: MusicPlayer
     let mock = MockItemFactory.imageURLSongs
     var body: some View {
         VStack {
@@ -78,6 +79,9 @@ private extension PlaylistDetailView {
                         }
                         Spacer()
                         Image(systemName: "line.horizontal.3").foregroundColor(.gray)
+                    }.onTapGesture {
+                        musicPlayer.playinglist.append(song)
+                        musicPlayer.play(index: musicPlayer.playinglist.count - 1)
                     }
                 }
             }
