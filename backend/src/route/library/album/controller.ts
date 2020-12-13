@@ -8,6 +8,9 @@ const getAlbumsByUserId = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
+    // TODO: 프론트에서 토큰 추출 완성하면 userId 1로 사용하고 있던 것들 바꿔주기
+    // const { id: userId } = req.user as User;
+    // const albumList = await Album.findByUserId(userId);
     const albumList = await Album.findByUserId(1);
     res.status(200).json({
       success: true,

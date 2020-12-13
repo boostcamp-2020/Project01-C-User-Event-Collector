@@ -4,6 +4,7 @@ import theme from '@styles/themes';
 import GlobalStyles from '@styles/global-styles';
 import { ThemeProvider } from '@styles/themed-components';
 import { AuthProvider } from '@context/AuthContext';
+import { PlayProvider } from '@context/play';
 import 'semantic-ui-css/semantic.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -18,9 +19,11 @@ class ReactApp extends App<any> {
         <GlobalStyles />
         <ThemeProvider theme={theme}>
           <AuthProvider>
-            <Layout {...pageProps}>
-              <Component {...pageProps} />
-            </Layout>
+            <PlayProvider>
+              <Layout {...pageProps}>
+                <Component {...pageProps} />
+              </Layout>
+            </PlayProvider>
           </AuthProvider>
         </ThemeProvider>
       </Container>

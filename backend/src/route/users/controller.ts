@@ -4,7 +4,7 @@ import * as express from 'express';
 const getUser = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
   try {
     const { user } = req;
-    if (!user) return res.json({ success: false });
+    if (!user) return res.status(500).json({ success: false });
     return res.status(200).json({ success: true, user });
   } catch (err) {
     console.log(err);

@@ -1,5 +1,5 @@
 import * as express from 'express';
-import * as passport from 'passport';
+import { authenticateWithJwt } from '../../middlewares/auth';
 import { sampleGet, samplePost } from './controller';
 
 const route = express.Router();
@@ -8,7 +8,7 @@ const route = express.Router();
 route.get('/', sampleGet);
 
 // test API with JWT: /GET
-route.get('/jwt', passport.authenticate('jwt', { session: false }), sampleGet);
+route.get('/jwt', authenticateWithJwt, sampleGet);
 
 // test API: /POST
 route.post('/', samplePost);
