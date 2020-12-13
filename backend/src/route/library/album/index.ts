@@ -4,7 +4,7 @@ import { getAlbumsByUserId, addAlbum, deleteAlbum } from './controller';
 
 const route = express.Router();
 
-route.get('/', passport.authenticate('jwt', { session: false }), getAlbumsByUserId);
+route.get('/', getAlbumsByUserId);
 route.post('/', addAlbum);
 route.delete('/:albumId', deleteAlbum);
 

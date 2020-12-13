@@ -4,8 +4,8 @@ import { getArtistsByUserId, addArtist, deleteArtist } from './controller';
 
 const route = express.Router();
 
-route.get('/', passport.authenticate('jwt', { session: false }), getArtistsByUserId);
-route.post('/', passport.authenticate('jwt', { session: false }), addArtist);
-route.delete('/:artistId', passport.authenticate('jwt', { session: false }), deleteArtist);
+route.get('/', getArtistsByUserId);
+route.post('/', addArtist);
+route.delete('/:artistId', deleteArtist);
 
 export default route;
