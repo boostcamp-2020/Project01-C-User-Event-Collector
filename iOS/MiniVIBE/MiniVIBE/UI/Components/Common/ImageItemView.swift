@@ -56,7 +56,7 @@ struct ImageItemView<Content: View>: View {
             } else if let image = image {
                 image
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .aspectRatio(contentMode: .fit)
                     .frame(width: type.rawValue, height: type.rawValue * ratio,
                            alignment: .center)
                     .clipped()
