@@ -25,7 +25,7 @@ struct FiveRowSongGridView: View {
                 LazyHGrid(rows: rows, spacing: .defaultSpacing) {
                     fiveRowSongGridItemViews
                 }
-            }.padding(.horizontal, .defaultPadding)
+            }.padding(.leading, .defaultPadding)
         }
     }
 }
