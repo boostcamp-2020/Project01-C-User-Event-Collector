@@ -4,7 +4,7 @@ import getRandomUserId from '@utils/getRandomUserId';
 type UserInfo = {
   id: number;
   nickName?: string | null;
-  imgUrl?: string | null;
+  imgUrl?: string;
   isLoggedIn: boolean;
 };
 

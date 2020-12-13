@@ -47,9 +47,9 @@ function NavList() {
       </NavItemWrapper>
       <NavItemWrapper>
         <LibraryTag>보관함</LibraryTag>
-        <Link href="/library/mixtapes">
+        {/* <Link href="/library/mixtapes">
           <NavItem isSelected={router.pathname === '/library/mixtapes'}>믹스테잎</NavItem>
-        </Link>
+        </Link> */}
         <Link href="/library/tracks">
           <NavItem isSelected={router.pathname === '/library/tracks'}>노래</NavItem>
         </Link>
@@ -62,7 +62,6 @@ function NavList() {
         <Link href="/library/playlists">
           <NavItem isSelected={router.pathname === '/library/playlists'}>플레이리스트</NavItem>
         </Link>
-        <a href="minivibe://asdf">미니바이브 테스트</a>
       </NavItemWrapper>
     </Container>
   );

@@ -24,10 +24,10 @@ function NavBar() {
         dispatch({
           type: 'SET_USERINFO',
           userInfo: {
-            id: userData.id,
+            id: userData?.id,
             isLoggedIn: true,
-            nickName: userData.nickname,
-            imgUrl: userData.profileURL,
+            nickName: userData?.nickname,
+            imgUrl: userData?.profileURL,
           },
         });
     });
