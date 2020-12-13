@@ -21,11 +21,11 @@ struct FiveRowSongGridView: View {
             ) {
             MoreHeaderView(title: viewModel.title, subtitle: viewModel.subtitle)
             }.emitEventIfTapped(event: TapEvent(component: name, target: Target.more))
-            SectionScrollView {
+            ScrollView(.horizontal, showsIndicators: false) {
                 LazyHGrid(rows: rows, spacing: .defaultSpacing) {
                     fiveRowSongGridItemViews
                 }
-            }
+            }.padding(.horizontal, .defaultPadding)
         }
     }
 }
