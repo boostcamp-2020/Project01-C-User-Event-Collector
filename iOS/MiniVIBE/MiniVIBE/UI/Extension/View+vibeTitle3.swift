@@ -12,13 +12,13 @@ struct VibeTitle3: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-        .font(font)
-        .foregroundColor(.white)
+            .font(font)
+            .foregroundColor(.vibeTitle)
     }
 }
 
 extension View {
     func vibeTitle3() -> some View {
-           modifier(VibeTitle3())
-       }
+        modifier(VibeTitle3())
+    }
 }
