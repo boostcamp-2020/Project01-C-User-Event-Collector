@@ -7,8 +7,7 @@ import api from '@api/index';
 import NavList from './NavList';
 
 const loginEvent = () => {
-  // window.location.href = 'http://115.85.181.152:8000/api/auth/login';
-  window.location.href = 'http://localhost:8000/api/auth/login';
+  window.location.href = process.env.NEXT_PUBLIC_NAVER_LOGIN_URL as string;
 };
 
 function NavBar() {

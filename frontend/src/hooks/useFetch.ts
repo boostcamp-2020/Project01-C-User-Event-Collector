@@ -13,7 +13,7 @@ const options = {
   credentails: 'true',
 };
 
-const baseUrl = 'http://localhost:8000/api';
+const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 const fetcher = url => fetch(baseUrl + url, options).then(res => res.json());
 
 const useFetch = url => {
