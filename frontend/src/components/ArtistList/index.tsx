@@ -7,17 +7,19 @@ const ArtistList = ({ artistList }) => {
   return (
     <ListContainer>
       {artistList.map(artist => (
-        <ArtistCard key={artist.id} artistMetaData={artist} />
+        <ArtistCard key={artist.id} artistMetaData={artist} type="myArtist" />
       ))}
     </ListContainer>
   );
 };
 
 const ListContainer = styled.div`
-  margin-top: 30px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(${props => props.theme.size.smallCarouselContentWidth}, 1fr)
+  );
+  grid-gap: 45px 0;
 `;
 
 export default ArtistList;

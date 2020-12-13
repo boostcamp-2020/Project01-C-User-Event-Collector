@@ -78,7 +78,7 @@
     "**/*.ts",
     "**/*.tsx",
     "src/**/*.ts",
-    "src/**/*.tsx"
+    "src/**/*.tsx", "src/hooks/useTrack.js"
   ],
   "exclude": [
     "node_modules"

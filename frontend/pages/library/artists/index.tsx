@@ -1,21 +1,41 @@
+import { useRouter } from 'next/router';
 import MyArtist from '@pages/Library/MyArtist';
+import useFetch from '@hooks/useFetch';
+import api from '@api/index';
 
-const Index = ({ artistList }) => (
-  <div>
-    {console.log('artist 스타트')}
-    <MyArtist artistList={artistList} />
-  </div>
-);
+function Index({ referer }) {
+  const router = useRouter();
+  const { data, isLoading, isError } = useFetch(`/library/artists`);
+  if (isLoading) return <div>...Loading</div>;
+  if (isError) {
+    console.log(isError);
+    return <div>...isError</div>;
+  }
 
-export async function getServerSideProps(context) {
-  console.log('artist getServerSideProps 시작');
-  const res = await fetch('http://localhost:8000/api/library/artists');
-  const data = await res.json();
-  const artistList = data.data;
+  console.log('useFetch-artists hook 시작!');
+  console.log('data : ', data);
+  console.log('data.data : ', data.data);
 
-  return {
-    props: { artistList },
+  const logData = {
+    eventTime: new Date(),
+    eventName: 'MoveEvent',
+    parameters: { prev: referer || 'external', next: router.asPath },
   };
+  api.post('/log', logData);
+
+  return (
+    <div>
+      <MyArtist artistList={data.data} />
+    </div>
+  );
+}
+
+export async function getServerSideProps({ req }) {
+  const regex = /(http:\/\/)([A-Z,a-z,:,0-9]*)/;
+  const host = req.headers?.referer?.match(regex)[0];
+  const referer = req.headers?.referer?.slice(host.length);
+
+  return { props: { referer: referer || 'external' } };
 }
 
 export default Index;

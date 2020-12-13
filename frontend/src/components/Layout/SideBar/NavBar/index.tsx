@@ -1,32 +1,65 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from '@styles/themed-components';
+
 import Dropdown from '@components/Common/Dropdown';
+import { useAuthDispatch, useAuthState } from '@context/AuthContext';
+import api from '@api/index';
 import NavList from './NavList';
 
-const profileImgUrl =
-  'https://phinf.pstatic.net/contact/20200707_134/1594090738223DUwwm_JPEG/20160913_143317.jpg?type=s33';
-
 const loginEvent = () => {
+  // window.location.href = 'http://115.85.181.152:8000/api/auth/login';
   window.location.href = 'http://localhost:8000/api/auth/login';
 };
 
 function NavBar() {
+  const state = useAuthState();
+  const dispatch = useAuthDispatch();
+  const { userInfo } = state;
+
+  const fetchData = () => {
+    api.defaults.headers.authorization = localStorage.getItem('token');
+    api.get('/user').then(res => {
+      const userData = res.data.user;
+      if (userData)
+        dispatch({
+          type: 'SET_USERINFO',
+          userInfo: {
+            id: userData?.id,
+            isLoggedIn: true,
+            nickName: userData?.nickname,
+            imgUrl: userData?.profileURL,
+          },
+        });
+    });
+  };
+
+  useEffect(() => {
+    fetchData();
+    console.log('NAVBAR useEFFECT');
+  }, [dispatch]);
+
   return (
     <Container>
-      <AuthWrapper onClick={loginEvent}>
-        <ProfileImg src={profileImgUrl} />
-        로그인
-      </AuthWrapper>
-      <AuthWrapper>
-        <ProfileImg src={profileImgUrl} />
-        <Dropdown type="auth" />
-      </AuthWrapper>
+      {userInfo.isLoggedIn ? (
+        <AuthWrapper>
+          <ProfileImg src={userInfo.imgUrl} alt="profile-img" />
+          {userInfo?.nickName}
+          <Dropdown type="auth" />
+        </AuthWrapper>
+      ) : (
+        <AuthWrapper onClick={loginEvent}>
+          <ProfileImg src={userInfo.imgUrl} alt="profile-img" />
+          로그인
+        </AuthWrapper>
+      )}
       <NavList />
     </Container>
   );
 }
+
 const ProfileImg = styled.img`
   width: 30px;
+  height: 30px;
   border-radius: 50%;
   margin: 10px;
 `;

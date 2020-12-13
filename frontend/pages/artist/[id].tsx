@@ -1,33 +1,42 @@
-import Sample from '@components/sample-rx';
 import { useRouter } from 'next/router';
+import useFetch from '@hooks/useFetch';
+import api from '@api/index';
+import ArtistDetail from '../../src/pages/Detail/Artist';
 
-export function Index({ trackInfo }) {
+export function Index({ referer }) {
   const router = useRouter();
-  console.log('trackInfo : ', trackInfo);
+  const { id } = router.query;
+  const { data, isLoading, isError } = useFetch(`/artist/${id}`);
+
+  if (isLoading) return <div>...Loading</div>;
+  if (isError) {
+    console.log(isError);
+    return <div>...Error</div>;
+  }
+
+  const logData = {
+    eventTime: new Date(),
+    eventName: 'MoveEvent',
+    parameters: { prev: referer || 'external', next: router.asPath },
+  };
+  api.post('/log', logData);
+
+  console.log('useFetch artist/id hook 시작! : ', new Date());
+  console.log('data : ', data);
+  console.log('data.data : ', data.data);
   return (
-    <div>
-      <Sample text="Hello! this is Artist detail page" />
-      <p>{router.query.id}</p>
-      <div>
-        <p>{trackInfo.name}</p>
-        <p>{trackInfo.imgUrl}</p>
-        <p>{trackInfo.id}</p>
-      </div>
-    </div>
+    <>
+      <ArtistDetail artistInfo={data.data} />
+    </>
   );
 }
 
-export async function getServerSideProps(context) {
-  const { id } = context.params;
-  console.log(id);
-  const apiUrl = `http://localhost:8000/api/artist/${id}`;
-  const res = await fetch(apiUrl);
-  const data = await res.json();
-  const trackInfo = data.data;
+export async function getServerSideProps({ req }) {
+  const regex = /(http:\/\/)([A-Z,a-z,:,0-9]*)/;
+  const host = req.headers?.referer?.match(regex)[0];
+  const referer = req.headers?.referer?.slice(host.length);
 
-  return {
-    props: { trackInfo },
-  };
+  return { props: { referer: referer || 'external' } };
 }
 
 export default Index;

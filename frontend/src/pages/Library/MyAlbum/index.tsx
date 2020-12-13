@@ -1,18 +1,26 @@
 import styled from '@styles/themed-components';
+import { useEffect } from 'react';
+import { useAuthDispatch, useAuthState } from '@context/AuthContext';
 import Library from '@components/Template/Library';
+import AlbumList from '@components/AlbumList';
 
-const MyAlbum = ({ albumList }) => (
-  <Library mainTitle="앨범">
-    <Container>앨범</Container>
-    {albumList.map(album => (
-      <div key={album.id} style={{ margin: '50px 0' }}>
-        <img src={album.imgUrl} alt="album-img-url" style={{ width: '100px' }} />
-        <h6>{album.name}</h6>
-        <p>{album.artists.map(a => a.name).join(', ')}</p>
-      </div>
-    ))}
-  </Library>
-);
+const MyAlbum = ({ albumList }) => {
+  const state = useAuthState();
+  const dispatch = useAuthDispatch();
+
+  useEffect(() => {
+    dispatch({ type: 'SET_ALBUMLIST', albumList: albumList.map(album => album.id) });
+  }, []);
+  console.log('-----state---*** : ', state);
+
+  return (
+    <Library mainTitle="앨범">
+      <Container>
+        <AlbumList albumList={albumList} />
+      </Container>
+    </Library>
+  );
+};
 
 const Container = styled.div``;
 

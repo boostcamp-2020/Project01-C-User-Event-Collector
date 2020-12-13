@@ -1,12 +1,4 @@
-import {
-  Entity,
-  BaseEntity,
-  PrimaryGeneratedColumn,
-  Column,
-  OneToMany,
-  ManyToMany,
-  JoinTable,
-} from 'typeorm';
+import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, OneToMany, ManyToMany } from 'typeorm';
 import Artist from './Artist';
 import User from './User';
 import Genre from './Genre';

@@ -41,8 +41,8 @@ export default class User extends BaseEntity {
   // })
   // gender!: UserGenderType;
 
-  // @Column()
-  // birth!: Date;
+  @Column()
+  age!: string;
 
   @CreateDateColumn()
   createDate!: Date;

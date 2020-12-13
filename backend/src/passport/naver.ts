@@ -12,7 +12,7 @@ const passportNaverConfig = (): void => {
   // Provider의 토큰은 사용하지 않음 (_ : accessToken __ : refreshToken)
   const naverVerify = async (_: string, __: string, profile: any, done: any): Promise<void> => {
     try {
-      const { email, nickname, profile_image: profileURL } = profile._json;
+      const { email, nickname, profile_image: profileURL, age } = profile._json;
       let user = await User.findOne({ email });
       if (!user) {
         user = new User();
@@ -20,6 +20,7 @@ const passportNaverConfig = (): void => {
         user.username = nickname;
         user.nickname = nickname;
         user.profileURL = profileURL;
+        user.age = age;
         await user.save();
       }
       return done(null, user);

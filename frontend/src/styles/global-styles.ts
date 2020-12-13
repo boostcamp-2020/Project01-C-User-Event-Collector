@@ -13,9 +13,16 @@ const GlobalStyle = createGlobalStyle`
     color: inherit;
     text-decoration: none;
   }
+  a:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
   input, button {
     background-color: transparent;
     border: none;
+    outline: none;
+  }
+  button:focus {
     outline: none;
   }
   button {
