@@ -7,7 +7,7 @@ const Section = ({ children }) => {
 
 const Wrapper = styled.div`
   width: 100%;
-  padding: 24px 0 30px 0;
+  padding: 30px 0 35px 0;
   border-bottom: 1px solid ${props => props.theme.color.borderColor};
   .section-title {
     ${props => props.theme.font.secTitle}

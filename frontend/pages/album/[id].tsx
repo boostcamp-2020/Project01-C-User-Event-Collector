@@ -26,7 +26,6 @@ export function Index({ referer }) {
   return (
     <>
       <AlbumDetail albumInfo={data.data} />
-      <p>{router.query.id}</p>
     </>
   );
 }

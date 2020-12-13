@@ -13,17 +13,24 @@ interface ITrackMetaProps {
   trackMetaData: TrackMeta;
   selected: any;
   onSelectHandler: any;
+  albumData?: any;
 }
 
 type TrackMeta = {
   id: number;
   title: string;
   artists: any[];
-  album: any;
+  album?: any;
   imgUrl: string;
 };
 
-const TrackItem = ({ type, trackMetaData: track, selected, onSelectHandler }: ITrackMetaProps) => {
+const TrackItem = ({
+  type,
+  trackMetaData: track,
+  selected,
+  onSelectHandler,
+  albumData,
+}: ITrackMetaProps) => {
   const target = 'TrackItem';
   return (
     <Wrapper>
@@ -38,23 +45,40 @@ const TrackItem = ({ type, trackMetaData: track, selected, onSelectHandler }: IT
         )}
         <TrackImgWrapper>
           <TrackHoverImg src="/images/track-hover-img.png" className="track-hover-img" />
-          <TrackImg src={track.album.imgUrl} alt="track-image" />
+          <TrackImg
+            src={track.album?.imgUrl ? track.album.imgUrl : albumData.imgUrl}
+            alt="track-image"
+          />
         </TrackImgWrapper>
         <A next="track" id={track.id} target={target}>
           <Text>{trimContentLength(track.title, 35)}</Text>
         </A>
       </TrackWrapper>
       <TrackWrapper>
-        {track.artists?.map(artist => (
-          <A next="artist" id={artist.id} key={artist.id} target={target}>
-            <ArtistName>{artist.name}</ArtistName>
-          </A>
-        ))}
+        {track?.artists &&
+          track?.artists?.map(artist => (
+            <A next="artist" id={artist.id} key={artist.id} target={target}>
+              <ArtistName>{artist.name}</ArtistName>
+            </A>
+          ))}
+        {albumData?.artists &&
+          albumData?.artists?.map(artist => (
+            <A next="artist" id={artist.id} key={artist.id} target={target}>
+              <ArtistName>{artist.name}</ArtistName>
+            </A>
+          ))}
       </TrackWrapper>
       <TrackWrapper>
-        <A next="album" id={track.album.id} target={target}>
-          <AlbumTitle>{track.album.name}</AlbumTitle>
-        </A>
+        {track?.album && (
+          <A next="album" id={track.album?.id} target={target}>
+            <AlbumTitle>{track.album?.name}</AlbumTitle>
+          </A>
+        )}
+        {albumData && (
+          <A next="album" id={albumData?.id} target={target}>
+            <AlbumTitle>{albumData?.name}</AlbumTitle>
+          </A>
+        )}
       </TrackWrapper>
       <TrackWrapper style={lastWrapperStyle}>
         <BsMusicPlayer size={20} />

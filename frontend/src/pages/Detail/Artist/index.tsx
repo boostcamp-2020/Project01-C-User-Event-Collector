@@ -24,7 +24,7 @@ function ArtistDetail({ artistInfo: artist }: IArtistInfoProps) {
 }
 
 const Wrapper = styled.div`
-  padding-bottom: 200px;
+  padding-bottom: 50px;
 `;
 
 export default ArtistDetail;

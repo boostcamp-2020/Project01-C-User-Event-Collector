@@ -5,8 +5,7 @@ import DetailTemplate from '@components/Template/Detail';
 import unifyMetaData from '@utils/unifyMetaData';
 import Section from '@components/Common/Section';
 import A from '@components/Common/A';
-import useFetch from '@hooks/useFetch';
-import PlaylistCard from '@components/Common/Card/PlaylistCard';
+import RelatedPlaylist from '@components/Common/SampleSection/RelatedPlaylist';
 import lyric from '../../../data/lyricSample';
 
 interface ITrackInfoProps {
@@ -26,13 +25,7 @@ type MetaTrack = {
 
 function TrackDetail({ trackInfo: track }: ITrackInfoProps) {
   const TrackDetailAlbum = 'TrackDetailAlbum';
-  const { data, isLoading, isError } = useFetch(`/playlist/`);
 
-  if (isLoading) return <div>...Loading</div>;
-  if (isError) {
-    console.log(isError);
-    return <div>...Error</div>;
-  }
   return (
     <DetailTemplate data={unifyMetaData('track', track)}>
       <Wrapper>
@@ -68,14 +61,7 @@ function TrackDetail({ trackInfo: track }: ITrackInfoProps) {
         </Section>
         <Section>
           <p className="section-title">관련 플레이 리스트</p>
-          <SectionContentWrapper>
-            {data.data &&
-              data.data.splice(0, 3).map(playlist => (
-                <PlaylistWrapper key={playlist.id}>
-                  <PlaylistCard playlistMetaData={playlist} />
-                </PlaylistWrapper>
-              ))}
-          </SectionContentWrapper>
+          <RelatedPlaylist />
         </Section>
       </Wrapper>
     </DetailTemplate>
@@ -83,7 +69,7 @@ function TrackDetail({ trackInfo: track }: ITrackInfoProps) {
 }
 
 const Wrapper = styled.div`
-  padding-bottom: 200px;
+  padding-bottom: 50px;
 `;
 
 const SectionContentWrapper = styled.div`

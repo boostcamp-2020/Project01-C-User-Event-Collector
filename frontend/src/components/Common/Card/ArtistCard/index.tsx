@@ -6,6 +6,7 @@ import A from '@components/Common/A';
 
 interface IArtistMetaProps {
   artistMetaData: ArtistMeta;
+  type?: string | null;
 }
 
 type ArtistMeta = {
@@ -22,7 +23,7 @@ const deleteArtist = async (e, id) => {
   e.target.closest('.artist-card').style.transform = 'translate(0px, -35px)';
 };
 
-const ArtistCard = ({ artistMetaData: artist }: IArtistMetaProps) => {
+const ArtistCard = ({ artistMetaData: artist, type }: IArtistMetaProps) => {
   const target = 'ArtistCard';
   return (
     <Container className="artist-card">
@@ -30,9 +31,11 @@ const ArtistCard = ({ artistMetaData: artist }: IArtistMetaProps) => {
         <A next="artist" target={target} id={artist.id}>
           <CircleImage imageSrc={artist.imgUrl} />
         </A>
-        <ButtonWrapper onClick={e => deleteArtist(e, artist.id)}>
-          <CircleHeartButton />
-        </ButtonWrapper>
+        {type && (
+          <ButtonWrapper onClick={e => deleteArtist(e, artist.id)}>
+            <CircleHeartButton />
+          </ButtonWrapper>
+        )}
       </ImageContainer>
       <A next="artist" target={target} id={artist.id}>
         <ArtistTitle>{artist.name}</ArtistTitle>

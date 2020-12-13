@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router';
 import useFetch from '@hooks/useFetch';
 import api from '@api/index';
-import MagazineDetail from '../../src/pages/Detail/Magazine';
+import Playlistdetail from '../../src/pages/Detail/Playlist';
 
 export function Index({ referer }) {
   const router = useRouter();
   const { id } = router.query;
-  const { data, isLoading, isError } = useFetch(`/magazine/${id}`);
+  const { data, isLoading, isError } = useFetch(`/playlist/${id}`);
 
   if (isLoading) return <div>...Loading</div>;
   if (isError) {
@@ -23,7 +23,7 @@ export function Index({ referer }) {
 
   return (
     <>
-      <MagazineDetail magazineInfo={data.data} />
+      <Playlistdetail playlistInfo={data.data} />
     </>
   );
 }

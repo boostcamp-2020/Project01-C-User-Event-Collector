@@ -27,7 +27,6 @@ export function Index({ referer }) {
   return (
     <>
       <TrackDetail trackInfo={data.data} />
-      <p>{router.query.id}</p>
     </>
   );
 }

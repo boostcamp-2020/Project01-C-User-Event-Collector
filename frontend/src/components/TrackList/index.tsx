@@ -5,9 +5,9 @@ import TrackItem from '@components/Common/TrackItem';
 
 const TrackList = ({ trackList }) => {
   const [visible, setVisible] = useState(false);
-  const [selected, setSelected] = useState(new Array());
+  const [selected, setSelected] = useState([]);
 
-  const onChangeAll = (e) => {
+  const onChangeAll = e => {
     if (e.target.checked) {
       const list = trackList.map(track => track.id);
       setSelected([...list]);
@@ -16,45 +16,54 @@ const TrackList = ({ trackList }) => {
       setSelected([]);
       setVisible(false);
     }
-  }
+  };
 
-  const onChangeHandle = (e) => {
+  const onChangeHandle = e => {
     if (e.target.checked) {
       setSelected([...selected, +e.target.value]);
       setVisible(true);
     } else {
-      const result = selected.filter((o) => o != e.target.value);
-      if(!result.length) setVisible(false);
+      const result = selected.filter(o => o != e.target.value);
+      if (!result.length) setVisible(false);
       setSelected(result);
     }
-  }
+  };
 
   return (
     <TrackListSection>
       {trackList.map(track => (
-        <TrackItem key={track.id} type="checkbox" trackMetaData={track} selected={selected} onSelectHandler={onChangeHandle} />
+        <TrackItem
+          key={track.id}
+          type="checkbox"
+          trackMetaData={track}
+          selected={selected}
+          onSelectHandler={onChangeHandle}
+        />
       ))}
       <SelectedHeader displayVisiable={visible}>
         <SelectedBarInner>
           <SelectedInfoArea>
-            <input type={'checkbox'} onChange={onChangeAll} checked={selected.length === trackList.length ? true : false}/>
+            <input
+              type="checkbox"
+              onChange={onChangeAll}
+              checked={selected.length === trackList.length}
+            />
             <SelectLabel>전체선택</SelectLabel>
-            <SelectedCountSpan>{selected.length}곡 선택</SelectedCountSpan>
+            <SelectedCountSpan> 
+{' '}
+{selected.length}곡 선택</SelectedCountSpan>
           </SelectedInfoArea>
-          <PlayOptionArea>
-
-          </PlayOptionArea>
+          <PlayOptionArea />
         </SelectedBarInner>
       </SelectedHeader>
     </TrackListSection>
   );
 };
 
-const TrackListSection = styled.div`
-`;
+const TrackListSection = styled.div``;
 
-const SelectedHeader = styled.div<{ displayVisiable: Boolean }>`
-  display: ${props => props.displayVisiable ? 'block' : 'none'};
+const SelectedHeader = styled.div<{ displayVisiable: boolean }>`
+  display: ${props => (props.displayVisiable ? 'block' : 'none')};
   position: fixed;
   top: 0;
   right: 0;
@@ -62,8 +71,8 @@ const SelectedHeader = styled.div<{ displayVisiable: Boolean }>`
   z-index: 40;
   border-bottom: 1px solid #e4e4e4;
   background-color: #f2f2f2;
-  -webkit-box-shadow: 0 2px 4px 0 rgba(0,0,0,.07);
-  box-shadow: 0 2px 4px 0 rgba(0,0,0,.07);
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.07);
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.07);
 `;
 
 const SelectedBarInner = styled.div`
@@ -79,7 +88,7 @@ const SelectedInfoArea = styled.div`
 
 const SelectLabel = styled.label`
   font-size: 15px;
-  padding: 0 6px
+  padding: 0 6px;
 `;
 
 const SelectedCountSpan = styled.span`
