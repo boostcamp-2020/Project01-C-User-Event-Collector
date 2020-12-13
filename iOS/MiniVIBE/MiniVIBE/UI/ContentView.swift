@@ -65,7 +65,6 @@ struct ContentView: View {
     }
 }
 
-
 enum TabType: CustomStringConvertible {
     case today
     case chart
