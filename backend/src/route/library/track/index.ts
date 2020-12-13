@@ -4,8 +4,8 @@ import { getTracksByUserId, addTrack, deleteTrack } from './controller';
 
 const route = express.Router();
 
-route.get('/', passport.authenticate('jwt', { session: false }), getTracksByUserId);
-route.post('/', passport.authenticate('jwt', { session: false }), addTrack);
-route.delete('/:trackId', passport.authenticate('jwt', { session: false }), deleteTrack);
+route.get('/', getTracksByUserId);
+route.post('/', addTrack);
+route.delete('/:trackId', deleteTrack);
 
 export default route;
