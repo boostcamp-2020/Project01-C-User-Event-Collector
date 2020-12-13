@@ -15,7 +15,7 @@ struct PlaylistMoreView: View {
             VStack {
                 DetailHeaderView(title: viewModel.title)
                 ScrollView(.vertical, showsIndicators: false) {
-                    LazyVStack(alignment: .leading) {
+                    VStack(alignment: .leading) {
                         ForEach(viewModel.playlists) { playlist in
                             HStack {
                                 Image(playlist.imageURLString)
@@ -27,6 +27,7 @@ struct PlaylistMoreView: View {
                                     playlist.description.map({Text($0).vibeMainText().lineLimit(1)})
                                     Text(playlist.subtitle).vibeMainText()
                                 }
+                                Spacer()
                             }.padding(.horizontal, .defaultPadding)
                         }
                     }

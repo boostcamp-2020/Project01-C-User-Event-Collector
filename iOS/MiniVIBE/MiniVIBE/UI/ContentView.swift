@@ -8,6 +8,35 @@
 import SwiftUI
 import CoreData
 
+struct SyncView<Content: View>: View {
+    
+
+    @Binding var selection: TabType
+
+    
+
+    var tag: TabType
+
+    
+
+    var content: () -> Content
+
+    
+
+    @ViewBuilder
+
+    var body: some View {
+        if selection == tag {
+            content()
+
+        } else {
+            Spacer()
+        }
+
+    }
+
+}
+
 struct ContentView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @State var colorMode: Bool = true
@@ -17,25 +46,33 @@ struct ContentView: View {
     var body: some View {
         Group {
         TabView(selection: $viewModel.selectedTab) {
-            TodayView(viewModel: TodayView.ViewModel(container: viewModel.container))
-                
+            SyncView(selection: $viewModel.selectedTab, tag: TabType.today) {
+                TodayView(viewModel: TodayView.ViewModel(container: viewModel.container))
+              }
                 .tabItem {
                     Image(systemName: "house")
                 }.tag(TabType.today)
+            SyncView(selection: $viewModel.selectedTab, tag: TabType.chart) {
             ChartView(viewModel: ChartView.ViewModel(container: viewModel.container))
+            }
                 .tabItem {
                     Image(systemName: "chart.bar.doc.horizontal")
                 }.tag(TabType.chart)
+            SyncView(selection: $viewModel.selectedTab, tag: TabType.video) {
             VideoView(viewModel: VideoView.ViewModel(container: viewModel.container))
-                
+            }
                 .tabItem {
                     Image(systemName: "play.rectangle.fill")
                 }.tag(TabType.video)
+            SyncView(selection: $viewModel.selectedTab, tag: TabType.search) {
             SearchView()
+            }
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }.tag(TabType.search)
+            SyncView(selection: $viewModel.selectedTab, tag: TabType.libarary) {
             LibraryView(viewModel: LibraryView.ViewModel(container: viewModel.container), colorMode: $colorMode)
+            }
                 .tabItem {
                     Image(systemName: "person.fill")
                 }.tag(TabType.libarary)
@@ -128,5 +165,11 @@ struct Size: PreferenceKey {
     static var defaultValue: [CGRect] = []
     static func reduce(value: inout [CGRect], nextValue: () -> [CGRect]) {
         value.append(contentsOf: nextValue())
+    }
+}
+
+final class HostingController<T: View>: UIHostingController<T> {
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .lightContent
     }
 }
