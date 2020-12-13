@@ -17,21 +17,18 @@ struct LibraryView: View {
     
     var body: some View {
         GeometryReader { proxy in
-            NavigationView {
-                ZStack {
-                    Color.vibeBackground.ignoresSafeArea(edges: .top)
-                    VStack {
-                        libraryHeaderView
-                        upperTab
-                        lowerTab.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                    }.padding(.bottom, NowPlayingBarView.height)
-                }.navigationBarHidden(true)
-            }    .onAppear {
-                emitEvent(event: MoveEvent(next: TabType.libarary.description))
-                
-            }.preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
+            ZStack {
+                Color.vibeBackground.ignoresSafeArea(edges: .top)
+                VStack {
+                    libraryHeaderView
+                    upperTab
+                    lowerTab.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                }.padding(.bottom, NowPlayingBarView.height)
+            }.navigationBarHidden(true)
+            .preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
+        }    .onAppear {
+            emitEvent(event: MoveEvent(next: TabType.libarary.description))
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -123,8 +120,8 @@ extension LibraryView {
             Text(Constant.title).vibeTitle1()
             Spacer()
             Button(action: {
-                    colorMode.toggle()
-                }, label: {
+                colorMode.toggle()
+            }, label: {
                 Image(systemName: "gear").vibeTitle2()
             })
         }.padding()

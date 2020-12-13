@@ -12,13 +12,13 @@ import AuthenticationServices
 struct TodayView: View {
     let viewModel: ViewModel
     var body: some View {
+        NavigationView {
         GeometryReader { proxy in
-            NavigationView {
                 ZStack {
                     Color.vibeBackground.ignoresSafeArea(edges: .top)
                     ScrollView(.vertical, showsIndicators: false) {
                         TodayHeaderView()
-                        LazyVStack(spacing: 40) {
+                        VStack(spacing: 40) {
                             SummarySectionView()
                             ArtistSection()
                             PlaylistSectionView(viewModel: PlaylistSectionView.ViewModel(
@@ -40,11 +40,10 @@ struct TodayView: View {
                     .navigationBarHidden(true)
              
                 }
-            }
-        } .onAppear {
+        }
+        }.onAppear {
             emitEvent(event: MoveEvent(next: TabType.today.description))
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
