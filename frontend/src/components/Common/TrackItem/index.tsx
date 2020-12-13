@@ -9,10 +9,10 @@ import trimContentLength from '@utils/trimContentLength';
 import A from '@components/Common/A';
 
 interface ITrackMetaProps {
-  type: string;
+  type?: string;
   trackMetaData: TrackMeta;
-  selected: any;
-  onSelectHandler: any;
+  selected?: any;
+  onSelectHandler?: any;
   albumData?: any;
 }
 

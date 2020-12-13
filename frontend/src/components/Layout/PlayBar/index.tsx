@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import {
   IoPlaySkipForwardSharp,
@@ -13,14 +13,14 @@ import { BsFillVolumeUpFill, BsMusicNoteList } from 'react-icons/bs';
 
 import PlayTrackItem from '@components/Common/PlayTrackItem';
 import { usePlayState, usePlayDispatch } from '@context/play';
-import { useAuthState, useAuthDispatch } from '@context/AuthContext';
+import { useAuthState } from '@context/AuthContext';
 
 function PlayBar() {
   const state = usePlayState();
   const dispatch = usePlayDispatch();
 
   const authState = useAuthState();
-  const authDispatch = useAuthDispatch();
+  // const authDispatch = useAuthDispatch();
   const { userInfo } = authState;
 
   const [adShow, setAdShow] = useState(false);

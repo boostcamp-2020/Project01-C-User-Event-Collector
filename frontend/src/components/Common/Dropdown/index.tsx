@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
-import useEventHandler from '@hooks/useEventHandler';
-import api from '@api/index';
-import { usePlayState, usePlayDispatch } from '@context/play';
+// import useEventHandler from '@hooks/useEventHandler';
+// import api from '@api/index';
+// import { usePlayState, usePlayDispatch } from '@context/play';
 
 interface IDropdownProps {
   type: string;
@@ -13,24 +13,17 @@ interface IDropdownProps {
 }
 
 const DropdownComponent = ({ type, albumData, magData, playlistData }: IDropdownProps) => {
-  const state = usePlayState();
-  const dispatch = usePlayDispatch();
+  // 개발 중, 타입에러를 막기 위해 주석처리 했습니다
+  // const state = usePlayState();
+  // const dispatch = usePlayDispatch();
 
-  const logData = (name, params) => {
-    return {
-      eventTime: new Date(),
-      eventName: name,
-      parameters: params,
-    };
-  };
-
-  // const addEvent = (id)=>{
-  //   api.post()
-  // }
-
-  // const removeEvent = (id)=>{
-  //   api.post()
-  // }
+  // const logData = (name, params) => {
+  //   return {
+  //     eventTime: new Date(),
+  //     eventName: name,
+  //     parameters: params,
+  //   };
+  // };
 
   switch (type) {
     case 'auth':

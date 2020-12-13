@@ -4,8 +4,9 @@ import styled from '@styles/themed-components';
 import TrackItem from '@components/Common/TrackItem';
 
 const TrackList = ({ trackList }) => {
+  const initialSelector: number[] = [];
   const [visible, setVisible] = useState(false);
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState(initialSelector);
 
   const onChangeAll = e => {
     if (e.target.checked) {
@@ -23,7 +24,7 @@ const TrackList = ({ trackList }) => {
       setSelected([...selected, +e.target.value]);
       setVisible(true);
     } else {
-      const result = selected.filter(o => o != e.target.value);
+      const result = selected.filter(o => o !== e.target.value);
       if (!result.length) setVisible(false);
       setSelected(result);
     }

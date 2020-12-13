@@ -5,7 +5,6 @@ import unifyMetaData from '@utils/unifyMetaData';
 import Section from '@components/Common/Section';
 import RelatedPlaylist from '@components/Common/SampleSection/RelatedPlaylist';
 import RelatedArtist from '@components/Common/SampleSection/RelatedArtist';
-import TrackItem from '@components/Common/TrackItem';
 
 interface IArtistInfoProps {
   artistInfo?: MetaArtist;
@@ -40,12 +39,6 @@ function ArtistDetail({ artistInfo: artist }: IArtistInfoProps) {
 
 const Wrapper = styled.div`
   padding-bottom: 50px;
-`;
-
-const SectionContentWrapper = styled.div`
-  width: 100%;
-  margin-top: 20px;
-  display: flex;
 `;
 
 export default ArtistDetail;

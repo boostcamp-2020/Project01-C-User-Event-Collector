@@ -118,9 +118,4 @@ const ContentWrapper = styled.div`
   flex-direction: column;
 `;
 
-const PlaylistWrapper = styled.div`
-  text-align: left;
-  margin-right: 20px;
-`;
-
 export default TrackDetail;
