@@ -13,12 +13,16 @@ import { BsFillVolumeUpFill, BsMusicNoteList } from 'react-icons/bs';
 
 import PlayTrackItem from '@components/Common/PlayTrackItem';
 import { usePlayState, usePlayDispatch } from '@context/play';
+import { useAuthState, useAuthDispatch } from '@context/AuthContext';
 
 function PlayBar() {
   const state = usePlayState();
   const dispatch = usePlayDispatch();
 
-  // const [userAuth, setUserAuth] = useState(false);
+  const authState = useAuthState();
+  const authDispatch = useAuthDispatch();
+  const { userInfo } = authState;
+
   const [adShow, setAdShow] = useState(false);
   const [listShow, setListShow] = useState(false);
 
@@ -43,9 +47,16 @@ function PlayBar() {
             <AdContent>
               <TextContent>
                 1분 미리듣기 중입니다.
-                <br /> 로그인 후 6개월간 100% 페이백 혜택을 받아보세요.
+                <br />
+                {userInfo?.isLoggedIn
+                  ? '다양한 할인 혜택으로 VIBE를 시작해보세요.'
+                  : '로그인 후 6개월간 100% 페이백 혜택을 받아보세요.'}
               </TextContent>
-              <LoginLink>로그인</LoginLink>
+              {userInfo?.isLoggedIn ? (
+                <LoginLink>시작하기</LoginLink>
+              ) : (
+                <LoginLink>로그인</LoginLink>
+              )}
             </AdContent>
             <CloseButton>
               <IoCloseOutline size={26} onClick={adCloseHandle} color="fff" />

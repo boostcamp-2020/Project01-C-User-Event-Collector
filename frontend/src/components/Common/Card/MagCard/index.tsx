@@ -25,7 +25,7 @@ const MagCard = ({ magMetaData: mag }: IMagMetaProps) => {
   const target = 'MagCard';
   return (
     <Container>
-      <BoxItem imgUrl={mag.imgUrl} next="magazines" id={mag.id} target={target} />
+      <BoxItem magData={mag} imgUrl={mag.imgUrl} next="magazines" id={mag.id} target={target} />
       <A next="magazines" target={target} id={mag.id}>
         <MagTitle>{enterTitle(mag?.title)}</MagTitle>
       </A>

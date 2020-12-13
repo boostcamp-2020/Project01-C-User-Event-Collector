@@ -27,7 +27,7 @@ const AlbumCard = ({ albumMetaData: album }: IAlbumMetaProps) => {
   const target = 'AlbumCard';
   return (
     <Container>
-      <BoxItem target={target} imgUrl={album.imgUrl} next="album" id={album.id} />
+      <BoxItem albumData={album} target={target} imgUrl={album.imgUrl} next="album" id={album.id} />
       <A next="album" target={target} id={album.id}>
         <AlbumTitle>{album?.name}</AlbumTitle>
       </A>

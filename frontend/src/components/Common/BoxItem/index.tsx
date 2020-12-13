@@ -8,13 +8,16 @@ import Link from 'next/link';
 import Dropdown from '@components/Common/Dropdown';
 
 interface IBoxItemProps {
+  albumData?: any;
+  magData?: any;
+  playlistData?: any;
   imgUrl: string;
   next: string;
   target: string;
   id: number;
 }
 
-function BoxItem({ imgUrl, target, next, id }: IBoxItemProps) {
+function BoxItem({ albumData, magData, playlistData, imgUrl, target, next, id }: IBoxItemProps) {
   const router = useRouter();
   return (
     <>
@@ -37,7 +40,12 @@ function BoxItem({ imgUrl, target, next, id }: IBoxItemProps) {
           <BoxPlayButton />
           <BsThreeDots size={24} />
         </ButtonsWrapper>
-        <Dropdown type="listItem" />
+        <Dropdown
+          type="listItem"
+          albumData={albumData}
+          magData={magData}
+          playlistData={playlistData}
+        />
       </Wrapper>
     </>
   );

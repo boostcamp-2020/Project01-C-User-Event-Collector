@@ -26,6 +26,7 @@ const PlaylistCard = ({ playlistMetaData: playlist }: IPlaylistMetaProps) => {
   return (
     <Container>
       <BoxItem
+        playlistData={playlist}
         imgUrl={`https://picsum.photos/${180}`}
         target={target}
         next="playlist"

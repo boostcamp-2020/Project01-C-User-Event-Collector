@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import useFetch from '@hooks/useFetch';
 import api from '@api/index';
+import Modal from '@components/Common/Modal';
 import Today from '../src/pages/Today';
 
 function Index({ token, referer }) {
@@ -27,6 +28,7 @@ function Index({ token, referer }) {
 
   return (
     <div>
+      <Modal />
       <Today magList={mag.data} playlistList={playlist.data} />
     </div>
   );
@@ -34,6 +36,11 @@ function Index({ token, referer }) {
 
 export async function getServerSideProps({ req }) {
   // 브라우저의 document.cookie에 접근하는 코드
+  const regex = /(http:\/\/)([A-Z,a-z,:,0-9]*)/;
+  const host = req.headers?.referer?.match(regex)[0];
+  const referer = req.headers?.referer?.slice(host.length);
+  console.log(req.headers);
+
   const cookie = req.headers.cookie ? req.headers.cookie : null;
   const tokenFromCookie = cookie
     ? cookie
@@ -41,7 +48,7 @@ export async function getServerSideProps({ req }) {
         .find(row => row.startsWith('token'))
         .split('=')[1]
     : null;
-  return { props: { token: tokenFromCookie } };
+  return { props: { token: tokenFromCookie, referer: referer || 'external' } };
 }
 
 export default Index;

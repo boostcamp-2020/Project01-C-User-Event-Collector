@@ -19,7 +19,7 @@ const getArtistByArtistId = async (
 ): Promise<any> => {
   try {
     const { artistId } = req.params;
-    const artist = await Artist.findOne(artistId, { relations: ['genres'] });
+    const artist = await Artist.findOne(artistId, { relations: ['genres', 'tracks', 'albums'] });
     if (!artist) return res.status(404).json({ message: 'Artist Not Found' });
     return res.status(200).json({ success: true, data: artist });
   } catch (err) {

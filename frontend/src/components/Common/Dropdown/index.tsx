@@ -1,12 +1,37 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
+import useEventHandler from '@hooks/useEventHandler';
+import api from '@api/index';
+import { usePlayState, usePlayDispatch } from '@context/play';
 
 interface IDropdownProps {
   type: string;
+  albumData?: any;
+  magData?: any;
+  playlistData?: any;
 }
 
-const DropdownComponent = ({ type }: IDropdownProps) => {
+const DropdownComponent = ({ type, albumData, magData, playlistData }: IDropdownProps) => {
+  const state = usePlayState();
+  const dispatch = usePlayDispatch();
+
+  const logData = (name, params) => {
+    return {
+      eventTime: new Date(),
+      eventName: name,
+      parameters: params,
+    };
+  };
+
+  // const addEvent = (id)=>{
+  //   api.post()
+  // }
+
+  // const removeEvent = (id)=>{
+  //   api.post()
+  // }
+
   switch (type) {
     case 'auth':
       return (
@@ -43,7 +68,6 @@ const DropdownComponent = ({ type }: IDropdownProps) => {
         <Wrapper>
           <Dropdown style={dropdownStyle}>
             <Dropdown.Menu direction="right" style={dropdownMenuStyle}>
-              <Dropdown.Item style={dropdownItemStyle} text="내 플레이리스트 추가" />
               <Dropdown.Item style={dropdownItemStyle} text="보관함에 추가" />
               <Dropdown.Item style={dropdownItemStyle} text="바로 다음에 추가" />
               <Dropdown.Item style={dropdownItemStyle} text="맨 아래에 추가" />

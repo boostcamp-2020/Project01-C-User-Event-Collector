@@ -15,14 +15,14 @@ function AlbumDetail({ albumInfo: album }) {
         <Section>
           <p className="section-title">앨범 수록곡</p>
           <SectionContentWrapper>
-            {album.tracks &&
-              album.tracks.map(track => (
+            {album?.tracks &&
+              album?.tracks?.map(track => (
                 <TrackItem key={track.id} trackMetaData={track} albumData={album} />
               ))}
           </SectionContentWrapper>
         </Section>
         <Section>
-          <p className="section-title">관련 아티스트</p>
+          <p className="section-title">비슷한 아티스트</p>
           <RelatedArtist />
         </Section>
         <Section>
