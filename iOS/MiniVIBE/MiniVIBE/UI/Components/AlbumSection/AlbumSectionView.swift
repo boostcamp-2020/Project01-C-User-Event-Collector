@@ -16,7 +16,9 @@ struct AlbumSectionView: View {
     
     var body: some View {
         VStack {
-            MoreHeaderView(title: viewModel.title).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.more))
+            NavigationLink(destination: AlbumMoreView(viewModel: viewModel)) {
+                MoreHeaderView(title: viewModel.title)
+            }.emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.more))
             SectionScrollView {
                 ForEach(viewModel.albums.indices) { index in
                     NavigationLink(destination: AlbumDetailView(album: viewModel.albums[index])) {

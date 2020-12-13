@@ -12,8 +12,8 @@ import AuthenticationServices
 struct TodayView: View {
     let viewModel: ViewModel
     var body: some View {
-        NavigationView {
-        GeometryReader { proxy in
+        ZStack {
+            NavigationView {
                 ZStack {
                     Color.vibeBackground.ignoresSafeArea(edges: .top)
                     ScrollView(.vertical, showsIndicators: false) {
@@ -35,13 +35,20 @@ struct TodayView: View {
                             TodayFooterView()
                         }
                         .padding(.bottom, NowPlayingBarView.height)
-                    }.preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
+                    }
                     .padding(.top)
                     .navigationBarHidden(true)
-             
                 }
+            }
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    NowPlayingBarView()
+                }
+            }
         }
-        }.onAppear {
+        .onAppear {
             emitEvent(event: MoveEvent(next: TabType.today.description))
         }
     }

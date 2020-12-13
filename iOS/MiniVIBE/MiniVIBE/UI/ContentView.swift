@@ -26,8 +26,6 @@ struct ContentView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @State var colorMode: Bool = true
     @StateObject var viewModel: ViewModel
-    @State var playerFrame = CGRect.zero
-    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         Group {
         TabView(selection: $viewModel.selectedTab) {
@@ -62,49 +60,11 @@ struct ContentView: View {
                     Image(systemName: "person.fill")
                 }.tag(TabType.libarary)
         }.accentColor(.vibePink)
-        .onPreferenceChange(Size.self, perform: { value in
-            playerFrame = value.last ?? .zero
-        })
-        .overlay(
-            ZStack {
-                NowPlayingBarView(colorMode: $colorMode).position(x: playerFrame.midX, y: playerFrame.height - (NowPlayingBarView.height / 2)
-                ).frame(width: .musicPlayingBarWidth)
-                if musicPlayer.showMembership {
-                    membershipView .onTapGesture {
-                        emitEvent(event: TapEvent(component: "membershipView", target: .custom("멤버십 구매")))
-                        withAnimation { musicPlayer.showMembership = false }
-                    }
-                }
-            }
-        )
         }.preferredColorScheme(colorMode == true ? .dark : .light)
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
-private extension ContentView {
-    var membershipView: some View {
-        HStack(alignment: .top) {
-            VStack(alignment: .leading, spacing: .defaultSpacing) {
-                HStack {
-                    Image(systemName: "info.circle.fill")
-                    Text("1분 미리듣기")
-                }.font(.system(size: 13, weight: .bold))
-                Text("다양한 할인 혜택으로 멤버십 구독 후 전체 곡을 재생해 보세요.").font(.system(size: 11, weight: .semibold))
-            }
-            Spacer()
-            Button(action: { withAnimation { musicPlayer.showMembership = false
-                emitEvent(event: TapEvent(component: "membershipView", target: .custom("close")))
-            } }, label: {Image(systemName: "xmark")})
-        }
-        .foregroundColor(.white)
-        .padding(10)
-        .frame(width: .largeItemImageWidth, height: 60)
-        .background(LinearGradient(gradient: Gradient(colors: [.red, .vibePink, .purple]), startPoint: .leading, endPoint: .trailing))
-        .cornerRadius(5)
-        .position(x: playerFrame.midX, y: playerFrame.height - (NowPlayingBarView.height + 35))
-    }
-}
 
 enum TabType: CustomStringConvertible {
     case today
@@ -143,19 +103,5 @@ extension ContentView {
             self.container = container
             self.localRepository = container.localRepository
         }
-    }
-}
-
-struct Size: PreferenceKey {
-    typealias Value = [CGRect]
-    static var defaultValue: [CGRect] = []
-    static func reduce(value: inout [CGRect], nextValue: () -> [CGRect]) {
-        value.append(contentsOf: nextValue())
-    }
-}
-
-final class HostingController<T: View>: UIHostingController<T> {
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .lightContent
     }
 }

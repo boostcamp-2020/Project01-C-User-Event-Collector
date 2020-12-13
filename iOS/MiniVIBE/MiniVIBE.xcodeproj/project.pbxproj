@@ -22,6 +22,7 @@
 		B931019E256D800000DD5ADA /* View+vibeTitle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931019D256D800000DD5ADA /* View+vibeTitle1.swift */; };
 		B93101A8256D823700DD5ADA /* View+vibeMainText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93101A7256D823700DD5ADA /* View+vibeMainText.swift */; };
 		B93101B2256D848500DD5ADA /* View+vibeTitle3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93101B1256D848500DD5ADA /* View+vibeTitle3.swift */; };
+		B94C070F25869C7200066A20 /* AlbumMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94C070E25869C7200066A20 /* AlbumMoreView.swift */; };
 		B94DA9CA257D36EB0002A066 /* FakeServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94DA9C9257D36EB0002A066 /* FakeServerRepository.swift */; };
 		B94DA9D4257D56A40002A066 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94DA9D3257D56A40002A066 /* AsyncImageView.swift */; };
 		B94DA9DD257D66040002A066 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94DA9DC257D66040002A066 /* DependencyInjector.swift */; };
@@ -128,6 +129,7 @@
 		B93101A7256D823700DD5ADA /* View+vibeMainText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+vibeMainText.swift"; sourceTree = "<group>"; };
 		B93101B1256D848500DD5ADA /* View+vibeTitle3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+vibeTitle3.swift"; sourceTree = "<group>"; };
 		B93ED12E256BBC7D0033C43B /* SummarySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummarySectionView.swift; sourceTree = "<group>"; };
+		B94C070E25869C7200066A20 /* AlbumMoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumMoreView.swift; sourceTree = "<group>"; };
 		B94DA9C9257D36EB0002A066 /* FakeServerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeServerRepository.swift; sourceTree = "<group>"; };
 		B94DA9D3257D56A40002A066 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		B94DA9DC257D66040002A066 /* DependencyInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
@@ -512,6 +514,7 @@
 			children = (
 				B9FF8A59257A830E00B774CD /* AlbumSectionView.swift */,
 				B9FF8A5D257A832800B774CD /* AlbumSectionViewModel.swift */,
+				B94C070E25869C7200066A20 /* AlbumMoreView.swift */,
 				B91B27D4257FFD1100BC9CE8 /* AlbumDetailView.swift */,
 			);
 			path = AlbumSection;
@@ -834,6 +837,7 @@
 				B9A15703256E308900FFDA20 /* DJStationItem.swift in Sources */,
 				DEF5EFF225727E58006666DC /* MusicPlayer.swift in Sources */,
 				B9D18FDF256CD7B000ECEFEC /* SummaryItem.swift in Sources */,
+				B94C070F25869C7200066A20 /* AlbumMoreView.swift in Sources */,
 				DEC076DA2563AEBE004862AA /* TodayView.swift in Sources */,
 				B994C69C25627DBD000E563C /* MiniVIBEApp.swift in Sources */,
 				B9FF8A5E257A832800B774CD /* AlbumSectionViewModel.swift in Sources */,

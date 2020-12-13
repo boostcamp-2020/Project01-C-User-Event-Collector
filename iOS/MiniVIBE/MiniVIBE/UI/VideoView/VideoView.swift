@@ -11,35 +11,43 @@ struct VideoView: View {
     @State private var items: [Video] = MockItemFactory.videoItems
     let viewModel: VideoView.ViewModel
     var body: some View {
-        NavigationView {
-        GeometryReader { proxy in
-            ZStack {
-                Color.vibeBackground.ignoresSafeArea(edges: .top)
-                ScrollView(.vertical, showsIndicators: false) {
-                    VideoHeaderView(viewModel: VideoHeaderView.ViewModel(container: viewModel.container))
-                    LazyVGrid(columns: [.init(.adaptive(minimum: .largeItemImageMinWidth, maximum: .largeItemImageMaxWidth))], spacing: .defaultSpacing) {
-                        ForEach(items) { item in
-                            ImageItemView(image: Image(item.imageURLString), type: .one, ratio: 0.5) {
-                                HStack {
-                                    Text(item.title).vibeTitle3()
-                                    Text(item.artist).vibeMainText()
-                                    Spacer()
-                                    Button(action: {}, label: {
-                                        Image(systemName: "ellipsis")
-                                            .foregroundColor(.white)
-                                    })
+        ZStack {
+            NavigationView {
+                ZStack {
+                    Color.vibeBackground.ignoresSafeArea(edges: .top)
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VideoHeaderView(viewModel: VideoHeaderView.ViewModel(container: viewModel.container))
+                        LazyVGrid(columns: [.init(.adaptive(minimum: .largeItemImageMinWidth, maximum: .largeItemImageMaxWidth))], spacing: .defaultSpacing) {
+                            ForEach(items) { item in
+                                ImageItemView(image: Image(item.imageURLString), type: .one, ratio: 0.5) {
+                                    HStack {
+                                        Text(item.title).vibeTitle3()
+                                        Text(item.artist).vibeMainText()
+                                        Spacer()
+                                        Button(action: {}, label: {
+                                            Image(systemName: "ellipsis")
+                                                .foregroundColor(.white)
+                                        })
+                                    }
                                 }
                             }
-                        }
-                    }.padding(.bottom, NowPlayingBarView.height)
-                    .padding(.horizontal, .defaultPadding)
+                        }.padding(.bottom, NowPlayingBarView.height)
+                        .padding(.horizontal, .defaultPadding)
+                        Spacer()
+                    }
+                    .padding(.top)
+                    .navigationBarHidden(true)
                 }
-                .padding(.top)
-            }.navigationBarHidden(true)
-            .preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
-        }  .onAppear {
+            }
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    NowPlayingBarView()
+                }
+            }
+        }.onAppear {
             emitEvent(event: MoveEvent(next: TabType.video.description))
-        }
         }
     }
 }
