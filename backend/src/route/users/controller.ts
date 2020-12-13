@@ -1,9 +1,15 @@
 import * as express from 'express';
-import User from '../../entities/User';
+// import User from '../../entities/User';
 
-const getUser = async (req: express.Request, res: express.Response) => {
-  const { query, cookies } = req;
-  res.json({ query, cookies });
+const getUser = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  try {
+    const { user } = req;
+    if (!user) return res.status(500).json({ success: false });
+    return res.status(200).json({ success: true, user });
+  } catch (err) {
+    console.log(err);
+    return next(err);
+  }
 };
 
 const createUser = (req: express.Request, res: express.Response): void => {

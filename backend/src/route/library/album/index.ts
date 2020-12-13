@@ -1,4 +1,5 @@
 import * as express from 'express';
+import * as passport from 'passport';
 import { getAlbumsByUserId, addAlbum, deleteAlbum } from './controller';
 
 const route = express.Router();

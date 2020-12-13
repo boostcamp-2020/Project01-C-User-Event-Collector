@@ -2,23 +2,58 @@ import React from 'react';
 import styled from 'styled-components';
 import { BsThreeDots } from 'react-icons/bs';
 import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
+import { useRouter } from 'next/router';
+import useEventHandler from '@hooks/useEventHandler';
+import Link from 'next/link';
+import Dropdown from '@components/Common/Dropdown';
 
-const imgUrl = 'https://music-phinf.pstatic.net/20200901_92/1598948113558KQlwD_PNG/1.png?type=w720';
+interface IBoxItemProps {
+  albumData?: any;
+  magData?: any;
+  playlistData?: any;
+  imgUrl: string;
+  next: string;
+  target: string;
+  id: number;
+}
 
-function BoxItem() {
+function BoxItem({ albumData, magData, playlistData, imgUrl, target, next, id }: IBoxItemProps) {
+  const router = useRouter();
   return (
-    <Wrapper>
-      <BoxImage src={imgUrl} alt="" />
-      <ButtonsWrapper className="buttons-wrapper">
-        <BoxPlayButton />
-        <BsThreeDots size={24} />
-      </ButtonsWrapper>
-    </Wrapper>
+    <>
+      <Wrapper>
+        <Link href={`/${next}/[id]`} as={`/${next}/${id}`}>
+          <BoxImage
+            src={imgUrl}
+            alt="box-item-image"
+            onClick={useEventHandler(null, {
+              eventTime: new Date(),
+              eventName: 'ClickEvent',
+              parameters: {
+                page: router.pathname,
+                target: `/${`${target}/${id}`}`,
+              },
+            })}
+          />
+        </Link>
+        <ButtonsWrapper className="buttons-wrapper">
+          <BoxPlayButton />
+          <BsThreeDots size={24} />
+        </ButtonsWrapper>
+        <Dropdown
+          type="listItem"
+          albumData={albumData}
+          magData={magData}
+          playlistData={playlistData}
+        />
+      </Wrapper>
+    </>
   );
 }
 
 const BoxImage = styled.img`
   width: 100%;
+  height: 100%;
 `;
 
 const ButtonsWrapper = styled.div`
@@ -36,8 +71,8 @@ const ButtonsWrapper = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   position: relative;
   cursor: pointer;
   color: ${props => props.theme.color.mainBGColor};

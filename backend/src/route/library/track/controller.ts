@@ -8,7 +8,9 @@ const getTracksByUserId = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const trackList = await Track.findByUserId(1);
+    const { id: userId } = req.user as User;
+    console.log(userId);
+    const trackList = await Track.findByUserId(userId);
     console.log('@@@ trackList : ', trackList);
     res.status(200).json({
       success: true,
@@ -22,11 +24,11 @@ const getTracksByUserId = async (
 
 const addTrack = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
-    // const { id: userId } = req.user as User;
+    const { id: userId } = req.user as User;
     const { trackId } = req.body;
     if (!trackId) return res.status(400).json({ message: 'Parameter Error: trackId' });
 
-    const user = (await User.findOne(1, { relations: ['tracks'] })) as User;
+    const user = (await User.findOne(userId, { relations: ['tracks'] })) as User;
     const track = (await Track.findOne(trackId)) as Track;
     if (!track) return res.status(404).json({ message: 'Track Not Found' });
 
@@ -41,11 +43,11 @@ const addTrack = async (req: Request, res: Response, next: NextFunction): Promis
 
 const deleteTrack = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
-    // const { id: userId } = req.user as User;
+    const { id: userId } = req.user as User;
     const { trackId } = req.params;
     if (!trackId) return res.status(400).json({ message: 'Parameter Error: trackId' });
 
-    const user = (await User.findOne(1, { relations: ['tracks'] })) as User;
+    const user = (await User.findOne(userId, { relations: ['tracks'] })) as User;
     const trackToRemove = (await Track.findOne(trackId)) as Track;
     if (!trackToRemove) return res.status(404).json({ message: 'Track Not Found' });
 

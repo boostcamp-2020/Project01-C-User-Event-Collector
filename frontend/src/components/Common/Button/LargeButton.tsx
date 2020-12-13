@@ -1,34 +1,91 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 
-interface Props {
+import { RiOrderPlayFill, RiPlayListAddLine } from 'react-icons/ri';
+import { IoMdPlay } from 'react-icons/io';
+import { IoShuffleOutline } from 'react-icons/io5';
+
+interface ILargeButtonProps {
   onClick?: React.MouseEventHandler;
   children?: any;
-  customType: string;
+  customType?: string;
 }
 
-const PlayButton = ({ onClick, children, customType }: Props) => (
-  <CustomButton onClick={onClick} customType={customType}>
-    {children}
-  </CustomButton>
-);
+const LargeButton = ({ onClick, children, customType }: ILargeButtonProps) => {
+  switch (customType) {
+    case 'play':
+      return (
+        <PlayButton>
+          <IoMdPlay size={20} />
+          <span>전체재생</span>
+        </PlayButton>
+      );
+    case 'shuffle':
+      return (
+        <ShuffleButton>
+          <IoShuffleOutline size={20} />
+          <span>랜덤재생</span>
+        </ShuffleButton>
+      );
+    case 'addToFirst':
+      return (
+        <AddPlaylistButton>
+          <RiOrderPlayFill />
+          <span>바로 다음에 추가</span>
+        </AddPlaylistButton>
+      );
+    case 'addToLast':
+      return (
+        <AddPlaylistButton>
+          <RiPlayListAddLine />
+          <span>맨 아래에 추가</span>
+        </AddPlaylistButton>
+      );
+    case 'mp3':
+      return (
+        <ShuffleButton style={{ width: '100px' }}>
+          <span>MP3 구매</span>
+        </ShuffleButton>
+      );
+    default:
+      return <CustomButton>{children}</CustomButton>;
+  }
+};
 
-const CustomButton = styled.a<Props>`
-  cursor: pointer;
+// const iconStyle = {
+//   marginRight: '4px',
+//   position: 'relative',
+//   bottom: '1px',
+// };
+
+const CustomButton = styled.button<ILargeButtonProps>`
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-
-  font-size: 0.95rem;
-  padding: 0 1.7rem;
-  height: 42px;
-
-  border-radius: 5px;
-  border: solid 1px ${props => props.customType === 'play' ? '#ff1150' : '#d7d7d7'};
-
-  color: ${props => props.customType === 'play' ? 'white' : '#232323'};
-  background: ${props => props.customType === 'play' ? '#ff1150' : '#fbfbfb'};
+  border: solid 1px #d7d7d7;
+  background: #fbfbfb;
+  color: #232323;
+  border-radius: 4px;
 `;
 
-export default PlayButton;
+const HeaderButton = styled(CustomButton)`
+  width: 135px;
+  height: 42px;
+  font-size: 15px;
+`;
+
+const PlayButton = styled(HeaderButton)`
+  border: solid 1px #ff1150;
+  background: #ff1150;
+  color: white;
+`;
+
+const ShuffleButton = styled(HeaderButton)``;
+
+const AddPlaylistButton = styled(CustomButton)`
+  width: 130px;
+  height: 36px;
+  font-size: 13px;
+`;
+
+export default LargeButton;

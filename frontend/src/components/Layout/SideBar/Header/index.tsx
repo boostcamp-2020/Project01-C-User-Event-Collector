@@ -2,12 +2,15 @@ import React from 'react';
 import styled from '@styles/themed-components';
 import { CgSearch } from 'react-icons/cg';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function Header() {
   return (
     <Container>
       <ImageWrapper>
-        <Image alt="header-logo" src="/images/header-logo.png" width={125} height={45} />
+        <Link href="/today">
+          <Image alt="header-logo" src="/images/header-logo.png" width={125} height={45} />
+        </Link>
       </ImageWrapper>
       <IconWrapper>
         <CgSearch size="26" className="search-icon" />
