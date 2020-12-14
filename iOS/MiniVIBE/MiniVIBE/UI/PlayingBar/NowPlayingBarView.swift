@@ -10,10 +10,14 @@ import SwiftUI
 struct NowPlayingBarView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @State private var isPresent = false
-    @Binding var colorMode: Bool
+    @Environment(\.colorScheme) var colorScheme
     static let height: CGFloat = 75
     var body: some View {
         VStack {
+            if musicPlayer.showMembership {
+                membershipView
+            }
+            VStack {
             MusicProgressView()
             HStack {
                 AsyncImageView(url: musicPlayer.nowPlayingSong.imageURLString)
@@ -47,14 +51,36 @@ struct NowPlayingBarView: View {
             }.sheet(isPresented: $isPresent, content: {
                 MusicPlayerView(isPresented: $isPresent)
                     .environmentObject(musicPlayer)
-            .preferredColorScheme(colorMode == true ? .dark : .light)
+            .preferredColorScheme(colorScheme)
             })
             .padding(.all)
+            }
+            .frame(width: .musicPlayingBarWidth, height: Self.height).background(Blur())
+            .background(Color.vibeBackground.opacity(0.4))
         }
-        .frame( height: Self.height)
-        .background(Blur())
-        .background(Color.vibeBackground.opacity(0.4))
-        
+    }
+}
+
+private extension NowPlayingBarView {
+    var membershipView: some View {
+        HStack(alignment: .top) {
+            VStack(alignment: .leading, spacing: .defaultSpacing) {
+                HStack {
+                    Image(systemName: "info.circle.fill")
+                    Text("1분 미리듣기")
+                }.font(.system(size: 13, weight: .bold))
+                Text("다양한 할인 혜택으로 멤버십 구독 후 전체 곡을 재생해 보세요.").font(.system(size: 11, weight: .semibold))
+            }
+            Spacer()
+            Button(action: { withAnimation { musicPlayer.showMembership = false
+                emitEvent(event: TapEvent(component: "membershipView", target: .custom("close")))
+            } }, label: {Image(systemName: "xmark")})
+        }
+        .foregroundColor(.white)
+        .padding(10)
+        .frame(width: .largeItemImageWidth, height: 60)
+        .background(LinearGradient(gradient: Gradient(colors: [.red, .vibePink, .purple]), startPoint: .leading, endPoint: .trailing))
+        .cornerRadius(5)
     }
 }
 
