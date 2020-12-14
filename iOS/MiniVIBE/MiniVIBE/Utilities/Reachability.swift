@@ -10,7 +10,7 @@ import Network
 import Combine
 
 class Reachability: ObservableObject {
-    let monitor = NWPathMonitor()
+    let monitor = NWPathMonitor(requiredInterfaceType: .wifi)
     @Published var isConnected: Bool = false
     
     init() {
