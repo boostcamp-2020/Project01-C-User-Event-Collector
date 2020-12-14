@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import {
   IoPlaySkipForwardSharp,
@@ -13,54 +13,68 @@ import { BsFillVolumeUpFill, BsMusicNoteList } from 'react-icons/bs';
 
 import PlayTrackItem from '@components/Common/PlayTrackItem';
 import { usePlayState, usePlayDispatch } from '@context/play';
+import { useAuthState } from '@context/AuthContext';
 
 function PlayBar() {
   const state = usePlayState();
   const dispatch = usePlayDispatch();
 
-  // const [userAuth, setUserAuth] = useState(false);
+  const authState = useAuthState();
+  // const authDispatch = useAuthDispatch();
+  const { userInfo } = authState;
+
   const [adShow, setAdShow] = useState(false);
   const [listShow, setListShow] = useState(false);
 
   const setPlayStart = () => {
     setAdShow(true);
-    return dispatch({ type: "PLAY_START" });
-  }
-  const setPlayPause = () => dispatch({ type: "PLAY_PAUSE" });
+    return dispatch({ type: 'PLAY_START' });
+  };
+  const setPlayPause = () => dispatch({ type: 'PLAY_PAUSE' });
 
   const adCloseHandle = () => {
     setAdShow(false);
-  }
+  };
   const listUpHandle = () => {
     setListShow(!listShow);
-  }
-
+  };
 
   return (
-    <Fragment>
+    <>
       {adShow && (
         <AdvertisementWrapper>
           <Advertisement>
             <AdContent>
-              <TextContent>1분 미리듣기 중입니다. <br /> 로그인 후 6개월간 100% 페이백 혜택을 받아보세요.</TextContent>
-              <LoginLink>로그인</LoginLink>
+              <TextContent>
+                1분 미리듣기 중입니다.
+                <br />
+                {userInfo?.isLoggedIn
+                  ? '다양한 할인 혜택으로 VIBE를 시작해보세요.'
+                  : '로그인 후 6개월간 100% 페이백 혜택을 받아보세요.'}
+              </TextContent>
+              {userInfo?.isLoggedIn ? (
+                <LoginLink>시작하기</LoginLink>
+              ) : (
+                <LoginLink>로그인</LoginLink>
+              )}
             </AdContent>
             <CloseButton>
-              <IoCloseOutline size={26} onClick={adCloseHandle} color={'fff'} />
+              <IoCloseOutline size={26} onClick={adCloseHandle} color="fff" />
             </CloseButton>
           </Advertisement>
         </AdvertisementWrapper>
       )}
-      <Fragment>
+      <>
         <Player>
           <PlayTrackItem />
           <ButtonWrapper>
             <IoShuffleOutline className="side button" size={26} />
             <IoPlaySkipBackSharp className="skip button" size={22} />
-            {state.isPlaying ?
-              (<IoPause className="play button" size={35} onClick={setPlayPause} />) :
-              (<IoPlaySharp className="play button" size={35} onClick={setPlayStart} />)
-            }
+            {state.isPlaying ? (
+              <IoPause className="play button" size={35} onClick={setPlayPause} />
+            ) : (
+              <IoPlaySharp className="play button" size={35} onClick={setPlayStart} />
+            )}
             <IoPlaySkipForwardSharp className="skip button" size={22} />
             <IoRepeat className="side button" size={26} />
           </ButtonWrapper>
@@ -77,11 +91,11 @@ function PlayBar() {
         </Player>
         <MyPlaylistContainer visiable={listShow}>
           <Dimmed />
-          <AlbumImage></AlbumImage>
-          <Playlist></Playlist>
+          <AlbumImage />
+          <Playlist />
         </MyPlaylistContainer>
-      </Fragment>
-    </Fragment>
+      </>
+    </>
   );
 }
 
@@ -92,13 +106,13 @@ const MyPlaylistContainer = styled.div<{ visiable: boolean }>`
   bottom: 81px;
   left: 0;
   z-index: 10200;
-  visibility: ${props => props.visiable ? 'visiable' : 'hidden'};
+  visibility: ${props => (props.visiable ? 'visiable' : 'hidden')};
 `;
 
 const Dimmed = styled.div`
   width: 100%;
   height: 100%;
-  background-color: rgba(20,20,20,.97);
+  background-color: rgba(20, 20, 20, 0.97);
 `;
 
 const AlbumImage = styled.div`
@@ -131,7 +145,7 @@ const Advertisement = styled.div`
   left: 0;
   padding: 14px 20px 15px;
   text-align: center;
-  background-color: rgba(35,35,35,.97);
+  background-color: rgba(35, 35, 35, 0.97);
   outline: 0;
 `;
 
@@ -156,7 +170,7 @@ const LoginLink = styled.a`
   color: #ff1350;
   padding-left: 0.5rem;
 
-  ::after{
+  ::after {
     content: '>';
     padding: 2px;
   }
@@ -195,7 +209,7 @@ const ListUpButton = styled.button<{ up: boolean }>`
   align-items: center;
   justify-content: center;
   color: ${props => props.theme.color.playbarFontColor};
-  background: ${props => props.up ? '#ff1350' : ''};
+  background: ${props => (props.up ? '#ff1350' : '')};
 `;
 
 const ButtonWrapper = styled.div`

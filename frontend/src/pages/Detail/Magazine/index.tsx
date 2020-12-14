@@ -18,7 +18,6 @@ type MetaMagazine = {
 };
 
 function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
-
   return (
     <Wrapper>
       <MagHeader>
@@ -31,20 +30,24 @@ function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
             <MagTitle>{magazine?.title}</MagTitle>
             <MagContent>{magazine?.content}</MagContent>
             <MagPlayList>
-              <MagPlayListInfo>총 {magazine?.tracks?.length}곡 </MagPlayListInfo>
+              <MagPlayListInfo>
+총{magazine?.tracks?.length}
+곡
+{' '}
+</MagPlayListInfo>
               <MagPlayListLink>플레이리스트 보기</MagPlayListLink>
             </MagPlayList>
             <MagPlayButtonList>
               <ButtonWrapper>
-                <LargeButton customType={'play'} />
+                <LargeButton customType="play" />
               </ButtonWrapper>
               <ButtonWrapper>
-                <LargeButton customType={'shuffle'} />
+                <LargeButton customType="shuffle" />
               </ButtonWrapper>
             </MagPlayButtonList>
             <MagSub>
               <SubItem>VIBE MAG</SubItem>
-              <SubItem Before={true}>{magazine?.date}</SubItem>
+              <SubItem Before>{magazine?.date}</SubItem>
             </MagSub>
           </InfoArea>
         </MagInner>
@@ -55,7 +58,7 @@ function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
 }
 
 const Wrapper = styled.div`
-  padding-bottom: 200px;
+  padding-bottom: 50px;
 `;
 
 const MagHeader = styled.div`
@@ -75,11 +78,11 @@ const BlurThumb = styled.img`
   margin-top: -25%;
 
   opacity: 0.17;
-  -webkit-filter:blur(20px);
-  -moz-filter:blur(20px);
-  -o-filter:blur(20px);
-  -ms-filter:blur(20px);
-  filter:blur(20px);
+  -webkit-filter: blur(20px);
+  -moz-filter: blur(20px);
+  -o-filter: blur(20px);
+  -ms-filter: blur(20px);
+  filter: blur(20px);
 `;
 
 const MagInner = styled.div`
@@ -104,7 +107,7 @@ const InfoArea = styled.div`
 
 const MagBadge = styled.span`
   display: inline-block;
-  background: #781CF5;
+  background: #781cf5;
 
   font-size: 14px;
   font-weight: 500;
@@ -130,32 +133,32 @@ const MagTitle = styled.h2`
 `;
 
 const MagContent = styled.h5`
-    overflow: hidden;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    text-overflow: ellipsis;
-    white-space: normal;
-    word-break: break-all;
-    display: block;
-    display: -webkit-box;
-    max-height: 78px;
-    margin-top: 8px;
-    font-size: 15px;
-    line-height: 26px;
-    color: hsla(0,0%,100%,.5);
-    white-space: pre-line;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-all;
+  display: block;
+  display: -webkit-box;
+  max-height: 78px;
+  margin-top: 8px;
+  font-size: 15px;
+  line-height: 26px;
+  color: hsla(0, 0%, 100%, 0.5);
+  white-space: pre-line;
 
-    ::after {
-      content: "";
-      display: block;
-      height: 13px;
-    }
+  ::after {
+    content: '';
+    display: block;
+    height: 13px;
+  }
 `;
 
 const MagPlayList = styled.div`
   font-size: 15px;
   line-height: 26px;
-  color: hsla(0,0%,100%,.7);
+  color: hsla(0, 0%, 100%, 0.7);
 
   margin-top: 8px;
 `;
@@ -200,7 +203,7 @@ const MagPlayListLink = styled.a`
 const MagPlayButtonList = styled.div`
   display: flex;
   justify-content: center;
-  
+
   margin-top: 32px;
   text-align: center;
 `;
@@ -213,7 +216,7 @@ const MagSub = styled.div`
   position: absolute;
   top: 16px;
   left: 0;
-  color: hsla(0,0%,88.2%,.3);
+  color: hsla(0, 0%, 88.2%, 0.3);
 `;
 
 const SubItem = styled.span<{ Before?: boolean }>`
@@ -222,7 +225,9 @@ const SubItem = styled.span<{ Before?: boolean }>`
   line-height: 17px;
   vertical-align: top;
 
-  ${props => props.Before ? `::before {
+  ${props =>
+    props.Before
+      ? `::before {
     display: inline-block;
     vertical-align: top;
     content: "";
@@ -231,7 +236,8 @@ const SubItem = styled.span<{ Before?: boolean }>`
     margin: 7px 3px 0 6px;
     border-radius: 50%;
     color: hsla(0,0%,88.2%,.3);
-    }` : ''};
+    }`
+      : ''};
 `;
 
 export default MagazineDetail;

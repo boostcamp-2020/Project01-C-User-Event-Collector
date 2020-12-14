@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
 import useFetch from '@hooks/useFetch';
+import api from '@api/index';
 import AlbumDetail from '../../src/pages/Detail/Album';
 
-export function Index({ data: req }) {
+export function Index({ referer }) {
   const router = useRouter();
   const { id } = router.query;
   const { data, isLoading, isError } = useFetch(`/album/${id}`);
@@ -12,10 +13,12 @@ export function Index({ data: req }) {
     console.log(isError);
     return <div>...Error</div>;
   }
-
-  console.log('req : ', req);
-
-  console.log('router.asPath : ', router.asPath);
+  const logData = {
+    eventTime: new Date(),
+    eventName: 'MoveEvent',
+    parameters: { prev: referer || 'external', next: router.asPath },
+  };
+  api.post('/log', logData);
 
   console.log('useFetch album/id hook 시작!');
   console.log('data : ', data);
@@ -23,14 +26,16 @@ export function Index({ data: req }) {
   return (
     <>
       <AlbumDetail albumInfo={data.data} />
-      <p>{router.query.id}</p>
     </>
   );
 }
 
 export async function getServerSideProps({ req }) {
-  console.log(req.headers);
-  return { props: { data: JSON.stringify(req.headers) } };
+  const regex = /(http:\/\/)([A-Z,a-z,:,0-9]*)/;
+  const host = req.headers?.referer?.match(regex)[0];
+  const referer = req.headers?.referer?.slice(host.length);
+
+  return { props: { referer: referer || 'external' } };
 }
 
 export default Index;

@@ -7,20 +7,17 @@ import useEventHandler from '@hooks/useEventHandler';
 import Link from 'next/link';
 import Dropdown from '@components/Common/Dropdown';
 
-// interface EventTargetProps {
-//   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-// }
+interface IBoxItemProps {
+  albumData?: any;
+  magData?: any;
+  playlistData?: any;
+  imgUrl: string;
+  next: string;
+  target: string;
+  id: number;
+}
 
-// const eventLogHandler = pathname => {
-//   const logData = {
-//     eventTime: new Date(),
-//     eventName: 'move_page',
-//     parameters: { prev: pathname, next: '/magazines/100523' },
-//   };
-//   api.post('/log', logData);
-// };
-
-function BoxItem({ imgUrl, next, id }) {
+function BoxItem({ albumData, magData, playlistData, imgUrl, target, next, id }: IBoxItemProps) {
   const router = useRouter();
   return (
     <>
@@ -31,8 +28,11 @@ function BoxItem({ imgUrl, next, id }) {
             alt="box-item-image"
             onClick={useEventHandler(null, {
               eventTime: new Date(),
-              eventName: 'move_page',
-              parameters: { prev: router.pathname, next: `/${`${next}/${id}`}` },
+              eventName: 'ClickEvent',
+              parameters: {
+                page: router.pathname,
+                target: `/${`${target}/${id}`}`,
+              },
             })}
           />
         </Link>
@@ -40,7 +40,12 @@ function BoxItem({ imgUrl, next, id }) {
           <BoxPlayButton />
           <BsThreeDots size={24} />
         </ButtonsWrapper>
-        <Dropdown type="listItem" />
+        <Dropdown
+          type="listItem"
+          albumData={albumData}
+          magData={magData}
+          playlistData={playlistData}
+        />
       </Wrapper>
     </>
   );

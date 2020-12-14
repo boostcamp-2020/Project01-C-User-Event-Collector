@@ -7,7 +7,7 @@ const ArtistList = ({ artistList }) => {
   return (
     <ListContainer>
       {artistList.map(artist => (
-        <ArtistCard key={artist.id} artistMetaData={artist} />
+        <ArtistCard key={artist.id} artistMetaData={artist} type="myArtist" />
       ))}
     </ListContainer>
   );

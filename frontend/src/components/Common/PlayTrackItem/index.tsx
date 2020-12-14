@@ -3,19 +3,27 @@ import styled from 'styled-components';
 import { IoHeartOutline } from 'react-icons/io5';
 import { RiPlayListLine } from 'react-icons/ri';
 import { BsThreeDots } from 'react-icons/bs';
+import A from '@components/Common/A';
 
 const testImgUrl =
   'https://musicmeta-phinf.pstatic.net/album/005/064/5064543.jpg?type=r720Fll&v=20201104164506';
 
 function PlayTrackItem() {
+  const target = 'PlayTrackItem';
   return (
     <TrackWrapper>
       <TrackImgWrapper>
-        <TrackImg src={testImgUrl} alt="playbar-track-img" />
+        <A next="album" id={1} target={target}>
+          <TrackImg src={testImgUrl} alt="playbar-track-img" />
+        </A>
       </TrackImgWrapper>
       <TrackContentWrapper>
-        <TrackTitle>얘랑 있을 때 좋다 (...</TrackTitle>
-        <TrackArtist>어쿠스틱 콜라보</TrackArtist>
+        <A next="track" id={1} target={target}>
+          <TrackTitle>얘랑 있을 때 좋다 (...</TrackTitle>
+        </A>
+        <A next="artist" id={222} target={target}>
+          <TrackArtist>어쿠스틱 콜라보</TrackArtist>
+        </A>
       </TrackContentWrapper>
       <IconWrapper>
         <IoHeartOutline className="like button" size={24} />
