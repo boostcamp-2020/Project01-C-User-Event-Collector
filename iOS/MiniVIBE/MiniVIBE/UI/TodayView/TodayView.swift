@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import AuthenticationServices
+import EventEmitter
 
 struct TodayView: View {
     let viewModel: ViewModel

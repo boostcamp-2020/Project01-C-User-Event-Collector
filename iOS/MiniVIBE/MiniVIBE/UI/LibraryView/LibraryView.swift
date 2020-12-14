@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import EventEmitter
 
 struct LibraryView: View {
     @StateObject var viewModel: ViewModel

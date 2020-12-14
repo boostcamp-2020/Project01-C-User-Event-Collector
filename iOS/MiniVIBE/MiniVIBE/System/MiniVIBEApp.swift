@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventEmitter
 
 @main
 struct MiniVIBEApp: App {

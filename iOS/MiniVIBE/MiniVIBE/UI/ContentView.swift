@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import EventEmitter
 
 struct TabSyncView<Content: View>: View {
     @Binding var selection: TabType

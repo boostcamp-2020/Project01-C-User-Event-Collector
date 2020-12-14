@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventEmitter
 
 struct MusicPlayerView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer

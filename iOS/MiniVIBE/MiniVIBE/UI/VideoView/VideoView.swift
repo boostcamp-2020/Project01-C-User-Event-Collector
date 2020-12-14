@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventEmitter
 
 struct VideoView: View {
     @State private var items: [Video] = MockItemFactory.videoItems

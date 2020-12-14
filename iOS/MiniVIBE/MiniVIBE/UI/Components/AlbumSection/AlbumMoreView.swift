@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventEmitter
 
 struct AlbumMoreView: View {
     let viewModel: AlbumSectionView.ViewModel

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventEmitter
 
 protocol LocalRepository {
     func fetchEvent() -> [CoreDataEvent]
