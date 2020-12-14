@@ -43,7 +43,9 @@ struct TodayView: View {
             VStack {
                 Spacer()
                 HStack {
-                    Spacer()
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        Spacer()
+                    }
                     NowPlayingBarView()
                 }
             }

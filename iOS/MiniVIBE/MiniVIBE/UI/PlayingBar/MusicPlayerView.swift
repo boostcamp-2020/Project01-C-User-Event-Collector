@@ -187,7 +187,6 @@ struct MusicProgressView: View {
                     if musicPlayer.isPlaying {
                         if currentProgress < 50 {
                             currentProgress += 1
-                            
                         } else {
                             currentProgress = 0
                             musicPlayer.isPlaying = false
