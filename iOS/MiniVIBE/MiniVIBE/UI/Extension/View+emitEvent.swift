@@ -55,20 +55,19 @@ public class Event: Codable, Identifiable {
     let parameters: [String: String]?
     let date: Date
 
-    init(name: EventName, parameters: [String: String]) {
+    init(name: String, parameters: [String: String]) {
         self.name = name.description
         self.date = Date()
         self.id = UUID()
         self.parameters = parameters
     }
     
+}
+
+class CoreDataEvent: Event {
     init(cdEvent: CDEvent) {
-        self.id = UUID()
-        self.name = cdEvent.name ?? ""
-        self.date = cdEvent.date ?? Date()
-        
         let cdParameter = cdEvent.parameter ?? NSSet()
-        self.parameters = cdParameter.compactMap { setItem -> CDParameter? in
+        let parameters = cdParameter.compactMap { setItem -> CDParameter? in
             guard let item = setItem as? CDParameter else { return nil }
             return item
         }.reduce([:], { (dict, pair) -> [String: String]? in
@@ -77,6 +76,15 @@ public class Event: Codable, Identifiable {
             parameter[key] = value
             return parameter
         })
+        super.init(name: cdEvent.name ?? "", parameters: parameters ?? [:])
+    }
+    
+    init(name: String, parameter: [String: String]){
+        super.init(name: name, parameters: parameter)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        fatalError("init(from:) has not been implemented")
     }
 }
 
@@ -90,7 +98,7 @@ class MoveEvent: Event {
     static private(set) var path = "Start"
     static private(set) var prePath = "Start"
     init(prev: String = MoveEvent.path, next: String, setPath: Bool = true, setPrePath: Bool = false) {
-        super.init(name: .movePage, parameters: [.preView: prev, .nextView: next])
+        super.init(name: EventName.movePage.description, parameters: [.preView: prev, .nextView: next])
         if setPath {
             Self.path = next
         }
@@ -108,7 +116,7 @@ class MoveEvent: Event {
 
 class TapEvent: Event {
     init(component: String, target: Target) {
-        super.init(name: .tabButton, parameters: [.component: component, .target: target.description])
+        super.init(name: EventName.tabButton.description, parameters: [.component: component, .target: target.description])
     }
     
     required init(from decoder: Decoder) throws {
@@ -120,7 +128,7 @@ class TapEvent: Event {
 
 class ErrorEvent: Event {
     init(from: String, reason: String) {
-        super.init(name: .error, parameters: [.from: from, .reason: reason])
+        super.init(name: EventName.error.description, parameters: [.from: from, .reason: reason])
     }
     
     required init(from decoder: Decoder) throws {

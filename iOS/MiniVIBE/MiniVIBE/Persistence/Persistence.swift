@@ -42,7 +42,7 @@ final class PersistenceController {
         return true
     }
     
-    func saveEvent(event: Event) -> Bool {
+    func saveEvent(event: CoreDataEvent) -> Bool {
         guard let eventEntity = NSEntityDescription.entity(forEntityName: "CDEvent", in: context) else { return false }
         let cdEvent = NSManagedObject(entity: eventEntity, insertInto: context)
         cdEvent.setValue(event.name, forKey: "name")
