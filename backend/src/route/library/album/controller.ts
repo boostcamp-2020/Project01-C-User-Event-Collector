@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import Album from '../../../entities/Album';
-import User from '../../../entities/User';
+import { IJwtPayload } from '../../../middlewares/auth';
+import * as libraryAlbumService from '../../../services/library/album';
 
 const getAlbumsByUserId = async (
   req: Request,
@@ -8,12 +8,9 @@ const getAlbumsByUserId = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const { id: userId } = req.user as User;
-    const albumList = await Album.findByUserId(userId);
-    res.status(200).json({
-      success: true,
-      data: albumList,
-    });
+    const { id: userId } = req.user as IJwtPayload;
+    const albumList = await libraryAlbumService.getAlbumsByUserId(userId);
+    res.status(200).json({ success: true, data: albumList });
   } catch (err) {
     console.log(err);
     next(err);
@@ -22,16 +19,12 @@ const getAlbumsByUserId = async (
 
 const addAlbum = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
-    const { id: userId } = req.user as User;
+    const { id: userId } = req.user as IJwtPayload;
     const { albumId } = req.body;
     if (!albumId) return res.status(400).json({ message: 'Parameter Error: albumId' });
 
-    const user = (await User.findOne(userId, { relations: ['albums'] })) as User;
-    const album = (await Album.findOne(albumId)) as Album;
-    if (!album) return res.status(404).json({ message: 'Album Not Found' });
-
-    user.albums.push(album);
-    await user.save();
+    const isSuccess = await libraryAlbumService.addAlbum(userId, albumId);
+    if (!isSuccess) return res.status(404).json({ message: 'Album Not Found' });
     return res.status(204).end();
   } catch (err) {
     console.log(err);
@@ -41,16 +34,12 @@ const addAlbum = async (req: Request, res: Response, next: NextFunction): Promis
 
 const deleteAlbum = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
-    const { id: userId } = req.user as User;
+    const { id: userId } = req.user as IJwtPayload;
     const { albumId } = req.params;
     if (!albumId) return res.status(400).json({ message: 'Parameter Error: albumId' });
 
-    const user = (await User.findOne(userId, { relations: ['albums'] })) as User;
-    const albumToRemove = (await Album.findOne(albumId)) as Album;
-    if (!albumToRemove) return res.status(404).json({ message: 'Album Not Found' });
-
-    user.albums = user.albums.filter(album => album.id !== albumToRemove.id);
-    await user.save();
+    const isSuccess = await libraryAlbumService.deleteAlbum(userId, parseInt(albumId, 10));
+    if (!isSuccess) return res.status(404).json({ message: 'Album Not Found' });
     return res.status(204).end();
   } catch (err) {
     console.log(err);
