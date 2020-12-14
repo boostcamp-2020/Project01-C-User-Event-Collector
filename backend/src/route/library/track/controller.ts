@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import Track from '../../../entities/Track';
-import User from '../../../entities/User';
+import { IJwtPayload } from '../../../middlewares/auth';
+import * as libraryTrackService from '../../../services/library/track';
 
 const getTracksByUserId = async (
   req: Request,
@@ -8,14 +8,9 @@ const getTracksByUserId = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const { id: userId } = req.user as User;
-    console.log(userId);
-    const trackList = await Track.findByUserId(userId);
-    console.log('@@@ trackList : ', trackList);
-    res.status(200).json({
-      success: true,
-      data: trackList,
-    });
+    const { id: userId } = req.user as IJwtPayload;
+    const trackList = await libraryTrackService.getTracksByUserId(userId);
+    res.status(200).json({ success: true, data: trackList });
   } catch (err) {
     console.log(err);
     next(err);
@@ -24,16 +19,12 @@ const getTracksByUserId = async (
 
 const addTrack = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
-    const { id: userId } = req.user as User;
+    const { id: userId } = req.user as IJwtPayload;
     const { trackId } = req.body;
     if (!trackId) return res.status(400).json({ message: 'Parameter Error: trackId' });
 
-    const user = (await User.findOne(userId, { relations: ['tracks'] })) as User;
-    const track = (await Track.findOne(trackId)) as Track;
-    if (!track) return res.status(404).json({ message: 'Track Not Found' });
-
-    user.tracks.push(track);
-    await user.save();
+    const isSuccess = await libraryTrackService.addTrack(userId, trackId);
+    if (!isSuccess) return res.status(404).json({ message: 'Track Not Found' });
     return res.status(204).end();
   } catch (err) {
     console.log(err);
@@ -43,16 +34,12 @@ const addTrack = async (req: Request, res: Response, next: NextFunction): Promis
 
 const deleteTrack = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
-    const { id: userId } = req.user as User;
+    const { id: userId } = req.user as IJwtPayload;
     const { trackId } = req.params;
     if (!trackId) return res.status(400).json({ message: 'Parameter Error: trackId' });
 
-    const user = (await User.findOne(userId, { relations: ['tracks'] })) as User;
-    const trackToRemove = (await Track.findOne(trackId)) as Track;
-    if (!trackToRemove) return res.status(404).json({ message: 'Track Not Found' });
-
-    user.tracks = user.tracks.filter(track => track.id !== trackToRemove.id);
-    await user.save();
+    const isSuccess = await libraryTrackService.deleteTrack(userId, parseInt(trackId, 10));
+    if (!isSuccess) return res.status(404).json({ message: 'Track Not Found' });
     return res.status(204).end();
   } catch (err) {
     console.log(err);
