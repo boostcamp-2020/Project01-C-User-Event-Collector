@@ -1,28 +1,45 @@
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import useFetch from '@hooks/useFetch';
 import api from '@api/index';
 import Modal from '@components/Common/Modal';
+import { useAuthDispatch } from '@context/AuthContext';
 import Today from '../src/pages/Today';
 
 function Index({ token, referer }) {
   const router = useRouter();
+  const dispatch = useAuthDispatch();
+
+  const { data: user, isLoading: userLoading, isError: userError } = useFetch(`/user`, token);
   const { data: mag, isLoading: magLoading, isError: magError } = useFetch(`/magazine`, token);
   const { data: playlist, isLoading: playLoading, isError: playError } = useFetch(
     `/playlist`,
     token,
   );
 
-  if (magLoading || playLoading) return <div>...Loading</div>;
-  if (magError || playError) return <div>...Error</div>;
+  useEffect(() => {
+    if (typeof user?.user !== 'undefined' && user?.user) {
+      dispatch({
+        type: 'SET_USERINFO',
+        userInfo: user.user,
+      });
+    } else {
+      dispatch({
+        type: 'DELETE_USERINFO',
+      });
+    }
+  }, [dispatch]);
 
-  console.log('useFetch-today hook 시작!');
-  console.log('data : ', mag);
-  console.log('data.data : ', mag.data);
+  if (magLoading || playLoading || userLoading) return <div>...Loading</div>;
+  if (magError || playError || userError) return <div>...Error</div>;
+
+  console.log('₩₩₩₩₩₩₩₩  user', user);
 
   // 쿠키를 로컬 스토리지에 담는 코드
   localStorage.setItem('token', token);
+
   // 쿠키 삭제
-  document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+  // document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
 
   const logData = {
     eventTime: new Date(),

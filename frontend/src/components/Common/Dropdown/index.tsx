@@ -26,9 +26,10 @@ const DropdownComponent = ({ type, albumData, magData, playlistData }: IDropdown
   // };
 
   const logoutEvent = () => {
-    console.log('---------------logout---------------');
     localStorage.clear();
     document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+    alert('로그아웃 되었습니다.');
+    window.location.reload();
   };
 
   switch (type) {

@@ -13,7 +13,6 @@ import Layout from '@components/Layout';
 class ReactApp extends App<any> {
   public render() {
     const { Component, pageProps } = this.props;
-    console.log('@@@@@@@@@@@@@@@@@@');
     return (
       <Container>
         <GlobalStyles />
