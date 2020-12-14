@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FiveRowSongGridMoreView: View {
     let viewModel: FiveRowSongGridView.ViewModel
+    @EnvironmentObject var musicPlayer: MusicPlayer
     var body: some View {
         ZStack {
             Color.vibeBackground.ignoresSafeArea(edges: .vertical)
@@ -57,6 +58,9 @@ private extension FiveRowSongGridMoreView {
                     Image(systemName: "ellipsis")
                         .foregroundColor(.vibeTitle)
                 })
+            }.onTapGesture {
+                musicPlayer.playinglist.append(viewModel.songs[index])
+                musicPlayer.play(index: musicPlayer.playinglist.count - 1)
             }
         }
     }
