@@ -9,7 +9,7 @@ const MyAlbum = ({ albumList }) => {
   const dispatch = useAuthDispatch();
 
   useEffect(() => {
-    dispatch({ type: 'SET_ALBUMLIST', albumList: albumList.map(album => album.id) });
+    if (albumList) dispatch({ type: 'SET_ALBUMLIST', albumList: albumList.map(album => album.id) });
   }, []);
   console.log('-----state---*** : ', state);
 

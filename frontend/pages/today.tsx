@@ -6,8 +6,11 @@ import Today from '../src/pages/Today';
 
 function Index({ token, referer }) {
   const router = useRouter();
-  const { data: mag, isLoading: magLoading, isError: magError } = useFetch(`/magazine`);
-  const { data: playlist, isLoading: playLoading, isError: playError } = useFetch(`/playlist`);
+  const { data: mag, isLoading: magLoading, isError: magError } = useFetch(`/magazine`, token);
+  const { data: playlist, isLoading: playLoading, isError: playError } = useFetch(
+    `/playlist`,
+    token,
+  );
 
   if (magLoading || playLoading) return <div>...Loading</div>;
   if (magError || playError) return <div>...Error</div>;
@@ -18,6 +21,8 @@ function Index({ token, referer }) {
 
   // 쿠키를 로컬 스토리지에 담는 코드
   localStorage.setItem('token', token);
+  // 쿠키 삭제
+  document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
 
   const logData = {
     eventTime: new Date(),
@@ -40,14 +45,18 @@ export async function getServerSideProps({ req }) {
   const host = req.headers?.referer?.match(regex)[0];
   const referer = req.headers?.referer?.slice(host.length);
 
-  const cookie = req.headers.cookie ? req.headers.cookie : null;
+  const cookie = req.headers?.cookie;
   const tokenFromCookie = cookie
-    ? cookie
-        .split('; ')
-        .find(row => row.startsWith('token'))
-        .split('=')[1]
-    : null;
-  return { props: { token: tokenFromCookie, referer: referer || 'external' } };
+    ?.split('; ')
+    ?.find(row => row.startsWith('token'))
+    ?.split('=')[1];
+
+  return {
+    props: {
+      token: typeof tokenFromCookie === 'undefined' ? null : tokenFromCookie,
+      referer: referer || 'external',
+    },
+  };
 }
 
 export default Index;

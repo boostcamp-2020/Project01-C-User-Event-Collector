@@ -31,33 +31,37 @@ const TrackList = ({ trackList }) => {
   };
 
   return (
-    <TrackListSection>
-      {trackList.map(track => (
-        <TrackItem
-          key={track.id}
-          type="checkbox"
-          trackMetaData={track}
-          selected={selected}
-          onSelectHandler={onChangeHandle}
-        />
-      ))}
-      <SelectedHeader displayVisiable={visible}>
-        <SelectedBarInner>
-          <SelectedInfoArea>
-            <input
+    <>
+      {trackList ? (
+        <TrackListSection>
+          {trackList.map(track => (
+            <TrackItem
+              key={track.id}
               type="checkbox"
-              onChange={onChangeAll}
-              checked={selected.length === trackList.length}
+              trackMetaData={track}
+              selected={selected}
+              onSelectHandler={onChangeHandle}
             />
-            <SelectLabel>전체선택</SelectLabel>
-            <SelectedCountSpan> 
+          ))}
+          <SelectedHeader displayVisiable={visible}>
+            <SelectedBarInner>
+              <SelectedInfoArea>
+                <input
+                  type="checkbox"
+                  onChange={onChangeAll}
+                  checked={selected.length === trackList.length}
+                />
+                <SelectLabel>전체선택</SelectLabel>
+                <SelectedCountSpan> 
 {' '}
 {selected.length}곡 선택</SelectedCountSpan>
-          </SelectedInfoArea>
-          <PlayOptionArea />
-        </SelectedBarInner>
-      </SelectedHeader>
-    </TrackListSection>
+              </SelectedInfoArea>
+              <PlayOptionArea />
+            </SelectedBarInner>
+          </SelectedHeader>
+        </TrackListSection>
+      ) : null}
+    </>
   );
 };
 

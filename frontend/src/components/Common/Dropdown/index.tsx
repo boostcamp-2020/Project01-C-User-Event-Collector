@@ -25,6 +25,12 @@ const DropdownComponent = ({ type, albumData, magData, playlistData }: IDropdown
   //   };
   // };
 
+  const logoutEvent = () => {
+    console.log('---------------logout---------------');
+    localStorage.clear();
+    document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+  };
+
   switch (type) {
     case 'auth':
       return (
@@ -51,7 +57,7 @@ const DropdownComponent = ({ type, albumData, magData, playlistData }: IDropdown
               <Dropdown.Item style={dropdownItemStyle} text="My 멤버십" />
               <Dropdown.Item style={dropdownItemStyle} text="공지사항" />
               <Dropdown.Item style={dropdownItemStyle} text="계정설정" />
-              <Dropdown.Item style={dropdownItemStyle} text="로그아웃" />
+              <Dropdown.Item style={dropdownItemStyle} text="로그아웃" onClick={logoutEvent} />
             </Dropdown.Menu>
           </Dropdown>
         </Wrapper>
