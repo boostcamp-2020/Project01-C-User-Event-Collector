@@ -9,7 +9,7 @@ import SwiftUI
 import UIKit
 
 final class MockItemFactory {
-
+    
     static let rankSongs: [Song] = (0...30).map { idx -> Song in
         var rankChange: String?
         var url: String = "https://musicmeta-phinf.pstatic.net/album/005/053/5053394.jpg?type=r480Fll&v=20201027175909"
@@ -48,10 +48,13 @@ final class MockItemFactory {
     }
     
     static let albums: [Album] = [
-    Album(imageURLString: "newAlbum-dummy1",
-          title: "ARTIST. New Bi", artist: "Anonymous Artists", songs: [], rankChange: "up"),
-    Album(imageURLString: "newAlbum-dummy2", title: "Darling", artist: "양다일", songs: []),
-    Album(imageURLString: "newAlbum-dummy3", title: "A Season of Love", artist: "Idina Menzel", songs: [])]
+        Album(imageURLString: "newAlbum-dummy1",
+              title: "ARTIST. New Bi", artist: "Anonymous Artists", songs: [], rankChange: "up"),
+        Album(imageURLString: "newAlbum-dummy2", title: "Darling", artist: "양다일", songs: []),
+        Album(imageURLString: "newAlbum-dummy3", title: "A Season of Love", artist: "Idina Menzel", songs: []),   Album(imageURLString: "newAlbum-dummy1",
+                                                                                                                        title: "ARTIST. New Bi", artist: "Anonymous Artists", songs: [], rankChange: "up"),
+        Album(imageURLString: "newAlbum-dummy2", title: "Darling", artist: "양다일", songs: []),
+        Album(imageURLString: "newAlbum-dummy3", title: "A Season of Love", artist: "Idina Menzel", songs: [])]
     
     static let playlists: [Playlist]
         = [Playlist(id: 123, imageURLString: "HomePlayListSection1", title: "로맨틱 팝",
@@ -62,28 +65,28 @@ final class MockItemFactory {
                     subtitle: "VIBE Pop", songs: [])]
     
     static let recoPlaylists: [Playlist] = [ Playlist(id: 235, imageURLString: "vibe-dummy1",
-                                                 title: "아시아 아티스트 어워즈 2020",
-                                                 subtitle: "VIBE", songs: [],
-                                                 description: "아시아아티스트어워즈2020을 먼저 만나는 방법!"),
+                                                      title: "아시아 아티스트 어워즈 2020",
+                                                      subtitle: "VIBE", songs: [],
+                                                      description: "아시아아티스트어워즈2020을 먼저 만나는 방법!"),
                                              Playlist(id: 346, imageURLString: "vibe-dummy2",
-                                                              title: "Work/Study Lo-fi",
-                                                              subtitle: "VIBE",
-                                                              songs: [],
-                                                              description:
-                                                                "집중력이 필요한 시간에 듣기 좋은 차분한 멜로디와 간질간질한 질감의 로파이 비트."),
+                                                      title: "Work/Study Lo-fi",
+                                                      subtitle: "VIBE",
+                                                      songs: [],
+                                                      description:
+                                                        "집중력이 필요한 시간에 듣기 좋은 차분한 멜로디와 간질간질한 질감의 로파이 비트."),
                                              Playlist(id: 6467, imageURLString: "vibe-dummy3",
-                                                              title: "꿀 떨어지는 R&B",
-                                                              subtitle: "VIBE",
-                                                              songs: [], description: "꿀 떨어지는 보컬과 함께하는 꿈만 같은 하루.")]
+                                                      title: "꿀 떨어지는 R&B",
+                                                      subtitle: "VIBE",
+                                                      songs: [], description: "꿀 떨어지는 보컬과 함께하는 꿈만 같은 하루.")]
     
     static let homeSummaryItems: [SummaryItem]
         = [SummaryItem(category: "지붕뚫고 급상승 🚀",
-                           image: "HomeMainSection1",
-                           title: "급상승 차트 1위", description: "방탄소년단 : Life Goes On"),
+                       image: "HomeMainSection1",
+                       title: "급상승 차트 1위", description: "방탄소년단 : Life Goes On"),
            SummaryItem(category: "스테이션", image: "HomeMainSection2",
-                           title: "여유를 즐겨요", description: "장르별 스테이션 : 잔잔한 클래식"),
+                       title: "여유를 즐겨요", description: "장르별 스테이션 : 잔잔한 클래식"),
            SummaryItem(category: "새 앨범", image: "HomeMainSection3",
-                           title: "방탄소년단", description: nil)]
+                       title: "방탄소년단", description: nil)]
     
     static let magazineItems: [Magazine] = [
         Magazine(id: 123, title: "New Release #16: 이적, 빌리 아일리시", imageURLString: "mag-dummy1"),
@@ -109,14 +112,17 @@ final class MockItemFactory {
     static let homeDJStationkItems: [DJStationItem]
         = [DJStationItem(image: "HomeDJStationSection1"),
            DJStationItem(image: "HomeDJStationSection2"),
+           DJStationItem(image: "HomeDJStationSection3"),
+           DJStationItem(image: "HomeDJStationSection1"),
+           DJStationItem(image: "HomeDJStationSection2"),
            DJStationItem(image: "HomeDJStationSection3")]
     
     static let videoItems: [Video] = [Video(imageURLString: "HomeMainSection3",
-                                               title: "Life Goes On : Like an arrow", artist: "방탄소년단"),
-                                         Video(imageURLString: "HomeMainSection3",
-                                               title: "Life Goes On : Like an arrow", artist: "방탄소년단"),
-                                         Video(imageURLString: "HomeMainSection3",
-                                               title: "Life Goes On : Like an arrow", artist: "방탄소년단")]
+                                            title: "Life Goes On : Like an arrow", artist: "방탄소년단"),
+                                      Video(imageURLString: "HomeMainSection3",
+                                            title: "Life Goes On : Like an arrow", artist: "방탄소년단"),
+                                      Video(imageURLString: "HomeMainSection3",
+                                            title: "Life Goes On : Like an arrow", artist: "방탄소년단")]
     
     static let songItems: [Song] = [Song(imageURLString: "newAlbum-dummy1", title: "노래1", artist: "아이유"),
                                     Song(imageURLString: "newAlbum-dummy2", title: "노래2", artist: "태연"),

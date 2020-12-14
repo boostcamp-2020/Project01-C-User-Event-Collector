@@ -17,23 +17,26 @@ struct PlaylistMoreView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(alignment: .leading) {
                         ForEach(viewModel.playlists) { playlist in
-                            HStack {
-                                Image(playlist.imageURLString)
-                                    .resizable()
-                                    // FIXME: 고정값
-                                    .frame(width: 100, height: 100, alignment: .center)
-                                VStack(alignment: .leading, spacing: .defaultSpacing) {
-                                    Text(playlist.title).vibeTitle3()
-                                    playlist.description.map({Text($0).vibeMainText().lineLimit(1)})
-                                    Text(playlist.subtitle).vibeMainText()
+                            NavigationLink(destination: PlaylistDetailView(viewModel: PlaylistDetailView.ViewModel(container: viewModel.container, playlist: playlist)) ) {
+                                HStack {
+                                    Image(playlist.imageURLString)
+                                        .resizable()
+                                        .frame(width: 100, height: 100, alignment: .center)
+                                    VStack(alignment: .leading, spacing: .defaultSpacing) {
+                                        Text(playlist.title).vibeTitle3()
+                                        playlist.description.map({Text($0).vibeMainText().lineLimit(1)})
+                                        Text(playlist.subtitle).vibeMainText()
+                                    }
+                                    Spacer()
                                 }
-                                Spacer()
-                            }.padding(.horizontal, .defaultPadding)
+                            }
                         }
-                    }
+                        Spacer()
+                    }.padding(.horizontal, .defaultPadding)
                 }
             }
-        }.navigationBarHidden(true)
+        }
+        .navigationBarHidden(true)
         .onAppear {
             emitEvent(event: MoveEvent(next: "\(Self.name)/\(self.viewModel.id)", setPrePath: true))
         }
