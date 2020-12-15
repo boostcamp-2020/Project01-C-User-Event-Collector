@@ -11,7 +11,13 @@ function MagTopItem({ magData: mag }) {
   return (
     <Wrapper>
       <ImgWrapper>
-        <BoxItem target={target} imgUrl={mag.imgUrl} next="magazines" id={mag.id} />
+        <BoxItem
+          trackData={mag.tracks}
+          target={target}
+          imgUrl={mag.imgUrl}
+          next="magazines"
+          id={mag.id}
+        />
       </ImgWrapper>
       <A next="magazines" target={target} id={mag.id}>
         <MagContentWrapper>

@@ -19,6 +19,7 @@ type trackMeta = {
   name: string;
   date: string;
   imgUrl: string;
+  tracks?: any;
 };
 
 const PlaylistCard = ({ playlistMetaData: playlist }: IPlaylistMetaProps) => {
@@ -27,7 +28,13 @@ const PlaylistCard = ({ playlistMetaData: playlist }: IPlaylistMetaProps) => {
     'https://music-phinf.pstatic.net/20190927_157/1569572430647IAylm_PNG/VIBE_%B1%B9%B3%BB%B4%ED%BD%BA_%B7%CE%B8%C7%C6%BD%B4%ED%BD%BA.png';
   return (
     <Container>
-      <BoxItem imgUrl={imgUrlMetaData} target={target} next="playlist" id={playlist.id} />
+      <BoxItem
+        trackData={playlist.tracks}
+        imgUrl={imgUrlMetaData}
+        target={target}
+        next="playlist"
+        id={playlist.id}
+      />
       <A next="playlist" target={target} id={playlist.id}>
         <PlaylistTitle>{playlist.name}</PlaylistTitle>
       </A>

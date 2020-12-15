@@ -4,11 +4,14 @@ import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
 import api from '@api/index';
 import useEventHandler from '@hooks/useEventHandler';
+import { usePlayDispatch, usePlayState } from '@context/play';
 import * as T from '../../../constants/dropdownText';
 
 interface IBoxDropdownProps {
-  type?: string;
-  id?: number;
+  type: string;
+  id: number;
+  data: any;
+  trackData: any;
 }
 interface ILogData {
   eventTime: Date;
@@ -16,8 +19,11 @@ interface ILogData {
   parameters: any;
 }
 
-const BoxDropdown = ({ type, id }: IBoxDropdownProps) => {
+const BoxDropdown = ({ trackData, type, id, data }: IBoxDropdownProps) => {
+  const state = usePlayState();
+  const dispatch = usePlayDispatch();
   const router = useRouter();
+  console.log(state);
 
   const postLog = logData => {
     api.post('/log', logData);
@@ -35,6 +41,12 @@ const BoxDropdown = ({ type, id }: IBoxDropdownProps) => {
       eventName: 'click_event',
       parameters: { page: router.asPath, target },
     };
+  };
+
+  const addNextEvent = () => {
+    // 수정 필요
+    // if (type === 'track') dispatch({ type: 'ADD_TRACK', track: trackData });
+    // else dispatch({ type: 'ADD_TRACK', track: trackData[0] });
   };
 
   const addEvent = () => {
@@ -65,7 +77,11 @@ const BoxDropdown = ({ type, id }: IBoxDropdownProps) => {
               onClick={useEventHandler(addEvent, clickLogData(`Dropdown/${type}/${id}`))}
             />
           )}
-          <Dropdown.Item style={dropdownItemStyle} text={T.ADD_TO_NEXT} />
+          <Dropdown.Item
+            style={dropdownItemStyle}
+            text={T.ADD_TO_NEXT}
+            onClick={useEventHandler(addNextEvent, clickLogData(`addNextBtn/${type}/${id}`))}
+          />
           <Dropdown.Item style={dropdownItemStyle} text={T.ADD_TO_PREV} />
           <Dropdown.Item
             style={dropdownItemStyle}

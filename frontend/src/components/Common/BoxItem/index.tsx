@@ -10,11 +10,12 @@ import BoxDropdown from '@components/Common/Dropdown/BoxDropdown';
 interface IBoxItemProps {
   imgUrl: string;
   next: string;
+  trackData: any;
   target: string;
   id: number;
 }
 
-function BoxItem({ imgUrl, target, next, id }: IBoxItemProps) {
+function BoxItem({ trackData, imgUrl, target, next, id }: IBoxItemProps) {
   const router = useRouter();
   return (
     <>
@@ -37,7 +38,7 @@ function BoxItem({ imgUrl, target, next, id }: IBoxItemProps) {
           <BoxPlayButton />
           <BsThreeDots size={24} />
         </ButtonsWrapper>
-        <BoxDropdown type={next} id={id} />
+        <BoxDropdown trackData={trackData} type={next} id={id} />
       </Wrapper>
     </>
   );
