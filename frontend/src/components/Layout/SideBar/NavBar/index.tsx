@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@styles/themed-components';
 
+import api from '@api/index';
 import Dropdown from '@components/Common/Dropdown';
-import { useAuthState } from '@context/AuthContext';
+import { useAuthState, useAuthDispatch } from '@context/AuthContext';
 import NavList from './NavList';
 
 const loginEvent = () => {
@@ -11,14 +12,20 @@ const loginEvent = () => {
 
 function NavBar() {
   const state = useAuthState();
+  const dispatch = useAuthDispatch();
   const { userInfo } = state;
   const [userState, setUserState] = useState(userInfo);
 
   useEffect(() => {
-    console.log('NAVBAR useEFFECT');
-    console.log('NavBar UserInfo ::: ', userInfo);
     setUserState(userInfo);
-  }, [userInfo.isLoggedIn]);
+    api.defaults.headers.authorization = localStorage.getItem('token');
+    console.log('userInfo ;;;;;', userInfo);
+    if (!userInfo.isLoggedIn) {
+      api.get('user').then(res => {
+        if (res.data.success) setUserState({ ...res.data?.user, isLoggedIn: true });
+      });
+    }
+  }, [dispatch, userInfo.isLoggedIn, userInfo]);
 
   return (
     <Container>

@@ -1,31 +1,119 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
-// import useEventHandler from '@hooks/useEventHandler';
-// import api from '@api/index';
-// import { usePlayState, usePlayDispatch } from '@context/play';
+import api from '@api/index';
+import logEventHandler from '@utils/logEventHandler';
+import { usePlayState, usePlayDispatch } from '@context/play';
+import { useAuthState, useAuthDispatch } from '@context/AuthContext';
+import * as T from '../../../constants/dropdownText';
 
 interface IDropdownProps {
   type: string;
   albumData?: any;
   magData?: any;
+  artistData?: any;
   playlistData?: any;
+  trackData?: any;
 }
 
-const DropdownComponent = ({ type, albumData, magData, playlistData }: IDropdownProps) => {
+const DropdownComponent = ({
+  type,
+  albumData,
+  artistData,
+  magData,
+  playlistData,
+  trackData,
+}: IDropdownProps) => {
   // 개발 중, 타입에러를 막기 위해 주석처리 했습니다
-  // const state = usePlayState();
-  // const dispatch = usePlayDispatch();
+  const router = useRouter();
+  const state = usePlayState();
+  const dispatch = usePlayDispatch();
+  const userState = useAuthState();
+  const userDispatch = useAuthDispatch();
 
-  // const logData = (name, params) => {
-  //   return {
-  //     eventTime: new Date(),
-  //     eventName: name,
-  //     parameters: params,
-  //   };
-  // };
+  console.log('playstate :: ', state);
+  console.log('userState :: ', userState);
+
+  let dataType = 'undefined';
+  let data = { id: null };
+  if (albumData) {
+    data = albumData;
+    dataType = 'album';
+  } else if (playlistData) {
+    data = playlistData;
+    dataType = 'playlist';
+  } else if (artistData) {
+    data = artistData;
+    dataType = 'artist';
+  } else if (trackData) {
+    data = trackData;
+    dataType = 'track';
+  }
+
+  const clickEventLog = target => {
+    return {
+      eventTime: new Date(),
+      eventName: 'ClickEvent',
+      parameters: { page: router.asPath, target },
+    };
+  };
+
+  const customLogData = (name, params) => {
+    return {
+      eventTime: new Date(),
+      eventName: name,
+      parameters: params,
+    };
+  };
+
+  const addAlbumEvent = id => {
+    api.post('/library/albums', { albumId: id });
+    api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
+    // 각 이벤트 이후에 또 log 보내야 함
+  };
+
+  const addPlaylistEvent = id => {
+    api.post('/library/playlists', { playlistId: id });
+    api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
+  };
+
+  const addTrackEvent = id => {
+    api.post('/library/tracks', { trackId: id });
+    api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
+  };
+
+  const addArtistEvent = id => {
+    api.post('/library/artists', { artistId: id });
+    api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
+  };
+
+  const addErrorEvent = msg => {
+    console.log(msg);
+  };
+
+  // 이벤트 전부 써보기
+  const addEventHandler = () => {
+    switch (dataType) {
+      case 'album':
+        logEventHandler(addAlbumEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
+        break;
+      case 'playlist':
+        logEventHandler(addPlaylistEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
+        break;
+      case 'track':
+        logEventHandler(addTrackEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
+        break;
+      case 'artist':
+        logEventHandler(addArtistEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
+        break;
+      default:
+        addErrorEvent('empty Data');
+    }
+  };
 
   const logoutEvent = () => {
+    console.log('------logoutEvent-------');
     localStorage.clear();
     document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
     alert('로그아웃 되었습니다.');
@@ -35,30 +123,30 @@ const DropdownComponent = ({ type, albumData, magData, playlistData }: IDropdown
   switch (type) {
     case 'auth':
       return (
-        <Wrapper
-          style={{
-            width: '180px',
-            height: '50px',
-            textAlign: 'right',
-            position: 'absolute',
-          }}
-        >
+        <Wrapper style={authWrapperStyle}>
           <Dropdown
             style={{
-              width: '100%',
-              height: '100%',
-              textAlign: 'right',
-              color: 'white',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
+              authDropdownStyle,
             }}
           >
             <Dropdown.Menu direction="left" style={dropdownMenuStyle}>
-              <Dropdown.Item style={dropdownItemStyle} text="My 멤버십" />
-              <Dropdown.Item style={dropdownItemStyle} text="공지사항" />
-              <Dropdown.Item style={dropdownItemStyle} text="계정설정" />
-              <Dropdown.Item style={dropdownItemStyle} text="로그아웃" onClick={logoutEvent} />
+              <Dropdown.Item
+                style={dropdownItemStyle}
+                className={T.MY_MEMBERSHIP}
+                text={T.MY_MEMBERSHIP}
+                onClick={logEventHandler}
+              />
+              <Dropdown.Item style={dropdownItemStyle} text={T.NOTICE} onClick={logEventHandler} />
+              <Dropdown.Item
+                style={dropdownItemStyle}
+                text={T.ACCOUNT_SETTING}
+                onClick={logEventHandler}
+              />
+              <Dropdown.Item
+                style={dropdownItemStyle}
+                text={T.LOGOUT}
+                onClick={logEventHandler(logoutEvent, clickEventLog('LogoutBtn'))}
+              />
             </Dropdown.Menu>
           </Dropdown>
         </Wrapper>
@@ -68,11 +156,27 @@ const DropdownComponent = ({ type, albumData, magData, playlistData }: IDropdown
         <Wrapper>
           <Dropdown style={dropdownStyle}>
             <Dropdown.Menu direction="right" style={dropdownMenuStyle}>
-              <Dropdown.Item style={dropdownItemStyle} text="보관함에 추가" />
-              <Dropdown.Item style={dropdownItemStyle} text="바로 다음에 추가" />
-              <Dropdown.Item style={dropdownItemStyle} text="맨 아래에 추가" />
-              <Dropdown.Item style={dropdownItemStyle} text="MP3 구매" />
-              <Dropdown.Item style={dropdownItemStyle} text="공유" />
+              <Dropdown.Item
+                style={dropdownItemStyle}
+                text={T.ADD_TO_LIBRARY}
+                onClick={() =>
+                  logEventHandler(
+                    addPlaylistEvent(data.id),
+                    clickEventLog(`${dataType}Dropdown/${data.id}`),
+                  )}
+              />
+              <Dropdown.Item
+                style={dropdownItemStyle}
+                text={T.ADD_TO_NEXT}
+                onClick={logEventHandler}
+              />
+              <Dropdown.Item
+                style={dropdownItemStyle}
+                text={T.ADD_TO_PREV}
+                onClick={logEventHandler}
+              />
+              <Dropdown.Item style={dropdownItemStyle} text={T.BUY_MP3} onClick={logEventHandler} />
+              <Dropdown.Item style={dropdownItemStyle} text={T.SHARE} onClick={logEventHandler} />
             </Dropdown.Menu>
           </Dropdown>
         </Wrapper>
@@ -82,8 +186,8 @@ const DropdownComponent = ({ type, albumData, magData, playlistData }: IDropdown
         <Wrapper>
           <Dropdown style={dropdownStyle}>
             <Dropdown.Menu direction="right">
-              <Dropdown.Item style={dropdownItemStyle} text="좋아요" />
-              <Dropdown.Item style={dropdownItemStyle} text="공유" />
+              <Dropdown.Item style={dropdownItemStyle} text={T.LIKE} onClick={logEventHandler} />
+              <Dropdown.Item style={dropdownItemStyle} text={T.BUY_MP3} onClick={logEventHandler} />
             </Dropdown.Menu>
           </Dropdown>
         </Wrapper>
@@ -99,6 +203,23 @@ const DropdownComponent = ({ type, albumData, magData, playlistData }: IDropdown
         </Wrapper>
       );
   }
+};
+
+const authWrapperStyle = {
+  width: '180px',
+  height: '50px',
+  textAlign: 'right',
+  position: 'absolute',
+};
+
+const authDropdownStyle = {
+  width: '100%',
+  height: '100%',
+  textAlign: 'right',
+  color: 'white',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
 };
 
 const dropdownStyle = {
@@ -120,7 +241,7 @@ const dropdownItemStyle = {
   lineHeight: '60%',
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ style?: any }>`
   position: relative;
 `;
 
