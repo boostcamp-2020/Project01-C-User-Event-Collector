@@ -8,9 +8,9 @@ const postLog = async logData => {
 };
 
 const useEventHandler = (handler, logData) => {
-  return () => {
-    if (logData) postLog(logData);
-    if (handler) handler();
+  return async () => {
+    if (logData) await postLog(logData);
+    if (handler) await handler();
   };
 };
 
