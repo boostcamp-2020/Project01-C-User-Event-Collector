@@ -12,7 +12,7 @@ import {
 import { BsFillVolumeUpFill, BsMusicNoteList } from 'react-icons/bs';
 
 import PlayTrackItem from '@components/Common/PlayTrackItem';
-import { usePlayState, usePlayDispatch } from '@context/play';
+import { usePlayState, usePlayDispatch } from '@context/PlayContext';
 import { useAuthState } from '@context/AuthContext';
 
 function PlayBar() {

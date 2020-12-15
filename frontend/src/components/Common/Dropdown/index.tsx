@@ -4,7 +4,7 @@ import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
 import api from '@api/index';
 import logEventHandler from '@utils/logEventHandler';
-import { usePlayState } from '@context/play';
+import { usePlayState } from '@context/PlayContext';
 import { useAuthState } from '@context/AuthContext';
 import * as T from '../../../constants/dropdownText';
 

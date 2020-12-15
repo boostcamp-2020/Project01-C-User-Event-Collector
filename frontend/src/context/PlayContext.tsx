@@ -54,11 +54,9 @@ function reducer(state: State, action: Action): State {
         playList: [...state.playList, action.track],
       };
     case 'REMOVE_TRACK':
-      const removeIndex = state.playList.indexOf(action.trackId);
-      const newList = state.playList.splice(removeIndex, 1);
       return {
         ...state,
-        playList: newList,
+        playList: state.playList.filter(v => v !== action.trackId);,
       };
     default:
       throw new Error('Unhandled action');

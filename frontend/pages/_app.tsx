@@ -4,7 +4,7 @@ import theme from '@styles/themes';
 import GlobalStyles from '@styles/global-styles';
 import { ThemeProvider } from '@styles/themed-components';
 import { AuthProvider } from '@context/AuthContext';
-import { PlayProvider } from '@context/play';
+import { PlayProvider } from '@context/PlayContext';
 import 'semantic-ui-css/semantic.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
