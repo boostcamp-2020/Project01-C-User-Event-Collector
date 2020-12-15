@@ -9,6 +9,7 @@ import trimContentLength from '@utils/trimContentLength';
 import A from '@components/Common/A';
 
 interface ITrackMetaProps {
+  chart?: number;
   type?: string;
   trackMetaData: TrackMeta;
   selected?: any;
@@ -25,6 +26,7 @@ type TrackMeta = {
 };
 
 const TrackItem = ({
+  chart,
   type,
   trackMetaData: track,
   selected,
@@ -43,13 +45,15 @@ const TrackItem = ({
             onChange={onSelectHandler}
           />
         )}
-        <TrackImgWrapper>
-          <TrackHoverImg src="/images/track-hover-img.png" className="track-hover-img" />
-          <TrackImg
-            src={track.album?.imgUrl ? track.album.imgUrl : albumData.imgUrl}
-            alt="track-image"
-          />
-        </TrackImgWrapper>
+        {track.album ?
+          (<TrackImgWrapper>
+            <TrackHoverImg src="/images/track-hover-img.png" className="track-hover-img" />
+            <TrackImg
+              src={track.album?.imgUrl ? track.album.imgUrl : albumData.imgUrl}
+              alt="track-image"
+            />
+          </TrackImgWrapper>) :
+          (<CountWrapper>{chart}</CountWrapper>)}
         <A next="track" id={track.id} target={target}>
           <Text>{trimContentLength(track.title, 35)}</Text>
         </A>
@@ -163,6 +167,16 @@ const Wrapper = styled.button`
       display: block;
     }
   }
+`;
+
+const CountWrapper = styled.div`
+  width: 30px;
+
+  padding-left: 4px;
+  padding-right: 10px;
+
+  font-size: 15px;
+  text-align: center;
 `;
 
 export default TrackItem;
