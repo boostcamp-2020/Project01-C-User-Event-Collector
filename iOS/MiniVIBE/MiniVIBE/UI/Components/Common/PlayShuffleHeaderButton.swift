@@ -13,32 +13,43 @@ struct PlayShuffleHeaderButton: View {
     
     var body: some View {
         HStack(spacing: 10) {
-            Button(action: playHandler) {
-                HStack {
-                    Image(systemName: "play.fill")
-                        .foregroundColor(.vibeTitle)
-                    Text("PLAY").vibeTitle3()
-                }
-                .padding(10)
-                .frame(minWidth: 0, maxWidth: .infinity)
-                .background(Color(UIColor.darkGray))
-                .cornerRadius(5)                    }
-            Button(action: shuffleHandler) {
-                HStack {
-                    Image(systemName: "shuffle")
-                        .foregroundColor(.vibeTitle)
-                    Text("SHUFFLE").vibeTitle3()
-                }
-                .padding(10)
-                .frame(minWidth: 0, maxWidth: .infinity)
-                .background(Color(UIColor.darkGray))
-                .cornerRadius(5)
-            }
+            playButton
+            shuffleButton
         }.padding(.defaultPadding)
         .background(Color.vibeBackground)
     }
+    
     init(playHandler: @escaping () -> Void, shuffleHandler: @escaping () -> Void) {
         self.playHandler = playHandler
         self.shuffleHandler = shuffleHandler
+    }
+}
+
+private extension PlayShuffleHeaderButton {
+    var playButton: some View {
+        Button(action: playHandler) {
+            HStack {
+                Image(systemName: "play.fill")
+                    .foregroundColor(.vibeTitle)
+                Text("PLAY").vibeTitle3()
+            }
+            .padding(10)
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .background(Color(UIColor.darkGray))
+            .cornerRadius(5)
+        }
+    }
+    var shuffleButton: some View {
+        Button(action: shuffleHandler) {
+            HStack {
+                Image(systemName: "shuffle")
+                    .foregroundColor(.vibeTitle)
+                Text("SHUFFLE").vibeTitle3()
+            }
+            .padding(10)
+            .frame(minWidth: 0, maxWidth: .infinity)
+            .background(Color(UIColor.darkGray))
+            .cornerRadius(5)
+        }
     }
 }

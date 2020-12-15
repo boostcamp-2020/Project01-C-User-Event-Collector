@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Combine
-import EventEmitter
+import BCEventEmitter
 
 struct MagazineSectionView: View {
     @StateObject var viewModel: Self.ViewModel

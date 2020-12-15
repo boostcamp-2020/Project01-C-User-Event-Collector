@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import EventEmitter
+import BCEventEmitter
 
 struct SearchView: View {
     private enum Constant {
@@ -35,17 +35,9 @@ struct SearchView: View {
                 }.padding(.top)
                 .navigationBarHidden(true)
             }
-            VStack {
-                Spacer()
-                HStack {
-                    if UIDevice.current.userInterfaceIdiom == .pad {
-                        Spacer()
-                    }
-                    NowPlayingBarView()
-                }
-            }
+            NowPlayingBarView()
         }.onAppear {
-            emitEvent(event: MoveEvent(next: TabType.search.description))
+            emitEvent(event: MoveEvent(next: ContentView.TabType.search.description))
         }
     }
 }

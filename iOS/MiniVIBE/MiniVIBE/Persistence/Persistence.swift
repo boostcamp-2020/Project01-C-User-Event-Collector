@@ -6,11 +6,12 @@
 //
 
 import CoreData
+import BCEventEmitter
 
 final class PersistenceController {
     var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "MiniVIBE")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)") }
         })
@@ -26,7 +27,7 @@ final class PersistenceController {
             let fetchResult = try self.context.fetch(request)
             return fetchResult
         } catch {
-            print(error.localizedDescription)
+            emitEvent(event: ErrorEvent(from: "PersistenceController", reason: error.localizedDescription))
             return []
         }
     }
@@ -37,6 +38,7 @@ final class PersistenceController {
         do {
             try self.context.execute(delete)
         } catch {
+            emitEvent(event: ErrorEvent(from: "PersistenceController", reason: error.localizedDescription))
             return false
         }
         return true

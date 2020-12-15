@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import EventEmitter
+import BCEventEmitter
 
 struct FiveRowSongGridMoreView: View {
     let viewModel: FiveRowSongGridView.ViewModel

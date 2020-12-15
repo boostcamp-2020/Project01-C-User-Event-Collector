@@ -10,7 +10,6 @@ import SwiftUI
 struct AlbumDetailView: View {
     @State private(set) var album: Album
     @EnvironmentObject var musicPlayer: MusicPlayer
-    let mock = MockItemFactory.imageURLSongs
     var body: some View {
         VStack {
             DetailHeaderView(title: album.title, subtitle: album.artist)
@@ -66,25 +65,31 @@ private extension AlbumDetailView {
         ) {
             Section(header:
                         PlayShuffleHeaderButton(playHandler: {}, shuffleHandler: {})) {
-                ForEach(mock) { song in
-                    HStack(spacing: .defaultSpacing) {
-                        Image(systemName: "circle").foregroundColor(.gray)
-                        AsyncImageView(url: song.imageURLString)
-                            .frame(width: 40, height: 40, alignment: .center)
-                        VStack(alignment: .leading, spacing: .defaultSpacing) {
-                            Text(song.title).vibeTitle3()
-                            Text(song.artist).vibeMainText()
-                        }
-                        Spacer()
-                        Image(systemName: "line.horizontal.3").foregroundColor(.gray)
-                    }.onTapGesture {
-                        musicPlayer.playinglist.append(song)
-                        musicPlayer.play(index: musicPlayer.playinglist.count - 1)
-                    }
-                    .emitEventIfTapped(event: TapEvent(component: AlbumDetailView.name, target: Target.song))
-                }
+                songsView
             }
         }.padding(.bottom, NowPlayingBarView.height)
         .padding(.horizontal, .defaultPadding)
+    }
+}
+
+private extension AlbumDetailView {
+    var songsView: some View {
+        ForEach(MockItemFactory.imageURLSongs) { song in
+            HStack(spacing: .defaultSpacing) {
+                Image(systemName: "circle").foregroundColor(.gray)
+                AsyncImageView(url: song.imageURLString)
+                    .frame(width: 40, height: 40, alignment: .center)
+                VStack(alignment: .leading, spacing: .defaultSpacing) {
+                    Text(song.title).vibeTitle3()
+                    Text(song.artist).vibeMainText()
+                }
+                Spacer()
+                Image(systemName: "line.horizontal.3").foregroundColor(.gray)
+            }.onTapGesture {
+                musicPlayer.playinglist.append(song)
+                musicPlayer.play(index: musicPlayer.playinglist.count - 1)
+            }
+            .emitEventIfTapped(event: TapEvent(component: AlbumDetailView.name, target: TapEvent.Target.song))
+        }
     }
 }

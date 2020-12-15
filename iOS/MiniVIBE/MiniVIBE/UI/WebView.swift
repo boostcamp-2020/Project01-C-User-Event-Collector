@@ -10,10 +10,8 @@ import AuthenticationServices
 
 class SignInViewModel: NSObject, ObservableObject, ASWebAuthenticationPresentationContextProviding {
     typealias ASPresentationAnchor = UIWindow
-    // MARK: - ASWebAuthenticationPresentationContextProviding
-    
+ 
     func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
         return ASPresentationAnchor()
     }
-
 }

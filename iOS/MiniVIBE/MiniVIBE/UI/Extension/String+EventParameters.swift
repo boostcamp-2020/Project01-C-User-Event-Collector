@@ -12,6 +12,6 @@ extension String {
     static let nextView: String = "next"
     static let component: String = "component"
     static let target: String = "target"
-    static let reason: String = "target"
+    static let reason: String = "reason"
     static let from: String = "from"
 }

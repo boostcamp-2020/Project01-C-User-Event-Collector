@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import EventEmitter
+import BCEventEmitter
 
 struct ChartView: View {
     private enum Constant {
@@ -56,17 +56,9 @@ struct ChartView: View {
                     .padding(.top)
                 }
             }
-            VStack {
-                Spacer()
-                HStack {
-                    if UIDevice.current.userInterfaceIdiom == .pad {
-                        Spacer()
-                    }
-                    NowPlayingBarView()
-                }
-            }
+            NowPlayingBarView()
         }.onAppear {
-            emitEvent(event: MoveEvent(next: TabType.chart.description))
+            emitEvent(event: MoveEvent(next: ContentView.TabType.chart.description))
         }
     }
 }

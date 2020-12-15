@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import EventEmitter
+import BCEventEmitter
 
 struct PlaylistDetailView: View {
     @StateObject var viewModel: Self.ViewModel
@@ -42,7 +42,6 @@ private extension PlaylistDetailView {
             HStack {
                 Image(viewModel.playlist.imageURLString)
                     .resizable()
-                    // FIXME: 고정값
                     .frame(width: 100, height: 100, alignment: .center)
                 VStack(alignment: .leading, spacing: .defaultSpacing) {
                     Text(viewModel.playlist.title).vibeTitle3()

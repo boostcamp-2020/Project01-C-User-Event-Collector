@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import EventEmitter
+import BCEventEmitter
 
 struct MockServerView: View {
     @StateObject var viewModel: MockServerView.ViewModel
@@ -50,7 +50,7 @@ struct MockServerView: View {
         })
         }.onChange(
             of: isServerEnabled, perform: { isServerEnabled in
-                FakeServerRepository.isEnabled = isServerEnabled
+                RealServerRepository.isEnabled = isServerEnabled
         })
     }
 }
@@ -61,19 +61,19 @@ private struct MockServerDataView: View {
     var filteredEvents: [Event] {
         switch viewModel.filter {
         case EventName.movePage.description:
-            return FakeServerRepository.events.filter {
+            return RealServerRepository.events.filter {
                 $0.name == EventName.movePage.description
             }
         case EventName.tabButton.description:
-            return FakeServerRepository.events.filter {
+            return RealServerRepository.events.filter {
                 $0.name == EventName.tabButton.description
             }
         case EventName.error.description :
-            return FakeServerRepository.events.filter {
+            return RealServerRepository.events.filter {
                 $0.name == EventName.error.description
             }
         default:
-            return FakeServerRepository.events
+            return RealServerRepository.events
         }
     }
     var body: some View {

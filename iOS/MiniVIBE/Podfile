@@ -4,7 +4,7 @@ platform :ios, 14.0
 target 'MiniVIBE' do
   # Comment the next line if you don't want to use dynamic frameworks
 pod 'SwiftLint'
-
+pod 'BCEventEmitter'
   # Pods for MiniVIBE
 
 end
