@@ -4,13 +4,11 @@ import api from '@api/index';
 
 const postLog = async logData => {
   await api.post('/log', logData);
+  console.log('=====logEventHandler send logData====', logData);
 };
 
-const logEventHandler = (handler, logData) => {
-  return () => {
-    if (logData) postLog(logData);
-    if (handler) handler();
-  };
+const logEventHandler = async (handler, logData) => {
+  postLog(logData);
 };
 
 export default logEventHandler;

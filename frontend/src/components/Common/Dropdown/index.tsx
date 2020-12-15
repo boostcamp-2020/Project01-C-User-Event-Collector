@@ -4,8 +4,8 @@ import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
 import api from '@api/index';
 import logEventHandler from '@utils/logEventHandler';
-import { usePlayState, usePlayDispatch } from '@context/play';
-import { useAuthState, useAuthDispatch } from '@context/AuthContext';
+import { usePlayState } from '@context/play';
+import { useAuthState } from '@context/AuthContext';
 import * as T from '../../../constants/dropdownText';
 
 interface IDropdownProps {
@@ -28,9 +28,9 @@ const DropdownComponent = ({
   // 개발 중, 타입에러를 막기 위해 주석처리 했습니다
   const router = useRouter();
   const state = usePlayState();
-  const dispatch = usePlayDispatch();
+  // const dispatch = usePlayDispatch();
   const userState = useAuthState();
-  const userDispatch = useAuthDispatch();
+  // const userDispatch = useAuthDispatch();
 
   console.log('playstate :: ', state);
   console.log('userState :: ', userState);
@@ -51,12 +51,10 @@ const DropdownComponent = ({
     dataType = 'track';
   }
 
-  const clickEventLog = target => {
-    return {
-      eventTime: new Date(),
-      eventName: 'ClickEvent',
-      parameters: { page: router.asPath, target },
-    };
+  const clickEventLog = {
+    eventTime: new Date(),
+    eventName: 'ClickEvent',
+    parameters: { page: router.asPath, target: `${dataType}Modal/${data.id}` },
   };
 
   const customLogData = (name, params) => {
@@ -67,58 +65,64 @@ const DropdownComponent = ({
     };
   };
 
-  const addAlbumEvent = id => {
-    api.post('/library/albums', { albumId: id });
+  const postLog = () => {
     api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
-    // 각 이벤트 이후에 또 log 보내야 함
+    console.log('88888');
   };
+
+  // const addAlbumEvent = id => {
+  //   api.post('/library/albums', { albumId: id }).then(res => {
+  //     postLog();
+  //   });
+  // };
 
   const addPlaylistEvent = id => {
-    api.post('/library/playlists', { playlistId: id });
-    api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
+    api.post('/library/playlists', { playlistId: id }).then(res => {
+      postLog();
+    });
   };
 
-  const addTrackEvent = id => {
-    api.post('/library/tracks', { trackId: id });
-    api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
-  };
+  // const addTrackEvent = id => {
+  //   api.post('/library/tracks', { trackId: id });
+  //   api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
+  // };
 
-  const addArtistEvent = id => {
-    api.post('/library/artists', { artistId: id });
-    api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
-  };
+  // const addArtistEvent = id => {
+  //   api.post('/library/artists', { artistId: id });
+  //   api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
+  // };
 
-  const addErrorEvent = msg => {
-    console.log(msg);
-  };
+  // const addErrorEvent = msg => {
+  //   console.log(msg);
+  // };
 
   // 이벤트 전부 써보기
-  const addEventHandler = () => {
-    switch (dataType) {
-      case 'album':
-        logEventHandler(addAlbumEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
-        break;
-      case 'playlist':
-        logEventHandler(addPlaylistEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
-        break;
-      case 'track':
-        logEventHandler(addTrackEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
-        break;
-      case 'artist':
-        logEventHandler(addArtistEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
-        break;
-      default:
-        addErrorEvent('empty Data');
-    }
-  };
+  // const addEventHandler = () => {
+  //   switch (dataType) {
+  //     case 'album':
+  //       logEventHandler(addAlbumEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
+  //       break;
+  //     case 'playlist':
+  //       logEventHandler(addPlaylistEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
+  //       break;
+  //     case 'track':
+  //       logEventHandler(addTrackEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
+  //       break;
+  //     case 'artist':
+  //       logEventHandler(addArtistEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
+  //       break;
+  //     default:
+  //       addErrorEvent('empty Data');
+  //   }
+  // };
 
-  const logoutEvent = () => {
-    console.log('------logoutEvent-------');
-    localStorage.clear();
-    document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
-    alert('로그아웃 되었습니다.');
-    window.location.reload();
-  };
+  // const logoutEvent = () => {
+  //   console.log('------logoutEvent-------');
+  //   localStorage.clear();
+  //   document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+  //   alert('로그아웃 되었습니다.');
+  //   window.location.reload();
+  // };
 
   switch (type) {
     case 'auth':
@@ -142,11 +146,7 @@ const DropdownComponent = ({
                 text={T.ACCOUNT_SETTING}
                 onClick={logEventHandler}
               />
-              <Dropdown.Item
-                style={dropdownItemStyle}
-                text={T.LOGOUT}
-                onClick={logEventHandler(logoutEvent, clickEventLog('LogoutBtn'))}
-              />
+              <Dropdown.Item style={dropdownItemStyle} text={T.LOGOUT} onClick={logEventHandler} />
             </Dropdown.Menu>
           </Dropdown>
         </Wrapper>
@@ -159,11 +159,7 @@ const DropdownComponent = ({
               <Dropdown.Item
                 style={dropdownItemStyle}
                 text={T.ADD_TO_LIBRARY}
-                onClick={() =>
-                  logEventHandler(
-                    addPlaylistEvent(data.id),
-                    clickEventLog(`${dataType}Dropdown/${data.id}`),
-                  )}
+                onClick={() => logEventHandler(addPlaylistEvent(data.id), clickEventLog)}
               />
               <Dropdown.Item
                 style={dropdownItemStyle}

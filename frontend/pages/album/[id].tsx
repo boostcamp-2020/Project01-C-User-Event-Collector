@@ -1,14 +1,15 @@
 import { useRouter } from 'next/router';
 import useFetch from '@hooks/useFetch';
 import api from '@api/index';
+import Spinner from '@components/Common/Spinner';
 import AlbumDetail from '../../src/pages/Detail/Album';
 
 export function Index({ referer }) {
   const router = useRouter();
   const { id } = router.query;
-  const { data, isLoading, isError } = useFetch(`/album/${id}`);
+  const { data, isLoading, isError } = useFetch(`/album/${id}`, null);
 
-  if (isLoading) return <div>...Loading</div>;
+  if (isLoading) return <Spinner />;
   if (isError) {
     console.log(isError);
     return <div>...Error</div>;
