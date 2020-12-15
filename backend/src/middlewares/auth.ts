@@ -12,7 +12,7 @@ export const authenticateWithJwt = (req: Request, res: Response, next: NextFunct
   try {
     const token = req.headers.authorization;
     // TODO: redirect 시킬 지 논의해보기
-    return res.status(401).json({ success: false, message: 'Token Not Found' });
+    if (!token) return res.status(401).json({ success: false, message: 'Token Not Found' });
     const user = jwt.verify(token as string, process.env.JWT_SECRET as string) as IJwtPayload;
     req.user = user;
     next();
