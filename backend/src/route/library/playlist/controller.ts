@@ -12,7 +12,7 @@ const getPlaylistsByUserId = async (
     const playlists = await libraryPlaylistService.getPlaylistsByUserId(userId);
     res.status(200).json({ success: true, data: playlists });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     next(err);
   }
 };
@@ -27,7 +27,7 @@ const addPlaylist = async (req: Request, res: Response, next: NextFunction): Pro
     if (!isSuccess) return res.status(404).json({ message: 'Playlist Not Found' });
     return res.status(204).end();
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return next(err);
   }
 };
@@ -42,7 +42,7 @@ const deletePlaylist = async (req: Request, res: Response, next: NextFunction): 
     if (!isSuccess) return res.status(404).json({ message: 'Playlist Not Found' });
     return res.status(204).end();
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return next(err);
   }
 };

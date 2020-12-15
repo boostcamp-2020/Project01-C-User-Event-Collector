@@ -7,7 +7,7 @@ const getMagazines = async (req: Request, res: Response, next: NextFunction): Pr
     if (!mag) return res.status(404).json({ message: 'Mag Not Found' });
     return res.status(200).json({ success: true, data: mag });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return next(err);
   }
 };
@@ -23,7 +23,7 @@ const getMagazineByMagazineId = async (
     if (!mag) return res.status(404).json({ message: 'Magazine Not Found' });
     return res.status(200).json({ success: true, data: mag });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return next(err);
   }
 };
