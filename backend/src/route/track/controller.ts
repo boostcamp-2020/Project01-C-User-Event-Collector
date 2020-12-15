@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import * as trackService from '../../services/Track';
+import * as trackService from '../../services/track';
 
 const getTrackByTrackId = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {

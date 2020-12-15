@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import * as magazineService from '../../services/Mag';
+import * as magazineService from '../../services/mag';
 
 const getMagazines = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
