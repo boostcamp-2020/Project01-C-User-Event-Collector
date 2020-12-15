@@ -1,4 +1,4 @@
-import Mag from '../../entities/Mag';
+import Mag from '../../entities/mag';
 
 const getMagazines = (): Promise<Mag[]> => {
   return Mag.find();
