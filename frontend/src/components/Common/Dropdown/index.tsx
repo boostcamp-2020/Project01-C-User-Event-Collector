@@ -9,41 +9,40 @@ import { useAuthState } from '@context/AuthContext';
 import * as T from '../../../constants/dropdownText';
 
 interface IDropdownProps {
-  type: string;
+  type?: string;
   data?: any;
 }
 
 const DropdownComponent = ({ type, data }: IDropdownProps) => {
-  // 개발 중, 타입에러를 막기 위해 주석처리 했습니다
   const router = useRouter();
   const state = usePlayState();
   // const dispatch = usePlayDispatch();
   const userState = useAuthState();
   // const userDispatch = useAuthDispatch();
 
-  console.log('playstate :: ', state);
-  console.log('userState :: ', userState);
+  // console.log('playstate :: ', state);
+  // console.log('userState :: ', userState);
 
-  const dataType = 'undefined';
+  // const dataType = 'undefined';
 
-  const clickEventLog = {
-    eventTime: new Date(),
-    eventName: 'click_event',
-    parameters: { page: router.asPath, target: `${dataType}Modal/${data.id}` },
-  };
+  // const clickEventLog = {
+  //   eventTime: new Date(),
+  //   eventName: 'click_event',
+  //   parameters: { page: router.asPath, target: `${dataType}Modal/${data.id}` },
+  // };
 
-  const customLogData = (name, params) => {
-    return {
-      eventTime: new Date(),
-      eventName: name,
-      parameters: params,
-    };
-  };
+  // const customLogData = (name, params) => {
+  //   return {
+  //     eventTime: new Date(),
+  //     eventName: name,
+  //     parameters: params,
+  //   };
+  // };
 
-  const postLog = () => {
-    api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
-    console.log('88888');
-  };
+  // const postLog = () => {
+  //   api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
+  //   console.log('88888');
+  // };
 
   // const addAlbumEvent = id => {
   //   api.post('/library/albums', { albumId: id }).then(res => {
@@ -51,11 +50,11 @@ const DropdownComponent = ({ type, data }: IDropdownProps) => {
   //   });
   // };
 
-  const addPlaylistEvent = id => {
-    api.post('/library/playlists', { playlistId: id }).then(res => {
-      postLog();
-    });
-  };
+  // const addPlaylistEvent = id => {
+  //   api.post('/library/playlists', { playlistId: id }).then(res => {
+  //     postLog();
+  //   });
+  // };
 
   // const addTrackEvent = id => {
   //   api.post('/library/tracks', { trackId: id });
@@ -91,13 +90,13 @@ const DropdownComponent = ({ type, data }: IDropdownProps) => {
   //   }
   // };
 
-  // const logoutEvent = () => {
-  //   console.log('------logoutEvent-------');
-  //   localStorage.clear();
-  //   document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
-  //   alert('로그아웃 되었습니다.');
-  //   window.location.reload();
-  // };
+  const logoutEvent = () => {
+    console.log('------logoutEvent-------');
+    localStorage.clear();
+    document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+    alert('로그아웃 되었습니다.');
+    window.location.reload();
+  };
 
   switch (type) {
     case 'auth':
@@ -113,56 +112,51 @@ const DropdownComponent = ({ type, data }: IDropdownProps) => {
                 style={dropdownItemStyle}
                 className={T.MY_MEMBERSHIP}
                 text={T.MY_MEMBERSHIP}
-                onClick={logEventHandler}
               />
-              <Dropdown.Item style={dropdownItemStyle} text={T.NOTICE} onClick={logEventHandler} />
-              <Dropdown.Item
-                style={dropdownItemStyle}
-                text={T.ACCOUNT_SETTING}
-                onClick={logEventHandler}
-              />
-              <Dropdown.Item style={dropdownItemStyle} text={T.LOGOUT} onClick={logEventHandler} />
+              <Dropdown.Item style={dropdownItemStyle} text={T.NOTICE} />
+              <Dropdown.Item style={dropdownItemStyle} text={T.ACCOUNT_SETTING} />
+              <Dropdown.Item style={dropdownItemStyle} text={T.LOGOUT} />
             </Dropdown.Menu>
           </Dropdown>
         </Wrapper>
       );
-    case 'listItem':
-      return (
-        <Wrapper>
-          <Dropdown style={dropdownStyle}>
-            <Dropdown.Menu direction="right" style={dropdownMenuStyle}>
-              <Dropdown.Item
-                style={dropdownItemStyle}
-                text={T.ADD_TO_LIBRARY}
-                onClick={() => logEventHandler(addPlaylistEvent(data.id), clickEventLog)}
-              />
-              <Dropdown.Item
-                style={dropdownItemStyle}
-                text={T.ADD_TO_NEXT}
-                onClick={logEventHandler}
-              />
-              <Dropdown.Item
-                style={dropdownItemStyle}
-                text={T.ADD_TO_PREV}
-                onClick={logEventHandler}
-              />
-              <Dropdown.Item style={dropdownItemStyle} text={T.BUY_MP3} onClick={logEventHandler} />
-              <Dropdown.Item style={dropdownItemStyle} text={T.SHARE} onClick={logEventHandler} />
-            </Dropdown.Menu>
-          </Dropdown>
-        </Wrapper>
-      );
-    case 'artist':
-      return (
-        <Wrapper>
-          <Dropdown style={dropdownStyle}>
-            <Dropdown.Menu direction="right">
-              <Dropdown.Item style={dropdownItemStyle} text={T.LIKE} onClick={logEventHandler} />
-              <Dropdown.Item style={dropdownItemStyle} text={T.BUY_MP3} onClick={logEventHandler} />
-            </Dropdown.Menu>
-          </Dropdown>
-        </Wrapper>
-      );
+    // case 'listItem':
+    //   return (
+    //     <Wrapper>
+    //       <Dropdown style={dropdownStyle}>
+    //         <Dropdown.Menu direction="right" style={dropdownMenuStyle}>
+    //           <Dropdown.Item
+    //             style={dropdownItemStyle}
+    //             text={T.ADD_TO_LIBRARY}
+    //             onClick={() => logEventHandler(addPlaylistEvent(data.id), clickEventLog)}
+    //           />
+    //           <Dropdown.Item
+    //             style={dropdownItemStyle}
+    //             text={T.ADD_TO_NEXT}
+    //             onClick={logEventHandler}
+    //           />
+    //           <Dropdown.Item
+    //             style={dropdownItemStyle}
+    //             text={T.ADD_TO_PREV}
+    //             onClick={logEventHandler}
+    //           />
+    //           <Dropdown.Item style={dropdownItemStyle} text={T.BUY_MP3} onClick={logEventHandler} />
+    //           <Dropdown.Item style={dropdownItemStyle} text={T.SHARE} onClick={logEventHandler} />
+    //         </Dropdown.Menu>
+    //       </Dropdown>
+    //     </Wrapper>
+    //   );
+    // case 'artist':
+    //   return (
+    //     <Wrapper>
+    //       <Dropdown style={dropdownStyle}>
+    //         <Dropdown.Menu direction="right">
+    //           <Dropdown.Item style={dropdownItemStyle} text={T.LIKE} onClick={logEventHandler} />
+    //           <Dropdown.Item style={dropdownItemStyle} text={T.BUY_MP3} onClick={logEventHandler} />
+    //         </Dropdown.Menu>
+    //       </Dropdown>
+    //     </Wrapper>
+    //   );
     default:
       return (
         <Wrapper>

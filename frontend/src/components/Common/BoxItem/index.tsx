@@ -5,17 +5,16 @@ import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
 import { useRouter } from 'next/router';
 import useEventHandler from '@hooks/useEventHandler';
 import Link from 'next/link';
-import Dropdown from '@components/Common/Dropdown';
+import BoxDropdown from '@components/Common/Dropdown/BoxDropdown';
 
 interface IBoxItemProps {
-  data?: any;
   imgUrl: string;
-  next?: string;
+  next: string;
   target: string;
   id: number;
 }
 
-function BoxItem({ data, imgUrl, target, next, id }: IBoxItemProps) {
+function BoxItem({ imgUrl, target, next, id }: IBoxItemProps) {
   const router = useRouter();
   return (
     <>
@@ -38,7 +37,7 @@ function BoxItem({ data, imgUrl, target, next, id }: IBoxItemProps) {
           <BoxPlayButton />
           <BsThreeDots size={24} />
         </ButtonsWrapper>
-        <Dropdown type={next} data={data} />
+        <BoxDropdown type={next} id={id} />
       </Wrapper>
     </>
   );

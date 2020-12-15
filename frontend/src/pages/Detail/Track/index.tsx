@@ -42,7 +42,6 @@ function TrackDetail({ trackInfo: track }: ITrackInfoProps) {
           <SectionContentWrapper>
             <ContentImgWrapper>
               <BoxItem
-                data={track?.album}
                 target={TrackDetailAlbum}
                 imgUrl={track?.album?.imgUrl}
                 next="album"
