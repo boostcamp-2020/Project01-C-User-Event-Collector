@@ -4,7 +4,7 @@ import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as cors from 'cors';
 import * as morgan from 'morgan';
-import { createConnection } from 'typeorm';
+import * as typeorm from 'typeorm';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 import * as mongoose from 'mongoose';
@@ -21,18 +21,20 @@ if (process.env.NODE_ENV === 'production') {
   throw new Error('process.env.NODE_ENV Not Found');
 }
 
-mongoose
-  .connect(process.env.MONGO_URI as string, {
+const loadDatabases = async (): Promise<void> => {
+  await typeorm.createConnection();
+  console.log('MySQL Connected!');
+  await mongoose.connect(process.env.MONGO_URI as string, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
-  })
-  .then(() => console.log('MongoDB Connected!'))
-  .catch(err => console.log(err));
+  });
+  console.log('MongoDB Connected!');
+};
 
-createConnection()
-  .then(() => {
-    console.log('Database Connected :)');
+const startApp = async (): Promise<void> => {
+  try {
+    await loadDatabases();
 
     const app = express();
     app.set('port', process.env.PORT || 8000);
@@ -43,7 +45,6 @@ createConnection()
     app.use(morgan('dev'));
     // TODO: 허용할 주소 정확히 명시하기
     app.use(cors());
-
     app.use(passport.initialize());
     passportConfig();
 
@@ -54,5 +55,9 @@ createConnection()
     app.listen(app.get('port'), () => {
       console.log(`API Server App Listening on PORT ${app.get('port')}`);
     });
-  })
-  .catch(error => console.log(error));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+startApp();
