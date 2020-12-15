@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8909DCA2C2742CDA8EA20F85 /* libPods-MiniVIBETests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCC335C2D75EAB792B95DC4B /* libPods-MiniVIBETests.a */; };
 		AD62AD7689CD423579B7C6A4 /* libPods-MiniVIBE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F736C7CF8B7E1A46282594 /* libPods-MiniVIBE.a */; };
 		B9129283257812C9002F516F /* MusicVideoTop50SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9129282257812C9002F516F /* MusicVideoTop50SectionView.swift */; };
 		B912A15F257815CD00223C0B /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B912A15E257815CD00223C0B /* VideoView.swift */; };
@@ -18,12 +19,10 @@
 		B91B27E92580075B00BC9CE8 /* LibraryArtistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91B27E82580075B00BC9CE8 /* LibraryArtistView.swift */; };
 		B923A7EC2577A80400E5C48D /* DJStationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B923A7EB2577A80400E5C48D /* DJStationDetailView.swift */; };
 		B9258E172578E49200D4487C /* EventService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9258E162578E49200D4487C /* EventService.swift */; };
-		B931018E256D7CC900DD5ADA /* View+vibeTitle2.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931018D256D7CC900DD5ADA /* View+vibeTitle2.swift */; };
-		B931019E256D800000DD5ADA /* View+vibeTitle1.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931019D256D800000DD5ADA /* View+vibeTitle1.swift */; };
+		B931019E256D800000DD5ADA /* View+vibeTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = B931019D256D800000DD5ADA /* View+vibeTitles.swift */; };
 		B93101A8256D823700DD5ADA /* View+vibeMainText.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93101A7256D823700DD5ADA /* View+vibeMainText.swift */; };
-		B93101B2256D848500DD5ADA /* View+vibeTitle3.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93101B1256D848500DD5ADA /* View+vibeTitle3.swift */; };
 		B94C070F25869C7200066A20 /* AlbumMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94C070E25869C7200066A20 /* AlbumMoreView.swift */; };
-		B94DA9CA257D36EB0002A066 /* FakeServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94DA9C9257D36EB0002A066 /* FakeServerRepository.swift */; };
+		B94DA9CA257D36EB0002A066 /* RealServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94DA9C9257D36EB0002A066 /* RealServerRepository.swift */; };
 		B94DA9D4257D56A40002A066 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94DA9D3257D56A40002A066 /* AsyncImageView.swift */; };
 		B94DA9DD257D66040002A066 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94DA9DC257D66040002A066 /* DependencyInjector.swift */; };
 		B962B09D2578169B00111978 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = B962B09C2578169B00111978 /* Video.swift */; };
@@ -36,7 +35,15 @@
 		B971C475257ABDE300C57CE9 /* PlayShuffleHeaderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B971C474257ABDE300C57CE9 /* PlayShuffleHeaderButton.swift */; };
 		B97968232578DD8900D57161 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97968222578DD8900D57161 /* Network.swift */; };
 		B97A5067256E7343003F7DF5 /* CGFloat+defaultValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97A5066256E7343003F7DF5 /* CGFloat+defaultValues.swift */; };
+		B97E95DF25891C680073C950 /* LibrarySongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E95DE25891C680073C950 /* LibrarySongView.swift */; };
+		B97E95E225891C850073C950 /* LibraryPlaylistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E95E125891C850073C950 /* LibraryPlaylistView.swift */; };
+		B97E95E62589275D0073C950 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97E95E52589275D0073C950 /* Blur.swift */; };
 		B988596C257684510037D19B /* MiniVIBETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B988596B257684510037D19B /* MiniVIBETests.swift */; };
+		B98AF70A2588C16F00A27F35 /* MoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98AF7092588C16F00A27F35 /* MoveEvent.swift */; };
+		B98AF70E2588C19200A27F35 /* TapEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98AF70D2588C19200A27F35 /* TapEvent.swift */; };
+		B98AF7112588C19F00A27F35 /* ErrorEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98AF7102588C19F00A27F35 /* ErrorEvent.swift */; };
+		B98AF7142588C38F00A27F35 /* CoreDataEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98AF7132588C38F00A27F35 /* CoreDataEvent.swift */; };
+		B98AF7172588C3AD00A27F35 /* EventName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B98AF7162588C3AD00A27F35 /* EventName.swift */; };
 		B994C69C25627DBD000E563C /* MiniVIBEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994C69B25627DBD000E563C /* MiniVIBEApp.swift */; };
 		B994C69E25627DBD000E563C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994C69D25627DBD000E563C /* ContentView.swift */; };
 		B994C6A325627DBE000E563C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B994C6A225627DBE000E563C /* Preview Assets.xcassets */; };
@@ -47,7 +54,7 @@
 		B9A15703256E308900FFDA20 /* DJStationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A15702256E308900FFDA20 /* DJStationItem.swift */; };
 		B9B4D1EB256E5BB600EC2FE2 /* MoreHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B4D1EA256E5BB600EC2FE2 /* MoreHeaderView.swift */; };
 		B9B4D1F6256E5C7D00EC2FE2 /* TodayHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95964E0256CEF520041B135 /* TodayHeaderView.swift */; };
-		B9B4D1F9256E5C8A00EC2FE2 /* Color+vibePink.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB8A19256CFE6900D3F1A2 /* Color+vibePink.swift */; };
+		B9B4D1F9256E5C8A00EC2FE2 /* Color+vibeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB8A19256CFE6900D3F1A2 /* Color+vibeColors.swift */; };
 		B9B4D1FA256E5C8A00EC2FE2 /* SummarySectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93ED12E256BBC7D0033C43B /* SummarySectionView.swift */; };
 		B9B4D1FF256E5CC300EC2FE2 /* SummaryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95964D4256CDF9D0041B135 /* SummaryItemView.swift */; };
 		B9B6279925628130006B0F00 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = B9B6279825628130006B0F00 /* .swiftlint.yml */; };
@@ -57,12 +64,9 @@
 		B9C628EC257C1C35000BCE80 /* NewsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C628EB257C1C35000BCE80 /* NewsItemView.swift */; };
 		B9C628FC257C2B4D000BCE80 /* GenreSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C628FB257C2B4D000BCE80 /* GenreSectionView.swift */; };
 		B9C911622578E02400057E6F /* ServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C911612578E02400057E6F /* ServerRepository.swift */; };
-		B9CC98C82587D64C00CED178 /* EventEmitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9CC98C62587D64700CED178 /* EventEmitter.framework */; };
-		B9CC98C92587D64C00CED178 /* EventEmitter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9CC98C62587D64700CED178 /* EventEmitter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B9D04D61257D8178001D01D7 /* AsyncImageNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D04D60257D8178001D01D7 /* AsyncImageNetwork.swift */; };
 		B9D04D65257D8193001D01D7 /* AsyncImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D04D64257D8193001D01D7 /* AsyncImageCache.swift */; };
 		B9D18FDF256CD7B000ECEFEC /* SummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D18FDE256CD7B000ECEFEC /* SummaryItem.swift */; };
-		B9D357B8257D171A009202F9 /* LocalEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D357B7257D171A009202F9 /* LocalEvent.swift */; };
 		B9D357BC257D17C5009202F9 /* EventRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D357BB257D17C5009202F9 /* EventRequest.swift */; };
 		B9D793B12577E9C500B40D0E /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D793B02577E9C500B40D0E /* ChartView.swift */; };
 		B9D793BB2577FDBC00B40D0E /* FiveRowSongGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D793BA2577FDBC00B40D0E /* FiveRowSongGridView.swift */; };
@@ -86,7 +90,7 @@
 		DE090443256D098A002914B5 /* NowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE090442256D098A002914B5 /* NowItemView.swift */; };
 		DE090447256D09CC002914B5 /* NowReplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE090446256D09CC002914B5 /* NowReplayItem.swift */; };
 		DE09044B256D0A5D002914B5 /* MagazineItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE09044A256D0A5D002914B5 /* MagazineItemView.swift */; };
-		DE18EE8B257B9D34009E4E11 /* View+emitEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE18EE8A257B9D34009E4E11 /* View+emitEvent.swift */; };
+		DE18EE8B257B9D34009E4E11 /* View+name.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE18EE8A257B9D34009E4E11 /* View+name.swift */; };
 		DE18EEA1257BFA13009E4E11 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE18EEA0257BFA13009E4E11 /* Reachability.swift */; };
 		DE3D6F8925640FE800C236EF /* TodayFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3D6F8825640FE800C236EF /* TodayFooterView.swift */; };
 		DE3D6F95256414EA00C236EF /* NowSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3D6F94256414EA00C236EF /* NowSectionView.swift */; };
@@ -120,7 +124,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B9CC98C92587D64C00CED178 /* EventEmitter.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,7 +131,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6B63E472A61C2091E40A0E83 /* Pods-MiniVIBETests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBETests.release.xcconfig"; path = "Target Support Files/Pods-MiniVIBETests/Pods-MiniVIBETests.release.xcconfig"; sourceTree = "<group>"; };
 		71F736C7CF8B7E1A46282594 /* libPods-MiniVIBE.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniVIBE.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B11B79F42B0ED96AFC3EFED8 /* Pods-MiniVIBETests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBETests.debug.xcconfig"; path = "Target Support Files/Pods-MiniVIBETests/Pods-MiniVIBETests.debug.xcconfig"; sourceTree = "<group>"; };
 		B251DDD6E742687B7610BEE2 /* Pods-MiniVIBE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBE.debug.xcconfig"; path = "Target Support Files/Pods-MiniVIBE/Pods-MiniVIBE.debug.xcconfig"; sourceTree = "<group>"; };
 		B9129282257812C9002F516F /* MusicVideoTop50SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTop50SectionView.swift; sourceTree = "<group>"; };
 		B912A15E257815CD00223C0B /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
@@ -140,13 +145,11 @@
 		B91B27E82580075B00BC9CE8 /* LibraryArtistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryArtistView.swift; sourceTree = "<group>"; };
 		B923A7EB2577A80400E5C48D /* DJStationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJStationDetailView.swift; sourceTree = "<group>"; };
 		B9258E162578E49200D4487C /* EventService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventService.swift; sourceTree = "<group>"; };
-		B931018D256D7CC900DD5ADA /* View+vibeTitle2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+vibeTitle2.swift"; sourceTree = "<group>"; };
-		B931019D256D800000DD5ADA /* View+vibeTitle1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+vibeTitle1.swift"; sourceTree = "<group>"; };
+		B931019D256D800000DD5ADA /* View+vibeTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+vibeTitles.swift"; sourceTree = "<group>"; };
 		B93101A7256D823700DD5ADA /* View+vibeMainText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+vibeMainText.swift"; sourceTree = "<group>"; };
-		B93101B1256D848500DD5ADA /* View+vibeTitle3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+vibeTitle3.swift"; sourceTree = "<group>"; };
 		B93ED12E256BBC7D0033C43B /* SummarySectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummarySectionView.swift; sourceTree = "<group>"; };
 		B94C070E25869C7200066A20 /* AlbumMoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumMoreView.swift; sourceTree = "<group>"; };
-		B94DA9C9257D36EB0002A066 /* FakeServerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeServerRepository.swift; sourceTree = "<group>"; };
+		B94DA9C9257D36EB0002A066 /* RealServerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealServerRepository.swift; sourceTree = "<group>"; };
 		B94DA9D3257D56A40002A066 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		B94DA9DC257D66040002A066 /* DependencyInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		B95964D4256CDF9D0041B135 /* SummaryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryItemView.swift; sourceTree = "<group>"; };
@@ -160,9 +163,17 @@
 		B971C474257ABDE300C57CE9 /* PlayShuffleHeaderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayShuffleHeaderButton.swift; sourceTree = "<group>"; };
 		B97968222578DD8900D57161 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		B97A5066256E7343003F7DF5 /* CGFloat+defaultValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+defaultValues.swift"; sourceTree = "<group>"; };
+		B97E95DE25891C680073C950 /* LibrarySongView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibrarySongView.swift; sourceTree = "<group>"; };
+		B97E95E125891C850073C950 /* LibraryPlaylistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibraryPlaylistView.swift; sourceTree = "<group>"; };
+		B97E95E52589275D0073C950 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		B9885969257684510037D19B /* MiniVIBETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MiniVIBETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B988596B257684510037D19B /* MiniVIBETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVIBETests.swift; sourceTree = "<group>"; };
 		B988596D257684510037D19B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B98AF7092588C16F00A27F35 /* MoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveEvent.swift; sourceTree = "<group>"; };
+		B98AF70D2588C19200A27F35 /* TapEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapEvent.swift; sourceTree = "<group>"; };
+		B98AF7102588C19F00A27F35 /* ErrorEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorEvent.swift; sourceTree = "<group>"; };
+		B98AF7132588C38F00A27F35 /* CoreDataEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataEvent.swift; sourceTree = "<group>"; };
+		B98AF7162588C3AD00A27F35 /* EventName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventName.swift; sourceTree = "<group>"; };
 		B994C69825627DBD000E563C /* MiniVIBE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MiniVIBE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B994C69B25627DBD000E563C /* MiniVIBEApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniVIBEApp.swift; sourceTree = "<group>"; };
 		B994C69D25627DBD000E563C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -181,16 +192,14 @@
 		B9C628EB257C1C35000BCE80 /* NewsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemView.swift; sourceTree = "<group>"; };
 		B9C628FB257C2B4D000BCE80 /* GenreSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreSectionView.swift; sourceTree = "<group>"; };
 		B9C911612578E02400057E6F /* ServerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerRepository.swift; sourceTree = "<group>"; };
-		B9CC98C62587D64700CED178 /* EventEmitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EventEmitter.framework; sourceTree = "<group>"; };
 		B9D04D60257D8178001D01D7 /* AsyncImageNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageNetwork.swift; sourceTree = "<group>"; };
 		B9D04D64257D8193001D01D7 /* AsyncImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageCache.swift; sourceTree = "<group>"; };
 		B9D18FDE256CD7B000ECEFEC /* SummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryItem.swift; sourceTree = "<group>"; };
-		B9D357B7257D171A009202F9 /* LocalEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalEvent.swift; sourceTree = "<group>"; };
 		B9D357BB257D17C5009202F9 /* EventRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRequest.swift; sourceTree = "<group>"; };
 		B9D793B02577E9C500B40D0E /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		B9D793BA2577FDBC00B40D0E /* FiveRowSongGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiveRowSongGridView.swift; sourceTree = "<group>"; };
 		B9D793FA25780E3300B40D0E /* Album.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
-		B9DB8A19256CFE6900D3F1A2 /* Color+vibePink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+vibePink.swift"; sourceTree = "<group>"; };
+		B9DB8A19256CFE6900D3F1A2 /* Color+vibeColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+vibeColors.swift"; sourceTree = "<group>"; };
 		B9DB8A1F256D08F500D3F1A2 /* ArtistSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistSection.swift; sourceTree = "<group>"; };
 		B9EC74DA257D0EDC003DF392 /* MockServerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServerView.swift; sourceTree = "<group>"; };
 		B9F0BDAB256ED2B7004A2852 /* SectionScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionScrollView.swift; sourceTree = "<group>"; };
@@ -208,11 +217,12 @@
 		B9FF8A83257A9E1200B774CD /* PlaylistSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistSectionViewModel.swift; sourceTree = "<group>"; };
 		B9FF8A8F257AA3FC00B774CD /* PlaylistMoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistMoreView.swift; sourceTree = "<group>"; };
 		D79633046F581A9010E0BE59 /* Pods-MiniVIBE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBE.release.xcconfig"; path = "Target Support Files/Pods-MiniVIBE/Pods-MiniVIBE.release.xcconfig"; sourceTree = "<group>"; };
+		DCC335C2D75EAB792B95DC4B /* libPods-MiniVIBETests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniVIBETests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE09042E256CCE11002914B5 /* MagazineSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineSectionView.swift; sourceTree = "<group>"; };
 		DE090442256D098A002914B5 /* NowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowItemView.swift; sourceTree = "<group>"; };
 		DE090446256D09CC002914B5 /* NowReplayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowReplayItem.swift; sourceTree = "<group>"; };
 		DE09044A256D0A5D002914B5 /* MagazineItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineItemView.swift; sourceTree = "<group>"; };
-		DE18EE8A257B9D34009E4E11 /* View+emitEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+emitEvent.swift"; sourceTree = "<group>"; };
+		DE18EE8A257B9D34009E4E11 /* View+name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+name.swift"; sourceTree = "<group>"; };
 		DE18EEA0257BFA13009E4E11 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		DE3D6F8825640FE800C236EF /* TodayFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayFooterView.swift; sourceTree = "<group>"; };
 		DE3D6F94256414EA00C236EF /* NowSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowSectionView.swift; sourceTree = "<group>"; };
@@ -234,6 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8909DCA2C2742CDA8EA20F85 /* libPods-MiniVIBETests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,7 +252,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9CC98C82587D64C00CED178 /* EventEmitter.framework in Frameworks */,
 				AD62AD7689CD423579B7C6A4 /* libPods-MiniVIBE.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +264,8 @@
 			children = (
 				B251DDD6E742687B7610BEE2 /* Pods-MiniVIBE.debug.xcconfig */,
 				D79633046F581A9010E0BE59 /* Pods-MiniVIBE.release.xcconfig */,
+				B11B79F42B0ED96AFC3EFED8 /* Pods-MiniVIBETests.debug.xcconfig */,
+				6B63E472A61C2091E40A0E83 /* Pods-MiniVIBETests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -357,6 +369,39 @@
 				B96F49FA25768CB800C5AF5F /* NetworkError+Equatable.swift */,
 			);
 			path = MiniVIBETests;
+			sourceTree = "<group>";
+		};
+		B98AF7052588C0EC00A27F35 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				B98AF7092588C16F00A27F35 /* MoveEvent.swift */,
+				B98AF7132588C38F00A27F35 /* CoreDataEvent.swift */,
+				B98AF70D2588C19200A27F35 /* TapEvent.swift */,
+				B98AF7102588C19F00A27F35 /* ErrorEvent.swift */,
+				B98AF7162588C3AD00A27F35 /* EventName.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		B98AF7062588C0F400A27F35 /* Contents */ = {
+			isa = PBXGroup;
+			children = (
+				DEF5EFED25727E47006666DC /* Song.swift */,
+				B9D793FA25780E3300B40D0E /* Album.swift */,
+				B962B09C2578169B00111978 /* Video.swift */,
+				B9FF8A6D257A951100B774CD /* Playlist.swift */,
+				B9FF8A75257A992400B774CD /* Magazine.swift */,
+				DE5F4C73257EA7DC0058ABE6 /* Artist.swift */,
+			);
+			path = Contents;
+			sourceTree = "<group>";
+		};
+		B98AF7082588C13300A27F35 /* Enviroments */ = {
+			isa = PBXGroup;
+			children = (
+				DEF5EFF125727E58006666DC /* MusicPlayer.swift */,
+			);
+			path = Enviroments;
 			sourceTree = "<group>";
 		};
 		B994C68F25627DBD000E563C = {
@@ -471,15 +516,13 @@
 		B9DB8A18256CFE1C00D3F1A2 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				B931019D256D800000DD5ADA /* View+vibeTitle1.swift */,
-				B931018D256D7CC900DD5ADA /* View+vibeTitle2.swift */,
-				B93101B1256D848500DD5ADA /* View+vibeTitle3.swift */,
+				B931019D256D800000DD5ADA /* View+vibeTitles.swift */,
 				B93101A7256D823700DD5ADA /* View+vibeMainText.swift */,
-				B9DB8A19256CFE6900D3F1A2 /* Color+vibePink.swift */,
+				B9DB8A19256CFE6900D3F1A2 /* Color+vibeColors.swift */,
 				B97A5066256E7343003F7DF5 /* CGFloat+defaultValues.swift */,
 				B9F0BDCF256EDE41004A2852 /* CGFloat+ImageWidths.swift */,
 				B96AEF9325815A950072B242 /* String+EventParameters.swift */,
-				DE18EE8A257B9D34009E4E11 /* View+emitEvent.swift */,
+				DE18EE8A257B9D34009E4E11 /* View+name.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -507,10 +550,10 @@
 				B9C628E0257C06F9000BCE80 /* MockItemFactory.swift */,
 				B97968222578DD8900D57161 /* Network.swift */,
 				B9FEA4E5257668E10089CCD6 /* Networking.swift */,
-				B9FEA4ED25767BA20089CCD6 /* RequestProviding.swift */,
 				DE18EEA0257BFA13009E4E11 /* Reachability.swift */,
-				B91B27DA258001A100BC9CE8 /* ItemRequest.swift */,
+				B9FEA4ED25767BA20089CCD6 /* RequestProviding.swift */,
 				B91B27E02580044500BC9CE8 /* ItemResponse.swift */,
+				B91B27DA258001A100BC9CE8 /* ItemRequest.swift */,
 				DEA2137C2583F3DC00E65AE1 /* KeyChain.swift */,
 			);
 			path = Utilities;
@@ -567,6 +610,7 @@
 			children = (
 				DEF5EFE825723A01006666DC /* NowPlayingBarView.swift */,
 				DE3EF6D1257361EC00A25B71 /* MusicPlayerView.swift */,
+				B97E95E52589275D0073C950 /* Blur.swift */,
 			);
 			path = PlayingBar;
 			sourceTree = "<group>";
@@ -574,8 +618,8 @@
 		CA233B27D449220AF6D7CF38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B9CC98C62587D64700CED178 /* EventEmitter.framework */,
 				71F736C7CF8B7E1A46282594 /* libPods-MiniVIBE.a */,
+				DCC335C2D75EAB792B95DC4B /* libPods-MiniVIBETests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -605,6 +649,8 @@
 				DE5F4C6F257EA7400058ABE6 /* LibraryView.swift */,
 				B91B27E42580070800BC9CE8 /* LibraryAlbumView.swift */,
 				B91B27E82580075B00BC9CE8 /* LibraryArtistView.swift */,
+				B97E95DE25891C680073C950 /* LibrarySongView.swift */,
+				B97E95E125891C850073C950 /* LibraryPlaylistView.swift */,
 			);
 			path = LibraryView;
 			sourceTree = "<group>";
@@ -614,7 +660,7 @@
 			children = (
 				DE75169F25776F990054AFC6 /* LocalRepository.swift */,
 				B9C911612578E02400057E6F /* ServerRepository.swift */,
-				B94DA9C9257D36EB0002A066 /* FakeServerRepository.swift */,
+				B94DA9C9257D36EB0002A066 /* RealServerRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -622,14 +668,9 @@
 		DEF5EFEC25727DF8006666DC /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DEF5EFED25727E47006666DC /* Song.swift */,
-				B9D793FA25780E3300B40D0E /* Album.swift */,
-				DEF5EFF125727E58006666DC /* MusicPlayer.swift */,
-				B962B09C2578169B00111978 /* Video.swift */,
-				B9FF8A6D257A951100B774CD /* Playlist.swift */,
-				B9FF8A75257A992400B774CD /* Magazine.swift */,
-				DE5F4C73257EA7DC0058ABE6 /* Artist.swift */,
-				B9D357B7257D171A009202F9 /* LocalEvent.swift */,
+				B98AF7082588C13300A27F35 /* Enviroments */,
+				B98AF7062588C0F400A27F35 /* Contents */,
+				B98AF7052588C0EC00A27F35 /* Events */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -641,6 +682,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9885970257684510037D19B /* Build configuration list for PBXNativeTarget "MiniVIBETests" */;
 			buildPhases = (
+				8DD33183343F0F0F884D9FC9 /* [CP] Check Pods Manifest.lock */,
 				B9885965257684510037D19B /* Sources */,
 				B9885966257684510037D19B /* Frameworks */,
 				B9885967257684510037D19B /* Resources */,
@@ -733,6 +775,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8DD33183343F0F0F884D9FC9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MiniVIBETests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A5459FF9EB284B23934C9B38 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -790,11 +854,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B96AEF902581554E0072B242 /* PlaylistMoreView.swift in Sources */,
-				B9D357B8257D171A009202F9 /* LocalEvent.swift in Sources */,
-				B94DA9CA257D36EB0002A066 /* FakeServerRepository.swift in Sources */,
+				B94DA9CA257D36EB0002A066 /* RealServerRepository.swift in Sources */,
 				DEF5EFEE25727E47006666DC /* Song.swift in Sources */,
 				B9B4D1FF256E5CC300EC2FE2 /* SummaryItemView.swift in Sources */,
-				B9B4D1F9256E5C8A00EC2FE2 /* Color+vibePink.swift in Sources */,
+				B98AF7112588C19F00A27F35 /* ErrorEvent.swift in Sources */,
+				B9B4D1F9256E5C8A00EC2FE2 /* Color+vibeColors.swift in Sources */,
 				B9C628FC257C2B4D000BCE80 /* GenreSectionView.swift in Sources */,
 				B9FF8A84257A9E1200B774CD /* PlaylistSectionViewModel.swift in Sources */,
 				B9B4D1FA256E5C8A00EC2FE2 /* SummarySectionView.swift in Sources */,
@@ -809,7 +873,8 @@
 				B9FF8A62257A846100B774CD /* RankChangeView.swift in Sources */,
 				B9D793BB2577FDBC00B40D0E /* FiveRowSongGridView.swift in Sources */,
 				DE09042F256CCE11002914B5 /* MagazineSectionView.swift in Sources */,
-				DE18EE8B257B9D34009E4E11 /* View+emitEvent.swift in Sources */,
+				DE18EE8B257B9D34009E4E11 /* View+name.swift in Sources */,
+				B98AF7172588C3AD00A27F35 /* EventName.swift in Sources */,
 				B9D357BC257D17C5009202F9 /* EventRequest.swift in Sources */,
 				B9FEA4EE25767BA20089CCD6 /* RequestProviding.swift in Sources */,
 				B97A5067256E7343003F7DF5 /* CGFloat+defaultValues.swift in Sources */,
@@ -830,7 +895,10 @@
 				DE5F4C74257EA7DC0058ABE6 /* Artist.swift in Sources */,
 				B9C628E8257C0AEC000BCE80 /* SearchView.swift in Sources */,
 				DE09044B256D0A5D002914B5 /* MagazineItemView.swift in Sources */,
+				B97E95E62589275D0073C950 /* Blur.swift in Sources */,
+				B98AF70E2588C19200A27F35 /* TapEvent.swift in Sources */,
 				DE090443256D098A002914B5 /* NowItemView.swift in Sources */,
+				B97E95E225891C850073C950 /* LibraryPlaylistView.swift in Sources */,
 				B9DB8A20256D08F500D3F1A2 /* ArtistSection.swift in Sources */,
 				B9A156F9256E303A00FFDA20 /* DJStationSectionView.swift in Sources */,
 				B971C475257ABDE300C57CE9 /* PlayShuffleHeaderButton.swift in Sources */,
@@ -841,9 +909,7 @@
 				B9C911622578E02400057E6F /* ServerRepository.swift in Sources */,
 				B9D793B12577E9C500B40D0E /* ChartView.swift in Sources */,
 				B971C46D257AAAF700C57CE9 /* FiveRowSongGridMoreView.swift in Sources */,
-				B931018E256D7CC900DD5ADA /* View+vibeTitle2.swift in Sources */,
 				B9A156FF256E307900FFDA20 /* DJStationItemView.swift in Sources */,
-				B93101B2256D848500DD5ADA /* View+vibeTitle3.swift in Sources */,
 				B91B27E52580070800BC9CE8 /* LibraryAlbumView.swift in Sources */,
 				B93101A8256D823700DD5ADA /* View+vibeMainText.swift in Sources */,
 				B994C6A525627DBE000E563C /* Persistence.swift in Sources */,
@@ -852,6 +918,7 @@
 				B9F0BDAC256ED2B7004A2852 /* SectionScrollView.swift in Sources */,
 				B994C69E25627DBD000E563C /* ContentView.swift in Sources */,
 				B9FF8A80257A9DDF00B774CD /* PlaylistSectionView.swift in Sources */,
+				B97E95DF25891C680073C950 /* LibrarySongView.swift in Sources */,
 				B9C628EC257C1C35000BCE80 /* NewsItemView.swift in Sources */,
 				B91B27E92580075B00BC9CE8 /* LibraryArtistView.swift in Sources */,
 				B9A15703256E308900FFDA20 /* DJStationItem.swift in Sources */,
@@ -861,13 +928,15 @@
 				DEC076DA2563AEBE004862AA /* TodayView.swift in Sources */,
 				B994C69C25627DBD000E563C /* MiniVIBEApp.swift in Sources */,
 				B9FF8A5E257A832800B774CD /* AlbumSectionViewModel.swift in Sources */,
+				B98AF7142588C38F00A27F35 /* CoreDataEvent.swift in Sources */,
 				DE3D6F95256414EA00C236EF /* NowSectionView.swift in Sources */,
+				B98AF70A2588C16F00A27F35 /* MoveEvent.swift in Sources */,
 				B9FF8A6E257A951100B774CD /* Playlist.swift in Sources */,
 				B9FEA4E6257668E10089CCD6 /* Networking.swift in Sources */,
 				B94DA9DD257D66040002A066 /* DependencyInjector.swift in Sources */,
 				B9C628E1257C06F9000BCE80 /* MockItemFactory.swift in Sources */,
 				DE090447256D09CC002914B5 /* NowReplayItem.swift in Sources */,
-				B931019E256D800000DD5ADA /* View+vibeTitle1.swift in Sources */,
+				B931019E256D800000DD5ADA /* View+vibeTitles.swift in Sources */,
 				B9D04D61257D8178001D01D7 /* AsyncImageNetwork.swift in Sources */,
 				DE18EEA1257BFA13009E4E11 /* Reachability.swift in Sources */,
 				B9EC74DB257D0EDC003DF392 /* MockServerView.swift in Sources */,
@@ -890,6 +959,7 @@
 /* Begin XCBuildConfiguration section */
 		B9885971257684510037D19B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B11B79F42B0ED96AFC3EFED8 /* Pods-MiniVIBETests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -911,6 +981,7 @@
 		};
 		B9885972257684510037D19B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B63E472A61C2091E40A0E83 /* Pods-MiniVIBETests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;

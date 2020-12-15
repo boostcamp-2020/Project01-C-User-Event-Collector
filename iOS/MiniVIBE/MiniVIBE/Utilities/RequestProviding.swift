@@ -31,7 +31,7 @@ protocol RequestProviding {
     var url: URL? { get }
     var method: RequestMethod { get }
     var headers: [String: String]? { get }
-    func body() throws -> Data?
+    var body: Data? { get }
     func urlRequest() throws -> URLRequest
 }
 
@@ -43,8 +43,8 @@ extension RequestProviding {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = headers
-        request.httpBody = try body()
-        request.setValue(KeyChain.shared.readTokens(), forHTTPHeaderField: "Authorization")
+        request.httpBody = body
+        request.setValue(KeyChain.shared.readToken(), forHTTPHeaderField: "Authorization")
         return request
     }
 }

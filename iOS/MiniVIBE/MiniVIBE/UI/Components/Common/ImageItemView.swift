@@ -8,15 +8,15 @@
 import SwiftUI
 
 enum ImageSizeType: CGFloat {
-    case one
-    case two
+    case large
+    case normal
     
     var rawValue: CGFloat {
         switch self {
-        case .one:
+        case .large:
             return .largeItemImageWidth
-        case .two:
-            return .twoItemImageWidth
+        case .normal:
+            return .normalItemImageWidth
         }
     }
 }

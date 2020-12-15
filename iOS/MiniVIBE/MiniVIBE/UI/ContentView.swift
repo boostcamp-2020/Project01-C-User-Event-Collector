@@ -7,21 +7,7 @@
 
 import SwiftUI
 import CoreData
-import EventEmitter
-
-struct TabSyncView<Content: View>: View {
-    @Binding var selection: TabType
-    var tag: TabType
-    var content: () -> Content
-    @ViewBuilder
-    var body: some View {
-        if selection == tag {
-            content()
-        } else {
-            Spacer()
-        }
-    }
-}
+import BCEventEmitter
 
 struct ContentView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
@@ -29,67 +15,67 @@ struct ContentView: View {
     @StateObject var viewModel: ViewModel
     var body: some View {
         Group {
-        TabView(selection: $viewModel.selectedTab) {
-            TabSyncView(selection: $viewModel.selectedTab, tag: TabType.today) {
-                TodayView(viewModel: TodayView.ViewModel(container: viewModel.container))
-              }
+            TabView(selection: $viewModel.selectedTab) {
+                TabSyncView(selection: $viewModel.selectedTab, tag: TabType.today) {
+                    TodayView(viewModel: TodayView.ViewModel(container: viewModel.container))
+                }
                 .tabItem {
                     Image(systemName: "house")
                 }.tag(TabType.today)
-            TabSyncView(selection: $viewModel.selectedTab, tag: TabType.chart) {
-            ChartView(viewModel: ChartView.ViewModel(container: viewModel.container))
-            }
+                TabSyncView(selection: $viewModel.selectedTab, tag: TabType.chart) {
+                    ChartView(viewModel: ChartView.ViewModel(container: viewModel.container))
+                }
                 .tabItem {
                     Image(systemName: "chart.bar.doc.horizontal")
                 }.tag(TabType.chart)
-            TabSyncView(selection: $viewModel.selectedTab, tag: TabType.video) {
-            VideoView(viewModel: VideoView.ViewModel(container: viewModel.container))
-            }
+                TabSyncView(selection: $viewModel.selectedTab, tag: TabType.video) {
+                    VideoView(viewModel: VideoView.ViewModel(container: viewModel.container))
+                }
                 .tabItem {
                     Image(systemName: "play.rectangle.fill")
                 }.tag(TabType.video)
-            TabSyncView(selection: $viewModel.selectedTab, tag: TabType.search) {
-            SearchView()
-            }
+                TabSyncView(selection: $viewModel.selectedTab, tag: TabType.search) {
+                    SearchView()
+                }
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }.tag(TabType.search)
-            TabSyncView(selection: $viewModel.selectedTab, tag: TabType.libarary) {
-            LibraryView(viewModel: LibraryView.ViewModel(container: viewModel.container), colorMode: $colorMode)
-            }
+                TabSyncView(selection: $viewModel.selectedTab, tag: TabType.libarary) {
+                    LibraryView(viewModel: LibraryView.ViewModel(container: viewModel.container), colorMode: $colorMode)
+                }
                 .tabItem {
                     Image(systemName: "person.fill")
                 }.tag(TabType.libarary)
-        }.accentColor(.vibePink)
+            }.accentColor(.vibePink)
         }.preferredColorScheme(colorMode == true ? .dark : .light)
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
-enum TabType: CustomStringConvertible {
-    case today
-    case chart
-    case video
-    case search
-    case libarary
-    
-    var description: String {
-        switch self {
-        case .today:
-            return "Today"
-        case .chart:
-            return "Chart"
-        case .video:
-            return "Video"
-        case .search:
-            return "Search"
-        case .libarary:
-            return "Library"
+extension ContentView {
+    enum TabType: CustomStringConvertible {
+        case today
+        case chart
+        case video
+        case search
+        case libarary
+        
+        var description: String {
+            switch self {
+            case .today:
+                return "Today"
+            case .chart:
+                return "Chart"
+            case .video:
+                return "Video"
+            case .search:
+                return "Search"
+            case .libarary:
+                return "Library"
+            }
         }
     }
-}
-
-extension ContentView {
+    
     final class ViewModel: ObservableObject {
         let localRepository: LocalRepository
         var container: DIContainer
@@ -102,6 +88,22 @@ extension ContentView {
         init(container: DIContainer) {
             self.container = container
             self.localRepository = container.localRepository
+        }
+    }
+}
+
+extension ContentView {
+    struct TabSyncView<Content: View>: View {
+        @Binding var selection: ContentView.TabType
+        var tag: TabType
+        var content: () -> Content
+        @ViewBuilder
+        var body: some View {
+            if selection == tag {
+                content()
+            } else {
+                Spacer()
+            }
         }
     }
 }

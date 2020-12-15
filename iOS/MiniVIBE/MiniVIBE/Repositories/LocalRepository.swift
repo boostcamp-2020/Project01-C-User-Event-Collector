@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import EventEmitter
+import BCEventEmitter
 
 protocol LocalRepository {
     func fetchEvent() -> [CoreDataEvent]
@@ -37,6 +37,6 @@ struct RealLocalRepository: LocalRepository {
 
     func saveEvent(event: Event) {
         let coreDataEvent = CoreDataEvent(name: event.name, parameter: event.parameters ?? [:])
-        persistenceStore.saveEvent(event: coreDataEvent)
+        _ = persistenceStore.saveEvent(event: coreDataEvent)
     }
 }

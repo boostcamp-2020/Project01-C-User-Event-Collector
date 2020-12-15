@@ -9,8 +9,8 @@ import Foundation
 
 struct SummaryItem: Identifiable {
     let id = UUID()
-    var category: String
-    var image: String
-    var title: String
-    var description: String?
+    let category: String
+    let image: String
+    let title: String
+    let description: String?
 }

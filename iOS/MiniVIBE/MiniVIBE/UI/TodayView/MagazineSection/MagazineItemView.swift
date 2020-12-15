@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MagazineItemView: View {
-    var item: Magazine
+    let item: Magazine
     var body: some View {
-        ImageItemView(url: item.imageURLString, type: .one) {}
+        ImageItemView(url: item.imageURLString, type: .large) {}
             .overlay(
                 Text(item.title)
                     .font(.title)

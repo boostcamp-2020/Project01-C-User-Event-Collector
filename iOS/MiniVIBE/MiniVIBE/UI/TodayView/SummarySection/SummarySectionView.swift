@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SummarySectionView: View {
-    @State private var items: [SummaryItem] = MockItemFactory.homeSummaryItems
+    private let items: [SummaryItem] = MockItemFactory.homeSummaryItems
     var body: some View {
         SectionScrollView {
             ForEach(items) { item in

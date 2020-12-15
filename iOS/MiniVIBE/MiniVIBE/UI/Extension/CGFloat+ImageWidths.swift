@@ -9,7 +9,7 @@ import SwiftUI
 
 extension CGFloat {
     static let largeItemImageWidth: CGFloat = CGFloat.flexibleWidth(minimum: .largeItemImageMinWidth, maximum: .largeItemImageMaxWidth)
-    static let twoItemImageWidth: CGFloat = CGFloat.flexibleWidth(minimum: .itemImageMinWidth, maximum: .itemImageMaxWidth)
+    static let normalItemImageWidth: CGFloat = CGFloat.flexibleWidth(minimum: .itemImageMinWidth, maximum: .itemImageMaxWidth)
     static let largeItemImageMinWidth: CGFloat = 300
     static let largeItemImageMaxWidth: CGFloat = 400
     static var itemImageMinWidth: CGFloat = 150

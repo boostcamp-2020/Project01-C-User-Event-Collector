@@ -10,7 +10,7 @@ import SwiftUI
 struct DJStationItemView: View {
     let item: DJStationItem
     var body: some View {
-        ImageItemView(image: Image(item.image), type: .two) {}
+        ImageItemView(image: Image(item.image), type: .normal) {}
             .overlay(
                 Image(systemName: "play.circle.fill")
                     .foregroundColor(.white)

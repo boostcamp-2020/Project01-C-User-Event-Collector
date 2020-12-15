@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import EventEmitter
+import BCEventEmitter
 
 struct NowPlayingBarView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
@@ -15,49 +15,64 @@ struct NowPlayingBarView: View {
     static let height: CGFloat = 75
     var body: some View {
         VStack {
-            if musicPlayer.showMembership {
-                membershipView
-            }
-            VStack {
-            MusicProgressView()
+            Spacer()
             HStack {
-                AsyncImageView(url: musicPlayer.nowPlayingSong.imageURLString)
-                    .frame(width: 40, height: 40)
-                VStack(alignment: .leading) {
-                    Text(musicPlayer.nowPlayingSong.title)
-                        .vibeTitle3()
-                        .lineLimit(1)
-                    Text(musicPlayer.nowPlayingSong.artist)
-                        .vibeMainText()
-                        .lineLimit(1)
-                }.padding(.leading)
-                Spacer()
-                Button(action: {
-                    musicPlayer.isPlaying.toggle()
-                }, label: {
-                    Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill")
-                        .vibeTitle2()
-                        .frame(width: 30, height: 30)
-                        .buttonStyle(PlainButtonStyle())
-                        .padding(.horizontal)
-                }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause(state: musicPlayer.isPlaying ? "pause" : "play")))
-                Button(action: {
-                    _ = musicPlayer.nextSong()
-                }, label: {
-                    Image(systemName: "forward.fill").vibeTitle2()
-                        .frame(width: 30, height: 30)
-                }).padding(.trailing)
-            }.onTapGesture {
-                self.isPresent = true
-            }.sheet(isPresented: $isPresent, content: {
-                MusicPlayerView(isPresented: $isPresent)
-                    .environmentObject(musicPlayer)
-            .preferredColorScheme(colorScheme)
-            })
-            .padding(.all)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    Spacer()
+                }
+                VStack {
+                    if musicPlayer.showMembership {
+                        membershipView
+                    }
+                    VStack {
+                        MusicProgressView()
+                        nowPlayingBarView
+                            .onTapGesture {
+                                self.isPresent = true
+                            }.sheet(isPresented: $isPresent, content: {
+                                MusicPlayerView(isPresented: $isPresent)
+                                    .environmentObject(musicPlayer)
+                                    .preferredColorScheme(colorScheme)
+                            })
+                            .padding(.all)
+                    }
+                    .frame(width: .musicPlayingBarWidth, height: Self.height).background(Blur())
+//                    .background(Color.vibeBackground.opacity(0.4))
+                }
             }
-            .frame(width: .musicPlayingBarWidth, height: Self.height).background(Blur())
-            .background(Color.vibeBackground.opacity(0.4))
+        }
+    }
+}
+
+private extension NowPlayingBarView {
+    var nowPlayingBarView: some View {
+        HStack {
+            AsyncImageView(url: musicPlayer.nowPlayingSong.imageURLString)
+                .frame(width: 40, height: 40)
+            VStack(alignment: .leading) {
+                Text(musicPlayer.nowPlayingSong.title)
+                    .vibeTitle3()
+                    .lineLimit(1)
+                Text(musicPlayer.nowPlayingSong.artist)
+                    .vibeMainText()
+                    .lineLimit(1)
+            }.padding(.leading)
+            Spacer()
+            Button(action: {
+                musicPlayer.isPlaying.toggle()
+            }, label: {
+                Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill")
+                    .vibeTitle2()
+                    .frame(width: 30, height: 30)
+                    .buttonStyle(PlainButtonStyle())
+                    .padding(.horizontal)
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.playPause(state: musicPlayer.isPlaying ? "pause" : "play")))
+            Button(action: {
+                _ = musicPlayer.nextSong()
+            }, label: {
+                Image(systemName: "forward.fill").vibeTitle2()
+                    .frame(width: 30, height: 30)
+            }).padding(.trailing)
         }
     }
 }
@@ -82,15 +97,5 @@ private extension NowPlayingBarView {
         .frame(width: .largeItemImageWidth, height: 60)
         .background(LinearGradient(gradient: Gradient(colors: [.red, .vibePink, .purple]), startPoint: .leading, endPoint: .trailing))
         .cornerRadius(5)
-    }
-}
-
-struct Blur: UIViewRepresentable {
-    var style: UIBlurEffect.Style = .systemMaterial
-    func makeUIView(context: Context) -> UIVisualEffectView {
-        return UIVisualEffectView(effect: UIBlurEffect(style: style))
-    }
-    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
-        uiView.effect = UIBlurEffect(style: style)
     }
 }

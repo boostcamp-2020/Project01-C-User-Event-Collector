@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import BCEventEmitter
 
 struct LibraryArtistView: View {
     @StateObject var viewModel: Self.ViewModel
@@ -52,8 +53,9 @@ extension LibraryArtistView {
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] result in
                     switch result {
-                    case .failure:
+                    case let .failure(error):
                         self?.artists = []
+                        emitEvent(event: ErrorEvent(from: "loadLibraryArtist", reason: error.localizedDescription))
                     case .finished:
                         break
                     }

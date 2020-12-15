@@ -6,10 +6,9 @@
 //
 
 import SwiftUI
-import EventEmitter
+import BCEventEmitter
 
 struct VideoView: View {
-    @State private var items: [Video] = MockItemFactory.videoItems
     let viewModel: VideoView.ViewModel
     var body: some View {
         ZStack {
@@ -19,19 +18,7 @@ struct VideoView: View {
                     ScrollView(.vertical, showsIndicators: false) {
                         VideoHeaderView(viewModel: VideoHeaderView.ViewModel(container: viewModel.container))
                         LazyVGrid(columns: [.init(.adaptive(minimum: .largeItemImageMinWidth, maximum: .largeItemImageMaxWidth))], spacing: .defaultSpacing) {
-                            ForEach(items) { item in
-                                ImageItemView(image: Image(item.imageURLString), type: .one, ratio: 0.5) {
-                                    HStack {
-                                        Text(item.title).vibeTitle3()
-                                        Text(item.artist).vibeMainText()
-                                        Spacer()
-                                        Button(action: {}, label: {
-                                            Image(systemName: "ellipsis")
-                                                .foregroundColor(.white)
-                                        })
-                                    }
-                                }
-                            }
+                            videosView
                         }.padding(.bottom, NowPlayingBarView.height)
                         .padding(.horizontal, .defaultPadding)
                         Spacer()
@@ -40,17 +27,9 @@ struct VideoView: View {
                     .navigationBarHidden(true)
                 }
             }
-            VStack {
-                Spacer()
-                HStack {
-                    if UIDevice.current.userInterfaceIdiom == .pad {
-                        Spacer()
-                    }
-                    NowPlayingBarView()
-                }
-            }
+            NowPlayingBarView()
         }.onAppear {
-            emitEvent(event: MoveEvent(next: TabType.video.description))
+            emitEvent(event: MoveEvent(next: ContentView.TabType.video.description))
         }
     }
 }
@@ -58,9 +37,27 @@ struct VideoView: View {
 extension VideoView {
     final class ViewModel: ObservableObject {
         let container: DIContainer
-        
+        let items: [Video] = MockItemFactory.videoItems
         init(container: DIContainer) {
             self.container = container
+        }
+    }
+}
+
+private extension VideoView {
+    var videosView: some View {
+        ForEach(viewModel.items) { item in
+            ImageItemView(image: Image(item.imageURLString), type: .large, ratio: 0.5) {
+                HStack {
+                    Text(item.title).vibeTitle3()
+                    Text(item.artist).vibeMainText()
+                    Spacer()
+                    Button(action: {}, label: {
+                        Image(systemName: "ellipsis")
+                            .foregroundColor(.white)
+                    })
+                }
+            }
         }
     }
 }

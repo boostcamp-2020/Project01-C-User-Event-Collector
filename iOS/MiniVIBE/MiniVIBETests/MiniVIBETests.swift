@@ -8,7 +8,6 @@
 import XCTest
 import Combine
 @testable import MiniVIBE
-
 class MiniVIBETests: XCTestCase {
     
     private var subscriptions: Set<AnyCancellable> = []

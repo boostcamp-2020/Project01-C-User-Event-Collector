@@ -18,24 +18,9 @@ struct AlbumSectionView: View {
         VStack {
             NavigationLink(destination: AlbumMoreView(viewModel: viewModel)) {
                 MoreHeaderView(title: viewModel.title)
-            }.emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.more))
+            }.emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.more))
             SectionScrollView {
-                ForEach(viewModel.albums.indices) { index in
-                    NavigationLink(destination: AlbumDetailView(album: viewModel.albums[index])) {
-                        ImageItemView(image: Image(viewModel.albums[index].imageURLString), type: .two) {
-                            if viewModel.showsRanking {
-                                HStack {
-                                    Text("\(index + 1)").vibeTitle3()
-                                    RankChangeView(change: viewModel.albums[index].rankChange)
-                                }
-                            }
-                            Text(viewModel.albums[index].title)
-                                .vibeTitle3()
-                                .lineLimit(1)
-                            Text(viewModel.albums[index].artist).vibeMainText()
-                        }
-                    }.emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.album))
-                }
+                albumsView
             }
         }
     }
@@ -44,5 +29,26 @@ struct AlbumSectionView: View {
 extension AlbumSectionView {
     var name: String {
         String("\(Self.self)/\(viewModel.id)")
+    }
+}
+
+private extension AlbumSectionView {
+    var albumsView: some View {
+        ForEach(viewModel.albums.indices) { index in
+            NavigationLink(destination: AlbumDetailView(album: viewModel.albums[index])) {
+                ImageItemView(image: Image(viewModel.albums[index].imageURLString), type: .normal) {
+                    if viewModel.showsRanking {
+                        HStack {
+                            Text("\(index + 1)").vibeTitle3()
+                            RankChangeView(change: viewModel.albums[index].rankChange)
+                        }
+                    }
+                    Text(viewModel.albums[index].title)
+                        .vibeTitle3()
+                        .lineLimit(1)
+                    Text(viewModel.albums[index].artist).vibeMainText()
+                }
+            }.emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.album))
+        }
     }
 }

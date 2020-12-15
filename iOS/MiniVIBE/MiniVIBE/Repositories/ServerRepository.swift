@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-import EventEmitter
+import BCEventEmitter
 
 protocol ServerRepository {
 
