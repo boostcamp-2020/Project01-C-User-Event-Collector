@@ -4,6 +4,7 @@ import useFetch from '@hooks/useFetch';
 import api from '@api/index';
 import Modal from '@components/Common/Modal';
 import { useAuthDispatch } from '@context/AuthContext';
+import Spinner from '@components/Common/Spinner';
 import Today from '../src/pages/Today';
 
 function Index({ token, referer }) {
@@ -30,7 +31,7 @@ function Index({ token, referer }) {
     }
   }, [dispatch]);
 
-  if (magLoading || playLoading || userLoading) return <div>...Loading</div>;
+  if (magLoading || playLoading || userLoading) return <Spinner />;
   if (magError || playError || userError) return <div>...Error</div>;
 
   console.log('₩₩₩₩₩₩₩₩  user', user);

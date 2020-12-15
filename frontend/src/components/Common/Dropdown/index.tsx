@@ -51,12 +51,10 @@ const DropdownComponent = ({
     dataType = 'track';
   }
 
-  const clickEventLog = target => {
-    return {
-      eventTime: new Date(),
-      eventName: 'ClickEvent',
-      parameters: { page: router.asPath, target },
-    };
+  const clickEventLog = {
+    eventTime: new Date(),
+    eventName: 'ClickEvent',
+    parameters: { page: router.asPath, target: `${dataType}Modal/${data.id}` },
   };
 
   const customLogData = (name, params) => {
@@ -67,50 +65,56 @@ const DropdownComponent = ({
     };
   };
 
-  const addAlbumEvent = id => {
-    api.post('/library/albums', { albumId: id });
+  const postLog = () => {
     api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
-    // 각 이벤트 이후에 또 log 보내야 함
+    console.log('88888');
+  };
+
+  const addAlbumEvent = id => {
+    api.post('/library/albums', { albumId: id }).then(res => {
+      postLog();
+    });
   };
 
   const addPlaylistEvent = id => {
-    api.post('/library/playlists', { playlistId: id });
-    api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
+    api.post('/library/playlists', { playlistId: id }).then(res => {
+      postLog();
+    });
   };
 
-  const addTrackEvent = id => {
-    api.post('/library/tracks', { trackId: id });
-    api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
-  };
+  // const addTrackEvent = id => {
+  //   api.post('/library/tracks', { trackId: id });
+  //   api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
+  // };
 
-  const addArtistEvent = id => {
-    api.post('/library/artists', { artistId: id });
-    api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
-  };
+  // const addArtistEvent = id => {
+  //   api.post('/library/artists', { artistId: id });
+  //   api.post('/log', customLogData('SaveEvent', { type: dataType, id: data.id }));
+  // };
 
-  const addErrorEvent = msg => {
-    console.log(msg);
-  };
+  // const addErrorEvent = msg => {
+  //   console.log(msg);
+  // };
 
   // 이벤트 전부 써보기
-  const addEventHandler = () => {
-    switch (dataType) {
-      case 'album':
-        logEventHandler(addAlbumEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
-        break;
-      case 'playlist':
-        logEventHandler(addPlaylistEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
-        break;
-      case 'track':
-        logEventHandler(addTrackEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
-        break;
-      case 'artist':
-        logEventHandler(addArtistEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
-        break;
-      default:
-        addErrorEvent('empty Data');
-    }
-  };
+  // const addEventHandler = () => {
+  //   switch (dataType) {
+  //     case 'album':
+  //       logEventHandler(addAlbumEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
+  //       break;
+  //     case 'playlist':
+  //       logEventHandler(addPlaylistEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
+  //       break;
+  //     case 'track':
+  //       logEventHandler(addTrackEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
+  //       break;
+  //     case 'artist':
+  //       logEventHandler(addArtistEvent(data.id), clickEventLog(`${dataType}Dropdown/${data.id}`));
+  //       break;
+  //     default:
+  //       addErrorEvent('empty Data');
+  //   }
+  // };
 
   const logoutEvent = () => {
     console.log('------logoutEvent-------');
@@ -145,7 +149,7 @@ const DropdownComponent = ({
               <Dropdown.Item
                 style={dropdownItemStyle}
                 text={T.LOGOUT}
-                onClick={logEventHandler(logoutEvent, clickEventLog('LogoutBtn'))}
+                onClick={logEventHandler(logoutEvent, null)}
               />
             </Dropdown.Menu>
           </Dropdown>
@@ -159,11 +163,7 @@ const DropdownComponent = ({
               <Dropdown.Item
                 style={dropdownItemStyle}
                 text={T.ADD_TO_LIBRARY}
-                onClick={() =>
-                  logEventHandler(
-                    addPlaylistEvent(data.id),
-                    clickEventLog(`${dataType}Dropdown/${data.id}`),
-                  )}
+                onClick={() => logEventHandler(addPlaylistEvent(data.id), clickEventLog)}
               />
               <Dropdown.Item
                 style={dropdownItemStyle}
