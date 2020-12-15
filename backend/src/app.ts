@@ -56,7 +56,7 @@ const startApp = async (): Promise<void> => {
       console.log(`API Server App Listening on PORT ${app.get('port')}`);
     });
   } catch (err) {
-    console.log(err);
+    console.error(err);
   }
 };
 

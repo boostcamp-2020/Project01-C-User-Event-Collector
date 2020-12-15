@@ -12,7 +12,7 @@ const getArtistsByUserId = async (
     const artistList = await libraryArtistService.getArtistsByUserId(userId);
     res.status(200).json({ success: true, data: artistList });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     next(err);
   }
 };
@@ -27,7 +27,7 @@ const addArtist = async (req: Request, res: Response, next: NextFunction): Promi
     if (!isSuccess) return res.status(404).json({ message: 'Artist Not Found' });
     return res.status(204).end();
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return next(err);
   }
 };
@@ -42,7 +42,7 @@ const deleteArtist = async (req: Request, res: Response, next: NextFunction): Pr
     if (!isSuccess) return res.status(404).json({ message: 'Artist Not Found' });
     return res.status(204).end();
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return next(err);
   }
 };

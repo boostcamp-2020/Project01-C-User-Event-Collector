@@ -7,7 +7,7 @@ const getArtists = async (req: Request, res: Response, next: NextFunction): Prom
     if (!artists) return res.status(404).json({ message: 'Artist Not Found' });
     return res.status(200).json({ success: true, data: artists });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return next(err);
   }
 };
@@ -23,7 +23,7 @@ const getArtistByArtistId = async (
     if (!artist) return res.status(404).json({ message: 'Artist Not Found' });
     return res.status(200).json({ success: true, data: artist });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return next(err);
   }
 };

@@ -7,7 +7,7 @@ const getUser = async (req: Request, res: Response, next: NextFunction): Promise
     if (!user) return res.status(500).json({ success: false });
     return res.status(200).json({ success: true, user });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return next(err);
   }
 };
