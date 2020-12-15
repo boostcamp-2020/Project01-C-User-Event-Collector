@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import User from '../../../entities/User';
-import Playlist from '../../../entities/Playlist';
+import { IJwtPayload } from '../../../middlewares/auth';
+import * as libraryPlaylistService from '../../../services/library/playlist';
 
 const getPlaylistsByUserId = async (
   req: Request,
@@ -8,12 +8,9 @@ const getPlaylistsByUserId = async (
   next: NextFunction,
 ): Promise<void> => {
   try {
-    const { id: userId } = req.user as User;
-    const playlistLists = await Playlist.findByUserId(userId);
-    res.status(200).json({
-      success: true,
-      data: playlistLists,
-    });
+    const { id: userId } = req.user as IJwtPayload;
+    const playlists = await libraryPlaylistService.getPlaylistsByUserId(userId);
+    res.status(200).json({ success: true, data: playlists });
   } catch (err) {
     console.log(err);
     next(err);
@@ -22,16 +19,12 @@ const getPlaylistsByUserId = async (
 
 const addPlaylist = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
-    const { id: userId } = req.user as User;
+    const { id: userId } = req.user as IJwtPayload;
     const { playlistId } = req.body;
     if (!playlistId) return res.status(400).json({ message: 'Parameter Error: playlistId' });
 
-    const user = (await User.findOne(userId, { relations: ['playlists'] })) as User;
-    const playlist = (await Playlist.findOne(playlistId)) as Playlist;
-    if (!playlist) return res.status(404).json({ message: 'Playlist Not Found' });
-
-    user.playlists.push(playlist);
-    await user.save();
+    const isSuccess = await libraryPlaylistService.addPlaylist(userId, playlistId);
+    if (!isSuccess) return res.status(404).json({ message: 'Playlist Not Found' });
     return res.status(204).end();
   } catch (err) {
     console.log(err);
@@ -41,16 +34,12 @@ const addPlaylist = async (req: Request, res: Response, next: NextFunction): Pro
 
 const deletePlaylist = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
-    const { id: userId } = req.user as User;
+    const { id: userId } = req.user as IJwtPayload;
     const { playlistId } = req.params;
     if (!playlistId) return res.status(400).json({ message: 'Parameter Error: playlistId' });
 
-    const user = (await User.findOne(userId, { relations: ['playlists'] })) as User;
-    const playlistToRemove = (await Playlist.findOne(playlistId)) as Playlist;
-    if (!playlistToRemove) return res.status(404).json({ message: 'Playlist Not Found' });
-
-    user.playlists = user.playlists.filter(playlist => playlist.id !== playlistToRemove.id);
-    await user.save();
+    const isSuccess = await libraryPlaylistService.deletePlaylist(userId, parseInt(playlistId, 10));
+    if (!isSuccess) return res.status(404).json({ message: 'Playlist Not Found' });
     return res.status(204).end();
   } catch (err) {
     console.log(err);

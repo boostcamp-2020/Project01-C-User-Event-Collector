@@ -1,7 +1,7 @@
-import * as express from 'express';
+import { Request, Response, NextFunction } from 'express';
 // import User from '../../entities/User';
 
-const getUser = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+const getUser = async (req: Request, res: Response, next: NextFunction): Promise<any> => {
   try {
     const { user } = req;
     if (!user) return res.status(500).json({ success: false });
@@ -12,20 +12,4 @@ const getUser = async (req: express.Request, res: express.Response, next: expres
   }
 };
 
-const createUser = (req: express.Request, res: express.Response): void => {
-  const { body, cookies } = req;
-  res.json({ body, cookies });
-};
-
-const updateUser = (req: express.Request, res: express.Response): void => {
-  const { body, cookies } = req;
-  console.log(body, cookies);
-  res.json({ body, cookies });
-};
-
-const deleteUser = (req: express.Request, res: express.Response): void => {
-  const { body, cookies } = req;
-  res.json({ body, cookies });
-};
-
-export { getUser, createUser, updateUser, deleteUser };
+export { getUser };
