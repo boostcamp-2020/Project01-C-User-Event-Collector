@@ -1,4 +1,4 @@
-import Playlist from '../../entities/Playlist';
+import Playlist from '../../entities/playlist';
 
 const getPlaylists = (): Promise<Playlist[]> => {
   return Playlist.find({ relations: ['tracks'] });
