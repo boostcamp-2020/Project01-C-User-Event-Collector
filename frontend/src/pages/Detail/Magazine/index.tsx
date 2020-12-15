@@ -2,6 +2,7 @@ import React from 'react';
 import styled from '@styles/themed-components';
 
 import LargeButton from '@components/Common/Button/LargeButton';
+import MagList from '@components/MagList';
 
 interface IMagazineInfoProps {
   magazineInfo?: MetaMagazine;
@@ -18,6 +19,8 @@ type MetaMagazine = {
 };
 
 function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
+  console.log(magazine);
+  
   return (
     <Wrapper>
       <MagHeader>
@@ -52,7 +55,11 @@ function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
           </InfoArea>
         </MagInner>
       </MagHeader>
-      {/* <MagList /> */}
+      <MagList magList={new Array(6).fill(0)}/>
+      <PlayListContainer>
+        <PlayListTitle>{magazine?.title}</PlayListTitle>
+        
+      </PlayListContainer>
     </Wrapper>
   );
 }
@@ -239,5 +246,17 @@ const SubItem = styled.span<{ Before?: boolean }>`
     }`
       : ''};
 `;
+
+
+const PlayListContainer = styled.div`
+  width: 964px;
+  margin: 40px auto 70px;
+`;
+
+const PlayListTitle = styled.h4`
+  font-size: 18px;
+  font-weight: 700;
+`;
+
 
 export default MagazineDetail;
