@@ -7,7 +7,7 @@ import RelatedPlaylist from '@components/Common/SampleSection/RelatedPlaylist';
 import RelatedArtist from '@components/Common/SampleSection/RelatedArtist';
 import TrackList from '@components/TrackList';
 
-import getArtistNames from '@utils/getArtistNames';
+import getMultipleNames from '@utils/getMultipleNames';
 import description from '../../../data/DescriptionSample';
 
 function AlbumDetail({ albumInfo: album }) {
@@ -18,8 +18,8 @@ function AlbumDetail({ albumInfo: album }) {
         <HeaderImg src={album.imgUrl} alt="detail-header-img" />
         <HeaderContent>
           <MainTitle>{album.name} </MainTitle>
-          <SubTitle>{getArtistNames(album.artists) + ' '}</SubTitle>
-          <SubContent>{album.date.slice(0, 10)} · {getArtistNames(album.genres)}</SubContent>
+          <SubTitle>{getMultipleNames(album.artists) + ' '}</SubTitle>
+          <SubContent>{album.date.slice(0, 10)} · {getMultipleNames(album.genres)}</SubContent>
           <SubContent>{description}</SubContent>
           <ButtonsWrapper>
             <LargeButton customType="play" />
