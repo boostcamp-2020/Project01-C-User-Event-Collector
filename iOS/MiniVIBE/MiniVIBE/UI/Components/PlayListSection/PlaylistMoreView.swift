@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventEmitter
 
 struct PlaylistMoreView: View {
     let viewModel: PlaylistSectionView.ViewModel

@@ -44,6 +44,7 @@ extension RequestProviding {
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = headers
         request.httpBody = try body()
+        request.setValue(KeyChain.shared.readTokens(), forHTTPHeaderField: "Authorization")
         return request
     }
 }

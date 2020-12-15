@@ -15,17 +15,29 @@ struct TodayHeaderView: View {
         static let title: String = "#내돈내듣 VIBE"
     }
     
-    let viewModel = ViewModel()
+    @StateObject var viewModel = ViewModel()
     var body: some View {
         HStack {
             Text(Constant.title).vibeTitle1()
             Spacer()
             Button(action: {
-                viewModel.signIn()
-            }, label: {            Image(systemName: "person.fill")
-                .resizable()
-                .frame(width: 20, height: 20, alignment: .center)
-                .padding(10)
+                if !viewModel.isLogin {
+                    viewModel.signIn()
+                }
+            }, label: {
+                Group {
+                    if viewModel.isLogin {
+                        Image("login")
+                            .resizable()
+                            .frame(width: 30, height: 30, alignment: .center)
+                        
+                    } else {
+                        Image(systemName: "person.fill")
+                            .resizable()
+                            .frame(width: 20, height: 20, alignment: .center)
+                            .padding(10)
+                    }
+                }
                 .background(Color(.systemGray4))
                 .clipShape(Circle())
                 .foregroundColor(Color(.systemGray2))}).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.login))
@@ -34,8 +46,9 @@ struct TodayHeaderView: View {
 }
 
 extension TodayHeaderView {
-    class ViewModel {
+    class ViewModel: ObservableObject {
         var subscriptions: Set<AnyCancellable> = []
+        @Published var isLogin: Bool = false
         let test = ShimViewController()
         func signIn() {
             let signInPromise = Future<URL, Error> { [weak self] completion in
@@ -44,14 +57,16 @@ extension TodayHeaderView {
                     if let error = error {
                         completion(.failure(error))
                     } else if let url = url {
-                        url.absoluteString.replacingOccurrences(of: "http://", with: "")
-                        let oauthToken = NSURLComponents(string: (url.absoluteString))?.queryItems?.filter({$0.name == "token"}).first
+                        print(url)
+                        var oauthToken = NSURLComponents(string: (url.absoluteString))?.queryItems?.first?.description
+                        oauthToken?.removeFirst()
                         guard let token = oauthToken?.description else { return }
                         if KeyChain.shared.readTokens() != nil {
                             KeyChain.shared.updateTokens(token)
                         } else {
                             KeyChain.shared.createTokens(token)
                         }
+                        self?.isLogin = true
                         completion(.success(url))
                     }
                 }

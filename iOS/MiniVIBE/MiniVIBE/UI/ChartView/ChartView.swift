@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventEmitter
 
 struct ChartView: View {
     private enum Constant {
@@ -58,7 +59,9 @@ struct ChartView: View {
             VStack {
                 Spacer()
                 HStack {
-                    Spacer()
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        Spacer()
+                    }
                     NowPlayingBarView()
                 }
             }

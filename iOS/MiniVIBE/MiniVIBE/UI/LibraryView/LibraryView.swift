@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Combine
+import EventEmitter
 
 struct LibraryView: View {
     @StateObject var viewModel: ViewModel
@@ -30,7 +31,9 @@ struct LibraryView: View {
             VStack {
                 Spacer()
                 HStack {
-                    Spacer()
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        Spacer()
+                    }
                     NowPlayingBarView()
                 }
             }

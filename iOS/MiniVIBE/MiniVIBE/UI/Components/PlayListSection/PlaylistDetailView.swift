@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventEmitter
 
 struct PlaylistDetailView: View {
     @StateObject var viewModel: Self.ViewModel
