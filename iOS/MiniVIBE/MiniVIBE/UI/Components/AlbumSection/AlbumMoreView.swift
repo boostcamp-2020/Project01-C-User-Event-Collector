@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import EventEmitter
+import BCEventEmitter
 
 struct AlbumMoreView: View {
     let viewModel: AlbumSectionView.ViewModel
@@ -17,24 +17,30 @@ struct AlbumMoreView: View {
                 DetailHeaderView(title: viewModel.title)
                 ScrollView(.vertical, showsIndicators: false) {
                     LazyVGrid(columns: [.init(.adaptive(minimum: .itemImageMinWidth, maximum: .largeItemImageMaxWidth))], spacing: .defaultSpacing) {
-                        ForEach(viewModel.albums) { album in
-                            NavigationLink(destination: AlbumDetailView(album: album)) {
-                                VStack(alignment: .leading, spacing: .defaultSpacing) {
-                                    Image(album.imageURLString)
-                                        .resizable()
-                                        .scaledToFit()
-                                    Text(album.title).vibeTitle3()
-                                    album.description.map({Text($0).vibeMainText().lineLimit(1)})
-                                    Text(album.artist).vibeMainText()
-                                }
-                            }
-                        }
+                        albumsView
                     }.padding(.horizontal, .defaultPadding)
                 }
             }
         }.navigationBarHidden(true)
         .onAppear {
             emitEvent(event: MoveEvent(next: "\(Self.name)/\(self.viewModel.id)", setPrePath: true))
+        }
+    }
+}
+
+private extension AlbumMoreView {
+    var albumsView: some View {
+        ForEach(viewModel.albums) { album in
+            NavigationLink(destination: AlbumDetailView(album: album)) {
+                VStack(alignment: .leading, spacing: .defaultSpacing) {
+                    Image(album.imageURLString)
+                        .resizable()
+                        .scaledToFit()
+                    Text(album.title).vibeTitle3()
+                    album.description.map({Text($0).vibeMainText().lineLimit(1)})
+                    Text(album.artist).vibeMainText()
+                }
+            }
         }
     }
 }

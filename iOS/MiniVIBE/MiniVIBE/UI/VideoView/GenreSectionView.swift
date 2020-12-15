@@ -22,7 +22,7 @@ struct GenreSectionView: View {
                     Spacer()
                 }
                 .padding(5)
-                .frame(width: .twoItemImageWidth, height: 30)
+                .frame(width: .normalItemImageWidth, height: 30)
                 .background(Color(UIColor.darkGray))
                 .cornerRadius(5)
             }

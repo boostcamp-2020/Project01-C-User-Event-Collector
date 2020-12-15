@@ -15,7 +15,6 @@ struct RankChangeView: View {
     }
     
     private let change: Change?
-    
     var body: some View {
         switch change {
         case .up:

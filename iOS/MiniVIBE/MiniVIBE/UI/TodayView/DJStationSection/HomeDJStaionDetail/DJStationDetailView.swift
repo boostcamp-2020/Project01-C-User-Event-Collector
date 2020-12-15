@@ -6,13 +6,11 @@
 //
 
 import SwiftUI
-import EventEmitter
+import BCEventEmitter
 
 struct DJStationDetailView: View {
-    private let columns = [GridItem(.adaptive(minimum: .itemImageMinWidth, maximum: .itemImageMaxWidth))
-    ]
-    @State private var items: [DJStationItem] = []
-    @State private var mockItems: [DJStationItem]
+    private let columns = [GridItem(.adaptive(minimum: .itemImageMinWidth, maximum: .itemImageMaxWidth))]
+    private var items: [DJStationItem]
         = [DJStationItem(image: "HomeDJStationSection1"),
            DJStationItem(image: "HomeDJStationSection2"),
            DJStationItem(image: "HomeDJStationSection3"),
@@ -44,21 +42,21 @@ private extension DJStationDetailView {
                 ScrollView(.vertical, showsIndicators: false) {
                     SectionHeaderView(Constant.recentlyPlayedTitle) {
                         SectionScrollView {
-                            ForEach(mockItems) { item in
+                            ForEach(items) { item in
                                 DJStationItemView(item: item)
                             }
                         }
                     }
                     SectionHeaderView(Constant.byFeelingTitle) {
                         LazyVGrid(columns: columns, spacing: .defaultSpacing) {
-                            ForEach(mockItems) { item in
+                            ForEach(items) { item in
                                 DJStationItemView(item: item)
                             }
                         }.padding(.horizontal, .defaultPadding)
                     }
                     SectionHeaderView(Constant.byGenreTitle) {
                         LazyVGrid(columns: columns, spacing: .defaultSpacing) {
-                            ForEach(mockItems) { item in
+                            ForEach(items) { item in
                                 DJStationItemView(item: item)
                             }
                         }.padding(.horizontal, .defaultPadding)

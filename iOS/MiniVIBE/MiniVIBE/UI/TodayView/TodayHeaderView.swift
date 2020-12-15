@@ -40,7 +40,7 @@ struct TodayHeaderView: View {
                 }
                 .background(Color(.systemGray4))
                 .clipShape(Circle())
-                .foregroundColor(Color(.systemGray2))}).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.login))
+                .foregroundColor(Color(.systemGray2))}).emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.login))
         }.padding()
     }
 }
@@ -49,7 +49,7 @@ extension TodayHeaderView {
     class ViewModel: ObservableObject {
         var subscriptions: Set<AnyCancellable> = []
         @Published var isLogin: Bool = false
-        let test = ShimViewController()
+        let webView = TodayHeaderView.WebViewController()
         func signIn() {
             let signInPromise = Future<URL, Error> { [weak self] completion in
                 let session = ASWebAuthenticationSession(url: URL(string: "http://115.85.181.152:8000/api/auth/login")!,
@@ -57,20 +57,18 @@ extension TodayHeaderView {
                     if let error = error {
                         completion(.failure(error))
                     } else if let url = url {
-                        print(url)
-                        var oauthToken = NSURLComponents(string: (url.absoluteString))?.queryItems?.first?.description
-                        oauthToken?.removeFirst()
+                        let oauthToken = NSURLComponents(string: (url.absoluteString))?.queryItems?.first?.description
                         guard let token = oauthToken?.description else { return }
-                        if KeyChain.shared.readTokens() != nil {
-                            KeyChain.shared.updateTokens(token)
+                        if KeyChain.shared.readToken() != nil {
+                            KeyChain.shared.updateToken(token)
                         } else {
-                            KeyChain.shared.createTokens(token)
+                            KeyChain.shared.createToken(token)
                         }
                         self?.isLogin = true
                         completion(.success(url))
                     }
                 }
-                session.presentationContextProvider = self?.test
+                session.presentationContextProvider = self?.webView
                 session.prefersEphemeralWebBrowserSession = true
                 session.start()
             }
@@ -87,8 +85,11 @@ extension TodayHeaderView {
         }
     }
 }
-class ShimViewController: UIViewController, ASWebAuthenticationPresentationContextProviding {
-    func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
-        return ASPresentationAnchor()
+
+extension TodayHeaderView {
+    final class WebViewController: UIViewController, ASWebAuthenticationPresentationContextProviding {
+        func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+            return ASPresentationAnchor()
+        }
     }
 }

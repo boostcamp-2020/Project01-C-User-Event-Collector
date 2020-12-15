@@ -17,8 +17,8 @@ struct DJStationSectionView: View {
         VStack {
             NavigationLink(destination: DJStationDetailView()
             ) {
-                    MoreHeaderView(title: Constant.title)
-            }.emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.more))
+                MoreHeaderView(title: Constant.title)
+            }.emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.more))
             SectionScrollView {
                 ForEach(items) { item in
                     DJStationItemView(item: item)

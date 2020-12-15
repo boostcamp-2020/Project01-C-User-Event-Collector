@@ -51,7 +51,7 @@ final class MockItemFactory {
         Album(imageURLString: "newAlbum-dummy1",
               title: "ARTIST. New Bi", artist: "Anonymous Artists", songs: [], rankChange: "up"),
         Album(imageURLString: "newAlbum-dummy2", title: "Darling", artist: "양다일", songs: []),
-        Album(imageURLString: "newAlbum-dummy3", title: "A Season of Love", artist: "Idina Menzel", songs: []),   Album(imageURLString: "newAlbum-dummy1",
+        Album(imageURLString: "newAlbum-dummy3", title: "A Season of Love", artist: "Idina Menzel", songs: []), Album(imageURLString: "newAlbum-dummy1",
                                                                                                                         title: "ARTIST. New Bi", artist: "Anonymous Artists", songs: [], rankChange: "up"),
         Album(imageURLString: "newAlbum-dummy2", title: "Darling", artist: "양다일", songs: []),
         Album(imageURLString: "newAlbum-dummy3", title: "A Season of Love", artist: "Idina Menzel", songs: [])]

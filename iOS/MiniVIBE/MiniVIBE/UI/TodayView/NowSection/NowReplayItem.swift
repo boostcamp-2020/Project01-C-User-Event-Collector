@@ -9,6 +9,6 @@ import SwiftUI
 
 struct NowReplayItem: Identifiable {
     let id = UUID()
-    var albumArt: Image
-    var description: String
+    let albumArt: Image
+    let description: String
 }

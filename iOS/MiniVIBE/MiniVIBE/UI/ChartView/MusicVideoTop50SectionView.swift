@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct MusicVideoTop50SectionView: View {
-    @State private var items: [MusicVideoTop50Item] = []
-    @State private var mockItems: [MusicVideoTop50Item]
+    private var items: [MusicVideoTop50Item]
         = [MusicVideoTop50Item(image: "HomeMainSection3", title: "Life Goes On : Like an arrow", artist: "방탄소년단"),
            MusicVideoTop50Item(image: "HomeMainSection3", title: "Life Goes On : Like an arrow", artist: "방탄소년단"),
            MusicVideoTop50Item(image: "HomeMainSection3", title: "Life Goes On : Like an arrow", artist: "방탄소년단")]
@@ -28,8 +27,8 @@ private extension MusicVideoTop50SectionView {
         VStack {
             MoreHeaderView(title: Constant.title, subtitle: Constant.subtitle)
             SectionScrollView {
-                ForEach(mockItems.indices) { index in
-                    MusicVideoTop50ItemView(item: mockItems[index], rank: index)
+                ForEach(items.indices) { index in
+                    MusicVideoTop50ItemView(item: items[index], rank: index)
                 }
             }
         }
@@ -41,7 +40,7 @@ private struct MusicVideoTop50ItemView: View {
     let rank: Int
     var body: some View {
         VStack(alignment: .leading) {
-            ImageItemView(image: Image(item.image), type: .one, ratio: 0.5) {
+            ImageItemView(image: Image(item.image), type: .large, ratio: 0.5) {
                 Text("\(rank + 1)").vibeTitle3()
                 Text(item.title).vibeTitle3()
                 Text(item.artist).vibeMainText()

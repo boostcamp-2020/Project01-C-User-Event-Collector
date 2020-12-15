@@ -25,9 +25,3 @@ extension FiveRowSongGridView {
         }
     }
 }
-
-extension FiveRowSongGridView {
-    func loadSongs() {
-        
-    }
-}
