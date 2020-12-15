@@ -3,6 +3,7 @@ import styled from '@styles/themed-components';
 
 import LargeButton from '@components/Common/Button/LargeButton';
 import MagList from '@components/MagList';
+import TrackItem from '@components/Common/TrackItem';
 
 interface IMagazineInfoProps {
   magazineInfo?: MetaMagazine;
@@ -55,10 +56,12 @@ function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
           </InfoArea>
         </MagInner>
       </MagHeader>
-      <MagList magList={new Array(6).fill(0)}/>
+      <MagList magList={magazine?.tracks}/>
       <PlayListContainer>
         <PlayListTitle>{magazine?.title}</PlayListTitle>
-        
+        <PlayList>
+          {magazine?.tracks.map(track => (<TrackItem key={track.id} trackMetaData={track}/>))}
+        </PlayList>
       </PlayListContainer>
     </Wrapper>
   );
@@ -258,5 +261,11 @@ const PlayListTitle = styled.h4`
   font-weight: 700;
 `;
 
+const PlayList = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem 0;
+`;
 
 export default MagazineDetail;
