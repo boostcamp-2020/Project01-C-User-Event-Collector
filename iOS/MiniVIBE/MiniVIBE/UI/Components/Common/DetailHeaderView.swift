@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventEmitter
 
 struct DetailHeaderView: View {
     @Environment(\.presentationMode) var presentation

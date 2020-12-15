@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import EventEmitter
 
 protocol EventService {
     var isServerReachable: Bool { get }

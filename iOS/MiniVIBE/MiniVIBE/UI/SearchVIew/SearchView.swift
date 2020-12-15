@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import EventEmitter
 
 struct SearchView: View {
     private enum Constant {
@@ -37,7 +38,9 @@ struct SearchView: View {
             VStack {
                 Spacer()
                 HStack {
-                    Spacer()
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        Spacer()
+                    }
                     NowPlayingBarView()
                 }
             }

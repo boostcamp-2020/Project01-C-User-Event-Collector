@@ -57,6 +57,8 @@
 		B9C628EC257C1C35000BCE80 /* NewsItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C628EB257C1C35000BCE80 /* NewsItemView.swift */; };
 		B9C628FC257C2B4D000BCE80 /* GenreSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C628FB257C2B4D000BCE80 /* GenreSectionView.swift */; };
 		B9C911622578E02400057E6F /* ServerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C911612578E02400057E6F /* ServerRepository.swift */; };
+		B9CC98C82587D64C00CED178 /* EventEmitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9CC98C62587D64700CED178 /* EventEmitter.framework */; };
+		B9CC98C92587D64C00CED178 /* EventEmitter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B9CC98C62587D64700CED178 /* EventEmitter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B9D04D61257D8178001D01D7 /* AsyncImageNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D04D60257D8178001D01D7 /* AsyncImageNetwork.swift */; };
 		B9D04D65257D8193001D01D7 /* AsyncImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D04D64257D8193001D01D7 /* AsyncImageCache.swift */; };
 		B9D18FDF256CD7B000ECEFEC /* SummaryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9D18FDE256CD7B000ECEFEC /* SummaryItem.swift */; };
@@ -110,6 +112,20 @@
 			remoteInfo = MiniVIBE;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B9B6C4352587A4C600F872FC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B9CC98C92587D64C00CED178 /* EventEmitter.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		71F736C7CF8B7E1A46282594 /* libPods-MiniVIBE.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniVIBE.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -165,6 +181,7 @@
 		B9C628EB257C1C35000BCE80 /* NewsItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsItemView.swift; sourceTree = "<group>"; };
 		B9C628FB257C2B4D000BCE80 /* GenreSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreSectionView.swift; sourceTree = "<group>"; };
 		B9C911612578E02400057E6F /* ServerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerRepository.swift; sourceTree = "<group>"; };
+		B9CC98C62587D64700CED178 /* EventEmitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = EventEmitter.framework; sourceTree = "<group>"; };
 		B9D04D60257D8178001D01D7 /* AsyncImageNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageNetwork.swift; sourceTree = "<group>"; };
 		B9D04D64257D8193001D01D7 /* AsyncImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageCache.swift; sourceTree = "<group>"; };
 		B9D18FDE256CD7B000ECEFEC /* SummaryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryItem.swift; sourceTree = "<group>"; };
@@ -224,6 +241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9CC98C82587D64C00CED178 /* EventEmitter.framework in Frameworks */,
 				AD62AD7689CD423579B7C6A4 /* libPods-MiniVIBE.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,6 +263,7 @@
 			children = (
 				B912A15E257815CD00223C0B /* VideoView.swift */,
 				B912A1642578161500223C0B /* VideoHeaderView.swift */,
+				B9C628FB257C2B4D000BCE80 /* GenreSectionView.swift */,
 				B9EC74E0257D0FF6003DF392 /* MockServerView */,
 			);
 			path = VideoView;
@@ -402,7 +421,6 @@
 			children = (
 				B9C628E7257C0AEC000BCE80 /* SearchView.swift */,
 				B9C628EB257C1C35000BCE80 /* NewsItemView.swift */,
-				B9C628FB257C2B4D000BCE80 /* GenreSectionView.swift */,
 			);
 			path = SearchVIew;
 			sourceTree = "<group>";
@@ -556,6 +574,7 @@
 		CA233B27D449220AF6D7CF38 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B9CC98C62587D64700CED178 /* EventEmitter.framework */,
 				71F736C7CF8B7E1A46282594 /* libPods-MiniVIBE.a */,
 			);
 			name = Frameworks;
@@ -645,6 +664,7 @@
 				B994C69525627DBD000E563C /* Frameworks */,
 				B994C69625627DBD000E563C /* Resources */,
 				B9B62796256280A7006B0F00 /* ShellScript */,
+				B9B6C4352587A4C600F872FC /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1038,6 +1058,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MiniVIBE/Preview Content\"";
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MiniVIBE/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1061,6 +1085,10 @@
 				DEVELOPMENT_ASSET_PATHS = "\"MiniVIBE/Preview Content\"";
 				DEVELOPMENT_TEAM = B3PWYBKFUK;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				INFOPLIST_FILE = MiniVIBE/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (

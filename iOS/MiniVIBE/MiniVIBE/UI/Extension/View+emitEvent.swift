@@ -7,20 +7,7 @@
 
 import SwiftUI
 import Combine
-
-extension View {
-    func emitEventIfTapped(event: Event) -> some View {
-        return self.simultaneousGesture(
-            TapGesture()
-                .onEnded { _ in
-                    EventSendManager.shared.eventHandler(event)
-                })
-    }
-}
-
-public func emitEvent(event: Event) {
-    EventSendManager.shared.eventHandler(event)
-}
+import EventEmitter
 
 public enum EventName: CustomStringConvertible {
     case movePage
@@ -36,32 +23,6 @@ public enum EventName: CustomStringConvertible {
             return "error"
         }
     }
-}
-
-final class EventSendManager {
-    static let shared = EventSendManager()
-    private(set) var eventHandler: ((_ event: Event) -> Void) = { _ in }
-    
-    private init() {}
-    
-    func setEventHandler(eventHandler: @escaping ((_ event: Event) -> Void)) {
-        self.eventHandler = eventHandler
-    }
-}
-
-public class Event: Codable, Identifiable {
-    public let id: UUID
-    let name: String
-    let parameters: [String: String]?
-    let date: Date
-
-    init(name: String, parameters: [String: String]) {
-        self.name = name.description
-        self.date = Date()
-        self.id = UUID()
-        self.parameters = parameters
-    }
-    
 }
 
 class CoreDataEvent: Event {

@@ -8,6 +8,7 @@
 import SwiftUI
 import Combine
 import AuthenticationServices
+import EventEmitter
 
 struct TodayView: View {
     let viewModel: ViewModel
@@ -43,7 +44,9 @@ struct TodayView: View {
             VStack {
                 Spacer()
                 HStack {
-                    Spacer()
+                    if UIDevice.current.userInterfaceIdiom == .pad {
+                        Spacer()
+                    }
                     NowPlayingBarView()
                 }
             }
