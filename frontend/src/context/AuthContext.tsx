@@ -3,8 +3,8 @@ import getRandomUserId from '@utils/getRandomUserId';
 
 type UserInfo = {
   id: number;
-  nickName?: string | null;
-  imgUrl?: string;
+  nickname?: string | null;
+  profileURL?: string;
   isLoggedIn: boolean;
 };
 
@@ -20,8 +20,8 @@ const initialState: UserState = {
   userInfo: {
     isLoggedIn: false,
     id: getRandomUserId(),
-    nickName: null,
-    imgUrl:
+    nickname: null,
+    profileURL:
       'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
   },
   trackList: [],
@@ -36,7 +36,8 @@ type Action =
   | { type: 'SET_TRACKLIST'; trackList: number[] }
   | { type: 'SET_ALBUMLIST'; albumList: number[] }
   | { type: 'SET_ARTISTLIST'; artistList: number[] }
-  | { type: 'SET_PLAYLISTLIST'; playlistList: number[] };
+  | { type: 'SET_PLAYLISTLIST'; playlistList: number[] }
+  | { type: 'DELETE_USERINFO' };
 
 // 리듀서
 function reducer(state: UserState, action: Action): UserState {
@@ -44,7 +45,12 @@ function reducer(state: UserState, action: Action): UserState {
     case 'SET_USERINFO':
       return {
         ...state,
-        userInfo: action.userInfo,
+        userInfo: {
+          id: action.userInfo.id,
+          isLoggedIn: true,
+          nickname: action.userInfo.nickname,
+          profileURL: action.userInfo.profileURL,
+        },
       };
     case 'SET_TRACKLIST':
       return {
@@ -66,7 +72,11 @@ function reducer(state: UserState, action: Action): UserState {
         ...state,
         playlistList: action.playlistList,
       };
-
+    case 'DELETE_USERINFO':
+      return {
+        ...state,
+        userInfo: initialState.userInfo,
+      };
     default:
       throw new Error('Unhandled action');
   }

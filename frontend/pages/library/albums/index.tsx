@@ -5,7 +5,11 @@ import api from '@api/index';
 
 function Index({ referer }) {
   const router = useRouter();
-  const { data, isLoading, isError } = useFetch(`/library/albums`);
+  let token: string | null = '';
+  if (typeof window !== 'undefined') {
+    token = localStorage.getItem('token');
+  }
+  const { data, isLoading, isError } = useFetch(`/library/albums`, token);
   if (isLoading) return <div>...Loading</div>;
   if (isError) {
     console.log(isError);

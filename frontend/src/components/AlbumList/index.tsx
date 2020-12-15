@@ -6,9 +6,9 @@ import AlbumCard from '@components/Common/Card/AlbumCard';
 const AlbumList = ({ albumList }) => {
   return (
     <ListContainer>
-      {albumList.map(album => (
-        <AlbumCard key={album.id} albumMetaData={album} />
-      ))}
+      {albumList
+        ? albumList?.map(album => <AlbumCard key={album.id} albumMetaData={album} />)
+        : null}
     </ListContainer>
   );
 };

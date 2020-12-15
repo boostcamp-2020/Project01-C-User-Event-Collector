@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@styles/themed-components';
 
-import Dropdown from '@components/Common/Dropdown';
-import { useAuthDispatch, useAuthState } from '@context/AuthContext';
 import api from '@api/index';
+import Dropdown from '@components/Common/Dropdown';
+import { useAuthState, useAuthDispatch } from '@context/AuthContext';
 import NavList from './NavList';
 
 const loginEvent = () => {
@@ -14,40 +14,30 @@ function NavBar() {
   const state = useAuthState();
   const dispatch = useAuthDispatch();
   const { userInfo } = state;
-
-  const fetchData = () => {
-    api.defaults.headers.authorization = localStorage.getItem('token');
-    api.get('/user').then(res => {
-      const userData = res.data.user;
-      if (userData)
-        dispatch({
-          type: 'SET_USERINFO',
-          userInfo: {
-            id: userData?.id,
-            isLoggedIn: true,
-            nickName: userData?.nickname,
-            imgUrl: userData?.profileURL,
-          },
-        });
-    });
-  };
+  const [userState, setUserState] = useState(userInfo);
 
   useEffect(() => {
-    fetchData();
-    console.log('NAVBAR useEFFECT');
-  }, [dispatch]);
+    setUserState(userInfo);
+    api.defaults.headers.authorization = localStorage.getItem('token');
+    console.log('userInfo ;;;;;', userInfo);
+    if (!userInfo.isLoggedIn) {
+      api.get('user').then(res => {
+        if (res.data.success) setUserState({ ...res.data?.user, isLoggedIn: true });
+      });
+    }
+  }, [dispatch, userInfo.isLoggedIn, userInfo]);
 
   return (
     <Container>
-      {userInfo.isLoggedIn ? (
+      {userState.isLoggedIn ? (
         <AuthWrapper>
-          <ProfileImg src={userInfo.imgUrl} alt="profile-img" />
-          {userInfo?.nickName}
+          <ProfileImg src={userState?.profileURL} alt="profile-img" />
+          {userState?.nickname}
           <Dropdown type="auth" />
         </AuthWrapper>
       ) : (
         <AuthWrapper onClick={loginEvent}>
-          <ProfileImg src={userInfo.imgUrl} alt="profile-img" />
+          <ProfileImg src={userState?.profileURL} alt="profile-img" />
           로그인
         </AuthWrapper>
       )}

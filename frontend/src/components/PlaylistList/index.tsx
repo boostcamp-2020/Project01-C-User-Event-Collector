@@ -6,9 +6,9 @@ import AlbumCard from '@components/Common/Card/PlaylistCard';
 const PlaylistList = ({ playlistList }) => {
   return (
     <ListContainer>
-      {playlistList.map(playlist => (
-        <AlbumCard key={playlist.id} playlistMetaData={playlist} />
-      ))}
+      {playlistList
+        ? playlistList.map(playlist => <AlbumCard key={playlist.id} playlistMetaData={playlist} />)
+        : null}
     </ListContainer>
   );
 };

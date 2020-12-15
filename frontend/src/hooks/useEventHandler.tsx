@@ -4,12 +4,13 @@ import api from '../api';
 
 const postLog = async logData => {
   await api.post('/log', logData);
+  console.log('logData : ', logData);
 };
 
 const useEventHandler = (handler, logData) => {
-  return () => {
-    if (logData) postLog(logData);
-    if (handler) handler();
+  return async () => {
+    if (logData) await postLog(logData);
+    if (handler) await handler();
   };
 };
 
