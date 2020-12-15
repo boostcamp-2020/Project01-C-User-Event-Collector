@@ -56,7 +56,7 @@ function reducer(state: State, action: Action): State {
     case 'REMOVE_TRACK':
       return {
         ...state,
-        playList: state.playList.filter(v => v !== action.trackId);,
+        playList: state.playList.filter(v => v !== action.trackId),
       };
     default:
       throw new Error('Unhandled action');
