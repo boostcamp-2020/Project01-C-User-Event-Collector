@@ -10,7 +10,7 @@ interface IModalProps {
 
 function Modal() {
   const router = useRouter();
-  const randomNum = Math.floor(Math.random() * (Math.floor(2) - Math.ceil(0)) + Math.ceil(0));
+  const randomNum = Math.floor(Math.random() * 2);
   // 50퍼센트의 확률로 모달 등장
   const [isModalOpend, setIsModalOpend] = useState(randomNum === 1);
   const modalCloseEvent = () => {

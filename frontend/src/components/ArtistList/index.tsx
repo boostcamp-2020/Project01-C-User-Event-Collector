@@ -8,7 +8,7 @@ const ArtistList = ({ artistList }) => {
     <ListContainer>
       {artistList
         ? artistList?.map(artist => (
-            <ArtistCard key={artist.id} artistMetaData={artist} type="myArtist" />
+          <ArtistCard key={artist.id} artistMetaData={artist} type="myArtist" />
           ))
         : null}
     </ListContainer>

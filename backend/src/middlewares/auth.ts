@@ -12,7 +12,8 @@ export const authenticateWithJwt = (req: Request, res: Response, next: NextFunct
   try {
     const token = req.headers.authorization;
     // TODO: redirect 시킬 지 논의해보기
-    if (!token) return res.status(401).json({ success: false, message: 'Token Not Found' });
+    console.log('backend token : ', token);
+    if (!token) return res.redirect(process.env.SERVICE_URL as string);
     const user = jwt.verify(token as string, process.env.JWT_SECRET as string) as IJwtPayload;
     req.user = user;
     next();
