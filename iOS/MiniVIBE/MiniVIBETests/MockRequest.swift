@@ -9,10 +9,8 @@ import Foundation
 @testable import MiniVIBE
 
 struct MockRequest: RequestProviding {
+    var body: Data?
     var url: URL?
     var method: RequestMethod = .get
     var headers: [String : String]? = nil
-    func body() throws -> Data? {
-        return nil
-    }
 }

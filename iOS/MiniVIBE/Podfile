@@ -5,6 +5,9 @@ target 'MiniVIBE' do
   # Comment the next line if you don't want to use dynamic frameworks
 pod 'SwiftLint'
 pod 'BCEventEmitter'
+  target 'MiniVIBETests' do
+  inherit! :search_paths
+  pod 'BCEventEmitter'
   # Pods for MiniVIBE
-
+  end
 end

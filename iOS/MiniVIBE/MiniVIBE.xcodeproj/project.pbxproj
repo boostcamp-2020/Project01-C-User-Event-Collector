@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8909DCA2C2742CDA8EA20F85 /* libPods-MiniVIBETests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DCC335C2D75EAB792B95DC4B /* libPods-MiniVIBETests.a */; };
 		AD62AD7689CD423579B7C6A4 /* libPods-MiniVIBE.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 71F736C7CF8B7E1A46282594 /* libPods-MiniVIBE.a */; };
 		B9129283257812C9002F516F /* MusicVideoTop50SectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9129282257812C9002F516F /* MusicVideoTop50SectionView.swift */; };
 		B912A15F257815CD00223C0B /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B912A15E257815CD00223C0B /* VideoView.swift */; };
@@ -130,7 +131,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6B63E472A61C2091E40A0E83 /* Pods-MiniVIBETests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBETests.release.xcconfig"; path = "Target Support Files/Pods-MiniVIBETests/Pods-MiniVIBETests.release.xcconfig"; sourceTree = "<group>"; };
 		71F736C7CF8B7E1A46282594 /* libPods-MiniVIBE.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniVIBE.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B11B79F42B0ED96AFC3EFED8 /* Pods-MiniVIBETests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBETests.debug.xcconfig"; path = "Target Support Files/Pods-MiniVIBETests/Pods-MiniVIBETests.debug.xcconfig"; sourceTree = "<group>"; };
 		B251DDD6E742687B7610BEE2 /* Pods-MiniVIBE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBE.debug.xcconfig"; path = "Target Support Files/Pods-MiniVIBE/Pods-MiniVIBE.debug.xcconfig"; sourceTree = "<group>"; };
 		B9129282257812C9002F516F /* MusicVideoTop50SectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MusicVideoTop50SectionView.swift; sourceTree = "<group>"; };
 		B912A15E257815CD00223C0B /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
@@ -214,6 +217,7 @@
 		B9FF8A83257A9E1200B774CD /* PlaylistSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistSectionViewModel.swift; sourceTree = "<group>"; };
 		B9FF8A8F257AA3FC00B774CD /* PlaylistMoreView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaylistMoreView.swift; sourceTree = "<group>"; };
 		D79633046F581A9010E0BE59 /* Pods-MiniVIBE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MiniVIBE.release.xcconfig"; path = "Target Support Files/Pods-MiniVIBE/Pods-MiniVIBE.release.xcconfig"; sourceTree = "<group>"; };
+		DCC335C2D75EAB792B95DC4B /* libPods-MiniVIBETests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MiniVIBETests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE09042E256CCE11002914B5 /* MagazineSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineSectionView.swift; sourceTree = "<group>"; };
 		DE090442256D098A002914B5 /* NowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowItemView.swift; sourceTree = "<group>"; };
 		DE090446256D09CC002914B5 /* NowReplayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowReplayItem.swift; sourceTree = "<group>"; };
@@ -240,6 +244,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8909DCA2C2742CDA8EA20F85 /* libPods-MiniVIBETests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +264,8 @@
 			children = (
 				B251DDD6E742687B7610BEE2 /* Pods-MiniVIBE.debug.xcconfig */,
 				D79633046F581A9010E0BE59 /* Pods-MiniVIBE.release.xcconfig */,
+				B11B79F42B0ED96AFC3EFED8 /* Pods-MiniVIBETests.debug.xcconfig */,
+				6B63E472A61C2091E40A0E83 /* Pods-MiniVIBETests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -612,6 +619,7 @@
 			isa = PBXGroup;
 			children = (
 				71F736C7CF8B7E1A46282594 /* libPods-MiniVIBE.a */,
+				DCC335C2D75EAB792B95DC4B /* libPods-MiniVIBETests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -674,6 +682,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B9885970257684510037D19B /* Build configuration list for PBXNativeTarget "MiniVIBETests" */;
 			buildPhases = (
+				8DD33183343F0F0F884D9FC9 /* [CP] Check Pods Manifest.lock */,
 				B9885965257684510037D19B /* Sources */,
 				B9885966257684510037D19B /* Frameworks */,
 				B9885967257684510037D19B /* Resources */,
@@ -766,6 +775,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		8DD33183343F0F0F884D9FC9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MiniVIBETests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		A5459FF9EB284B23934C9B38 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -928,6 +959,7 @@
 /* Begin XCBuildConfiguration section */
 		B9885971257684510037D19B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B11B79F42B0ED96AFC3EFED8 /* Pods-MiniVIBETests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -949,6 +981,7 @@
 		};
 		B9885972257684510037D19B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B63E472A61C2091E40A0E83 /* Pods-MiniVIBETests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
