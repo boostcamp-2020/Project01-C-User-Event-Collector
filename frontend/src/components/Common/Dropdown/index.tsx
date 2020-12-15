@@ -10,21 +10,10 @@ import * as T from '../../../constants/dropdownText';
 
 interface IDropdownProps {
   type: string;
-  albumData?: any;
-  magData?: any;
-  artistData?: any;
-  playlistData?: any;
-  trackData?: any;
+  data?: any;
 }
 
-const DropdownComponent = ({
-  type,
-  albumData,
-  artistData,
-  magData,
-  playlistData,
-  trackData,
-}: IDropdownProps) => {
+const DropdownComponent = ({ type, data }: IDropdownProps) => {
   // 개발 중, 타입에러를 막기 위해 주석처리 했습니다
   const router = useRouter();
   const state = usePlayState();
@@ -35,25 +24,11 @@ const DropdownComponent = ({
   console.log('playstate :: ', state);
   console.log('userState :: ', userState);
 
-  let dataType = 'undefined';
-  let data = { id: null };
-  if (albumData) {
-    data = albumData;
-    dataType = 'album';
-  } else if (playlistData) {
-    data = playlistData;
-    dataType = 'playlist';
-  } else if (artistData) {
-    data = artistData;
-    dataType = 'artist';
-  } else if (trackData) {
-    data = trackData;
-    dataType = 'track';
-  }
+  const dataType = 'undefined';
 
   const clickEventLog = {
     eventTime: new Date(),
-    eventName: 'ClickEvent',
+    eventName: 'click_event',
     parameters: { page: router.asPath, target: `${dataType}Modal/${data.id}` },
   };
 
