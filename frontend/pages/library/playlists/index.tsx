@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import MyPlaylist from '@pages/Library/MyPlaylist';
 import useFetch from '@hooks/useFetch';
 import api from '@api/index';
+import Spinner from '@components/Common/Spinner';
 
 function Index({ referer }) {
   const router = useRouter();
@@ -10,7 +11,7 @@ function Index({ referer }) {
     token = localStorage.getItem('token');
   }
   const { data, isLoading, isError } = useFetch(`/library/playlists`, token);
-  if (isLoading) return <div>...Loading</div>;
+  if (isLoading) return <Spinner />;
   if (isError) {
     console.log(isError);
     return <div>...Error</div>;

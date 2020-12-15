@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import useFetch from '@hooks/useFetch';
 import api from '@api/index';
+import Spinner from '@components/Common/Spinner';
 import ArtistDetail from '../../src/pages/Detail/Artist';
 
 export function Index({ referer }) {
@@ -8,7 +9,7 @@ export function Index({ referer }) {
   const { id } = router.query;
   const { data, isLoading, isError } = useFetch(`/artist/${id}`, null);
 
-  if (isLoading) return <div>...Loading</div>;
+  if (isLoading) return <Spinner />;
   if (isError) {
     console.log(isError);
     return <div>...Error</div>;
