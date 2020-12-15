@@ -1,6 +1,7 @@
 import * as passport from 'passport';
 import { Strategy as NaverStrategy } from 'passport-naver';
 import User from '../entities/User';
+import Log from '../models/Log';
 
 const passportNaverConfig = (): void => {
   const naverStrategyOptions = {
@@ -22,6 +23,10 @@ const passportNaverConfig = (): void => {
         user.profileURL = profileURL;
         user.age = age;
         await user.save();
+        const logInfo = { eventTime: new Date(), eventName: 'sign_up_event' };
+        const log = new Log(logInfo);
+        console.log('-------------------- log : ', log);
+        await log.save();
       }
       return done(null, user);
     } catch (err) {

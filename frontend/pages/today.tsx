@@ -44,7 +44,7 @@ function Index({ token, referer }) {
 
   const logData = {
     eventTime: new Date(),
-    eventName: 'MoveEvent',
+    eventName: 'move_event',
     parameters: { prev: referer || 'external', next: router.asPath },
   };
   api.post('/log', logData);

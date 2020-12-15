@@ -21,7 +21,7 @@ const MovePageParams = new Schema({
 
 const UserInfoParams = new Schema({
   isLoggedIn: Boolean,
-  user: Object,
+  user: Number,
 });
 
 const LogSchema: Schema = new Schema({
