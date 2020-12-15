@@ -6,7 +6,7 @@ import Playlistdetail from '../../src/pages/Detail/Playlist';
 export function Index({ referer }) {
   const router = useRouter();
   const { id } = router.query;
-  const { data, isLoading, isError } = useFetch(`/playlist/${id}`);
+  const { data, isLoading, isError } = useFetch(`/playlist/${id}`, null);
 
   if (isLoading) return <div>...Loading</div>;
   if (isError) {

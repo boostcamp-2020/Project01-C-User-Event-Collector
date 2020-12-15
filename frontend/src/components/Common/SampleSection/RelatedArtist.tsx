@@ -4,7 +4,7 @@ import useFetch from '@hooks/useFetch';
 import ArtistCard from '@components/Common/Card/ArtistCard';
 
 function RelatedArtist() {
-  const { data, isLoading, isError } = useFetch(`/artist`);
+  const { data, isLoading, isError } = useFetch(`/artist`, null);
 
   if (isLoading) return <div>...Loading</div>;
   if (isError) {

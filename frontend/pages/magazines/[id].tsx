@@ -6,7 +6,7 @@ import MagazineDetail from '../../src/pages/Detail/Magazine';
 export function Index({ referer }) {
   const router = useRouter();
   const { id } = router.query;
-  const { data, isLoading, isError } = useFetch(`/magazine/${id}`);
+  const { data, isLoading, isError } = useFetch(`/magazine/${id}`, null);
 
   if (isLoading) return <div>...Loading</div>;
   if (isError) {

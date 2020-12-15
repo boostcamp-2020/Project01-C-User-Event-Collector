@@ -4,8 +4,8 @@ import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
 import api from '@api/index';
 import logEventHandler from '@utils/logEventHandler';
-import { usePlayState, usePlayDispatch } from '@context/play';
-import { useAuthState, useAuthDispatch } from '@context/AuthContext';
+import { usePlayState } from '@context/play';
+import { useAuthState } from '@context/AuthContext';
 import * as T from '../../../constants/dropdownText';
 
 interface IDropdownProps {
@@ -28,9 +28,9 @@ const DropdownComponent = ({
   // 개발 중, 타입에러를 막기 위해 주석처리 했습니다
   const router = useRouter();
   const state = usePlayState();
-  const dispatch = usePlayDispatch();
+  // const dispatch = usePlayDispatch();
   const userState = useAuthState();
-  const userDispatch = useAuthDispatch();
+  // const userDispatch = useAuthDispatch();
 
   console.log('playstate :: ', state);
   console.log('userState :: ', userState);
@@ -70,11 +70,11 @@ const DropdownComponent = ({
     console.log('88888');
   };
 
-  const addAlbumEvent = id => {
-    api.post('/library/albums', { albumId: id }).then(res => {
-      postLog();
-    });
-  };
+  // const addAlbumEvent = id => {
+  //   api.post('/library/albums', { albumId: id }).then(res => {
+  //     postLog();
+  //   });
+  // };
 
   const addPlaylistEvent = id => {
     api.post('/library/playlists', { playlistId: id }).then(res => {
@@ -116,13 +116,13 @@ const DropdownComponent = ({
   //   }
   // };
 
-  const logoutEvent = () => {
-    console.log('------logoutEvent-------');
-    localStorage.clear();
-    document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
-    alert('로그아웃 되었습니다.');
-    window.location.reload();
-  };
+  // const logoutEvent = () => {
+  //   console.log('------logoutEvent-------');
+  //   localStorage.clear();
+  //   document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
+  //   alert('로그아웃 되었습니다.');
+  //   window.location.reload();
+  // };
 
   switch (type) {
     case 'auth':
@@ -146,11 +146,7 @@ const DropdownComponent = ({
                 text={T.ACCOUNT_SETTING}
                 onClick={logEventHandler}
               />
-              <Dropdown.Item
-                style={dropdownItemStyle}
-                text={T.LOGOUT}
-                onClick={logEventHandler(logoutEvent, null)}
-              />
+              <Dropdown.Item style={dropdownItemStyle} text={T.LOGOUT} onClick={logEventHandler} />
             </Dropdown.Menu>
           </Dropdown>
         </Wrapper>

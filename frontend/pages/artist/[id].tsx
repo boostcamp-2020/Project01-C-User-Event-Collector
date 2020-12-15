@@ -6,7 +6,7 @@ import ArtistDetail from '../../src/pages/Detail/Artist';
 export function Index({ referer }) {
   const router = useRouter();
   const { id } = router.query;
-  const { data, isLoading, isError } = useFetch(`/artist/${id}`);
+  const { data, isLoading, isError } = useFetch(`/artist/${id}`, null);
 
   if (isLoading) return <div>...Loading</div>;
   if (isError) {

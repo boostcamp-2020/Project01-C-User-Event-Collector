@@ -4,7 +4,7 @@ import useFetch from '@hooks/useFetch';
 import PlaylistCard from '@components/Common/Card/PlaylistCard';
 
 function RelatedPlaylist() {
-  const { data, isLoading, isError } = useFetch(`/playlist`);
+  const { data, isLoading, isError } = useFetch(`/playlist`, null);
 
   if (isLoading) return <div>...Loading</div>;
   if (isError) {

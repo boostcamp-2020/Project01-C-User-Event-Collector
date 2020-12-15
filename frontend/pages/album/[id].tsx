@@ -6,7 +6,7 @@ import AlbumDetail from '../../src/pages/Detail/Album';
 export function Index({ referer }) {
   const router = useRouter();
   const { id } = router.query;
-  const { data, isLoading, isError } = useFetch(`/album/${id}`);
+  const { data, isLoading, isError } = useFetch(`/album/${id}`, null);
 
   if (isLoading) return <div>...Loading</div>;
   if (isError) {
