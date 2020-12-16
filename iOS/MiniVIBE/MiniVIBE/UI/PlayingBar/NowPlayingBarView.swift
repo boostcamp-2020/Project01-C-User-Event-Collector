@@ -37,7 +37,6 @@ struct NowPlayingBarView: View {
                             .padding(.all)
                     }
                     .frame(width: .musicPlayingBarWidth, height: Self.height).background(Blur())
-//                    .background(Color.vibeBackground.opacity(0.4))
                 }
             }
         }
@@ -97,5 +96,6 @@ private extension NowPlayingBarView {
         .frame(width: .largeItemImageWidth, height: 60)
         .background(LinearGradient(gradient: Gradient(colors: [.red, .vibePink, .purple]), startPoint: .leading, endPoint: .trailing))
         .cornerRadius(5)
+        .emitEventIfTapped(event: TapEvent(component: "membershipView", target: .custom("membership purchase")))
     }
 }
