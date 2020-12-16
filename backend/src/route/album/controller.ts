@@ -7,7 +7,7 @@ const getAlbums = async (req: Request, res: Response, next: NextFunction): Promi
     if (!album) return res.status(404).json({ message: 'Album Not Found' });
     return res.status(200).json({ success: true, data: album });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return next(err);
   }
 };
@@ -19,7 +19,7 @@ const getAlbumByAlbumId = async (req: Request, res: Response, next: NextFunction
     if (!album) return res.status(404).json({ message: 'Album Not Found' });
     return res.status(200).json({ success: true, data: album });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return next(err);
   }
 };

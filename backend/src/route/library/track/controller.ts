@@ -12,7 +12,7 @@ const getTracksByUserId = async (
     const trackList = await libraryTrackService.getTracksByUserId(userId);
     res.status(200).json({ success: true, data: trackList });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     next(err);
   }
 };
@@ -27,7 +27,7 @@ const addTrack = async (req: Request, res: Response, next: NextFunction): Promis
     if (!isSuccess) return res.status(404).json({ message: 'Track Not Found' });
     return res.status(204).end();
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return next(err);
   }
 };
@@ -42,7 +42,7 @@ const deleteTrack = async (req: Request, res: Response, next: NextFunction): Pro
     if (!isSuccess) return res.status(404).json({ message: 'Track Not Found' });
     return res.status(204).end();
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return next(err);
   }
 };

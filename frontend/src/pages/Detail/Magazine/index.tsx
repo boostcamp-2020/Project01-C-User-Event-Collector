@@ -3,6 +3,7 @@ import styled from '@styles/themed-components';
 
 import LargeButton from '@components/Common/Button/LargeButton';
 import MagList from '@components/MagList';
+import TrackItem from '@components/Common/TrackItem';
 
 interface IMagazineInfoProps {
   magazineInfo?: MetaMagazine;
@@ -20,7 +21,7 @@ type MetaMagazine = {
 
 function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
   console.log(magazine);
-  
+
   return (
     <Wrapper>
       <MagHeader>
@@ -33,11 +34,7 @@ function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
             <MagTitle>{magazine?.title}</MagTitle>
             <MagContent>{magazine?.content}</MagContent>
             <MagPlayList>
-              <MagPlayListInfo>
-총{magazine?.tracks?.length}
-곡
-{' '}
-</MagPlayListInfo>
+              <MagPlayListInfo>총{magazine?.tracks?.length}곡 </MagPlayListInfo>
               <MagPlayListLink>플레이리스트 보기</MagPlayListLink>
             </MagPlayList>
             <MagPlayButtonList>
@@ -55,10 +52,14 @@ function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
           </InfoArea>
         </MagInner>
       </MagHeader>
-      <MagList magList={new Array(6).fill(0)}/>
+      <MagList magList={magazine?.tracks} />
       <PlayListContainer>
         <PlayListTitle>{magazine?.title}</PlayListTitle>
-        
+        <PlayList>
+          {magazine?.tracks.map(track => (
+            <TrackItem key={track.id} trackMetaData={track} />
+          ))}
+        </PlayList>
       </PlayListContainer>
     </Wrapper>
   );
@@ -247,7 +248,6 @@ const SubItem = styled.span<{ Before?: boolean }>`
       : ''};
 `;
 
-
 const PlayListContainer = styled.div`
   width: 964px;
   margin: 40px auto 70px;
@@ -258,5 +258,11 @@ const PlayListTitle = styled.h4`
   font-weight: 700;
 `;
 
+const PlayList = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem 0;
+`;
 
 export default MagazineDetail;

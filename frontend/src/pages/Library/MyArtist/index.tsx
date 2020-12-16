@@ -15,7 +15,7 @@ const MyArtist = ({ artistList }) => {
   console.log('-----artist state---*** : ', state);
 
   return (
-    <Library mainTitle="앨범">
+    <Library mainTitle="아티스트">
       <Container>
         <ArtistList artistList={artistList} />
       </Container>

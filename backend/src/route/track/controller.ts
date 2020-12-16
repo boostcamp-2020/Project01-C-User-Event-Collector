@@ -8,7 +8,7 @@ const getTrackByTrackId = async (req: Request, res: Response, next: NextFunction
     if (!track) return res.status(404).json({ message: 'Track Not Found' });
     return res.status(200).json({ success: true, data: track });
   } catch (err) {
-    console.log(err);
+    console.error(err);
     return next(err);
   }
 };

@@ -4,14 +4,14 @@ import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
 import api from '@api/index';
 import useEventHandler from '@hooks/useEventHandler';
-import { usePlayDispatch, usePlayState } from '@context/play';
+import { usePlayState } from '@context/PlayContext';
 import * as T from '../../../constants/dropdownText';
 
 interface IBoxDropdownProps {
   type: string;
   id: number;
-  data: any;
-  trackData: any;
+  data?: any;
+  trackData?: any;
 }
 interface ILogData {
   eventTime: Date;
@@ -21,7 +21,6 @@ interface ILogData {
 
 const BoxDropdown = ({ trackData, type, id, data }: IBoxDropdownProps) => {
   const state = usePlayState();
-  const dispatch = usePlayDispatch();
   const router = useRouter();
   console.log(state);
 

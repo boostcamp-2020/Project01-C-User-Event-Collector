@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import styled from '@styles/themed-components';
 
+import { RiOrderPlayFill, RiPlayListAddLine } from 'react-icons/ri';
+import { IoCloseOutline } from 'react-icons/io5';
+
 import TrackItem from '@components/Common/TrackItem';
+import LargeButton from '@components/Common/Button/LargeButton';
 
 const TrackList = ({ trackList }) => {
   const initialSelector: number[] = [];
@@ -24,39 +28,60 @@ const TrackList = ({ trackList }) => {
       setSelected([...selected, +e.target.value]);
       setVisible(true);
     } else {
-      const result = selected.filter(o => o !== e.target.value);
+      const result = selected.filter(o => o !== +e.target.value);
       if (!result.length) setVisible(false);
       setSelected(result);
     }
+  };
+
+  const onCloseHandle = e => {
+    setVisible(false);
   };
 
   return (
     <>
       {trackList ? (
         <TrackListSection>
-          {trackList.map(track => (
+          {trackList.map((track, index) => (
             <TrackItem
               key={track.id}
               type="checkbox"
               trackMetaData={track}
               selected={selected}
               onSelectHandler={onChangeHandle}
+              chart={index + 1}
             />
           ))}
           <SelectedHeader displayVisiable={visible}>
             <SelectedBarInner>
               <SelectedInfoArea>
-                <input
-                  type="checkbox"
-                  onChange={onChangeAll}
-                  checked={selected.length === trackList.length}
-                />
-                <SelectLabel>전체선택</SelectLabel>
-                <SelectedCountSpan> 
-{' '}
-{selected.length}곡 선택</SelectedCountSpan>
+                <InfoAreaWrapper>
+                  <input
+                    type="checkbox"
+                    onChange={onChangeAll}
+                    checked={selected.length === trackList.length}
+                  />
+                  <SelectLabel>전체선택</SelectLabel>
+                  <SelectedCountSpan> {selected.length}곡 선택</SelectedCountSpan>
+                </InfoAreaWrapper>
+                <IoCloseOutline size={26} onClick={onCloseHandle} />
               </SelectedInfoArea>
-              <PlayOptionArea />
+              <PlayOptionArea>
+                <InfoAreaWrapper>
+                  <TextButton>
+                    <RiOrderPlayFill />
+                    <WordSpan>바로 다음에</WordSpan>
+                  </TextButton>
+                  <TextButton>
+                    <RiPlayListAddLine />
+                    <WordSpan>맨 아래에</WordSpan>
+                  </TextButton>
+                  <TextButton>
+                    <span>mp3 구매</span>
+                  </TextButton>
+                </InfoAreaWrapper>
+                <LargeButton customType="normal-play" />
+              </PlayOptionArea>
             </SelectedBarInner>
           </SelectedHeader>
         </TrackListSection>
@@ -64,6 +89,21 @@ const TrackList = ({ trackList }) => {
     </>
   );
 };
+
+const TextButton = styled.span`
+  all: unset;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  font-size: 14px;
+  margin: 6px;
+`;
+
+const WordSpan = styled.span`
+  padding-left: 5px;
+`;
 
 const TrackListSection = styled.div``;
 
@@ -87,8 +127,16 @@ const SelectedBarInner = styled.div`
 `;
 
 const SelectedInfoArea = styled.div`
+  display: flex;
+  justify-content: space-between;
   padding: 19px 0 20px;
   border-bottom: 1px solid #e4e4e4;
+`;
+
+const InfoAreaWrapper = styled.div`
+  display: flex;
+
+  align-items: center;
 `;
 
 const SelectLabel = styled.label`
@@ -102,6 +150,10 @@ const SelectedCountSpan = styled.span`
 `;
 
 const PlayOptionArea = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   position: relative;
   margin-left: -10px;
   padding: 13px 0 12px;

@@ -5,10 +5,10 @@ import { HiHeart } from 'react-icons/hi';
 import { BsMusicPlayer } from 'react-icons/bs';
 import { RiPlayListLine } from 'react-icons/ri';
 
-import trimContentLength from '@utils/trimContentLength';
 import A from '@components/Common/A';
 
 interface ITrackMetaProps {
+  chart?: number;
   type?: string;
   trackMetaData: TrackMeta;
   selected?: any;
@@ -25,6 +25,7 @@ type TrackMeta = {
 };
 
 const TrackItem = ({
+  chart,
   type,
   trackMetaData: track,
   selected,
@@ -43,15 +44,19 @@ const TrackItem = ({
             onChange={onSelectHandler}
           />
         )}
-        <TrackImgWrapper>
-          <TrackHoverImg src="/images/track-hover-img.png" className="track-hover-img" />
-          <TrackImg
-            src={track.album?.imgUrl ? track.album.imgUrl : albumData.imgUrl}
-            alt="track-image"
-          />
-        </TrackImgWrapper>
+        {track.album ? (
+          <TrackImgWrapper>
+            <TrackHoverImg src="/images/track-hover-img.png" className="track-hover-img" />
+            <TrackImg
+              src={track.album?.imgUrl ? track.album.imgUrl : albumData.imgUrl}
+              alt="track-image"
+            />
+          </TrackImgWrapper>
+        ) : (
+          <CountWrapper>{chart}</CountWrapper>
+        )}
         <A next="track" id={track.id} target={target}>
-          <Text>{trimContentLength(track.title, 35)}</Text>
+          <Text>{track.title}</Text>
         </A>
       </TrackWrapper>
       <TrackWrapper>
@@ -100,8 +105,12 @@ const lastWrapperStyle = {
 };
 
 const Text = styled.a`
+  display: inline-block;
+  width: 280px;
   ${props => props.theme.font.plain}
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const ArtistName = styled(Text)`
@@ -163,6 +172,16 @@ const Wrapper = styled.button`
       display: block;
     }
   }
+`;
+
+const CountWrapper = styled.div`
+  width: 30px;
+
+  padding-left: 4px;
+  padding-right: 10px;
+
+  font-size: 15px;
+  text-align: center;
 `;
 
 export default TrackItem;
