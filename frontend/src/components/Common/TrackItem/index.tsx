@@ -6,6 +6,7 @@ import { BsMusicPlayer } from 'react-icons/bs';
 import { RiPlayListLine } from 'react-icons/ri';
 
 import A from '@components/Common/A';
+import BoxDropdown from '../Dropdown/BoxDropdown';
 
 interface ITrackMetaProps {
   chart?: number;
@@ -89,10 +90,21 @@ const TrackItem = ({
         <BsMusicPlayer size={20} />
         <RiPlayListLine size={20} />
         <HiHeart size={20} className="heart" />
+        <DropdownWrapper>
+          <BoxDropdown trackData={track} type="track" id={track.id} />
+        </DropdownWrapper>
       </TrackWrapper>
     </Wrapper>
   );
 };
+
+const DropdownWrapper = styled.div`
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+`;
 
 const firstWrapperStyle = {
   width: '350px',

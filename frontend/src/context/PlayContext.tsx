@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer, Dispatch } from 'react';
-import Playlist from 'pages/playlist';
+// import Playlist from 'pages/playlist';
 
 // type PlayType = 'INORDER' | 'SHUFFLE' | 'ONLYONE';
 
@@ -37,16 +37,16 @@ function reducer(state: State, action: Action): State {
         isPlaying: false,
       };
     case 'PLAY_NEXT':
-      const nextIndex = (state.playIndex + 1) % Playlist.length;
+      const nextIndex = (state.playIndex + 1) % state.playList.length;
       return {
         ...state,
         playIndex: nextIndex,
       };
     case 'PLAY_PREV':
-      const prevIndex = state.playIndex - 1;
+      const prevIndex = (state.playIndex - 1) % state.playList.length;
       return {
         ...state,
-        playIndex: prevIndex < 0 ? prevIndex + Playlist.length : prevIndex,
+        playIndex: prevIndex < 0 ? prevIndex + state.playList.length : prevIndex,
       };
     case 'ADD_TRACK':
       return {

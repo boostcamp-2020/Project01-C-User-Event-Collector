@@ -1,28 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { IoHeartOutline } from 'react-icons/io5';
 import { RiPlayListLine } from 'react-icons/ri';
 import { BsThreeDots } from 'react-icons/bs';
+import api from '@api/index';
 import A from '@components/Common/A';
 
-const testImgUrl =
-  'https://musicmeta-phinf.pstatic.net/album/005/064/5064543.jpg?type=r720Fll&v=20201104164506';
-
-function PlayTrackItem() {
+function PlayTrackItem({ trackData: track }) {
   const target = 'PlayTrackItem';
   return (
     <TrackWrapper>
       <TrackImgWrapper>
-        <A next="album" id={1} target={target}>
-          <TrackImg src={testImgUrl} alt="playbar-track-img" />
+        <A next="album" id={track?.album?.id} target={target}>
+          <TrackImg src={track?.album?.imgUrl} alt="playbar-track-img" />
         </A>
       </TrackImgWrapper>
       <TrackContentWrapper>
-        <A next="track" id={1} target={target}>
-          <TrackTitle>얘랑 있을 때 좋다 (...</TrackTitle>
+        <A next="track" id={track?.id} target={target}>
+          <TrackTitle>{track?.title}</TrackTitle>
         </A>
-        <A next="artist" id={222} target={target}>
-          <TrackArtist>어쿠스틱 콜라보</TrackArtist>
+        <A next="artist" id={track?.artists[0]?.id} target={target}>
+          <TrackArtist>{track?.artists[0]?.name}</TrackArtist>
         </A>
       </TrackContentWrapper>
       <IconWrapper>
@@ -51,6 +49,11 @@ const TrackTitle = styled.a`
   font-weight: 600;
   font-size: 14px;
   color: ${props => props.theme.color.white};
+  width: 125px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
 `;
 
 const TrackArtist = styled.a`

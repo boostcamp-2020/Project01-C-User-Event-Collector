@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import api from '@api/index';
 import {
   IoPlaySkipForwardSharp,
   IoPlaySkipBackSharp,
@@ -16,11 +17,26 @@ import { usePlayState, usePlayDispatch } from '@context/PlayContext';
 import { useAuthState } from '@context/AuthContext';
 
 function PlayBar() {
+  const [playlistState, setPlaylistState] = useState(null);
   const state = usePlayState();
   const dispatch = usePlayDispatch();
 
   const authState = useAuthState();
   // const authDispatch = useAuthDispatch();
+
+  const fetchData = () => {
+    api.get('/track').then(res => {
+      const trackList = res.data.data;
+      setPlaylistState(trackList.slice(0, 5));
+      trackList.slice(0, 5).forEach(track => dispatch({ type: 'ADD_TRACK', track }));
+    });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [dispatch]);
+
+  const { playList, playIndex } = state;
   const { userInfo } = authState;
 
   const [adShow, setAdShow] = useState(false);
@@ -29,6 +45,15 @@ function PlayBar() {
   const setPlayStart = () => {
     setAdShow(true);
     return dispatch({ type: 'PLAY_START' });
+  };
+
+  const setPlayNext = () => {
+    dispatch({ type: 'PLAY_NEXT' });
+    console.log(playIndex);
+  };
+  const setPlayPrev = () => {
+    dispatch({ type: 'PLAY_PREV' });
+    console.log(playIndex);
   };
   const setPlayPause = () => dispatch({ type: 'PLAY_PAUSE' });
 
@@ -66,16 +91,16 @@ function PlayBar() {
       )}
       <>
         <Player>
-          <PlayTrackItem />
+          <PlayTrackItem trackData={playList[playIndex]} />
           <ButtonWrapper>
             <IoShuffleOutline className="side button" size={26} />
-            <IoPlaySkipBackSharp className="skip button" size={22} />
+            <IoPlaySkipBackSharp className="skip button" size={22} onClick={setPlayPrev} />
             {state.isPlaying ? (
               <IoPause className="play button" size={35} onClick={setPlayPause} />
             ) : (
               <IoPlaySharp className="play button" size={35} onClick={setPlayStart} />
             )}
-            <IoPlaySkipForwardSharp className="skip button" size={22} />
+            <IoPlaySkipForwardSharp className="skip button" size={22} onClick={setPlayNext} />
             <IoRepeat className="side button" size={26} />
           </ButtonWrapper>
           <ListWrapper>

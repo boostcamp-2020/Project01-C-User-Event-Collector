@@ -1,15 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 import styled from '@styles/themed-components';
 import Carousel from '@components/Common/Carousel';
 import Section from '@components/Common/Section';
 import MagCard from '@components/Common/Card/MagCard';
 import MagTopItem from '@components/Common/MagTopItem';
 import PlaylistCard from '@components/Common/Card/PlaylistCard';
-// import { GrNext } from 'react-icons/gr';
+import useEventHandler from '@hooks/useEventHandler';
 
 function Today({ magList, playlistList }) {
+  const router = useRouter();
+  const randomNum = Math.floor(Math.random() * 2);
+  const [isBannerOpened, setIsBannerOpened] = useState(randomNum === 1);
+
+  const customClickLogData = target => {
+    return {
+      eventTime: new Date(),
+      eventName: 'click_event',
+      parameters: { page: router.asPath },
+      target,
+    };
+  };
+
+  const bannerClickEvent = e => {
+    if (e.target.className.includes('banner-close-button')) {
+      console.log('hello');
+      useEventHandler(setIsBannerOpened(false), customClickLogData('BannerCloseBtn'));
+    }
+    useEventHandler(null, customClickLogData('BannerBtn'));
+  };
+
   return (
     <Wrapper>
+      {isBannerOpened && (
+        <BannerImgWrapper onClick={bannerClickEvent}>
+          <BannerCloseButton className="banner-close-button" />
+          <BannerImg src="/images/banner-ad-img.png" alt="banner-ad-img" />
+        </BannerImgWrapper>
+      )}
       <MagTopWrapper>
         <MagTopItem magData={magList[0]} />
       </MagTopWrapper>
@@ -47,6 +75,28 @@ const Content = styled.div`
   position: relative;
   max-width: ${props => props.theme.size.mainContentWidth};
   margin: auto;
+`;
+
+const BannerImgWrapper = styled.div`
+  width: 100%;
+  height: 50px;
+  position: relative;
+  &: hover {
+    cursor: pointer;
+  }
+`;
+
+const BannerCloseButton = styled.button`
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  width: 24px;
+  height: 24px;
+`;
+
+const BannerImg = styled.img`
+  width: 100%;
+  height: 100%;
 `;
 
 const Wrapper = styled.div``;

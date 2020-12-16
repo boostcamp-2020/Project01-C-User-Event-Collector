@@ -59,7 +59,7 @@ function Index({ token, referer }) {
 
 export async function getServerSideProps({ req }) {
   // 브라우저의 document.cookie에 접근하는 코드
-  const regex = /(http:\/\/)([A-Z,a-z,:,0-9]*)/;
+  const regex = /(http:\/\/)([A-Z,a-z,:,.,0-9]*)/;
   const host = req.headers?.referer?.match(regex)[0];
   const referer = req.headers?.referer?.slice(host.length);
 

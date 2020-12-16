@@ -4,27 +4,25 @@ import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
 import api from '@api/index';
 import useEventHandler from '@hooks/useEventHandler';
-
 import * as T from '../../../constants/dropdownText';
 
-const postLog = logData => {
-  api.post('/log', logData);
-};
+interface ILogData {
+  eventTime: Date;
+  eventName: string;
+  parameters: any;
+}
 
-const AuthDropdown = () => {
+const ArtistDropdown = id => {
   const router = useRouter();
 
-  const logoutEvent = async () => {
-    localStorage.clear();
-    document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
-    postLog({
-      eventTime: new Date(),
-      eventName: 'logout_event',
-      parameters: { page: router.asPath },
-    });
-    alert('로그아웃 되었습니다.');
+  const postLog = logData => {
+    api.post('/log', logData);
+  };
 
-    window.location.reload();
+  const libraryLogData: ILogData = {
+    eventTime: new Date(),
+    eventName: 'library_event',
+    parameters: { action: 'add', type: 'artist', id },
   };
 
   const clickLogData = target => {
@@ -33,6 +31,10 @@ const AuthDropdown = () => {
       eventName: 'click_event',
       parameters: { page: router.asPath, target },
     };
+  };
+
+  const addLibraryEvent = () => {
+    api.post('/library/artists', { artistId: id }).then(() => postLog(libraryLogData));
   };
 
   return (
@@ -45,23 +47,13 @@ const AuthDropdown = () => {
         <Dropdown.Menu direction="left" style={dropdownMenuStyle}>
           <Dropdown.Item
             style={dropdownItemStyle}
-            text={T.MY_MEMBERSHIP}
-            onClick={useEventHandler(null, clickLogData(`Dropdown/Membership`))}
+            text={T.LIKE}
+            onClick={useEventHandler(addLibraryEvent, libraryLogData)}
           />
           <Dropdown.Item
             style={dropdownItemStyle}
-            text={T.NOTICE}
-            onClick={useEventHandler(null, clickLogData(`Dropdown/Notice`))}
-          />
-          <Dropdown.Item
-            style={dropdownItemStyle}
-            text={T.ACCOUNT_SETTING}
-            onClick={useEventHandler(null, clickLogData(`Dropdown/Setting`))}
-          />
-          <Dropdown.Item
-            style={dropdownItemStyle}
-            text={T.LOGOUT}
-            onClick={useEventHandler(logoutEvent, clickLogData(`Dropdown/Logout`))}
+            text={T.SHARE}
+            onClick={useEventHandler(null, clickLogData(`ShareBtn/artist/${id}`))}
           />
         </Dropdown.Menu>
       </Dropdown>
@@ -96,4 +88,4 @@ const Wrapper = styled.div<{ style?: any }>`
   position: relative;
 `;
 
-export default AuthDropdown;
+export default ArtistDropdown;
