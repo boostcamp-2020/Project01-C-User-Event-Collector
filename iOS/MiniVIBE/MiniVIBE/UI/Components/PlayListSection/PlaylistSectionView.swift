@@ -54,4 +54,3 @@ private extension PlaylistSectionView {
         }
     }
 }
-

@@ -60,17 +60,17 @@ private struct MockServerDataView: View {
     @StateObject var viewModel: MockServerDataView.ViewModel
     var filteredEvents: [Event] {
         switch viewModel.filter {
-        case EventName.movePage.description:
+        case EventName.moveEvent.description:
             return RealServerRepository.events.filter {
-                $0.name == EventName.movePage.description
+                $0.name == EventName.moveEvent.description
             }
-        case EventName.tabButton.description:
+        case EventName.tapEvent.description:
             return RealServerRepository.events.filter {
-                $0.name == EventName.tabButton.description
+                $0.name == EventName.tapEvent.description
             }
-        case EventName.error.description :
+        case EventName.errorEvent.description :
             return RealServerRepository.events.filter {
-                $0.name == EventName.error.description
+                $0.name == EventName.errorEvent.description
             }
         default:
             return RealServerRepository.events
@@ -105,11 +105,11 @@ extension MockServerDataView {
         var filter: String {
             switch selectorIndex {
             case 1:
-                return EventName.movePage.description
+                return EventName.moveEvent.description
             case 2:
-                return EventName.tabButton.description
+                return EventName.tapEvent.description
             case 3:
-                return EventName.error.description
+                return EventName.errorEvent.description
             default:
                 return "name"
             }

@@ -9,6 +9,6 @@ import BCEventEmitter
 
 class ErrorEvent: Event {
     init(from: String, reason: String) {
-        super.init(name: EventName.error.description, parameters: [.from: from, .reason: reason], date: Date().customDateFormat())
+        super.init(name: EventName.errorEvent.description, parameters: [.from: from, .reason: reason], date: Date().customDateFormat())
     }
 }

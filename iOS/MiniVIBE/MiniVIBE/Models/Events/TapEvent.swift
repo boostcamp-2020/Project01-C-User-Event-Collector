@@ -53,6 +53,6 @@ class TapEvent: Event {
     }
     
     init(component: String, target: TapEvent.Target) {
-        super.init(name: EventName.tabButton.description, parameters: [.component: component, .target: target.description], date: Date().customDateFormat())
+        super.init(name: EventName.tapEvent.description, parameters: [.component: component, .target: target.description], date: Date().customDateFormat())
     }
 }
