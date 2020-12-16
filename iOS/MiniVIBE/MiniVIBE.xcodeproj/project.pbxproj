@@ -52,6 +52,8 @@
 		B9A156F9256E303A00FFDA20 /* DJStationSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A156F8256E303A00FFDA20 /* DJStationSectionView.swift */; };
 		B9A156FF256E307900FFDA20 /* DJStationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A156FE256E307900FFDA20 /* DJStationItemView.swift */; };
 		B9A15703256E308900FFDA20 /* DJStationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A15702256E308900FFDA20 /* DJStationItem.swift */; };
+		B9A58D96258A1DAC00BBFD54 /* Event+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A58D95258A1DAC00BBFD54 /* Event+Encodable.swift */; };
+		B9A58DA8258A240400BBFD54 /* Date+customDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A58DA7258A240400BBFD54 /* Date+customDateFormat.swift */; };
 		B9B4D1EB256E5BB600EC2FE2 /* MoreHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B4D1EA256E5BB600EC2FE2 /* MoreHeaderView.swift */; };
 		B9B4D1F6256E5C7D00EC2FE2 /* TodayHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95964E0256CEF520041B135 /* TodayHeaderView.swift */; };
 		B9B4D1F9256E5C8A00EC2FE2 /* Color+vibeColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9DB8A19256CFE6900D3F1A2 /* Color+vibeColors.swift */; };
@@ -184,6 +186,8 @@
 		B9A156F8256E303A00FFDA20 /* DJStationSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJStationSectionView.swift; sourceTree = "<group>"; };
 		B9A156FE256E307900FFDA20 /* DJStationItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJStationItemView.swift; sourceTree = "<group>"; };
 		B9A15702256E308900FFDA20 /* DJStationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DJStationItem.swift; sourceTree = "<group>"; };
+		B9A58D95258A1DAC00BBFD54 /* Event+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Event+Encodable.swift"; sourceTree = "<group>"; };
+		B9A58DA7258A240400BBFD54 /* Date+customDateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+customDateFormat.swift"; sourceTree = "<group>"; };
 		B9B4D1EA256E5BB600EC2FE2 /* MoreHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreHeaderView.swift; sourceTree = "<group>"; };
 		B9B6279825628130006B0F00 /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		B9C628CA257BF3DA000BCE80 /* PlaylistDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailView.swift; sourceTree = "<group>"; };
@@ -379,6 +383,8 @@
 				B98AF70D2588C19200A27F35 /* TapEvent.swift */,
 				B98AF7102588C19F00A27F35 /* ErrorEvent.swift */,
 				B98AF7162588C3AD00A27F35 /* EventName.swift */,
+				B9A58D95258A1DAC00BBFD54 /* Event+Encodable.swift */,
+				B9A58DA7258A240400BBFD54 /* Date+customDateFormat.swift */,
 			);
 			path = Events;
 			sourceTree = "<group>";
@@ -885,6 +891,7 @@
 				B994C6A825627DBE000E563C /* MiniVIBE.xcdatamodeld in Sources */,
 				B9FF8A48257A78BB00B774CD /* FiveRowSongGridViewModel.swift in Sources */,
 				B94DA9D4257D56A40002A066 /* AsyncImageView.swift in Sources */,
+				B9A58D96258A1DAC00BBFD54 /* Event+Encodable.swift in Sources */,
 				B96AEF9425815A950072B242 /* String+EventParameters.swift in Sources */,
 				B912A1652578161500223C0B /* VideoHeaderView.swift in Sources */,
 				B9258E172578E49200D4487C /* EventService.swift in Sources */,
@@ -937,6 +944,7 @@
 				B9C628E1257C06F9000BCE80 /* MockItemFactory.swift in Sources */,
 				DE090447256D09CC002914B5 /* NowReplayItem.swift in Sources */,
 				B931019E256D800000DD5ADA /* View+vibeTitles.swift in Sources */,
+				B9A58DA8258A240400BBFD54 /* Date+customDateFormat.swift in Sources */,
 				B9D04D61257D8178001D01D7 /* AsyncImageNetwork.swift in Sources */,
 				DE18EEA1257BFA13009E4E11 /* Reachability.swift in Sources */,
 				B9EC74DB257D0EDC003DF392 /* MockServerView.swift in Sources */,

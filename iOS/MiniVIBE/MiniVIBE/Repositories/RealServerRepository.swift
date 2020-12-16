@@ -23,10 +23,10 @@ class RealServerRepository: ServerRepository {
             .setFailureType(to: NetworkError.self)
             .encode(encoder: JSONEncoder())
             .mapError { error -> NetworkError in
-                   // 3.
                    return NetworkError.encodingError(error.localizedDescription)
             }
             .map { encodedData -> RequestProviding in
+    
                 if RealServerRepository.isEnabled {
                 return EventRequest(body: encodedData)
                 } else {

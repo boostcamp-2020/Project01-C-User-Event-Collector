@@ -25,8 +25,4 @@ class CoreDataEvent: Event {
     init(name: String, parameter: [String: String]) {
         super.init(name: name, parameters: parameter)
     }
-    
-    required init(from decoder: Decoder) throws {
-        fatalError("init(from:) has not been implemented")
-    }
 }

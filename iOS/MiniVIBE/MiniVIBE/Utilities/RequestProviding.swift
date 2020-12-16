@@ -45,6 +45,7 @@ extension RequestProviding {
         request.allHTTPHeaderFields = headers
         request.httpBody = body
         request.setValue(KeyChain.shared.readToken(), forHTTPHeaderField: "Authorization")
+        request.setValue("application/json", forHTTPHeaderField: "Content-type")
         return request
     }
 }
