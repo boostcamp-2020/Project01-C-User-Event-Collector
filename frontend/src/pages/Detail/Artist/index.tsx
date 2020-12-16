@@ -13,19 +13,6 @@ import AlbumList from '@components/AlbumList';
 import { IoMdHeartEmpty } from 'react-icons/io';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
 
-// interface IArtistInfoProps {
-//   artistInfo?: MetaArtist;
-// }
-
-// type MetaArtist = {
-//   id: number;
-//   imgUrl: string;
-//   name: string;
-//   debut: string;
-//   genres?: any;
-//   tracks?: any;
-// };
-
 function ArtistDetail({ artistInfo: artist }) {
   console.log('myartist ::: ', artist);
   return (
@@ -42,7 +29,7 @@ function ArtistDetail({ artistInfo: artist }) {
           <BottomContainer>
             <ButtonWrapper>
               <ButtonContainer>
-                 <IoMdHeartEmpty size={24} color={'575757'} />
+                <IoMdHeartEmpty size={24} color={'575757'} />
               </ButtonContainer>
               <ButtonContainer>
                 <HiOutlineDotsHorizontal size={24} color={'575757'} />
@@ -52,14 +39,18 @@ function ArtistDetail({ artistInfo: artist }) {
         </HeaderContent>
       </Header>
       <Wrapper>
-        <Section>
-          <SectionTitle>노래</SectionTitle>
-          <TrackList type={true} trackList={artist.tracks}/>
-        </Section>
-        <Section>
-          <SectionTitle>앨범</SectionTitle>
-          <AlbumList albumList={artist.albums}/>
-        </Section>
+        {artist.tracks.length > 0 &&
+          (<Section>
+            <SectionTitle>노래</SectionTitle>
+            <TrackList type={true} trackList={artist.tracks} />
+          </Section>)
+        }
+        {artist.albums.length > 0 &&
+          (<Section>
+            <SectionTitle>앨범</SectionTitle>
+            <AlbumList albumList={artist.albums} />
+          </Section>)
+        }
         <Section>
           <p className="section-title">비슷한 아티스트</p>
           <RelatedArtist />
