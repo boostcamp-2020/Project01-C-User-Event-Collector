@@ -7,16 +7,11 @@ import useEventHandler from '@hooks/useEventHandler';
 
 import * as T from '../../../constants/dropdownText';
 
-interface IDropdownProps {
-  type?: string;
-  data?: any;
-}
-
 const postLog = logData => {
   api.post('/log', logData);
 };
 
-const DropdownComponent = ({ type, data }: IDropdownProps) => {
+const AuthDropdown = () => {
   const router = useRouter();
 
   const logoutEvent = async () => {
@@ -101,4 +96,4 @@ const Wrapper = styled.div<{ style?: any }>`
   position: relative;
 `;
 
-export default DropdownComponent;
+export default AuthDropdown;
