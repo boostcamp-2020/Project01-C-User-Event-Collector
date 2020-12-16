@@ -11,6 +11,7 @@ import AuthenticationServices
 import BCEventEmitter
 
 struct TodayView: View {
+    @EnvironmentObject var musicPlayer: MusicPlayer
     let viewModel: ViewModel
     var body: some View {
         ZStack {
@@ -41,7 +42,7 @@ struct TodayView: View {
                     .navigationBarHidden(true)
                 }
             }
-            NowPlayingBarView()
+            NowPlayingBarView(musicPlayer: musicPlayer)
         }
         .onAppear {
             emitEvent(event: MoveEvent(next: ContentView.TabType.today.description))

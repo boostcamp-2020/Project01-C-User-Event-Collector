@@ -9,8 +9,9 @@ import SwiftUI
 import BCEventEmitter
 
 struct NowPlayingBarView: View {
-    @EnvironmentObject var musicPlayer: MusicPlayer
+//    @EnvironmentObject var musicPlayer: MusicPlayer
     @State private var isPresent = false
+    @ObservedObject var musicPlayer: MusicPlayer
     @Environment(\.colorScheme) var colorScheme
     static let height: CGFloat = 75
     var body: some View {
@@ -96,6 +97,10 @@ private extension NowPlayingBarView {
         .frame(width: .largeItemImageWidth, height: 60)
         .background(LinearGradient(gradient: Gradient(colors: [.red, .vibePink, .purple]), startPoint: .leading, endPoint: .trailing))
         .cornerRadius(5)
-        .emitEventIfTapped(event: TapEvent(component: "membershipView", target: .custom("membership purchase")))
+        .onTapGesture {
+            withAnimation { musicPlayer.showMembership = false
+                emitEvent(event: TapEvent(component: "membershipView", target: .custom("membership purchase")))
+            }
+        }
     }
 }
