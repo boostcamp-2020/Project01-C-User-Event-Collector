@@ -23,7 +23,7 @@ function A({ next, target, id, children }: IAProps) {
         <Wrapper
           onClick={useEventHandler(null, {
             eventTime: new Date(),
-            eventName: 'ClickEvent',
+            eventName: 'click_event',
             parameters: {
               page: router.pathname,
               target: `/${`${target}/${id}`}`,

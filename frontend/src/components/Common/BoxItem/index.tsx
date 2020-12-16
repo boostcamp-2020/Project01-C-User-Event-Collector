@@ -5,19 +5,17 @@ import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
 import { useRouter } from 'next/router';
 import useEventHandler from '@hooks/useEventHandler';
 import Link from 'next/link';
-import Dropdown from '@components/Common/Dropdown';
+import BoxDropdown from '@components/Common/Dropdown/BoxDropdown';
 
 interface IBoxItemProps {
-  albumData?: any;
-  magData?: any;
-  playlistData?: any;
   imgUrl: string;
   next: string;
+  trackData: any;
   target: string;
   id: number;
 }
 
-function BoxItem({ albumData, magData, playlistData, imgUrl, target, next, id }: IBoxItemProps) {
+function BoxItem({ trackData, imgUrl, target, next, id }: IBoxItemProps) {
   const router = useRouter();
   return (
     <>
@@ -28,7 +26,7 @@ function BoxItem({ albumData, magData, playlistData, imgUrl, target, next, id }:
             alt="box-item-image"
             onClick={useEventHandler(null, {
               eventTime: new Date(),
-              eventName: 'ClickEvent',
+              eventName: 'click_event',
               parameters: {
                 page: router.pathname,
                 target: `/${`${target}/${id}`}`,
@@ -40,12 +38,7 @@ function BoxItem({ albumData, magData, playlistData, imgUrl, target, next, id }:
           <BoxPlayButton />
           <BsThreeDots size={24} />
         </ButtonsWrapper>
-        <Dropdown
-          type="listItem"
-          albumData={albumData}
-          magData={magData}
-          playlistData={playlistData}
-        />
+        <BoxDropdown trackData={trackData} type={next} id={id} />
       </Wrapper>
     </>
   );

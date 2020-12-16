@@ -21,7 +21,7 @@ type MetaMagazine = {
 
 function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
   console.log(magazine);
-  
+
   return (
     <Wrapper>
       <MagHeader>
@@ -34,11 +34,7 @@ function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
             <MagTitle>{magazine?.title}</MagTitle>
             <MagContent>{magazine?.content}</MagContent>
             <MagPlayList>
-              <MagPlayListInfo>
-총{magazine?.tracks?.length}
-곡
-{' '}
-</MagPlayListInfo>
+              <MagPlayListInfo>총{magazine?.tracks?.length}곡 </MagPlayListInfo>
               <MagPlayListLink>플레이리스트 보기</MagPlayListLink>
             </MagPlayList>
             <MagPlayButtonList>
@@ -56,11 +52,13 @@ function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
           </InfoArea>
         </MagInner>
       </MagHeader>
-      <MagList magList={magazine?.tracks}/>
+      <MagList magList={magazine?.tracks} />
       <PlayListContainer>
         <PlayListTitle>{magazine?.title}</PlayListTitle>
         <PlayList>
-          {magazine?.tracks.map(track => (<TrackItem key={track.id} trackMetaData={track}/>))}
+          {magazine?.tracks.map(track => (
+            <TrackItem key={track.id} trackMetaData={track} />
+          ))}
         </PlayList>
       </PlayListContainer>
     </Wrapper>
@@ -249,7 +247,6 @@ const SubItem = styled.span<{ Before?: boolean }>`
     }`
       : ''};
 `;
-
 
 const PlayListContainer = styled.div`
   width: 964px;

@@ -44,15 +44,17 @@ const TrackItem = ({
             onChange={onSelectHandler}
           />
         )}
-        {track.album ?
-          (<TrackImgWrapper>
+        {track.album ? (
+          <TrackImgWrapper>
             <TrackHoverImg src="/images/track-hover-img.png" className="track-hover-img" />
             <TrackImg
               src={track.album?.imgUrl ? track.album.imgUrl : albumData.imgUrl}
               alt="track-image"
             />
-          </TrackImgWrapper>) :
-          (<CountWrapper>{chart}</CountWrapper>)}
+          </TrackImgWrapper>
+        ) : (
+          <CountWrapper>{chart}</CountWrapper>
+        )}
         <A next="track" id={track.id} target={target}>
           <Text>{track.title}</Text>
         </A>
@@ -103,7 +105,7 @@ const lastWrapperStyle = {
 };
 
 const Text = styled.a`
-  display: inline-block;;
+  display: inline-block;
   width: 280px;
   ${props => props.theme.font.plain}
   white-space: nowrap;

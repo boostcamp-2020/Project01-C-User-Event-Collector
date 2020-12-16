@@ -3,8 +3,8 @@
 import api from '../api';
 
 const postLog = async logData => {
+  console.log('postLog start');
   await api.post('/log', logData);
-  console.log('logData : ', logData);
 };
 
 const useEventHandler = (handler, logData) => {

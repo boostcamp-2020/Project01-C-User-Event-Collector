@@ -18,8 +18,10 @@ function AlbumDetail({ albumInfo: album }) {
         <HeaderImg src={album.imgUrl} alt="detail-header-img" />
         <HeaderContent>
           <MainTitle>{album.name}</MainTitle>
-          <SubTitle>{getMultipleNames(album.artists) + ' '}</SubTitle>
-          <SubContent>{album.date.slice(0, 10)} · {getMultipleNames(album.genres)}</SubContent>
+          <SubTitle>{`${getMultipleNames(album.artists)} `}</SubTitle>
+          <SubContent>
+            {album.date.slice(0, 10)} ·{getMultipleNames(album.genres)}
+          </SubContent>
           <SubContent>{description}</SubContent>
           <ButtonsWrapper>
             <LargeButton customType="play" />
@@ -109,7 +111,6 @@ const ButtonsWrapper = styled.div`
     margin-right: 10px;
   }
 `;
-
 
 const Wrapper = styled.div`
   padding-top: 34px;
