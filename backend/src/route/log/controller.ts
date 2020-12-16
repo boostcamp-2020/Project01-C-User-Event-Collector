@@ -14,8 +14,8 @@ const createLog = async (req: Request, res: Response): Promise<void> => {
     logInfo.userAgent = req.headers['user-agent'];
 
     const log = new Log(logInfo);
-    console.log('-------------------- log : ', log);
-    await log.save();
+    const insertedLog = await log.save();
+    console.log('-------------------- log : ', insertedLog);
     res.json({ success: true });
   } catch (err) {
     res.status(500).json({ success: false });
