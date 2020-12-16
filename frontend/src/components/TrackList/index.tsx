@@ -7,7 +7,7 @@ import { IoCloseOutline } from 'react-icons/io5';
 import TrackItem from '@components/Common/TrackItem';
 import LargeButton from '@components/Common/Button/LargeButton';
 
-const TrackList = ({ trackList }) => {
+const TrackList = ({ type, trackList }) => {
   const initialSelector: number[] = [];
   const [visible, setVisible] = useState(false);
   const [selected, setSelected] = useState(initialSelector);
@@ -43,14 +43,21 @@ const TrackList = ({ trackList }) => {
       {trackList ? (
         <TrackListSection>
           {trackList.map((track, index) => (
-            <TrackItem
-              key={track.id}
-              type="checkbox"
-              trackMetaData={track}
-              selected={selected}
-              onSelectHandler={onChangeHandle}
-              chart={index + 1}
-            />
+            type ?
+              (<TrackItem
+                key={track.id}
+                trackMetaData={track}
+                selected={selected}
+                onSelectHandler={onChangeHandle}
+              />) :
+              (<TrackItem
+                key={track.id}
+                type="checkbox"
+                trackMetaData={track}
+                selected={selected}
+                onSelectHandler={onChangeHandle}
+                chart={index + 1}
+              />)
           ))}
           <SelectedHeader displayVisiable={visible}>
             <SelectedBarInner>
@@ -66,7 +73,7 @@ const TrackList = ({ trackList }) => {
                     {' '}
                     {selected.length}곡 선택</SelectedCountSpan>
                 </InfoAreaWrapper>
-                <IoCloseOutline size={26} onClick={onCloseHandle}/>
+                <IoCloseOutline size={26} onClick={onCloseHandle} />
               </SelectedInfoArea>
               <PlayOptionArea>
                 <InfoAreaWrapper>
@@ -82,7 +89,7 @@ const TrackList = ({ trackList }) => {
                     <span>mp3 구매</span>
                   </TextButton>
                 </InfoAreaWrapper>
-                <LargeButton customType={'normal-play'}/>
+                <LargeButton customType={'normal-play'} />
               </PlayOptionArea>
             </SelectedBarInner>
           </SelectedHeader>

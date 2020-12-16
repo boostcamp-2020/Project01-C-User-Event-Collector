@@ -38,11 +38,11 @@ function ArtistDetail({ artistInfo: artist }) {
       </Header>
       <Wrapper>
         <Section>
-          <p className="section-title">노래</p>
-          <TrackList trackList={artist.tracks}/>
+          <SectionTitle>노래</SectionTitle>
+          <TrackList type={true} trackList={artist.tracks}/>
         </Section>
         <Section>
-          <p className="section-title">앨범</p>
+          <SectionTitle>앨범</SectionTitle>
           <AlbumList albumList={artist.albums}/>
         </Section>
         <Section>
@@ -72,12 +72,11 @@ const Wrapper = styled.div`
 
 
 const HeaderImgWrapper = styled.div`
-  width: 195px;
-  height: 195px;
+  width: 196px;
 `;
 
 const Header = styled.header`
-  position: relative;
+  /* position: relative; */
   padding: 20px 0 50px 0;
   border-bottom: 1px solid #e4e4e4;
   display: flex;
@@ -103,6 +102,12 @@ const SubTitle = styled.span`
   ${props => props.theme.font.plain}
   font-size: 15px;
   padding: 10px 0;
+`;
+
+const SectionTitle = styled.div`
+  font-weight: 700;
+  font-size: 18px;
+  padding-bottom: 1rem;
 `;
 
 export default ArtistDetail;
