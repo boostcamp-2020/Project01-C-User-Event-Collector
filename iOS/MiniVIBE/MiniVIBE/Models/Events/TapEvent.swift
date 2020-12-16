@@ -53,12 +53,6 @@ class TapEvent: Event {
     }
     
     init(component: String, target: TapEvent.Target) {
-        super.init(name: EventName.tabButton.description, parameters: [.component: component, .target: target.description])
-    }
-    
-    required init(from decoder: Decoder) throws {
-        emitEvent(event: ErrorEvent(from: "TapEvent required init", reason: "init(from:) has not been implemented"))
-        fatalError("init(from:) has not been implemented")
-
+        super.init(name: EventName.tapEvent.description, parameters: [.component: component, .target: target.description], date: Date().customDateFormat())
     }
 }

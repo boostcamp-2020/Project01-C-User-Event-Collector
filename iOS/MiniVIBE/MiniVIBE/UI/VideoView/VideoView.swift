@@ -9,6 +9,7 @@ import SwiftUI
 import BCEventEmitter
 
 struct VideoView: View {
+    @EnvironmentObject var musicPlayer: MusicPlayer
     let viewModel: VideoView.ViewModel
     var body: some View {
         ZStack {
@@ -27,7 +28,7 @@ struct VideoView: View {
                     .navigationBarHidden(true)
                 }
             }
-            NowPlayingBarView()
+            NowPlayingBarView(musicPlayer: musicPlayer)
         }.onAppear {
             emitEvent(event: MoveEvent(next: ContentView.TabType.video.description))
         }

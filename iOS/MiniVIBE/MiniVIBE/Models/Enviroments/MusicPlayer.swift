@@ -6,14 +6,18 @@
 //
 
 import Foundation
+import Combine
 
 final class MusicPlayer: ObservableObject {
-    @Published var isPlaying = false
-    @Published var playingIndex: Int = 0
+    var isPlaying = false
+    var playingIndex: Int = 0
     @Published var showMembership: Bool = false
+    var currentProgress: Float = 0
     var nowPlayingSong: Song {
         return playinglist[playingIndex]
     }
+    var subscription: AnyCancellable?
+    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
     @Published var playinglist: [Song] = (0...30).map { idx -> Song in
         var rankChange: String?
         var url = "https://musicmeta-phinf.pstatic.net/album/005/134/5134494.jpg?type=r480Fll&v=20201202175909"

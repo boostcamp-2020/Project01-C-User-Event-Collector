@@ -35,7 +35,7 @@ struct MusicPlayerView: View {
                                 .foregroundColor(.gray)
                         }
                     }.padding(.defaultPadding)
-                    //FIX ME 고정값 수정
+                    // FIX ME 고정값 수정
                     .frame(height: UIScreen.main.bounds.height - 65)
                     Divider().accentColor(.gray)
                     MusicPlayerlistView(isPresented: $isPresented)
@@ -179,25 +179,15 @@ private struct PlayListItemView: View {
 
 struct MusicProgressView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
-    @State var currentProgress: Float = 0
-    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    @State var currentProgress: CGFloat = 0
+    
     var body: some View {
         VStack {
             ProgressView(value: currentProgress, total: 50)
-                .onReceive(timer) { _ in
-                    if musicPlayer.isPlaying {
-                        if currentProgress < 50 {
-                            currentProgress += 1
-                        } else {
-                            currentProgress = 0
-                            musicPlayer.isPlaying = false
-                            withAnimation {
-                                musicPlayer.showMembership = true
-                            }
-                        }
-                    }
+                .onReceive(musicPlayer.timer) { _ in
+                    self.currentProgress = CGFloat(musicPlayer.currentProgress)
                 }
-        }  .progressViewStyle(VibeProgressViewStyle())
+        }.progressViewStyle(VibeProgressViewStyle())
     }
 }
 

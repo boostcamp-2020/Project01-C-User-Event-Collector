@@ -22,7 +22,7 @@ struct PlaylistMoreView: View {
                     }.padding(.horizontal, .defaultPadding)
                 }
             }
-        }
+        }.padding(.bottom, NowPlayingBarView.height)
         .navigationBarHidden(true)
         .onAppear {
             emitEvent(event: MoveEvent(next: "\(Self.name)/\(self.viewModel.id)", setPrePath: true))

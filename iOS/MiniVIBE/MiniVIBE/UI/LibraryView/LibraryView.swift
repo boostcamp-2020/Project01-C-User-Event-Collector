@@ -10,6 +10,7 @@ import Combine
 import BCEventEmitter
 
 struct LibraryView: View {
+    @EnvironmentObject var musicPlayer: MusicPlayer
     @StateObject var viewModel: ViewModel
     @Binding var colorMode: Bool
     private enum Constant {
@@ -28,7 +29,7 @@ struct LibraryView: View {
                     }.padding(.bottom, NowPlayingBarView.height)
                 }.navigationBarHidden(true)
             }
-            NowPlayingBarView()
+            NowPlayingBarView(musicPlayer: musicPlayer)
         }.onAppear {
             emitEvent(event: MoveEvent(next: ContentView.TabType.libarary.description))
         }
