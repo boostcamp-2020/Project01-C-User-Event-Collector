@@ -6,7 +6,7 @@ import { BsThreeDots } from 'react-icons/bs';
 import api from '@api/index';
 import A from '@components/Common/A';
 
-function PlayTrackItem({ trackData : track }) {
+function PlayTrackItem({ trackData: track }) {
   const target = 'PlayTrackItem';
   return (
     <TrackWrapper>
@@ -49,6 +49,11 @@ const TrackTitle = styled.a`
   font-weight: 600;
   font-size: 14px;
   color: ${props => props.theme.color.white};
+  width: 125px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
 `;
 
 const TrackArtist = styled.a`
