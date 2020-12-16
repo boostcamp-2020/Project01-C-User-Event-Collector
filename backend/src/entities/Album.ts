@@ -33,7 +33,7 @@ export default class Album extends BaseEntity {
   static findByUserId(id: number) {
     return this.createQueryBuilder('album')
       .innerJoin('album.users', 'user')
-      .innerJoinAndSelect('album.artists', 'artist')
+      .leftJoinAndSelect('album.artists', 'artist')
       .where('user.id = :id', { id })
       .getMany();
   }
