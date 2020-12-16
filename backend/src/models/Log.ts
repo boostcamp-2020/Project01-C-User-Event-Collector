@@ -16,7 +16,9 @@ const MovePageParams = new Schema({
   id: Number,
   log: String,
   page: String,
+  action: String,
   target: String,
+  view: String,
 });
 
 const UserInfoParams = new Schema({

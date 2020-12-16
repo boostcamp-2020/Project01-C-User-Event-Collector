@@ -1,8 +1,10 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import styled from '@styles/themed-components';
 import CircleImage from '@components/Common/CircleImage';
 import CircleHeartButton from '@components/Common/Button/CircleHeartButton';
 import A from '@components/Common/A';
+import useEventHandler from '@hooks/useEventHandler';
 
 interface IArtistMetaProps {
   artistMetaData: ArtistMeta;
@@ -25,6 +27,7 @@ const deleteArtist = async (e, id) => {
 
 const ArtistCard = ({ artistMetaData: artist, type }: IArtistMetaProps) => {
   const target = 'ArtistCard';
+  const router = useRouter();
   return (
     <Container className="artist-card">
       <ImageContainer>
@@ -32,7 +35,7 @@ const ArtistCard = ({ artistMetaData: artist, type }: IArtistMetaProps) => {
           <CircleImage imageSrc={artist.imgUrl} alt="artist-img" />
         </A>
         {type && (
-          <ButtonWrapper onClick={e => deleteArtist(e, artist.id)}>
+          <ButtonWrapper onClick={e => useEventHandler(deleteArtist(e, artist.id), null)}>
             <CircleHeartButton />
           </ButtonWrapper>
         )}

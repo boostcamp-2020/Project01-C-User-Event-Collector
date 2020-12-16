@@ -6,17 +6,33 @@ import CircleImage from '@components/Common/CircleImage';
 import RelatedPlaylist from '@components/Common/SampleSection/RelatedPlaylist';
 import RelatedArtist from '@components/Common/SampleSection/RelatedArtist';
 import TrackList from '@components/TrackList';
+import useEventHandler from '@hooks/useEventHandler';
+import api from '@api/index';
 
 import getMultipleNames from '@utils/getMultipleNames';
 import AlbumList from '@components/AlbumList';
+import ArtistDropdown from '@components/Common/Dropdown/ArtistDropdown';
 
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
 import { HiOutlineDotsHorizontal } from 'react-icons/hi';
-import { useAuthState } from '@context/AuthContext';
+import { useAuthState, useAuthDispatch } from '@context/AuthContext';
 
 function ArtistDetail({ artistInfo: artist }) {
   const state = useAuthState();
+  const dispatch = useAuthDispatch();
   const { artistList } = state;
+
+  const deleteArtist = async () => {
+    await api.delete(`library/artists/${artist.id}`);
+    console.log('아티스트 삭제');
+    dispatch({ type: 'DELETE_ARTIST', artistId: artist.id });
+  };
+
+  const addArtist = async () => {
+    await api.post(`library/artists`, { artistId: artist.id });
+    console.log('아티스트 추가');
+    dispatch({ type: 'ADD_ARTIST', artistId: artist.id });
+  };
   return (
     <Container>
       <Header>
@@ -27,7 +43,9 @@ function ArtistDetail({ artistInfo: artist }) {
           <TopContainer>
             <MainTitle>{artist.name}</MainTitle>
             <SubTitle>
-              {artist.debut.replace(/-/g, '.').slice(0, 10)} 데뷔 ·{' '}
+              {artist.debut.replace(/-/g, '.').slice(0, 10)}
+{' '}
+데뷔 ·{' '}
               {getMultipleNames(artist.genres)}
             </SubTitle>
           </TopContainer>
@@ -35,13 +53,22 @@ function ArtistDetail({ artistInfo: artist }) {
             <ButtonWrapper>
               <ButtonContainer>
                 {artistList?.includes(artist.id) ? (
-                  <IoMdHeart size={24} color="ff1350" />
+                  <IoMdHeart
+                    size={24}
+                    color="ff1350"
+                    onClick={useEventHandler(deleteArtist, null)}
+                  />
                 ) : (
-                  <IoMdHeartEmpty size={24} color="575757" />
+                  <IoMdHeartEmpty
+                    size={24}
+                    color="575757"
+                    onClick={useEventHandler(addArtist, null)}
+                  />
                 )}
               </ButtonContainer>
               <ButtonContainer>
                 <HiOutlineDotsHorizontal size={24} color="575757" />
+                <ArtistDropdown id={artist.id} />
               </ButtonContainer>
             </ButtonWrapper>
           </BottomContainer>
@@ -134,6 +161,7 @@ const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   padding-bottom: 1rem;
+  position: relative;
 `;
 
 const ButtonContainer = styled.div`

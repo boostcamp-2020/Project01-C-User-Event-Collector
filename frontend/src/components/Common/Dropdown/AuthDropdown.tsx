@@ -15,9 +15,9 @@ const AuthDropdown = () => {
   const router = useRouter();
 
   const logoutEvent = async () => {
-    localStorage.clear();
+    await localStorage.clear();
     document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
-    postLog({
+    await postLog({
       eventTime: new Date(),
       eventName: 'logout_event',
       parameters: { page: router.asPath },

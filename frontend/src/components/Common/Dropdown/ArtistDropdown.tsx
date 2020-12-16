@@ -38,7 +38,7 @@ const ArtistDropdown = id => {
   };
 
   return (
-    <Wrapper style={authWrapperStyle}>
+    <Wrapper>
       <Dropdown
         style={{
           authDropdownStyle,
@@ -61,15 +61,6 @@ const ArtistDropdown = id => {
   );
 };
 
-const authWrapperStyle = {
-  width: '180px',
-  height: '50px',
-  position: 'absolute',
-  display: 'flex',
-  justifyContent: 'flex-end',
-  paddingTop: '15px',
-};
-
 const authDropdownStyle = {
   width: '100%',
   height: '100%',
@@ -85,7 +76,11 @@ const dropdownItemStyle = {
 };
 
 const Wrapper = styled.div<{ style?: any }>`
-  position: relative;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 0;
+  color: transparent;
 `;
 
 export default ArtistDropdown;

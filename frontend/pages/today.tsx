@@ -35,7 +35,7 @@ function Index({ token, referer }) {
   if (magError || playError || userError) return <div>...Error</div>;
 
   console.log('₩₩₩₩₩₩₩₩  user', user);
-
+  console.log('-----------------------playlist', playlist);
   // 쿠키를 로컬 스토리지에 담는 코드
   localStorage.setItem('token', token);
 

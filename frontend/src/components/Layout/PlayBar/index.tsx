@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import api from '@api/index';
 import {
@@ -11,12 +12,16 @@ import {
   IoCloseOutline,
 } from 'react-icons/io5';
 import { BsFillVolumeUpFill, BsMusicNoteList } from 'react-icons/bs';
+import useEventHandler from '@hooks/useEventHandler';
 
 import PlayTrackItem from '@components/Common/PlayTrackItem';
 import { usePlayState, usePlayDispatch } from '@context/PlayContext';
 import { useAuthState } from '@context/AuthContext';
 
 function PlayBar() {
+  const router = useRouter();
+  const [isShuffled, setIsShuffled] = useState(false);
+  const [isRepeat, setIsRepeat] = useState(false);
   const [playlistState, setPlaylistState] = useState(null);
   const state = usePlayState();
   const dispatch = usePlayDispatch();
@@ -26,10 +31,18 @@ function PlayBar() {
 
   const fetchData = () => {
     api.get('/track').then(res => {
-      const trackList = res.data.data;
-      setPlaylistState(trackList.slice(0, 5));
-      trackList.slice(0, 5).forEach(track => dispatch({ type: 'ADD_TRACK', track }));
+      const trackList = res.data.data.slice(0, 12);
+      setPlaylistState(trackList);
+      dispatch({ type: 'ADD_TRACK', track: trackList });
     });
+  };
+
+  const musicLogData = action => {
+    return {
+      eventTime: new Date(),
+      eventName: 'music_event',
+      parameters: { action, page: router.asPath },
+    };
   };
 
   useEffect(() => {
@@ -49,12 +62,18 @@ function PlayBar() {
 
   const setPlayNext = () => {
     dispatch({ type: 'PLAY_NEXT' });
-    console.log(playIndex);
+    dispatch({ type: 'PLAY_PAUSE' });
   };
   const setPlayPrev = () => {
     dispatch({ type: 'PLAY_PREV' });
-    console.log(playIndex);
+    dispatch({ type: 'PLAY_PAUSE' });
   };
+
+  const setRepeatOff = () => setIsRepeat(false);
+  const setRepeatOn = () => setIsRepeat(true);
+  const setShuffleOff = () => setIsShuffled(false);
+  const setShuffleOn = () => setIsShuffled(true);
+
   const setPlayPause = () => dispatch({ type: 'PLAY_PAUSE' });
 
   const adCloseHandle = () => {
@@ -93,15 +112,57 @@ function PlayBar() {
         <Player>
           <PlayTrackItem trackData={playList[playIndex]} />
           <ButtonWrapper>
-            <IoShuffleOutline className="side button" size={26} />
-            <IoPlaySkipBackSharp className="skip button" size={22} onClick={setPlayPrev} />
-            {state.isPlaying ? (
-              <IoPause className="play button" size={35} onClick={setPlayPause} />
+            {isShuffled ? (
+              <IoShuffleOutline
+                className="side button"
+                size={26}
+                style={{ color: 'white' }}
+                onClick={useEventHandler(setShuffleOff, musicLogData('shuffle_off'))}
+              />
             ) : (
-              <IoPlaySharp className="play button" size={35} onClick={setPlayStart} />
+              <IoShuffleOutline
+                className="side button"
+                size={26}
+                onClick={useEventHandler(setShuffleOn, musicLogData('shuffle_on'))}
+              />
             )}
-            <IoPlaySkipForwardSharp className="skip button" size={22} onClick={setPlayNext} />
-            <IoRepeat className="side button" size={26} />
+            <IoPlaySkipBackSharp
+              className="skip button"
+              size={22}
+              onClick={useEventHandler(setPlayPrev, musicLogData('prev'))}
+            />
+            {state.isPlaying ? (
+              <IoPause
+                className="play button"
+                size={35}
+                onClick={useEventHandler(setPlayPause, musicLogData('pause'))}
+              />
+            ) : (
+              <IoPlaySharp
+                className="play button"
+                size={35}
+                onClick={useEventHandler(setPlayStart, musicLogData('play'))}
+              />
+            )}
+            <IoPlaySkipForwardSharp
+              className="skip button"
+              size={22}
+              onClick={useEventHandler(setPlayNext, musicLogData('next'))}
+            />
+            {isRepeat ? (
+              <IoRepeat
+                className="side button"
+                size={26}
+                style={{ color: 'white' }}
+                onClick={useEventHandler(setRepeatOff, musicLogData('repeat_off'))}
+              />
+            ) : (
+              <IoRepeat
+                className="side button"
+                size={26}
+                onClick={useEventHandler(setRepeatOn, musicLogData('repeat_on'))}
+              />
+            )}
           </ButtonWrapper>
           <ListWrapper>
             <TrackPlayTime>00:24 / 03:21</TrackPlayTime>
@@ -115,9 +176,17 @@ function PlayBar() {
           </ListWrapper>
         </Player>
         <MyPlaylistContainer visiable={listShow}>
-          <Dimmed />
-          <AlbumImage />
-          <Playlist />
+          <Dimmed>
+            <AlbumImage src={playList[playIndex]?.album?.imgUrl} />
+          </Dimmed>
+          <Playlist>
+            {console.log('playList ::: ', playList)}
+            <PlayItemWrapper>
+              {playList?.map(track => (
+                <PlayTrackItem type="playbar" key={track.id} trackData={track} />
+              ))}
+            </PlayItemWrapper>
+          </Playlist>
         </MyPlaylistContainer>
       </>
     </>
@@ -140,13 +209,16 @@ const Dimmed = styled.div`
   background-color: rgba(20, 20, 20, 0.97);
 `;
 
-const AlbumImage = styled.div`
+const AlbumImage = styled.img`
   position: absolute;
   top: 0;
   right: 350px;
   bottom: 0;
   left: 0;
+  width: 500px;
+  height: 500px;
   text-align: center;
+  margin: auto;
 `;
 
 const Playlist = styled.div`
@@ -154,8 +226,12 @@ const Playlist = styled.div`
   top: 0;
   right: 0;
   bottom: 0;
+  overflow-y: scroll;
   width: 350px;
   background-color: #141414;
+`;
+const PlayItemWrapper = styled.div`
+  height: 65px;
 `;
 
 const AdvertisementWrapper = styled.div`

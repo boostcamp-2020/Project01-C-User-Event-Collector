@@ -54,13 +54,13 @@ const ButtonsWrapper = styled.div`
   bottom: 0;
   padding: 12px;
   width: 100%;
-  height: 80px;
+  height: 18%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   transition: 0.5s all;
   opacity: 0;
-  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.15));
 `;
 
 const Wrapper = styled.div`

@@ -48,8 +48,8 @@ const BoxDropdown = ({ trackData, type, id, data }: IBoxDropdownProps) => {
   };
 
   const addNextEvent = () => {
-    if (type === 'track') dispatch({ type: 'ADD_TRACK', track: trackData.id });
-    else trackData?.forEach(track => dispatch({ type: 'ADD_TRACK', track: track.id }));
+    if (type === 'track') dispatch({ type: 'ADD_TRACK', track: [trackData] });
+    else dispatch({ type: 'ADD_TRACK', track: trackData });
     console.log('---------', state);
   };
 
@@ -109,7 +109,6 @@ const dropdownStyle = {
   right: '0px',
   width: '45px',
   height: '35px',
-  border: '1px solid red',
   color: 'transparent',
 };
 
