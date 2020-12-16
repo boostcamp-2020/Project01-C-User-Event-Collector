@@ -1,5 +1,5 @@
 //
-//  DJStationDetailView.swift
+//  DJStationMoreView.swift
 //  MiniVIBE
 //
 //  Created by 최동규 on 2020/12/02.
@@ -8,7 +8,7 @@
 import SwiftUI
 import BCEventEmitter
 
-struct DJStationDetailView: View {
+struct DJStationMoreView: View {
     private let columns = [GridItem(.adaptive(minimum: .itemImageMinWidth, maximum: .itemImageMaxWidth))]
     private var items: [DJStationItem]
         = [DJStationItem(image: "HomeDJStationSection1"),
@@ -26,7 +26,7 @@ struct DJStationDetailView: View {
     }
 }
 
-private extension DJStationDetailView {
+private extension DJStationMoreView {
     private enum Constant {
         static let navigationBarTitle: String = "DJ 스테이션"
         static let recentlyPlayedTitle: String = "최근 들은 스테이션"
@@ -63,7 +63,8 @@ private extension DJStationDetailView {
                     }
                 }
             }
-        }.onAppear {
+        }.padding(.bottom, NowPlayingBarView.height)
+        .onAppear {
             emitEvent(event: MoveEvent(next: Self.name, setPrePath: true))
         }
     }

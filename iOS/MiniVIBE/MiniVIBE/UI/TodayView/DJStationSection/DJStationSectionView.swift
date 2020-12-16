@@ -15,7 +15,7 @@ struct DJStationSectionView: View {
     @State private var items: [DJStationItem] = MockItemFactory.homeDJStationkItems
     var body: some View {
         VStack {
-            NavigationLink(destination: DJStationDetailView()
+            NavigationLink(destination: DJStationMoreView()
             ) {
                 MoreHeaderView(title: Constant.title)
             }.emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.more))
