@@ -6,19 +6,7 @@ import { BsThreeDots } from 'react-icons/bs';
 import api from '@api/index';
 import A from '@components/Common/A';
 
-const testImgUrl =
-  'https://musicmeta-phinf.pstatic.net/album/005/064/5064543.jpg?type=r720Fll&v=20201104164506';
-
 function PlayTrackItem({ trackData : track }) {
-  // const [trackData, setTrackData] = useState(null);
-
-  // const fetchData = () => {
-  //   api.get(`/track/${id}`).then(res => setTrackData(res.data));
-  //   console.log('hey~~~~');
-  // };
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
   const target = 'PlayTrackItem';
   return (
     <TrackWrapper>
