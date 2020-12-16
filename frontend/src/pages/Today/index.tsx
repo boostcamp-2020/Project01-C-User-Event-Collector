@@ -27,7 +27,7 @@ function Today({ magList, playlistList }) {
       console.log('hello');
       useEventHandler(setIsBannerOpened(false), customClickLogData('BannerCloseBtn'));
     }
-    useEventHandler(setIsBannerOpened(false), customClickLogData('BannerBtn'));
+    useEventHandler(null, customClickLogData('BannerBtn'));
   };
 
   return (

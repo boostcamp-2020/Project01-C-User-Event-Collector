@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import api from '@api/index';
 import {
   IoPlaySkipForwardSharp,
   IoPlaySkipBackSharp,
@@ -16,11 +17,25 @@ import { usePlayState, usePlayDispatch } from '@context/PlayContext';
 import { useAuthState } from '@context/AuthContext';
 
 function PlayBar() {
+  const [playlistState, setPlaylistState] = useState(null);
   const state = usePlayState();
   const dispatch = usePlayDispatch();
 
   const authState = useAuthState();
   // const authDispatch = useAuthDispatch();
+
+  const fetchData = () => {
+    api.get('/track').then(res => {
+     setPlaylistState(res.data.data);
+    });
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [dispatch]);
+
+  const { playList } = state;
+  console.log('-------playList--------');
   const { userInfo } = authState;
 
   const [adShow, setAdShow] = useState(false);
@@ -38,6 +53,8 @@ function PlayBar() {
   const listUpHandle = () => {
     setListShow(!listShow);
   };
+
+  if (!playlistState) return <div>...isLoading</div>
 
   return (
     <>
@@ -66,7 +83,8 @@ function PlayBar() {
       )}
       <>
         <Player>
-          <PlayTrackItem />
+          {console.log('-+++++=======playlistState =========', playlistState)}
+          <PlayTrackItem trackData={playlistState[0]} />
           <ButtonWrapper>
             <IoShuffleOutline className="side button" size={26} />
             <IoPlaySkipBackSharp className="skip button" size={22} />

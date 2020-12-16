@@ -8,7 +8,7 @@ type State = {
   isMembership: boolean;
   playIndex: number;
   timeProgress: number;
-  playList: Array<any>;
+  playList: Array<number>;
 };
 
 type Action =
@@ -16,7 +16,7 @@ type Action =
   | { type: 'PLAY_PAUSE' }
   | { type: 'PLAY_NEXT' }
   | { type: 'PLAY_PREV' }
-  | { type: 'ADD_TRACK'; track: any }
+  | { type: 'ADD_TRACK'; track: number }
   | { type: 'REMOVE_TRACK'; trackId: number };
 
 type PlayDispatch = Dispatch<Action>;

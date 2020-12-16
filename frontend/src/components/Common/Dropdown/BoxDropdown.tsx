@@ -4,7 +4,8 @@ import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
 import api from '@api/index';
 import useEventHandler from '@hooks/useEventHandler';
-import { usePlayState } from '@context/PlayContext';
+import { usePlayState, usePlayDispatch } from '@context/PlayContext';
+import { useAuthDispatch, useAuthState } from '@context/AuthContext';
 import * as T from '../../../constants/dropdownText';
 
 interface IBoxDropdownProps {
@@ -21,14 +22,18 @@ interface ILogData {
 
 const BoxDropdown = ({ trackData, type, id, data }: IBoxDropdownProps) => {
   const state = usePlayState();
+  const dispatch = usePlayDispatch();
   const router = useRouter();
+  const authState = useAuthState();
+  const authDispatch = useAuthDispatch();
   console.log(state);
+  console.log('trackData', trackData);
 
   const postLog = logData => {
     api.post('/log', logData);
   };
 
-  const addLogData: ILogData = {
+  const libraryLogData: ILogData = {
     eventTime: new Date(),
     eventName: 'library_event',
     parameters: { action: 'add', type, id },
@@ -43,22 +48,22 @@ const BoxDropdown = ({ trackData, type, id, data }: IBoxDropdownProps) => {
   };
 
   const addNextEvent = () => {
-    // 수정 필요
-    // if (type === 'track') dispatch({ type: 'ADD_TRACK', track: trackData });
-    // else dispatch({ type: 'ADD_TRACK', track: trackData[0] });
+    if (type === 'track') dispatch({ type: 'ADD_TRACK', track: trackData.id });
+    else trackData?.forEach(track => dispatch({ type: 'ADD_TRACK', track: track.id }));
+    console.log('---------', state);
   };
 
   const addEvent = () => {
     console.log('addEvent start');
     switch (type) {
       case 'playlist':
-        api.post('/library/playlists', { playlistId: id }).then(() => postLog(addLogData));
+        api.post('/library/playlists', { playlistId: id }).then(() => postLog(libraryLogData));
         break;
       case 'track':
-        api.post('/library/tracks', { trackId: id }).then(() => postLog(addLogData));
+        api.post('/library/tracks', { trackId: id }).then(() => postLog(libraryLogData));
         break;
       case 'album':
-        api.post('/library/albums', { albumId: id }).then(() => postLog(addLogData));
+        api.post('/library/albums', { albumId: id }).then(() => postLog(libraryLogData));
         break;
       default:
         console.log('nothing happend');

@@ -32,7 +32,7 @@ export function Index({ referer }) {
 }
 
 export async function getServerSideProps({ req }) {
-  const regex = /(http:\/\/)([A-Z,a-z,:,0-9]*)/;
+  const regex = /(http:\/\/)([A-Z,a-z,:,.,0-9]*)/;
   const host = req.headers?.referer?.match(regex)[0];
   const referer = req.headers?.referer?.slice(host.length);
 
