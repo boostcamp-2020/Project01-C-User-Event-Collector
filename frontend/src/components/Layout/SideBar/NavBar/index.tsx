@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from '@styles/themed-components';
 
 import api from '@api/index';
-import Dropdown from '@components/Common/Dropdown';
+import AuthDropdown from '@components/Common/Dropdown/AuthDropdown';
 import { useAuthState, useAuthDispatch } from '@context/AuthContext';
 import NavList from './NavList';
 
@@ -33,7 +33,7 @@ function NavBar() {
         <AuthWrapper>
           <ProfileImg src={userState?.profileURL} alt="profile-img" />
           {userState?.nickname}
-          <Dropdown type="auth" />
+          <AuthDropdown />
         </AuthWrapper>
       ) : (
         <AuthWrapper onClick={loginEvent}>

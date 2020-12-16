@@ -10,8 +10,8 @@ const MyAlbum = ({ albumList }) => {
 
   useEffect(() => {
     if (albumList) dispatch({ type: 'SET_ALBUMLIST', albumList: albumList.map(album => album.id) });
-  }, []);
-  console.log('-----state---*** : ', state);
+  }, [dispatch]);
+  console.log('-----album state---*** : ', state);
 
   return (
     <Library mainTitle="앨범">

@@ -12,15 +12,15 @@ function Modal() {
   const router = useRouter();
   const randomNum = Math.floor(Math.random() * 2);
   // 50퍼센트의 확률로 모달 등장
-  const [isModalOpend, setIsModalOpend] = useState(randomNum === 1);
+  const [isModalOpened, setIsModalOpened] = useState(randomNum === 1);
   const modalCloseEvent = () => {
-    setIsModalOpend(false);
+    setIsModalOpened(false);
   };
 
   const logData = target => {
     return {
       eventTime: new Date(),
-      eventName: 'ClickEvent',
+      eventName: 'click_event',
       parameters: {
         page: router.pathname,
         target,
@@ -29,7 +29,7 @@ function Modal() {
   };
 
   return (
-    <ModalWrapper visible={isModalOpend} className="modal hidden">
+    <ModalWrapper visible={isModalOpened} className="modal hidden">
       <ModalOverLay>
         <ModalContent>
           <ModalCloseButton onClick={useEventHandler(modalCloseEvent, logData('ModalCloseBtn'))} />

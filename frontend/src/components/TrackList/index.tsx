@@ -36,7 +36,7 @@ const TrackList = ({ trackList }) => {
 
   const onCloseHandle = e => {
     setVisible(false);
-  }
+  };
 
   return (
     <>
@@ -62,11 +62,9 @@ const TrackList = ({ trackList }) => {
                     checked={selected.length === trackList.length}
                   />
                   <SelectLabel>전체선택</SelectLabel>
-                  <SelectedCountSpan>
-                    {' '}
-                    {selected.length}곡 선택</SelectedCountSpan>
+                  <SelectedCountSpan> {selected.length}곡 선택</SelectedCountSpan>
                 </InfoAreaWrapper>
-                <IoCloseOutline size={26} onClick={onCloseHandle}/>
+                <IoCloseOutline size={26} onClick={onCloseHandle} />
               </SelectedInfoArea>
               <PlayOptionArea>
                 <InfoAreaWrapper>
@@ -82,7 +80,7 @@ const TrackList = ({ trackList }) => {
                     <span>mp3 구매</span>
                   </TextButton>
                 </InfoAreaWrapper>
-                <LargeButton customType={'normal-play'}/>
+                <LargeButton customType="normal-play" />
               </PlayOptionArea>
             </SelectedBarInner>
           </SelectedHeader>

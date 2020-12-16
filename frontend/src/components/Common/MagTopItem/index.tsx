@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import trimContentLength from '@utils/trimContentLength';
 import A from '@components/Common/A';
 import MagTag from '@components/Common/MagTag';
 import BoxItem from '@components/Common/BoxItem';
@@ -11,7 +10,13 @@ function MagTopItem({ magData: mag }) {
   return (
     <Wrapper>
       <ImgWrapper>
-        <BoxItem magData={mag} target={target} imgUrl={mag.imgUrl} next="magazines" id={mag.id} />
+        <BoxItem
+          trackData={mag.tracks}
+          target={target}
+          imgUrl={mag.imgUrl}
+          next="magazines"
+          id={mag.id}
+        />
       </ImgWrapper>
       <A next="magazines" target={target} id={mag.id}>
         <MagContentWrapper>
@@ -64,7 +69,7 @@ const MagContent = styled.p`
   font-size: 14px;
   line-height: 20px;
   color: #939393;
-  will-change: transform; 
+  will-change: transform;
 `;
 
 const Wrapper = styled.div`
