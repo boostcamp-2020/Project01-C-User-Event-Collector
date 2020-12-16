@@ -5,7 +5,6 @@ import { HiHeart } from 'react-icons/hi';
 import { BsMusicPlayer } from 'react-icons/bs';
 import { RiPlayListLine } from 'react-icons/ri';
 
-import trimContentLength from '@utils/trimContentLength';
 import A from '@components/Common/A';
 
 interface ITrackMetaProps {
@@ -55,7 +54,7 @@ const TrackItem = ({
           </TrackImgWrapper>) :
           (<CountWrapper>{chart}</CountWrapper>)}
         <A next="track" id={track.id} target={target}>
-          <Text>{trimContentLength(track.title, 35)}</Text>
+          <Text>{track.title}</Text>
         </A>
       </TrackWrapper>
       <TrackWrapper>
@@ -104,8 +103,12 @@ const lastWrapperStyle = {
 };
 
 const Text = styled.a`
+  display: inline-block;;
+  width: 280px;
   ${props => props.theme.font.plain}
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const ArtistName = styled(Text)`
