@@ -29,7 +29,7 @@ const ArtistCard = ({ artistMetaData: artist, type }: IArtistMetaProps) => {
     <Container className="artist-card">
       <ImageContainer>
         <A next="artist" target={target} id={artist.id}>
-          <CircleImage imageSrc={artist.imgUrl} />
+          <CircleImage imageSrc={artist.imgUrl} alt="artist-img" />
         </A>
         {type && (
           <ButtonWrapper onClick={e => deleteArtist(e, artist.id)}>
