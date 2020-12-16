@@ -7,10 +7,10 @@ const getArtists = (): Promise<Artist[]> => {
 const getArtistByArtistId = (artistId: number): Promise<Artist | undefined> => {
   // return Artist.findOne(artistId, { relations: ['genres', 'tracks', 'albums'] });
   return Artist.createQueryBuilder('artist')
-    .innerJoinAndSelect('artist.genres', 'genre')
-    .innerJoinAndSelect('artist.tracks', 'track')
-    .innerJoinAndSelect('artist.albums', 'albums')
-    .innerJoinAndSelect('track.album', 'album')
+    .leftJoinAndSelect('artist.genres', 'genre')
+    .leftJoinAndSelect('artist.tracks', 'track')
+    .leftJoinAndSelect('artist.albums', 'albums')
+    .leftJoinAndSelect('track.album', 'album')
     .where('artist.id = :artistId', { artistId })
     .getOne();
 };
