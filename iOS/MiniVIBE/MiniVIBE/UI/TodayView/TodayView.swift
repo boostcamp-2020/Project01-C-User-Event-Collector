@@ -13,6 +13,7 @@ import BCEventEmitter
 struct TodayView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     let viewModel: ViewModel
+    
     var body: some View {
         ZStack {
             NavigationView {
@@ -24,13 +25,14 @@ struct TodayView: View {
                             SummarySectionView()
                             ArtistSection()
                             PlaylistSectionView(viewModel: PlaylistSectionView.ViewModel(
-                                                    container: viewModel.container, id: 0, title: "내 취향 플레이리스트", type: .normal))
+                                                    container: viewModel.container, id: 0, title: "내 취향 플레이리스트", width: .normalItemImageWidth))
+                            
                             DJStationSectionView()
                             FiveRowSongGridView(
                                 viewModel: FiveRowSongGridView.ViewModel(container: viewModel.container, id: 0, title: "최근 들은 노래", showsRanking: false))
                             PlaylistSectionView(viewModel: PlaylistSectionView.ViewModel(
                                                     container: viewModel.container,
-                                                    id: 1, title: "VIBE 추천 플레이리스트", type: .large))
+                                                    id: 1, title: "VIBE 추천 플레이리스트", width: .largeItemImageWidth))
                             AlbumSectionView(viewModel: AlbumSectionView.ViewModel(
                                                 id: 1, title: "좋아할 최신앨범", showsRanking: false))
                             MagazineSectionView(viewModel: MagazineSectionView.ViewModel(container: viewModel.container))

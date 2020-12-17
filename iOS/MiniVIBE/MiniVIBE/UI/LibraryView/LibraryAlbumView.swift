@@ -17,7 +17,7 @@ struct LibraryAlbumView: View {
                 ForEach(MockItemFactory.albums) { album in
                     NavigationLink(destination: AlbumDetailView(album: album)) {
                         HStack {
-                            ImageItemView(image: Image(album.imageURLString), type: .normal) {
+                            ImageItemView(image: Image(album.imageURLString), width: .normalItemImageWidth) {
                                 Text(album.title).vibeTitle3()
                                 Text(album.artist).vibeMainText()
                             }
