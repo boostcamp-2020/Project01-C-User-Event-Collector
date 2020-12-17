@@ -10,10 +10,10 @@ type UserInfo = {
 
 type UserState = {
   userInfo: UserInfo;
-  trackList?: number[];
-  albumList?: number[];
-  artistList?: number[];
-  playlistList?: number[];
+  trackList: number[];
+  albumList: number[];
+  artistList: number[];
+  playlistList: number[];
 };
 
 const initialState: UserState = {
@@ -37,6 +37,8 @@ type Action =
   | { type: 'SET_ALBUMLIST'; albumList: number[] }
   | { type: 'SET_ARTISTLIST'; artistList: number[] }
   | { type: 'SET_PLAYLISTLIST'; playlistList: number[] }
+  | { type: 'DELETE_ARTIST'; artistId: number }
+  | { type: 'ADD_ARTIST'; artistId: number }
   | { type: 'DELETE_USERINFO' };
 
 // 리듀서
@@ -76,6 +78,16 @@ function reducer(state: UserState, action: Action): UserState {
       return {
         ...state,
         userInfo: initialState.userInfo,
+      };
+    case 'DELETE_ARTIST':
+      return {
+        ...state,
+        artistList: state.artistList.filter(v => v !== action.artistId),
+      };
+    case 'ADD_ARTIST':
+      return {
+        ...state,
+        artistList: [...state.artistList, action.artistId],
       };
     default:
       throw new Error('Unhandled action');

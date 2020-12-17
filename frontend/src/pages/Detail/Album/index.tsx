@@ -11,7 +11,6 @@ import getMultipleNames from '@utils/getMultipleNames';
 import description from '../../../data/DescriptionSample';
 
 function AlbumDetail({ albumInfo: album }) {
-  console.log(album);
   return (
     <Container>
       <Header>
@@ -20,7 +19,9 @@ function AlbumDetail({ albumInfo: album }) {
           <MainTitle>{album.name}</MainTitle>
           <SubTitle>{`${getMultipleNames(album.artists)} `}</SubTitle>
           <SubContent>
-            {album.date.slice(0, 10)} ·{getMultipleNames(album.genres)}
+            {album.date.slice(0, 10)}
+{' '}
+·{getMultipleNames(album.genres)}
           </SubContent>
           <SubContent>{description}</SubContent>
           <ButtonsWrapper>

@@ -19,20 +19,37 @@ function A({ next, target, id, children }: IAProps) {
   const router = useRouter();
   return (
     <>
-      <Link href={`/${next}/[id]`} as={`/${next}/${id}`}>
-        <Wrapper
-          onClick={useEventHandler(null, {
-            eventTime: new Date(),
-            eventName: 'click_event',
-            parameters: {
-              page: router.pathname,
-              target: `/${`${target}/${id}`}`,
-            },
-          })}
-        >
-          {children}
-        </Wrapper>
-      </Link>
+      {id ? (
+        <Link href={`/${next}/[id]`} as={`/${next}/${id}`}>
+          <Wrapper
+            onClick={useEventHandler(null, {
+              eventTime: new Date(),
+              eventName: 'click_event',
+              parameters: {
+                page: router.pathname,
+                target: `/${`${target}/${id}`}`,
+              },
+            })}
+          >
+            {children}
+          </Wrapper>
+        </Link>
+      ) : (
+        <Link href={`/${next}`}>
+          <Wrapper
+            onClick={useEventHandler(null, {
+              eventTime: new Date(),
+              eventName: 'click_event',
+              parameters: {
+                page: router.pathname,
+                target,
+              },
+            })}
+          >
+            {children}
+          </Wrapper>
+        </Link>
+      )}
     </>
   );
 }

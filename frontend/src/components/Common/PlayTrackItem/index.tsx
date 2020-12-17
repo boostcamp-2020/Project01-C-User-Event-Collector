@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { IoHeartOutline } from 'react-icons/io5';
 import { RiPlayListLine } from 'react-icons/ri';
 import { BsThreeDots } from 'react-icons/bs';
-import api from '@api/index';
+// import api from '@api/index';
 import A from '@components/Common/A';
 
-function PlayTrackItem({ trackData: track }) {
+function PlayTrackItem({ type, trackData: track }) {
   const target = 'PlayTrackItem';
   return (
     <TrackWrapper>
@@ -17,16 +17,22 @@ function PlayTrackItem({ trackData: track }) {
       </TrackImgWrapper>
       <TrackContentWrapper>
         <A next="track" id={track?.id} target={target}>
-          <TrackTitle>{track?.title}</TrackTitle>
+          <TrackTitle type={type}>{track?.title}</TrackTitle>
         </A>
-        <A next="artist" id={track?.artists[0]?.id} target={target}>
-          <TrackArtist>{track?.artists[0]?.name}</TrackArtist>
-        </A>
+        {track?.artists && (
+          <A next="artist" id={track?.artists[0]?.id} target={target}>
+            <TrackArtist>{track?.artists[0]?.name}</TrackArtist>
+          </A>
+        )}
       </TrackContentWrapper>
       <IconWrapper>
-        <IoHeartOutline className="like button" size={24} />
-        <RiPlayListLine className="lyric button" size={20} />
-        <BsThreeDots className="dropdown button" size={20} />
+        {type !== 'playbar' && (
+          <>
+            <IoHeartOutline className="like button" size={24} />
+            <RiPlayListLine className="lyric button" size={20} />
+            <BsThreeDots className="dropdown button" size={20} />
+          </>
+        )}
       </IconWrapper>
     </TrackWrapper>
   );
@@ -45,10 +51,10 @@ const TrackContentWrapper = styled.div`
   padding-left: 12px;
 `;
 
-const TrackTitle = styled.a`
-  font-weight: 600;
+const TrackTitle = styled.a<{ type?: string }>`
+  font-weight: ${props => (props.type ? 400 : 600)};
   font-size: 14px;
-  color: ${props => props.theme.color.white};
+  color: ${props => (props.type ? '#c9c9c9' : props.theme.color.white)};
   width: 125px;
   white-space: nowrap;
   overflow: hidden;

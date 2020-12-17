@@ -36,7 +36,7 @@ function NavBar() {
           <AuthDropdown />
         </AuthWrapper>
       ) : (
-        <AuthWrapper onClick={loginEvent}>
+        <AuthWrapper style={{ cursor: 'pointer' }} onClick={loginEvent}>
           <ProfileImg src={userState?.profileURL} alt="profile-img" />
           로그인
         </AuthWrapper>

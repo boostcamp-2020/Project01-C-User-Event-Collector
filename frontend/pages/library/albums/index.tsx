@@ -4,18 +4,37 @@ import useFetch from '@hooks/useFetch';
 import api from '@api/index';
 import Spinner from '@components/Common/Spinner';
 
-function Index({ referer }) {
+import { useEffect } from 'react';
+import { useAuthDispatch } from '@context/AuthContext';
+
+function Index({ referer, token }) {
   const router = useRouter();
-  let token: string | null = '';
-  if (typeof window !== 'undefined') {
-    token = localStorage.getItem('token');
-  }
+  const dispatch = useAuthDispatch();
+
+  const { data: user, isLoading: userLoading, isError: userError } = useFetch(`/user`, token);
   const { data, isLoading, isError } = useFetch(`/library/albums`, token);
-  if (isLoading) return <Spinner />;
-  if (isError) {
+
+  useEffect(() => {
+    if (typeof user?.user !== 'undefined' && user?.user) {
+      dispatch({
+        type: 'SET_USERINFO',
+        userInfo: user.user,
+      });
+    } else {
+      dispatch({
+        type: 'DELETE_USERINFO',
+      });
+    }
+  }, [dispatch]);
+
+  if (isLoading || userLoading) return <Spinner />;
+  if (isError || userError) {
     console.log(isError);
     return <div>...Error</div>;
   }
+
+  // 쿠키를 로컬 스토리지에 담는 코드
+  localStorage.setItem('token', token);
 
   console.log('useFetch-albums hook 시작!');
   console.log('data : ', data);
@@ -40,7 +59,18 @@ export async function getServerSideProps({ req }) {
   const host = req.headers?.referer?.match(regex)[0];
   const referer = req.headers?.referer?.slice(host.length);
 
-  return { props: { referer: referer || 'external' } };
+  const cookie = req.headers?.cookie;
+  const tokenFromCookie = cookie
+    ?.split('; ')
+    ?.find(row => row.startsWith('token'))
+    ?.split('=')[1];
+
+  return {
+    props: {
+      token: typeof tokenFromCookie === 'undefined' ? null : tokenFromCookie,
+      referer: referer || 'external',
+    },
+  };
 }
 
 export default Index;

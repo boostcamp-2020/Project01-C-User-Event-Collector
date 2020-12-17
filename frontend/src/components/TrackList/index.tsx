@@ -6,8 +6,12 @@ import { IoCloseOutline } from 'react-icons/io5';
 
 import TrackItem from '@components/Common/TrackItem';
 import LargeButton from '@components/Common/Button/LargeButton';
+import { useAuthState } from '@context/AuthContext';
 
 const TrackList = ({ type = false, trackList }) => {
+  const state = useAuthState();
+  const { userInfo } = state;
+
   const initialSelector: number[] = [];
   const [visible, setVisible] = useState(false);
   const [selected, setSelected] = useState(initialSelector);
@@ -40,23 +44,27 @@ const TrackList = ({ type = false, trackList }) => {
 
   return (
     <>
-      {trackList ? (
+      {!userInfo.isLoggedIn && (
+        <div style={{ textAlign: 'center', fontSize: '13px', position: 'relative', top: '95px' }}>
+          로그인이 필요한 서비스입니다.
+        </div>
+      )}
+      {userInfo.isLoggedIn && trackList ? (
         <TrackListSection>
-          {trackList.map((track, index) => (
-            type ?
-              (<TrackItem
-                key={track.id}
-                trackMetaData={track}
-              />) :
-              (<TrackItem
+          {trackList.map((track, index) =>
+            type ? (
+              <TrackItem key={track.id} trackMetaData={track} />
+            ) : (
+              <TrackItem
                 key={track.id}
                 type="checkbox"
                 trackMetaData={track}
                 selected={selected}
                 onSelectHandler={onChangeHandle}
                 chart={index + 1}
-              />)
-          ))}
+              />
+            ),
+          )}
           <SelectedHeader displayVisiable={visible}>
             <SelectedBarInner>
               <SelectedInfoArea>
@@ -67,7 +75,9 @@ const TrackList = ({ type = false, trackList }) => {
                     checked={selected.length === trackList.length}
                   />
                   <SelectLabel>전체선택</SelectLabel>
-                  <SelectedCountSpan> {selected.length}곡 선택</SelectedCountSpan>
+                  <SelectedCountSpan> 
+{' '}
+{selected.length}곡 선택</SelectedCountSpan>
                 </InfoAreaWrapper>
                 <IoCloseOutline size={26} onClick={onCloseHandle} />
               </SelectedInfoArea>

@@ -5,7 +5,7 @@ import { Dropdown } from 'semantic-ui-react';
 import api from '@api/index';
 import useEventHandler from '@hooks/useEventHandler';
 import { usePlayState, usePlayDispatch } from '@context/PlayContext';
-import { useAuthDispatch, useAuthState } from '@context/AuthContext';
+// import { useAuthDispatch, useAuthState } from '@context/AuthContext';
 import * as T from '../../../constants/dropdownText';
 
 interface IBoxDropdownProps {
@@ -24,8 +24,8 @@ const BoxDropdown = ({ trackData, type, id, data }: IBoxDropdownProps) => {
   const state = usePlayState();
   const dispatch = usePlayDispatch();
   const router = useRouter();
-  const authState = useAuthState();
-  const authDispatch = useAuthDispatch();
+  // const authState = useAuthState();
+  // const authDispatch = useAuthDispatch();
   console.log(state);
   console.log('trackData', trackData);
 
@@ -48,8 +48,8 @@ const BoxDropdown = ({ trackData, type, id, data }: IBoxDropdownProps) => {
   };
 
   const addNextEvent = () => {
-    if (type === 'track') dispatch({ type: 'ADD_TRACK', track: trackData.id });
-    else trackData?.forEach(track => dispatch({ type: 'ADD_TRACK', track: track.id }));
+    if (type === 'track') dispatch({ type: 'ADD_TRACK', track: [trackData] });
+    else dispatch({ type: 'ADD_TRACK', track: trackData });
     console.log('---------', state);
   };
 
@@ -109,7 +109,6 @@ const dropdownStyle = {
   right: '0px',
   width: '45px',
   height: '35px',
-  border: '1px solid red',
   color: 'transparent',
 };
 

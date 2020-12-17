@@ -34,13 +34,8 @@ function Index({ token, referer }) {
   if (magLoading || playLoading || userLoading) return <Spinner />;
   if (magError || playError || userError) return <div>...Error</div>;
 
-  console.log('₩₩₩₩₩₩₩₩  user', user);
-
   // 쿠키를 로컬 스토리지에 담는 코드
   localStorage.setItem('token', token);
-
-  // 쿠키 삭제
-  // document.cookie = 'token=; expires=Thu, 01 Jan 1999 00:00:10 GMT;';
 
   const logData = {
     eventTime: new Date(),
