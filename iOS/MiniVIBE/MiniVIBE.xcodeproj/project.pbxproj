@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -47,7 +47,6 @@
 		B994C69C25627DBD000E563C /* MiniVIBEApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994C69B25627DBD000E563C /* MiniVIBEApp.swift */; };
 		B994C69E25627DBD000E563C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994C69D25627DBD000E563C /* ContentView.swift */; };
 		B994C6A325627DBE000E563C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B994C6A225627DBE000E563C /* Preview Assets.xcassets */; };
-		B994C6A525627DBE000E563C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994C6A425627DBE000E563C /* Persistence.swift */; };
 		B994C6A825627DBE000E563C /* MiniVIBE.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B994C6A625627DBE000E563C /* MiniVIBE.xcdatamodeld */; };
 		B9A156F9256E303A00FFDA20 /* DJStationSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A156F8256E303A00FFDA20 /* DJStationSectionView.swift */; };
 		B9A156FF256E307900FFDA20 /* DJStationItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A156FE256E307900FFDA20 /* DJStationItemView.swift */; };
@@ -98,9 +97,13 @@
 		DE5F4C70257EA7400058ABE6 /* LibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5F4C6F257EA7400058ABE6 /* LibraryView.swift */; };
 		DE5F4C74257EA7DC0058ABE6 /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5F4C73257EA7DC0058ABE6 /* Artist.swift */; };
 		DE7516A025776F990054AFC6 /* LocalRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE75169F25776F990054AFC6 /* LocalRepository.swift */; };
+		DE7A0997258A498500A3AD2D /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B994C6A425627DBE000E563C /* Persistence.swift */; };
+		DE7A099E258A4D4500A3AD2D /* TestPersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7A099D258A4D4500A3AD2D /* TestPersistenceController.swift */; };
+		DE7A09C5258AC2C200A3AD2D /* LocalRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7A09C4258AC2C200A3AD2D /* LocalRepositoryTests.swift */; };
 		DEA2137D2583F3DC00E65AE1 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2137C2583F3DC00E65AE1 /* KeyChain.swift */; };
 		DEB6A6ED2572C89F00C97A0C /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB6A6EC2572C89E00C97A0C /* DetailHeaderView.swift */; };
 		DEC076DA2563AEBE004862AA /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC076D92563AEBE004862AA /* TodayView.swift */; };
+		DECDDCA7258A3C8800E5F10B /* PersistenceControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECDDCA6258A3C8800E5F10B /* PersistenceControllerTests.swift */; };
 		DEF5EFE925723A01006666DC /* NowPlayingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFE825723A01006666DC /* NowPlayingBarView.swift */; };
 		DEF5EFEE25727E47006666DC /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFED25727E47006666DC /* Song.swift */; };
 		DEF5EFF225727E58006666DC /* MusicPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFF125727E58006666DC /* MusicPlayer.swift */; };
@@ -230,9 +233,13 @@
 		DE5F4C6F257EA7400058ABE6 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		DE5F4C73257EA7DC0058ABE6 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		DE75169F25776F990054AFC6 /* LocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRepository.swift; sourceTree = "<group>"; };
+		DE7A098D258A3E6C00A3AD2D /* MiniVIBE copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MiniVIBE copy-Info.plist"; path = "/Users/cgh/Dev/iOS/MiniVIBE/MiniVIBE copy-Info.plist"; sourceTree = "<absolute>"; };
+		DE7A099D258A4D4500A3AD2D /* TestPersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPersistenceController.swift; sourceTree = "<group>"; };
+		DE7A09C4258AC2C200A3AD2D /* LocalRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRepositoryTests.swift; sourceTree = "<group>"; };
 		DEA2137C2583F3DC00E65AE1 /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		DEB6A6EC2572C89E00C97A0C /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		DEC076D92563AEBE004862AA /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		DECDDCA6258A3C8800E5F10B /* PersistenceControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceControllerTests.swift; sourceTree = "<group>"; };
 		DEF5EFE825723A01006666DC /* NowPlayingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBarView.swift; sourceTree = "<group>"; };
 		DEF5EFED25727E47006666DC /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		DEF5EFF125727E58006666DC /* MusicPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicPlayer.swift; sourceTree = "<group>"; };
@@ -367,6 +374,9 @@
 				B988596D257684510037D19B /* Info.plist */,
 				B96F49F625768B7200C5AF5F /* MockRequest.swift */,
 				B96F49FA25768CB800C5AF5F /* NetworkError+Equatable.swift */,
+				DECDDCA6258A3C8800E5F10B /* PersistenceControllerTests.swift */,
+				DE7A099D258A4D4500A3AD2D /* TestPersistenceController.swift */,
+				DE7A09C4258AC2C200A3AD2D /* LocalRepositoryTests.swift */,
 			);
 			path = MiniVIBETests;
 			sourceTree = "<group>";
@@ -413,6 +423,7 @@
 				B994C69925627DBD000E563C /* Products */,
 				0718D3CA313ECA24B75B795F /* Pods */,
 				CA233B27D449220AF6D7CF38 /* Frameworks */,
+				DE7A098D258A3E6C00A3AD2D /* MiniVIBE copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -736,7 +747,7 @@
 				};
 			};
 			buildConfigurationList = B994C69325627DBD000E563C /* Build configuration list for PBXProject "MiniVIBE" */;
-			compatibilityVersion = "Xcode 9.3";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -843,9 +854,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE7A099E258A4D4500A3AD2D /* TestPersistenceController.swift in Sources */,
+				DE7A09C5258AC2C200A3AD2D /* LocalRepositoryTests.swift in Sources */,
 				B988596C257684510037D19B /* MiniVIBETests.swift in Sources */,
 				B96F49F725768B7200C5AF5F /* MockRequest.swift in Sources */,
 				B96F49FB25768CB800C5AF5F /* NetworkError+Equatable.swift in Sources */,
+				DECDDCA7258A3C8800E5F10B /* PersistenceControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -862,6 +876,7 @@
 				B9C628FC257C2B4D000BCE80 /* GenreSectionView.swift in Sources */,
 				B9FF8A84257A9E1200B774CD /* PlaylistSectionViewModel.swift in Sources */,
 				B9B4D1FA256E5C8A00EC2FE2 /* SummarySectionView.swift in Sources */,
+				DE7A0997258A498500A3AD2D /* Persistence.swift in Sources */,
 				DE7516A025776F990054AFC6 /* LocalRepository.swift in Sources */,
 				B9F0BDD4256EE031004A2852 /* ImageItemView.swift in Sources */,
 				B962B09D2578169B00111978 /* Video.swift in Sources */,
@@ -912,7 +927,6 @@
 				B9A156FF256E307900FFDA20 /* DJStationItemView.swift in Sources */,
 				B91B27E52580070800BC9CE8 /* LibraryAlbumView.swift in Sources */,
 				B93101A8256D823700DD5ADA /* View+vibeMainText.swift in Sources */,
-				B994C6A525627DBE000E563C /* Persistence.swift in Sources */,
 				B912A15F257815CD00223C0B /* VideoView.swift in Sources */,
 				B91B27E12580044500BC9CE8 /* ItemResponse.swift in Sources */,
 				B9F0BDAC256ED2B7004A2852 /* SectionScrollView.swift in Sources */,
