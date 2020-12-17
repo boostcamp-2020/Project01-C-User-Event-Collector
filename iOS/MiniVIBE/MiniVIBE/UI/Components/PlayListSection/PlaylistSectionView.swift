@@ -44,8 +44,10 @@ private extension PlaylistSectionView {
                 ImageItemView(image: Image(playlist.imageURLString), width: viewModel.width) {
                     Text(playlist.title)
                         .vibeTitle3()
+                        .lineLimit(1)
                     Text(playlist.subtitle)
                         .vibeMainText()
+                        .lineLimit(1)
                     Text(playlist.description ?? "")
                         .vibeMainText()
                         .lineLimit(2)
