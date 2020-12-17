@@ -5,7 +5,7 @@ import { Dropdown } from 'semantic-ui-react';
 import api from '@api/index';
 import useEventHandler from '@hooks/useEventHandler';
 import { usePlayState, usePlayDispatch } from '@context/PlayContext';
-import { useAuthDispatch, useAuthState } from '@context/AuthContext';
+// import { useAuthDispatch, useAuthState } from '@context/AuthContext';
 import * as T from '../../../constants/dropdownText';
 
 interface IBoxDropdownProps {
@@ -24,8 +24,8 @@ const BoxDropdown = ({ trackData, type, id, data }: IBoxDropdownProps) => {
   const state = usePlayState();
   const dispatch = usePlayDispatch();
   const router = useRouter();
-  const authState = useAuthState();
-  const authDispatch = useAuthDispatch();
+  // const authState = useAuthState();
+  // const authDispatch = useAuthDispatch();
   console.log(state);
   console.log('trackData', trackData);
 

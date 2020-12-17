@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { IoHeartOutline } from 'react-icons/io5';
 import { RiPlayListLine } from 'react-icons/ri';
 import { BsThreeDots } from 'react-icons/bs';
-import api from '@api/index';
+// import api from '@api/index';
 import A from '@components/Common/A';
 
 function PlayTrackItem({ type, trackData: track }) {

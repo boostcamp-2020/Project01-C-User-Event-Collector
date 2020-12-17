@@ -7,7 +7,7 @@ interface ILog extends Document {
   userInfo?: any;
 }
 
-const MovePageParams = new Schema({
+const EventParams = new Schema({
   prev: String,
   next: String,
   component: String,
@@ -29,7 +29,7 @@ const UserInfoParams = new Schema({
 const LogSchema: Schema = new Schema({
   eventTime: Date,
   eventName: String,
-  parameters: MovePageParams,
+  parameters: EventParams,
   userInfo: UserInfoParams,
   userAgent: String,
 });

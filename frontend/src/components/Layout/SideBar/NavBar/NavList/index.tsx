@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import styled from '@styles/themed-components';
 import { FaMusic } from 'react-icons/fa';
 // import { FaBookOpen, FaMusic, FaTrophy, FaRecordVinyl, FaRegCalendar } from 'react-icons/fa';

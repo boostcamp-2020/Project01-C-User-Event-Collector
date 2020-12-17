@@ -60,6 +60,8 @@ function PlayBar() {
     return dispatch({ type: 'PLAY_START' });
   };
 
+  console.log(playlistState);
+
   const setPlayNext = () => {
     dispatch({ type: 'PLAY_NEXT' });
     dispatch({ type: 'PLAY_PAUSE' });
@@ -110,7 +112,7 @@ function PlayBar() {
       )}
       <>
         <Player>
-          <PlayTrackItem trackData={playList[playIndex]} />
+          <PlayTrackItem type={null} trackData={playList[playIndex]} />
           <ButtonWrapper>
             {isShuffled ? (
               <IoShuffleOutline

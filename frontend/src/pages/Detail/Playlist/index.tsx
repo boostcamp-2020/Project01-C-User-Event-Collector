@@ -3,19 +3,19 @@ import styled from '@styles/themed-components';
 import LargeButton from '@components/Common/Button/LargeButton';
 import TrackList from '@components/TrackList';
 
-interface IPlaylistInfoProps {
-  playlistInfo?: MetaPlaylist;
-}
+// interface IPlaylistInfoProps {
+//   playlistInfo?: MetaPlaylist;
+// }
 
-type MetaPlaylist = {
-  id: number;
-  title: string;
-  date: string;
-  imgUrl: string;
-  tag: string;
-  content: string;
-  tracks: any[];
-};
+// type MetaPlaylist = {
+//   id: number;
+//   title: string;
+//   date: string;
+//   imgUrl: string;
+//   tag: string;
+//   content: string;
+//   tracks: any[];
+// };
 
 function PlaylistDetail({ playlistInfo: playlist }) {
   console.log('+++++,  ', playlist);

@@ -11,8 +11,8 @@ function Index({ referer, token }) {
   const router = useRouter();
   const dispatch = useAuthDispatch();
 
-  const { data: user, isLoading: userLoading, isError: userError } = useFetch(`/user`, token);
   const { data, isLoading, isError } = useFetch(`/library/artists`, token);
+  const { data: user, isLoading: userLoading, isError: userError } = useFetch(`/user`, token);
 
   useEffect(() => {
     if (typeof user?.user !== 'undefined' && user?.user) {

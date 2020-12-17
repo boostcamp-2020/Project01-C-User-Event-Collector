@@ -13,7 +13,7 @@ const useFetch = (url, token) => {
   const fetcher = endpoint =>
     fetch(process.env.NEXT_PUBLIC_API_BASE_URL + endpoint, options).then(res => res.json());
 
-  const { data, error } = useSWR(url, fetcher);
+  const { data, error } = useSWR(url, fetcher, { refreshInterval: 1000 });
   return {
     data,
     isLoading: !error && !data,
