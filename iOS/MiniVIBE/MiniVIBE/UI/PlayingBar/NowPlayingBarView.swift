@@ -9,7 +9,6 @@ import SwiftUI
 import BCEventEmitter
 
 struct NowPlayingBarView: View {
-//    @EnvironmentObject var musicPlayer: MusicPlayer
     @State private var isPresent = false
     @ObservedObject var musicPlayer: MusicPlayer
     @Environment(\.colorScheme) var colorScheme

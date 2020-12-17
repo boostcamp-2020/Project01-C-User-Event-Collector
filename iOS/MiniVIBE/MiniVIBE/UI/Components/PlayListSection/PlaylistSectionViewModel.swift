@@ -14,15 +14,15 @@ extension PlaylistSectionView {
         let id: Int
         let title: String
         let subtitle: String?
-        let type: ImageSizeType
+        let width: CGFloat
         let container: DIContainer
         
-        init(container: DIContainer, id: Int, title: String, type: ImageSizeType, subtitle: String? = nil) {
+        init(container: DIContainer, id: Int, title: String, width: CGFloat, subtitle: String? = nil) {
             self.container = container
             self.id = id
             self.title = title
             self.subtitle = subtitle
-            self.type = type
+            self.width = width
         }
     }
 }

@@ -28,7 +28,13 @@ private extension MagazineSectionView {
             MoreHeaderView(title: Constant.title)
             SectionScrollView {
                 ForEach(viewModel.magazineItems) { item in
-                    MagazineItemView(item: item)
+                    ImageItemView(url: item.imageURLString, width: .largeItemImageWidth) {}
+                        .overlay(
+                            Text(item.title)
+                                .font(.title)
+                                .foregroundColor(.white)
+                                .fontWeight(.bold)
+                                .padding(), alignment: .bottomLeading)
                 }
             }
         }

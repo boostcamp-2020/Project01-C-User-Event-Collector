@@ -10,7 +10,7 @@ import BCEventEmitter
 
 struct DJStationMoreView: View {
     private let columns = [GridItem(.adaptive(minimum: .itemImageMinWidth, maximum: .itemImageMaxWidth))]
-    private var items: [DJStationItem]
+    private let items: [DJStationItem]
         = [DJStationItem(image: "HomeDJStationSection1"),
            DJStationItem(image: "HomeDJStationSection2"),
            DJStationItem(image: "HomeDJStationSection3"),
@@ -43,7 +43,12 @@ private extension DJStationMoreView {
                     SectionHeaderView(Constant.recentlyPlayedTitle) {
                         SectionScrollView {
                             ForEach(items) { item in
-                                DJStationItemView(item: item)
+                                ImageItemView(image: Image(item.image), width: .normalItemImageWidth) {}
+                                    .overlay(
+                                        Image(systemName: "play.circle.fill")
+                                            .foregroundColor(.white)
+                                            .opacity(0.8)
+                                            .padding(5), alignment: .bottomTrailing)
                             }
                         }
                     }
@@ -69,6 +74,25 @@ private extension DJStationMoreView {
         }
     }
 
+}
+
+struct DJStationItemView: View {
+    let item: DJStationItem
+    let width: CGFloat
+    
+    init(item: DJStationItem, width: CGFloat = .normalItemImageWidth ) {
+        self.item = item
+        self.width = width
+    }
+    
+    var body: some View {
+        ImageItemView(image: Image(item.image), width: width) {}
+            .overlay(
+                Image(systemName: "play.circle.fill")
+                    .foregroundColor(.white)
+                    .opacity(0.8)
+                    .padding(5), alignment: .bottomTrailing)
+    }
 }
 
 private struct SectionHeaderView<Content: View>: View {

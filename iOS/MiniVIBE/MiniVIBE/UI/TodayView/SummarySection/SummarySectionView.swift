@@ -12,8 +12,17 @@ struct SummarySectionView: View {
     var body: some View {
         SectionScrollView {
             ForEach(items) { item in
-                SummaryItemView(item: item)
+                VStack(alignment: .leading) {
+                    Text(item.category)
+                        .font(.system(size: 14))
+                        .foregroundColor(.vibePink)
+                    ImageItemView(image: Image(item.image), width: .largeItemImageWidth, ratio: 0.5) {
+                        Text(item.title).vibeTitle2()
+                        Text(item.description ?? "").vibeMainText()
+                    }
+                }
             }
         }
+        
     }
 }

@@ -42,7 +42,7 @@ private extension LibraryView {
             LibrarySongView().tag(0)
             LibraryArtistView(viewModel: LibraryArtistView.ViewModel(container: viewModel.container )).tag(1)
             LibraryAlbumView(viewModel: LibraryAlbumView.ViewModel(container: viewModel.container)).tag(2)
-            LibraryPlaylistView(viewModel: PlaylistSectionView.ViewModel(container: viewModel.container, id: 123, title: "보관함", type: .normal) ).tag(3)
+            LibraryPlaylistView(viewModel: PlaylistSectionView.ViewModel(container: viewModel.container, id: 123, title: "보관함", width: .normalItemImageWidth) ).tag(3)
         }
         .animation(.easeInOut)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))

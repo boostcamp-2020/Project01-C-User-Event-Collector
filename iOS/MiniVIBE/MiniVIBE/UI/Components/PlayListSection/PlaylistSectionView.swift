@@ -41,7 +41,7 @@ private extension PlaylistSectionView {
     var playlistsView: some View {
         ForEach(viewModel.playlists) { playlist in
             NavigationLink(destination: PlaylistDetailView(viewModel: PlaylistDetailView.ViewModel(container: viewModel.container, playlist: playlist))) {
-                ImageItemView(image: Image(playlist.imageURLString), type: viewModel.type) {
+                ImageItemView(image: Image(playlist.imageURLString), width: viewModel.width) {
                     Text(playlist.title)
                         .vibeTitle3()
                     Text(playlist.subtitle)

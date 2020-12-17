@@ -48,7 +48,7 @@ extension VideoView {
 private extension VideoView {
     var videosView: some View {
         ForEach(viewModel.items) { item in
-            ImageItemView(image: Image(item.imageURLString), type: .large, ratio: 0.5) {
+            ImageItemView(image: Image(item.imageURLString), width: .largeItemImageWidth, ratio: 0.5) {
                 HStack {
                     Text(item.title).vibeTitle3()
                     Text(item.artist).vibeMainText()
