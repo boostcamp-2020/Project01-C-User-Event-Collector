@@ -13,7 +13,7 @@ class RealServerRepository: ServerRepository {
     let network: Networking
     static var events: [Event] = []
     static var isEnabled: Bool = true
-
+    
     init(network: Networking) {
         self.network = network
     }
@@ -23,12 +23,11 @@ class RealServerRepository: ServerRepository {
             .setFailureType(to: NetworkError.self)
             .encode(encoder: JSONEncoder())
             .mapError { error -> NetworkError in
-                   // 3.
-                   return NetworkError.encodingError(error.localizedDescription)
+                return NetworkError.encodingError(error.localizedDescription)
             }
             .map { encodedData -> RequestProviding in
                 if RealServerRepository.isEnabled {
-                return EventRequest(body: encodedData)
+                    return EventRequest(body: encodedData)
                 } else {
                     return FailureEventRequest(body: encodedData)
                 }
@@ -43,18 +42,25 @@ class RealServerRepository: ServerRepository {
     }
     
     func sendAll(events: [Event]) -> AnyPublisher<Void, NetworkError> {
-        let request: RequestProviding
-        
-        if RealServerRepository.isEnabled {
-            request = FailureEventRequest(url: URL(string: "https://www.naver.com"))
-        } else {
-            request = FailureEventRequest(url: URL(string: "https://www.asdfasdferwqtgjeas125"))
-        }
-        return network.execute(request)
-            .map({ _ -> Void in
+        return Just(events)
+            .setFailureType(to: NetworkError.self)
+            .encode(encoder: JSONEncoder())
+            .mapError { error -> NetworkError in
+                return NetworkError.encodingError(error.localizedDescription)
+            }
+            .map { encodedData -> RequestProviding in
+                if RealServerRepository.isEnabled {
+                    return BulkEventRequest(body: encodedData)
+                } else {
+                    return FailureEventRequest(body: encodedData)
+                }
+            }
+            .flatMap {
+                self.network.execute($0)
+            }
+            .map { _ -> Void in
                 RealServerRepository.events.append(contentsOf: events)
-            })
-            .eraseToAnyPublisher()
+            }.eraseToAnyPublisher()
     }
     
     func load<T>(type: T.Type, request: RequestProviding) -> AnyPublisher<T, NetworkError> where T: Decodable {

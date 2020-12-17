@@ -14,6 +14,13 @@ struct EventRequest: RequestProviding {
     var body: Data?
 }
 
+struct BulkEventRequest: RequestProviding {
+    var url: URL? = URL(string: "http://115.85.181.152:8000/api/log/bulk")
+    var method: RequestMethod = .post
+    var headers: [String: String]?
+    var body: Data?
+}
+
 struct FailureEventRequest: RequestProviding {
     var url: URL?
     var method: RequestMethod = .post
