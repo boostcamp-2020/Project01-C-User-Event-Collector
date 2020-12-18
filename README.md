@@ -19,6 +19,9 @@
 ### 🍎 WEB 배포 URL
 http://115.85.181.152:3000
 
+데모비디오
+https://youtu.be/AqSunm6fDfc
+
 
 ## 🗂 Directory
 
