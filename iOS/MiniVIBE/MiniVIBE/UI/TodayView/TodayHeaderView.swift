@@ -81,8 +81,7 @@ extension TodayHeaderView {
                 case .finished:
                     break
                 }
-            }, receiveValue: { (url) in
-                print("\(url)")
+            }, receiveValue: { _ in
             }).store(in: &subscriptions)
         }
     }

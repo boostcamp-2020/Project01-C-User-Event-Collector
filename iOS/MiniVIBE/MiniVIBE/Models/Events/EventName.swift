@@ -26,7 +26,7 @@ public enum EventName: CustomStringConvertible {
         case .libraryEvent:
             return "library_event"
         case .loginEvent:
-            return "login_evetn"
+            return "login_event"
         case .musicEvent:
             return "music_event"
         }

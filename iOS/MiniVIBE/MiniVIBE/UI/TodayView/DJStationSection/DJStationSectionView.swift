@@ -21,12 +21,13 @@ struct DJStationSectionView: View {
             }.emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.more))
             SectionScrollView {
                 ForEach(items) { item in
-                    ImageItemView(image: Image(item.image), width: .normalItemImageWidth) {}
-                        .overlay(
-                            Image(systemName: "play.circle.fill")
-                                .foregroundColor(.white)
-                                .opacity(0.8)
-                                .padding(5), alignment: .bottomTrailing)
+                    Button(action: {}, label: {
+                            ImageItemView(image: Image(item.image), width: .normalItemImageWidth) {}
+                            .overlay(
+                                Image(systemName: "play.circle.fill")
+                                    .foregroundColor(.white)
+                                    .opacity(0.8)
+                                    .padding(5), alignment: .bottomTrailing)})
                 }
             }
         }

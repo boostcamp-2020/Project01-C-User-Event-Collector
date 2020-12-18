@@ -21,7 +21,7 @@ struct ArtistSection: View {
         Group {
             if isSelected {
                 PlaylistSectionView(viewModel: PlaylistSectionView.ViewModel(
-                                        container: container, id: 0, title: "나를 위한 믹스테잎", width: .normalItemImageWidth, playlists: [Playlist(id: 4124, imageURLString: "MixTape", title: "두둠칫 믹스테잎", subtitle: "Lil Cherry, GOLDBUUDA, Lil Cherry X JitoMo, 블리노, Dakshood(닥스후드)", songs: [])]))
+                                        container: container, id: 0, title: "나를 위한 믹스테잎", width: .normalItemImageWidth, playlists: [Playlist(id: 4124, imageURLString: "MixTape", title: "두둠칫 믹스테잎", subtitle: "Lil Cherry, GOLDBUUDA", songs: [])]))
             } else {
                 VStack {
                     HStack {

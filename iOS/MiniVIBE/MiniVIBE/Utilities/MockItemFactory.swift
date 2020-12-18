@@ -85,10 +85,10 @@ final class MockItemFactory {
                        title: "급상승 차트 1위", description: "방탄소년단 : Life Goes On", playlist: Playlist(id: 5235, imageURLString: "DJStationDetail1", title: "급상승 차트 1위", subtitle: "방탄소년단 : Life Goes On", songs: [])),
            SummaryItem(category: "#Mood",
                           image: "DJStationDetail2",
-                          title: "잠 못드는 밤에", description: "그땐 그랬을 수도 있어", playlist: Playlist(id: 52435, imageURLString: "DJStationDetail2", title: "잠 못드는 밤에", subtitle: "자꾸 내탓을 하고, 잠이 안오시나요?.. 편안하게 주무시게 해드릴게요", songs: [])),
+                          title: "잠 못드는 밤에", description: "그땐 그랬을 수도 있어", playlist: Playlist(id: 52435, imageURLString: "DJStationDetail2", title: "잠 못드는 밤에", subtitle: "자꾸 내탓을 하고, 잠이 안오시나요?..", songs: [])),
            SummaryItem(category: "어느덧 크리스마스",
                           image: "DJStationDetail3",
-                          title: "크리스마스 노래모음", description: "2020년 한해가 벌써 지나가네요 크리스마스 노래를 모아봤어요", playlist: Playlist(id: 52325, imageURLString: "DJStationDetail3", title: "크리스마스 노래모음", subtitle: "2020년 한해가 벌써 지나가네요 크리스마스 노래를 모아봤어요", songs: []))]
+                          title: "크리스마스 노래모음", description: "2020년 한해가 벌써 지나가네요 크리스마스 노래를 모아봤어요", playlist: Playlist(id: 52325, imageURLString: "DJStationDetail3", title: "크리스마스 노래모음", subtitle: "2020년 한해가 벌써 지나가네요", songs: []))]
     
     static let magazineItems: [Magazine] = [
         Magazine(id: 123, title: "New Release #16: 이적, 빌리 아일리시", imageURLString: "mag-dummy1"),

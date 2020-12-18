@@ -10,7 +10,7 @@ import Combine
 
 final class MusicPlayer: ObservableObject {
     @Published var isPlaying = false
-    var playingIndex: Int = 0
+    @Published var playingIndex: Int = 0
     @Published var showMembership: Bool = false
     var currentProgress: Float = 0
     var nowPlayingSong: Song {
