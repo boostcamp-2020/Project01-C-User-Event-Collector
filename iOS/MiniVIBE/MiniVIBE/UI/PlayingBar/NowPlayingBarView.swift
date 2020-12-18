@@ -27,16 +27,22 @@ struct NowPlayingBarView: View {
                     VStack {
                         MusicProgressView()
                         nowPlayingBarView
-                            .onTapGesture {
-                                self.isPresent = true
-                            }.sheet(isPresented: $isPresent, content: {
-                                MusicPlayerView(isPresented: $isPresent)
-                                    .environmentObject(musicPlayer)
-                                    .preferredColorScheme(colorScheme)
-                            })
                             .padding(.all)
                     }
                     .frame(width: .musicPlayingBarWidth, height: Self.height).background(Blur())
+                    .overlay(
+                        HStack {
+                            Button(action: {self.isPresent = true}, label: {
+                        Color.clear.frame(width: .musicPlayingBarWidth - 150)
+                            })
+                        Spacer()
+                        }
+                    )
+                    .sheet(isPresented: $isPresent, content: {
+                        MusicPlayerView(isPresented: $isPresent)
+                            .environmentObject(musicPlayer)
+                            .preferredColorScheme(colorScheme)
+                    })
                 }
             }
         }

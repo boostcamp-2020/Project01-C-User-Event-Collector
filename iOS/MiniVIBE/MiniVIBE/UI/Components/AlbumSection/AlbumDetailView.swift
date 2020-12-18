@@ -75,6 +75,10 @@ private extension AlbumDetailView {
 private extension AlbumDetailView {
     var songsView: some View {
         ForEach(MockItemFactory.imageURLSongs) { song in
+            Button(action: {
+                    musicPlayer.playinglist.append(song)
+                    musicPlayer.play(index: musicPlayer.playinglist.count - 1)
+            }, label: {
             HStack(spacing: .defaultSpacing) {
                 Image(systemName: "circle").foregroundColor(.gray)
                 AsyncImageView(url: song.imageURLString)
@@ -85,10 +89,7 @@ private extension AlbumDetailView {
                 }
                 Spacer()
                 Image(systemName: "line.horizontal.3").foregroundColor(.gray)
-            }.onTapGesture {
-                musicPlayer.playinglist.append(song)
-                musicPlayer.play(index: musicPlayer.playinglist.count - 1)
-            }
+            }   })
             .emitEventIfTapped(event: TapEvent(component: AlbumDetailView.name, target: TapEvent.Target.song))
         }
     }

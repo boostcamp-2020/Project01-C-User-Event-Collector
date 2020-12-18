@@ -72,6 +72,18 @@ private struct MockServerDataView: View {
             return RealServerRepository.events.filter {
                 $0.name == EventName.errorEvent.description
             }
+        case EventName.libraryEvent.description:
+            return RealServerRepository.events.filter {
+                $0.name == EventName.libraryEvent.description
+            }
+        case EventName.loginEvent.description:
+            return RealServerRepository.events.filter {
+                $0.name == EventName.loginEvent.description
+            }
+        case EventName.musicEvent.description :
+            return RealServerRepository.events.filter {
+                $0.name == EventName.musicEvent.description
+            }
         default:
             return RealServerRepository.events
         }
@@ -100,7 +112,7 @@ private struct MockServerDataView: View {
 
 extension MockServerDataView {
     final class ViewModel: ObservableObject {
-        let numbers = ["All", "Move", "Tap", "Error"]
+        let numbers = ["All", "Move", "Tap", "Error", "Login", "Library", "Music"]
         @Published var selectorIndex = 0
         var filter: String {
             switch selectorIndex {
@@ -110,6 +122,12 @@ extension MockServerDataView {
                 return EventName.tapEvent.description
             case 3:
                 return EventName.errorEvent.description
+            case 4:
+                return EventName.loginEvent.description
+            case 5:
+                return EventName.libraryEvent.description
+            case 6:
+                return EventName.musicEvent.description
             default:
                 return "name"
             }

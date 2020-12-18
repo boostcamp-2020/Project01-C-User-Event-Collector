@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 final class MusicPlayer: ObservableObject {
-    var isPlaying = false
+    @Published var isPlaying = false
     var playingIndex: Int = 0
     @Published var showMembership: Bool = false
     var currentProgress: Float = 0

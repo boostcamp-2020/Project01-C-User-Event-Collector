@@ -9,6 +9,7 @@ import SwiftUI
 import AuthenticationServices
 import Combine
 import WebKit
+import BCEventEmitter
 
 struct TodayHeaderView: View {
     private enum Constant {
@@ -65,6 +66,7 @@ extension TodayHeaderView {
                             KeyChain.shared.createToken(token)
                         }
                         self?.isLogin = true
+                        emitEvent(event: LoginEvent())
                         completion(.success(url))
                     }
                 }

@@ -11,7 +11,7 @@ import BCEventEmitter
 struct MusicPlayerView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @Binding var isPresented: Bool
-    
+    @State var isLiked: Bool = false
     var body: some View {
         ZStack {
             Color.vibeBackground.ignoresSafeArea(edges: .bottom)
@@ -108,10 +108,12 @@ private extension MusicPlayerView {
                     .frame(width: 40, height: 40)
             }).emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.playPause(state: musicPlayer.isPlaying ? "pause" : "play")))
             Spacer()
-            Button(action: {}, label: {
+            Button(action: {
+                self.isLiked.toggle()
+            }, label: {
                 Image(systemName: "heart.fill")
                     .font(.system(size: 25))
-                    .foregroundColor(.gray)
+                    .foregroundColor(isLiked ? .vibePink: .gray)
             }).emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.like))
             Spacer()
             Button(action: {}, label: {

@@ -22,8 +22,8 @@ struct TodayView: View {
                     ScrollView(.vertical, showsIndicators: false) {
                         TodayHeaderView()
                         LazyVStack(spacing: 40) {
-                            SummarySectionView()
-                            ArtistSection()
+                            SummarySectionView(viewModel: SummarySectionView.ViewModel(container: viewModel.container))
+                            ArtistSection(container: viewModel.container)
                             PlaylistSectionView(viewModel: PlaylistSectionView.ViewModel(
                                                     container: viewModel.container, id: 0, title: "내 취향 플레이리스트", width: .normalItemImageWidth))
                             
@@ -32,7 +32,7 @@ struct TodayView: View {
                                 viewModel: FiveRowSongGridView.ViewModel(container: viewModel.container, id: 0, title: "최근 들은 노래", showsRanking: false))
                             PlaylistSectionView(viewModel: PlaylistSectionView.ViewModel(
                                                     container: viewModel.container,
-                                                    id: 1, title: "VIBE 추천 플레이리스트", width: .largeItemImageWidth))
+                                                    id: 1, title: "VIBE 추천 플레이리스트", width: .largeItemImageWidth, playlists: MockItemFactory.recoPlaylists))
                             AlbumSectionView(viewModel: AlbumSectionView.ViewModel(
                                                 id: 1, title: "좋아할 최신앨범", showsRanking: false))
                             MagazineSectionView(viewModel: MagazineSectionView.ViewModel(container: viewModel.container))

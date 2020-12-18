@@ -48,9 +48,10 @@ private extension PlaylistSectionView {
                     Text(playlist.subtitle)
                         .vibeMainText()
                         .lineLimit(1)
-                    Text(playlist.description ?? "")
+                    Text(playlist.description ?? "\n")
                         .vibeMainText()
                         .lineLimit(2)
+                        .frame(height: 40)
                 }
             }.emitEventIfTapped(event: TapEvent(component: name, target: TapEvent.Target.playlist))
         }
