@@ -14,4 +14,8 @@ extension String {
     static let target: String = "target"
     static let reason: String = "reason"
     static let from: String = "from"
+    static let action: String = "action"
+    static let type: String = "type"
+    static let id: String = "id"
+    static let view: String = "view"
 }

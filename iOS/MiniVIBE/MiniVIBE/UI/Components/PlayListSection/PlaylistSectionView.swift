@@ -44,11 +44,14 @@ private extension PlaylistSectionView {
                 ImageItemView(image: Image(playlist.imageURLString), width: viewModel.width) {
                     Text(playlist.title)
                         .vibeTitle3()
+                        .lineLimit(1)
                     Text(playlist.subtitle)
                         .vibeMainText()
-                    Text(playlist.description ?? "")
+                        .lineLimit(1)
+                    Text(playlist.description ?? "\n")
                         .vibeMainText()
                         .lineLimit(2)
+                        .frame(height: 40)
                 }
             }.emitEventIfTapped(event: TapEvent(component: name, target: TapEvent.Target.playlist))
         }

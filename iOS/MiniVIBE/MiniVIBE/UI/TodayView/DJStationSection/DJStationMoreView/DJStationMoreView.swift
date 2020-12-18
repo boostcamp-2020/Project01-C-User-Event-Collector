@@ -11,15 +11,7 @@ import BCEventEmitter
 struct DJStationMoreView: View {
     private let columns = [GridItem(.adaptive(minimum: .itemImageMinWidth, maximum: .itemImageMaxWidth))]
     private let items: [DJStationItem]
-        = [DJStationItem(image: "HomeDJStationSection1"),
-           DJStationItem(image: "HomeDJStationSection2"),
-           DJStationItem(image: "HomeDJStationSection3"),
-           DJStationItem(image: "HomeDJStationSection1"),
-           DJStationItem(image: "HomeDJStationSection2"),
-           DJStationItem(image: "HomeDJStationSection3"),
-           DJStationItem(image: "HomeDJStationSection1"),
-           DJStationItem(image: "HomeDJStationSection2"),
-           DJStationItem(image: "HomeDJStationSection3")]
+        = MockItemFactory.homeDJStationkItems
     var body: some View {
         HomeDJStationDetailScrollView
             .navigationBarHidden(true)

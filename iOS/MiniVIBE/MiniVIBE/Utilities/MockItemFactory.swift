@@ -52,7 +52,7 @@ final class MockItemFactory {
               title: "ARTIST. New Bi", artist: "Anonymous Artists", songs: [], rankChange: "up"),
         Album(imageURLString: "newAlbum-dummy2", title: "Darling", artist: "양다일", songs: []),
         Album(imageURLString: "newAlbum-dummy3", title: "A Season of Love", artist: "Idina Menzel", songs: []), Album(imageURLString: "newAlbum-dummy1",
-                                                                                                                        title: "ARTIST. New Bi", artist: "Anonymous Artists", songs: [], rankChange: "up"),
+                                                                                                                      title: "ARTIST. New Bi", artist: "Anonymous Artists", songs: [], rankChange: "up"),
         Album(imageURLString: "newAlbum-dummy2", title: "Darling", artist: "양다일", songs: []),
         Album(imageURLString: "newAlbum-dummy3", title: "A Season of Love", artist: "Idina Menzel", songs: [])]
     
@@ -82,11 +82,13 @@ final class MockItemFactory {
     static let homeSummaryItems: [SummaryItem]
         = [SummaryItem(category: "지붕뚫고 급상승 🚀",
                        image: "HomeMainSection1",
-                       title: "급상승 차트 1위", description: "방탄소년단 : Life Goes On"),
-           SummaryItem(category: "스테이션", image: "HomeMainSection2",
-                       title: "여유를 즐겨요", description: "장르별 스테이션 : 잔잔한 클래식"),
-           SummaryItem(category: "새 앨범", image: "HomeMainSection3",
-                       title: "방탄소년단", description: nil)]
+                       title: "급상승 차트 1위", description: "방탄소년단 : Life Goes On", playlist: Playlist(id: 5235, imageURLString: "DJStationDetail1", title: "급상승 차트 1위", subtitle: "방탄소년단 : Life Goes On", songs: [])),
+           SummaryItem(category: "#Mood",
+                          image: "DJStationDetail2",
+                          title: "잠 못드는 밤에", description: "그땐 그랬을 수도 있어", playlist: Playlist(id: 52435, imageURLString: "DJStationDetail2", title: "잠 못드는 밤에", subtitle: "자꾸 내탓을 하고, 잠이 안오시나요?..", songs: [])),
+           SummaryItem(category: "어느덧 크리스마스",
+                          image: "DJStationDetail3",
+                          title: "크리스마스 노래모음", description: "2020년 한해가 벌써 지나가네요 크리스마스 노래를 모아봤어요", playlist: Playlist(id: 52325, imageURLString: "DJStationDetail3", title: "크리스마스 노래모음", subtitle: "2020년 한해가 벌써 지나가네요", songs: []))]
     
     static let magazineItems: [Magazine] = [
         Magazine(id: 123, title: "New Release #16: 이적, 빌리 아일리시", imageURLString: "mag-dummy1"),
@@ -113,6 +115,9 @@ final class MockItemFactory {
         = [DJStationItem(image: "HomeDJStationSection1"),
            DJStationItem(image: "HomeDJStationSection2"),
            DJStationItem(image: "HomeDJStationSection3"),
+           DJStationItem(image: "HomeDJStationSection4"),
+           DJStationItem(image: "HomeDJStationSection5"),
+           DJStationItem(image: "HomeDJStationSection6"),
            DJStationItem(image: "HomeDJStationSection1"),
            DJStationItem(image: "HomeDJStationSection2"),
            DJStationItem(image: "HomeDJStationSection3")]

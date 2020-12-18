@@ -21,6 +21,7 @@ struct NewsItemView: View {
                                     .font(.system(size: 15))
                                     .foregroundColor(.vibeBackground)
                                     .lineLimit(2)
+                                    .frame(height: 45)
                                 Spacer()
                                 HStack {
                                     Text("관련 뉴스 보기 ❯").vibeMainText()

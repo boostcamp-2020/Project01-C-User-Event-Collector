@@ -11,6 +11,10 @@ public enum EventName: CustomStringConvertible {
     case moveEvent
     case tapEvent
     case errorEvent
+    case libraryEvent
+    case loginEvent
+    case musicEvent
+    
     public var description: String {
         switch self {
         case .moveEvent:
@@ -19,6 +23,12 @@ public enum EventName: CustomStringConvertible {
             return "tap_event"
         case .errorEvent:
             return "error_event"
+        case .libraryEvent:
+            return "library_event"
+        case .loginEvent:
+            return "login_event"
+        case .musicEvent:
+            return "music_event"
         }
     }
 }

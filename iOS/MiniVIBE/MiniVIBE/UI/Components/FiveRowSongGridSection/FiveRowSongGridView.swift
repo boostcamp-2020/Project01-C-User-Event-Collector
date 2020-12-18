@@ -39,7 +39,10 @@ extension FiveRowSongGridView {
 private extension FiveRowSongGridView {
     var fiveRowSongGridItemViews: some View {
         ForEach(viewModel.songs.indices) { index in
-            HStack(spacing: .defaultSpacing) {
+            Button(action: {
+                    musicPlayer.playinglist.append(viewModel.songs[index])
+                    musicPlayer.play(index: musicPlayer.playinglist.count - 1)
+            }, label: {            HStack(spacing: .defaultSpacing) {
                 AsyncImageView(url: viewModel.songs[index].imageURLString)
                     .frame(width: 40, height: 40,
                            alignment: .center)
@@ -55,11 +58,7 @@ private extension FiveRowSongGridView {
                     Text("\(viewModel.songs[index].title)").vibeMainText()
                 }
                 Spacer()
-            }.frame(width: .largeItemImageWidth)
-            .onTapGesture {
-                musicPlayer.playinglist.append(viewModel.songs[index])
-                musicPlayer.play(index: musicPlayer.playinglist.count - 1)
-            }
+            }.frame(width: .largeItemImageWidth)})
             .emitEventIfTapped(event: TapEvent(component: name, target: TapEvent.Target.song))
         }
     }

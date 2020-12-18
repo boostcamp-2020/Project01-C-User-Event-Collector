@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct SummarySectionView: View {
-    private let items: [SummaryItem] = MockItemFactory.homeSummaryItems
+
+    @StateObject var viewModel: Self.ViewModel
     var body: some View {
         SectionScrollView {
-            ForEach(items) { item in
+            ForEach(viewModel.items) { item in
+                NavigationLink(destination: PlaylistDetailView(viewModel: PlaylistDetailView.ViewModel(container: viewModel.container, playlist: item.playlist))) {
                 VStack(alignment: .leading) {
                     Text(item.category)
                         .font(.system(size: 14))
@@ -22,6 +24,18 @@ struct SummarySectionView: View {
                     }
                 }
             }
+            }
+        }
+        
+    }
+}
+extension SummarySectionView {
+    final class ViewModel: ObservableObject {
+        let container: DIContainer
+        let items: [SummaryItem] = MockItemFactory.homeSummaryItems
+        
+        init(container: DIContainer) {
+            self.container = container
         }
         
     }
