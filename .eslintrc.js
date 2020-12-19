@@ -59,6 +59,7 @@ module.exports = {
         'react/react-in-jsx-scope': 'off', // No need to import React when using Next.js
         'jsx-a11y/anchor-is-valid': 'off', // This rule is not compatible with Next.js's <Link /> components
         '@typescript-eslint/no-unused-vars': ['off'], // 사용하지 않는 변수가 있을때 빌드에러가 나던 규칙 해제
+        '@typescript-eslint/no-unused-locals': ['off'], // 사용하지 않는 변수가 있을때 빌드에러가 나던 규칙 해제
         '@typescript-eslint/explicit-function-return-type': [
           // I suggest this setting for requiring return types on functions only where usefull
           'warn',

@@ -2,6 +2,8 @@ import React from 'react';
 import styled from '@styles/themed-components';
 
 import LargeButton from '@components/Common/Button/LargeButton';
+import MagList from '@components/MagList';
+import TrackItem from '@components/Common/TrackItem';
 
 interface IMagazineInfoProps {
   magazineInfo?: MetaMagazine;
@@ -31,10 +33,10 @@ function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
             <MagContent>{magazine?.content}</MagContent>
             <MagPlayList>
               <MagPlayListInfo>
-총{magazine?.tracks?.length}
-곡
+                총{magazine?.tracks?.length}
+                곡
 {' '}
-</MagPlayListInfo>
+              </MagPlayListInfo>
               <MagPlayListLink>플레이리스트 보기</MagPlayListLink>
             </MagPlayList>
             <MagPlayButtonList>
@@ -52,7 +54,15 @@ function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
           </InfoArea>
         </MagInner>
       </MagHeader>
-      {/* <MagList /> */}
+      <MagList magList={magazine?.tracks} />
+      <PlayListContainer>
+        <PlayListTitle>{magazine?.title}</PlayListTitle>
+        <PlayList>
+          {magazine?.tracks.map(track => (
+            <TrackItem key={track.id} trackMetaData={track} />
+          ))}
+        </PlayList>
+      </PlayListContainer>
     </Wrapper>
   );
 }
@@ -238,6 +248,23 @@ const SubItem = styled.span<{ Before?: boolean }>`
     color: hsla(0,0%,88.2%,.3);
     }`
       : ''};
+`;
+
+const PlayListContainer = styled.div`
+  width: 964px;
+  margin: 40px auto 70px;
+`;
+
+const PlayListTitle = styled.h4`
+  font-size: 18px;
+  font-weight: 700;
+`;
+
+const PlayList = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  padding: 1rem 0;
 `;
 
 export default MagazineDetail;

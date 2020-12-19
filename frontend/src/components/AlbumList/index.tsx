@@ -5,11 +5,13 @@ import AlbumCard from '@components/Common/Card/AlbumCard';
 
 const AlbumList = ({ albumList }) => {
   return (
-    <ListContainer>
-      {albumList.map(album => (
-        <AlbumCard key={album.id} albumMetaData={album} />
-      ))}
-    </ListContainer>
+    <>
+      <ListContainer>
+        {albumList
+          ? albumList?.map(album => <AlbumCard key={album.id} albumMetaData={album} />)
+          : null}
+      </ListContainer>
+    </>
   );
 };
 
@@ -19,7 +21,7 @@ const ListContainer = styled.div`
     auto-fill,
     minmax(${props => props.theme.size.smallCarouselContentWidth}, 1fr)
   );
-  grid-gap: 45px 0;
+  grid-gap: 65px 10px;
 `;
 
 export default AlbumList;

@@ -2,50 +2,30 @@ import React from 'react';
 import styled from 'styled-components';
 import { BsThreeDots } from 'react-icons/bs';
 import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
-import { useRouter } from 'next/router';
-import useEventHandler from '@hooks/useEventHandler';
-import Link from 'next/link';
-import Dropdown from '@components/Common/Dropdown';
+import A from '@components/Common/A';
+import BoxDropdown from '@components/Common/Dropdown/BoxDropdown';
 
 interface IBoxItemProps {
-  albumData?: any;
-  magData?: any;
-  playlistData?: any;
   imgUrl: string;
   next: string;
+  trackData: any;
   target: string;
   id: number;
 }
 
-function BoxItem({ albumData, magData, playlistData, imgUrl, target, next, id }: IBoxItemProps) {
-  const router = useRouter();
+function BoxItem({ trackData, imgUrl, target, next, id }: IBoxItemProps) {
   return (
     <>
       <Wrapper>
-        <Link href={`/${next}/[id]`} as={`/${next}/${id}`}>
-          <BoxImage
-            src={imgUrl}
-            alt="box-item-image"
-            onClick={useEventHandler(null, {
-              eventTime: new Date(),
-              eventName: 'ClickEvent',
-              parameters: {
-                page: router.pathname,
-                target: `/${`${target}/${id}`}`,
-              },
-            })}
-          />
-        </Link>
+        <A next={next} target={target} id={id}>
+          <BoxImage src={imgUrl} alt="box-item-image" />
+        </A>
+
         <ButtonsWrapper className="buttons-wrapper">
           <BoxPlayButton />
           <BsThreeDots size={24} />
         </ButtonsWrapper>
-        <Dropdown
-          type="listItem"
-          albumData={albumData}
-          magData={magData}
-          playlistData={playlistData}
-        />
+        <BoxDropdown trackData={trackData} type={next} id={id} />
       </Wrapper>
     </>
   );
@@ -61,13 +41,13 @@ const ButtonsWrapper = styled.div`
   bottom: 0;
   padding: 12px;
   width: 100%;
-  height: 80px;
+  height: 18%;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
   transition: 0.5s all;
   opacity: 0;
-  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.5));
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.15));
 `;
 
 const Wrapper = styled.div`

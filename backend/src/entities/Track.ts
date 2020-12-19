@@ -54,8 +54,8 @@ export default class Track extends BaseEntity {
   static findByUserId(id: number) {
     return this.createQueryBuilder('track')
       .innerJoin('track.users', 'user')
-      .innerJoinAndSelect('track.album', 'album')
-      .innerJoinAndSelect('track.artists', 'artist')
+      .leftJoinAndSelect('track.album', 'album')
+      .leftJoinAndSelect('track.artists', 'artist')
       .where('user.id = :id', { id })
       .getMany();
   }

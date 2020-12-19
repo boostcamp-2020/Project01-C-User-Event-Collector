@@ -1,14 +1,15 @@
 import React from 'react';
 import styled from '@styles/themed-components';
-
-import AlbumCard from '@components/Common/Card/PlaylistCard';
+import PlaylistCard from '@components/Common/Card/PlaylistCard';
 
 const PlaylistList = ({ playlistList }) => {
   return (
     <ListContainer>
-      {playlistList.map(playlist => (
-        <AlbumCard key={playlist.id} playlistMetaData={playlist} />
-      ))}
+      {playlistList
+        ? playlistList.map(playlist => (
+          <PlaylistCard key={playlist.id} playlistMetaData={playlist} />
+          ))
+        : null}
     </ListContainer>
   );
 };

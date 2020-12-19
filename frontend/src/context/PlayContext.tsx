@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useReducer, Dispatch } from 'react';
-import Playlist from 'pages/playlist';
+// import Playlist from 'pages/playlist';
 
 // type PlayType = 'INORDER' | 'SHUFFLE' | 'ONLYONE';
 
@@ -16,7 +16,8 @@ type Action =
   | { type: 'PLAY_PAUSE' }
   | { type: 'PLAY_NEXT' }
   | { type: 'PLAY_PREV' }
-  | { type: 'ADD_TRACK'; track: any }
+  | { type: 'ADD_TRACK_NEXT'; track: any[] }
+  | { type: 'ADD_TRACK_LAST'; track: any[] }
   | { type: 'REMOVE_TRACK'; trackId: number };
 
 type PlayDispatch = Dispatch<Action>;
@@ -37,28 +38,31 @@ function reducer(state: State, action: Action): State {
         isPlaying: false,
       };
     case 'PLAY_NEXT':
-      const nextIndex = (state.playIndex + 1) % Playlist.length;
+      const nextIndex = (state.playIndex + 1) % state.playList.length;
       return {
         ...state,
         playIndex: nextIndex,
       };
     case 'PLAY_PREV':
-      const prevIndex = state.playIndex - 1;
+      const prevIndex = (state.playIndex - 1) % state.playList.length;
       return {
         ...state,
-        playIndex: prevIndex < 0 ? prevIndex + Playlist.length : prevIndex,
+        playIndex: prevIndex < 0 ? prevIndex + state.playList.length : prevIndex,
       };
-    case 'ADD_TRACK':
+    case 'ADD_TRACK_NEXT':
       return {
         ...state,
-        playList: [...state.playList, action.track],
+        playList: [...state.playList.slice(0, 1), ...action.track, ...state.playList.slice(1)],
+      };
+    case 'ADD_TRACK_LAST':
+      return {
+        ...state,
+        playList: [...state.playList, ...action.track],
       };
     case 'REMOVE_TRACK':
-      const removeIndex = state.playList.indexOf(action.trackId);
-      const newList = state.playList.splice(removeIndex, 1);
       return {
         ...state,
-        playList: newList,
+        playList: state.playList.filter(v => v !== action.trackId),
       };
     default:
       throw new Error('Unhandled action');
