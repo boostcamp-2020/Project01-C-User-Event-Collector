@@ -17,6 +17,7 @@ struct TodayHeaderView: View {
     }
     
     @StateObject var viewModel = ViewModel()
+    @State var isAlertPresented = false
     var body: some View {
         HStack {
             Text(Constant.title).vibeTitle1()
@@ -24,6 +25,8 @@ struct TodayHeaderView: View {
             Button(action: {
                 if !viewModel.isLogin {
                     viewModel.signIn()
+                } else {
+                    isAlertPresented.toggle()
                 }
             }, label: {
                 Group {
@@ -41,7 +44,10 @@ struct TodayHeaderView: View {
                 }
                 .background(Color(.systemGray4))
                 .clipShape(Circle())
-                .foregroundColor(Color(.systemGray2))}).emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.login))
+                .foregroundColor(Color(.systemGray2))}
+            )
+            .alert(isPresented: $isAlertPresented, content: { self.logoutAlert })
+            .emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.login))
         }.padding()
     }
 }
@@ -84,6 +90,19 @@ extension TodayHeaderView {
             }, receiveValue: { _ in
             }).store(in: &subscriptions)
         }
+    }
+}
+
+extension TodayHeaderView {
+    var logoutAlert: Alert {
+        Alert(title: Text("로그아웃"),
+            message: Text("로그아웃 하시겠습니까?"),
+            primaryButton: .default(Text("네"), action: {
+                viewModel.isLogin = false
+                KeyChain.shared.deleteToken()
+            }),
+            secondaryButton: .default(Text("아니오"))
+        )
     }
 }
 
