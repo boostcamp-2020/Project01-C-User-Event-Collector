@@ -1,6 +1,7 @@
 import React, { ReactElement } from 'react';
 import styled from '@styles/themed-components';
 
+import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
 import LargeButton from '@components/Common/Button/LargeButton';
 
 interface ILayout {
@@ -20,7 +21,9 @@ function Layout({ mainTitle, type, children }: ILayout): ReactElement {
         </Title>
         {type && (
           <PlayButtonWrapper>
-            <LargeButton customType="play" />
+            <ClickEventWrapper target="PlayAllBtn">
+              <LargeButton customType="play" />
+            </ClickEventWrapper>
             <LargeButton customType="shuffle" />
           </PlayButtonWrapper>
         )}

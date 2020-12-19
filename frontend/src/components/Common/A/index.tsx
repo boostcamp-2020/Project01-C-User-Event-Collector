@@ -1,8 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import { useRouter } from 'next/router';
-import useEventHandler from '@hooks/useEventHandler';
 import Link from 'next/link';
+import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
 
 interface IAProps {
   next: string;
@@ -11,52 +9,22 @@ interface IAProps {
   children: any;
 }
 
-interface IEventTargetProps {
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}
-
 function A({ next, target, id, children }: IAProps) {
-  const router = useRouter();
   return (
     <>
       {id ? (
-        <Link href={`/${next}/[id]`} as={`/${next}/${id}`}>
-          <Wrapper
-            onClick={useEventHandler(null, {
-              eventTime: new Date(),
-              eventName: 'click_event',
-              parameters: {
-                page: router.pathname,
-                target: `/${`${target}/${id}`}`,
-              },
-            })}
-          >
+        <ClickEventWrapper target={target} id={id}>
+          <Link href={`/${next}/[id]`} as={`/${next}/${id}`}>
             {children}
-          </Wrapper>
-        </Link>
+          </Link>
+        </ClickEventWrapper>
       ) : (
-        <Link href={`/${next}`}>
-          <Wrapper
-            onClick={useEventHandler(null, {
-              eventTime: new Date(),
-              eventName: 'click_event',
-              parameters: {
-                page: router.pathname,
-                target,
-              },
-            })}
-          >
-            {children}
-          </Wrapper>
-        </Link>
+        <ClickEventWrapper target={target}>
+          <Link href={`/${next}`}>{children}</Link>
+        </ClickEventWrapper>
       )}
     </>
   );
 }
-
-const Wrapper = styled.div<IEventTargetProps>`
-  width: 100%;
-  cursor: pointer;
-`;
 
 export default A;

@@ -36,10 +36,6 @@ function Index({ referer, token }) {
   // 쿠키를 로컬 스토리지에 담는 코드
   localStorage.setItem('token', token);
 
-  console.log('useFetch-artists hook 시작!');
-  console.log('data : ', data);
-  console.log('data.data : ', data.data);
-
   const logData = {
     eventTime: new Date(),
     eventName: 'move_event',

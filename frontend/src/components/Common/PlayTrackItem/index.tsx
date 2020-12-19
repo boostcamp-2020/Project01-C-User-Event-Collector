@@ -1,13 +1,39 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import { IoHeartOutline } from 'react-icons/io5';
+import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
 import { RiPlayListLine } from 'react-icons/ri';
 import { BsThreeDots } from 'react-icons/bs';
-// import api from '@api/index';
+import useEventHandler from '@hooks/useEventHandler';
+
+import api from '@api/index';
+import { useAuthState, useAuthDispatch } from '@context/AuthContext';
+import BoxDropdown from '@components/Common/Dropdown/BoxDropdown';
 import A from '@components/Common/A';
 
 function PlayTrackItem({ type, trackData: track }) {
+  const state = useAuthState();
+  const router = useRouter();
+  const dispatch = useAuthDispatch();
+  const { trackList } = state;
   const target = 'PlayTrackItem';
+
+  const addTrackEvent = () => {
+    api.post(`library/tracks`, { trackId: track.id });
+    dispatch({ type: 'ADD_TRACK', trackId: track.id });
+  };
+  const deleteTrackEvent = () => {
+    api.delete(`library/tracks/${track.id}`);
+    dispatch({ type: 'DELETE_TRACK', trackId: track.id });
+  };
+
+  const libraryEventLog = action => {
+    return {
+      eventName: 'music_event',
+      parameters: { type: 'track', action, page: router.asPath },
+    };
+  };
+
   return (
     <TrackWrapper>
       <TrackImgWrapper>
@@ -28,15 +54,40 @@ function PlayTrackItem({ type, trackData: track }) {
       <IconWrapper>
         {type !== 'playbar' && (
           <>
-            <IoHeartOutline className="like button" size={24} />
+            {trackList?.includes(track?.id) ? (
+              <IoMdHeart
+                className="like button"
+                size={24}
+                color="ff1350"
+                onClick={useEventHandler(deleteTrackEvent, libraryEventLog('remove'))}
+              />
+            ) : (
+              <IoMdHeartEmpty
+                className="like button"
+                size={24}
+                onClick={useEventHandler(addTrackEvent, libraryEventLog('like'))}
+              />
+            )}
+
             <RiPlayListLine className="lyric button" size={20} />
             <BsThreeDots className="dropdown button" size={20} />
+            <DropdownWrapper>
+              <BoxDropdown trackData={track} type="track" id={track?.id} />
+            </DropdownWrapper>
           </>
         )}
       </IconWrapper>
     </TrackWrapper>
   );
 }
+
+const DropdownWrapper = styled.div`
+  position: absolute;
+  right: -10px;
+  height: 25px;
+  width: 22px;
+  color: transparent;
+`;
 
 const TrackImgWrapper = styled.a``;
 
@@ -73,6 +124,7 @@ const IconWrapper = styled.div`
   padding-left: 20px;
   display: flex;
   justify-content: space-between;
+  position: relative;
   .icon:hover {
     color: ${props => props.theme.color.white};
   }

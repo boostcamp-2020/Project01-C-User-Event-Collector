@@ -1,11 +1,12 @@
 import React from 'react';
-// import { useRouter } from 'next/router';
 import styled from '@styles/themed-components';
 import CircleImage from '@components/Common/CircleImage';
 import CircleHeartButton from '@components/Common/Button/CircleHeartButton';
 import A from '@components/Common/A';
 import api from '@api/index';
 import useEventHandler from '@hooks/useEventHandler';
+import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
+import { useAuthDispatch } from '@context/AuthContext';
 
 interface IArtistMetaProps {
   artistMetaData: ArtistMeta;
@@ -19,16 +20,18 @@ type ArtistMeta = {
   imgUrl: string;
 };
 
-const deleteArtist = async (e, id) => {
-  await api.delete(`library/artists/${id}`);
-  console.log('아티스트 삭제');
-  e.target.closest('.artist-card').style.opacity = '0';
-  e.target.closest('.artist-card').style.transform = 'translate(0px, -35px)';
-};
-
 const ArtistCard = ({ artistMetaData: artist, type }: IArtistMetaProps) => {
   const target = 'ArtistCard';
-  // const router = useRouter();
+  const dispatch = useAuthDispatch();
+
+  const deleteArtist = async (e, id) => {
+    await api.delete(`library/artists/${id}`);
+    console.log('아티스트 삭제');
+    e.target.closest('.artist-card').style.opacity = '0';
+    e.target.closest('.artist-card').style.transform = 'translate(0px, -35px)';
+    dispatch({ type: 'DELETE_ARTIST', artistId: id });
+  };
+
   return (
     <Container className="artist-card">
       <ImageContainer>
@@ -36,9 +39,11 @@ const ArtistCard = ({ artistMetaData: artist, type }: IArtistMetaProps) => {
           <CircleImage imageSrc={artist.imgUrl} alt="artist-img" />
         </A>
         {type && (
-          <ButtonWrapper onClick={e => useEventHandler(deleteArtist(e, artist.id), null)}>
-            <CircleHeartButton />
-          </ButtonWrapper>
+          <ClickEventWrapper target={`${target}/DeleteBtn`} id={artist.id}>
+            <ButtonWrapper onClick={e => useEventHandler(deleteArtist(e, artist.id), null)}>
+              <CircleHeartButton />
+            </ButtonWrapper>
+          </ClickEventWrapper>
         )}
       </ImageContainer>
       <A next="artist" target={target} id={artist.id}>

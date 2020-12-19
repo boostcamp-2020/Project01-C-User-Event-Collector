@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 
-import AlbumCard from '@components/Common/Card/PlaylistCard';
+import PlaylistCard from '@components/Common/Card/PlaylistCard';
 import { useAuthState } from '@context/AuthContext';
 
 const PlaylistList = ({ playlistList }) => {
@@ -18,7 +18,7 @@ const PlaylistList = ({ playlistList }) => {
         <ListContainer>
           {playlistList
             ? playlistList.map(playlist => (
-                <AlbumCard key={playlist.id} playlistMetaData={playlist} />
+              <PlaylistCard key={playlist.id} playlistMetaData={playlist} />
               ))
             : null}
         </ListContainer>

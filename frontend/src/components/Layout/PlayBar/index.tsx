@@ -23,23 +23,22 @@ function PlayBar() {
   const [isShuffled, setIsShuffled] = useState(false);
   const [isRepeat, setIsRepeat] = useState(false);
   const [playlistState, setPlaylistState] = useState(null);
+
   const state = usePlayState();
   const dispatch = usePlayDispatch();
 
   const authState = useAuthState();
-  // const authDispatch = useAuthDispatch();
 
   const fetchData = () => {
     api.get('/track').then(res => {
       const trackList = res.data.data.slice(0, 12);
       setPlaylistState(trackList);
-      dispatch({ type: 'ADD_TRACK', track: trackList });
+      dispatch({ type: 'ADD_TRACK_LAST', track: trackList });
     });
   };
 
   const musicLogData = action => {
     return {
-      eventTime: new Date(),
       eventName: 'music_event',
       parameters: { action, page: router.asPath },
     };
@@ -75,7 +74,6 @@ function PlayBar() {
   const setRepeatOn = () => setIsRepeat(true);
   const setShuffleOff = () => setIsShuffled(false);
   const setShuffleOn = () => setIsShuffled(true);
-
   const setPlayPause = () => dispatch({ type: 'PLAY_PAUSE' });
 
   const adCloseHandle = () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@styles/themed-components';
 
 const CircleImage = ({ imageSrc, alt }) => {
-  return <Container src={imageSrc} alt={alt}/>;
+  return <Container src={imageSrc} alt={alt} />;
 };
 
 const Container = styled.img`
