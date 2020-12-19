@@ -103,17 +103,17 @@ function PlayBar() {
                   ? '다양한 할인 혜택으로 VIBE를 시작해보세요.'
                   : '로그인 후 6개월간 100% 페이백 혜택을 받아보세요.'}
                 {userInfo?.isLoggedIn ? (
-                  <ClickEventWrapper>
+                  <ClickEventWrapper target="PlayBar/MembershipBtn">
                     <LoginLink>시작하기</LoginLink>
                   </ClickEventWrapper>
                 ) : (
-                  <ClickEventWrapper>
+                  <ClickEventWrapper target="PlayBar/LoginBtn">
                     <LoginLink>로그인</LoginLink>
                   </ClickEventWrapper>
                 )}
               </TextContent>
             </AdContent>
-            <ClickEventWrapper>
+            <ClickEventWrapper target="PlayBar/MembershipCloseBtn">
               <CloseButton>
                 <IoCloseOutline size={26} onClick={adCloseHandle} color="fff" />
               </CloseButton>
