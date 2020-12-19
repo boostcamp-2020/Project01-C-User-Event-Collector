@@ -42,6 +42,7 @@ VIBE 서비스 사용과정에서 발생하는 이벤트를 수집하는 서비�
 ## 🛠 Tech Stack
 #### Web 🕸
 <p align="center"><img width="700" alt="기술 스택" src="https://user-images.githubusercontent.com/60839959/102687079-d470f200-422f-11eb-982d-0ee36795a17a.png"></p>
+
 #### iOS 🍎
 
 
@@ -93,7 +94,7 @@ npm run start
 | [![Avatar](https://avatars2.githubusercontent.com/u/48378720?s=460&v=4)J028_김도균](https://github.com/thesulks) | [![Avatar](https://avatars2.githubusercontent.com/u/41413618?s=460&u=950052ab15ba4d44ccbb311cd1f3f0a722e01605&v=4)J089_박지홍](https://github.com/hongzzi) | [![Avatar](https://avatars3.githubusercontent.com/u/60839959?s=460&u=f8790200dde7fe5e6319764188d7c31382f49fbd&v=4)J139_이상경](https://github.com/sang-gyeong) | [![Avatar](https://avatars1.githubusercontent.com/u/53948757?s=460&u=743a706b4f4f7a047e56f4f4eaec9602c1d23440&v=4)S059_최광현](https://github.com/nrurnru) | [![Avatar](https://avatars1.githubusercontent.com/u/54564170?s=460&u=f6e6840979bf6896f3831da24b21a2741d2a64c8&v=4)S060_최동규](https://github.com/ChoiDongKyu96) |
 | 부캠 졸업!! 👨‍🎓  | 부캠 졸업!! 👩‍🎓| 조금씩 꾸준히🏃‍♀️ |  |  |
 
-👀 저희 팀이 더 궁금하시다면 Wiki [보러가기](https://github.com/boostcamp-2020/Project01-C-User-Event-Collector/wiki)
+👀 저희 팀이 더 궁금하시다면 [wiki 보러가기](https://github.com/boostcamp-2020/Project01-C-User-Event-Collector/wiki)
 
 
 <br>
