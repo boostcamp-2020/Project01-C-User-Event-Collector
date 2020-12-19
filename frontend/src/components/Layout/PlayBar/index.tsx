@@ -14,6 +14,7 @@ import {
 } from 'react-icons/io5';
 import { BsFillVolumeUpFill, BsMusicNoteList } from 'react-icons/bs';
 import useEventHandler from '@hooks/useEventHandler';
+import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
 
 import PlayTrackItem from '@components/Common/PlayTrackItem';
 import { usePlayState, usePlayDispatch } from '@context/PlayContext';
@@ -101,16 +102,22 @@ function PlayBar() {
                 {userInfo?.isLoggedIn
                   ? '다양한 할인 혜택으로 VIBE를 시작해보세요.'
                   : '로그인 후 6개월간 100% 페이백 혜택을 받아보세요.'}
+                {userInfo?.isLoggedIn ? (
+                  <ClickEventWrapper>
+                    <LoginLink>시작하기</LoginLink>
+                  </ClickEventWrapper>
+                ) : (
+                  <ClickEventWrapper>
+                    <LoginLink>로그인</LoginLink>
+                  </ClickEventWrapper>
+                )}
               </TextContent>
-              {userInfo?.isLoggedIn ? (
-                <LoginLink>시작하기</LoginLink>
-              ) : (
-                <LoginLink>로그인</LoginLink>
-              )}
             </AdContent>
-            <CloseButton>
-              <IoCloseOutline size={26} onClick={adCloseHandle} color="fff" />
-            </CloseButton>
+            <ClickEventWrapper>
+              <CloseButton>
+                <IoCloseOutline size={26} onClick={adCloseHandle} color="fff" />
+              </CloseButton>
+            </ClickEventWrapper>
           </Advertisement>
         </AdvertisementWrapper>
       )}
@@ -295,9 +302,9 @@ const Advertisement = styled.div`
 
 const AdContent = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: flex-end;
+  text-align: center;
 
   font-size: 15px;
   margin-right: 28px;

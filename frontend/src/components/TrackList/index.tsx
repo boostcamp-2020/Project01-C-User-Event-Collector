@@ -6,12 +6,8 @@ import { IoCloseOutline } from 'react-icons/io5';
 
 import TrackItem from '@components/Common/TrackItem';
 import LargeButton from '@components/Common/Button/LargeButton';
-import { useAuthState } from '@context/AuthContext';
 
 const TrackList = ({ type = false, trackList }) => {
-  const state = useAuthState();
-  const { userInfo } = state;
-
   const initialSelector: number[] = [];
   const [visible, setVisible] = useState(false);
   const [selected, setSelected] = useState(initialSelector);
@@ -44,12 +40,7 @@ const TrackList = ({ type = false, trackList }) => {
 
   return (
     <>
-      {!userInfo.isLoggedIn && (
-        <div style={{ textAlign: 'center', fontSize: '13px', position: 'relative', top: '95px' }}>
-          로그인이 필요한 서비스입니다.
-        </div>
-      )}
-      {userInfo.isLoggedIn && trackList ? (
+      {trackList ? (
         <TrackListSection>
           {trackList.map((track, index) =>
             type ? (

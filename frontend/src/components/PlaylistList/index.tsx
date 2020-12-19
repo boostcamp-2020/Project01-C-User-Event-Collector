@@ -1,29 +1,16 @@
 import React from 'react';
 import styled from '@styles/themed-components';
-
 import PlaylistCard from '@components/Common/Card/PlaylistCard';
-import { useAuthState } from '@context/AuthContext';
 
 const PlaylistList = ({ playlistList }) => {
-  const state = useAuthState();
-  const { userInfo } = state;
   return (
-    <>
-      {!userInfo.isLoggedIn && (
-        <div style={{ textAlign: 'center', fontSize: '13px', position: 'relative', top: '100px' }}>
-          로그인이 필요한 서비스입니다.
-        </div>
-      )}
-      {userInfo.isLoggedIn && (
-        <ListContainer>
-          {playlistList
-            ? playlistList.map(playlist => (
-              <PlaylistCard key={playlist.id} playlistMetaData={playlist} />
-              ))
-            : null}
-        </ListContainer>
-      )}
-    </>
+    <ListContainer>
+      {playlistList
+        ? playlistList.map(playlist => (
+          <PlaylistCard key={playlist.id} playlistMetaData={playlist} />
+          ))
+        : null}
+    </ListContainer>
   );
 };
 
