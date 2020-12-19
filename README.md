@@ -44,6 +44,7 @@ VIBE 서비스 사용과정에서 발생하는 이벤트를 수집하는 서비�
 <p align="center"><img width="700" alt="기술 스택" src="https://user-images.githubusercontent.com/60839959/102687079-d470f200-422f-11eb-982d-0ee36795a17a.png"></p>
 
 #### iOS 🍎
+<p align="center"><img width="350" alt="기술 스택" src="https://user-images.githubusercontent.com/54564170/102690738-caa8b800-424a-11eb-81f5-96cd0ca4d309.png"></p>
 
 
 <br>
