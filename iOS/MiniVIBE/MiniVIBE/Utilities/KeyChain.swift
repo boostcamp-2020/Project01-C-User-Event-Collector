@@ -16,7 +16,7 @@ class KeyChain {
     private let service = Bundle.main.bundleIdentifier
     
     @discardableResult
-    func createTokens(_ token: String) -> Bool {
+    func createToken(_ token: String) -> Bool {
         guard let data = token.data(using: .utf8),
               let service = self.service else { return false }
         let query: [CFString: Any] = [kSecClass: kSecClassGenericPassword,
@@ -28,7 +28,7 @@ class KeyChain {
     }
     
     @discardableResult
-    func updateTokens(_ token: String) -> Bool {
+    func updateToken(_ token: String) -> Bool {
         guard let service = self.service else { return false }
         let query: [CFString: Any] = [kSecClass: kSecClassGenericPassword,
                                         kSecAttrService: service,
@@ -44,7 +44,7 @@ class KeyChain {
         return SecItemUpdate(query as CFDictionary, attributes as CFDictionary) == errSecSuccess
     }
     
-    func readTokens() -> String? {
+    func readToken() -> String? {
         guard let service = self.service else { return nil }
         let query: [CFString: Any] = [kSecClass: kSecClassGenericPassword,
                                       kSecAttrService: service,
@@ -59,5 +59,18 @@ class KeyChain {
               let data = existingItem[kSecAttrGeneric as String] as? Data else { return nil }
         let tokens = String(decoding: data, as: UTF8.self)
         return tokens
+    }
+    
+    @discardableResult
+    func deleteToken() -> Bool {
+        guard let service = self.service else { return false }
+        let query: [CFString: Any] = [kSecClass: kSecClassGenericPassword,
+                                      kSecAttrService: service,
+                                      kSecAttrAccount: account,
+                                      kSecMatchLimit: kSecMatchLimitOne,
+                                      kSecReturnAttributes: true,
+                                      kSecReturnData: true]
+        
+        return SecItemDelete(query as CFDictionary) == errSecSuccess
     }
 }

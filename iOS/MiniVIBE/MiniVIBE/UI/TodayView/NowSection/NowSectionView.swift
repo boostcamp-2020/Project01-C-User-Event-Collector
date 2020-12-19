@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NowSectionView: View {
-    private var nowReplayItems: [NowReplayItem] = MockItemFactory.nowReplayItems
+    private let nowReplayItems: [NowReplayItem] = MockItemFactory.nowReplayItems
     var body: some View {
         homeNowSectionScrollView
     }

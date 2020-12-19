@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import BCEventEmitter
 
 struct MusicPlayerView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @Binding var isPresented: Bool
-
+    @State var isLiked: Bool = false
     var body: some View {
         ZStack {
             Color.vibeBackground.ignoresSafeArea(edges: .bottom)
@@ -34,9 +35,7 @@ struct MusicPlayerView: View {
                                 .foregroundColor(.gray)
                         }
                     }.padding(.defaultPadding)
-                    //FIXME: 모달 높이 고정값 수정 필요
-                    .frame(height: UIScreen.main.bounds.height - 65)
-                    Divider().accentColor(.gray)
+                    .frame(height: UIScreen.main.bounds.height * 0.9, alignment: .top)
                     MusicPlayerlistView(isPresented: $isPresented)
                 }
             }.frame(idealWidth: .infinity)
@@ -91,13 +90,13 @@ private extension MusicPlayerView {
                 Image(systemName: "repeat")
                     .font(.system(size: 20))
                     .foregroundColor(.gray)
-            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.repeat))
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.repeat))
             Spacer()
             Button(action: {}, label: {
                 Image(systemName: "paperplane")
                     .font(.system(size: 25))
                     .foregroundColor(.gray)
-            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.share))
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.share))
             Spacer()
             Button(action: {
                 musicPlayer.isPlaying.toggle()
@@ -105,20 +104,22 @@ private extension MusicPlayerView {
                 Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill") .font(.system(size: 40))
                     .foregroundColor(.vibeTitle)
                     .frame(width: 40, height: 40)
-            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause(state: musicPlayer.isPlaying ? "pause" : "play")))
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.playPause(state: musicPlayer.isPlaying ? "pause" : "play")))
             Spacer()
-            Button(action: {}, label: {
+            Button(action: {
+                self.isLiked.toggle()
+            }, label: {
                 Image(systemName: "heart.fill")
                     .font(.system(size: 25))
-                    .foregroundColor(.gray)
-            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.like))
+                    .foregroundColor(isLiked ? .vibePink: .gray)
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.like))
             Spacer()
             Button(action: {}, label: {
                 Image(systemName: "shuffle")
                     .font(.system(size: 20))
                     .foregroundColor(.gray)
                     .padding(.vertical)
-            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.shuffle))
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.shuffle))
         }
     }
 }
@@ -130,7 +131,7 @@ private struct MusicPlayerlistView: View {
     var body: some View {
         LazyVGrid(columns: [.init(.flexible(
         ))],
-                  pinnedViews: [.sectionHeaders]) {
+        pinnedViews: [.sectionHeaders]) {
             Section(header:
                         HStack {
                             Image(systemName: "magnifyingglass")
@@ -155,7 +156,7 @@ private struct MusicPlayerlistView: View {
                         }
                 }.onMove(perform: musicPlayer.move)
             }
-                  }.padding(.horizontal,.defaultPadding)
+        }.padding(.horizontal, .defaultPadding)
     }
 }
 
@@ -178,26 +179,15 @@ private struct PlayListItemView: View {
 
 struct MusicProgressView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
-    @State var currentProgress: Float = 0
-    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    @State var currentProgress: CGFloat = 0
+    
     var body: some View {
         VStack {
             ProgressView(value: currentProgress, total: 50)
-                .onReceive(timer) { _ in
-                    if musicPlayer.isPlaying {
-                        if currentProgress < 50 {
-                            currentProgress += 1
-                            
-                        } else {
-                            currentProgress = 0
-                            musicPlayer.isPlaying = false
-                            withAnimation {
-                            musicPlayer.showMembership = true
-                            }
-                        }
-                    }
+                .onReceive(musicPlayer.timer) { _ in
+                    self.currentProgress = CGFloat(musicPlayer.currentProgress)
                 }
-        }  .progressViewStyle(VibeProgressViewStyle())
+        }.progressViewStyle(VibeProgressViewStyle())
     }
 }
 

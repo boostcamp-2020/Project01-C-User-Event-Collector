@@ -15,6 +15,7 @@ enum NetworkError: Error {
     case httpCode(HTTPCode)
     case unexpectedResponse
     case networkError(reason: String)
+    case encodingError(String)
 }
 
 extension NetworkError: LocalizedError {
@@ -28,6 +29,8 @@ extension NetworkError: LocalizedError {
             return "Unexpected response from the server"
         case let .networkError(reason):
             return reason
+        case let .encodingError(reason):
+            return "encodingError: \(reason)"
         }
     }
 }

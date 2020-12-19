@@ -29,23 +29,31 @@ private extension PlaylistSectionView {
         VStack {
             NavigationLink(destination: PlaylistMoreView(viewModel: viewModel)) {
                 MoreHeaderView(title: viewModel.title)
-            }.emitEventIfTapped(event: TapEvent(component: name, target: Target.more))
+            }.emitEventIfTapped(event: TapEvent(component: name, target: TapEvent.Target.more))
             SectionScrollView {
-                ForEach(viewModel.playlists) { playlist in
-                    NavigationLink(destination: PlaylistDetailView(viewModel: PlaylistDetailView.ViewModel(container: viewModel.container, playlist: playlist))) {
-                        ImageItemView(image: Image(playlist.imageURLString), type: viewModel.type) {
-                            Text(playlist.title)
-                                .vibeTitle3()
-                            Text(playlist.subtitle)
-                                .vibeMainText()
-                            Text(playlist.description ?? "")
-                                .vibeMainText()
-                                .lineLimit(2)
-                        }
-                    }.emitEventIfTapped(event: TapEvent(component: name, target: Target.playlist))
-                }
+                playlistsView
             }
         }
     }
 }
 
+private extension PlaylistSectionView {
+    var playlistsView: some View {
+        ForEach(viewModel.playlists) { playlist in
+            NavigationLink(destination: PlaylistDetailView(viewModel: PlaylistDetailView.ViewModel(container: viewModel.container, playlist: playlist))) {
+                ImageItemView(image: Image(playlist.imageURLString), width: viewModel.width) {
+                    Text(playlist.title)
+                        .vibeTitle3()
+                        .lineLimit(1)
+                    Text(playlist.subtitle)
+                        .vibeMainText()
+                        .lineLimit(1)
+                    Text(playlist.description ?? "\n")
+                        .vibeMainText()
+                        .lineLimit(2)
+                        .frame(height: 40)
+                }
+            }.emitEventIfTapped(event: TapEvent(component: name, target: TapEvent.Target.playlist))
+        }
+    }
+}

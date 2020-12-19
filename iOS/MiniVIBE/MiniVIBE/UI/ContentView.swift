@@ -7,106 +7,83 @@
 
 import SwiftUI
 import CoreData
+import BCEventEmitter
 
 struct ContentView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @State var colorMode: Bool = true
     @StateObject var viewModel: ViewModel
-    @State var playerFrame = CGRect.zero
-    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         Group {
-        TabView(selection: $viewModel.selectedTab) {
-            TodayView(viewModel: TodayView.ViewModel(container: viewModel.container))
-                
+            GeometryReader { proxy in
+                setBaseWidthIfPassed(geometryproxy: proxy)
+            TabView(selection: $viewModel.selectedTab) {
+                TabSyncView(selection: $viewModel.selectedTab, tag: TabType.today) {
+                    TodayView(viewModel: TodayView.ViewModel(container: viewModel.container))
+                }
                 .tabItem {
                     Image(systemName: "house")
                 }.tag(TabType.today)
-            ChartView(viewModel: ChartView.ViewModel(container: viewModel.container))
+                TabSyncView(selection: $viewModel.selectedTab, tag: TabType.chart) {
+                    ChartView(viewModel: ChartView.ViewModel(container: viewModel.container))
+                }
                 .tabItem {
                     Image(systemName: "chart.bar.doc.horizontal")
                 }.tag(TabType.chart)
-            VideoView(viewModel: VideoView.ViewModel(container: viewModel.container))
-                
+                TabSyncView(selection: $viewModel.selectedTab, tag: TabType.video) {
+                    VideoView(viewModel: VideoView.ViewModel(container: viewModel.container))
+                }
                 .tabItem {
                     Image(systemName: "play.rectangle.fill")
                 }.tag(TabType.video)
-            SearchView()
+                TabSyncView(selection: $viewModel.selectedTab, tag: TabType.search) {
+                    SearchView()
+                }
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                 }.tag(TabType.search)
-            LibraryView(viewModel: LibraryView.ViewModel(container: viewModel.container), colorMode: $colorMode)
+                TabSyncView(selection: $viewModel.selectedTab, tag: TabType.libarary) {
+                    LibraryView(viewModel: LibraryView.ViewModel(container: viewModel.container), colorMode: $colorMode)
+                }
                 .tabItem {
                     Image(systemName: "person.fill")
                 }.tag(TabType.libarary)
-        }.accentColor(.vibePink)
-        .onPreferenceChange(Size.self, perform: { value in
-            playerFrame = value.last ?? .zero
-        })
-        .overlay(
-            ZStack {
-                NowPlayingBarView(colorMode: $colorMode).position(x: playerFrame.midX, y: playerFrame.height - (NowPlayingBarView.height / 2)
-                ).frame(width: .musicPlayingBarWidth)
-                if musicPlayer.showMembership {
-                    membershipView .onTapGesture {
-                        emitEvent(event: TapEvent(component: "membershipView", target: .custom("멤버십 구매")))
-                        withAnimation { musicPlayer.showMembership = false }
-                    }
-                }
             }
-        )
+            }.accentColor(.vibePink)
         }.preferredColorScheme(colorMode == true ? .dark : .light)
+        .navigationViewStyle(StackNavigationViewStyle())
     }
-}
-
-private extension ContentView {
-    var membershipView: some View {
-        HStack(alignment: .top) {
-            VStack(alignment: .leading, spacing: .defaultSpacing) {
-                HStack {
-                    Image(systemName: "info.circle.fill")
-                    Text("1분 미리듣기")
-                }.font(.system(size: 13, weight: .bold))
-                Text("다양한 할인 혜택으로 멤버십 구독 후 전체 곡을 재생해 보세요.").font(.system(size: 11, weight: .semibold))
-            }
-            Spacer()
-            Button(action: { withAnimation { musicPlayer.showMembership = false
-                emitEvent(event: TapEvent(component: "membershipView", target: .custom("close")))
-            } }, label: {Image(systemName: "xmark")})
-        }
-        .foregroundColor(.white)
-        .padding(10)
-        .frame(width: .largeItemImageWidth, height: 60)
-        .background(LinearGradient(gradient: Gradient(colors: [.red, .vibePink, .purple]), startPoint: .leading, endPoint: .trailing))
-        .cornerRadius(5)
-        .position(x: playerFrame.midX, y: playerFrame.height - (NowPlayingBarView.height + 35))
-    }
-}
-
-enum TabType: CustomStringConvertible {
-    case today
-    case chart
-    case video
-    case search
-    case libarary
     
-    var description: String {
-        switch self {
-        case .today:
-            return "Today"
-        case .chart:
-            return "Chart"
-        case .video:
-            return "Video"
-        case .search:
-            return "Search"
-        case .libarary:
-            return "Library"
-        }
-    }
+    func setBaseWidthIfPassed(geometryproxy: GeometryProxy) -> EmptyView {
+        CGFloat.setBaseWidth(value: geometryproxy.size.width)
+           return EmptyView()
+       }
 }
 
 extension ContentView {
+    enum TabType: CustomStringConvertible {
+        case today
+        case chart
+        case video
+        case search
+        case libarary
+        
+        var description: String {
+            switch self {
+            case .today:
+                return "Today"
+            case .chart:
+                return "Chart"
+            case .video:
+                return "Video"
+            case .search:
+                return "Search"
+            case .libarary:
+                return "Library"
+            }
+        }
+    }
+    
     final class ViewModel: ObservableObject {
         let localRepository: LocalRepository
         var container: DIContainer
@@ -123,10 +100,18 @@ extension ContentView {
     }
 }
 
-struct Size: PreferenceKey {
-    typealias Value = [CGRect]
-    static var defaultValue: [CGRect] = []
-    static func reduce(value: inout [CGRect], nextValue: () -> [CGRect]) {
-        value.append(contentsOf: nextValue())
+extension ContentView {
+    struct TabSyncView<Content: View>: View {
+        @Binding var selection: ContentView.TabType
+        var tag: TabType
+        var content: () -> Content
+        @ViewBuilder
+        var body: some View {
+            if selection == tag {
+                content()
+            } else {
+                Spacer()
+            }
+        }
     }
 }

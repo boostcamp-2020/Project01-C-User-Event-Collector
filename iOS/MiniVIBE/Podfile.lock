@@ -1,16 +1,20 @@
 PODS:
-  - SwiftLint (0.41.0)
+  - BCEventEmitter (0.3.0)
+  - SwiftLint (0.42.0)
 
 DEPENDENCIES:
+  - BCEventEmitter
   - SwiftLint
 
 SPEC REPOS:
   trunk:
+    - BCEventEmitter
     - SwiftLint
 
 SPEC CHECKSUMS:
-  SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
+  BCEventEmitter: 51b69c41acbfaf1beb3c5a71b1dbefac92e54132
+  SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
 
-PODFILE CHECKSUM: 44717481b65a53b0ae57375103e4cde57ec7860e
+PODFILE CHECKSUM: 36a43950f4415ed08efa2224f76413128d146295
 
 COCOAPODS: 1.10.0

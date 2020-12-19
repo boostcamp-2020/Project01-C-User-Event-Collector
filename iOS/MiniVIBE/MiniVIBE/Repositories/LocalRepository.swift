@@ -6,35 +6,34 @@
 //
 
 import SwiftUI
+import BCEventEmitter
 
 protocol LocalRepository {
-    func fetchEvent() -> [Event]
-    func fetchEvents() -> [Event]
-    func deleteAllEvent()
-    func saveEvent(event: Event)
+    func fetchEvents() -> [CoreDataEvent]
+    
+    @discardableResult
+    func saveEvent(event: Event) -> Bool
+    
+    @discardableResult
+    func deleteAllEvent() -> Bool
 }
 
 struct RealLocalRepository: LocalRepository {
-    let persistenceStore = PersistenceController()
-
-    func fetchEvent() -> [Event] {
-        let cdEvents = persistenceStore.fetch(request: CDEvent.fetchRequest())
-        return cdEvents.map { Event(cdEvent: $0) }
-    }
-    
-    func deleteAllEvent() {
-        let result = persistenceStore.deleteAll(request: CDEvent.fetchRequest())
-        print(result ? "로컬 데이터 삭제 성공" : "로컬 데이터 삭제 실패")
-    }
+    let persistenceController: PersistenceController
         
-    func fetchEvents() -> [Event] {
-        let events = persistenceStore.fetch(request: CDEvent.fetchRequest())
-        return events.map { event -> Event in
-            Event(cdEvent: event)
+    func fetchEvents() -> [CoreDataEvent] {
+        let events = persistenceController.fetch(request: CDEvent.fetchRequest())
+        return events.map { event -> CoreDataEvent in
+            CoreDataEvent(cdEvent: event)
         }
     }
-
-    func saveEvent(event: Event) {
-        persistenceStore.saveEvent(event: event)
+    
+    func deleteAllEvent() -> Bool {
+        return persistenceController.delete(request: CDEvent.fetchRequest())
+    }
+    
+    func saveEvent(event: Event) -> Bool {
+        let coreDataEvent = CoreDataEvent(name: event.name, parameter: event.parameters ?? [:])
+        return persistenceController.saveEvent(event: coreDataEvent)
     }
 }

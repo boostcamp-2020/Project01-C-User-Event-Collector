@@ -7,19 +7,17 @@
 
 import Foundation
 import Combine
+import BCEventEmitter
 
 protocol EventService {
-    var isServerReachable: Bool { get }
     var serverRepository: ServerRepository { get }
     var localRepository: LocalRepository { get }
     var reachability: Reachability { get }
     func sendAllEvents()
-    
     func sendOneEvent(event: Event)
 }
 
 final class RealEventService: EventService, ObservableObject {
-    var isServerReachable: Bool = false
     let serverRepository: ServerRepository
     let localRepository: LocalRepository
     @Published var reachability = Reachability()
@@ -39,30 +37,28 @@ final class RealEventService: EventService, ObservableObject {
         }.store(in: &subscriptions)
     }
     
-    func sendOneEvent(event: Event) { // 이벤트 전송 시점
+    func sendOneEvent(event: Event) {
         serverRepository.send(event: event)
-            .sink { result in
+            .sink {[weak self] result in
                 switch result {
                 case let .failure(error):
-                    print(error.localizedDescription)
-                    self.isServerReachable = false
-                    self.localRepository.saveEvent(event: event)
+                    self?.localRepository.saveEvent(event: ErrorEvent(from: "EventService sendOneEvent", reason: error.localizedDescription))
+                    self?.localRepository.saveEvent(event: event)
                 case .finished:
-                    self.localRepository.deleteAllEvent()
+                    break
                 }
             } receiveValue: { _ in
         }.store(in: &subscriptions)
     }
 
-    func sendAllEvents() { // 이벤트 전송
+    func sendAllEvents() {
         serverRepository.sendAll(events: localRepository.fetchEvents())
-            .sink { result in
+            .sink {[weak self] result in
                 switch result {
                 case let .failure(error):
-                    print(error.localizedDescription)
-                    self.isServerReachable = false
+                    self?.localRepository.saveEvent(event: ErrorEvent(from: "EventService sendAllEvents", reason: error.localizedDescription))
                 case .finished:
-                    self.localRepository.deleteAllEvent()
+                    self?.localRepository.deleteAllEvent()
                 }
             } receiveValue: { _ in
         }.store(in: &subscriptions)

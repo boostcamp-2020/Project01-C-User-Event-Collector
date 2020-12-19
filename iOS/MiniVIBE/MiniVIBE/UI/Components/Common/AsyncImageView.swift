@@ -17,10 +17,15 @@ struct AsyncImageView: View {
     var failure: Image
     var body: some View {
         ZStack {
-            selectImage()
-                .resizable()
+            if loader.state == .success {
+                selectImage()
+                    .resizable()
+            }
             if loader.state == .loading {
                 ProgressView()
+            }
+            if loader.state == .failure {
+                selectImage()
             }
         }
     }
@@ -66,7 +71,7 @@ private extension AsyncImageView {
                 .receive(on: DispatchQueue.main)
                 .sink { [weak self] image in
                     guard let image = image else {
-                            self?.state = .failure
+                        self?.state = .failure
                         self?.objectWillChange.send()
                         return
                     }

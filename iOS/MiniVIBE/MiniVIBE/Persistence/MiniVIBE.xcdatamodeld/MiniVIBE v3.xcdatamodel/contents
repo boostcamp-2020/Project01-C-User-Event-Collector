@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20B50" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDEvent" representedClassName="CDEvent" syncable="YES" codeGenerationType="class">
+        <attribute name="dateString" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="parameter" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CDParameter" inverseName="event" inverseEntity="CDParameter"/>
+    </entity>
+    <entity name="CDParameter" representedClassName="CDParameter" syncable="YES" codeGenerationType="class">
+        <attribute name="key" optional="YES" attributeType="String"/>
+        <attribute name="value" optional="YES" attributeType="String"/>
+        <relationship name="event" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDEvent" inverseName="parameter" inverseEntity="CDEvent"/>
+    </entity>
+    <elements>
+        <element name="CDEvent" positionX="-63" positionY="-18" width="128" height="74"/>
+        <element name="CDParameter" positionX="107.4414672851562" positionY="206.9742431640625" width="128" height="74"/>
+    </elements>
+</model>

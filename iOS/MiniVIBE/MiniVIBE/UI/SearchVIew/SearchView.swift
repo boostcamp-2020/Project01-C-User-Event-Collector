@@ -6,41 +6,40 @@
 //
 
 import SwiftUI
+import BCEventEmitter
 
 struct SearchView: View {
     private enum Constant {
         static let title: String = "검색"
     }
     
+    @EnvironmentObject var musicPlayer: MusicPlayer
     @State var text: String = ""
     @State private var isEditing = false
-    
     var body: some View {
-        GeometryReader { proxy in
-            NavigationView {
-                ZStack {
-                    Color.vibeBackground.ignoresSafeArea(edges: .top)
-                    ScrollView(.vertical, showsIndicators: false) {
-                        chartHeaderView
-                        LazyVGrid(
-                            columns: [.init(.fixed(UIScreen.main.bounds.width))],
-                            pinnedViews: [.sectionHeaders]
-                        ) {
-                            Section(header: searchView) {
-                                if isEditing {
-                                } else {
-                                    genreSection
-                                }
+        ZStack {
+            ZStack {
+                Color.vibeBackground.ignoresSafeArea(edges: .top)
+                ScrollView(.vertical, showsIndicators: false) {
+                    chartHeaderView
+                    LazyVGrid(
+                        columns: [.init(.fixed(UIScreen.main.bounds.width))],
+                        pinnedViews: [.sectionHeaders]
+                    ) {
+                        Section(header: searchView) {
+                            if isEditing {
+                            } else {
+                                genreSection
                             }
-                        }.padding(.bottom, NowPlayingBarView.height)
-                    }.padding(.top)
-                }.navigationBarHidden(true)
+                        }
+                    }.padding(.bottom, NowPlayingBarView.height)
+                }.padding(.top)
+                .navigationBarHidden(true)
             }
-            .onAppear {
-                emitEvent(event: MoveEvent(next: TabType.search.description))
-            }.preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
+            NowPlayingBarView(musicPlayer: musicPlayer)
+        }.onAppear {
+            emitEvent(event: MoveEvent(next: ContentView.TabType.search.description))
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

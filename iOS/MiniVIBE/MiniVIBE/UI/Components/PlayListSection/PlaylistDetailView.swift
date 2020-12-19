@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BCEventEmitter
 
 struct PlaylistDetailView: View {
     @StateObject var viewModel: Self.ViewModel
@@ -41,7 +42,6 @@ private extension PlaylistDetailView {
             HStack {
                 Image(viewModel.playlist.imageURLString)
                     .resizable()
-                    // FIXME: 고정값
                     .frame(width: 100, height: 100, alignment: .center)
                 VStack(alignment: .leading, spacing: .defaultSpacing) {
                     Text(viewModel.playlist.title).vibeTitle3()
@@ -69,6 +69,10 @@ private extension PlaylistDetailView {
             Section(header:
                         PlayShuffleHeaderButton(playHandler: {}, shuffleHandler: {})) {
                 ForEach(mock) { song in
+                    Button(action: {
+                            musicPlayer.playinglist.append(song)
+                            musicPlayer.play(index: musicPlayer.playinglist.count - 1)
+                    }, label: {
                     HStack(spacing: .defaultSpacing) {
                         Image(systemName: "circle").foregroundColor(.gray)
                         AsyncImageView(url: song.imageURLString)
@@ -79,10 +83,8 @@ private extension PlaylistDetailView {
                         }
                         Spacer()
                         Image(systemName: "line.horizontal.3").foregroundColor(.gray)
-                    }.onTapGesture {
-                        musicPlayer.playinglist.append(song)
-                        musicPlayer.play(index: musicPlayer.playinglist.count - 1)
                     }
+                })
                 }
             }
         }.padding(.bottom, NowPlayingBarView.height)

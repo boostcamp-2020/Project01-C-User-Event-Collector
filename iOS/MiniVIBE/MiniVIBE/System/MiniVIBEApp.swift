@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BCEventEmitter
 
 @main
 struct MiniVIBEApp: App {
@@ -13,22 +14,37 @@ struct MiniVIBEApp: App {
     let musicPlayer = MusicPlayer()
     
     init() {
-        UITabBar.appearance().barTintColor = .black
-        // FIXME: 서버 완성되면 수정
-        let fakeServerRepository = FakeServerRepository(network: Network())
-        let localRepository = RealLocalRepository()
-        //        let serverRepository = RealServerRepository(network: Network())
-        let eventService = RealEventService(serverRepository: fakeServerRepository, localRepository: localRepository)
+        let serverRepository = RealServerRepository(network: Network())
+        let persistenceController = RealPersistenceController()
+        let localRepository = RealLocalRepository(persistenceController: persistenceController)
+        let eventService = RealEventService(serverRepository: serverRepository, localRepository: localRepository)
         EventSendManager.shared.setEventHandler(eventHandler: eventService.sendOneEvent)
-        container = DIContainer(serverRepository: fakeServerRepository,
+        container = DIContainer(serverRepository: serverRepository,
                                 localRepository: localRepository,
                                 eventService: eventService)
     }
     
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: ContentView.ViewModel(container: container)).environmentObject(musicPlayer)
+            ContentView(viewModel: ContentView.ViewModel(container: container)).environmentObject(musicPlayer).onAppear {
+                fakePlayMusic()
+            }
         }
     }
     
+    func fakePlayMusic() {
+        musicPlayer.subscription  = musicPlayer.timer.sink { _ in
+            if musicPlayer.isPlaying {
+                if musicPlayer.currentProgress < 50 {
+                    musicPlayer.currentProgress += 1
+                } else {
+                    musicPlayer.currentProgress = 0
+                    musicPlayer.isPlaying = false
+                    withAnimation {
+                        musicPlayer.showMembership = true
+                    }
+                }
+            }
+        }
+    }
 }

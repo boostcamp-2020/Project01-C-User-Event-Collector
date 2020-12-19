@@ -10,7 +10,7 @@ import SwiftUI
 struct NewsItemView: View {
     var item: Magazine
     var body: some View {
-        ImageItemView(image: Image(item.imageURLString), type: .one, ratio: 0.5) {}
+        ImageItemView(image: Image(item.imageURLString), width: .largeItemImageWidth, ratio: 0.5) {}
             .overlay(
                 VStack {
                     Spacer()
@@ -21,6 +21,7 @@ struct NewsItemView: View {
                                     .font(.system(size: 15))
                                     .foregroundColor(.vibeBackground)
                                     .lineLimit(2)
+                                    .frame(height: 45)
                                 Spacer()
                                 HStack {
                                     Text("관련 뉴스 보기 ❯").vibeMainText()

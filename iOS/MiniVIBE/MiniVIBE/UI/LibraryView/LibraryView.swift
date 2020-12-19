@@ -7,8 +7,10 @@
 
 import SwiftUI
 import Combine
+import BCEventEmitter
 
 struct LibraryView: View {
+    @EnvironmentObject var musicPlayer: MusicPlayer
     @StateObject var viewModel: ViewModel
     @Binding var colorMode: Bool
     private enum Constant {
@@ -16,7 +18,7 @@ struct LibraryView: View {
     }
     
     var body: some View {
-        GeometryReader { proxy in
+        ZStack {
             NavigationView {
                 ZStack {
                     Color.vibeBackground.ignoresSafeArea(edges: .top)
@@ -26,12 +28,11 @@ struct LibraryView: View {
                         lowerTab.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
                     }.padding(.bottom, NowPlayingBarView.height)
                 }.navigationBarHidden(true)
-            }    .onAppear {
-                emitEvent(event: MoveEvent(next: TabType.libarary.description))
-                
-            }.preference(key: Size.self, value: [proxy.frame(in: CoordinateSpace.global)])
+            }
+            NowPlayingBarView(musicPlayer: musicPlayer)
+        }.onAppear {
+            emitEvent(event: MoveEvent(next: ContentView.TabType.libarary.description))
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
@@ -41,7 +42,7 @@ private extension LibraryView {
             LibrarySongView().tag(0)
             LibraryArtistView(viewModel: LibraryArtistView.ViewModel(container: viewModel.container )).tag(1)
             LibraryAlbumView(viewModel: LibraryAlbumView.ViewModel(container: viewModel.container)).tag(2)
-            LibraryPlaylistView().tag(3)
+            LibraryPlaylistView(viewModel: PlaylistSectionView.ViewModel(container: viewModel.container, id: 123, title: "보관함", width: .normalItemImageWidth) ).tag(3)
         }
         .animation(.easeInOut)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -123,66 +124,10 @@ extension LibraryView {
             Text(Constant.title).vibeTitle1()
             Spacer()
             Button(action: {
-                    colorMode.toggle()
-                }, label: {
+                colorMode.toggle()
+            }, label: {
                 Image(systemName: "gear").vibeTitle2()
             })
         }.padding()
-    }
-}
-
-struct LibrarySongView: View {
-    var body: some View {
-        ScrollView {
-            LazyVGrid(
-                columns: [.init(.flexible())],
-                pinnedViews: [.sectionHeaders]
-            ) {
-                Section(header: PlayShuffleHeaderButton(playHandler: {}, shuffleHandler: {})) {
-                    ForEach(MockItemFactory.imageURLSongs) { song in
-                        HStack {
-                            AsyncImageView(url: song.imageURLString)
-                                .frame(width: 40, height: 40, alignment: .center)
-                            VStack(alignment: .leading, spacing: .defaultSpacing) {
-                                Text(song.title).vibeTitle3()
-                                Text(song.artist).vibeMainText()
-                            }
-                            Spacer()
-                            Button(action: {
-                                
-                            }, label: {
-                                Image(systemName: "heart.fill")
-                            })
-                        }.padding(.horizontal, .defaultPadding)
-                    }
-                }
-            }
-            .padding(.horizontal, .defaultPadding)
-        }.animation(.none)
-    }
-}
-
-struct LibraryPlaylistView: View {
-    var body: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(MockItemFactory.playlists) { playlist in
-                    // FIXME
-                    //                    NavigationLink(destination: PlaylistDetailView(playlist: playlist)) {
-                    HStack {
-                        Image(playlist.imageURLString)
-                            .resizable()
-                            .frame(width: 100, height: 100, alignment: .center)
-                        VStack(alignment: .leading, spacing: .defaultSpacing) {
-                            Text(playlist.title).vibeTitle3()
-                            playlist.description.map({Text($0).vibeMainText().lineLimit(1)})
-                            Text(playlist.subtitle).vibeMainText()
-                        }
-                        Spacer()
-                    }
-                }
-                //                }
-            }.padding(.horizontal, .defaultPadding)
-        }
     }
 }

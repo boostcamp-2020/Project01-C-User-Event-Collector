@@ -6,64 +6,106 @@
 //
 
 import SwiftUI
+import BCEventEmitter
 
 struct NowPlayingBarView: View {
-    @EnvironmentObject var musicPlayer: MusicPlayer
     @State private var isPresent = false
-    @Binding var colorMode: Bool
+    @ObservedObject var musicPlayer: MusicPlayer
+    @Environment(\.colorScheme) var colorScheme
     static let height: CGFloat = 75
     var body: some View {
         VStack {
-            MusicProgressView()
+            Spacer()
             HStack {
-                AsyncImageView(url: musicPlayer.nowPlayingSong.imageURLString)
-                    .frame(width: 40, height: 40)
-                VStack(alignment: .leading) {
-                    Text(musicPlayer.nowPlayingSong.title)
-                        .vibeTitle3()
-                        .lineLimit(1)
-                    Text(musicPlayer.nowPlayingSong.artist)
-                        .vibeMainText()
-                        .lineLimit(1)
-                }.padding(.leading)
-                Spacer()
-                Button(action: {
-                    musicPlayer.isPlaying.toggle()
-                }, label: {
-                    Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill")
-                        .vibeTitle2()
-                        .frame(width: 30, height: 30)
-                        .buttonStyle(PlainButtonStyle())
-                        .padding(.horizontal)
-                }).emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.playPause(state: musicPlayer.isPlaying ? "pause" : "play")))
-                Button(action: {
-                    _ = musicPlayer.nextSong()
-                }, label: {
-                    Image(systemName: "forward.fill").vibeTitle2()
-                        .frame(width: 30, height: 30)
-                }).padding(.trailing)
-            }.onTapGesture {
-                self.isPresent = true
-            }.sheet(isPresented: $isPresent, content: {
-                MusicPlayerView(isPresented: $isPresent)
-                    .environmentObject(musicPlayer)
-            .preferredColorScheme(colorMode == true ? .dark : .light)
-            })
-            .padding(.all)
+                if UIDevice.current.userInterfaceIdiom == .pad {
+                    Spacer()
+                }
+                VStack {
+                    if musicPlayer.showMembership {
+                        membershipView
+                    }
+                    VStack {
+                        MusicProgressView()
+                        nowPlayingBarView
+                            .padding(.all)
+                    }
+                    .frame(width: .musicPlayingBarWidth, height: Self.height).background(Blur())
+                    .overlay(
+                        HStack {
+                            Button(action: {self.isPresent = true}, label: {
+                        Color.clear.frame(width: .musicPlayingBarWidth - 150)
+                            })
+                        Spacer()
+                        }
+                    )
+                    .sheet(isPresented: $isPresent, content: {
+                        MusicPlayerView(isPresented: $isPresent)
+                            .environmentObject(musicPlayer)
+                            .preferredColorScheme(colorScheme)
+                    })
+                }
+            }
         }
-        .frame( height: Self.height)
-        .background(Blur())
-        .background(Color.vibeBackground.opacity(0.4))
-        
     }
 }
 
-struct Blur: UIViewRepresentable {
-    var style: UIBlurEffect.Style = .systemMaterial
-    func makeUIView(context: Context) -> UIVisualEffectView {
-        return UIVisualEffectView(effect: UIBlurEffect(style: style))
+private extension NowPlayingBarView {
+    var nowPlayingBarView: some View {
+        HStack {
+            AsyncImageView(url: musicPlayer.nowPlayingSong.imageURLString)
+                .frame(width: 40, height: 40)
+            VStack(alignment: .leading) {
+                Text(musicPlayer.nowPlayingSong.title)
+                    .vibeTitle3()
+                    .lineLimit(1)
+                Text(musicPlayer.nowPlayingSong.artist)
+                    .vibeMainText()
+                    .lineLimit(1)
+            }.padding(.leading)
+            Spacer()
+            Button(action: {
+                musicPlayer.isPlaying.toggle()
+            }, label: {
+                Image(systemName: musicPlayer.isPlaying ? "pause" : "play.fill")
+                    .vibeTitle2()
+                    .frame(width: 30, height: 30)
+                    .buttonStyle(PlainButtonStyle())
+                    .padding(.horizontal)
+            }).emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.playPause(state: musicPlayer.isPlaying ? "pause" : "play")))
+            Button(action: {
+                _ = musicPlayer.nextSong()
+            }, label: {
+                Image(systemName: "forward.fill").vibeTitle2()
+                    .frame(width: 30, height: 30)
+            }).padding(.trailing)
+        }
     }
-    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
-        uiView.effect = UIBlurEffect(style: style)
+}
+
+private extension NowPlayingBarView {
+    var membershipView: some View {
+        HStack(alignment: .top) {
+            VStack(alignment: .leading, spacing: .defaultSpacing) {
+                HStack {
+                    Image(systemName: "info.circle.fill")
+                    Text("1분 미리듣기")
+                }.font(.system(size: 13, weight: .bold))
+                Text("다양한 할인 혜택으로 멤버십 구독 후 전체 곡을 재생해 보세요.").font(.system(size: 11, weight: .semibold))
+            }
+            Spacer()
+            Button(action: { withAnimation { musicPlayer.showMembership = false
+                emitEvent(event: TapEvent(component: "membershipView", target: .custom("close")))
+            } }, label: {Image(systemName: "xmark")})
+        }
+        .foregroundColor(.white)
+        .padding(10)
+        .frame(width: .largeItemImageWidth, height: 60)
+        .background(LinearGradient(gradient: Gradient(colors: [.red, .vibePink, .purple]), startPoint: .leading, endPoint: .trailing))
+        .cornerRadius(5)
+        .onTapGesture {
+            withAnimation { musicPlayer.showMembership = false
+                emitEvent(event: TapEvent(component: "membershipView", target: .custom("membership purchase")))
+            }
+        }
     }
 }

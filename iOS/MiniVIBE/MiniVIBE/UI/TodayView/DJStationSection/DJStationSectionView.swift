@@ -12,16 +12,22 @@ struct DJStationSectionView: View {
         static let title: String = "DJ 스테이션"
     }
     
-    @State private var items: [DJStationItem] = MockItemFactory.homeDJStationkItems
+    private let items: [DJStationItem] = MockItemFactory.homeDJStationkItems
     var body: some View {
         VStack {
-            NavigationLink(destination: DJStationDetailView()
+            NavigationLink(destination: DJStationMoreView()
             ) {
-                    MoreHeaderView(title: Constant.title)
-            }.emitEventIfTapped(event: TapEvent(component: Self.name, target: Target.more))
+                MoreHeaderView(title: Constant.title)
+            }.emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.more))
             SectionScrollView {
                 ForEach(items) { item in
-                    DJStationItemView(item: item)
+                    Button(action: {}, label: {
+                            ImageItemView(image: Image(item.image), width: .normalItemImageWidth) {}
+                            .overlay(
+                                Image(systemName: "play.circle.fill")
+                                    .foregroundColor(.white)
+                                    .opacity(0.8)
+                                    .padding(5), alignment: .bottomTrailing)})
                 }
             }
         }
