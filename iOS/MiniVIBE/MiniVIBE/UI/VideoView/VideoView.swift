@@ -9,6 +9,7 @@ import SwiftUI
 import BCEventEmitter
 
 struct VideoView: View {
+    @EnvironmentObject var musicPlayer: MusicPlayer
     let viewModel: VideoView.ViewModel
     var body: some View {
         ZStack {
@@ -27,7 +28,7 @@ struct VideoView: View {
                     .navigationBarHidden(true)
                 }
             }
-            NowPlayingBarView()
+            NowPlayingBarView(musicPlayer: musicPlayer)
         }.onAppear {
             emitEvent(event: MoveEvent(next: ContentView.TabType.video.description))
         }
@@ -47,7 +48,7 @@ extension VideoView {
 private extension VideoView {
     var videosView: some View {
         ForEach(viewModel.items) { item in
-            ImageItemView(image: Image(item.imageURLString), type: .large, ratio: 0.5) {
+            ImageItemView(image: Image(item.imageURLString), width: .largeItemImageWidth, ratio: 0.5) {
                 HStack {
                     Text(item.title).vibeTitle3()
                     Text(item.artist).vibeMainText()

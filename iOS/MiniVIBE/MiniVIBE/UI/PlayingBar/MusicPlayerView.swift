@@ -11,7 +11,7 @@ import BCEventEmitter
 struct MusicPlayerView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
     @Binding var isPresented: Bool
-    
+    @State var isLiked: Bool = false
     var body: some View {
         ZStack {
             Color.vibeBackground.ignoresSafeArea(edges: .bottom)
@@ -35,7 +35,7 @@ struct MusicPlayerView: View {
                                 .foregroundColor(.gray)
                         }
                     }.padding(.defaultPadding)
-                    //FIX ME 고정값 수정
+                    // FIX ME 고정값 수정
                     .frame(height: UIScreen.main.bounds.height - 65)
                     Divider().accentColor(.gray)
                     MusicPlayerlistView(isPresented: $isPresented)
@@ -108,10 +108,12 @@ private extension MusicPlayerView {
                     .frame(width: 40, height: 40)
             }).emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.playPause(state: musicPlayer.isPlaying ? "pause" : "play")))
             Spacer()
-            Button(action: {}, label: {
+            Button(action: {
+                self.isLiked.toggle()
+            }, label: {
                 Image(systemName: "heart.fill")
                     .font(.system(size: 25))
-                    .foregroundColor(.gray)
+                    .foregroundColor(isLiked ? .vibePink: .gray)
             }).emitEventIfTapped(event: TapEvent(component: Self.name, target: TapEvent.Target.like))
             Spacer()
             Button(action: {}, label: {
@@ -179,25 +181,15 @@ private struct PlayListItemView: View {
 
 struct MusicProgressView: View {
     @EnvironmentObject var musicPlayer: MusicPlayer
-    @State var currentProgress: Float = 0
-    let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
+    @State var currentProgress: CGFloat = 0
+    
     var body: some View {
         VStack {
             ProgressView(value: currentProgress, total: 50)
-                .onReceive(timer) { _ in
-                    if musicPlayer.isPlaying {
-                        if currentProgress < 50 {
-                            currentProgress += 1
-                        } else {
-                            currentProgress = 0
-                            musicPlayer.isPlaying = false
-                            withAnimation {
-                                musicPlayer.showMembership = true
-                            }
-                        }
-                    }
+                .onReceive(musicPlayer.timer) { _ in
+                    self.currentProgress = CGFloat(musicPlayer.currentProgress)
                 }
-        }  .progressViewStyle(VibeProgressViewStyle())
+        }.progressViewStyle(VibeProgressViewStyle())
     }
 }
 

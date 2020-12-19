@@ -41,14 +41,17 @@ private extension PlaylistSectionView {
     var playlistsView: some View {
         ForEach(viewModel.playlists) { playlist in
             NavigationLink(destination: PlaylistDetailView(viewModel: PlaylistDetailView.ViewModel(container: viewModel.container, playlist: playlist))) {
-                ImageItemView(image: Image(playlist.imageURLString), type: viewModel.type) {
+                ImageItemView(image: Image(playlist.imageURLString), width: viewModel.width) {
                     Text(playlist.title)
                         .vibeTitle3()
+                        .lineLimit(1)
                     Text(playlist.subtitle)
                         .vibeMainText()
-                    Text(playlist.description ?? "")
+                        .lineLimit(1)
+                    Text(playlist.description ?? "\n")
                         .vibeMainText()
                         .lineLimit(2)
+                        .frame(height: 40)
                 }
             }.emitEventIfTapped(event: TapEvent(component: name, target: TapEvent.Target.playlist))
         }

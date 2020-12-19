@@ -10,6 +10,7 @@ import Combine
 import BCEventEmitter
 
 struct LibraryView: View {
+    @EnvironmentObject var musicPlayer: MusicPlayer
     @StateObject var viewModel: ViewModel
     @Binding var colorMode: Bool
     private enum Constant {
@@ -28,7 +29,7 @@ struct LibraryView: View {
                     }.padding(.bottom, NowPlayingBarView.height)
                 }.navigationBarHidden(true)
             }
-            NowPlayingBarView()
+            NowPlayingBarView(musicPlayer: musicPlayer)
         }.onAppear {
             emitEvent(event: MoveEvent(next: ContentView.TabType.libarary.description))
         }
@@ -41,7 +42,7 @@ private extension LibraryView {
             LibrarySongView().tag(0)
             LibraryArtistView(viewModel: LibraryArtistView.ViewModel(container: viewModel.container )).tag(1)
             LibraryAlbumView(viewModel: LibraryAlbumView.ViewModel(container: viewModel.container)).tag(2)
-            LibraryPlaylistView(viewModel: PlaylistSectionView.ViewModel(container: viewModel.container, id: 123, title: "보관함", type: .normal) ).tag(3)
+            LibraryPlaylistView(viewModel: PlaylistSectionView.ViewModel(container: viewModel.container, id: 123, title: "보관함", width: .normalItemImageWidth) ).tag(3)
         }
         .animation(.easeInOut)
         .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))

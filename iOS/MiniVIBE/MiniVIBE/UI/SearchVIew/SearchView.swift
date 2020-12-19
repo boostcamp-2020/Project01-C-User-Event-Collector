@@ -13,6 +13,7 @@ struct SearchView: View {
         static let title: String = "검색"
     }
     
+    @EnvironmentObject var musicPlayer: MusicPlayer
     @State var text: String = ""
     @State private var isEditing = false
     var body: some View {
@@ -35,7 +36,7 @@ struct SearchView: View {
                 }.padding(.top)
                 .navigationBarHidden(true)
             }
-            NowPlayingBarView()
+            NowPlayingBarView(musicPlayer: musicPlayer)
         }.onAppear {
             emitEvent(event: MoveEvent(next: ContentView.TabType.search.description))
         }

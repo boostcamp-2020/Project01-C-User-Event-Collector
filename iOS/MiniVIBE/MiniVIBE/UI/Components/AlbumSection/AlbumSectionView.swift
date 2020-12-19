@@ -36,7 +36,7 @@ private extension AlbumSectionView {
     var albumsView: some View {
         ForEach(viewModel.albums.indices) { index in
             NavigationLink(destination: AlbumDetailView(album: viewModel.albums[index])) {
-                ImageItemView(image: Image(viewModel.albums[index].imageURLString), type: .normal) {
+                ImageItemView(image: Image(viewModel.albums[index].imageURLString), width: .normalItemImageWidth) {
                     if viewModel.showsRanking {
                         HStack {
                             Text("\(index + 1)").vibeTitle3()

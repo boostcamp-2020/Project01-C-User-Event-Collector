@@ -13,6 +13,7 @@ struct ChartView: View {
         static let title: String = "차트"
     }
     
+    @EnvironmentObject var musicPlayer: MusicPlayer
     let viewModel: ViewModel
     var body: some View {
         ZStack {
@@ -56,7 +57,7 @@ struct ChartView: View {
                     .padding(.top)
                 }
             }
-            NowPlayingBarView()
+            NowPlayingBarView(musicPlayer: musicPlayer)
         }.onAppear {
             emitEvent(event: MoveEvent(next: ContentView.TabType.chart.description))
         }

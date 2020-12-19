@@ -40,7 +40,7 @@ private struct MusicVideoTop50ItemView: View {
     let rank: Int
     var body: some View {
         VStack(alignment: .leading) {
-            ImageItemView(image: Image(item.image), type: .large, ratio: 0.5) {
+            ImageItemView(image: Image(item.image), width: .largeItemImageWidth, ratio: 0.5) {
                 Text("\(rank + 1)").vibeTitle3()
                 Text(item.title).vibeTitle3()
                 Text(item.artist).vibeMainText()

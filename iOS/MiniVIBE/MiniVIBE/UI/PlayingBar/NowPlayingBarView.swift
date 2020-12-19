@@ -9,8 +9,8 @@ import SwiftUI
 import BCEventEmitter
 
 struct NowPlayingBarView: View {
-    @EnvironmentObject var musicPlayer: MusicPlayer
     @State private var isPresent = false
+    @ObservedObject var musicPlayer: MusicPlayer
     @Environment(\.colorScheme) var colorScheme
     static let height: CGFloat = 75
     var body: some View {
@@ -27,17 +27,22 @@ struct NowPlayingBarView: View {
                     VStack {
                         MusicProgressView()
                         nowPlayingBarView
-                            .onTapGesture {
-                                self.isPresent = true
-                            }.sheet(isPresented: $isPresent, content: {
-                                MusicPlayerView(isPresented: $isPresent)
-                                    .environmentObject(musicPlayer)
-                                    .preferredColorScheme(colorScheme)
-                            })
                             .padding(.all)
                     }
                     .frame(width: .musicPlayingBarWidth, height: Self.height).background(Blur())
-//                    .background(Color.vibeBackground.opacity(0.4))
+                    .overlay(
+                        HStack {
+                            Button(action: {self.isPresent = true}, label: {
+                        Color.clear.frame(width: .musicPlayingBarWidth - 150)
+                            })
+                        Spacer()
+                        }
+                    )
+                    .sheet(isPresented: $isPresent, content: {
+                        MusicPlayerView(isPresented: $isPresent)
+                            .environmentObject(musicPlayer)
+                            .preferredColorScheme(colorScheme)
+                    })
                 }
             }
         }
@@ -97,5 +102,10 @@ private extension NowPlayingBarView {
         .frame(width: .largeItemImageWidth, height: 60)
         .background(LinearGradient(gradient: Gradient(colors: [.red, .vibePink, .purple]), startPoint: .leading, endPoint: .trailing))
         .cornerRadius(5)
+        .onTapGesture {
+            withAnimation { musicPlayer.showMembership = false
+                emitEvent(event: TapEvent(component: "membershipView", target: .custom("membership purchase")))
+            }
+        }
     }
 }

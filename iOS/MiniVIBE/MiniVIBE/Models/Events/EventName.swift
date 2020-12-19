@@ -8,17 +8,27 @@
 import Foundation
 
 public enum EventName: CustomStringConvertible {
-    case movePage
-    case tabButton
-    case error
+    case moveEvent
+    case tapEvent
+    case errorEvent
+    case libraryEvent
+    case loginEvent
+    case musicEvent
+    
     public var description: String {
         switch self {
-        case .movePage:
-            return "move_page"
-        case .tabButton:
-            return "tap_button"
-        case .error:
-            return "error"
+        case .moveEvent:
+            return "move_event"
+        case .tapEvent:
+            return "tap_event"
+        case .errorEvent:
+            return "error_event"
+        case .libraryEvent:
+            return "library_event"
+        case .loginEvent:
+            return "login_event"
+        case .musicEvent:
+            return "music_event"
         }
     }
 }

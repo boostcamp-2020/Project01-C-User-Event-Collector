@@ -15,9 +15,12 @@ struct ContentView: View {
     @StateObject var viewModel: ViewModel
     var body: some View {
         Group {
+            GeometryReader { proxy in
+                setBaseWidthIfPassed(geometryproxy: proxy)
             TabView(selection: $viewModel.selectedTab) {
                 TabSyncView(selection: $viewModel.selectedTab, tag: TabType.today) {
                     TodayView(viewModel: TodayView.ViewModel(container: viewModel.container))
+              
                 }
                 .tabItem {
                     Image(systemName: "house")
@@ -46,10 +49,16 @@ struct ContentView: View {
                 .tabItem {
                     Image(systemName: "person.fill")
                 }.tag(TabType.libarary)
+            }
             }.accentColor(.vibePink)
         }.preferredColorScheme(colorMode == true ? .dark : .light)
         .navigationViewStyle(StackNavigationViewStyle())
     }
+    
+    func setBaseWidthIfPassed(geometryproxy: GeometryProxy) -> EmptyView {
+        CGFloat.setBaseWidth(value: geometryproxy.size.width)
+           return EmptyView()
+       }
 }
 
 extension ContentView {

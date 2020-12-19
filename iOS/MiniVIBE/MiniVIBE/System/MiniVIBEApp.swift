@@ -26,8 +26,25 @@ struct MiniVIBEApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: ContentView.ViewModel(container: container)).environmentObject(musicPlayer)
+            ContentView(viewModel: ContentView.ViewModel(container: container)).environmentObject(musicPlayer).onAppear {
+                fakePlayMusic()
+            }
         }
     }
     
+    func fakePlayMusic() {
+        musicPlayer.subscription  = musicPlayer.timer.sink { _ in
+            if musicPlayer.isPlaying {
+                if musicPlayer.currentProgress < 50 {
+                    musicPlayer.currentProgress += 1
+                } else {
+                    musicPlayer.currentProgress = 0
+                    musicPlayer.isPlaying = false
+                    withAnimation {
+                        musicPlayer.showMembership = true
+                    }
+                }
+            }
+        }
+    }
 }

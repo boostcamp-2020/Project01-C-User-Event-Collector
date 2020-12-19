@@ -25,23 +25,23 @@ struct ImageItemView<Content: View>: View {
     
     private let content: Content
     private let image: Image?
-    private let type: ImageSizeType
     private let ratio: CGFloat
     private let imageURLString: String?
+    private let width: CGFloat
     
-    init(image: Image, type: ImageSizeType, ratio: CGFloat = 1, @ViewBuilder content: () -> Content) {
+    init(image: Image, width: CGFloat, ratio: CGFloat = 1, @ViewBuilder content: () -> Content) {
         self.content = content()
-        self.image = image
         self.imageURLString = nil
-        self.type = type
+        self.image = image
+        self.width = width
         self.ratio = ratio
     }
     
-    init(url: String, type: ImageSizeType, ratio: CGFloat = 1, @ViewBuilder content: () -> Content) {
+    init(url: String, width: CGFloat, ratio: CGFloat = 1, @ViewBuilder content: () -> Content) {
         self.content = content()
         self.imageURLString = url
         self.image = nil
-        self.type = type
+        self.width = width
         self.ratio = ratio
     }
     
@@ -49,20 +49,19 @@ struct ImageItemView<Content: View>: View {
         VStack(alignment: .leading, spacing: 5) {
             if let imageURLString = imageURLString {
                 AsyncImageView(url: imageURLString)
-                    .frame(width: type.rawValue, height: type.rawValue * ratio,
+                    .frame(width: width, height: width * ratio,
                            alignment: .center)
                     .aspectRatio(contentMode: .fill)
                     .clipped()
             } else if let image = image {
                 image
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: type.rawValue, height: type.rawValue * ratio,
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: width, height: width * ratio,
                            alignment: .center)
                     .clipped()
             }
-
             content
-        }.frame(width: type.rawValue)
+        }.frame(width: width)
     }
 }

@@ -26,6 +26,7 @@ class RealServerRepository: ServerRepository {
                 return NetworkError.encodingError(error.localizedDescription)
             }
             .map { encodedData -> RequestProviding in
+    
                 if RealServerRepository.isEnabled {
                     return EventRequest(body: encodedData)
                 } else {
