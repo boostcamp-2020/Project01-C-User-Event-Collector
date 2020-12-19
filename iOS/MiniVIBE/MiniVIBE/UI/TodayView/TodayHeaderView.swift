@@ -100,6 +100,7 @@ extension TodayHeaderView {
             primaryButton: .default(Text("네"), action: {
                 viewModel.isLogin = false
                 KeyChain.shared.deleteToken()
+                emitEvent(event: LoginEvent())
             }),
             secondaryButton: .default(Text("아니오"))
         )

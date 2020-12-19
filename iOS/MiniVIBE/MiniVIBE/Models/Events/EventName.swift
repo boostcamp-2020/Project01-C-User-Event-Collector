@@ -13,6 +13,7 @@ public enum EventName: CustomStringConvertible {
     case errorEvent
     case libraryEvent
     case loginEvent
+    case logoutEvent
     case musicEvent
     
     public var description: String {
@@ -27,6 +28,8 @@ public enum EventName: CustomStringConvertible {
             return "library_event"
         case .loginEvent:
             return "login_event"
+        case .logoutEvent:
+            return "logout_event"
         case .musicEvent:
             return "music_event"
         }
