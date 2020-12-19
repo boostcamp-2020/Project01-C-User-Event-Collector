@@ -16,8 +16,12 @@
     <img src="https://img.shields.io/badge/iOS-14.0-black?logo=apple" />  
 </p>
     
-### 🍎 WEB 배포 URL
+### 👊 WEB 배포 URL
 http://115.85.181.152:3000
+
+### 📼 WEB 데모 비디오
+https://youtu.be/AqSunm6fDfc  
+
 
 
 ## 🗂 Directory
