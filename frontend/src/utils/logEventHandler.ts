@@ -4,7 +4,6 @@ import api from '@api/index';
 
 const postLog = async logData => {
   await api.post('/log', logData);
-  console.log('=====logEventHandler send logData====', logData);
 };
 
 const logEventHandler = async (handler, logData) => {

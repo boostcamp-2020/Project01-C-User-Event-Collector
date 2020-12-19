@@ -20,8 +20,6 @@ type MetaMagazine = {
 };
 
 function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
-  console.log(magazine);
-
   return (
     <Wrapper>
       <MagHeader>
@@ -34,7 +32,11 @@ function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
             <MagTitle>{magazine?.title}</MagTitle>
             <MagContent>{magazine?.content}</MagContent>
             <MagPlayList>
-              <MagPlayListInfo>총{magazine?.tracks?.length}곡 </MagPlayListInfo>
+              <MagPlayListInfo>
+                총{magazine?.tracks?.length}
+                곡
+{' '}
+              </MagPlayListInfo>
               <MagPlayListLink>플레이리스트 보기</MagPlayListLink>
             </MagPlayList>
             <MagPlayButtonList>

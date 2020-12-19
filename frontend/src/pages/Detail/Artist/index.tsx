@@ -25,20 +25,18 @@ function ArtistDetail({ artistInfo: artist }) {
 
   const deleteArtistEvent = () => {
     api.delete(`library/artists/${artist.id}`);
-    console.log('아티스트 삭제');
     dispatch({ type: 'DELETE_ARTIST', artistId: artist.id });
   };
 
   const addArtistEvent = () => {
     api.post(`library/artists`, { artistId: artist.id });
-    console.log('아티스트 추가');
     dispatch({ type: 'ADD_ARTIST', artistId: artist.id });
   };
-  console.log(artistState);
 
   useEffect(() => {
     setArtistState(artistList);
   }, [dispatch]);
+  console.log(artistState);
 
   return (
     <Container>
@@ -50,7 +48,9 @@ function ArtistDetail({ artistInfo: artist }) {
           <TopContainer>
             <MainTitle>{artist.name}</MainTitle>
             <SubTitle>
-              {artist.debut.replace(/-/g, '.').slice(0, 10)} 데뷔 ·{' '}
+              {artist.debut.replace(/-/g, '.').slice(0, 10)}
+{' '}
+데뷔 ·{' '}
               {getMultipleNames(artist.genres)}
             </SubTitle>
           </TopContainer>

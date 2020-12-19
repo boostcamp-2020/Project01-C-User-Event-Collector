@@ -5,12 +5,13 @@ import api from '@api/index';
 import Modal from '@components/Common/Modal';
 import { useAuthDispatch } from '@context/AuthContext';
 import Spinner from '@components/Common/Spinner';
+import getTokenFromCookie from '@utils/getTokenFromCookie';
+import getRefererFromHeader from '@utils/getRefererFromHeader';
 import Today from '../src/pages/Today';
 
 function Index({ token, referer, magList }) {
   const router = useRouter();
   const dispatch = useAuthDispatch();
-
   const { data: user, isLoading: userLoading, isError: userError } = useFetch(`/user`, token);
   const { data: playlist, isLoading: playLoading, isError: playError } = useFetch(
     `/playlist`,
@@ -18,6 +19,7 @@ function Index({ token, referer, magList }) {
   );
 
   useEffect(() => {
+    localStorage.setItem('token', token);
     if (typeof user?.user !== 'undefined' && user?.user) {
       dispatch({
         type: 'SET_USERINFO',
@@ -33,15 +35,11 @@ function Index({ token, referer, magList }) {
   if (playLoading || userLoading) return <Spinner />;
   if (playError || userError) return <div>...Error</div>;
 
-  // 쿠키를 로컬 스토리지에 담는 코드
-  localStorage.setItem('token', token);
-
-  const logData = {
+  api.post('/log', {
     eventTime: new Date(),
     eventName: 'move_event',
-    parameters: { prev: referer || 'external', next: router.asPath },
-  };
-  api.post('/log', logData);
+    parameters: { prev: referer, next: router.asPath },
+  });
 
   return (
     <div>
@@ -52,24 +50,16 @@ function Index({ token, referer, magList }) {
 }
 
 export async function getServerSideProps({ req }) {
-  // 브라우저의 document.cookie에 접근하는 코드
-  const regex = /(http:\/\/)([A-Z,a-z,:,.,0-9]*)/;
-  const host = req.headers?.referer?.match(regex)[0];
-  const referer = req.headers?.referer?.slice(host.length);
+  const referer = getRefererFromHeader(req.headers);
+  const cookie = getTokenFromCookie(req.headers);
 
-  const cookie = req.headers?.cookie;
-  const tokenFromCookie = cookie
-    ?.split('; ')
-    ?.find(row => row.startsWith('token'))
-    ?.split('=')[1];
-
-  api.defaults.headers.authorization = tokenFromCookie;
+  api.defaults.headers.authorization = cookie;
   const magList = await api.get('/magazine').then(res => res.data.data);
 
   return {
     props: {
-      token: typeof tokenFromCookie === 'undefined' ? null : tokenFromCookie,
-      referer: referer || 'external',
+      token: cookie,
+      referer,
       magList,
     },
   };

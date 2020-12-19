@@ -47,7 +47,6 @@ const BoxDropdown = ({ trackData, type, id }: IBoxDropdownProps) => {
   };
 
   const addEvent = () => {
-    console.log('addEvent start');
     switch (type) {
       case 'playlist':
         api.post('/library/playlists', { playlistId: id });

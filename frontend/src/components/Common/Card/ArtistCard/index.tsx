@@ -4,6 +4,7 @@ import CircleImage from '@components/Common/CircleImage';
 import CircleHeartButton from '@components/Common/Button/CircleHeartButton';
 import A from '@components/Common/A';
 import api from '@api/index';
+import { mutate } from 'swr';
 import useEventHandler from '@hooks/useEventHandler';
 import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
 import { useAuthDispatch } from '@context/AuthContext';
@@ -26,10 +27,10 @@ const ArtistCard = ({ artistMetaData: artist, type }: IArtistMetaProps) => {
 
   const deleteArtist = async (e, id) => {
     await api.delete(`library/artists/${id}`);
-    console.log('아티스트 삭제');
     e.target.closest('.artist-card').style.opacity = '0';
     e.target.closest('.artist-card').style.transform = 'translate(0px, -35px)';
     dispatch({ type: 'DELETE_ARTIST', artistId: id });
+    mutate(`${process.env.NEXT_PUBLIC_API_BASE_URL}/library/artists`);
   };
 
   return (

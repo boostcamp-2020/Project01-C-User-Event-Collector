@@ -19,7 +19,6 @@ function NavBar() {
   useEffect(() => {
     setUserState(userInfo);
     api.defaults.headers.authorization = localStorage.getItem('token');
-    console.log('userInfo ;;;;;', userInfo);
     if (!userInfo.isLoggedIn) {
       api.get('user').then(res => {
         if (res.data.success) setUserState({ ...res.data?.user, isLoggedIn: true });

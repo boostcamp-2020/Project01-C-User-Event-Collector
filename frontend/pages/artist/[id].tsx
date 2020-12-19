@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import useFetch from '@hooks/useFetch';
 import api from '@api/index';
 import Spinner from '@components/Common/Spinner';
+import getRefererFromHeader from '@utils/getRefererFromHeader';
 import ArtistDetail from '../../src/pages/Detail/Artist';
 
 export function Index({ referer }) {
@@ -18,7 +19,7 @@ export function Index({ referer }) {
   const logData = {
     eventTime: new Date(),
     eventName: 'move_event',
-    parameters: { prev: referer || 'external', next: router.asPath },
+    parameters: { prev: referer, next: router.asPath },
   };
   api.post('/log', logData);
 
@@ -30,11 +31,8 @@ export function Index({ referer }) {
 }
 
 export async function getServerSideProps({ req }) {
-  const regex = /(http:\/\/)([A-Z,a-z,:,.,0-9]*)/;
-  const host = req.headers?.referer?.match(regex)[0];
-  const referer = req.headers?.referer?.slice(host.length);
-
-  return { props: { referer: referer || 'external' } };
+  const referer = getRefererFromHeader(req.headers);
+  return { props: { referer } };
 }
 
 export default Index;

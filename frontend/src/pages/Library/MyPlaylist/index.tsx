@@ -1,11 +1,10 @@
 import styled from '@styles/themed-components';
 import { useEffect } from 'react';
-import { useAuthDispatch, useAuthState } from '@context/AuthContext';
+import { useAuthDispatch } from '@context/AuthContext';
 import Library from '@components/Template/Library';
 import PlaylistList from '@components/PlaylistList';
 
 const MyArtist = ({ playlistList }) => {
-  const state = useAuthState();
   const dispatch = useAuthDispatch();
 
   useEffect(() => {
@@ -15,7 +14,6 @@ const MyArtist = ({ playlistList }) => {
         playlistList: playlistList.map(playlist => playlist.id),
       });
   }, [dispatch]);
-  console.log('-----playlist state---*** : ', state);
 
   return (
     <Library mainTitle="플레이리스트">

@@ -1,12 +1,11 @@
 import styled from '@styles/themed-components';
 import Library from '@components/Template/Library';
 import { useEffect } from 'react';
-import { useAuthDispatch, useAuthState } from '@context/AuthContext';
+import { useAuthDispatch } from '@context/AuthContext';
 import TrackList from '@components/TrackList';
 import LargeButton from '@components/Common/Button/LargeButton';
 
 const MyTrack = ({ trackList }) => {
-  const state = useAuthState();
   const dispatch = useAuthDispatch();
 
   useEffect(() => {
@@ -16,7 +15,6 @@ const MyTrack = ({ trackList }) => {
         trackList: trackList.map(track => track.id),
       });
   }, [dispatch]);
-  console.log('-----track state---*** : ', state);
 
   return (
     <Library mainTitle="노래" type="track">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
+import useFetch from '@hooks/useFetch';
 import api from '@api/index';
 import {
   IoPlaySkipForwardSharp,
@@ -24,9 +25,10 @@ function PlayBar() {
   const [isRepeat, setIsRepeat] = useState(false);
   const [playlistState, setPlaylistState] = useState(null);
 
+  const { data: log } = useFetch(`/log`, null);
+
   const state = usePlayState();
   const dispatch = usePlayDispatch();
-
   const authState = useAuthState();
 
   const fetchData = () => {
@@ -53,6 +55,7 @@ function PlayBar() {
 
   const [adShow, setAdShow] = useState(false);
   const [listShow, setListShow] = useState(false);
+  const [logShow, setLogShow] = useState(false);
 
   const setPlayStart = () => {
     setAdShow(true);
@@ -81,6 +84,9 @@ function PlayBar() {
   };
   const listUpHandle = () => {
     setListShow(!listShow);
+  };
+  const logUpHandle = () => {
+    setLogShow(!logShow);
   };
 
   return (
@@ -170,17 +176,42 @@ function PlayBar() {
               <BsFillVolumeUpFill size={20} />
               <VolumeStatusBar />
             </VolumeBar>
+            <LogUpButton up={logShow} onClick={logUpHandle}>
+              <LogUp>SHOW EVENT LOGS</LogUp>
+            </LogUpButton>
             <ListUpButton up={listShow} onClick={listUpHandle}>
               <BsMusicNoteList size={28} color={listShow ? 'fff' : ''} />
             </ListUpButton>
           </ListWrapper>
         </Player>
+        <MyLogListContainer visiable={logShow}>
+          <LogDimmed>
+            <LogWrapper>
+              {log?.data &&
+                log?.data?.map(log => (
+                  <Log>
+                    <Info style={{ color: '#64ead8' }}>
+                      eventTime : 
+{' '}
+{JSON.stringify(log.eventTime)}
+                    </Info>
+                    <Info style={{ color: '#ffe500' }}>
+                      eventName : {JSON.stringify(log.eventName)}
+                    </Info>
+                    <Info>parameters :{JSON.stringify(log.parameters)}</Info>
+                    <Info>userInfo :{JSON.stringify(log.userInfo)}</Info>
+                    <Info>userAgent :{JSON.stringify(log.userAgent)}</Info>
+                    <hr style={{ borderColor: 'darkgrey' }} />
+                  </Log>
+                ))}
+            </LogWrapper>
+          </LogDimmed>
+        </MyLogListContainer>
         <MyPlaylistContainer visiable={listShow}>
           <Dimmed>
             <AlbumImage src={playList[playIndex]?.album?.imgUrl} />
           </Dimmed>
           <Playlist>
-            {console.log('playList ::: ', playList)}
             <PlayItemWrapper>
               {playList?.map(track => (
                 <PlayTrackItem type="playbar" key={track.id} trackData={track} />
@@ -203,15 +234,27 @@ const MyPlaylistContainer = styled.div<{ visiable: boolean }>`
   visibility: ${props => (props.visiable ? 'visiable' : 'hidden')};
 `;
 
+const MyLogListContainer = styled(MyPlaylistContainer)`
+  z-index: 12000;
+`;
+
 const Dimmed = styled.div`
   width: 100%;
   height: 100%;
   background-color: rgba(20, 20, 20, 0.97);
 `;
 
+const LogWrapper = styled.div`
+  height: 600px;
+  overflow: scroll;
+`;
+
+const LogDimmed = styled(Dimmed)`
+  padding: 40px 120px;
+`;
+
 const AlbumImage = styled.img`
   position: absolute;
-  top: 0;
   right: 350px;
   bottom: 0;
   left: 0;
@@ -311,6 +354,26 @@ const ListUpButton = styled.button<{ up: boolean }>`
   justify-content: center;
   color: ${props => props.theme.color.playbarFontColor};
   background: ${props => (props.up ? '#ff1350' : '')};
+`;
+const LogUpButton = styled.button<{ up: boolean }>``;
+
+const LogUp = styled.span`
+  color: ${props => props.theme.color.highlight};
+  height: 100%;
+  position: absolute;
+  top: 20px;
+  left: 320px;
+  font-size: 12px;
+`;
+
+const Log = styled.div`
+  color: white;
+  font-size: 11px;
+  padding-bottom: 10px;
+`;
+
+const Info = styled.p`
+  padding-bottom: 3px;
 `;
 
 const ButtonWrapper = styled.div`

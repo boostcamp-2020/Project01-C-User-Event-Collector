@@ -25,7 +25,6 @@ type MetaTrack = {
 
 function TrackDetail({ trackInfo: track }: ITrackInfoProps) {
   const target = 'TrackDetailAlbum';
-  console.log('-:::   -----******** -----,track', track);
 
   return (
     <DetailTemplate data={unifyMetaData('track', track)}>
