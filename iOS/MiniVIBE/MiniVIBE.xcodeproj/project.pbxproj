@@ -105,6 +105,8 @@
 		DEA2137D2583F3DC00E65AE1 /* KeyChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA2137C2583F3DC00E65AE1 /* KeyChain.swift */; };
 		DEB6A6ED2572C89F00C97A0C /* DetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB6A6EC2572C89E00C97A0C /* DetailHeaderView.swift */; };
 		DEC076DA2563AEBE004862AA /* TodayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC076D92563AEBE004862AA /* TodayView.swift */; };
+		DECAFD6B258E260200FB1DB1 /* CoreData+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECAFD6A258E260200FB1DB1 /* CoreData+Equatable.swift */; };
+		DECAFD6E258E264B00FB1DB1 /* FailPersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECAFD6D258E264B00FB1DB1 /* FailPersistenceController.swift */; };
 		DECDDCA7258A3C8800E5F10B /* PersistenceControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECDDCA6258A3C8800E5F10B /* PersistenceControllerTests.swift */; };
 		DEF5EFE925723A01006666DC /* NowPlayingBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFE825723A01006666DC /* NowPlayingBarView.swift */; };
 		DEF5EFEE25727E47006666DC /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5EFED25727E47006666DC /* Song.swift */; };
@@ -237,7 +239,6 @@
 		DE5F4C6F257EA7400058ABE6 /* LibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryView.swift; sourceTree = "<group>"; };
 		DE5F4C73257EA7DC0058ABE6 /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		DE75169F25776F990054AFC6 /* LocalRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRepository.swift; sourceTree = "<group>"; };
-		DE7A098D258A3E6C00A3AD2D /* MiniVIBE copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "MiniVIBE copy-Info.plist"; path = "/Users/cgh/Dev/iOS/MiniVIBE/MiniVIBE copy-Info.plist"; sourceTree = "<absolute>"; };
 		DE7A099D258A4D4500A3AD2D /* TestPersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestPersistenceController.swift; sourceTree = "<group>"; };
 		DE7A09C4258AC2C200A3AD2D /* LocalRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRepositoryTests.swift; sourceTree = "<group>"; };
 		DEA2137C2583F3DC00E65AE1 /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
@@ -245,6 +246,8 @@
 		DEC076D92563AEBE004862AA /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
 		DECAFD63258E0C1D00FB1DB1 /* MiniVIBE v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MiniVIBE v2.xcdatamodel"; sourceTree = "<group>"; };
 		DECAFD67258E12F500FB1DB1 /* MiniVIBE v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MiniVIBE v3.xcdatamodel"; sourceTree = "<group>"; };
+		DECAFD6A258E260200FB1DB1 /* CoreData+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreData+Equatable.swift"; sourceTree = "<group>"; };
+		DECAFD6D258E264B00FB1DB1 /* FailPersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FailPersistenceController.swift; sourceTree = "<group>"; };
 		DECDDCA6258A3C8800E5F10B /* PersistenceControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceControllerTests.swift; sourceTree = "<group>"; };
 		DEF5EFE825723A01006666DC /* NowPlayingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBarView.swift; sourceTree = "<group>"; };
 		DEF5EFED25727E47006666DC /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
@@ -383,6 +386,8 @@
 				DECDDCA6258A3C8800E5F10B /* PersistenceControllerTests.swift */,
 				DE7A099D258A4D4500A3AD2D /* TestPersistenceController.swift */,
 				DE7A09C4258AC2C200A3AD2D /* LocalRepositoryTests.swift */,
+				DECAFD6A258E260200FB1DB1 /* CoreData+Equatable.swift */,
+				DECAFD6D258E264B00FB1DB1 /* FailPersistenceController.swift */,
 			);
 			path = MiniVIBETests;
 			sourceTree = "<group>";
@@ -435,7 +440,6 @@
 				B994C69925627DBD000E563C /* Products */,
 				0718D3CA313ECA24B75B795F /* Pods */,
 				CA233B27D449220AF6D7CF38 /* Frameworks */,
-				DE7A098D258A3E6C00A3AD2D /* MiniVIBE copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -865,9 +869,11 @@
 				DE7A099E258A4D4500A3AD2D /* TestPersistenceController.swift in Sources */,
 				DE7A09C5258AC2C200A3AD2D /* LocalRepositoryTests.swift in Sources */,
 				B988596C257684510037D19B /* MiniVIBETests.swift in Sources */,
+				DECAFD6B258E260200FB1DB1 /* CoreData+Equatable.swift in Sources */,
 				B96F49F725768B7200C5AF5F /* MockRequest.swift in Sources */,
 				B96F49FB25768CB800C5AF5F /* NetworkError+Equatable.swift in Sources */,
 				DECDDCA7258A3C8800E5F10B /* PersistenceControllerTests.swift in Sources */,
+				DECAFD6E258E264B00FB1DB1 /* FailPersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
