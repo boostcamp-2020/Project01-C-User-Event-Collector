@@ -390,12 +390,8 @@
 				B9C45648258E0C1D00B22AF0 /* ServerRepositoryTests.swift */,
 				B988596B257684510037D19B /* NetworkTests.swift */,
 				B988596D257684510037D19B /* Info.plist */,
-				B96F49FA25768CB800C5AF5F /* NetworkError+Equatable.swift */,
 				DECDDCA6258A3C8800E5F10B /* PersistenceControllerTests.swift */,
-				DE7A099D258A4D4500A3AD2D /* TestPersistenceController.swift */,
 				DE7A09C4258AC2C200A3AD2D /* LocalRepositoryTests.swift */,
-				DECAFD6A258E260200FB1DB1 /* CoreData+Equatable.swift */,
-				DECAFD6D258E264B00FB1DB1 /* FailPersistenceController.swift */,
 			);
 			path = MiniVIBETests;
 			sourceTree = "<group>";
@@ -540,6 +536,8 @@
 		B9D35939258E129900C3236F /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				B96F49FA25768CB800C5AF5F /* NetworkError+Equatable.swift */,
+				DECAFD6A258E260200FB1DB1 /* CoreData+Equatable.swift */,
 				B9D3593B258E12D700C3236F /* ItemResponse+Encodable.swift */,
 				B94DF26F258E1E17005CBD0D /* Magazine+Equatable.swift */,
 			);
@@ -549,7 +547,9 @@
 		B9D3593A258E12A700C3236F /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				DECAFD6D258E264B00FB1DB1 /* FailPersistenceController.swift */,
 				B96F49F625768B7200C5AF5F /* MockRequest.swift */,
+				DE7A099D258A4D4500A3AD2D /* TestPersistenceController.swift */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
