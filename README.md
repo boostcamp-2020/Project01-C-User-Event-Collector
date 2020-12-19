@@ -14,12 +14,21 @@
     <img src="https://img.shields.io/badge/Xcode-v12.2-blue?logo=Xcode" />
     <img src="https://img.shields.io/badge/iOS-14.0-black?logo=apple" />  
 </p>
+<<<<<<< HEAD
 
 ### 👋 MINIV(미니바이브) 서비스 소개
 네이버 바이브의 사용자 이벤트를 수집함으로써, 설계와 검증을 선행적으로 할 수 있게 한 미니 바이브 서비스입니다😉    
    
 ### 🍎 WEB 배포 URL
+=======
+    
+### 👊 WEB 배포 URL
+>>>>>>> web
 http://115.85.181.152:3000
+
+### 📼 WEB 데모 비디오
+https://youtu.be/AqSunm6fDfc  
+
 
 
 ## 🗂 Directory

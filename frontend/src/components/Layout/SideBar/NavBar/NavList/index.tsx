@@ -1,9 +1,9 @@
 import React from 'react';
-import Link from 'next/link';
 import styled from '@styles/themed-components';
 import { FaMusic } from 'react-icons/fa';
 // import { FaBookOpen, FaMusic, FaTrophy, FaRecordVinyl, FaRegCalendar } from 'react-icons/fa';
 import { useRouter } from 'next/router';
+import A from '@components/Common/A';
 
 interface NavItemProps {
   isSelected?: boolean;
@@ -11,57 +11,31 @@ interface NavItemProps {
 
 function NavList() {
   const router = useRouter();
+  const target = 'SideBarNav';
   return (
     <Container>
       <NavItemWrapper>
-        <Link href="/today">
+        <A next="today" target={target}>
           <NavItem isSelected={router.pathname === '/today'}>
             <FaMusic size={18} />
             <ItemText>투데이</ItemText>
           </NavItem>
-        </Link>
-        {/* <Link href="/chart">
-          <NavItem isSelected={router.pathname === '/chart'}>
-            <FaTrophy size={18} />
-            <ItemText>차트</ItemText>
-          </NavItem>
-        </Link>
-        <Link href="/dj-station">
-          <NavItem isSelected={router.pathname === '/dj-station'}>
-            <FaRecordVinyl size={18} />
-            <ItemText>DJ 스테이션</ItemText>
-          </NavItem>
-        </Link>
-        <Link href="/magazines">
-          <NavItem isSelected={router.pathname === '/magazines'}>
-            <FaBookOpen size={18} />
-            <ItemText>VIBE MAG</ItemText>
-          </NavItem>
-        </Link>
-        <Link href="/playlist">
-          <NavItem isSelected={router.pathname === '/playlist'}>
-            <FaRegCalendar size={18} />
-            <ItemText>이달의 노래</ItemText>
-          </NavItem>
-        </Link> */}
+        </A>
       </NavItemWrapper>
       <NavItemWrapper>
         <LibraryTag>보관함</LibraryTag>
-        {/* <Link href="/library/mixtapes">
-          <NavItem isSelected={router.pathname === '/library/mixtapes'}>믹스테잎</NavItem>
-        </Link> */}
-        <Link href="/library/tracks">
+        <A next="library/tracks" target={target}>
           <NavItem isSelected={router.pathname === '/library/tracks'}>노래</NavItem>
-        </Link>
-        <Link href="/library/artists">
+        </A>
+        <A next="library/artists" target={target}>
           <NavItem isSelected={router.pathname === '/library/artists'}>아티스트</NavItem>
-        </Link>
-        <Link href="/library/albums">
+        </A>
+        <A next="library/albums" target={target}>
           <NavItem isSelected={router.pathname === '/library/albums'}>앨범</NavItem>
-        </Link>
-        <Link href="/library/playlists">
+        </A>
+        <A next="library/playlists" target={target}>
           <NavItem isSelected={router.pathname === '/library/playlists'}>플레이리스트</NavItem>
-        </Link>
+        </A>
       </NavItemWrapper>
     </Container>
   );

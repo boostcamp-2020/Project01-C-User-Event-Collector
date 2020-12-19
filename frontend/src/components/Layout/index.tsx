@@ -3,8 +3,11 @@ import styled from '@styles/themed-components';
 import SideBar from '@components/Layout/SideBar';
 import PlayBar from '@components/Layout/PlayBar';
 import Footer from '@components/Layout/Footer';
+import useLogError from '@hooks/useLogError';
 
 function Layout({ children }) {
+  useLogError();
+
   return (
     <Wrapper>
       <SideBar />
@@ -34,7 +37,7 @@ const Container = styled.div`
 
 // todaypage 빼고 다 max-width 964임.
 const Content = styled.div`
-  width: auto;;
+  width: auto;
 `;
 
 export default Layout;

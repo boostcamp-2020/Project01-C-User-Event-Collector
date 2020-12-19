@@ -23,20 +23,26 @@ type artistMeta = {
   imgUrl?: string;
 };
 
-const AlbumCard = ({ albumMetaData: album }: IAlbumMetaProps) => {
+const AlbumCard = ({ albumMetaData }: IAlbumMetaProps) => {
   const target = 'AlbumCard';
   return (
     <Container>
-      <BoxItem albumData={album} target={target} imgUrl={album.imgUrl} next="album" id={album.id} />
-      <A next="album" target={target} id={album.id}>
-        <AlbumTitle>{album?.name}</AlbumTitle>
+      <BoxItem
+        trackData={albumMetaData?.tracks}
+        target={target}
+        imgUrl={albumMetaData?.imgUrl}
+        next="album"
+        id={albumMetaData?.id}
+      />
+      <A next="album" target={target} id={albumMetaData.id}>
+        <AlbumTitle>{albumMetaData?.name}</AlbumTitle>
       </A>
-      {album.artists && album?.artists?.length > 3 ? (
+      {albumMetaData?.artists && albumMetaData?.artists?.length > 3 ? (
         <AlbumArtistName>Various Artists</AlbumArtistName>
       ) : (
-        album?.artists?.map(artist => (
+        albumMetaData?.artists?.map(artist => (
           <A next="artist" target={target} id={artist.id} key={artist.id}>
-            <AlbumArtistName>{artist.name}</AlbumArtistName>
+            <AlbumArtistName>{artist?.name}</AlbumArtistName>
           </A>
         ))
       )}
@@ -46,6 +52,7 @@ const AlbumCard = ({ albumMetaData: album }: IAlbumMetaProps) => {
 
 const Container = styled.ul`
   width: ${props => props.theme.size.smallCarouselContentWidth};
+  height: ${props => props.theme.size.smallCarouselContentWidth};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -56,6 +63,7 @@ const AlbumTitle = styled.a`
   display: block;
   font-size: 13px;
   padding-top: 14px;
+  white-space: nowrap;
 `;
 
 const AlbumArtistName = styled.a`

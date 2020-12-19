@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import trimContentLength from '@utils/trimContentLength';
 import A from '@components/Common/A';
 import MagTag from '@components/Common/MagTag';
 import BoxItem from '@components/Common/BoxItem';
@@ -11,7 +10,13 @@ function MagTopItem({ magData: mag }) {
   return (
     <Wrapper>
       <ImgWrapper>
-        <BoxItem magData={mag} target={target} imgUrl={mag.imgUrl} next="magazines" id={mag.id} />
+        <BoxItem
+          trackData={mag.tracks}
+          target={target}
+          imgUrl={mag.imgUrl}
+          next="magazines"
+          id={mag.id}
+        />
       </ImgWrapper>
       <A next="magazines" target={target} id={mag.id}>
         <MagContentWrapper>
@@ -19,7 +24,7 @@ function MagTopItem({ magData: mag }) {
             <MagTag type={mag.tag} />
           </TagWrapper>
           <MagTitle>{mag.title}</MagTitle>
-          <MagContent>{trimContentLength(mag.content, 110)}</MagContent>
+          <MagContent>{mag.content}</MagContent>
           <MagContent>{`VIBE MAG · ${mag.date}`}</MagContent>
         </MagContentWrapper>
       </A>
@@ -51,10 +56,20 @@ const MagContentWrapper = styled.div`
 `;
 
 const MagContent = styled.p`
-  ${props => props.theme.font.sub}
-  font-size: 14px;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  white-space: normal;
+  word-break: break-all;
+  display: block;
+  display: -webkit-box;
+  height: 40px;
   margin-top: 10px;
-  line-height: 130%;
+  font-size: 14px;
+  line-height: 20px;
+  color: #939393;
+  will-change: transform;
 `;
 
 const Wrapper = styled.div`

@@ -1,9 +1,13 @@
 import { useState } from 'react';
 import styled from '@styles/themed-components';
 
-import TrackItem from '@components/Common/TrackItem';
+import { RiOrderPlayFill, RiPlayListAddLine } from 'react-icons/ri';
+import { IoCloseOutline } from 'react-icons/io5';
 
-const TrackList = ({ trackList }) => {
+import TrackItem from '@components/Common/TrackItem';
+import LargeButton from '@components/Common/Button/LargeButton';
+
+const TrackList = ({ type = false, trackList }) => {
   const initialSelector: number[] = [];
   const [visible, setVisible] = useState(false);
   const [selected, setSelected] = useState(initialSelector);
@@ -24,42 +28,88 @@ const TrackList = ({ trackList }) => {
       setSelected([...selected, +e.target.value]);
       setVisible(true);
     } else {
-      const result = selected.filter(o => o !== e.target.value);
+      const result = selected.filter(o => o !== +e.target.value);
       if (!result.length) setVisible(false);
       setSelected(result);
     }
   };
 
+  const onCloseHandle = e => {
+    setVisible(false);
+  };
+
   return (
-    <TrackListSection>
-      {trackList.map(track => (
-        <TrackItem
-          key={track.id}
-          type="checkbox"
-          trackMetaData={track}
-          selected={selected}
-          onSelectHandler={onChangeHandle}
-        />
-      ))}
-      <SelectedHeader displayVisiable={visible}>
-        <SelectedBarInner>
-          <SelectedInfoArea>
-            <input
-              type="checkbox"
-              onChange={onChangeAll}
-              checked={selected.length === trackList.length}
-            />
-            <SelectLabel>전체선택</SelectLabel>
-            <SelectedCountSpan> 
+    <>
+      {trackList ? (
+        <TrackListSection>
+          {trackList.map((track, index) =>
+            type ? (
+              <TrackItem key={track.id} trackMetaData={track} />
+            ) : (
+              <TrackItem
+                key={track.id}
+                type="checkbox"
+                trackMetaData={track}
+                selected={selected}
+                onSelectHandler={onChangeHandle}
+                chart={index + 1}
+              />
+            ),
+          )}
+          <SelectedHeader displayVisiable={visible}>
+            <SelectedBarInner>
+              <SelectedInfoArea>
+                <InfoAreaWrapper>
+                  <input
+                    type="checkbox"
+                    onChange={onChangeAll}
+                    checked={selected.length === trackList.length}
+                  />
+                  <SelectLabel>전체선택</SelectLabel>
+                  <SelectedCountSpan> 
 {' '}
 {selected.length}곡 선택</SelectedCountSpan>
-          </SelectedInfoArea>
-          <PlayOptionArea />
-        </SelectedBarInner>
-      </SelectedHeader>
-    </TrackListSection>
+                </InfoAreaWrapper>
+                <IoCloseOutline size={26} onClick={onCloseHandle} />
+              </SelectedInfoArea>
+              <PlayOptionArea>
+                <InfoAreaWrapper>
+                  <TextButton>
+                    <RiOrderPlayFill />
+                    <WordSpan>바로 다음에</WordSpan>
+                  </TextButton>
+                  <TextButton>
+                    <RiPlayListAddLine />
+                    <WordSpan>맨 아래에</WordSpan>
+                  </TextButton>
+                  <TextButton>
+                    <span>mp3 구매</span>
+                  </TextButton>
+                </InfoAreaWrapper>
+                <LargeButton customType="normal-play" />
+              </PlayOptionArea>
+            </SelectedBarInner>
+          </SelectedHeader>
+        </TrackListSection>
+      ) : null}
+    </>
   );
 };
+
+const TextButton = styled.span`
+  all: unset;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+
+  font-size: 14px;
+  margin: 6px;
+`;
+
+const WordSpan = styled.span`
+  padding-left: 5px;
+`;
 
 const TrackListSection = styled.div``;
 
@@ -83,8 +133,16 @@ const SelectedBarInner = styled.div`
 `;
 
 const SelectedInfoArea = styled.div`
+  display: flex;
+  justify-content: space-between;
   padding: 19px 0 20px;
   border-bottom: 1px solid #e4e4e4;
+`;
+
+const InfoAreaWrapper = styled.div`
+  display: flex;
+
+  align-items: center;
 `;
 
 const SelectLabel = styled.label`
@@ -98,6 +156,10 @@ const SelectedCountSpan = styled.span`
 `;
 
 const PlayOptionArea = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   position: relative;
   margin-left: -10px;
   padding: 13px 0 12px;

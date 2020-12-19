@@ -24,7 +24,7 @@ type MetaTrack = {
 };
 
 function TrackDetail({ trackInfo: track }: ITrackInfoProps) {
-  const TrackDetailAlbum = 'TrackDetailAlbum';
+  const target = 'TrackDetailAlbum';
 
   return (
     <DetailTemplate data={unifyMetaData('track', track)}>
@@ -42,7 +42,8 @@ function TrackDetail({ trackInfo: track }: ITrackInfoProps) {
           <SectionContentWrapper>
             <ContentImgWrapper>
               <BoxItem
-                target={TrackDetailAlbum}
+                trackData={track}
+                target={target}
                 imgUrl={track?.album?.imgUrl}
                 next="album"
                 id={track?.album?.id}
@@ -51,11 +52,13 @@ function TrackDetail({ trackInfo: track }: ITrackInfoProps) {
 
             <ContentWrapper>
               <AlbumTag>최신앨범</AlbumTag>
-              <A next="album" id={track?.album.id} target={TrackDetailAlbum}>
+              <A next="album" id={track?.album.id} target={target}>
                 <AlbumTitle>{track?.album.name}</AlbumTitle>
-                <AlbumContent>{track?.artists[0]?.name}</AlbumContent>
-                <AlbumContent>{track?.album.date}</AlbumContent>
               </A>
+              <A next="artist" id={track?.artists[0].id} target={target}>
+                <AlbumContent>{track?.artists[0]?.name}</AlbumContent>
+              </A>
+              <AlbumContent>{track?.album?.date?.split('T')[0]}</AlbumContent>
             </ContentWrapper>
           </SectionContentWrapper>
         </Section>
@@ -101,7 +104,7 @@ const ContentImgWrapper = styled.div`
   height: 180px;
 `;
 
-const AlbumTitle = styled.a`
+const AlbumTitle = styled.p`
   ${props => props.theme.font.plain}
   font-size: 16px;
 `;

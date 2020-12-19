@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 
-const CircleImage = ({ imageSrc }) => {
-  return <Container src={imageSrc} />;
+const CircleImage = ({ imageSrc, alt }) => {
+  return <Container src={imageSrc} alt={alt} />;
 };
 
 const Container = styled.img`

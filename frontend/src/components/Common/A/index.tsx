@@ -1,8 +1,6 @@
 import React from 'react';
-import styled from 'styled-components';
-import { useRouter } from 'next/router';
-import useEventHandler from '@hooks/useEventHandler';
 import Link from 'next/link';
+import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
 
 interface IAProps {
   next: string;
@@ -11,35 +9,22 @@ interface IAProps {
   children: any;
 }
 
-interface IEventTargetProps {
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-}
-
 function A({ next, target, id, children }: IAProps) {
-  const router = useRouter();
   return (
     <>
-      <Link href={`/${next}/[id]`} as={`/${next}/${id}`}>
-        <Wrapper
-          onClick={useEventHandler(null, {
-            eventTime: new Date(),
-            eventName: 'ClickEvent',
-            parameters: {
-              page: router.pathname,
-              target: `/${`${target}/${id}`}`,
-            },
-          })}
-        >
-          {children}
-        </Wrapper>
-      </Link>
+      {id ? (
+        <ClickEventWrapper target={target} id={id}>
+          <Link href={`/${next}/[id]`} as={`/${next}/${id}`}>
+            {children}
+          </Link>
+        </ClickEventWrapper>
+      ) : (
+        <ClickEventWrapper target={target}>
+          <Link href={`/${next}`}>{children}</Link>
+        </ClickEventWrapper>
+      )}
     </>
   );
 }
-
-const Wrapper = styled.div<IEventTargetProps>`
-  width: 100%;
-  cursor: pointer;
-`;
 
 export default A;

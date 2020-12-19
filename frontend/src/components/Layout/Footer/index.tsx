@@ -5,20 +5,38 @@ function Footer() {
     <Container>
       <FooterContent>
         <NoticeWrapper>
-          <SpanTitle>공지사항</SpanTitle> <SpanContent><a href='https://www.notion.so/01-C-2eff1e17f05a48cab0eeb5bea98a055e'>User-Event-Collector C-team Notion 바로가기</a></SpanContent>
+          <SpanTitle>공지사항</SpanTitle>
+{' '}
+          <SpanContent>
+            <a href="https://www.notion.so/01-C-2eff1e17f05a48cab0eeb5bea98a055e">
+              User-Event-Collector C-team Notion 바로가기
+            </a>
+          </SpanContent>
         </NoticeWrapper>
         <InfoWrapper>
-        <Info>
-            <SpanTitle>프로젝트</SpanTitle> <SpanContent>미니 바이브</SpanContent>
+          <Info>
+            <SpanTitle>프로젝트</SpanTitle> 
+{' '}
+<SpanContent>미니 바이브</SpanContent>
           </Info>
           <Info>
-            <SpanTitle>소속</SpanTitle> <SpanContent>네이버 커넥트 Boost camp 5th</SpanContent>
+            <SpanTitle>소속</SpanTitle> 
+{' '}
+<SpanContent>네이버 커넥트 Boost camp 5th</SpanContent>
           </Info>
           <Info>
-            <SpanTitle>팀 이름</SpanTitle> <SpanContent>이줍사 (이벤트를 줍는 사람들)</SpanContent>
+            <SpanTitle>팀 이름</SpanTitle> 
+{' '}
+<SpanContent>이줍사 (이벤트를 줍는 사람들)</SpanContent>
           </Info>
           <Info>
-            <SpanTitle>깃 저장소</SpanTitle> <SpanContent><a href='https://github.com/boostcamp-2020/Project01-C-User-Event-Collector'>https://github.com/boostcamp-2020/Project01-C-User-Event-Collector</a></SpanContent>
+            <SpanTitle>깃 저장소</SpanTitle>
+{' '}
+            <SpanContent>
+              <a href="https://github.com/boostcamp-2020/Project01-C-User-Event-Collector">
+                https://github.com/boostcamp-2020/Project01-C-User-Event-Collector
+              </a>
+            </SpanContent>
           </Info>
         </InfoWrapper>
       </FooterContent>
@@ -42,7 +60,7 @@ const FooterContent = styled.div`
 
 const NoticeWrapper = styled.div`
   padding: 1.2rem;
-  border: 1px solid rgba(30,30,30,.05);
+  border: 1px solid rgba(30, 30, 30, 0.05);
 `;
 
 const SpanTitle = styled.span`
@@ -51,16 +69,15 @@ const SpanTitle = styled.span`
   padding-right: 3px;
 `;
 
-const SpanContent = styled.span`
-`;
+const SpanContent = styled.span``;
 
 const InfoWrapper = styled.div`
   padding: 1.2rem;
-  border-bottom: 1px solid rgba(30,30,30,.05);
+  border-bottom: 1px solid rgba(30, 30, 30, 0.05);
 `;
 
 const Info = styled.div`
- padding: 0.3rem 0;
+  padding: 0.3rem 0;
 `;
 
 export default Footer;

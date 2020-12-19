@@ -3,6 +3,11 @@ import styled from '@styles/themed-components';
 import CircleImage from '@components/Common/CircleImage';
 import CircleHeartButton from '@components/Common/Button/CircleHeartButton';
 import A from '@components/Common/A';
+import api from '@api/index';
+import { mutate } from 'swr';
+import useEventHandler from '@hooks/useEventHandler';
+import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
+import { useAuthDispatch } from '@context/AuthContext';
 
 interface IArtistMetaProps {
   artistMetaData: ArtistMeta;
@@ -16,25 +21,30 @@ type ArtistMeta = {
   imgUrl: string;
 };
 
-const deleteArtist = async (e, id) => {
-  // await api.delete(`library/artists/${id}`);
-  console.log('아티스트 삭제');
-  e.target.closest('.artist-card').style.opacity = '0';
-  e.target.closest('.artist-card').style.transform = 'translate(0px, -35px)';
-};
-
 const ArtistCard = ({ artistMetaData: artist, type }: IArtistMetaProps) => {
   const target = 'ArtistCard';
+  const dispatch = useAuthDispatch();
+
+  const deleteArtist = async (e, id) => {
+    await api.delete(`library/artists/${id}`);
+    e.target.closest('.artist-card').style.opacity = '0';
+    e.target.closest('.artist-card').style.transform = 'translate(0px, -35px)';
+    dispatch({ type: 'DELETE_ARTIST', artistId: id });
+    mutate(`${process.env.NEXT_PUBLIC_API_BASE_URL}/library/artists`);
+  };
+
   return (
     <Container className="artist-card">
       <ImageContainer>
         <A next="artist" target={target} id={artist.id}>
-          <CircleImage imageSrc={artist.imgUrl} />
+          <CircleImage imageSrc={artist.imgUrl} alt="artist-img" />
         </A>
         {type && (
-          <ButtonWrapper onClick={e => deleteArtist(e, artist.id)}>
-            <CircleHeartButton />
-          </ButtonWrapper>
+          <ClickEventWrapper target={`${target}/DeleteBtn`} id={artist.id}>
+            <ButtonWrapper onClick={e => useEventHandler(deleteArtist(e, artist.id), null)}>
+              <CircleHeartButton />
+            </ButtonWrapper>
+          </ClickEventWrapper>
         )}
       </ImageContainer>
       <A next="artist" target={target} id={artist.id}>
@@ -50,7 +60,7 @@ const Container = styled.ul`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  transition: all 1s;
+  transition: all 2s;
   position: relative;
 `;
 

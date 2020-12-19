@@ -20,6 +20,13 @@ const LargeButton = ({ onClick, children, customType }: ILargeButtonProps) => {
           <span>전체재생</span>
         </PlayButton>
       );
+    case 'normal-play':
+      return (
+        <PlayButton>
+          <IoMdPlay size={20} />
+          <span>재생</span>
+        </PlayButton>
+      );
     case 'shuffle':
       return (
         <ShuffleButton>

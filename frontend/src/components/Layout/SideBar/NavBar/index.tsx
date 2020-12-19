@@ -1,54 +1,42 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@styles/themed-components';
 
-import Dropdown from '@components/Common/Dropdown';
-import { useAuthDispatch, useAuthState } from '@context/AuthContext';
 import api from '@api/index';
+import AuthDropdown from '@components/Common/Dropdown/AuthDropdown';
+import { useAuthState, useAuthDispatch } from '@context/AuthContext';
 import NavList from './NavList';
 
 const loginEvent = () => {
-  // window.location.href = 'http://115.85.181.152:8000/api/auth/login';
-  window.location.href = 'http://localhost:8000/api/auth/login';
+  window.location.href = process.env.NEXT_PUBLIC_NAVER_LOGIN_URL as string;
 };
 
 function NavBar() {
   const state = useAuthState();
   const dispatch = useAuthDispatch();
   const { userInfo } = state;
-
-  const fetchData = () => {
-    api.defaults.headers.authorization = localStorage.getItem('token');
-    api.get('/user').then(res => {
-      const userData = res.data.user;
-      if (userData)
-        dispatch({
-          type: 'SET_USERINFO',
-          userInfo: {
-            id: userData?.id,
-            isLoggedIn: true,
-            nickName: userData?.nickname,
-            imgUrl: userData?.profileURL,
-          },
-        });
-    });
-  };
+  const [userState, setUserState] = useState(userInfo);
 
   useEffect(() => {
-    fetchData();
-    console.log('NAVBAR useEFFECT');
-  }, [dispatch]);
+    setUserState(userInfo);
+    api.defaults.headers.authorization = localStorage.getItem('token');
+    if (!userInfo.isLoggedIn) {
+      api.get('user').then(res => {
+        if (res.data.success) setUserState({ ...res.data?.user, isLoggedIn: true });
+      });
+    }
+  }, [dispatch, userInfo.isLoggedIn, userInfo]);
 
   return (
     <Container>
-      {userInfo.isLoggedIn ? (
+      {userState.isLoggedIn ? (
         <AuthWrapper>
-          <ProfileImg src={userInfo.imgUrl} alt="profile-img" />
-          {userInfo?.nickName}
-          <Dropdown type="auth" />
+          <ProfileImg src={userState?.profileURL} alt="profile-img" />
+          {userState?.nickname}
+          <AuthDropdown />
         </AuthWrapper>
       ) : (
-        <AuthWrapper onClick={loginEvent}>
-          <ProfileImg src={userInfo.imgUrl} alt="profile-img" />
+        <AuthWrapper style={{ cursor: 'pointer' }} onClick={loginEvent}>
+          <ProfileImg src={userState?.profileURL} alt="profile-img" />
           로그인
         </AuthWrapper>
       )}

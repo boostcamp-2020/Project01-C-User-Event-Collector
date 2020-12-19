@@ -1,34 +1,72 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import styled from 'styled-components';
-import { IoHeartOutline } from 'react-icons/io5';
-import { RiPlayListLine } from 'react-icons/ri';
-import { BsThreeDots } from 'react-icons/bs';
+import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
+import useEventHandler from '@hooks/useEventHandler';
+
+import api from '@api/index';
+import { useAuthState, useAuthDispatch } from '@context/AuthContext';
 import A from '@components/Common/A';
 
-const testImgUrl =
-  'https://musicmeta-phinf.pstatic.net/album/005/064/5064543.jpg?type=r720Fll&v=20201104164506';
-
-function PlayTrackItem() {
+function PlayTrackItem({ type, trackData: track }) {
+  const state = useAuthState();
+  const router = useRouter();
+  const dispatch = useAuthDispatch();
+  const { trackList } = state;
   const target = 'PlayTrackItem';
+
+  const addTrackEvent = () => {
+    api.post(`library/tracks`, { trackId: track.id });
+    dispatch({ type: 'ADD_TRACK', trackId: track.id });
+  };
+  const deleteTrackEvent = () => {
+    api.delete(`library/tracks/${track.id}`);
+    dispatch({ type: 'DELETE_TRACK', trackId: track.id });
+  };
+
+  const libraryEventLog = action => {
+    return {
+      eventName: 'music_event',
+      parameters: { type: 'track', action, page: router.asPath },
+    };
+  };
+
   return (
     <TrackWrapper>
       <TrackImgWrapper>
-        <A next="album" id={1} target={target}>
-          <TrackImg src={testImgUrl} alt="playbar-track-img" />
+        <A next="album" id={track?.album?.id} target={target}>
+          <TrackImg src={track?.album?.imgUrl} alt="playbar-track-img" />
         </A>
       </TrackImgWrapper>
       <TrackContentWrapper>
-        <A next="track" id={1} target={target}>
-          <TrackTitle>얘랑 있을 때 좋다 (...</TrackTitle>
+        <A next="track" id={track?.id} target={target}>
+          <TrackTitle type={type}>{track?.title}</TrackTitle>
         </A>
-        <A next="artist" id={222} target={target}>
-          <TrackArtist>어쿠스틱 콜라보</TrackArtist>
-        </A>
+        {track?.artists && (
+          <A next="artist" id={track?.artists[0]?.id} target={target}>
+            <TrackArtist>{track?.artists[0]?.name}</TrackArtist>
+          </A>
+        )}
       </TrackContentWrapper>
       <IconWrapper>
-        <IoHeartOutline className="like button" size={24} />
-        <RiPlayListLine className="lyric button" size={20} />
-        <BsThreeDots className="dropdown button" size={20} />
+        {type !== 'playbar' && (
+          <>
+            {trackList?.includes(track?.id) ? (
+              <IoMdHeart
+                className="like button"
+                size={24}
+                color="ff1350"
+                onClick={useEventHandler(deleteTrackEvent, libraryEventLog('remove'))}
+              />
+            ) : (
+              <IoMdHeartEmpty
+                className="like button"
+                size={24}
+                onClick={useEventHandler(addTrackEvent, libraryEventLog('like'))}
+              />
+            )}
+          </>
+        )}
       </IconWrapper>
     </TrackWrapper>
   );
@@ -47,10 +85,15 @@ const TrackContentWrapper = styled.div`
   padding-left: 12px;
 `;
 
-const TrackTitle = styled.a`
-  font-weight: 600;
+const TrackTitle = styled.a<{ type?: string }>`
+  font-weight: ${props => (props.type ? 400 : 600)};
   font-size: 14px;
-  color: ${props => props.theme.color.white};
+  color: ${props => (props.type ? '#c9c9c9' : props.theme.color.white)};
+  width: 125px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
 `;
 
 const TrackArtist = styled.a`
@@ -60,10 +103,12 @@ const TrackArtist = styled.a`
 `;
 
 const IconWrapper = styled.div`
-  width: 115px;
+  width: 75px;
   padding-left: 20px;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: flex-end;
+  position: relative;
   .icon:hover {
     color: ${props => props.theme.color.white};
   }

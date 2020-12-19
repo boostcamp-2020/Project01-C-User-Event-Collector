@@ -45,7 +45,7 @@
         "./src/lib/*"
       ],
       "@constants": [
-        "./src/constants.ts"
+        "./src/constants/*"
       ],
       "@context/*": [
         "./src/context/*"

@@ -1,18 +1,18 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import useFetch from '@hooks/useFetch';
+import Spinner from '@components/Common/Spinner';
 import ArtistCard from '@components/Common/Card/ArtistCard';
 
 function RelatedArtist() {
-  const { data, isLoading, isError } = useFetch(`/artist`);
+  const { data, isLoading, isError } = useFetch(`/artist`, null);
 
-  if (isLoading) return <div>...Loading</div>;
+  if (isLoading) return <Spinner />;
   if (isError) {
     console.log(isError);
     return <div>...Error</div>;
   }
   const artists = data.data;
-  console.log('myartists : ', artists);
 
   return (
     <SectionContentWrapper>
