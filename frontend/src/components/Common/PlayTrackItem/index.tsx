@@ -68,12 +68,11 @@ function PlayTrackItem({ type, trackData: track }) {
                 onClick={useEventHandler(addTrackEvent, libraryEventLog('like'))}
               />
             )}
-
-            <RiPlayListLine className="lyric button" size={20} />
-            <BsThreeDots className="dropdown button" size={20} />
-            <DropdownWrapper>
+            {/* <RiPlayListLine className="lyric button" size={20} />
+            <BsThreeDots className="dropdown button" size={20} /> */}
+            {/* <DropdownWrapper>
               <BoxDropdown trackData={track} type="track" id={track?.id} />
-            </DropdownWrapper>
+            </DropdownWrapper> */}
           </>
         )}
       </IconWrapper>
@@ -120,10 +119,11 @@ const TrackArtist = styled.a`
 `;
 
 const IconWrapper = styled.div`
-  width: 115px;
+  width: 75px;
   padding-left: 20px;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
+  justify-content: flex-end;
   position: relative;
   .icon:hover {
     color: ${props => props.theme.color.white};
