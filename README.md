@@ -59,7 +59,7 @@ VIBE 서비스 사용과정에서 발생하는 이벤트를 수집하는 서비�
 
 #### iOS 🍎
 
-[<img width="500" src="https://user-images.githubusercontent.com/54564170/102687174-9aecb680-4230-11eb-985a-ab967a08f06f.png"/>](https://youtu.be/dQiQtMR8pOM)
+[<img width="500" src="https://user-images.githubusercontent.com/54564170/102687174-9aecb680-4230-11eb-985a-ab967a08f06f.png"/>](https://www.youtube.com/watch?v=_10ZGYLncX0)
 > 클릭하시면 youtube로 이동합니다💨
 
 <br>
