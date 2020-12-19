@@ -12,3 +12,9 @@ class LoginEvent: Event {
         super.init(name: EventName.loginEvent.description, parameters: [:], date: Date().customDateFormat())
     }
 }
+
+class LogoutEvent: Event {
+    init() {
+        super.init(name: EventName.logoutEvent.description, parameters: [:], date: Date().customDateFormat())
+    }
+}

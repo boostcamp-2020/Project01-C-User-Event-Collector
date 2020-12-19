@@ -8,9 +8,29 @@
 import CoreData
 import BCEventEmitter
 
-final class PersistenceController {
-    var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "MiniVIBE")
+protocol PersistenceController {
+    var persistentContainer: NSPersistentContainer { get }
+    var context: NSManagedObjectContext { get }
+    func fetch<T: NSManagedObject>(request: NSFetchRequest<T>) -> [T]
+    func delete<T: NSManagedObject>(request: NSFetchRequest<T>) -> Bool
+    func saveEvent(event: CoreDataEvent) -> Bool
+    
+}
+
+class RealPersistenceController: PersistenceController {
+    public static let modelName = "MiniVIBE"
+    public static let model: NSManagedObjectModel = {
+        let modelURL = Bundle.main.url(forResource: modelName, withExtension: "momd")!
+        return NSManagedObjectModel(contentsOf: modelURL)!
+    }()
+    
+    public func newDerivedContext() -> NSManagedObjectContext {
+        let context = persistentContainer.newBackgroundContext()
+        return context
+    }
+    
+    lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: RealPersistenceController.modelName)
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)") }
@@ -32,11 +52,13 @@ final class PersistenceController {
         }
     }
     
-    func deleteAll<T: NSManagedObject>(request: NSFetchRequest<T>) -> Bool {
-        let request = T.fetchRequest()
-        let delete = NSBatchDeleteRequest(fetchRequest: request)
+    func delete<T: NSManagedObject>(request: NSFetchRequest<T>) -> Bool {
         do {
-            try self.context.execute(delete)
+            let fetchResult = try self.context.fetch(request)
+            for object in fetchResult {
+                let managedObjectData: NSManagedObject = object as NSManagedObject
+                context.delete(managedObjectData)
+            }
         } catch {
             emitEvent(event: ErrorEvent(from: "PersistenceController", reason: error.localizedDescription))
             return false
@@ -48,7 +70,7 @@ final class PersistenceController {
         guard let eventEntity = NSEntityDescription.entity(forEntityName: "CDEvent", in: context) else { return false }
         let cdEvent = NSManagedObject(entity: eventEntity, insertInto: context)
         cdEvent.setValue(event.name, forKey: "name")
-        cdEvent.setValue(event.date, forKey: "date")
+        cdEvent.setValue(event.date, forKey: "dateString")
         
         guard let parameters = event.parameters else { return false }
             let params = parameters.compactMap { (key, value) -> CDParameter? in
