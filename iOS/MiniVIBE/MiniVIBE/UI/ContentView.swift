@@ -20,7 +20,6 @@ struct ContentView: View {
             TabView(selection: $viewModel.selectedTab) {
                 TabSyncView(selection: $viewModel.selectedTab, tag: TabType.today) {
                     TodayView(viewModel: TodayView.ViewModel(container: viewModel.container))
-              
                 }
                 .tabItem {
                     Image(systemName: "house")

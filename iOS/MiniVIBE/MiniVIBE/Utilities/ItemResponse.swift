@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct ItemResponse<T: Decodable>: Decodable {
+public struct ItemResponse<T: Decodable>: Decodable {
     let data: T
 }
