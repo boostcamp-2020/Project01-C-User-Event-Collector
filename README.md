@@ -20,24 +20,34 @@
 ### 👋 VIBE 사용자 이벤트 수집기 서비스 소개
 네이버 음악서비스 VIBE 웹/앱을 클론하고  
 VIBE 서비스 사용과정에서 발생하는 이벤트를 수집하는 서비스입니다😉
-
 <p align="center"><img width="550" alt="event" src="https://user-images.githubusercontent.com/60839959/102684475-46d7d700-421c-11eb-8e5d-a50837d36f17.gif"></p>
-<p align="center"><img width="480" alt="event" src="https://user-images.githubusercontent.com/60839959/102684472-44757d00-421c-11eb-9761-8953142ad320.png"></p>
+
+## 어떤 이벤트를 수집하나요?
+> 유의미한 이벤트가 어떤 것일지, 이벤트 로그는 어떤 목적으로 수집되는지에 대해 고민하여 이벤트 로그를 정의했습니다.
+
+<p align="center"><img width="454" alt="event" src="https://user-images.githubusercontent.com/60839959/102684472-44757d00-421c-11eb-9761-8953142ad320.png"></p>
+<p align="center">
+<img width="360" alt="event" src="https://user-images.githubusercontent.com/60839959/102684638-c74b0780-421d-11eb-84fc-8f4f625a66e6.png">
+<img width="570" alt="스크린샷 2020-12-19 오후 5 27 57" src="https://user-images.githubusercontent.com/60839959/102684875-910e8780-421f-11eb-8b64-16f53d06c200.png">
+</p>
 
 <br>
-   
-### 📍 [WEB 배포 URL](http://115.85.181.152:3000)
+<br>
+ 
+## 🛠 Tech Stack
+<p align="center"><img width="700" alt="기술 스택" src="https://user-images.githubusercontent.com/60839959/102683725-6966f180-4216-11eb-8bc0-77a0066d8645.png"></p>
+
+<br>
+
+## 📹 Demo Video
+#### Web🕸
+  
+[<img width="500" src="https://user-images.githubusercontent.com/60839959/102683358-bbf2de80-4213-11eb-87e0-c889f0afe61b.png"/>](https://youtu.be/AqSunm6fDfc)
+> 클릭하시면 youtube로 이동합니다💨
 
 ### 📹 [API 명세서](https://hackmd.io/NtoQmqLmTC6cv0prAzUX9g)
 ### ✍ [저희 팀이 더 궁금하시다면 Wiki 보러가기](https://github.com/boostcamp-2020/Project01-C-User-Event-Collector/wiki)
 
-
-## 📹 Demo Video
-[<img width="500" src="https://user-images.githubusercontent.com/60839959/102683358-bbf2de80-4213-11eb-87e0-c889f0afe61b.png"/>](https://youtu.be/AqSunm6fDfc)
-> 클릭하시면 youtube로 이동합니다💨
-
-## 🛠 Tech Stack
-<p align="center"><img width="800" alt="기술 스택" src="https://user-images.githubusercontent.com/60839959/102683725-6966f180-4216-11eb-8bc0-77a0066d8645.png"></p>
 
 
 ## 🗂 Directory
@@ -80,19 +90,19 @@ VIBE 서비스 사용과정에서 발생하는 이벤트를 수집하는 서비�
 ├── src
 │   ├── components
 │   │   ├── ArtistList
-│   │   ├── Common         -----------------// 작은 단위의 컴포넌트가 여러 페이지에서 사용되면 여기다 만들면 될 것 같아요.
+│   │   ├── Common         -----------------// 여러 페이지에서 반복적으로 사용되는 컴포넌트 
 │   │   │   ├── BoxItem
 │   │   │   ├── Button
 │   │   │   ├── Card
 │   │   │   ├── CircleImage
 │   │   │   ├── Dropdown
 │   │   │   └── MagTopItem
-│   │   ├── Layout
+│   │   ├── Layout            -----------------// 모든페이지에서 공통적으로 사용되는 레이아웃 컴포넌트
 │   │   │   ├── Footer
 │   │   │   ├── Playbar
 │   │   │   ├── Sidebar
 │   │   │   └── index.tsx
-│   │   ├── Template           ----------------// 특정 구역에서 공통적으로 사용되는 부분을 여기로 뺏습니다. 저는 보관함 template을 작성했습니다.
+│   │   ├── Template           ----------------// 특정 구역에서 공통적으로 사용되는 컴포넌트들을 모아 템플릿으로 관리 (보관함, 디테일 페이지 등)
 │   │   │   └── Library
 │   │   ├── sample-rx.tsx
 │   │   └── sample.tsx
@@ -100,11 +110,10 @@ VIBE 서비스 사용과정에서 발생하는 이벤트를 수집하는 서비�
 │   │   └── Library
 │   │       └── MyTrack
 │   │           └── index.tsx
-│   └── styles                    ----------------// (*) public 밑에 있던 style을 여기로 옮겨왔습니다. public 아닌거같아서.
+│   └── styles                    ----------------// theme, 
 │       ├── global-styles.ts
 │       ├── themed-components.ts
-│       ├── themes.ts
-│       └── withSizes.ts
+│       └── themes.ts
 └── tsconfig.json
   ```
   
