@@ -73,6 +73,6 @@ class PersistenceControllerTests: XCTestCase {
 
 extension CoreDataEvent: Equatable {
     public static func == (lhs: CoreDataEvent, rhs: CoreDataEvent) -> Bool {
-        lhs.name == rhs.name && lhs.date.description == rhs.date.description && lhs.parameters == lhs.parameters
+        lhs.name == rhs.name && lhs.date == rhs.date && lhs.parameters == lhs.parameters
     }
 }

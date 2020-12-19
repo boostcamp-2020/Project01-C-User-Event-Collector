@@ -243,6 +243,8 @@
 		DEA2137C2583F3DC00E65AE1 /* KeyChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChain.swift; sourceTree = "<group>"; };
 		DEB6A6EC2572C89E00C97A0C /* DetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailHeaderView.swift; sourceTree = "<group>"; };
 		DEC076D92563AEBE004862AA /* TodayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayView.swift; sourceTree = "<group>"; };
+		DECAFD63258E0C1D00FB1DB1 /* MiniVIBE v2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MiniVIBE v2.xcdatamodel"; sourceTree = "<group>"; };
+		DECAFD67258E12F500FB1DB1 /* MiniVIBE v3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "MiniVIBE v3.xcdatamodel"; sourceTree = "<group>"; };
 		DECDDCA6258A3C8800E5F10B /* PersistenceControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceControllerTests.swift; sourceTree = "<group>"; };
 		DEF5EFE825723A01006666DC /* NowPlayingBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingBarView.swift; sourceTree = "<group>"; };
 		DEF5EFED25727E47006666DC /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
@@ -1231,9 +1233,11 @@
 		B994C6A625627DBE000E563C /* MiniVIBE.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				DECAFD67258E12F500FB1DB1 /* MiniVIBE v3.xcdatamodel */,
+				DECAFD63258E0C1D00FB1DB1 /* MiniVIBE v2.xcdatamodel */,
 				B994C6A725627DBE000E563C /* MiniVIBE.xcdatamodel */,
 			);
-			currentVersion = B994C6A725627DBE000E563C /* MiniVIBE.xcdatamodel */;
+			currentVersion = DECAFD67258E12F500FB1DB1 /* MiniVIBE v3.xcdatamodel */;
 			path = MiniVIBE.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

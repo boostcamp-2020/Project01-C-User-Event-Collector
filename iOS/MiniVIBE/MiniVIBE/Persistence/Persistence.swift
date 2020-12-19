@@ -70,7 +70,7 @@ class RealPersistenceController: PersistenceController {
         guard let eventEntity = NSEntityDescription.entity(forEntityName: "CDEvent", in: context) else { return false }
         let cdEvent = NSManagedObject(entity: eventEntity, insertInto: context)
         cdEvent.setValue(event.name, forKey: "name")
-        cdEvent.setValue(event.date, forKey: "date")
+        cdEvent.setValue(event.date, forKey: "dateString")
         
         guard let parameters = event.parameters else { return false }
             let params = parameters.compactMap { (key, value) -> CDParameter? in
