@@ -37,7 +37,6 @@ private extension AlbumDetailView {
             HStack {
                 Image(album.imageURLString)
                     .resizable()
-                    // FIXME: 고정값
                     .frame(width: 100, height: 100, alignment: .center)
                 VStack(alignment: .leading, spacing: .defaultSpacing) {
                     Text(album.title).vibeTitle3()

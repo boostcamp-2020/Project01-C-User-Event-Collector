@@ -12,10 +12,10 @@ import BCEventEmitter
 
 
 class EventServiceTests: XCTestCase {
-    let localRepository = MockLocalRepository()
-    let serverRepository = MockServerRepository()
+    private let localRepository = MockLocalRepository()
+    private let serverRepository = MockServerRepository()
 
-    func test_sendOneEvent() throws {
+    func test_send_one_event() throws {
         let eventService = RealEventService(serverRepository: serverRepository, localRepository: localRepository)
         let errorEvent = ErrorEvent(from: "EventService sendOneEvent", reason: NetworkError.unexpectedResponse.localizedDescription)
         let event = CoreDataEvent(name: "test", parameter: ["view": "test"])
@@ -27,7 +27,7 @@ class EventServiceTests: XCTestCase {
         XCTAssertEqual(fetched.last, event)
     }
 
-    func test_sendAllEvents() {
+    func test_send_all_events() {
         let eventService = RealEventService(serverRepository: serverRepository, localRepository: localRepository)
         let errorEvent = ErrorEvent(from: "EventService sendAllEvents", reason: NetworkError.unexpectedResponse.localizedDescription)
         

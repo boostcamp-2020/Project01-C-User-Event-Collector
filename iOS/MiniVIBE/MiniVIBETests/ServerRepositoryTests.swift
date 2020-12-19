@@ -12,9 +12,9 @@ import BCEventEmitter
 
 
 class ServerRepositoryTests: XCTestCase {
-    
     private var subscriptions: Set<AnyCancellable> = []
     private let items = [Magazine(id: 124, title: "hihi", imageURLString: "hihi", date: "2020-11-11", tag: "123", content: "hihi")]
+    
     struct MockSuccessNetwork: Networking {
         let items: [Magazine]
         func execute(_ requestProvider: RequestProviding) -> AnyPublisher<Data, NetworkError> {

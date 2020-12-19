@@ -10,8 +10,8 @@ import CoreData
 @testable import MiniVIBE
 
 class LocalRepositoryTests: XCTestCase {
-    var testPersistenceController: PersistenceController!
-    var failPersistenceController: PersistenceController!
+    private var testPersistenceController: PersistenceController!
+    private var failPersistenceController: PersistenceController!
     
     override func setUp() {
         testPersistenceController = TestPersistenceController()
