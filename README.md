@@ -20,11 +20,21 @@
 VIBE 서비스 사용과정에서 발생하는 이벤트를 수집하는 서비스입니다😉
    
    
-### 📍 WEB 배포 URL
-http://115.85.181.152:3000
+### 📍 [WEB 배포 URL](http://115.85.181.152:3000)
+### 📷 [프로젝트 실행 화면](https://github.com/boostcamp-2020/IssueTracker-28/wiki/%EC%8B%A4%ED%96%89-%ED%99%94%EB%A9%B4)
+### 📹 [API 명세서](https://hackmd.io/NtoQmqLmTC6cv0prAzUX9g)
+### ✍ [저희 팀이 더 궁금하시다면 Wiki 보러가기](https://github.com/boostcamp-2020/Project01-C-User-Event-Collector/wiki)
 
-### 📼 WEB 데모 비디오
-https://youtu.be/AqSunm6fDfc  
+
+## 📹 Demo Video
+[<img width="400" src="https://user-images.githubusercontent.com/60839959/102683358-bbf2de80-4213-11eb-87e0-c889f0afe61b.png"/>](https://youtu.be/AqSunm6fDfc)
+> 클릭하시면 youtube로 이동합니다💨
+
+## 🛠 Tech Stack
+<p align="center"><img width="800" alt="기술 스택" src="https://user-images.githubusercontent.com/60839959/102683725-6966f180-4216-11eb-8bc0-77a0066d8645.png"></p>
+
+## 📊 DB Model
+<img width="800" alt="스크린샷 2020-10-27 오후 1 11 59" src="https://user-images.githubusercontent.com/60839959/102683765-ccf11f00-4216-11eb-9c1a-9787718827c2.png">
 
 
 
@@ -118,14 +128,8 @@ npm run start
 | 🕸 Web                                                        | 🕸 Web                                                        | 🕸 Web                                                        | 🍎 iOS                                                        | 🍎 iOS                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [![Avatar](https://avatars2.githubusercontent.com/u/48378720?s=460&v=4)J028_김도균](https://github.com/thesulks) | [![Avatar](https://avatars2.githubusercontent.com/u/41413618?s=460&u=950052ab15ba4d44ccbb311cd1f3f0a722e01605&v=4)J089_박지홍](https://github.com/hongzzi) | [![Avatar](https://avatars3.githubusercontent.com/u/60839959?s=460&u=f8790200dde7fe5e6319764188d7c31382f49fbd&v=4)J139_이상경](https://github.com/sang-gyeong) | [![Avatar](https://avatars1.githubusercontent.com/u/53948757?s=460&u=743a706b4f4f7a047e56f4f4eaec9602c1d23440&v=4)S059_최광현](https://github.com/nrurnru) | [![Avatar](https://avatars1.githubusercontent.com/u/54564170?s=460&u=f6e6840979bf6896f3831da24b21a2741d2a64c8&v=4)S060_최동규](https://github.com/ChoiDongKyu96) |
-| 부캠 졸업!! 👩‍🎓 | 부캠 졸업!! 👨‍🎓 |  |  |  |
+| 부캠 졸업!! 👨‍🎓  | 부캠 졸업!! 👩‍🎓|  |  |  |
 <br>
-
-
-
-
-### ✍ 저희 팀이 더 궁금하시다면 Wiki 보러가기
-https://github.com/boostcamp-2020/Project01-C-User-Event-Collector/wiki
 
 <br>
 
