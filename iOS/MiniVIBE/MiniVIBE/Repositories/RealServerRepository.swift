@@ -37,7 +37,6 @@ class RealServerRepository: ServerRepository {
                 self.network.execute($0)
             }
             .map { _ -> Void in
-                
                 RealServerRepository.events.append(event)
             }.eraseToAnyPublisher()
     }
