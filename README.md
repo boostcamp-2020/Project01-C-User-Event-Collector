@@ -1,6 +1,6 @@
 # Project01-C-User-Event-Collector
 
-<p align="center"><img width="500" alt="logoImage" src="https://postfiles.pstatic.net/MjAyMDExMjdfMTc1/MDAxNjA2NDQ5OTExNjYw.NBw6OQE4LBvWhcHvCqvCkl7kbU836xElYC6KWgYAynwg.K4DD9rX73o26FQO-Va6UfMrfkKCEUDUTNBQ2p03jr-0g.PNG.sknglee22/%EC%8A%A4%ED%81%AC%EB%A6%B0%EC%83%B7_2020-11-27_%EC%98%A4%ED%9B%84_1.04.45.png?type=w773"></p>
+<p align="center"><img width="600" alt="logoImage" src="https://user-images.githubusercontent.com/60839959/102682895-40dbf900-4210-11eb-9cee-c6e42075a928.gif"></p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/react-17.0.1-9cf?logo=react" />
@@ -15,8 +15,10 @@
     <img src="https://img.shields.io/badge/iOS-14.0-black?logo=apple" />  
 </p>
 
-### 👋 MINIV(미니바이브) 서비스 소개
-네이버 바이브의 사용자 이벤트를 수집함으로써, 설계와 검증을 선행적으로 할 수 있게 한 미니 바이브 서비스입니다😉    
+### 👋 VIBE 사용자 이벤트 수집기 서비스 소개
+네이버 음악서비스 VIBE 웹/앱을 클론한 뒤,
+VIBE 서비스 사용과정에서 발생하는 이벤트를 수집하는 서비스입니다😉
+   
    
 ### 📍 WEB 배포 URL
 http://115.85.181.152:3000
