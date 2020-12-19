@@ -180,7 +180,6 @@ function PlayBar() {
             <AlbumImage src={playList[playIndex]?.album?.imgUrl} />
           </Dimmed>
           <Playlist>
-            {console.log('playList ::: ', playList)}
             <PlayItemWrapper>
               {playList?.map(track => (
                 <PlayTrackItem type="playbar" key={track.id} trackData={track} />

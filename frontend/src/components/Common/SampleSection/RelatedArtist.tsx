@@ -13,7 +13,6 @@ function RelatedArtist() {
     return <div>...Error</div>;
   }
   const artists = data.data;
-  console.log('myartists : ', artists);
 
   return (
     <SectionContentWrapper>

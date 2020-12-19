@@ -6,6 +6,8 @@ import Spinner from '@components/Common/Spinner';
 
 import { useEffect } from 'react';
 import { useAuthDispatch } from '@context/AuthContext';
+import getTokenFromCookie from '@utils/getTokenFromCookie';
+import getRefererFromHeader from '@utils/getRefererFromHeader';
 
 function Index({ referer, token }) {
   const router = useRouter();
@@ -15,6 +17,7 @@ function Index({ referer, token }) {
   const { data: user, isLoading: userLoading, isError: userError } = useFetch(`/user`, token);
 
   useEffect(() => {
+    localStorage.setItem('token', token);
     if (typeof user?.user !== 'undefined' && user?.user) {
       dispatch({
         type: 'SET_USERINFO',
@@ -33,9 +36,6 @@ function Index({ referer, token }) {
     return <div>...Error</div>;
   }
 
-  // 쿠키를 로컬 스토리지에 담는 코드
-  localStorage.setItem('token', token);
-
   const logData = {
     eventTime: new Date(),
     eventName: 'move_event',
@@ -51,20 +51,13 @@ function Index({ referer, token }) {
 }
 
 export async function getServerSideProps({ req }) {
-  const regex = /(http:\/\/)([A-Z,a-z,:,.,0-9]*)/;
-  const host = req.headers?.referer?.match(regex)[0];
-  const referer = req.headers?.referer?.slice(host.length);
-
-  const cookie = req.headers?.cookie;
-  const tokenFromCookie = cookie
-    ?.split('; ')
-    ?.find(row => row.startsWith('token'))
-    ?.split('=')[1];
+  const referer = getRefererFromHeader(req.headers);
+  const token = getTokenFromCookie(req.headers);
 
   return {
     props: {
-      token: typeof tokenFromCookie === 'undefined' ? null : tokenFromCookie,
-      referer: referer || 'external',
+      token,
+      referer,
     },
   };
 }

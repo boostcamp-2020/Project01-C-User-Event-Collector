@@ -3,7 +3,6 @@
 import api from '../api';
 
 const postLog = logData => {
-  console.log('postLog start');
   const timeStampedLog = { ...logData, eventTime: new Date() };
   api.post('/log', timeStampedLog);
 };

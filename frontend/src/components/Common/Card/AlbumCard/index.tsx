@@ -25,7 +25,6 @@ type artistMeta = {
 
 const AlbumCard = ({ albumMetaData }: IAlbumMetaProps) => {
   const target = 'AlbumCard';
-  console.log('+++++++++ ::: +++++++album : ', albumMetaData);
   return (
     <Container>
       <BoxItem
@@ -64,6 +63,7 @@ const AlbumTitle = styled.a`
   display: block;
   font-size: 13px;
   padding-top: 14px;
+  white-space: nowrap;
 `;
 
 const AlbumArtistName = styled.a`

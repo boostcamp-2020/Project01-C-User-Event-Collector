@@ -15,7 +15,6 @@ const MyArtist = ({ playlistList }) => {
         playlistList: playlistList.map(playlist => playlist.id),
       });
   }, [dispatch]);
-  console.log('-----playlist state---*** : ', state);
 
   return (
     <Library mainTitle="플레이리스트">

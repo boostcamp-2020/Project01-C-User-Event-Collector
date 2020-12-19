@@ -16,7 +16,6 @@ const MyTrack = ({ trackList }) => {
         trackList: trackList.map(track => track.id),
       });
   }, [dispatch]);
-  console.log('-----track state---*** : ', state);
 
   return (
     <Library mainTitle="노래" type="track">

@@ -24,8 +24,7 @@ function Today({ magList, playlistList }) {
 
   const bannerClickEvent = e => {
     if (e.target.className.includes('banner-close-button')) {
-      console.log('hello');
-      useEventHandler(setIsBannerOpened(false), customClickLogData('BannerCloseBtn'));
+      useEventHandler(() => setIsBannerOpened(false), customClickLogData('BannerCloseBtn'));
     }
     useEventHandler(null, customClickLogData('BannerBtn'));
   };

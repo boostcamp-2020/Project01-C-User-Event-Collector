@@ -80,7 +80,6 @@ const HeaderContent = styled.div`
   width: 750px;
   display: flex;
   flex-direction: column;
-
   margin-left: 2rem;
 `;
 

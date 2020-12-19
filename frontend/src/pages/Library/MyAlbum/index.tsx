@@ -11,7 +11,6 @@ const MyAlbum = ({ albumList }) => {
   useEffect(() => {
     if (albumList) dispatch({ type: 'SET_ALBUMLIST', albumList: albumList.map(album => album.id) });
   }, [dispatch]);
-  console.log('-----album state---*** : ', state);
 
   return (
     <Library mainTitle="앨범">

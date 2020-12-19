@@ -26,7 +26,6 @@ const ArtistCard = ({ artistMetaData: artist, type }: IArtistMetaProps) => {
 
   const deleteArtist = async (e, id) => {
     await api.delete(`library/artists/${id}`);
-    console.log('아티스트 삭제');
     e.target.closest('.artist-card').style.opacity = '0';
     e.target.closest('.artist-card').style.transform = 'translate(0px, -35px)';
     dispatch({ type: 'DELETE_ARTIST', artistId: id });

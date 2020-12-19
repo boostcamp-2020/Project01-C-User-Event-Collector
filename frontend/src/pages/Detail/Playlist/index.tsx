@@ -3,22 +3,7 @@ import styled from '@styles/themed-components';
 import LargeButton from '@components/Common/Button/LargeButton';
 import TrackList from '@components/TrackList';
 
-// interface IPlaylistInfoProps {
-//   playlistInfo?: MetaPlaylist;
-// }
-
-// type MetaPlaylist = {
-//   id: number;
-//   title: string;
-//   date: string;
-//   imgUrl: string;
-//   tag: string;
-//   content: string;
-//   tracks: any[];
-// };
-
 function PlaylistDetail({ playlistInfo: playlist }) {
-  console.log('+++++,  ', playlist);
   const description =
     '많은 음악가들이 크리스마스 시즌에 맞춰 겨울 분위기가 물씬 나는 곡들을 발표했다. 코로나바이러스의 여파로 인해 우울한 한 해이지만, 여러 아티스트가 들려주는 캐럴과 함께 잠시나마 세상을 잊고 즐거운 연휴를 기약해 보자. - 힙합엘이';
   const imgUrlMetaData =
