@@ -25,11 +25,15 @@ VIBE 서비스 사용과정에서 발생하는 이벤트를 수집하는 서비�
 ## 어떤 이벤트를 수집하나요?
 > 유의미한 이벤트가 어떤 것일지, 이벤트 로그는 어떤 목적으로 수집되는지에 대해 고민하여 이벤트 로그를 정의했습니다.
 
-<p align="center"><img width="454" alt="event" src="https://user-images.githubusercontent.com/60839959/102684472-44757d00-421c-11eb-9761-8953142ad320.png"></p>
 <p align="center">
-<img width="360" alt="event" src="https://user-images.githubusercontent.com/60839959/102684638-c74b0780-421d-11eb-84fc-8f4f625a66e6.png">
+<img width="350" alt="event" src="https://user-images.githubusercontent.com/60839959/102684638-c74b0780-421d-11eb-84fc-8f4f625a66e6.png">
 <img width="570" alt="스크린샷 2020-12-19 오후 5 27 57" src="https://user-images.githubusercontent.com/60839959/102684875-910e8780-421f-11eb-8b64-16f53d06c200.png">
 </p>
+
+📕📕 ["이벤트 로그" 정의부터 구현까지](https://www.notion.so/9fca9884c5a144b6a8ade2611ae71f20?v=08ee6720efb043ddb19f7989a21f7adc&p=23cd57707992408db323aac536d239f9)📕📕
+
+
+
 
 <br>
 <br>
