@@ -15,7 +15,8 @@ struct MiniVIBEApp: App {
     
     init() {
         let serverRepository = RealServerRepository(network: Network())
-        let localRepository = RealLocalRepository()
+        let persistenceController = RealPersistenceController()
+        let localRepository = RealLocalRepository(persistenceController: persistenceController)
         let eventService = RealEventService(serverRepository: serverRepository, localRepository: localRepository)
         EventSendManager.shared.setEventHandler(eventHandler: eventService.sendOneEvent)
         container = DIContainer(serverRepository: serverRepository,

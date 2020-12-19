@@ -60,4 +60,17 @@ class KeyChain {
         let tokens = String(decoding: data, as: UTF8.self)
         return tokens
     }
+    
+    @discardableResult
+    func deleteToken() -> Bool {
+        guard let service = self.service else { return false }
+        let query: [CFString: Any] = [kSecClass: kSecClassGenericPassword,
+                                      kSecAttrService: service,
+                                      kSecAttrAccount: account,
+                                      kSecMatchLimit: kSecMatchLimitOne,
+                                      kSecReturnAttributes: true,
+                                      kSecReturnData: true]
+        
+        return SecItemDelete(query as CFDictionary) == errSecSuccess
+    }
 }

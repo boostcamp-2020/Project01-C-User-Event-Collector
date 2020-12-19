@@ -19,7 +19,8 @@ class CoreDataEvent: Event {
             parameter[key] = value
             return parameter
         })
-        super.init(name: cdEvent.name ?? "", parameters: parameters ?? [:])
+        // 꺼내올때 정하고있음;;
+        super.init(name: cdEvent.name ?? "", parameters: parameters ?? [:], date: cdEvent.dateString ?? "")
     }
     
     init(name: String, parameter: [String: String]) {

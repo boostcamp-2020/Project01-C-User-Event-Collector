@@ -35,9 +35,7 @@ struct MusicPlayerView: View {
                                 .foregroundColor(.gray)
                         }
                     }.padding(.defaultPadding)
-                    // FIX ME 고정값 수정
-                    .frame(height: UIScreen.main.bounds.height - 65)
-                    Divider().accentColor(.gray)
+                    .frame(height: UIScreen.main.bounds.height * 0.9, alignment: .top)
                     MusicPlayerlistView(isPresented: $isPresented)
                 }
             }.frame(idealWidth: .infinity)
