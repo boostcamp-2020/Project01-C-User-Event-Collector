@@ -21,9 +21,6 @@ export function Index({ referer }) {
   };
   api.post('/log', logData);
 
-  console.log('useFetch album/id hook 시작!');
-  console.log('data : ', data);
-  console.log('data.data : ', data.data);
   return (
     <>
       <AlbumDetail albumInfo={data.data} />

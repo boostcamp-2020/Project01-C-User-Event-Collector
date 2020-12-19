@@ -14,14 +14,14 @@ function AlbumDetail({ albumInfo: album }) {
   return (
     <Container>
       <Header>
-        <HeaderImg src={album.imgUrl} alt="detail-header-img" />
+        <HeaderImg src={album?.imgUrl} alt="detail-header-img" />
         <HeaderContent>
-          <MainTitle>{album.name}</MainTitle>
-          <SubTitle>{`${getMultipleNames(album.artists)} `}</SubTitle>
+          <MainTitle>{album?.name}</MainTitle>
+          <SubTitle>{`${getMultipleNames(album?.artists)} `}</SubTitle>
           <SubContent>
-            {album.date.slice(0, 10)}
+            {album?.date?.slice(0, 10)}
 {' '}
-·{getMultipleNames(album.genres)}
+·{getMultipleNames(album?.genres)}
           </SubContent>
           <SubContent>{description}</SubContent>
           <ButtonsWrapper>

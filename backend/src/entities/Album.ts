@@ -34,6 +34,7 @@ export default class Album extends BaseEntity {
     return this.createQueryBuilder('album')
       .innerJoin('album.users', 'user')
       .leftJoinAndSelect('album.artists', 'artist')
+      .leftJoinAndSelect('album.tracks', 'track')
       .where('user.id = :id', { id })
       .getMany();
   }

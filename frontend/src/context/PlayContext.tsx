@@ -16,7 +16,8 @@ type Action =
   | { type: 'PLAY_PAUSE' }
   | { type: 'PLAY_NEXT' }
   | { type: 'PLAY_PREV' }
-  | { type: 'ADD_TRACK'; track: any[] }
+  | { type: 'ADD_TRACK_NEXT'; track: any[] }
+  | { type: 'ADD_TRACK_LAST'; track: any[] }
   | { type: 'REMOVE_TRACK'; trackId: number };
 
 type PlayDispatch = Dispatch<Action>;
@@ -48,7 +49,12 @@ function reducer(state: State, action: Action): State {
         ...state,
         playIndex: prevIndex < 0 ? prevIndex + state.playList.length : prevIndex,
       };
-    case 'ADD_TRACK':
+    case 'ADD_TRACK_NEXT':
+      return {
+        ...state,
+        playList: [...state.playList.slice(0, 1), ...action.track, ...state.playList.slice(1)],
+      };
+    case 'ADD_TRACK_LAST':
       return {
         ...state,
         playList: [...state.playList, ...action.track],

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@styles/themed-components';
 
 import Section from '@components/Common/Section';
@@ -21,18 +21,25 @@ function ArtistDetail({ artistInfo: artist }) {
   const state = useAuthState();
   const dispatch = useAuthDispatch();
   const { artistList } = state;
+  const [artistState, setArtistState] = useState(artistList);
 
-  const deleteArtist = async () => {
-    await api.delete(`library/artists/${artist.id}`);
+  const deleteArtistEvent = () => {
+    api.delete(`library/artists/${artist.id}`);
     console.log('아티스트 삭제');
     dispatch({ type: 'DELETE_ARTIST', artistId: artist.id });
   };
 
-  const addArtist = async () => {
-    await api.post(`library/artists`, { artistId: artist.id });
+  const addArtistEvent = () => {
+    api.post(`library/artists`, { artistId: artist.id });
     console.log('아티스트 추가');
     dispatch({ type: 'ADD_ARTIST', artistId: artist.id });
   };
+  console.log(artistState);
+
+  useEffect(() => {
+    setArtistState(artistList);
+  }, [dispatch]);
+
   return (
     <Container>
       <Header>
@@ -43,9 +50,7 @@ function ArtistDetail({ artistInfo: artist }) {
           <TopContainer>
             <MainTitle>{artist.name}</MainTitle>
             <SubTitle>
-              {artist.debut.replace(/-/g, '.').slice(0, 10)}
-{' '}
-데뷔 ·{' '}
+              {artist.debut.replace(/-/g, '.').slice(0, 10)} 데뷔 ·{' '}
               {getMultipleNames(artist.genres)}
             </SubTitle>
           </TopContainer>
@@ -56,13 +61,13 @@ function ArtistDetail({ artistInfo: artist }) {
                   <IoMdHeart
                     size={24}
                     color="ff1350"
-                    onClick={useEventHandler(deleteArtist, null)}
+                    onClick={useEventHandler(deleteArtistEvent, null)}
                   />
                 ) : (
                   <IoMdHeartEmpty
                     size={24}
                     color="575757"
-                    onClick={useEventHandler(addArtist, null)}
+                    onClick={useEventHandler(addArtistEvent, null)}
                   />
                 )}
               </ButtonContainer>

@@ -2,15 +2,16 @@
 // action은 상수로 관리
 import api from '../api';
 
-const postLog = async logData => {
+const postLog = logData => {
   console.log('postLog start');
-  await api.post('/log', logData);
+  const timeStampedLog = { ...logData, eventTime: new Date() };
+  api.post('/log', timeStampedLog);
 };
 
 const useEventHandler = (handler, logData) => {
   return async () => {
-    if (logData) await postLog(logData);
     if (handler) await handler();
+    if (logData) postLog(logData);
   };
 };
 

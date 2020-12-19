@@ -4,39 +4,28 @@ import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
 import api from '@api/index';
 import useEventHandler from '@hooks/useEventHandler';
-import { usePlayState, usePlayDispatch } from '@context/PlayContext';
+import { usePlayDispatch } from '@context/PlayContext';
+import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
 // import { useAuthDispatch, useAuthState } from '@context/AuthContext';
 import * as T from '../../../constants/dropdownText';
 
 interface IBoxDropdownProps {
   type: string;
   id: number;
-  data?: any;
   trackData?: any;
 }
-interface ILogData {
-  eventTime: Date;
-  eventName: string;
-  parameters: any;
-}
 
-const BoxDropdown = ({ trackData, type, id, data }: IBoxDropdownProps) => {
-  const state = usePlayState();
+const BoxDropdown = ({ trackData, type, id }: IBoxDropdownProps) => {
   const dispatch = usePlayDispatch();
   const router = useRouter();
   // const authState = useAuthState();
   // const authDispatch = useAuthDispatch();
-  console.log(state);
-  console.log('trackData', trackData);
 
-  const postLog = logData => {
-    api.post('/log', logData);
-  };
-
-  const libraryLogData: ILogData = {
-    eventTime: new Date(),
-    eventName: 'library_event',
-    parameters: { action: 'add', type, id },
+  const libraryLogData = action => {
+    return {
+      eventName: 'library_event',
+      parameters: { action, type, id },
+    };
   };
 
   const clickLogData = target => {
@@ -47,56 +36,78 @@ const BoxDropdown = ({ trackData, type, id, data }: IBoxDropdownProps) => {
     };
   };
 
-  const addNextEvent = () => {
-    if (type === 'track') dispatch({ type: 'ADD_TRACK', track: [trackData] });
-    else dispatch({ type: 'ADD_TRACK', track: trackData });
-    console.log('---------', state);
+  const addTrackNextEvent = () => {
+    if (type === 'track') dispatch({ type: 'ADD_TRACK_NEXT', track: [trackData] });
+    else dispatch({ type: 'ADD_TRACK_NEXT', track: trackData });
+  };
+
+  const addTrackLastEvent = () => {
+    if (type === 'track') dispatch({ type: 'ADD_TRACK_LAST', track: [trackData] });
+    else dispatch({ type: 'ADD_TRACK_LAST', track: trackData });
   };
 
   const addEvent = () => {
     console.log('addEvent start');
     switch (type) {
       case 'playlist':
-        api.post('/library/playlists', { playlistId: id }).then(() => postLog(libraryLogData));
+        api.post('/library/playlists', { playlistId: id });
         break;
       case 'track':
-        api.post('/library/tracks', { trackId: id }).then(() => postLog(libraryLogData));
+        api.post('/library/tracks', { trackId: id });
         break;
       case 'album':
-        api.post('/library/albums', { albumId: id }).then(() => postLog(libraryLogData));
+        api.post('/library/albums', { albumId: id });
         break;
       default:
         console.log('nothing happend');
     }
   };
 
+  // const addPlaylistEvent = () => api.post('/library/playlists', { playlistId: id });
+  // const addTrackEvent = () => api.post('/library/tracks', { trackId: id });
+  // const addAlbumEvent = () => api.post('/library/albums', { albumId: id });
+
   return (
     <Wrapper>
       <Dropdown style={dropdownStyle}>
         <Dropdown.Menu direction="right" style={dropdownMenuStyle}>
           {type !== 'magazines' && (
+            <ClickEventWrapper target={`Dropdown/AddBtn/${type}`} id={id}>
+              <Dropdown.Item
+                style={dropdownItemStyle}
+                text={T.ADD_TO_LIBRARY}
+                onClick={useEventHandler(addEvent, libraryLogData('like'))}
+              />
+            </ClickEventWrapper>
+          )}
+          <ClickEventWrapper target={`Dropdown/AddNextBtn/${type}`} id={id}>
             <Dropdown.Item
               style={dropdownItemStyle}
-              text={T.ADD_TO_LIBRARY}
-              onClick={useEventHandler(addEvent, clickLogData(`Dropdown/${type}/${id}`))}
+              text={T.ADD_TO_NEXT}
+              onClick={useEventHandler(addTrackNextEvent, libraryLogData('add_next'))}
             />
-          )}
-          <Dropdown.Item
-            style={dropdownItemStyle}
-            text={T.ADD_TO_NEXT}
-            onClick={useEventHandler(addNextEvent, clickLogData(`addNextBtn/${type}/${id}`))}
-          />
-          <Dropdown.Item style={dropdownItemStyle} text={T.ADD_TO_PREV} />
-          <Dropdown.Item
-            style={dropdownItemStyle}
-            text={T.BUY_MP3}
-            onClick={useEventHandler(null, clickLogData(`BuyBtn/${type}/${id}`))}
-          />
-          <Dropdown.Item
-            style={dropdownItemStyle}
-            text={T.SHARE}
-            onClick={useEventHandler(null, clickLogData(`ShareBtn/${type}/${id}`))}
-          />
+          </ClickEventWrapper>
+          <ClickEventWrapper target={`Dropdown/AddPrevBtn/${type}`} id={id}>
+            <Dropdown.Item
+              style={dropdownItemStyle}
+              text={T.ADD_TO_PREV}
+              onClick={useEventHandler(addTrackLastEvent, libraryLogData('add_prev'))}
+            />
+          </ClickEventWrapper>
+          <ClickEventWrapper target={`Dropdown/BuyBtn/${type}`} id={id}>
+            <Dropdown.Item
+              style={dropdownItemStyle}
+              text={T.BUY_MP3}
+              onClick={useEventHandler(null, clickLogData(`BuyBtn/${type}/${id}`))}
+            />
+          </ClickEventWrapper>
+          <ClickEventWrapper target={`Dropdown/ShareBtn/${type}`} id={id}>
+            <Dropdown.Item
+              style={dropdownItemStyle}
+              text={T.SHARE}
+              onClick={useEventHandler(null, clickLogData(`ShareBtn/${type}/${id}`))}
+            />
+          </ClickEventWrapper>
         </Dropdown.Menu>
       </Dropdown>
     </Wrapper>
@@ -113,18 +124,26 @@ const dropdownStyle = {
 };
 
 const dropdownMenuStyle = {
-  padding: '6px 0',
+  padding: '10px 0',
 };
 
 const dropdownItemStyle = {
   fontSize: '14px',
-  lineHeight: '60%',
+  color: '#2f2f2f',
+  width: '145px',
+  height: '30px',
+  padding: '5px 20px',
+  display: 'flex',
+  alignItems: 'center',
 };
 
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  .item: hover {
+    background: #f2f2f2;
+  }
 `;
 
 export default BoxDropdown;

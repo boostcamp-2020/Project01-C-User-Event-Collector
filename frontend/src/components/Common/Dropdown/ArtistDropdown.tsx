@@ -1,9 +1,9 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
 import api from '@api/index';
 import useEventHandler from '@hooks/useEventHandler';
+import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
 import * as T from '../../../constants/dropdownText';
 
 interface ILogData {
@@ -13,8 +13,6 @@ interface ILogData {
 }
 
 const ArtistDropdown = id => {
-  const router = useRouter();
-
   const postLog = logData => {
     api.post('/log', logData);
   };
@@ -23,14 +21,6 @@ const ArtistDropdown = id => {
     eventTime: new Date(),
     eventName: 'library_event',
     parameters: { action: 'add', type: 'artist', id },
-  };
-
-  const clickLogData = target => {
-    return {
-      eventTime: new Date(),
-      eventName: 'click_event',
-      parameters: { page: router.asPath, target },
-    };
   };
 
   const addLibraryEvent = () => {
@@ -45,16 +35,16 @@ const ArtistDropdown = id => {
         }}
       >
         <Dropdown.Menu direction="left" style={dropdownMenuStyle}>
-          <Dropdown.Item
-            style={dropdownItemStyle}
-            text={T.LIKE}
-            onClick={useEventHandler(addLibraryEvent, libraryLogData)}
-          />
-          <Dropdown.Item
-            style={dropdownItemStyle}
-            text={T.SHARE}
-            onClick={useEventHandler(null, clickLogData(`ShareBtn/artist/${id}`))}
-          />
+          <ClickEventWrapper target="LikeBtn/artist" id={id}>
+            <Dropdown.Item
+              style={dropdownItemStyle}
+              text={T.LIKE}
+              onClick={useEventHandler(addLibraryEvent, libraryLogData)}
+            />
+          </ClickEventWrapper>
+          <ClickEventWrapper target="ShareBtn/artist" id={id}>
+            <Dropdown.Item style={dropdownItemStyle} text={T.SHARE} />
+          </ClickEventWrapper>
         </Dropdown.Menu>
       </Dropdown>
     </Wrapper>
@@ -67,12 +57,17 @@ const authDropdownStyle = {
 };
 
 const dropdownMenuStyle = {
-  padding: '6px 0',
+  padding: '8px 0',
 };
 
 const dropdownItemStyle = {
   fontSize: '14px',
-  lineHeight: '60%',
+  color: '#2f2f2f',
+  width: '70px',
+  height: '30px',
+  padding: '15px',
+  display: 'flex',
+  alignItems: 'center',
 };
 
 const Wrapper = styled.div<{ style?: any }>`
@@ -81,6 +76,9 @@ const Wrapper = styled.div<{ style?: any }>`
   height: 30px;
   top: 0;
   color: transparent;
+  .item: hover {
+    background: #f2f2f2;
+  }
 `;
 
 export default ArtistDropdown;
