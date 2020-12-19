@@ -8,9 +8,15 @@
 import XCTest
 import Combine
 @testable import MiniVIBE
-class MiniVIBETests: XCTestCase {
+class NetworkTests: XCTestCase {
     
     private var subscriptions: Set<AnyCancellable> = []
+    
+    override func tearDown() {
+        subscriptions.forEach { subscription in
+            subscription.cancel()
+        }
+    }
     
     func test_success_with_naverURL() {
         let expectation = XCTestExpectation(description: "NetworkTaskExpectation")
@@ -94,11 +100,5 @@ class MiniVIBETests: XCTestCase {
             } receiveValue: { _ in
             }
             .store(in: &subscriptions)
-    }
-    
-    deinit {
-        subscriptions.forEach { subscription in
-            subscription.cancel()
-        }
     }
 }
