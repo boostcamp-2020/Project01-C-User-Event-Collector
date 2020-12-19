@@ -12,7 +12,7 @@ import XCTest
 
 
 class PersistenceControllerTests: XCTestCase {
-    var persistenceController: PersistenceController!
+    private var persistenceController: PersistenceController!
 
     override func setUpWithError() throws {
         persistenceController = TestPersistenceController()
