@@ -2,13 +2,10 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
-import { RiPlayListLine } from 'react-icons/ri';
-import { BsThreeDots } from 'react-icons/bs';
 import useEventHandler from '@hooks/useEventHandler';
 
 import api from '@api/index';
 import { useAuthState, useAuthDispatch } from '@context/AuthContext';
-import BoxDropdown from '@components/Common/Dropdown/BoxDropdown';
 import A from '@components/Common/A';
 
 function PlayTrackItem({ type, trackData: track }) {
@@ -68,25 +65,12 @@ function PlayTrackItem({ type, trackData: track }) {
                 onClick={useEventHandler(addTrackEvent, libraryEventLog('like'))}
               />
             )}
-            {/* <RiPlayListLine className="lyric button" size={20} />
-            <BsThreeDots className="dropdown button" size={20} /> */}
-            {/* <DropdownWrapper>
-              <BoxDropdown trackData={track} type="track" id={track?.id} />
-            </DropdownWrapper> */}
           </>
         )}
       </IconWrapper>
     </TrackWrapper>
   );
 }
-
-const DropdownWrapper = styled.div`
-  position: absolute;
-  right: -10px;
-  height: 25px;
-  width: 22px;
-  color: transparent;
-`;
 
 const TrackImgWrapper = styled.a``;
 

@@ -36,6 +36,7 @@ function ArtistDetail({ artistInfo: artist }) {
   useEffect(() => {
     setArtistState(artistList);
   }, [dispatch]);
+  console.log(artistState);
 
   return (
     <Container>

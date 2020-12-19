@@ -1,11 +1,10 @@
 import styled from '@styles/themed-components';
 import { useEffect } from 'react';
-import { useAuthDispatch, useAuthState } from '@context/AuthContext';
+import { useAuthDispatch } from '@context/AuthContext';
 import Library from '@components/Template/Library';
 import AlbumList from '@components/AlbumList';
 
 const MyAlbum = ({ albumList }) => {
-  const state = useAuthState();
   const dispatch = useAuthDispatch();
 
   useEffect(() => {
