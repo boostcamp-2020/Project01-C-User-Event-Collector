@@ -35,32 +35,34 @@ VIBE 서비스 사용과정에서 발생하는 이벤트를 수집하는 서비�
 
 
 
-
 <br>
 <br>
  
+ 
 ## 🛠 Tech Stack
-<p align="center"><img width="700" alt="기술 스택" src="https://user-images.githubusercontent.com/60839959/102683725-6966f180-4216-11eb-8bc0-77a0066d8645.png"></p>
+#### Web 🕸
+<p align="center"><img width="700" alt="기술 스택" src="https://user-images.githubusercontent.com/60839959/102687079-d470f200-422f-11eb-982d-0ee36795a17a.png"></p>
+#### iOS 🍎
+
 
 <br>
+<br>
+
 
 ## 📹 서비스 데모 영상
-#### Web🕸
+#### Web 🕸
   
 [<img width="500" src="https://user-images.githubusercontent.com/60839959/102683358-bbf2de80-4213-11eb-87e0-c889f0afe61b.png"/>](https://youtu.be/AqSunm6fDfc)
 > 클릭하시면 youtube로 이동합니다💨
 
-#### iOS🍎
-
-<br>
-
-### 📹 [API 명세서](https://hackmd.io/NtoQmqLmTC6cv0prAzUX9g)
-<br>
+#### iOS 🍎
 
 
 <br>
+<br>
 
-### Web 서비스 실행순서 🐈
+
+### Web 실행방법 🐈
 ```
 git clone https://github.com/boostcamp-2020/Project01-C-User-Event-Collector.git
 npm i
@@ -69,31 +71,36 @@ npm i
 npm run start
 cd ../frontend
 npm i
-(develop mode)
+
+--(develop mode)--
 npm run dev 
-(production mode)
+
+--(production mode)--
 npm run build 
 npm run start 
 ```
 
+<br>
+<br>
+
+
 ## 🚢 사용자 이벤트 수집기 C팀 소개
 
-
-<p align="center"><img width="600" alt="스크린샷 2020-12-19 오후 5 47 21" src="https://user-images.githubusercontent.com/60839959/102685197-49d5c600-4222-11eb-87e7-b3942e03a465.png"></p>
+<p align="center"><img width="500" alt="스크린샷 2020-12-19 오후 5 47 21" src="https://user-images.githubusercontent.com/60839959/102685197-49d5c600-4222-11eb-87e7-b3942e03a465.png"></p>
 
 | 🕸 Web                                                        | 🕸 Web                                                        | 🕸 Web                                                        | 🍎 iOS                                                        | 🍎 iOS                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | [![Avatar](https://avatars2.githubusercontent.com/u/48378720?s=460&v=4)J028_김도균](https://github.com/thesulks) | [![Avatar](https://avatars2.githubusercontent.com/u/41413618?s=460&u=950052ab15ba4d44ccbb311cd1f3f0a722e01605&v=4)J089_박지홍](https://github.com/hongzzi) | [![Avatar](https://avatars3.githubusercontent.com/u/60839959?s=460&u=f8790200dde7fe5e6319764188d7c31382f49fbd&v=4)J139_이상경](https://github.com/sang-gyeong) | [![Avatar](https://avatars1.githubusercontent.com/u/53948757?s=460&u=743a706b4f4f7a047e56f4f4eaec9602c1d23440&v=4)S059_최광현](https://github.com/nrurnru) | [![Avatar](https://avatars1.githubusercontent.com/u/54564170?s=460&u=f6e6840979bf6896f3831da24b21a2741d2a64c8&v=4)S060_최동규](https://github.com/ChoiDongKyu96) |
 | 부캠 졸업!! 👨‍🎓  | 부캠 졸업!! 👩‍🎓| 조금씩 꾸준히🏃‍♀️ |  |  |
 
+👀 저희 팀이 더 궁금하시다면 Wiki [보러가기](https://github.com/boostcamp-2020/Project01-C-User-Event-Collector/wiki)
 
-### ✍ [저희 팀이 더 궁금하시다면 Wiki 보러가기](https://github.com/boostcamp-2020/Project01-C-User-Event-Collector/wiki)
-
-
-<br>
 
 <br>
+<br>
 
-## Show your support
 
-Give a 🌟 if this project helped you
+## Show your support! ⭐️
+
+별은 저희들에게 큰 응원과 원동력이 됩니다😋
+재밌게 보셨다면 star를 꾸욱 눌러주세요⭐️
