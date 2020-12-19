@@ -19,11 +19,10 @@ class CoreDataEvent: Event {
             parameter[key] = value
             return parameter
         })
-        // 꺼내올때 정하고있음;;
         super.init(name: cdEvent.name ?? "", parameters: parameters ?? [:], date: cdEvent.dateString ?? "")
     }
     
-    init(name: String, parameter: [String: String]) {
-        super.init(name: name, parameters: parameter)
+    init(name: String, parameter: [String: String], date: String = Date().customDateFormat()) {
+        super.init(name: name, parameters: parameter, date: date)
     }
 }
