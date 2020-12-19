@@ -95,6 +95,7 @@
 		DE09042F256CCE11002914B5 /* MagazineSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE09042E256CCE11002914B5 /* MagazineSectionView.swift */; };
 		DE090443256D098A002914B5 /* NowItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE090442256D098A002914B5 /* NowItemView.swift */; };
 		DE090447256D09CC002914B5 /* NowReplayItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE090446256D09CC002914B5 /* NowReplayItem.swift */; };
+		DE0D178A258E59B800546B2C /* EventServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0D1789258E59B800546B2C /* EventServiceTests.swift */; };
 		DE18EE8B257B9D34009E4E11 /* View+name.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE18EE8A257B9D34009E4E11 /* View+name.swift */; };
 		DE18EEA1257BFA13009E4E11 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE18EEA0257BFA13009E4E11 /* Reachability.swift */; };
 		DE3D6F8925640FE800C236EF /* TodayFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3D6F8825640FE800C236EF /* TodayFooterView.swift */; };
@@ -239,6 +240,7 @@
 		DE09042E256CCE11002914B5 /* MagazineSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineSectionView.swift; sourceTree = "<group>"; };
 		DE090442256D098A002914B5 /* NowItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowItemView.swift; sourceTree = "<group>"; };
 		DE090446256D09CC002914B5 /* NowReplayItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowReplayItem.swift; sourceTree = "<group>"; };
+		DE0D1789258E59B800546B2C /* EventServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventServiceTests.swift; sourceTree = "<group>"; };
 		DE18EE8A257B9D34009E4E11 /* View+name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+name.swift"; sourceTree = "<group>"; };
 		DE18EEA0257BFA13009E4E11 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		DE3D6F8825640FE800C236EF /* TodayFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayFooterView.swift; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 				B9D3593A258E12A700C3236F /* Mock */,
 				B9D35939258E129900C3236F /* Extension */,
 				B9C45648258E0C1D00B22AF0 /* ServerRepositoryTests.swift */,
+				DE0D1789258E59B800546B2C /* EventServiceTests.swift */,
 				B988596B257684510037D19B /* NetworkTests.swift */,
 				B988596D257684510037D19B /* Info.plist */,
 				DECDDCA6258A3C8800E5F10B /* PersistenceControllerTests.swift */,
@@ -903,6 +906,7 @@
 				DE7A099E258A4D4500A3AD2D /* TestPersistenceController.swift in Sources */,
 				DE7A09C5258AC2C200A3AD2D /* LocalRepositoryTests.swift in Sources */,
 				DECAFD6B258E260200FB1DB1 /* CoreData+Equatable.swift in Sources */,
+				DE0D178A258E59B800546B2C /* EventServiceTests.swift in Sources */,
 				B9EAB583258E3F0D00ED367F /* Event+Equatable.swift in Sources */,
 				DECDDCA7258A3C8800E5F10B /* PersistenceControllerTests.swift in Sources */,
 				DECAFD6E258E264B00FB1DB1 /* FailPersistenceController.swift in Sources */,
