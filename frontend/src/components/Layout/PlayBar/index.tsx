@@ -24,7 +24,6 @@ function PlayBar() {
   const [isShuffled, setIsShuffled] = useState(false);
   const [isRepeat, setIsRepeat] = useState(false);
   const [playlistState, setPlaylistState] = useState(null);
-  const [logListState, setLogListState] = useState(null);
 
   const { data: log, isLoading, isError } = useFetch(`/log`, null);
 
@@ -197,11 +196,22 @@ function PlayBar() {
 {JSON.stringify(log.eventTime)}
                     </Info>
                     <Info style={{ color: '#ffe500' }}>
-                      eventName : {JSON.stringify(log.eventName)}
+                      eventName : 
+{' '}
+{JSON.stringify(log.eventName)}
                     </Info>
-                    <Info>parameters :{JSON.stringify(log.parameters)}</Info>
-                    <Info>userInfo :{JSON.stringify(log.userInfo)}</Info>
-                    <Info>userAgent :{JSON.stringify(log.userAgent)}</Info>
+                    <Info>
+                      parameters :
+{JSON.stringify(log.parameters)}
+                    </Info>
+                    <Info>
+                      userInfo :
+{JSON.stringify(log.userInfo)}
+                    </Info>
+                    <Info>
+                      userAgent :
+{JSON.stringify(log.userAgent)}
+                    </Info>
                     <hr style={{ borderColor: 'darkgrey' }} />
                   </Log>
                 ))}
