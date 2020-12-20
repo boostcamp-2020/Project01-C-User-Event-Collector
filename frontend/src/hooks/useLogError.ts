@@ -1,26 +1,39 @@
 import { useEffect } from 'react';
+import api from '@api/index';
 
-const errorHandler = ({ error }) => {
-  console.log('************** Error Handler');
-  console.log(error);
+interface IErrorLog {
+  eventTime: Date;
+  eventName: string;
+  parameters: { log: string };
+}
+
+const createErrorLogObject = (error: Error): IErrorLog => {
+  return {
+    eventTime: new Date(),
+    eventName: 'error_event',
+    parameters: { log: error.message },
+  };
 };
 
-const rejectionHandler = ({ reason }) => {
-  console.log('************** Rejection Handler');
-  console.log(reason);
+const errorHandler = ({ error }: { error: Error }): void => {
+  api.post('/log', createErrorLogObject(error));
 };
 
-const addErrorLogger = () => {
+const rejectionHandler = ({ reason }: { reason: Error }): void => {
+  api.post('/log', createErrorLogObject(reason));
+};
+
+const addErrorLogger = (): void => {
   window.addEventListener('error', errorHandler);
   window.addEventListener('unhandledrejection', rejectionHandler);
 };
 
-const removeErrorLogger = () => {
+const removeErrorLogger = (): void => {
   window.removeEventListener('error', errorHandler);
   window.removeEventListener('unhandledrejection', rejectionHandler);
 };
 
-const useLogError = () => {
+const useLogError = (): void => {
   useEffect(() => {
     addErrorLogger();
     return removeErrorLogger;
