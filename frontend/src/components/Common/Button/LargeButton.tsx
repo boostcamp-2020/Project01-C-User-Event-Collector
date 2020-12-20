@@ -59,12 +59,6 @@ const LargeButton = ({ onClick, children, customType }: ILargeButtonProps) => {
   }
 };
 
-// const iconStyle = {
-//   marginRight: '4px',
-//   position: 'relative',
-//   bottom: '1px',
-// };
-
 const CustomButton = styled.button<ILargeButtonProps>`
   display: flex;
   justify-content: center;

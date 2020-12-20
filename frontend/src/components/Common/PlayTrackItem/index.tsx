@@ -106,7 +106,6 @@ const IconWrapper = styled.div`
   width: 75px;
   padding-left: 20px;
   display: flex;
-  // justify-content: space-between;
   justify-content: flex-end;
   position: relative;
   .icon:hover {

@@ -6,7 +6,6 @@ import api from '@api/index';
 import useEventHandler from '@hooks/useEventHandler';
 import { usePlayDispatch } from '@context/PlayContext';
 import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
-// import { useAuthDispatch, useAuthState } from '@context/AuthContext';
 import * as T from '../../../constants/dropdownText';
 
 interface IBoxDropdownProps {
@@ -18,8 +17,6 @@ interface IBoxDropdownProps {
 const BoxDropdown = ({ trackData, type, id }: IBoxDropdownProps) => {
   const dispatch = usePlayDispatch();
   const router = useRouter();
-  // const authState = useAuthState();
-  // const authDispatch = useAuthDispatch();
 
   const libraryLogData = action => {
     return {
@@ -61,10 +58,6 @@ const BoxDropdown = ({ trackData, type, id }: IBoxDropdownProps) => {
         console.log('nothing happend');
     }
   };
-
-  // const addPlaylistEvent = () => api.post('/library/playlists', { playlistId: id });
-  // const addTrackEvent = () => api.post('/library/tracks', { trackId: id });
-  // const addAlbumEvent = () => api.post('/library/albums', { albumId: id });
 
   return (
     <Wrapper>

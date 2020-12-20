@@ -1,7 +1,4 @@
 import React, { createContext, useContext, useReducer, Dispatch } from 'react';
-// import Playlist from 'pages/playlist';
-
-// type PlayType = 'INORDER' | 'SHUFFLE' | 'ONLYONE';
 
 type State = {
   isPlaying: boolean;
@@ -87,12 +84,12 @@ export function PlayProvider({ children }: { children: React.ReactNode }) {
 
 export function usePlayState() {
   const state = useContext(PlayStateContext);
-  if (!state) throw new Error('Cannot find PlayProvider'); // 유효하지 않을땐 에러를 발생
+  if (!state) throw new Error('Cannot find PlayProvider');
   return state;
 }
 
 export function usePlayDispatch() {
   const dispatch = useContext(PlayDispatchContext);
-  if (!dispatch) throw new Error('Cannot find PlayProvider'); // 유효하지 않을땐 에러를 발생
+  if (!dispatch) throw new Error('Cannot find PlayProvider');
   return dispatch;
 }

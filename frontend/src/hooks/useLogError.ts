@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 
-// TODO: 어떤 형식으로 서버에 보낼 지 고민해보기
 const errorHandler = ({ error }) => {
   console.log('************** Error Handler');
   console.log(error);

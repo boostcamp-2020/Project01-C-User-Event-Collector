@@ -11,7 +11,6 @@ interface IModalProps {
 function Modal() {
   const router = useRouter();
   const randomNum = Math.floor(Math.random() * 2);
-  // 50퍼센트의 확률로 모달 등장
   const [isModalOpened, setIsModalOpened] = useState(randomNum === 1);
   const modalCloseEvent = () => {
     setIsModalOpened(false);
@@ -80,7 +79,6 @@ const ModalContent = styled.div`
 const ModalCloseButton = styled.button`
   width: 45px;
   height: 45px;
-  // border: 2px solid gold;
   position: absolute;
   top: 12px;
   right: 12px;
@@ -90,7 +88,6 @@ const ModalCloseButton = styled.button`
 const MembershipButton = styled.button`
   width: 370px;
   height: 65px;
-  // border: 2px solid gold;
   position: absolute;
   bottom: 43px;
   left: 40px;
