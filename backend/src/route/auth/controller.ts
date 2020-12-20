@@ -5,8 +5,8 @@ import * as authService from '../../services/auth';
 const getToken = (req: Request, res: Response): void => {
   const token = authService.createToken(req.user as IJwtPayload);
   if (
-    req.headers['user-agent']?.includes('MiniVIBE') ||
-    req.headers['user-agent']?.includes('MiniVIBE/1')
+    req.headers['user-agent']?.includes('iPhone') ||
+    req.headers['user-agent']?.includes('iPad')
   ) {
     return res.redirect(`minivibe://token?${token}`); // 모바일
   }
