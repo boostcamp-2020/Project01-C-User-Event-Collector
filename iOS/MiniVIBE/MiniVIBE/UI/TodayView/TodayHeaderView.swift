@@ -59,7 +59,7 @@ extension TodayHeaderView {
         let webView = TodayHeaderView.WebViewController()
         func signIn() {
             let signInPromise = Future<URL, Error> { [weak self] completion in
-                let session = ASWebAuthenticationSession(url: URL(string: "http://115.85.181.152:8000/api/auth/login")!,
+                let session = ASWebAuthenticationSession(url: URL(string: "http://115.85.181.152:8000/api/auth2/login")!,
                                                          callbackURLScheme: "minivibe") { (url, error) in
                     if let error = error {
                         completion(.failure(error))
