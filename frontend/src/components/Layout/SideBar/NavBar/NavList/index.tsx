@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import { FaMusic } from 'react-icons/fa';
-// import { FaBookOpen, FaMusic, FaTrophy, FaRecordVinyl, FaRegCalendar } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import A from '@components/Common/A';
 

@@ -2,19 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import useEventHandler from '@hooks/useEventHandler';
 
-// type EventType = 'move' | 'click' | 'library' | 'login' | 'logout' | 'logout' | 'music' | 'error';
-// type ActionType =
-//   | 'like'
-//   | 'remove'
-//   | 'prev'
-//   | 'next'
-//   | 'shuffle_on'
-//   | 'shuffle_off'
-//   | 'play'
-//   | 'pause'
-//   | 'repeat_on'
-//   | 'repeat_off';
-
 interface ILibraryEventProps {
   type: string;
   action: string;

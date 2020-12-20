@@ -5,7 +5,6 @@ interface IContent {
   children: any;
 }
 
-// title이라고 하면 _document랑 충돌남
 function Content({ children }: IContent): ReactElement {
   return <Wrapper>{children}</Wrapper>;
 }

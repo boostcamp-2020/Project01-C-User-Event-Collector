@@ -6,16 +6,9 @@ module.exports = withImages({
     return [
       {
         source: '/',
-        destination: '/today', // Matched parameters can be used in the destination
+        destination: '/today', 
         permanent: true,
       },
     ]
   },
 })
-
-// webpack 사용시
-// module.exports = withTypescript({
-//     webpack(config, options) {
-//       return config
-//     }
-//   })

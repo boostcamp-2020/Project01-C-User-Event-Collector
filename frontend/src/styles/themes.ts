@@ -6,7 +6,6 @@ const sizes = {
   phone: 576,
 };
 
-// Iterate through the sizes and create a media template
 const media = {
   desktop: args => undefined,
   tablet: args => undefined,
