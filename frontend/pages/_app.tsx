@@ -1,4 +1,4 @@
-import App, { Container } from 'next/app';
+import App from 'next/app';
 import React from 'react';
 import theme from '@styles/themes';
 import GlobalStyles from '@styles/global-styles';
@@ -14,7 +14,7 @@ class ReactApp extends App<any> {
   public render() {
     const { Component, pageProps } = this.props;
     return (
-      <Container>
+      <>
         <GlobalStyles />
         <ThemeProvider theme={theme}>
           <AuthProvider>
@@ -25,7 +25,7 @@ class ReactApp extends App<any> {
             </PlayProvider>
           </AuthProvider>
         </ThemeProvider>
-      </Container>
+      </>
     );
   }
 }

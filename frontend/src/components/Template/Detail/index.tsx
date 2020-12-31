@@ -8,7 +8,6 @@ interface ILayout {
   children: any;
 }
 
-// title이라고 하면 _document랑 충돌남
 function Layout({ data, children }: ILayout): ReactElement {
   return (
     <Wrapper>

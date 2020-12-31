@@ -203,22 +203,11 @@ function PlayBar() {
 {JSON.stringify(log.eventTime)}
                     </Info>
                     <Info style={{ color: '#ffe500' }}>
-                      eventName : 
-{' '}
-{JSON.stringify(log.eventName)}
+                      eventName : {JSON.stringify(log.eventName)}
                     </Info>
-                    <Info>
-                      parameters :
-{JSON.stringify(log.parameters)}
-                    </Info>
-                    <Info>
-                      userInfo :
-{JSON.stringify(log.userInfo)}
-                    </Info>
-                    <Info>
-                      userAgent :
-{JSON.stringify(log.userAgent)}
-                    </Info>
+                    <Info>parameters :{JSON.stringify(log.parameters)}</Info>
+                    <Info>userInfo :{JSON.stringify(log.userInfo)}</Info>
+                    <Info>userAgent :{JSON.stringify(log.userAgent)}</Info>
                     <hr style={{ borderColor: 'darkgrey' }} />
                   </Log>
                 ))}

@@ -39,9 +39,6 @@ const ContentWrapper = styled.div<CarouselWrapperProps>`
 `;
 
 const Wrapper = styled.div`
-  .carousel {
-    // position: relative;
-  }
   .carousel-inner {
     overflow: visible;
   }

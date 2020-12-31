@@ -28,7 +28,7 @@ VIBE 서비스 사용과정에서 발생하는 이벤트를 수집하는 서비�
 
 <p align="center">
 <img width="350" alt="event" src="https://user-images.githubusercontent.com/60839959/102684638-c74b0780-421d-11eb-84fc-8f4f625a66e6.png">
-<img width="570" alt="스크린샷 2020-12-19 오후 5 27 57" src="https://user-images.githubusercontent.com/60839959/102684875-910e8780-421f-11eb-8b64-16f53d06c200.png">
+<img width="570" alt="스크린샷 2020-12-19 오후 5 27 57" src="https://user-images.githubusercontent.com/60839959/102684875-910e8780-421f-11eb-8b64-16f53d06c200.png">
 </p>
 
 📕 ["이벤트 로그" 정의부터 구현까지](https://www.notion.so/9fca9884c5a144b6a8ade2611ae71f20?v=08ee6720efb043ddb19f7989a21f7adc&p=23cd57707992408db323aac536d239f9)
@@ -44,7 +44,7 @@ VIBE 서비스 사용과정에서 발생하는 이벤트를 수집하는 서비�
 <p align="center"><img width="700" alt="기술 스택" src="https://user-images.githubusercontent.com/60839959/102687079-d470f200-422f-11eb-982d-0ee36795a17a.png"></p>
 
 #### iOS 🍎
-<p align="center"><img width="350" alt="기술 스택" src="https://user-images.githubusercontent.com/60839959/102710138-9e954180-42f3-11eb-890c-751e5895ffab.png"></p>
+<p align="center"><img width="350" alt="기술 스택" src="https://user-images.githubusercontent.com/54564170/102690738-caa8b800-424a-11eb-81f5-96cd0ca4d309.png"></p>
 
 
 <br>
@@ -54,24 +54,16 @@ VIBE 서비스 사용과정에서 발생하는 이벤트를 수집하는 서비�
 ## 📹 서비스 데모 영상
 #### Web 🕸
   
-[<img width="500" src="https://user-images.githubusercontent.com/60839959/102683358-bbf2de80-4213-11eb-87e0-c889f0afe61b.png"/>](https://www.youtube.com/watch?v=WWSpciYdGR4&feature=youtu.be)
+[<img width="500" src="https://user-images.githubusercontent.com/60839959/102683358-bbf2de80-4213-11eb-87e0-c889f0afe61b.png"/>](https://youtu.be/AqSunm6fDfc)
 > 클릭하시면 youtube로 이동합니다💨
 
 #### iOS 🍎
 
-[<img width="500" src="https://user-images.githubusercontent.com/54564170/102687174-9aecb680-4230-11eb-985a-ab967a08f06f.png"/>](https://www.youtube.com/watch?v=_10ZGYLncX0)
+[<img width="500" src="https://user-images.githubusercontent.com/54564170/102687174-9aecb680-4230-11eb-985a-ab967a08f06f.png"/>](https://youtu.be/dQiQtMR8pOM)
 > 클릭하시면 youtube로 이동합니다💨
 
 <br>
 <br>
-
-### Web 배포 주소
-http://115.85.181.152:3000/
-```
-네이버 로그인API 검수 문제로 로그인이 불가하여 주요서비스인 보관함 열람이 불가합니다😂
-전체 서비스 결과물은 데모영상을 활용해주시면 감사하겠습니다 🙏
-```
-
 
 
 ### Web 실행방법 🐈
@@ -98,7 +90,7 @@ npm run start
 
 ## 🚢 사용자 이벤트 수집기 C팀 소개
 
-<p align="center"><img width="650" alt="스크린샷 2020-12-19 오후 5 47 21" src="https://user-images.githubusercontent.com/60839959/102685197-49d5c600-4222-11eb-87e7-b3942e03a465.png"></p>
+<p align="center"><img width="650" alt="스크린샷 2020-12-19 오후 5 47 21" src="https://user-images.githubusercontent.com/60839959/102685197-49d5c600-4222-11eb-87e7-b3942e03a465.png"></p>
 
 | 🕸 Web                                                        | 🕸 Web                                                        | 🕸 Web                                                        | 🍎 iOS                                                        | 🍎 iOS                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
