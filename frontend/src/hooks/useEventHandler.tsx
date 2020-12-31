@@ -1,5 +1,3 @@
-// onClick={createEventHandler(deleteTrackEvent, 'delete', {'page': '/library'})}
-// action은 상수로 관리
 import api from '../api';
 
 const postLog = logData => {
