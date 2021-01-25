@@ -23,7 +23,9 @@ function Layout({ mainTitle, type, children }: ILayout): ReactElement {
             <ClickEventWrapper target="PlayAllBtn">
               <LargeButton customType="play" />
             </ClickEventWrapper>
-            <LargeButton customType="shuffle" />
+            <ClickEventWrapper target="shuffle">
+              <LargeButton customType="shuffle" />
+            </ClickEventWrapper>
           </PlayButtonWrapper>
         )}
       </Header>
@@ -38,13 +40,13 @@ const Wrapper = styled.div`
   padding-bottom: 23px;
   margin: auto;
   position: relative;
-  max-width: ${props => props.theme.size.mainContentWidth};
+  max-width: 964px;
   margin: auto;
 `;
 
 const Header = styled.header`
   position: relative;
-  padding-bottom: 30px;
+  height: 80px;
   border-bottom: 1px solid #e4e4e4;
 `;
 
@@ -64,7 +66,7 @@ const MainTitle = styled.span`
 `;
 
 const PlayButtonWrapper = styled.div`
-  width: 284px;
+  width: 296px;
   position: absolute;
   display: flex;
   justify-content: space-between;

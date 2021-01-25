@@ -19,9 +19,7 @@ function AlbumDetail({ albumInfo: album }) {
           <MainTitle>{album?.name}</MainTitle>
           <SubTitle>{`${getMultipleNames(album?.artists)} `}</SubTitle>
           <SubContent>
-            {album?.date?.slice(0, 10)}
-{' '}
-·{getMultipleNames(album?.genres)}
+            {album?.date?.slice(0, 10)} ·{getMultipleNames(album?.genres)}
           </SubContent>
           <SubContent>{description}</SubContent>
           <ButtonsWrapper>
@@ -58,7 +56,7 @@ const Container = styled.div`
   padding-top: 41px;
   margin: auto;
   position: relative;
-  max-width: ${props => props.theme.size.mainContentWidth};
+  max-width: 964px;
   margin: auto;
 `;
 
