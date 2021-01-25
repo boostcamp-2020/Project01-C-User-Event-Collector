@@ -41,7 +41,7 @@ const Wrapper = styled.div`
   padding-top: 41px;
   margin: auto;
   position: relative;
-  max-width: ${props => props.theme.size.mainContentWidth};
+  max-width: 964px;
   margin: auto;
 `;
 

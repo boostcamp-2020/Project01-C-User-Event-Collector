@@ -48,9 +48,7 @@ function ArtistDetail({ artistInfo: artist }) {
           <TopContainer>
             <MainTitle>{artist.name}</MainTitle>
             <SubTitle>
-              {artist.debut.replace(/-/g, '.').slice(0, 10)}
-{' '}
-데뷔 ·{' '}
+              {artist.debut.replace(/-/g, '.').slice(0, 10)} 데뷔 ·{' '}
               {getMultipleNames(artist.genres)}
             </SubTitle>
           </TopContainer>
@@ -109,7 +107,7 @@ const Container = styled.div`
   padding-top: 41px;
   margin: auto;
   position: relative;
-  max-width: ${props => props.theme.size.mainContentWidth};
+  max-width: 964px;
   margin: auto;
 `;
 

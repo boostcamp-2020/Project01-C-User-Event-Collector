@@ -72,7 +72,7 @@ const MagTopWrapper = styled.div`
 
 const Content = styled.div`
   position: relative;
-  max-width: ${props => props.theme.size.mainContentWidth};
+  max-width: 964px;
   margin: auto;
 `;
 

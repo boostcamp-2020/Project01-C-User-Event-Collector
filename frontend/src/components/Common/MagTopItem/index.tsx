@@ -73,7 +73,7 @@ const MagContent = styled.p`
 `;
 
 const Wrapper = styled.div`
-  width: ${props => props.theme.size.mainContentWidth};
+  width: 964px;
   margin: 0 auto;
   height: ${props => props.theme.size.magTopItemHeight};
   background: white;
