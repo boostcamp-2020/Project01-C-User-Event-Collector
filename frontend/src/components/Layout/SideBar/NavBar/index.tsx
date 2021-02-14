@@ -30,13 +30,13 @@ function NavBar() {
     <Container>
       {userState.isLoggedIn ? (
         <AuthWrapper>
-          <ProfileImg src={userState?.profileURL} alt="profile-img" />
+          <ProfileImg src={`${userState?.profileURL}?type=s33`} alt="profile-img" />
           {userState?.nickname}
           <AuthDropdown />
         </AuthWrapper>
       ) : (
         <AuthWrapper style={{ cursor: 'pointer' }} onClick={loginEvent}>
-          <ProfileImg src={userState?.profileURL} alt="profile-img" />
+          <ProfileImg src={`${userState?.profileURL}?type=s33`} alt="profile-img" />
           로그인
         </AuthWrapper>
       )}

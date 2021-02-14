@@ -7,13 +7,21 @@ import BoxItem from '@components/Common/BoxItem';
 
 function MagTopItem({ magData: mag }) {
   const target = 'MagTopItem';
+
+  const resetImgSize = url => {
+    if (url) {
+      const _url = url.replace(/type=r([0-9])+Fll/gi, 'type=r360Fll');
+      return _url;
+    }
+  };
+
   return (
     <Wrapper>
       <ImgWrapper>
         <BoxItem
           trackData={mag.tracks}
           target={target}
-          imgUrl={mag.imgUrl}
+          imgUrl={resetImgSize(mag.imgUrl)}
           next="magazines"
           id={mag.id}
         />
