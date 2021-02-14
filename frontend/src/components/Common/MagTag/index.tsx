@@ -45,13 +45,21 @@ const All = styled.a`
   background: ${props => props.theme.color.highlight};
 `;
 
-const SpecialTag = styled(All)`
+const SpecialTag = styled.a`
+  padding: 5px 16px;
+  border-radius: 30px;
   background: linear-gradient(to right, red, #ff00a0, #7e00e4);
 `;
 
-const PickTag = styled(All)``;
+const PickTag = styled.a`
+  padding: 5px 16px;
+  border-radius: 30px;
+  background: ${props => props.theme.color.highlight};
+`;
 
-const GenreTag = styled(All)`
+const GenreTag = styled.a`
+  padding: 5px 16px;
+  border-radius: 30px;
   background: #7e00e4;
 `;
 

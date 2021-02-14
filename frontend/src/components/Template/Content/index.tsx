@@ -11,7 +11,7 @@ function Content({ children }: IContent): ReactElement {
 
 const Wrapper = styled.div`
   position: relative;
-  max-width: ${props => props.theme.size.mainContentWidth};
+  max-width: 964px;
   margin: auto;
 `;
 

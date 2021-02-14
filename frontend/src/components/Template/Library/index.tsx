@@ -18,14 +18,18 @@ function Layout({ mainTitle, type, children }: ILayout): ReactElement {
           <SubTitle>보관함</SubTitle>
           <MainTitle>{mainTitle}</MainTitle>
         </Title>
-        {type && (
-          <PlayButtonWrapper>
-            <ClickEventWrapper target="PlayAllBtn">
-              <LargeButton customType="play" />
-            </ClickEventWrapper>
-            <LargeButton customType="shuffle" />
-          </PlayButtonWrapper>
-        )}
+        <PlayButtonWrapper>
+          {type && (
+            <>
+              <ClickEventWrapper target="PlayAllBtn">
+                <LargeButton customType="play" />
+              </ClickEventWrapper>
+              <ClickEventWrapper target="shuffleBtn">
+                <LargeButton customType="shuffle" />
+              </ClickEventWrapper>
+            </>
+          )}
+        </PlayButtonWrapper>
       </Header>
       <LibraryContent>{children}</LibraryContent>
     </Wrapper>
@@ -38,14 +42,16 @@ const Wrapper = styled.div`
   padding-bottom: 23px;
   margin: auto;
   position: relative;
-  max-width: ${props => props.theme.size.mainContentWidth};
+  max-width: 964px;
   margin: auto;
 `;
 
 const Header = styled.header`
-  position: relative;
-  padding-bottom: 30px;
+  height: 80px;
   border-bottom: 1px solid #e4e4e4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const Title = styled.div`
@@ -64,10 +70,11 @@ const MainTitle = styled.span`
 `;
 
 const PlayButtonWrapper = styled.div`
-  width: 284px;
-  position: absolute;
+  width: 296px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   bottom: 18px;
   right: 0px;
 `;

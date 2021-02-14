@@ -31,11 +31,18 @@ function PlayTrackItem({ type, trackData: track }) {
     };
   };
 
+  const resetImgSize = url => {
+    if (url) {
+      const _url = url.replace(/type=r([0-9])+Fll/gi, 'type=r120Fll');
+      return _url;
+    }
+  };
+
   return (
     <TrackWrapper>
       <TrackImgWrapper>
         <A next="album" id={track?.album?.id} target={target}>
-          <TrackImg src={track?.album?.imgUrl} alt="playbar-track-img" />
+          <TrackImg src={resetImgSize(track?.album?.imgUrl)} alt="playbar-track-img" />
         </A>
       </TrackImgWrapper>
       <TrackContentWrapper>

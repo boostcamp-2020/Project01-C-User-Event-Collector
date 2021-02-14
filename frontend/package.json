@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/boostcamp-2020/Project01-C-User-Event-Collector#readme",
   "dependencies": {
+    "@emotion/styled": "^11.0.0",
     "@types/next": "^9.0.0",
     "@types/react": "^17.0.0",
     "axios": "^0.21.0",
@@ -40,7 +41,7 @@
     "react-sizes": "^2.0.0",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^2.0.1",
-    "styled-components": "^5.2.1",
+    "styled-components": "latest",
     "styled-reset": "^4.3.1",
     "swr": "^0.3.9"
   },

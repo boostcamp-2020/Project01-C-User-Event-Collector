@@ -69,24 +69,43 @@ const CustomButton = styled.button<ILargeButtonProps>`
   border-radius: 4px;
 `;
 
-const HeaderButton = styled(CustomButton)`
+const PlayButton = styled.button`
   width: 135px;
   height: 42px;
   font-size: 15px;
-`;
-
-const PlayButton = styled(HeaderButton)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
   border: solid 1px #ff1150;
   background: #ff1150;
   color: white;
 `;
 
-const ShuffleButton = styled(HeaderButton)``;
+const ShuffleButton = styled.button`
+  width: 135px;
+  height: 42px;
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #d7d7d7;
+  background: #fbfbfb;
+  color: #232323;
+  border-radius: 4px;
+`;
 
-const AddPlaylistButton = styled(CustomButton)`
+const AddPlaylistButton = styled.button`
   width: 130px;
   height: 36px;
   font-size: 13px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 1px #d7d7d7;
+  background: #fbfbfb;
+  color: #232323;
+  border-radius: 4px;
 `;
 
 export default LargeButton;
