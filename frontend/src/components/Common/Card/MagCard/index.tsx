@@ -24,11 +24,18 @@ const enterTitle = title => {
 
 const MagCard = ({ magMetaData: mag }: IMagMetaProps) => {
   const target = 'MagCard';
+  const resetImgSize = url => {
+    if (url) {
+      const _url = url.replace(/type=r([0-9])+Fll/gi, 'type=r360Fll');
+      return _url;
+    }
+  };
+
   return (
     <Container>
       <BoxItem
         trackData={mag.tracks}
-        imgUrl={mag.imgUrl}
+        imgUrl={resetImgSize(mag.imgUrl)}
         next="magazines"
         id={mag.id}
         target={target}

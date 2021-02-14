@@ -25,6 +25,11 @@ type TrackMeta = {
   imgUrl: string;
 };
 
+const resetImgSize = url => {
+  const _url = url.replace(/type=r([0-9])+Fll/gi, 'type=r120Fll');
+  return _url;
+};
+
 const TrackItem = ({
   chart,
   type,
@@ -49,7 +54,11 @@ const TrackItem = ({
           <TrackImgWrapper>
             <TrackHoverImg src="/images/track-hover-img.png" className="track-hover-img" />
             <TrackImg
-              src={track.album?.imgUrl ? track.album.imgUrl : albumData.imgUrl}
+              src={
+                track.album?.imgUrl
+                  ? resetImgSize(track.album.imgUrl)
+                  : resetImgSize(albumData.imgUrl)
+              }
               alt="track-image"
             />
           </TrackImgWrapper>

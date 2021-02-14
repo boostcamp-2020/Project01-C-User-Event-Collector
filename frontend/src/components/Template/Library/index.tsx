@@ -18,16 +18,18 @@ function Layout({ mainTitle, type, children }: ILayout): ReactElement {
           <SubTitle>보관함</SubTitle>
           <MainTitle>{mainTitle}</MainTitle>
         </Title>
-        {type && (
-          <PlayButtonWrapper>
-            <ClickEventWrapper target="PlayAllBtn">
-              <LargeButton customType="play" />
-            </ClickEventWrapper>
-            <ClickEventWrapper target="shuffle">
-              <LargeButton customType="shuffle" />
-            </ClickEventWrapper>
-          </PlayButtonWrapper>
-        )}
+        <PlayButtonWrapper>
+          {type && (
+            <>
+              <ClickEventWrapper target="PlayAllBtn">
+                <LargeButton customType="play" />
+              </ClickEventWrapper>
+              <ClickEventWrapper target="shuffleBtn">
+                <LargeButton customType="shuffle" />
+              </ClickEventWrapper>
+            </>
+          )}
+        </PlayButtonWrapper>
       </Header>
       <LibraryContent>{children}</LibraryContent>
     </Wrapper>
@@ -45,9 +47,11 @@ const Wrapper = styled.div`
 `;
 
 const Header = styled.header`
-  position: relative;
   height: 80px;
   border-bottom: 1px solid #e4e4e4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const Title = styled.div`
@@ -67,9 +71,10 @@ const MainTitle = styled.span`
 
 const PlayButtonWrapper = styled.div`
   width: 296px;
-  position: absolute;
+  height: 60px;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
   bottom: 18px;
   right: 0px;
 `;
