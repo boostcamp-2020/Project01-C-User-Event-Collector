@@ -77,7 +77,6 @@ const MagContent = styled.p`
   font-size: 14px;
   line-height: 20px;
   color: #939393;
-  will-change: transform;
 `;
 
 const Wrapper = styled.div`

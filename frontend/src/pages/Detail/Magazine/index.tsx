@@ -32,11 +32,7 @@ function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
             <MagTitle>{magazine?.title}</MagTitle>
             <MagContent>{magazine?.content}</MagContent>
             <MagPlayList>
-              <MagPlayListInfo>
-                총{magazine?.tracks?.length}
-                곡
-{' '}
-              </MagPlayListInfo>
+              <MagPlayListInfo>총{magazine?.tracks?.length}곡 </MagPlayListInfo>
               <MagPlayListLink>플레이리스트 보기</MagPlayListLink>
             </MagPlayList>
             <MagPlayButtonList>
@@ -157,7 +153,6 @@ const MagContent = styled.h5`
   line-height: 26px;
   color: hsla(0, 0%, 100%, 0.5);
   white-space: pre-line;
-
   ::after {
     content: '';
     display: block;
