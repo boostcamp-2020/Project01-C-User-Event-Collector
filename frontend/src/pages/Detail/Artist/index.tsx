@@ -6,7 +6,7 @@ import CircleImage from '@components/Common/CircleImage';
 import RelatedPlaylist from '@components/Common/SampleSection/RelatedPlaylist';
 import RelatedArtist from '@components/Common/SampleSection/RelatedArtist';
 import TrackList from '@components/TrackList';
-import useEventHandler from '@hooks/useEventHandler';
+import useEventHandler from '@utils/logEventHandler';
 import api from '@api/index';
 
 import getMultipleNames from '@utils/getMultipleNames';
@@ -48,7 +48,9 @@ function ArtistDetail({ artistInfo: artist }) {
           <TopContainer>
             <MainTitle>{artist.name}</MainTitle>
             <SubTitle>
-              {artist.debut.replace(/-/g, '.').slice(0, 10)} 데뷔 ·{' '}
+              {artist.debut.replace(/-/g, '.').slice(0, 10)}
+{' '}
+데뷔 ·{' '}
               {getMultipleNames(artist.genres)}
             </SubTitle>
           </TopContainer>

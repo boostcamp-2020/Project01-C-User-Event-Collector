@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
 import api from '@api/index';
-import useEventHandler from '@hooks/useEventHandler';
+import useEventHandler from '@utils/logEventHandler';
 import { usePlayDispatch } from '@context/PlayContext';
 import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
 import * as T from '../../../constants/dropdownText';

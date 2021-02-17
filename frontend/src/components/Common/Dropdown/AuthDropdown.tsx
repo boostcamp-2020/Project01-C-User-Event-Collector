@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
-import useEventHandler from '@hooks/useEventHandler';
+import useEventHandler from '@utils/logEventHandler';
 import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
 
 import * as T from '../../../constants/dropdownText';

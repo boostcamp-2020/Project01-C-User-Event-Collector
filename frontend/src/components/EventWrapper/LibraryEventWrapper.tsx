@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import useEventHandler from '@hooks/useEventHandler';
+import useEventHandler from '@utils/logEventHandler';
 
 interface ILibraryEventProps {
   type: string;
