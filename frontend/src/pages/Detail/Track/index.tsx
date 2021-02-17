@@ -6,7 +6,7 @@ import unifyMetaData from '@utils/unifyMetaData';
 import Section from '@components/Common/Section';
 import A from '@components/Common/A';
 import RelatedPlaylist from '@components/Common/SampleSection/RelatedPlaylist';
-import lyric from '../../../data/lyricSample';
+import lyric from '../../../constants/lyricSample';
 
 interface ITrackInfoProps {
   trackInfo?: MetaTrack;

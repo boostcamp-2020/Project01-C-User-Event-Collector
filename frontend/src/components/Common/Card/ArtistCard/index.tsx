@@ -5,7 +5,7 @@ import CircleHeartButton from '@components/Common/Button/CircleHeartButton';
 import A from '@components/Common/A';
 import api from '@api/index';
 import { mutate } from 'swr';
-import useEventHandler from '@hooks/useEventHandler';
+import useEventHandler from '@utils/logEventHandler';
 import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
 import { useAuthDispatch } from '@context/AuthContext';
 

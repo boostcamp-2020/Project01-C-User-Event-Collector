@@ -6,7 +6,7 @@ import Section from '@components/Common/Section';
 import MagCard from '@components/Common/Card/MagCard';
 import MagTopItem from '@components/Common/MagTopItem';
 import PlaylistCard from '@components/Common/Card/PlaylistCard';
-import useEventHandler from '@hooks/useEventHandler';
+import useEventHandler from '@utils/logEventHandler';
 
 function Today({ magList, playlistList }) {
   const router = useRouter();

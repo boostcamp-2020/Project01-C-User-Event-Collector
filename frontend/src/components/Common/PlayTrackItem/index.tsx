@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
-import useEventHandler from '@hooks/useEventHandler';
+import useEventHandler from '@utils/logEventHandler';
 
 import api from '@api/index';
 import { useAuthState, useAuthDispatch } from '@context/AuthContext';

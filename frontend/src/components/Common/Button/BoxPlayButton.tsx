@@ -23,14 +23,13 @@ const ButtonWrapper = styled.button`
   border-radius: 50%;
   background: white;
   opacity: 75%;
-  transition: 0.3s all;
+  transition: 0.5s all;
   display: flex;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
   border: none;
   position: absolute;
-  will-change: transform;
   &:hover {
     opacity: 100%;
     transform: scale(1.1);

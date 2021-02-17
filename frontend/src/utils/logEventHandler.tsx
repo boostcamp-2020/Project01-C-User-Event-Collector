@@ -5,11 +5,11 @@ const postLog = logData => {
   api.post('/log', timeStampedLog);
 };
 
-const useEventHandler = (handler, logData) => {
+const logEventHandler = (handler, logData) => {
   return async () => {
     if (handler) await handler();
     if (logData) postLog(logData);
   };
 };
 
-export default useEventHandler;
+export default logEventHandler;

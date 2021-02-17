@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
-import useEventHandler from '@hooks/useEventHandler';
+import useEventHandler from '@utils/logEventHandler';
 
 interface IModalProps {
   visible: boolean;

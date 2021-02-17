@@ -8,7 +8,7 @@ import RelatedArtist from '@components/Common/SampleSection/RelatedArtist';
 import TrackList from '@components/TrackList';
 
 import getMultipleNames from '@utils/getMultipleNames';
-import description from '../../../data/DescriptionSample';
+import description from '../../../constants/description';
 
 function AlbumDetail({ albumInfo: album }) {
   return (
