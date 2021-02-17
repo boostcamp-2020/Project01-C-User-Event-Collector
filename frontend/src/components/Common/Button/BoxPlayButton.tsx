@@ -29,6 +29,8 @@ const ButtonWrapper = styled.button`
   align-items: center;
   box-sizing: border-box;
   border: none;
+  position: absolute;
+  will-change: transform;
   &:hover {
     opacity: 100%;
     transform: scale(1.1);

@@ -23,7 +23,9 @@ function BoxItem({ trackData, imgUrl, target, next, id }: IBoxItemProps) {
 
         <ButtonsWrapper className="buttons-wrapper">
           <BoxPlayButton />
-          <BsThreeDots size={24} />
+          <DotsButtonWrapper>
+            <BsThreeDots size={24} />
+          </DotsButtonWrapper>
         </ButtonsWrapper>
         <BoxDropdown trackData={trackData} type={next} id={id} />
       </Wrapper>
@@ -44,10 +46,13 @@ const ButtonsWrapper = styled.div`
   height: 18%;
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
-  transition: 0.5s all;
   opacity: 0;
   background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.15));
+`;
+
+const DotsButtonWrapper = styled.div`
+  position: absolute;
+  right: 12px;
 `;
 
 const Wrapper = styled.div`
