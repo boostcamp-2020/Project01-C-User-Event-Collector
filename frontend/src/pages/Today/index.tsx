@@ -6,7 +6,7 @@ import Section from '@components/Common/Section';
 import MagCard from '@components/Common/Card/MagCard';
 import MagTopItem from '@components/Common/MagTopItem';
 import PlaylistCard from '@components/Common/Card/PlaylistCard';
-import useEventHandler from '@utils/logEventHandler';
+import logEventHandler from '@utils/logEventHandler';
 
 function Today({ magList, playlistList }) {
   const router = useRouter();
@@ -24,9 +24,9 @@ function Today({ magList, playlistList }) {
 
   const bannerClickEvent = e => {
     if (e.target.className.includes('banner-close-button')) {
-      useEventHandler(() => setIsBannerOpened(false), customClickLogData('BannerCloseBtn'));
+      logEventHandler(() => setIsBannerOpened(false), customClickLogData('BannerCloseBtn'));
     }
-    useEventHandler(null, customClickLogData('BannerBtn'));
+    logEventHandler(null, customClickLogData('BannerBtn'));
   };
 
   return (

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
 import api from '@api/index';
-import useEventHandler from '@utils/logEventHandler';
+import logEventHandler from '@utils/logEventHandler';
 import { usePlayDispatch } from '@context/PlayContext';
 import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
 import * as T from '../../../constants/dropdownText';
@@ -68,7 +68,7 @@ const BoxDropdown = ({ trackData, type, id }: IBoxDropdownProps) => {
               <Dropdown.Item
                 style={dropdownItemStyle}
                 text={T.ADD_TO_LIBRARY}
-                onClick={useEventHandler(addEvent, libraryLogData('like'))}
+                onClick={logEventHandler(addEvent, libraryLogData('like'))}
               />
             </ClickEventWrapper>
           )}
@@ -76,28 +76,28 @@ const BoxDropdown = ({ trackData, type, id }: IBoxDropdownProps) => {
             <Dropdown.Item
               style={dropdownItemStyle}
               text={T.ADD_TO_NEXT}
-              onClick={useEventHandler(addTrackNextEvent, libraryLogData('add_next'))}
+              onClick={logEventHandler(addTrackNextEvent, libraryLogData('add_next'))}
             />
           </ClickEventWrapper>
           <ClickEventWrapper target={`Dropdown/AddPrevBtn/${type}`} id={id}>
             <Dropdown.Item
               style={dropdownItemStyle}
               text={T.ADD_TO_PREV}
-              onClick={useEventHandler(addTrackLastEvent, libraryLogData('add_prev'))}
+              onClick={logEventHandler(addTrackLastEvent, libraryLogData('add_prev'))}
             />
           </ClickEventWrapper>
           <ClickEventWrapper target={`Dropdown/BuyBtn/${type}`} id={id}>
             <Dropdown.Item
               style={dropdownItemStyle}
               text={T.BUY_MP3}
-              onClick={useEventHandler(null, clickLogData(`BuyBtn/${type}/${id}`))}
+              onClick={logEventHandler(null, clickLogData(`BuyBtn/${type}/${id}`))}
             />
           </ClickEventWrapper>
           <ClickEventWrapper target={`Dropdown/ShareBtn/${type}`} id={id}>
             <Dropdown.Item
               style={dropdownItemStyle}
               text={T.SHARE}
-              onClick={useEventHandler(null, clickLogData(`ShareBtn/${type}/${id}`))}
+              onClick={logEventHandler(null, clickLogData(`ShareBtn/${type}/${id}`))}
             />
           </ClickEventWrapper>
         </Dropdown.Menu>
