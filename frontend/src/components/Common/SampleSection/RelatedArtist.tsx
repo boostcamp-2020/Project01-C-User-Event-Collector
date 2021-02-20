@@ -5,6 +5,7 @@ import Spinner from '@components/Common/Spinner';
 import ArtistCard from '@components/Common/Card/ArtistCard';
 
 function RelatedArtist() {
+  console.log('relatedArtist -------- ');
   const { data, isLoading, isError } = useFetch(`/artist`, null);
 
   if (isLoading) return <Spinner />;
@@ -37,4 +38,4 @@ const ArtistWrapper = styled.div`
   margin-right: 20px;
 `;
 
-export default RelatedArtist;
+export default React.memo(RelatedArtist);
