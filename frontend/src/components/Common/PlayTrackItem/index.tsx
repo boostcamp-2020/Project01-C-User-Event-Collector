@@ -2,7 +2,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
-import useEventHandler from '@utils/logEventHandler';
+import logEventHandler from '@utils/logEventHandler';
 
 import api from '@api/index';
 import { useAuthState, useAuthDispatch } from '@context/AuthContext';
@@ -63,13 +63,13 @@ function PlayTrackItem({ type, trackData: track }) {
                 className="like button"
                 size={24}
                 color="ff1350"
-                onClick={useEventHandler(deleteTrackEvent, libraryEventLog('remove'))}
+                onClick={logEventHandler(deleteTrackEvent, libraryEventLog('remove'))}
               />
             ) : (
               <IoMdHeartEmpty
                 className="like button"
                 size={24}
-                onClick={useEventHandler(addTrackEvent, libraryEventLog('like'))}
+                onClick={logEventHandler(addTrackEvent, libraryEventLog('like'))}
               />
             )}
           </>

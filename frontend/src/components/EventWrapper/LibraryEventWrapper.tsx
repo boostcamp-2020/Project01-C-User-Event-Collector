@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import useEventHandler from '@utils/logEventHandler';
+import logEventHandler from '@utils/logEventHandler';
 
 interface ILibraryEventProps {
   type: string;
@@ -19,7 +19,7 @@ function ClickEventWrapper({ type, action, id, children }: ILibraryEventProps) {
     parameters: { action, type, id },
   };
 
-  return <Wrapper onClick={useEventHandler(null, logData)}>{children}</Wrapper>;
+  return <Wrapper onClick={logEventHandler(null, logData)}>{children}</Wrapper>;
 }
 
 const Wrapper = styled.div<IEventTargetProps>`
