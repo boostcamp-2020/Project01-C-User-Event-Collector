@@ -6,7 +6,7 @@ import CircleImage from '@components/Common/CircleImage';
 import RelatedPlaylist from '@components/Common/SampleSection/RelatedPlaylist';
 import RelatedArtist from '@components/Common/SampleSection/RelatedArtist';
 import TrackList from '@components/TrackList';
-import useEventHandler from '@hooks/useEventHandler';
+import logEventHandler from '@utils/logEventHandler';
 import api from '@api/index';
 
 import getMultipleNames from '@utils/getMultipleNames';
@@ -59,13 +59,13 @@ function ArtistDetail({ artistInfo: artist }) {
                   <IoMdHeart
                     size={24}
                     color="ff1350"
-                    onClick={useEventHandler(deleteArtistEvent, null)}
+                    onClick={logEventHandler(deleteArtistEvent, null)}
                   />
                 ) : (
                   <IoMdHeartEmpty
                     size={24}
                     color="575757"
-                    onClick={useEventHandler(addArtistEvent, null)}
+                    onClick={logEventHandler(addArtistEvent, null)}
                   />
                 )}
               </ButtonContainer>

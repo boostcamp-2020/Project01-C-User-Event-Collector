@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import styled from '@styles/themed-components';
 
 import { RiOrderPlayFill, RiPlayListAddLine } from 'react-icons/ri';
@@ -11,11 +11,11 @@ const TrackList = ({ type = false, trackList }) => {
   const initialSelector: number[] = [];
   const [visible, setVisible] = useState(false);
   const [selected, setSelected] = useState(initialSelector);
+  const trackIdList = useMemo(() => trackList.map(track => track.id), [trackList]);
 
   const onChangeAll = e => {
     if (e.target.checked) {
-      const list = trackList.map(track => track.id);
-      setSelected([...list]);
+      setSelected([...trackIdList]);
       setVisible(true);
     } else {
       setSelected([]);

@@ -13,7 +13,7 @@ import {
   IoCloseOutline,
 } from 'react-icons/io5';
 import { BsFillVolumeUpFill, BsMusicNoteList } from 'react-icons/bs';
-import useEventHandler from '@hooks/useEventHandler';
+import logEventHandler from '@utils/logEventHandler';
 import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
 
 import PlayTrackItem from '@components/Common/PlayTrackItem';
@@ -130,50 +130,50 @@ function PlayBar() {
                 className="side button"
                 size={26}
                 style={{ color: 'white' }}
-                onClick={useEventHandler(setShuffleOff, musicLogData('shuffle_off'))}
+                onClick={logEventHandler(setShuffleOff, musicLogData('shuffle_off'))}
               />
             ) : (
               <IoShuffleOutline
                 className="side button"
                 size={26}
-                onClick={useEventHandler(setShuffleOn, musicLogData('shuffle_on'))}
+                onClick={logEventHandler(setShuffleOn, musicLogData('shuffle_on'))}
               />
             )}
             <IoPlaySkipBackSharp
               className="skip button"
               size={22}
-              onClick={useEventHandler(setPlayPrev, musicLogData('prev'))}
+              onClick={logEventHandler(setPlayPrev, musicLogData('prev'))}
             />
             {state.isPlaying ? (
               <IoPause
                 className="play button"
                 size={35}
-                onClick={useEventHandler(setPlayPause, musicLogData('pause'))}
+                onClick={logEventHandler(setPlayPause, musicLogData('pause'))}
               />
             ) : (
               <IoPlaySharp
                 className="play button"
                 size={35}
-                onClick={useEventHandler(setPlayStart, musicLogData('play'))}
+                onClick={logEventHandler(setPlayStart, musicLogData('play'))}
               />
             )}
             <IoPlaySkipForwardSharp
               className="skip button"
               size={22}
-              onClick={useEventHandler(setPlayNext, musicLogData('next'))}
+              onClick={logEventHandler(setPlayNext, musicLogData('next'))}
             />
             {isRepeat ? (
               <IoRepeat
                 className="side button"
                 size={26}
                 style={{ color: 'white' }}
-                onClick={useEventHandler(setRepeatOff, musicLogData('repeat_off'))}
+                onClick={logEventHandler(setRepeatOff, musicLogData('repeat_off'))}
               />
             ) : (
               <IoRepeat
                 className="side button"
                 size={26}
-                onClick={useEventHandler(setRepeatOn, musicLogData('repeat_on'))}
+                onClick={logEventHandler(setRepeatOn, musicLogData('repeat_on'))}
               />
             )}
           </ButtonWrapper>
@@ -203,11 +203,22 @@ function PlayBar() {
 {JSON.stringify(log.eventTime)}
                     </Info>
                     <Info style={{ color: '#ffe500' }}>
-                      eventName : {JSON.stringify(log.eventName)}
+                      eventName : 
+{' '}
+{JSON.stringify(log.eventName)}
                     </Info>
-                    <Info>parameters :{JSON.stringify(log.parameters)}</Info>
-                    <Info>userInfo :{JSON.stringify(log.userInfo)}</Info>
-                    <Info>userAgent :{JSON.stringify(log.userAgent)}</Info>
+                    <Info>
+parameters :
+{JSON.stringify(log.parameters)}
+                    </Info>
+                    <Info>
+userInfo :
+{JSON.stringify(log.userInfo)}
+                    </Info>
+                    <Info>
+userAgent :
+{JSON.stringify(log.userAgent)}
+                    </Info>
                     <hr style={{ borderColor: 'darkgrey' }} />
                   </Log>
                 ))}

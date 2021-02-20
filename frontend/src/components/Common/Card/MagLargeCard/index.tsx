@@ -2,18 +2,21 @@ import React from 'react';
 import styled from '@styles/themed-components';
 
 import TrackItem from '@components/Common/TrackItem';
-import description from '../../../../data/DescriptionSample';
+import description from '../../../../constants/description';
 
 const MagLargeCard = ({ data }) => {
   return (
     <Container>
-      <Title>{data.title} &#60;{data.album.name}&#62;</Title>
+      <Title>
+        {data.title}
+{' '}
+&#60;
+{data.album.name}
+        &#62;
+      </Title>
       <ImageContainer src={data.album.imgUrl} />
       <Description>{description}</Description>
-      <TrackItem
-        key={data.id}
-        trackMetaData={data}
-      />
+      <TrackItem key={data.id} trackMetaData={data} />
     </Container>
   );
 };

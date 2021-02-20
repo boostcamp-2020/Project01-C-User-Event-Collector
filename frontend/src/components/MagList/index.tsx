@@ -6,12 +6,13 @@ import MagLargeCard from '@components/Common/Card/MagLargeCard';
 const MagList = ({ magList }) => {
   return (
     <ListContainer>
-      {magList && magList?.map((track, index) => (
-        <>
-          {index > 0 && (<DivdieContainer />)}
-          <MagLargeCard key={track.id} data={track}/>
-        </>
-      ))}
+      {magList &&
+        magList?.map((track, index) => (
+          <>
+            {index > 0 && <DivdieContainer />}
+            <MagLargeCard key={track.id} data={track} />
+          </>
+        ))}
     </ListContainer>
   );
 };

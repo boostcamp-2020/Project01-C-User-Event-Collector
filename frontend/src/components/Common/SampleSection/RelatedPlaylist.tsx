@@ -6,7 +6,6 @@ import PlaylistCard from '@components/Common/Card/PlaylistCard';
 
 function RelatedPlaylist() {
   const { data, isLoading, isError } = useFetch(`/playlist`, null);
-
   if (isLoading) return <Spinner />;
   if (isError) {
     console.log(isError);
@@ -37,4 +36,4 @@ const PlaylistWrapper = styled.div`
   margin-right: 20px;
 `;
 
-export default RelatedPlaylist;
+export default React.memo(RelatedPlaylist);

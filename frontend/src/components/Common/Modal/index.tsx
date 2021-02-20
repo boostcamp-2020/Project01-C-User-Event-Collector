@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
-import useEventHandler from '@hooks/useEventHandler';
+import logEventHandler from '@utils/logEventHandler';
 
 interface IModalProps {
   visible: boolean;
@@ -31,10 +31,10 @@ function Modal() {
     <ModalWrapper visible={isModalOpened} className="modal hidden">
       <ModalOverLay>
         <ModalContent>
-          <ModalCloseButton onClick={useEventHandler(modalCloseEvent, logData('ModalCloseBtn'))} />
+          <ModalCloseButton onClick={logEventHandler(modalCloseEvent, logData('ModalCloseBtn'))} />
           <Image src="/images/modal-img.png" alt="modal-img" width={450} height={550} />
           <MembershipButton
-            onClick={useEventHandler(modalCloseEvent, logData('ModalMembershipBtn'))}
+            onClick={logEventHandler(modalCloseEvent, logData('ModalMembershipBtn'))}
           />
         </ModalContent>
       </ModalOverLay>
