@@ -2,6 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import logEventHandler from '@utils/logEventHandler';
 
+interface ILibraryEventLog {
+  eventName: string;
+  parameters: {
+    action: string;
+    type: string;
+    id: number;
+  };
+}
+
 interface ILibraryEventProps {
   type: string;
   action: string;
@@ -14,7 +23,7 @@ interface IEventTargetProps {
 }
 
 function ClickEventWrapper({ type, action, id, children }: ILibraryEventProps) {
-  const logData = {
+  const logData: ILibraryEventLog = {
     eventName: 'library_event',
     parameters: { action, type, id },
   };
