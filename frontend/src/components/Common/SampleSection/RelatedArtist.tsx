@@ -5,7 +5,6 @@ import Spinner from '@components/Common/Spinner';
 import ArtistCard from '@components/Common/Card/ArtistCard';
 
 function RelatedArtist() {
-  console.log('relatedArtist -------- ');
   const { data, isLoading, isError } = useFetch(`/artist`, null);
 
   if (isLoading) return <Spinner />;
