@@ -1,20 +1,20 @@
 import React, { createContext, useContext, useReducer, Dispatch } from 'react';
 import getRandomUserId from '@utils/getRandomUserId';
 
-type UserInfo = {
+interface UserInfo {
   id: number;
   nickname?: string | null;
   profileURL?: string;
   isLoggedIn: boolean;
-};
+}
 
-type UserState = {
+interface UserState {
   userInfo: UserInfo;
   trackList: number[];
   albumList: number[];
   artistList: number[];
   playlistList: number[];
-};
+}
 
 const initialState: UserState = {
   userInfo: {

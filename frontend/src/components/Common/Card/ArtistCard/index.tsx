@@ -14,12 +14,12 @@ interface IArtistMetaProps {
   type?: string | null;
 }
 
-type ArtistMeta = {
+interface ArtistMeta {
   id: number;
   name: string;
   debut: string;
   imgUrl: string;
-};
+}
 
 const ArtistCard = ({ artistMetaData: artist, type }: IArtistMetaProps) => {
   const target = 'ArtistCard';

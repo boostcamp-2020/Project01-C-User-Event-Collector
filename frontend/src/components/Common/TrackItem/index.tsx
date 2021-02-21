@@ -17,13 +17,13 @@ interface ITrackMetaProps {
   albumData?: any;
 }
 
-type TrackMeta = {
+interface TrackMeta {
   id: number;
   title: string;
   artists: any[];
   album?: any;
   imgUrl: string;
-};
+}
 
 const resetImgSize = url => {
   const _url = url.replace(/type=r([0-9])+Fll/gi, 'type=r120Fll');

@@ -7,7 +7,7 @@ interface IMagMetaProps {
   magMetaData: MagMeta;
 }
 
-type MagMeta = {
+interface MagMeta {
   id: number;
   title: string;
   content: string;
@@ -15,7 +15,7 @@ type MagMeta = {
   date: string;
   tag: string;
   tracks?: any;
-};
+}
 
 const enterTitle = title => {
   const pop = title.split(':');

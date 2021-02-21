@@ -5,6 +5,7 @@ import Spinner from '@components/Common/Spinner';
 import PlaylistCard from '@components/Common/Card/PlaylistCard';
 
 function RelatedPlaylist() {
+  console.log('relatedPlaylist ====');
   const { data, isLoading, isError } = useFetch(`/playlist`, null);
   if (isLoading) return <Spinner />;
   if (isError) {

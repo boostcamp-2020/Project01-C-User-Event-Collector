@@ -7,21 +7,21 @@ interface IAlbumMetaProps {
   albumMetaData: AlbumMeta;
 }
 
-type AlbumMeta = {
+interface AlbumMeta {
   id: number;
   name: string;
   date: string;
   imgUrl: string;
   artists?: artistMeta[];
   tracks: any[];
-};
+}
 
-type artistMeta = {
+interface artistMeta {
   id?: number;
   name?: string;
   debut?: string;
   imgUrl?: string;
-};
+}
 
 const AlbumCard = ({ albumMetaData }: IAlbumMetaProps) => {
   const target = 'AlbumCard';

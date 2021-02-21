@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import useFetch from '@hooks/useFetch';
 import api from '@api/index';
@@ -29,9 +30,9 @@ export function Index({ referer }) {
   );
 }
 
-export async function getServerSideProps({ req }) {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const referer = getRefererFromHeader(req.headers);
   return { props: { referer } };
-}
+};
 
 export default Index;

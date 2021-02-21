@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import api from '@api/index';
 import getRefererFromHeader from '@utils/getRefererFromHeader';
@@ -19,10 +20,10 @@ export function Index({ referer, magDetailData }) {
   );
 }
 
-export async function getServerSideProps({ req, query: { id } }) {
+export const getServerSideProps: GetServerSideProps = async ({ req, query: { id } }) => {
   const referer = getRefererFromHeader(req.headers);
   const magDetailData = await api.get(`/magazine/${id}`).then(res => res.data.data);
   return { props: { referer, magDetailData } };
-}
+};
 
 export default Index;
