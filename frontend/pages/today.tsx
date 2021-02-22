@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import useFetch from '@hooks/useFetch';
 import api from '@api/index';
@@ -33,7 +34,7 @@ function Index({ token, referer, magList }) {
   }, [dispatch]);
 
   if (playLoading || userLoading) return <Spinner />;
-  if (playError || userError) return <div>...Error</div>;
+  if (playError || userError) throw new Error('Data Fetch Error');
 
   api.post('/log', {
     eventTime: new Date(),
@@ -49,7 +50,7 @@ function Index({ token, referer, magList }) {
   );
 }
 
-export async function getServerSideProps({ req }) {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const referer = getRefererFromHeader(req.headers);
   const cookie = getTokenFromCookie(req.headers);
 
@@ -63,6 +64,6 @@ export async function getServerSideProps({ req }) {
       magList,
     },
   };
-}
+};
 
 export default Index;

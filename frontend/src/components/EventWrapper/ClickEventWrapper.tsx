@@ -3,6 +3,14 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import api from '@api/index';
 
+interface IClickEventLog {
+  eventName: string;
+  parameters: {
+    page: string;
+    target: string;
+  };
+}
+
 interface IClickEventProps {
   target: string;
   id?: number | null;
@@ -16,16 +24,16 @@ interface IEventTargetProps {
 function ClickEventWrapper({ target, id, children }: IClickEventProps) {
   const router = useRouter();
 
-  const logData = {
+  const logData: IClickEventLog = {
     eventName: 'click_event',
     parameters: { page: router.asPath, target: id ? `${target}/${id}` : target },
   };
 
-  const postClickLog = () => {
+  const clickEventHandler = () => {
     api.post('/log', { ...logData, eventTime: new Date() });
   };
 
-  return <Wrapper onClick={postClickLog}>{children}</Wrapper>;
+  return <Wrapper onClick={clickEventHandler}>{children}</Wrapper>;
 }
 
 const Wrapper = styled.div<IEventTargetProps>`

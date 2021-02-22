@@ -1,12 +1,12 @@
 import React, { createContext, useContext, useReducer, Dispatch } from 'react';
 
-type State = {
+interface State {
   isPlaying: boolean;
   isMembership: boolean;
   playIndex: number;
   timeProgress: number;
   playList: Array<any>;
-};
+}
 
 type Action =
   | { type: 'PLAY_START' }

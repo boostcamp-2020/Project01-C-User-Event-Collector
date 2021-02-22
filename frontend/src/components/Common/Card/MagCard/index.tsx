@@ -7,7 +7,7 @@ interface IMagMetaProps {
   magMetaData: MagMeta;
 }
 
-type MagMeta = {
+interface MagMeta {
   id: number;
   title: string;
   content: string;
@@ -15,7 +15,7 @@ type MagMeta = {
   date: string;
   tag: string;
   tracks?: any;
-};
+}
 
 const enterTitle = title => {
   const pop = title.split(':');
@@ -26,7 +26,10 @@ const MagCard = ({ magMetaData: mag }: IMagMetaProps) => {
   const target = 'MagCard';
   const resetImgSize = url => {
     if (url) {
-      const _url = url.replace(/type=r([0-9])+Fll/gi, 'type=r360Fll');
+      const _url = url
+        .replace(/type=w([0-9])+/gi, 'type=w480')
+        .replace(/type=r([0-9])+/gi, 'type=r360Fll');
+      console.log('_url', _url);
       return _url;
     }
   };

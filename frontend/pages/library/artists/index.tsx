@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import MyArtist from '@pages/Library/MyArtist';
 import useFetch from '@hooks/useFetch';
@@ -50,7 +51,7 @@ function Index({ referer, token }) {
   );
 }
 
-export async function getServerSideProps({ req }) {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const referer = getRefererFromHeader(req.headers);
   const token = getTokenFromCookie(req.headers);
 
@@ -60,6 +61,6 @@ export async function getServerSideProps({ req }) {
       referer,
     },
   };
-}
+};
 
 export default Index;

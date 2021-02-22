@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BsThreeDots } from 'react-icons/bs';
-import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
 import A from '@components/Common/A';
+import BoxPlayButton from '@components/Common/Button/BoxPlayButton';
+
 import BoxDropdown from '@components/Common/Dropdown/BoxDropdown';
 
 interface IBoxItemProps {

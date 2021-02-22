@@ -2,6 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 import logEventHandler from '@utils/logEventHandler';
 
+interface ILibraryEventLog {
+  eventName: string;
+  parameters: {
+    action: string;
+    type: string;
+    id: number;
+  };
+}
+
 interface ILibraryEventProps {
   type: string;
   action: string;
@@ -13,8 +22,8 @@ interface IEventTargetProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-function ClickEventWrapper({ type, action, id, children }: ILibraryEventProps) {
-  const logData = {
+function LibraryEventWrapper({ type, action, id, children }: ILibraryEventProps) {
+  const logData: ILibraryEventLog = {
     eventName: 'library_event',
     parameters: { action, type, id },
   };
@@ -27,4 +36,4 @@ const Wrapper = styled.div<IEventTargetProps>`
   cursor: pointer;
 `;
 
-export default ClickEventWrapper;
+export default LibraryEventWrapper;

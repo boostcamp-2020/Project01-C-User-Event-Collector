@@ -6,8 +6,8 @@ const postLog = logData => {
 };
 
 const logEventHandler = (handler, logData) => {
-  return async () => {
-    if (handler) await handler();
+  return () => {
+    if (handler) handler();
     if (logData) postLog(logData);
   };
 };
