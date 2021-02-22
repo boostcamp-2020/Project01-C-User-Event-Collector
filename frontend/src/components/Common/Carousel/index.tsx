@@ -60,11 +60,11 @@ const Wrapper = styled.div`
     right: -20px;
   }
   .carousel-control-prev-icon {
-    background-image: url('https://icons-for-free.com/iconfiles/png/512/next+icon-1320085938867901461.png');
+    background-image: url('https://icons-for-free.com/iconfiles/png/64/next+icon-1320085938867901461.png');
     transform: rotate(180deg);
   }
   .carousel-control-next-icon {
-    background-image: url('https://icons-for-free.com/iconfiles/png/512/next+icon-1320085938867901461.png');
+    background-image: url('https://icons-for-free.com/iconfiles/png/64/next+icon-1320085938867901461.png');
   }
   .carousel-indicators {
     display: none;

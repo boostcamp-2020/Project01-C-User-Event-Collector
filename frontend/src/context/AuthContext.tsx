@@ -22,7 +22,7 @@ const initialState: UserState = {
     id: getRandomUserId(),
     nickname: null,
     profileURL:
-      'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png',
+      'https://ih1.redbubble.net/image.1113621488.6566/flat,128x,075,f-pad,48x48,f8f8f8.jpg',
   },
   trackList: [],
   albumList: [],

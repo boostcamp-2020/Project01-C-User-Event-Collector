@@ -1,39 +1,53 @@
-import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import useFetch from '@hooks/useFetch';
 import api from '@api/index';
-import Spinner from '@components/Common/Spinner';
-import getRefererFromHeader from '@utils/getRefererFromHeader';
 import ArtistDetail from '../../src/pages/Detail/Artist';
 
-export function Index({ referer }) {
+export function Index({ artistData }) {
   const router = useRouter();
-  const { id } = router.query;
-  const { data, isLoading, isError } = useFetch(`/artist/${id}`, null);
-
-  if (isLoading) return <Spinner />;
-  if (isError) {
-    console.log(isError);
-    return <div>...Error</div>;
+  interface IMoveEventLog {
+    eventTime: Date;
+    eventName: string;
+    parameters: {
+      prev: string;
+      next: string;
+    };
   }
 
-  const logData = {
+  const logData: IMoveEventLog = {
     eventTime: new Date(),
     eventName: 'move_event',
-    parameters: { prev: referer, next: router.asPath },
+    parameters: { prev: '.', next: router.asPath },
   };
   api.post('/log', logData);
 
   return (
     <>
-      <ArtistDetail artistInfo={data.data} />
+      <ArtistDetail artistInfo={artistData} />
     </>
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const referer = getRefererFromHeader(req.headers);
-  return { props: { referer } };
+export async function getStaticPaths() {
+  const data = await api.get(`/artist/`).then(res => res.data);
+  const artistData = data.data;
+  const paths = artistData.map(artist => ({
+    params: { id: String(artist.id) },
+  }));
+
+  return { paths, fallback: false };
+}
+
+export const getStaticProps = async ({ params }) => {
+  const data = await api.get(`/artist/${params.id}`).then(res => res.data);
+  const artistData = data.data;
+  if (!data) {
+    return {
+      notfound: true,
+    };
+  }
+  return {
+    props: { artistData },
+  };
 };
 
 export default Index;

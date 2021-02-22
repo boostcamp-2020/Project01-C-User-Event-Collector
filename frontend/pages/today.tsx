@@ -34,7 +34,7 @@ function Index({ token, referer, magList }) {
   }, [dispatch]);
 
   if (playLoading || userLoading) return <Spinner />;
-  if (playError || userError) return <div>...Error</div>;
+  if (playError || userError) throw new Error('Data Fetch Error');
 
   api.post('/log', {
     eventTime: new Date(),

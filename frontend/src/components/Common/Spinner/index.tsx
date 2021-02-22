@@ -4,7 +4,7 @@ import styled from '@styles/themed-components';
 const Spinner = () => {
   return (
     <Wrapper>
-      <Image src="/images/spinner3.gif" alt="spinner" />
+      <Image src="/images/spinnerSmallCat.gif" alt="spinner" />
     </Wrapper>
   );
 };

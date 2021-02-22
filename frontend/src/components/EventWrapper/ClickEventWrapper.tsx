@@ -29,11 +29,11 @@ function ClickEventWrapper({ target, id, children }: IClickEventProps) {
     parameters: { page: router.asPath, target: id ? `${target}/${id}` : target },
   };
 
-  const postClickLog = () => {
+  const clickEventHandler = () => {
     api.post('/log', { ...logData, eventTime: new Date() });
   };
 
-  return <Wrapper onClick={postClickLog}>{children}</Wrapper>;
+  return <Wrapper onClick={clickEventHandler}>{children}</Wrapper>;
 }
 
 const Wrapper = styled.div<IEventTargetProps>`

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import Image from 'next/image';
 import styled from '@styles/themed-components';
 import Carousel from '@components/Common/Carousel';
 import Section from '@components/Common/Section';
@@ -34,7 +35,7 @@ function Today({ magList, playlistList }) {
       {isBannerOpened && (
         <BannerImgWrapper onClick={bannerClickEvent}>
           <BannerCloseButton className="banner-close-button" />
-          <BannerImg src="/images/banner-ad-img.png" alt="banner-ad-img" />
+          <Image src="/images/banner-ad-img.png" alt="banner-ad-img" width={964} height={50} />
         </BannerImgWrapper>
       )}
       <MagTopWrapper>
@@ -93,10 +94,10 @@ const BannerCloseButton = styled.button`
   height: 24px;
 `;
 
-const BannerImg = styled.img`
-  width: 100%;
-  height: 100%;
-`;
+// const BannerImg = styled.img`
+//   width: 100%;
+//   height: 100%;
+// `;
 
 const Wrapper = styled.div``;
 

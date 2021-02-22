@@ -1,38 +1,53 @@
-import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
-import useFetch from '@hooks/useFetch';
 import api from '@api/index';
-import Spinner from '@components/Common/Spinner';
-import getRefererFromHeader from '@utils/getRefererFromHeader';
 import AlbumDetail from '../../src/pages/Detail/Album';
 
-export function Index({ referer }) {
+export function Index({ albumData }) {
   const router = useRouter();
-  const { id } = router.query;
-  const { data, isLoading, isError } = useFetch(`/album/${id}`, null);
-
-  if (isLoading) return <Spinner />;
-  if (isError) {
-    console.log(isError);
-    return <div>...Error</div>;
+  interface IMoveEventLog {
+    eventTime: Date;
+    eventName: string;
+    parameters: {
+      prev: string;
+      next: string;
+    };
   }
-  const logData = {
+
+  const logData: IMoveEventLog = {
     eventTime: new Date(),
     eventName: 'move_event',
-    parameters: { prev: referer, next: router.asPath },
+    parameters: { prev: '.', next: router.asPath },
   };
   api.post('/log', logData);
 
   return (
     <>
-      <AlbumDetail albumInfo={data.data} />
+      <AlbumDetail albumInfo={albumData} />
     </>
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req }) => {
-  const referer = getRefererFromHeader(req.headers);
-  return { props: { referer } };
+export async function getStaticPaths() {
+  const data = await api.get(`/album/`).then(res => res.data);
+  const albumData = data.data;
+  const paths = albumData.map(album => ({
+    params: { id: String(album.id) },
+  }));
+
+  return { paths, fallback: false };
+}
+
+export const getStaticProps = async ({ params }) => {
+  const data = await api.get(`/album/${params.id}`).then(res => res.data);
+  const albumData = data.data;
+  if (!data) {
+    return {
+      notfound: true,
+    };
+  }
+  return {
+    props: { albumData },
+  };
 };
 
 export default Index;

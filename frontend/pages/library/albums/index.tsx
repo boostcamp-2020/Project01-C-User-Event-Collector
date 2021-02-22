@@ -33,7 +33,6 @@ function Index({ referer, token }) {
 
   if (isLoading || userLoading) return <Spinner />;
   if (isError || userError) {
-    console.log(isError);
     return <div>...Error</div>;
   }
 
