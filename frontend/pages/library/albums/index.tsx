@@ -1,3 +1,4 @@
+import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import MyAlbum from '@pages/Library/MyAlbum';
 import useFetch from '@hooks/useFetch';
@@ -32,7 +33,6 @@ function Index({ referer, token }) {
 
   if (isLoading || userLoading) return <Spinner />;
   if (isError || userError) {
-    console.log(isError);
     return <div>...Error</div>;
   }
 
@@ -50,7 +50,7 @@ function Index({ referer, token }) {
   );
 }
 
-export async function getServerSideProps({ req }) {
+export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   const referer = getRefererFromHeader(req.headers);
   const token = getTokenFromCookie(req.headers);
 
@@ -60,6 +60,6 @@ export async function getServerSideProps({ req }) {
       referer,
     },
   };
-}
+};
 
 export default Index;

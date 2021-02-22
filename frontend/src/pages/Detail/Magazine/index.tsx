@@ -9,7 +9,7 @@ interface IMagazineInfoProps {
   magazineInfo?: MetaMagazine;
 }
 
-type MetaMagazine = {
+interface MetaMagazine {
   id: number;
   title: string;
   date: string;
@@ -17,7 +17,7 @@ type MetaMagazine = {
   tag: string;
   content: string;
   tracks: any[];
-};
+}
 
 function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
   return (
@@ -32,7 +32,11 @@ function MagazineDetail({ magazineInfo: magazine }: IMagazineInfoProps) {
             <MagTitle>{magazine?.title}</MagTitle>
             <MagContent>{magazine?.content}</MagContent>
             <MagPlayList>
-              <MagPlayListInfo>총{magazine?.tracks?.length}곡 </MagPlayListInfo>
+              <MagPlayListInfo>
+총{magazine?.tracks?.length}
+곡
+{' '}
+</MagPlayListInfo>
               <MagPlayListLink>플레이리스트 보기</MagPlayListLink>
             </MagPlayList>
             <MagPlayButtonList>

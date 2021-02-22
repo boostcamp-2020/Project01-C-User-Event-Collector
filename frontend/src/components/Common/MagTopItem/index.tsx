@@ -10,7 +10,10 @@ function MagTopItem({ magData: mag }) {
 
   const resetImgSize = url => {
     if (url) {
-      const _url = url.replace(/type=r([0-9])+Fll/gi, 'type=r360Fll');
+      const _url = url
+        .replace(/type=w([0-9])+/gi, 'type=w480')
+        .replace(/type=r([0-9])+/gi, 'type=r360Fll');
+      console.log('_url', _url);
       return _url;
     }
   };

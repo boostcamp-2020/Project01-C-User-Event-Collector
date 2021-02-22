@@ -12,7 +12,7 @@ interface ITrackInfoProps {
   trackInfo?: MetaTrack;
 }
 
-type MetaTrack = {
+interface MetaTrack {
   id: number;
   title: string;
   songwriter?: string;
@@ -21,7 +21,7 @@ type MetaTrack = {
   genres: any[];
   album: any;
   isLocal?: number | boolean;
-};
+}
 
 function TrackDetail({ trackInfo: track }: ITrackInfoProps) {
   const target = 'TrackDetailAlbum';

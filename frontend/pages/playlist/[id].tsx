@@ -1,38 +1,53 @@
 import { useRouter } from 'next/router';
-import useFetch from '@hooks/useFetch';
 import api from '@api/index';
-import Spinner from '@components/Common/Spinner';
-import getRefererFromHeader from '@utils/getRefererFromHeader';
-import Playlistdetail from '../../src/pages/Detail/Playlist';
+import PlaylistDetail from '../../src/pages/Detail/Playlist';
 
-export function Index({ referer }) {
+export function Index({ playlistData }) {
   const router = useRouter();
-  const { id } = router.query;
-  const { data, isLoading, isError } = useFetch(`/playlist/${id}`, null);
-
-  if (isLoading) return <Spinner />;
-  if (isError) {
-    console.log(isError);
-    return <div>...Error</div>;
+  interface IMoveEventLog {
+    eventTime: Date;
+    eventName: string;
+    parameters: {
+      prev: string;
+      next: string;
+    };
   }
 
-  const logData = {
+  const logData: IMoveEventLog = {
     eventTime: new Date(),
     eventName: 'move_event',
-    parameters: { prev: referer, next: router.asPath },
+    parameters: { prev: '.', next: router.asPath },
   };
   api.post('/log', logData);
 
   return (
     <>
-      <Playlistdetail playlistInfo={data.data} />
+      <PlaylistDetail playlistInfo={playlistData} />
     </>
   );
 }
 
-export async function getServerSideProps({ req }) {
-  const referer = getRefererFromHeader(req.headers);
-  return { props: { referer } };
+export async function getStaticPaths() {
+  const data = await api.get(`/playlist/`).then(res => res.data);
+  const playlistData = data.data;
+  const paths = playlistData.map(playlist => ({
+    params: { id: String(playlist.id) },
+  }));
+
+  return { paths, fallback: false };
 }
+
+export const getStaticProps = async ({ params }) => {
+  const data = await api.get(`/playlist/${params.id}`).then(res => res.data);
+  const playlistData = data.data;
+  if (!data) {
+    return {
+      notfound: true,
+    };
+  }
+  return {
+    props: { playlistData },
+  };
+};
 
 export default Index;

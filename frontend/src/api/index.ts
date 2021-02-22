@@ -6,5 +6,4 @@ const api = axios.create({
     return status < 500;
   },
 });
-
 export default api;

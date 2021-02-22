@@ -1,38 +1,52 @@
 import { useRouter } from 'next/router';
-import useFetch from '@hooks/useFetch';
 import api from '@api/index';
-import Spinner from '@components/Common/Spinner';
-import getRefererFromHeader from '@utils/getRefererFromHeader';
 import TrackDetail from '../../src/pages/Detail/Track';
 
-export function Index({ referer }) {
+export function Index({ trackData }) {
   const router = useRouter();
-  const { id } = router.query;
-  const { data, isLoading, isError } = useFetch(`/track/${id}`, null);
-
-  if (isLoading) return <Spinner />;
-  if (isError) {
-    console.log(isError);
-    return <div>...Error</div>;
+  interface IMoveEventLog {
+    eventTime: Date;
+    eventName: string;
+    parameters: {
+      prev: string;
+      next: string;
+    };
   }
-
-  const logData = {
+  const logData: IMoveEventLog = {
     eventTime: new Date(),
     eventName: 'move_event',
-    parameters: { prev: referer, next: router.asPath },
+    parameters: { prev: '.', next: router.asPath },
   };
   api.post('/log', logData);
 
   return (
     <>
-      <TrackDetail trackInfo={data.data} />
+      <TrackDetail trackInfo={trackData} />
     </>
   );
 }
 
-export async function getServerSideProps({ req }) {
-  const referer = getRefererFromHeader(req.headers);
-  return { props: { referer } };
+export async function getStaticPaths() {
+  const data = await api.get(`/track/`).then(res => res.data);
+  const trackData = data.data;
+  const paths = trackData.map(track => ({
+    params: { id: String(track.id) },
+  }));
+
+  return { paths, fallback: false };
 }
+
+export const getStaticProps = async ({ params }) => {
+  const data = await api.get(`/track/${params.id}`).then(res => res.data);
+  const trackData = data.data;
+  if (!data) {
+    return {
+      notfound: true,
+    };
+  }
+  return {
+    props: { trackData },
+  };
+};
 
 export default Index;

@@ -7,20 +7,20 @@ interface IPlaylistMetaProps {
   playlistMetaData: PlaylistMeta;
 }
 
-type PlaylistMeta = {
+interface PlaylistMeta {
   id: number;
   name: string;
   date: string;
   tracks: trackMeta[];
-};
+}
 
-type trackMeta = {
+interface trackMeta {
   id: number;
   name: string;
   date: string;
   imgUrl: string;
   tracks?: any;
-};
+}
 
 const PlaylistCard = ({ playlistMetaData: playlist }: IPlaylistMetaProps) => {
   const target = 'PlaylistCard';
