@@ -4,7 +4,6 @@ import CircleImage from '@components/Common/CircleImage';
 import CircleHeartButton from '@components/Common/Button/CircleHeartButton';
 import A from '@components/Common/A';
 import api from '@api/index';
-import { mutate } from 'swr';
 import logEventHandler from '@utils/logEventHandler';
 import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
 import { useAuthDispatch } from '@context/AuthContext';
@@ -12,6 +11,7 @@ import { useAuthDispatch } from '@context/AuthContext';
 interface IArtistMetaProps {
   artistMetaData: ArtistMeta;
   type?: string | null;
+  deleteArtist?: any;
 }
 
 interface ArtistMeta {
@@ -21,18 +21,8 @@ interface ArtistMeta {
   imgUrl: string;
 }
 
-const ArtistCard = ({ artistMetaData: artist, type }: IArtistMetaProps) => {
+const ArtistCard = ({ artistMetaData: artist, type, deleteArtist }: IArtistMetaProps) => {
   const target = 'ArtistCard';
-  const dispatch = useAuthDispatch();
-
-  const deleteArtist = async (e, id) => {
-    await api.delete(`library/artists/${id}`);
-    e.target.closest('.artist-card').style.opacity = '0';
-    e.target.closest('.artist-card').style.transform = 'translate(0px, -35px)';
-    dispatch({ type: 'DELETE_ARTIST', artistId: id });
-    mutate(`${process.env.NEXT_PUBLIC_API_BASE_URL}/library/artists`);
-  };
-
   return (
     <Container className="artist-card">
       <ImageContainer>

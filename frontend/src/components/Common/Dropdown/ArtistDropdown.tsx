@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from '@styles/themed-components';
 import { Dropdown } from 'semantic-ui-react';
-import api from '@api/index';
 import logEventHandler from '@utils/logEventHandler';
 import ClickEventWrapper from '@components/EventWrapper/ClickEventWrapper';
 import * as T from '../../../constants/dropdownText';
@@ -12,19 +11,11 @@ interface ILogData {
   parameters: any;
 }
 
-const ArtistDropdown = id => {
-  const postLog = logData => {
-    api.post('/log', logData);
-  };
-
+function ArtistDropdown({ id, addArtistEvent }) {
   const libraryLogData: ILogData = {
     eventTime: new Date(),
     eventName: 'library_event',
     parameters: { action: 'add', type: 'artist', id },
-  };
-
-  const addLibraryEvent = () => {
-    api.post('/library/artists', { artistId: id }).then(() => postLog(libraryLogData));
   };
 
   return (
@@ -39,7 +30,7 @@ const ArtistDropdown = id => {
             <Dropdown.Item
               style={dropdownItemStyle}
               text={T.LIKE}
-              onClick={logEventHandler(addLibraryEvent, libraryLogData)}
+              onClick={logEventHandler(addArtistEvent, libraryLogData)}
             />
           </ClickEventWrapper>
           <ClickEventWrapper target="ShareBtn/artist" id={id}>
@@ -49,7 +40,7 @@ const ArtistDropdown = id => {
       </Dropdown>
     </Wrapper>
   );
-};
+}
 
 const authDropdownStyle = {
   width: '100%',
