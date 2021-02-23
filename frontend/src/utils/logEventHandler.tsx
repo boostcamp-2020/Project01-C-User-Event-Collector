@@ -1,8 +1,16 @@
+import { mutate } from 'swr';
 import api from '../api';
 
-const postLog = logData => {
+const postLog = async logData => {
   const timeStampedLog = { ...logData, eventTime: new Date() };
-  api.post('/log', timeStampedLog);
+  await api.post('/log', timeStampedLog);
+  mutate(
+    '/log',
+    data => {
+      return { ...data, data: [...data.data, logData] };
+    },
+    true,
+  );
 };
 
 const logEventHandler = (handler, logData) => {

@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import styled from 'styled-components';
 import { IoMdHeartEmpty, IoMdHeart } from 'react-icons/io';
 import logEventHandler from '@utils/logEventHandler';
-
+import { mutate } from 'swr';
 import api from '@api/index';
 import { useAuthState, useAuthDispatch } from '@context/AuthContext';
 import A from '@components/Common/A';
@@ -15,12 +15,27 @@ function PlayTrackItem({ type, trackData: track }) {
   const { trackList } = state;
   const target = 'PlayTrackItem';
 
-  const addTrackEvent = () => {
-    api.post(`library/tracks`, { trackId: track.id });
+  const addTrackEvent = async () => {
+    await api.post(`library/tracks`, { trackId: track.id });
+    mutate(
+      '/library/tracks',
+      data => {
+        return { ...data, data: [...data.data, track].sort((a, b) => a.id - b.id) };
+      },
+      true,
+    );
     dispatch({ type: 'ADD_TRACK', trackId: track.id });
   };
-  const deleteTrackEvent = () => {
-    api.delete(`library/tracks/${track.id}`);
+  const deleteTrackEvent = async () => {
+    await api.delete(`library/tracks/${track.id}`);
+    mutate(
+      '/library/tracks',
+      data => {
+        const updatedTracks = data.data.filter(item => item.id !== track.id);
+        return { ...data, data: [...updatedTracks] };
+      },
+      false,
+    );
     dispatch({ type: 'DELETE_TRACK', trackId: track.id });
   };
 
