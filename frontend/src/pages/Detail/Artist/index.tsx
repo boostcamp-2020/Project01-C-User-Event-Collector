@@ -8,6 +8,7 @@ import RelatedArtist from '@components/Common/SampleSection/RelatedArtist';
 import TrackList from '@components/TrackList';
 import logEventHandler from '@utils/logEventHandler';
 import api from '@api/index';
+import { mutate } from 'swr';
 
 import getMultipleNames from '@utils/getMultipleNames';
 import AlbumList from '@components/AlbumList';
@@ -23,14 +24,29 @@ function ArtistDetail({ artistInfo: artist }) {
   const { artistList } = state;
   const [artistState, setArtistState] = useState(artistList);
 
-  const deleteArtistEvent = () => {
-    api.delete(`library/artists/${artist.id}`);
+  const deleteArtistEvent = async () => {
+    await api.delete(`library/artists/${artist.id}`);
     dispatch({ type: 'DELETE_ARTIST', artistId: artist.id });
+    mutate(
+      '/library/artists',
+      data => {
+        const updatedArtists = data.data.filter(item => item.id !== artist.id);
+        return { ...data, data: [...updatedArtists] };
+      },
+      true,
+    );
   };
 
-  const addArtistEvent = () => {
-    api.post(`library/artists`, { artistId: artist.id });
+  const addArtistEvent = async () => {
+    await api.post(`library/artists`, { artistId: artist.id });
     dispatch({ type: 'ADD_ARTIST', artistId: artist.id });
+    mutate(
+      '/library/artists',
+      data => {
+        return { ...data, data: [...data.data, artist] };
+      },
+      true,
+    );
   };
 
   useEffect(() => {
@@ -48,7 +64,9 @@ function ArtistDetail({ artistInfo: artist }) {
           <TopContainer>
             <MainTitle>{artist.name}</MainTitle>
             <SubTitle>
-              {artist.debut.replace(/-/g, '.').slice(0, 10)} 데뷔 ·{' '}
+              {artist.debut.replace(/-/g, '.').slice(0, 10)}
+{' '}
+데뷔 ·{' '}
               {getMultipleNames(artist.genres)}
             </SubTitle>
           </TopContainer>
@@ -71,7 +89,7 @@ function ArtistDetail({ artistInfo: artist }) {
               </ButtonContainer>
               <ButtonContainer>
                 <HiOutlineDotsHorizontal size={24} color="575757" />
-                <ArtistDropdown id={artist.id} />
+                <ArtistDropdown id={artist.id} addArtistEvent={addArtistEvent} />
               </ButtonContainer>
             </ButtonWrapper>
           </BottomContainer>
